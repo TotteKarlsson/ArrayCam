@@ -340,6 +340,10 @@ object MainForm: TMainForm
     TabPosition = tpLeft
     object TabSheet1: TTabSheet
       Caption = 'Live'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mMainPanel: TPanel
         Left = 0
         Top = 0
@@ -374,6 +378,10 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PageControl2: TPageControl
         Left = 0
         Top = 41

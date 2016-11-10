@@ -40,7 +40,7 @@
         <Defines>POCO_STATIC;$(Defines)</Defines>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
-        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;abVCLCore.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <IncludePath>P:\libs\atapi\source\vcl\datamodules\;..\..\source\database\;..\..\source\vcl\datamodules\;..\..\source\;..\..\source\vcl;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
@@ -91,10 +91,10 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <LinkPackageStatics>atVCLCore.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
         <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <LinkPackageStatics>abVCLCore.lib</LinkPackageStatics>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
         <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
