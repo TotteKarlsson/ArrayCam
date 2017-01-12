@@ -32,6 +32,7 @@
 #include "arraybot/atEnvironmentalSensorReader.h"
 #include "database/atATDBServerSession.h"
 #include "/database/atATDBClientDBSession.h"
+#include <Vcl.Imaging.pngimage.hpp>
 
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -108,6 +109,14 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid2;
 	TButton *mATDBServerBtnConnect;
 	TDBNavigator *DBNavigator2;
+	TTabSheet *TabSheet7;
+	TGroupBox *GroupBox2;
+	TMemo *Memo1;
+	TPanel *Panel5;
+	TImage *Image2;
+	TLabel *Label2;
+	TLabel *logLabel;
+	TLabel *versionLabel;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -145,6 +154,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mATDBServerBtnConnectClick(TObject *Sender);
 	void __fastcall mSyncUsersBtnClick(TObject *Sender);
 	void __fastcall mImagesGridKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall PageControl1Change(TObject *Sender);
 
 
 
@@ -230,6 +240,7 @@ class TMainForm  : public TRegistryForm
 
 												//!Camera stuff is processed in the message loop
 	LRESULT 									OnUSBCameraMessage(TMessage msg);
+	void 		__fastcall 						populateAbout();
 
     BEGIN_MESSAGE_MAP
           MESSAGE_HANDLER(IS_UC480_MESSAGE, TMessage, OnUSBCameraMessage);

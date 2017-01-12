@@ -10,6 +10,9 @@
 #include "TSettingsForm.h"
 #include "database/atDBUtils.h"
 #include "Poco/Data/RecordSet.h"
+#include "mtkApplicationInfo.h"
+#include "mtkVersion.h"
+
 using namespace mtk;
 using namespace ab;
 
@@ -565,4 +568,32 @@ void __fastcall TMainForm::mImagesGridKeyDown(TObject *Sender, WORD &Key, TShift
 	loadCurrentImage();
 }
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::PageControl1Change(TObject *Sender)
+{
+	//Check if we are opening About tab
+    if(PageControl1->TabIndex == 2)
+    {
+    	populateAbout();
+    }
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::populateAbout()
+{
+	//Populate MEMO
+    stringstream ss;
+    mtkApplicationInfo appInfo(Application);
+
+    //Current Version Info
+    Version version(stdstr(appInfo.mVersion));
+    ss <<version.getMajor()<<"."<<version.getMinor()<<"."<<version.getPatch();
+    String versionMajorMinorPatch(ss.str().c_str());
+    versionLabel->Caption = String("Version: ") + versionMajorMinorPatch;
+
+
+    if(fileExists("CHANGELOG.txt"))
+    {
+	    Memo1->Lines->LoadFromFile("CHANGELOG.txt");
+    }
+
+}

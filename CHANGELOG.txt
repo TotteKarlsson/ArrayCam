@@ -1,3 +1,11 @@
+Release 0.5.0 (Jan 11)
+=======================
+* Making ArrayCam a Standalone distribution
+
+
+---- 2017 ----
+--- Splitting off ArrayCam Changelog from ArrayBot Changelog ------
+
 Release 0.8.4 (Sept 28)
 =======================
 * Added ability to specify output folders for snapshots and movies in ArrayCam
