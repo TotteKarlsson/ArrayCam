@@ -34,8 +34,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "P:\AppReleases\ArrayCam\ArrayCam.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "P:\ArrayBot\db\atDB.db";      DestDir: "{localappdata}\ArrayBot"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "P:\AppReleases\ArrayCam\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "P:\ArrayBot\db\atDB.db";               DestDir: "{localappdata}\ArrayBot"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "P:\AppReleases\ArrayCam\*";            DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

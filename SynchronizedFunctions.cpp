@@ -152,7 +152,7 @@ void TMainForm::onSensorsArduinoMessageReceived(const string& msg)
 
                 //Put the numbers into the DB (change this to be outside the main thread(!)
                 vector<SensorReading> readings = mEnvReader.getReadings();
-                for(int i = 0; i < readings.size(); i++)
+                for(uint i = 0; i < readings.size(); i++)
                 {
                     SensorReading r = readings[i];
                     try
