@@ -1,6 +1,5 @@
 #ifndef TMainFormH
 #define TMainFormH
-//---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -9,29 +8,31 @@
 #include <Vcl.ComCtrls.hpp>
 #include "TPropertyCheckBox.h"
 #include <Vcl.Menus.hpp>
-
 #include "mtkLogFileReader.h"
 #include "mtkIniFileProperties.h"
 #include "mtkIniFile.h"
 #include "mtkLogger.h"
 #include "TRegistryForm.h"
 #include "camera/uc480Class.h"
-#include "arduino/abLightsArduinoClient.h"
-#include "arduino/abSensorsArduinoClient.h"
+#include "arduino/atLightsArduinoClient.h"
+#include "arduino/atSensorsArduinoClient.h"
 #include "mtkFloatLabel.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ToolWin.hpp>
 #include "TArrayBotBtn.h"
-#include "sound/abSoundPlayer.h"
+#include "sound/atSoundPlayer.h"
 #include <Vcl.DBCtrls.hpp>
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
 #include "TATDBImagesAndMoviesDataModule.h"
-#include "arraybot/abEnvironmentalSensorReader.h"
-#include "database/abATDBServerSession.h"
-#include "/database/abATDBClientDBSession.h"
+#include "arraybot/atEnvironmentalSensorReader.h"
+#include "database/atATDBServerSession.h"
+#include "/database/atATDBClientDBSession.h"
+#include <Vcl.Imaging.pngimage.hpp>
+#include "atCameraServiceThread.h"
+//---------------------------------------------------------------------------
 
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -53,8 +54,7 @@ class TMainForm  : public TRegistryForm
 	TSplitter *Splitter1;
 	TSplitter *Splitter2;
 	TPanel *mMainPanel;
-	TPanel *mCameraBackPanel;
-	TPanel *mCameraStreamPanel;
+	TPanel *mCamera1BackPanel;
 	TTimer *mCaptureVideoTimer;
 	TPanel *mBottomPanel;
 	TPanel *Panel1;
@@ -108,6 +108,18 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid2;
 	TButton *mATDBServerBtnConnect;
 	TDBNavigator *DBNavigator2;
+	TTabSheet *TabSheet7;
+	TGroupBox *GroupBox2;
+	TMemo *Memo1;
+	TPanel *Panel5;
+	TImage *Image2;
+	TLabel *Label2;
+	TLabel *logLabel;
+	TLabel *versionLabel;
+	TTabSheet *TabSheet8;
+	TPanel *mCamera2BackPanel;
+	TButton *Button3;
+	TTimer *mStartupTimer;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -145,8 +157,9 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mATDBServerBtnConnectClick(TObject *Sender);
 	void __fastcall mSyncUsersBtnClick(TObject *Sender);
 	void __fastcall mImagesGridKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-
-
+	void __fastcall PageControl1Change(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall mStartupTimerTimer(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -167,21 +180,35 @@ class TMainForm  : public TRegistryForm
         IniFile						            mIniFile;
         IniFileProperties  			            mProperties;
 		Property<mtk::LogLevel>            		mLogLevel;
+
+        										//Camera Settings
         Property<bool>						    mAutoGain;
         Property<bool>						    mAutoExposure;
+        Property<bool>						    mAutoBlackLevel;
+        Property<bool>						    mAutoWhiteBalance;
+        Property<double>   					    mSoftwareGamma;
+
         Property<bool>						    mVerticalMirror;
         Property<bool>						    mHorizontalMirror;
-        Property<bool>						    mPairLEDs;
+
+
+
         Property<string>						mSnapShotFolder;
         Property<string>						mMoviesFolder;
         Property<string>						mLocalDBName;
-
+        Property<bool>						    mPairLEDs;
 								                // Camera variables
         								        //!The camera class
-		Cuc480   						        mCamera;
+		Cuc480   						        mCamera1;
+        CameraServiceThread						mServiceCamera1;
+
+//		Cuc480   						        mCamera2;
+//        CameraServiceThread						mServiceCamera2;
+
         long							        mRenderMode;
-        HWND	                		        mDisplayHandle;	// handle to diplay window
-		bool							        openCamera();
+        HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
+        HWND	                		        mCamera2DisplayHandle;	// handle to diplay window
+		bool							        openCameras();
 
         								        //!Boolean to check if we are
                                                 //capturing video to file
@@ -218,6 +245,10 @@ class TMainForm  : public TRegistryForm
 		void       __fastcall					afterServerConnect(System::TObject* Sender);
 		void       __fastcall					afterServerDisconnect(System::TObject* Sender);
 
+   		void       __fastcall					onCameraOpen( System::TObject* Sender);
+		void       __fastcall					onCameraClose(System::TObject* Sender);
+
+
     public:
     											//The environmenatl reader is accessed from a thread
  			       __fastcall 					TMainForm(TComponent* Owner);
@@ -230,6 +261,7 @@ class TMainForm  : public TRegistryForm
 
 												//!Camera stuff is processed in the message loop
 	LRESULT 									OnUSBCameraMessage(TMessage msg);
+	void 		__fastcall 						populateAbout();
 
     BEGIN_MESSAGE_MAP
           MESSAGE_HANDLER(IS_UC480_MESSAGE, TMessage, OnUSBCameraMessage);

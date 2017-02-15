@@ -2,8 +2,8 @@ object SettingsForm: TSettingsForm
   Left = 0
   Top = 0
   Caption = 'ArrayCam Settings'
-  ClientHeight = 435
-  ClientWidth = 578
+  ClientHeight = 814
+  ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,89 +22,25 @@ object SettingsForm: TSettingsForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 578
-    Height = 380
-    ActivePage = TabSheet1
+    Width = 625
+    Height = 759
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 486
     object TabSheet1: TTabSheet
       Caption = 'Camera'
-      object Label1: TLabel
-        Left = 26
-        Top = 117
-        Width = 35
-        Height = 13
-        Caption = 'Gamma'
-      end
-      object mGamma: TLabel
-        Left = 187
-        Top = 136
-        Width = 6
-        Height = 13
-        Caption = '1'
-      end
-      object GroupBox4: TGroupBox
-        Left = 3
-        Top = 3
-        Width = 329
-        Height = 97
-        Caption = 'Gain'
-        TabOrder = 0
-        object mGainLbl: TLabel
-          Left = 204
-          Top = 51
-          Width = 6
-          Height = 13
-          Caption = '1'
-        end
-        object mAutoGainCB: TPropertyCheckBox
-          Left = 18
-          Top = 19
-          Width = 109
-          Height = 17
-          Caption = 'Auto Gain'
-          TabOrder = 0
-          OnClick = AutoParaCBClick
-        end
-        object mGainTB: TTrackBar
-          Left = 18
-          Top = 42
-          Width = 167
-          Height = 35
-          Enabled = False
-          Max = 1000
-          Position = 100
-          ShowSelRange = False
-          TabOrder = 1
-          ThumbLength = 35
-          TickStyle = tsNone
-          OnChange = mGainTBChange
-        end
-      end
-      object mGammaSB: TTrackBar
-        Left = 14
-        Top = 128
-        Width = 150
-        Height = 35
-        Max = 300
-        Min = 10
-        Position = 100
-        ShowSelRange = False
-        TabOrder = 1
-        ThumbLength = 35
-        TickStyle = tsNone
-        OnChange = mGammaSBChange
-      end
+      ExplicitHeight = 458
       object GroupBox2: TGroupBox
-        Left = 446
-        Top = 8
-        Width = 113
+        Left = 9
+        Top = 152
+        Width = 192
         Height = 64
         Caption = 'Mirror planes'
-        TabOrder = 2
+        TabOrder = 0
         object mVerticalMirrorCB: TPropertyCheckBox
           Left = 10
-          Top = 19
+          Top = 18
           Width = 65
           Height = 17
           Caption = 'Vertical'
@@ -112,8 +48,8 @@ object SettingsForm: TSettingsForm
           OnClick = mVerticalMirrorCBClick
         end
         object mHorizontalMirrorCB: TPropertyCheckBox
-          Left = 10
-          Top = 42
+          Left = 98
+          Top = 18
           Width = 65
           Height = 17
           Caption = 'Horizontal'
@@ -122,29 +58,63 @@ object SettingsForm: TSettingsForm
         end
       end
       object GroupBox3: TGroupBox
-        Left = 446
-        Top = 99
-        Width = 113
-        Height = 64
-        Caption = 'Settings'
-        TabOrder = 3
+        Left = 9
+        Top = 19
+        Width = 411
+        Height = 118
+        Caption = 'Camera Settings'
+        TabOrder = 1
+        object Label1: TLabel
+          Left = 19
+          Top = 40
+          Width = 94
+          Height = 13
+          Caption = 'Exposure Time (ms)'
+        end
+        object mExposureTimeLbl: mtkFloatLabel
+          Left = 248
+          Top = 64
+          Width = 88
+          Height = 13
+          Caption = 'mExposureTimeLbl'
+          Value = -1.000000000000000000
+          TheFont.Charset = DEFAULT_CHARSET
+          TheFont.Color = clWindowText
+          TheFont.Height = -11
+          TheFont.Name = 'Tahoma'
+          TheFont.Style = []
+        end
         object mAutoExposureCB: TPropertyCheckBox
-          Left = 3
-          Top = 17
+          Left = 19
+          Top = 64
           Width = 109
           Height = 17
-          Caption = 'Auto Exposure'
+          Caption = 'Auto'
           TabOrder = 0
           OnClick = AutoParaCBClick
         end
+        object mExposureTimeTB: TTrackBar
+          Left = 148
+          Top = 30
+          Width = 260
+          Height = 35
+          Max = 300
+          Min = 10
+          Position = 10
+          ShowSelRange = False
+          TabOrder = 1
+          ThumbLength = 35
+          TickStyle = tsNone
+          OnChange = mExposureTimeTBChange
+        end
       end
       object GroupBox6: TGroupBox
-        Left = 0
-        Top = 264
+        Left = 9
+        Top = 232
         Width = 521
         Height = 86
         Caption = 'Folders (raw files)'
-        TabOrder = 4
+        TabOrder = 2
         object mBrowseForImagesFolderBtn: TButton
           Left = 228
           Top = 40
@@ -186,9 +156,171 @@ object SettingsForm: TSettingsForm
         end
       end
     end
+    object TabSheet4: TTabSheet
+      Caption = 'Image'
+      ImageIndex = 1
+      ExplicitHeight = 458
+      object GroupBox4: TGroupBox
+        Left = 19
+        Top = 19
+        Width = 390
+        Height = 214
+        Caption = 'Master Gain'
+        TabOrder = 0
+        object mGainLbl: TLabel
+          Left = 18
+          Top = 46
+          Width = 6
+          Height = 13
+          Caption = '1'
+        end
+        object Label2: TLabel
+          Left = 18
+          Top = 27
+          Width = 21
+          Height = 13
+          Caption = 'Gain'
+        end
+        object Label3: TLabel
+          Left = 18
+          Top = 147
+          Width = 52
+          Height = 13
+          Caption = 'Black Level'
+        end
+        object mBlackLevelLbl: TIntLabel
+          Left = 126
+          Top = 184
+          Width = 70
+          Height = 13
+          Caption = 'mBlackLevelLbl'
+          ValueString = '12'
+          Value = -1
+          TheFont.Charset = DEFAULT_CHARSET
+          TheFont.Color = clWindowText
+          TheFont.Height = -11
+          TheFont.Name = 'Tahoma'
+          TheFont.Style = []
+        end
+        object mAutoGainCB: TPropertyCheckBox
+          Left = 18
+          Top = 79
+          Width = 109
+          Height = 17
+          Caption = 'Auto'
+          TabOrder = 0
+          OnClick = AutoParaCBClick
+        end
+        object mGainTB: TTrackBar
+          Left = 117
+          Top = 34
+          Width = 258
+          Height = 47
+          Enabled = False
+          Max = 100
+          ShowSelRange = False
+          TabOrder = 1
+          ThumbLength = 35
+          TickStyle = tsNone
+          OnChange = mGainTBChange
+        end
+        object mBlackLevelTB: TTrackBar
+          Left = 117
+          Top = 138
+          Width = 258
+          Height = 47
+          Enabled = False
+          Max = 100
+          ShowSelRange = False
+          TabOrder = 2
+          ThumbLength = 35
+          TickStyle = tsNone
+          OnChange = mBlackLevelTBChange
+        end
+        object mAutoBlackLevelCB: TPropertyCheckBox
+          Left = 18
+          Top = 166
+          Width = 109
+          Height = 17
+          Caption = 'Auto'
+          TabOrder = 3
+          OnClick = AutoParaCBClick
+        end
+        object mGainBoostCB: TCheckBox
+          Left = 18
+          Top = 102
+          Width = 87
+          Height = 17
+          Caption = 'Gain Boost'
+          TabOrder = 4
+          OnClick = mGainBoostCBClick
+        end
+      end
+      object Gamma: TGroupBox
+        Left = 19
+        Top = 608
+        Width = 390
+        Height = 81
+        Caption = 'Gamma'
+        TabOrder = 1
+        object Label4: TLabel
+          Left = 18
+          Top = 28
+          Width = 82
+          Height = 13
+          Caption = 'Software Gamma'
+        end
+        object mSoftwareGammaLbl: mtkFloatLabel
+          Left = 18
+          Top = 47
+          Width = 22
+          Height = 13
+          Caption = '1.00'
+          ValueString = '1.00'
+          Value = 1.000000000000000000
+          TheFont.Charset = DEFAULT_CHARSET
+          TheFont.Color = clWindowText
+          TheFont.Height = -11
+          TheFont.Name = 'Tahoma'
+          TheFont.Style = []
+        end
+        object mGammaSB: TTrackBar
+          Left = 117
+          Top = 30
+          Width = 260
+          Height = 35
+          Max = 300
+          Min = 10
+          Position = 10
+          ShowSelRange = False
+          TabOrder = 0
+          ThumbLength = 35
+          TickStyle = tsNone
+          OnChange = mGammaSBChange
+        end
+      end
+      object GroupBox5: TGroupBox
+        Left = 19
+        Top = 239
+        Width = 390
+        Height = 105
+        Caption = 'Color Gain'
+        TabOrder = 2
+        object mAutoWhiteBalanceCB: TPropertyCheckBox
+          Left = 18
+          Top = 32
+          Width = 109
+          Height = 17
+          Caption = 'Auto White Balance'
+          TabOrder = 0
+          OnClick = AutoParaCBClick
+        end
+      end
+    end
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
+      ExplicitHeight = 458
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16
@@ -276,6 +408,7 @@ object SettingsForm: TSettingsForm
     object TabSheet2: TTabSheet
       Caption = 'Connections'
       ImageIndex = 1
+      ExplicitHeight = 458
       object GroupBox1: TGroupBox
         Left = 3
         Top = 16
@@ -309,13 +442,14 @@ object SettingsForm: TSettingsForm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 380
-    Width = 578
+    Top = 759
+    Width = 625
     Height = 55
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 486
     object Button1: TButton
-      Left = 464
+      Left = 512
       Top = 2
       Width = 99
       Height = 45
@@ -328,7 +462,7 @@ object SettingsForm: TSettingsForm
     Enabled = False
     Interval = 200
     OnTimer = mUIUpdateTimerTimer
-    Left = 264
-    Top = 216
+    Left = 368
+    Top = 312
   end
 end

@@ -11,6 +11,9 @@
 #include "TPropertyCheckBox.h"
 #include <Vcl.ComCtrls.hpp>
 #include "TSTDStringLabeledEdit.h"
+#include "cspin.h"
+#include "mtkFloatLabel.h"
+#include "TIntLabel.h"
 //---------------------------------------------------------------------------
 class TSettingsForm : public TForm
 {
@@ -20,16 +23,12 @@ __published:	// IDE-managed Components
 	TPropertyCheckBox *mVerticalMirrorCB;
 	TPropertyCheckBox *mHorizontalMirrorCB;
 	TGroupBox *GroupBox3;
-	TGroupBox *GroupBox4;
 	TButton *Button1;
 	TPropertyCheckBox *mAutoExposureCB;
-	TPropertyCheckBox *mAutoGainCB;
 	TSTDStringLabeledEdit *mPhotoOutputBaseFolder;
 	TSTDStringLabeledEdit *mMoviesFolderE;
 	TButton *mBrowseForImagesFolderBtn;
 	TButton *mBrowseForMoviesFolderBtn;
-	TTrackBar *mGammaSB;
-	TLabel *mGamma;
 	TPageControl *PageControl1;
 	TTabSheet *TabSheet1;
 	TPanel *Panel1;
@@ -39,9 +38,6 @@ __published:	// IDE-managed Components
 	TButton *mASStartBtn;
 	TTabSheet *TabSheet3;
 	TPropertyCheckBox *mPairLEDsCB;
-	TLabel *Label1;
-	TTrackBar *mGainTB;
-	TLabel *mGainLbl;
 	TGroupBox *GroupBox6;
 	TGroupBox *LightIntensitiesGB;
 	TLabel *mCoaxLbl;
@@ -51,6 +47,26 @@ __published:	// IDE-managed Components
 	TTrackBar *mBackLEDTB;
 	TTrackBar *mCoaxTB;
 	TTrackBar *mFrontLEDTB;
+	TTabSheet *TabSheet4;
+	TGroupBox *GroupBox4;
+	TLabel *mGainLbl;
+	TPropertyCheckBox *mAutoGainCB;
+	TTrackBar *mGainTB;
+	TTrackBar *mBlackLevelTB;
+	TLabel *Label2;
+	TLabel *Label3;
+	TPropertyCheckBox *mAutoBlackLevelCB;
+	TCheckBox *mGainBoostCB;
+	TTrackBar *mGammaSB;
+	TGroupBox *Gamma;
+	TLabel *Label4;
+	TTrackBar *mExposureTimeTB;
+	TLabel *Label1;
+	mtkFloatLabel *mExposureTimeLbl;
+	TIntLabel *mBlackLevelLbl;
+	TGroupBox *GroupBox5;
+	TPropertyCheckBox *mAutoWhiteBalanceCB;
+	mtkFloatLabel *mSoftwareGammaLbl;
 	void __fastcall mASStartBtnClick(TObject *Sender);
 	void __fastcall mUIUpdateTimerTimer(TObject *Sender);
 	void __fastcall mVerticalMirrorCBClick(TObject *Sender);
@@ -66,8 +82,14 @@ __published:	// IDE-managed Components
 	void __fastcall FormHide(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall mGainTBChange(TObject *Sender);
-private:	// User declarations
+	void __fastcall mGainBoostCBClick(TObject *Sender);
+	void __fastcall mExposureTimeTBChange(TObject *Sender);
+	void __fastcall mBlackLevelTBChange(TObject *Sender);
 
+private:	// User declarations
+	bool						mIsStartingUp;
+	void  			__fastcall  enableManualExposureTimeSetting();
+	void  			__fastcall  enableManualBlackLevelSetting();
 public:		// User declarations
 	TMainForm&			mMainForm;
 
