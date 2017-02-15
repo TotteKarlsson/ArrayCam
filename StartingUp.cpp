@@ -12,13 +12,21 @@ extern bool   gAppIsStartingUp;
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
     //Camera stuff
-	mDisplayHandle 	= this->mCameraStreamPanel->Handle;
-	mCameraStartLiveBtnClick(Sender);
+	mCamera1DisplayHandle 	= this->mCamera1BackPanel->Handle;
+	mCamera2DisplayHandle 	= this->mCamera2BackPanel->Handle;
 
-	mCameraStreamPanel->Width = 1280;
-	mCameraStreamPanel->Height = 1024;
-	mCameraStreamPanel->Top = 0;
-	mCameraStreamPanel->Left = 0;
+    Log(lDebug) << "Init camera..";
+
+    //Live
+    if(!mCamera1.IsInit())
+    {
+    	mServiceCamera1.openCamera();
+    }
+
+	mCamera1BackPanel->Width 	= 1280;
+	mCamera1BackPanel->Height 	= 1024;
+	mCamera1BackPanel->Top 		= 0;
+	mCamera1BackPanel->Left 	= 0;
 	mFitToScreenButtonClick(Sender);
 
     enableDisableClientControls(false);
@@ -40,8 +48,8 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     }
 
 	//Connect to the arduino server..
-	mLightsArduinoClient.connect(50000);
-   	mSensorsArduinoClient.connect(50000);
+//	mLightsArduinoClient.connect(50000);
+//   	mSensorsArduinoClient.connect(50000);
 }
 
 //---------------------------------------------------------------------------

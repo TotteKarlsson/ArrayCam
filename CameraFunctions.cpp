@@ -14,54 +14,131 @@ using namespace ab;
 void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)
 {
     Log(lDebug) << "Init camera..";
+
     //Live
-    if(!mCamera.IsInit())
+    if(!mCamera1.IsInit())
     {
-        openCamera();
+    	mServiceCamera1.openCamera();
     }
 
-    if(mCamera.IsInit())
-    {
-        int x, y;
-        mCamera.GetMaxImageSize(&x,&y);
-        Log(lInfo) << "Max image size (x,y): ("<<x<<", "<<y<<")";
-        mCamera.CaptureVideo( IS_WAIT );
+//    if(!mCamera2.IsInit())
+//    {
+//    	mServiceCamera2.openCamera();
+//    }
+}
 
-        HCAM hc = mCamera.GetCameraHandle();
+
+//Called from a thread
+void __fastcall	TMainForm::onCameraOpen(System::TObject* Sender)
+{
+	Log(lInfo) << "A Camera was open..";
+
+	Cuc480* camera = (Cuc480*) Sender;
+
+    if(!camera)
+    {
+    	Log(lError) << "Null camerapointer in onCameraOpen";
+    }
+
+   if(camera == &mCamera1 && mCamera1.IsInit())
+    {
+        int x, y, ret;
+        mCamera1.GetMaxImageSize(&x,&y);
+        Log(lInfo) << "Max image size (x,y): ("<<x<<", "<<y<<")";
+        mCamera1.CaptureVideo( IS_WAIT );
+
+        HCAM hCam = mCamera1.GetCameraHandle();
 
 		//Setup camera using values from INI file
 
         //Enable/Disable auto gain control:
         double dEnable = mAutoGain.getValue() ? 1 : 0;
-        int ret = is_SetAutoParameter (hc, IS_SET_ENABLE_AUTO_GAIN, &dEnable, 0);
+        ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_GAIN, &dEnable, 0);
 
+		//Auto exposure
 		dEnable = mAutoExposure.getValue() ? 1 : 0;
 
         //Enable/Disable auto exposure
-        ret = is_SetAutoParameter (hc, IS_SET_ENABLE_AUTO_SHUTTER, &dEnable, 0);
+        ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_SHUTTER, &dEnable, 0);
 
-        //Set brightness setpoint to 128:
-        double nominal = 128;
-        ret = is_SetAutoParameter (hc, IS_SET_AUTO_REFERENCE, &nominal, 0);
+		//Auto Black Level
+		dEnable = mAutoBlackLevel.getValue() ? 1 : 0;
+
+        //Enable/Disable auto black Level
+        int nMode = dEnable > 0 ? IS_AUTO_BLACKLEVEL_ON : IS_AUTO_BLACKLEVEL_OFF;
+        ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
+
+		//Auto Black Level
+		dEnable = mAutoWhiteBalance.getValue() ? 1 : 0;
+
+        //Enable/Disable auto black Level
+        ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_WHITEBALANCE, &dEnable, 0);;
+
+        //Set software gamme
+		ret = is_SetGamma (hCam, mSoftwareGamma * 100.0);
 
         //Mirror stuff
-		is_SetRopEffect (hc, IS_SET_ROP_MIRROR_LEFTRIGHT, mVerticalMirror.getValue(), 0);
-		is_SetRopEffect (hc, IS_SET_ROP_MIRROR_UPDOWN, 	mHorizontalMirror.getValue(), 0);
+		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_LEFTRIGHT, mVerticalMirror.getValue(), 0);
+		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_UPDOWN, 	mHorizontalMirror.getValue(), 0);
+//		mStartupTimer->Enabled = true;
     }
+//    else if (camera == &mCamera2 && mCamera2.IsInit())
+//    {
+//        int x, y;
+//        mCamera2.GetMaxImageSize(&x,&y);
+//        Log(lInfo) << "Max image size (x,y): ("<<x<<", "<<y<<")";
+//        mCamera2.CaptureVideo( IS_WAIT );
+//
+//        HCAM hCam = mCamera2.GetCameraHandle();
+//
+//		//Setup camera using values from INI file
+//
+//        //Enable/Disable auto gain control:
+//        double dEnable = mAutoGain.getValue() ? 1 : 0;
+//        int ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_GAIN, &dEnable, 0);
+//
+//		dEnable = mAutoExposure.getValue() ? 1 : 0;
+//
+//        //Enable/Disable auto exposure
+//        ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_SHUTTER, &dEnable, 0);
+//
+//        //Set brightness setpoint to 128:
+//        double nominal = 128;
+//        ret = is_SetAutoParameter (hCam, IS_SET_AUTO_REFERENCE, &nominal, 0);
+//
+//        //Mirror stuff
+//		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_LEFTRIGHT, mVerticalMirror.getValue(), 0);
+//		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_UPDOWN, 	mHorizontalMirror.getValue(), 0);
+//    }
 }
+
+void __fastcall	TMainForm::onCameraClose(System::TObject* Sender)
+{
+	Log(lInfo) << "A Camera was closed..";
+}
+
 
 LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
 {
     switch ( msg.WParam )
     {
-        case IS_DEVICE_REMOVED:            Beep( 400, 50 );        break;
-        case IS_DEVICE_RECONNECTED:        Beep( 400, 50 );        break;
+        case IS_DEVICE_REMOVED:
+        	Beep( 400, 50 );
+        break;
+        case IS_DEVICE_RECONNECTED:
+        	Beep( 400, 50 );
+        break;
 
         case IS_FRAME:
-            if(mCamera.mImageMemory != NULL)
+            if(mCamera1.mImageMemory != NULL)
             {
-                mCamera.RenderBitmap(mCamera.mMemoryId, mDisplayHandle, mRenderMode);
+                mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
             }
+
+//            if(mCamera2.mImageMemory != NULL)
+//            {
+//                mCamera2.RenderBitmap(mCamera2.mMemoryId, mCamera2DisplayHandle, mRenderMode);
+//            }
         break;
     }
 
@@ -69,9 +146,34 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
 }
 
 //---------------------------------------------------------------------------
-bool TMainForm::openCamera()
+bool TMainForm::openCameras()
 {
-	return	mCamera.openCamera(this->Handle);
+//	bool result = false;
+//	Log(lInfo) << "Opening Camera 1";
+//    if(mCamera1.openCamera(this->Handle, 0))
+//    {
+//    	Log(lInfo) << "Camera 1 was opened";
+//        result = true;
+//    }
+//    else
+//    {
+//    	Log(lError) << "Failed opening Camera 1";
+//        result = false;
+//    }
+
+//	Log(lInfo) << "Opening Camera 2";
+//    if(mCamera2.openCamera(this->Handle,1))
+//    {
+//    	Log(lInfo) << "Camera 2 was opened";
+//        result = true;
+//    }
+//    else
+//    {
+//    	Log(lError) << "Failed opening Camera 2";
+//        result = false;
+//    }
+
+//	return result;
 }
 
 //---------------------------------------------------------------------------
@@ -80,45 +182,43 @@ void __fastcall TMainForm::mOneToTwoBtnClick(TObject *Sender)
 	mRenderMode = IS_RENDER_DOWNSCALE_1_2;
 
    	int x, y;
-	mCamera.GetMaxImageSize(&x,&y);
-	mCameraBackPanel->Width = x/2.;
-	mCameraBackPanel->Height = y/2.;
+	mCamera1.GetMaxImageSize(&x,&y);
+	mCamera1BackPanel->Width = x/2.;
+	mCamera1BackPanel->Height = y/2.;
 }
 
 void __fastcall TMainForm::mOneToOneBtnClick(TObject *Sender)
 {
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;
-    mCameraStreamPanel->Invalidate();
+    mCamera1BackPanel->Invalidate();
 
    	int x, y;
-	mCamera.GetMaxImageSize(&x,&y);
-	mCameraBackPanel->Width  = x;
-	mCameraBackPanel->Height = y;
+	mCamera1.GetMaxImageSize(&x,&y);
+	mCamera1BackPanel->Width  = x;
+	mCamera1BackPanel->Height = y;
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
 {
 	//Check widths and heights
-    double wRatio = (double) mMainPanel->Width / mCameraBackPanel->Width;
-    double hRatio = (double) mMainPanel->Height / mCameraBackPanel->Height;
+    double wRatio = (double) mMainPanel->Width / mCamera1BackPanel->Width;
+    double hRatio = (double) mMainPanel->Height / mCamera1BackPanel->Height;
 
     if(hRatio < wRatio)
     {
-	    mCameraBackPanel->Height = mMainPanel->Height;
-        mCameraBackPanel->Width *= hRatio;
+	    mCamera1BackPanel->Height = mMainPanel->Height;
+        mCamera1BackPanel->Width *= hRatio;
     }
     else
     {
-	    mCameraBackPanel->Width = mMainPanel->Width;
-        mCameraBackPanel->Height *= wRatio;
+	    mCamera1BackPanel->Width = mMainPanel->Width;
+        mCamera1BackPanel->Height *= wRatio;
     }
 
-    mCameraBackPanel->Invalidate();
-    mCameraStreamPanel->Invalidate();
-	Log(lInfo) << "W x H = " <<mCameraBackPanel->Width<<","<<mCameraBackPanel->Height<<" Ratio = "<<(double) mCameraBackPanel->Width / mCameraBackPanel->Height;
+    mCamera1BackPanel->Invalidate();
+	Log(lInfo) << "W x H = " <<mCamera1BackPanel->Width<<","<<mCamera1BackPanel->Height<<" Ratio = "<<(double) mCamera1BackPanel->Width / mCamera1BackPanel->Height;
 }
-
 
 void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 {
@@ -142,7 +242,7 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
         fName = joinPath(fldr, mtk::toString(nrOfShots) + ext);
     }
 
-	if(mCamera.SaveImage(fName.c_str()))
+	if(mCamera1.SaveImage(fName.c_str()))
     {
     	Log(lError) << "Failed saving snapshot..";
     }
@@ -171,11 +271,11 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
     {
         mCaptureVideoTimer->Enabled = true;
 
-        isavi_InitAVI(&mAVIID, mCamera.GetCameraHandle());
+        isavi_InitAVI(&mAVIID, mCamera1.GetCameraHandle());
 
-        int w = mCamera.mSizeX;
-        int h = mCamera.mSizeY;
-        int retVal = isavi_SetImageSize(mAVIID, mCamera.mColorMode, w, h, 0, 0, 0);
+        int w = mCamera1.mSizeX;
+        int h = mCamera1.mSizeY;
+        int retVal = isavi_SetImageSize(mAVIID, mCamera1.mColorMode, w, h, 0, 0, 0);
 
         if(retVal != IS_AVI_NO_ERR)
         {
@@ -263,7 +363,7 @@ void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
     mCaptureVideo = true;
     static int frames(0);
 
-    int retVal = isavi_AddFrame(mAVIID, mCamera.mImageMemory);
+    int retVal = isavi_AddFrame(mAVIID, mCamera1.mImageMemory);
 
     if(retVal != IS_AVI_NO_ERR)
     {

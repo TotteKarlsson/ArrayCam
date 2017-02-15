@@ -3,11 +3,15 @@
 #include "TSettingsForm.h"
 #include <sstream>
 #include "mtkVCLUtils.h"
+#include "mtkMathUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TPropertyCheckBox"
 #pragma link "TSTDStringLabeledEdit"
+#pragma link "cspin"
+#pragma link "mtkFloatLabel"
+#pragma link "TIntLabel"
 #pragma resource "*.dfm"
 TSettingsForm *SettingsForm;
 
@@ -19,12 +23,23 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf)
 {
+	mIsStartingUp = true;
     //Bind properties
+    mAutoExposureCB->setReference(mMainForm.mAutoExposure.getReference());
+	mAutoExposureCB->Update();
+
+    mAutoBlackLevelCB->setReference(mMainForm.mAutoBlackLevel.getReference());
+    mAutoBlackLevelCB->Update();
+
     mAutoGainCB->setReference(mMainForm.mAutoGain.getReference());
 	mAutoGainCB->Update();
 
-    mAutoExposureCB->setReference(mMainForm.mAutoExposure.getReference());
-	mAutoExposureCB->Update();
+    mAutoWhiteBalanceCB->setReference(mMainForm.mAutoWhiteBalance.getReference());
+	mAutoWhiteBalanceCB->Update();
+
+
+	mSoftwareGammaLbl->SetReference(mMainForm.mSoftwareGamma.getReference());
+	mGammaSB->Position = 100.0 *mMainForm.mSoftwareGamma;
 
     mVerticalMirrorCB->setReference(mMainForm.mVerticalMirror.getReference());
 	mVerticalMirrorCB->Update();
@@ -36,7 +51,32 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
     mPairLEDsCB->Update();
 
     mPhotoOutputBaseFolder->setReference(mMainForm.mSnapShotFolder.getReference());
-    mMoviesFolderE->setReference(mMainForm.mMoviesFolder.getReference());    
+    mMoviesFolderE->setReference(mMainForm.mMoviesFolder.getReference());
+
+
+    if(mMainForm.mAutoExposure == false)
+    {
+	    enableManualExposureTimeSetting();
+    }
+    else
+    {	//Initialize trackbar to current autoexposure time
+
+        HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+        double dblMin, dblMax, dblInc, dCurrent;
+        int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
+            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MAX, (void*)&dblMax, sizeof(dblMax));
+            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_INC, (void*)&dblInc, sizeof(dblInc));
+
+        nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, &dCurrent, sizeof(dCurrent));
+        mExposureTimeTB->Min = round(dblMin * 1000);
+        mExposureTimeTB->Max = round(dblMax * 1000);
+        mExposureTimeTB->Position = round(dCurrent * 1000);
+        mExposureTimeTB->Enabled = false;
+    }
+
+
+
+	mIsStartingUp = false;
 }
 
 //---------------------------------------------------------------------------
@@ -59,12 +99,31 @@ void __fastcall TSettingsForm::mUIUpdateTimerTimer(TObject *Sender)
    	mASStartBtn->Caption 			= mMainForm.mLightsArduinoClient.isConnected()	? "Stop" : "Start";
 	mArduinoServerPortE->Enabled 	= !mMainForm.mLightsArduinoClient.isConnected();
    	enableDisableGroupBox(LightIntensitiesGB, !mArduinoServerPortE->Enabled);
+
+
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+    double dblMin, dblMax, dblInc, dCurrent;
+    int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
+        nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MAX, (void*)&dblMax, sizeof(dblMax));
+        nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_INC, (void*)&dblInc, sizeof(dblInc));
+
+    nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, &dCurrent, sizeof(dCurrent));
+    mExposureTimeTB->Min = round(dblMin * 1000);
+    mExposureTimeTB->Max = round(dblMax * 1000);
+
+    if(mAutoExposureCB->Checked)
+    {
+	    mExposureTimeTB->Position = round(dCurrent * 1000);
+    }
+
+
+
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::mVerticalMirrorCBClick(TObject *Sender)
 {
-    HCAM hCam = mMainForm.mCamera.GetCameraHandle();
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 	if(mVerticalMirrorCB->Checked)
     {
 		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_LEFTRIGHT, 1, 0);
@@ -79,7 +138,7 @@ void __fastcall TSettingsForm::mVerticalMirrorCBClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::mHorizontalMirrorCBClick(TObject *Sender)
 {
-    HCAM hCam = mMainForm.mCamera.GetCameraHandle();
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 	if(mHorizontalMirrorCB->Checked)
     {
 		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_UPDOWN, 1, 0);
@@ -94,21 +153,23 @@ void __fastcall TSettingsForm::mHorizontalMirrorCBClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
 {
-    HCAM hCam = mMainForm.mCamera.GetCameraHandle();
-    TCheckBox* cb = dynamic_cast<TCheckBox*>(Sender);
-
-    double dEnable;
-	int ret;
-    if(cb)
+	TCheckBox* cb = dynamic_cast<TCheckBox*>(Sender);
+	if(mIsStartingUp || cb == NULL)
     {
-    	dEnable = cb->Checked ? 1 : 0;
+    	return;
     }
+
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+
+    double dEnable= cb->Checked ? 1 : 0;
+	int ret;
 
     if(cb == mAutoGainCB)
     {
-    	mGainTB->Enabled = !cb->Checked;
 	    mAutoGainCB->OnClick(Sender);
-	    //Enable auto gain control:
+    	mGainTB->Enabled = !cb->Checked;
+
+	    //Enable /Disable auto gain control:
 	    ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_GAIN, &dEnable, 0);
     }
     else if (cb == mAutoExposureCB)
@@ -117,17 +178,79 @@ void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
 
 	    //Enable auto shutter:
 	    ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_SHUTTER, &dEnable, 0);
+
+        if(cb->Checked)
+        {
+        	mExposureTimeTB->Enabled = false;
+        }
+        else
+        {
+        	//INT is_Exposure (HIDS hCam, UINT nCommand, void* pParam, UINT cbSizeOfParam)
+            enableManualExposureTimeSetting();
+
+        }
+    }
+    else if (cb == mAutoBlackLevelCB)
+    {
+	    mAutoBlackLevelCB->OnClick(Sender);
+        if(cb->Checked)
+        {
+
+        	mBlackLevelTB->Enabled = false;
+			int nMode = IS_AUTO_BLACKLEVEL_ON;
+			ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
+
+        }
+        else
+        {
+            enableManualBlackLevelSetting();
+        }
+    }
+    else if (cb == mAutoWhiteBalanceCB)
+    {
+	    mAutoWhiteBalanceCB->OnClick(Sender);
+  	    ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_WHITEBALANCE, &dEnable, 0);
     }
 
-    //Check return value;
+}
 
-    //Set brightness setpoint to 128:
-    double nominal = 128;
-    ret = is_SetAutoParameter (hCam, IS_SET_AUTO_REFERENCE, &nominal, 0);
 
-//    //Return shutter control limit:
-//    double maxShutter;
-//    ret = is_SetAutoParameter (hCam, IS_GET_AUTO_SHUTTER_MAX, &maxShutter, 0);
+void  __fastcall TSettingsForm::enableManualExposureTimeSetting()
+{
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+    double dblMin, dblMax, dblInc, dCurrent;
+    int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
+    	nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MAX, (void*)&dblMax, sizeof(dblMax));
+    	nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_INC, (void*)&dblInc, sizeof(dblInc));
+
+    nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, &dCurrent, sizeof(dCurrent));
+    mExposureTimeTB->Min = round(dblMin * 1000);
+    mExposureTimeTB->Max = round(dblMax * 1000);
+    mExposureTimeTB->Position = round(dCurrent * 1000);
+   	mExposureTimeTB->Enabled = true;
+    mExposureTimeLbl->SetValue(dCurrent);
+}
+
+void  __fastcall TSettingsForm::enableManualBlackLevelSetting()
+{
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+
+    // Get offset range
+    IS_RANGE_S32 nRange;
+    int ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_GET_OFFSET_RANGE, (void*)&nRange, sizeof(nRange));
+    INT nOffsetMin = nRange.s32Min;
+    INT nOffsetMax = nRange.s32Max;
+
+    mBlackLevelTB->Min = nRange.s32Min;
+    mBlackLevelTB->Max = nRange.s32Max;
+
+   	INT nOffset = 0;
+
+	// Get default blacklevel offset
+	mBlackLevelTB->Enabled = true;
+
+    int nMode = IS_AUTO_BLACKLEVEL_OFF;
+    ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
 }
 
 void __fastcall TSettingsForm::Button1Click(TObject *Sender)
@@ -188,9 +311,9 @@ void __fastcall TSettingsForm::BrowseForFolder(TObject *Sender)
 void __fastcall TSettingsForm::mGammaSBChange(TObject *Sender)
 {
 	int pos = mGammaSB->Position;
-    mGamma->Caption = mtk::toString((double) pos/100.0).c_str();
+    mSoftwareGammaLbl->SetValue((double) pos/100.0);
 
-    HCAM hCam = mMainForm.mCamera.GetCameraHandle();
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 	int ret = is_SetGamma (hCam, pos);
 
     switch(ret)
@@ -308,10 +431,10 @@ void __fastcall TSettingsForm::FormShow(TObject *Sender)
 
 void __fastcall TSettingsForm::mGainTBChange(TObject *Sender)
 {
-	int pos = mGainTB->Position/10;
+	int pos = mGainTB->Position/1;
     mGainLbl->Caption = mtk::toString(pos).c_str();
 
-    HCAM hCam = mMainForm.mCamera.GetCameraHandle();
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 	int ret = is_SetHardwareGain(hCam, pos, pos, pos ,pos);
 
     switch(ret)
@@ -361,6 +484,79 @@ the driver file (uc480_usb.sys) do not match. ";
         break;
     }
 
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TSettingsForm::mGainBoostCBClick(TObject *Sender)
+{
+    HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+
+
+	int ret = is_SetGainBoost(hCam, IS_GET_SUPPORTED_GAINBOOST);
+    if(ret != IS_SET_GAINBOOST_ON)
+    {
+    	Log(lError) << "This Camera does not support Hardware Gain Boost";
+		mGainBoostCB->Checked = false;
+        return;
+    }
+
+    //turn on or off gain boost
+    if(mGainBoostCB->Checked)
+    {
+		ret = is_SetGainBoost(hCam, IS_SET_GAINBOOST_ON);
+    }
+    else
+    {
+		ret = is_SetGainBoost(hCam, IS_SET_GAINBOOST_OFF);
+    }
+
+
+    switch(ret)
+    {
+		case IS_INVALID_CAMERA_HANDLE:
+        	Log(lError) << "Invalid camera handle";
+        break;
+
+        case IS_NO_SUCCESS:     Log(lError) << "General error message";
+        break;
+
+        case IS_NOT_SUPPORTED: 	Log(lError) <<"The camera model used here does not support this function or setting.";
+		break;
+
+		case IS_SUCCESS:      	Log(lInfo) << "Function executed successfully";
+        break;
+
+        default:                Log(lInfo) << "Unknown return value";
+        break;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TSettingsForm::mExposureTimeTBChange(TObject *Sender)
+{
+    double dCurrent = mExposureTimeTB->Position / 1000.0;
+	if(mAutoExposureCB->Checked == false)
+    {
+        HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+
+
+        int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, &dCurrent, sizeof(dCurrent));
+        mExposureTimeTB->Position = round(dCurrent * 1000);
+     }
+     mExposureTimeLbl->SetValue(dCurrent);
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
+{
+    int Current = mBlackLevelTB->Position;
+	if(mAutoBlackLevelCB->Checked == false)
+    {
+        HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+		int ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_OFFSET, (void*)&Current, sizeof(Current));
+     }
+     mBlackLevelLbl->SetValue(Current);
 }
 
 

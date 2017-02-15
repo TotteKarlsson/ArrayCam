@@ -7,7 +7,11 @@ extern bool gAppIsClosing;
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 	gAppIsClosing = true;
-	if(mLogFileReader.isRunning() || mCamera.IsInit() || mLightsArduinoClient.isConnected() || mSensorsArduinoClient.isConnected())
+	if(mLogFileReader.isRunning() 			||
+    	mCamera1.IsInit() 					||
+//        mCamera2.IsInit() 					||
+        mLightsArduinoClient.isConnected() 	||
+        mSensorsArduinoClient.isConnected())
     {
         CanClose = false;
         mShutDownTimer->Enabled = true;
@@ -26,10 +30,19 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 		mLogFileReader.stop();
     }
 
-    if(mCamera.IsInit())
+    if(mCamera1.IsInit())
     {
-    	mCamera.exitCamera();
+	    mServiceCamera1.closeCamera();
     }
+    if(!mCamera1.IsInit() && mServiceCamera1.isRunning())
+    {
+		mServiceCamera1.stop();
+    }
+
+//    if(mCamera2.IsInit()|| mServiceCamera2.isRunning())
+//    {
+//	    mServiceCamera2.closeCamera();
+//    }
 
     if(mLightsArduinoClient.isConnected())
     {

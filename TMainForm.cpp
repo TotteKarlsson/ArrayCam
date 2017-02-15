@@ -43,6 +43,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     	mLogLevel(lAny),
         mAutoGain(false),
         mAutoExposure(false),
+        mAutoBlackLevel(false),
+        mAutoWhiteBalance(false),
+        mSoftwareGamma(0.0),
         mVerticalMirror(false),
         mHorizontalMirror(false),
         mPairLEDs(false),
@@ -53,7 +56,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mMoviesFolder(""),
         mLocalDBName(""),
         mClientDBSession("umlocal"),
-		mServerDBSession("atdb")
+		mServerDBSession("atdb"),
+        mServiceCamera1(mCamera1, 1, this->Handle)//,
+//        mServiceCamera2(mCamera2, 2, this->Handle)
     {
    	mLogFileReader.start(true);
 
@@ -63,6 +68,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	"LOG_LEVEL",    		lAny));
 	mProperties.add((BaseProperty*)  &mAutoGain.setup(			"AUTO_GAIN",    		false));
 	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		"AUTO_EXPOSURE",    	false));
+	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	"AUTO_BLACK_LEVEL",    	false));
+	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	"AUTO_WHITE_BALANCE",  	false));
+	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	"SOFTWARE_GAMMA",  		0));
 	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	"VERTICAL_MIRROR",    	false));
 	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	"HORIZONTAL_MIRROR",    false));
 	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	"HORIZONTAL_MIRROR",    false));
@@ -83,6 +91,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mLightsArduinoClient.onDisconnected 	= onArduinoClientDisconnected;
 
     gLogger.setLogLevel(mLogLevel);
+
+    mServiceCamera1.onCameraOpen = onCameraOpen;
+//    mServiceCamera2.onCameraOpen = onCameraOpen;
+
+    mServiceCamera1.onCameraClose = onCameraClose;
+//    mServiceCamera2.onCameraClose = onCameraClose;
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -135,7 +149,7 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
 {
 	if(Key == vkEscape)
     {
-		mCamera.exitCamera();
+		mCamera1.exitCamera();
     	Close();
     }
 }
@@ -597,3 +611,20 @@ void __fastcall TMainForm::populateAbout()
     }
 
 }
+void __fastcall TMainForm::Button3Click(TObject *Sender)
+{
+//    if(!mCamera2.IsInit())
+//    {
+//        mServiceCamera2.openCamera();
+//    }
+}
+
+void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
+{
+	mStartupTimer->Enabled = false;
+    //Set software gamme
+//    HCAM hCam = mCamera1.GetCameraHandle();
+//	int ret = is_SetGamma (hCam, mSoftwareGamma * 100);
+}
+
+

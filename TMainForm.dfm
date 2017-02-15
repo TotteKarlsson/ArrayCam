@@ -349,36 +349,20 @@ object MainForm: TMainForm
         Align = alClient
         TabOrder = 0
         OnResize = mMainPanelResize
-        object mCameraBackPanel: TPanel
-          Left = 0
-          Top = 0
+        object mCamera1BackPanel: TPanel
+          Left = 32
+          Top = 40
           Width = 320
           Height = 256
           BorderStyle = bsSingle
-          Caption = 'mCameraBackPanel'
+          Caption = 'mCamera1BackPanel'
           TabOrder = 0
-          object mCameraStreamPanel: TPanel
-            Left = 1
-            Top = 1
-            Width = 314
-            Height = 250
-            Align = alClient
-            AutoSize = True
-            Color = clTeal
-            ParentBackground = False
-            TabOrder = 0
-            OnDblClick = mCameraStreamPanelDblClick
-          end
         end
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PageControl2: TPageControl
         Left = 0
         Top = 41
@@ -389,10 +373,6 @@ object MainForm: TMainForm
         TabOrder = 0
         object TabSheet3: TTabSheet
           Caption = 'Images'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Image1: TImage
             Left = 282
             Top = 0
@@ -2169,18 +2149,10 @@ object MainForm: TMainForm
         object TabSheet4: TTabSheet
           Caption = 'Movies'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabSheet5: TTabSheet
           Caption = 'Sensor Data'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object DBGrid1: TDBGrid
             Left = 11
             Top = 11
@@ -2231,10 +2203,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'DB Sync'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object mATDBServerGB: TGroupBox
             Left = 3
             Top = 71
@@ -2318,10 +2286,6 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
@@ -3234,20 +3198,42 @@ object MainForm: TMainForm
         end
       end
     end
+    object TabSheet8: TTabSheet
+      Caption = 'Camera 2'
+      ImageIndex = 3
+      object mCamera2BackPanel: TPanel
+        Left = 86
+        Top = 88
+        Width = 320
+        Height = 256
+        BorderStyle = bsSingle
+        Caption = 'mCamera2BackPanel'
+        TabOrder = 0
+      end
+      object Button3: TButton
+        Left = 520
+        Top = 120
+        Width = 75
+        Height = 25
+        Caption = 'Button3'
+        TabOrder = 1
+        OnClick = Button3Click
+      end
+    end
   end
   object mShutDownTimer: TTimer
     Enabled = False
     Interval = 10
     OnTimer = mShutDownTimerTimer
-    Left = 600
-    Top = 664
+    Left = 536
+    Top = 488
   end
   object mCaptureVideoTimer: TTimer
     Enabled = False
     Interval = 1
     OnTimer = mCaptureVideoTimerTimer
-    Left = 744
-    Top = 672
+    Left = 680
+    Top = 480
   end
   object mMediaPopup: TPopupMenu
     Left = 80
@@ -3260,5 +3246,12 @@ object MainForm: TMainForm
       Caption = 'Delete All'
       OnClick = DeleteAll1Click
     end
+  end
+  object mStartupTimer: TTimer
+    Enabled = False
+    Interval = 6000
+    OnTimer = mStartupTimerTimer
+    Left = 144
+    Top = 456
   end
 end
