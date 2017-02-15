@@ -9,6 +9,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 	gAppIsClosing = true;
 	if(mLogFileReader.isRunning() 			||
     	mCamera1.IsInit() 					||
+        mServiceCamera1.isRunning()			||
 //        mCamera2.IsInit() 					||
         mLightsArduinoClient.isConnected() 	||
         mSensorsArduinoClient.isConnected())
