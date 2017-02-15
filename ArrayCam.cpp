@@ -12,8 +12,8 @@ using std::string;
 using namespace mtk;
 
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("TSettingsForm.cpp", SettingsForm);
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
+USEFORM("TSettingsForm.cpp", SettingsForm);
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string       gLogFileName                = "ArrayCam.log";
@@ -94,12 +94,13 @@ void setupLogging()
 #pragma comment(lib, "poco_sqlite_connector-static.lib")
 #pragma comment(lib, "poco_data-static.lib")
 
-#pragma comment(lib, "abCore.lib")
+#pragma comment(lib, "atCore.lib")
+#pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "uc480_B.lib")
 #pragma comment(lib, "uc480_tools_B.lib")
 
-#pragma comment(lib, "abVCLCore.bpi")
+#pragma comment(lib, "atVCLCore.bpi")
 #pragma comment(lib, "VCLCommon.bpi")
 #pragma comment(lib, "DuneForms.bpi")
 

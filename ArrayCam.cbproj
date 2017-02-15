@@ -40,11 +40,11 @@
         <Defines>POCO_STATIC;$(Defines)</Defines>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
-        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;abVCLCore.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
-        <IncludePath>P:\libs\atapi\source\vcl\datamodules\;..\..\source\database\;..\..\source\vcl\datamodules\;..\..\source\;..\..\source\vcl;$(IncludePath)</IncludePath>
+        <IncludePath>P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <ILINK_LibraryPath>P:\libs\atapi\source\vcl\datamodules\;..\..\source\database\;..\..\source\vcl\datamodules\;..\..\source\;P:\thorCam\borland\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -59,12 +59,9 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <ILINK_LibraryPath>P:\ArrayBot\source\camera\lib\;P:\ArrayBot\testing\thor_cam\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <PackageImports>CSKGenerator;VCLCommon;fs17;frx17;bindcompfmx;DBXSqliteDriver;vcldbx;RaizeComponentsTrialVcl;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;DbxDevartSQLiteDriver170;vclie;HsBarcode1DRun;RaizeComponentsTrialVclDb;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;dsnap;IndyIPServer;IndyCore;vcl;fmxase;IndyIPCommon;CloudService;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;fmxobj;vclx;frxe17;inetdbxpress;webdsnap;fmxdae;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
     </PropertyGroup>
@@ -91,17 +88,31 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_MinorVer>5</VerInfo_MinorVer>
+        <VerInfo_Debug>true</VerInfo_Debug>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <PostBuildEvent><![CDATA[xcopy CHANGELOG.txt $(OUTPUTDIR) /y
+xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
+xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y
+xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y
+xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
+xcopy *.txt $(APP_RELEASES)\ArrayCam /y
+$(PostBuildEvent)]]></PostBuildEvent>
+        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.5.1.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
+        <LinkPackageStatics>atVCLCore.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
-        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <LinkPackageStatics>abVCLCore.lib</LinkPackageStatics>
+        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;P:\libs\dslib\VCL\Components\;P:\libs\dslib\Common\Math\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
         <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <IncludePath>$(DEBUG_BUILD)\include;$(AT_ROOT)\source;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;DbxDevartSQLiteDriver170.bpi;vclimg.bpi;DBXMySQLDriver.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;DbxDevartSQLiteDriver170.bpi;vclimg.bpi;DBXMySQLDriver.bpi;bcbsmp.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -137,6 +148,10 @@
             <DependentOn>TSettingsForm.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\camera\atCameraServiceThread.cpp">
+            <DependentOn>P:\libs\atapi\source\camera\atCameraServiceThread.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp">
             <Form>ImagesAndMoviesDM</Form>
             <DesignClass>TDataModule</DesignClass>
@@ -144,8 +159,8 @@
             <BuildOrder>8</BuildOrder>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="TSettingsForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -221,4 +236,12 @@
     </ProjectExtensions>
     <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
+        <PreBuildEvent/>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent>xcopy CHANGELOG.txt $(OUTPUTDIR) /y&amp;&amp;xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy *.txt $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
 </Project>
