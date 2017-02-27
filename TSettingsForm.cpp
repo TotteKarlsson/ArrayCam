@@ -9,7 +9,6 @@
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TPropertyCheckBox"
 #pragma link "TSTDStringLabeledEdit"
-#pragma link "cspin"
 #pragma link "mtkFloatLabel"
 #pragma link "TIntLabel"
 #pragma resource "*.dfm"
@@ -115,9 +114,6 @@ void __fastcall TSettingsForm::mUIUpdateTimerTimer(TObject *Sender)
     {
 	    mExposureTimeTB->Position = round(dCurrent * 1000);
     }
-
-
-
 }
 
 //---------------------------------------------------------------------------
@@ -556,7 +552,7 @@ void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
         HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 		int ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_OFFSET, (void*)&Current, sizeof(Current));
      }
-     mBlackLevelLbl->SetValue(Current);
+     mBlackLevelLbl->setValue(Current);
 }
 
 

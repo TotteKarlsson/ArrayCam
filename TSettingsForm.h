@@ -11,7 +11,6 @@
 #include "TPropertyCheckBox.h"
 #include <Vcl.ComCtrls.hpp>
 #include "TSTDStringLabeledEdit.h"
-#include "cspin.h"
 #include "mtkFloatLabel.h"
 #include "TIntLabel.h"
 //---------------------------------------------------------------------------

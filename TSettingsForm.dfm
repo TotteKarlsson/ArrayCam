@@ -2,7 +2,7 @@ object SettingsForm: TSettingsForm
   Left = 0
   Top = 0
   Caption = 'ArrayCam Settings'
-  ClientHeight = 814
+  ClientHeight = 541
   ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,14 +23,12 @@ object SettingsForm: TSettingsForm
     Left = 0
     Top = 0
     Width = 625
-    Height = 759
-    ActivePage = TabSheet4
+    Height = 486
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 486
     object TabSheet1: TTabSheet
       Caption = 'Camera'
-      ExplicitHeight = 458
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -74,9 +72,10 @@ object SettingsForm: TSettingsForm
         object mExposureTimeLbl: mtkFloatLabel
           Left = 248
           Top = 64
-          Width = 88
+          Width = 26
           Height = 13
-          Caption = 'mExposureTimeLbl'
+          Caption = '-1.00'
+          ValueString = '-1.00'
           Value = -1.000000000000000000
           TheFont.Charset = DEFAULT_CHARSET
           TheFont.Color = clWindowText
@@ -159,7 +158,10 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
-      ExplicitHeight = 458
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -191,10 +193,9 @@ object SettingsForm: TSettingsForm
         object mBlackLevelLbl: TIntLabel
           Left = 126
           Top = 184
-          Width = 70
+          Width = 10
           Height = 13
-          Caption = 'mBlackLevelLbl'
-          ValueString = '12'
+          Caption = '-1'
           Value = -1
           TheFont.Charset = DEFAULT_CHARSET
           TheFont.Color = clWindowText
@@ -258,7 +259,7 @@ object SettingsForm: TSettingsForm
       end
       object Gamma: TGroupBox
         Left = 19
-        Top = 608
+        Top = 360
         Width = 390
         Height = 81
         Caption = 'Gamma'
@@ -320,7 +321,10 @@ object SettingsForm: TSettingsForm
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
-      ExplicitHeight = 458
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16
@@ -408,12 +412,11 @@ object SettingsForm: TSettingsForm
     object TabSheet2: TTabSheet
       Caption = 'Connections'
       ImageIndex = 1
-      ExplicitHeight = 458
       object GroupBox1: TGroupBox
         Left = 3
         Top = 16
         Width = 273
-        Height = 161
+        Height = 145
         Caption = 'Arduino Client'
         TabOrder = 0
         object mArduinoServerPortE: TIntegerLabeledEdit
@@ -430,7 +433,7 @@ object SettingsForm: TSettingsForm
         end
         object mASStartBtn: TButton
           Left = 143
-          Top = 40
+          Top = 20
           Width = 104
           Height = 97
           Caption = 'Start'
@@ -442,12 +445,11 @@ object SettingsForm: TSettingsForm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 759
+    Top = 486
     Width = 625
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 486
     object Button1: TButton
       Left = 512
       Top = 2
