@@ -99,15 +99,15 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
    	ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
 
     //UI DB connection
-    if (ImagesAndMoviesDM->connect("127.0.0.1", "atdb_client", "atdb123", dBase))
-    {
-       // Connection successfull
-        Log(lInfo) << "DataModule connected to the database: "<<dBase;
-    }
-    else
-    {
-        Log(lInfo) << "Datamodule failed to connect to database: "<<dBase;
-    }
+//    if (ImagesAndMoviesDM->connect("127.0.0.1", "atdb_client", "atdb123", dBase))
+//    {
+//       // Connection successfull
+//        Log(lInfo) << "DataModule connected to the database: "<<dBase;
+//    }
+//    else
+//    {
+//        Log(lInfo) << "Datamodule failed to connect to database: "<<dBase;
+//    }
 
     gAppIsStartingUp = false;
 }

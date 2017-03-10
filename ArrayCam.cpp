@@ -12,8 +12,8 @@ using std::string;
 using namespace mtk;
 
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
 USEFORM("TSettingsForm.cpp", SettingsForm);
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string       gLogFileName                = "ArrayCam.log";
@@ -30,7 +30,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
-		TStyleManager::TrySetStyle("Iceberg Classico");
+		TStyleManager::TrySetStyle("Obsidian");
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TSettingsForm), &SettingsForm);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);

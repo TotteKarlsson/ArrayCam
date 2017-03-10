@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Array Cam 0.5'
   ClientHeight = 862
-  ClientWidth = 968
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,13 +16,14 @@ object MainForm: TMainForm
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter1: TSplitter
     Left = 0
     Top = 700
-    Width = 968
+    Width = 1005
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -31,7 +32,7 @@ object MainForm: TMainForm
     ExplicitWidth = 967
   end
   object Splitter2: TSplitter
-    Left = 786
+    Left = 823
     Top = 0
     Height = 700
     Align = alRight
@@ -40,12 +41,13 @@ object MainForm: TMainForm
     ExplicitHeight = 100
   end
   object Panel2: TPanel
-    Left = 789
+    Left = 826
     Top = 0
     Width = 179
     Height = 700
     Align = alRight
     TabOrder = 0
+    ExplicitLeft = 789
     object ScrollBox1: TScrollBox
       Left = 1
       Top = 1
@@ -56,11 +58,12 @@ object MainForm: TMainForm
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
-        Width = 173
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Temperature (C)'
         TabOrder = 1
+        ExplicitWidth = 173
         object mTemperatureLbl: mtkFloatLabel
           Left = 32
           Top = 23
@@ -85,11 +88,12 @@ object MainForm: TMainForm
       object GroupBox6: TGroupBox
         Left = 0
         Top = 60
-        Width = 173
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Relative Humidity (%)'
         TabOrder = 2
+        ExplicitWidth = 173
         object mHumidityE: mtkFloatLabel
           Left = 32
           Top = 23
@@ -111,22 +115,24 @@ object MainForm: TMainForm
           TheFont.Style = []
         end
       end
-      object Button2: TArrayBotButton
+      object mExitBtn: TArrayBotButton
         Left = 0
-        Top = 634
-        Width = 173
+        Top = 656
+        Width = 156
         Height = 60
         Align = alBottom
         Caption = 'Exit'
         ParentDoubleBuffered = True
         TabOrder = 0
-        OnClick = Button2Click
+        OnClick = mExitBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 634
+        ExplicitWidth = 173
       end
       object mFitToScreenButton: TArrayBotButton
         Left = 0
-        Top = 120
-        Width = 173
+        Top = 153
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Fit to screen'
@@ -134,11 +140,13 @@ object MainForm: TMainForm
         TabOrder = 3
         OnClick = mFitToScreenButtonClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 120
+        ExplicitWidth = 173
       end
       object mFrontBackLEDBtn: TArrayBotButton
         Left = 0
-        Top = 574
-        Width = 173
+        Top = 596
+        Width = 156
         Height = 60
         Align = alBottom
         Caption = 'Toggle LED Light'
@@ -147,11 +155,13 @@ object MainForm: TMainForm
         WordWrap = True
         OnClick = mFrontBackLEDBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 574
+        ExplicitWidth = 173
       end
       object mRecordMovieBtn: TArrayBotButton
         Left = 0
-        Top = 435
-        Width = 173
+        Top = 468
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Record Movie'
@@ -159,11 +169,13 @@ object MainForm: TMainForm
         TabOrder = 5
         OnClick = mRecordMovieBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 435
+        ExplicitWidth = 173
       end
       object mSettingsBtn: TArrayBotButton
         Left = 0
-        Top = 315
-        Width = 173
+        Top = 348
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Settings'
@@ -171,11 +183,13 @@ object MainForm: TMainForm
         TabOrder = 6
         OnClick = mSettingsBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 315
+        ExplicitWidth = 173
       end
       object mSnapShotBtn: TArrayBotButton
         Left = 0
-        Top = 375
-        Width = 173
+        Top = 408
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Snap Shot'
@@ -183,11 +197,13 @@ object MainForm: TMainForm
         TabOrder = 7
         OnClick = mSnapShotBtnClick
         SoundID = 'CAMERA_SHUTTER_1'
+        ExplicitTop = 375
+        ExplicitWidth = 173
       end
       object mToggleCoaxBtn: TArrayBotButton
         Left = 0
-        Top = 514
-        Width = 173
+        Top = 536
+        Width = 156
         Height = 60
         Align = alBottom
         Caption = 'Toggle Coax Light'
@@ -196,11 +212,13 @@ object MainForm: TMainForm
         WordWrap = True
         OnClick = mFrontBackLEDBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 514
+        ExplicitWidth = 173
       end
       object mToggleLogPanelBtn: TArrayBotButton
         Left = 0
-        Top = 255
-        Width = 173
+        Top = 288
+        Width = 156
         Height = 60
         Align = alTop
         Caption = 'Hide Bottom Panel'
@@ -208,15 +226,19 @@ object MainForm: TMainForm
         TabOrder = 9
         OnClick = mToggleLogPanelClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 255
+        ExplicitWidth = 173
       end
       object Panel3: TPanel
         Left = 0
-        Top = 180
-        Width = 173
+        Top = 213
+        Width = 156
         Height = 75
         Align = alTop
         TabOrder = 10
         OnResize = Panel3Resize
+        ExplicitTop = 180
+        ExplicitWidth = 173
         object mOneToOneBtn: TArrayBotButton
           Left = 1
           Top = 1
@@ -242,49 +264,68 @@ object MainForm: TMainForm
           SoundID = 'BUTTON_CLICK_4'
         end
       end
+      object mReticleRadiusTB: TTrackBar
+        Left = 0
+        Top = 120
+        Width = 156
+        Height = 33
+        Align = alTop
+        Anchors = []
+        Max = 200
+        Position = 1
+        ShowSelRange = False
+        TabOrder = 11
+        TickStyle = tsNone
+        OnChange = mReticleRadiusTBChange
+      end
     end
   end
   object mBottomPanel: TPanel
     Left = 0
     Top = 703
-    Width = 968
+    Width = 1005
     Height = 159
     Align = alBottom
     TabOrder = 1
+    ExplicitWidth = 968
     object GroupBox8: TGroupBox
       Left = 1
       Top = 1
-      Width = 966
+      Width = 1003
       Height = 157
       Align = alClient
       Caption = 'Logs'
       TabOrder = 0
+      ExplicitWidth = 966
       object infoMemo: TMemo
         Left = 2
         Top = 62
-        Width = 962
+        Width = 999
         Height = 93
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitWidth = 962
       end
       object Panel1: TPanel
         Left = 2
         Top = 21
-        Width = 962
+        Width = 999
         Height = 41
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitWidth = 962
         object ToolBar1: TToolBar
           Left = 0
           Top = 0
-          Width = 962
+          Width = 999
           Height = 40
           AutoSize = True
           ButtonHeight = 40
           Caption = 'ToolBar1'
           TabOrder = 0
+          ExplicitWidth = 962
           object mClearLogMemoBtn: TBitBtn
             Left = 0
             Top = 0
@@ -303,7 +344,7 @@ object MainForm: TMainForm
           end
           object LogLevelCB: TComboBox
             Left = 113
-            Top = 0
+            Top = 9
             Width = 145
             Height = 21
             Font.Charset = DEFAULT_CHARSET
@@ -331,7 +372,7 @@ object MainForm: TMainForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 786
+    Width = 823
     Height = 700
     ActivePage = TabSheet1
     Align = alClient
@@ -339,44 +380,61 @@ object MainForm: TMainForm
     TabOrder = 2
     TabPosition = tpLeft
     OnChange = PageControl1Change
+    ExplicitWidth = 786
     object TabSheet1: TTabSheet
       Caption = 'Live'
+      ExplicitWidth = 752
       object mMainPanel: TPanel
         Left = 0
         Top = 0
-        Width = 752
+        Width = 789
         Height = 692
         Align = alClient
         TabOrder = 0
         OnResize = mMainPanelResize
+        ExplicitWidth = 752
         object mCamera1BackPanel: TPanel
           Left = 32
           Top = 40
           Width = 320
           Height = 256
           BorderStyle = bsSingle
-          Caption = 'mCamera1BackPanel'
+          Caption = 'No Camera...'
           TabOrder = 0
+          object mPB: TPaintBox
+            Left = 1
+            Top = 1
+            Width = 314
+            Height = 250
+            Align = alClient
+            ExplicitLeft = 8
+            ExplicitTop = 24
+            ExplicitWidth = 281
+            ExplicitHeight = 177
+          end
         end
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
+      ExplicitWidth = 752
       object PageControl2: TPageControl
         Left = 0
         Top = 41
-        Width = 752
+        Width = 789
         Height = 651
         ActivePage = TabSheet3
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 752
         object TabSheet3: TTabSheet
           Caption = 'Images'
+          ExplicitWidth = 744
           object Image1: TImage
             Left = 282
             Top = 0
-            Width = 462
+            Width = 499
             Height = 617
             Align = alClient
             IncrementalDisplay = True
@@ -2149,10 +2207,12 @@ object MainForm: TMainForm
         object TabSheet4: TTabSheet
           Caption = 'Movies'
           ImageIndex = 1
+          ExplicitWidth = 744
         end
         object TabSheet5: TTabSheet
           Caption = 'Sensor Data'
           ImageIndex = 2
+          ExplicitWidth = 744
           object DBGrid1: TDBGrid
             Left = 11
             Top = 11
@@ -2186,7 +2246,6 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'humidity'
-                Width = 64
                 Visible = True
               end>
           end
@@ -2203,6 +2262,7 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'DB Sync'
           ImageIndex = 3
+          ExplicitWidth = 744
           object mATDBServerGB: TGroupBox
             Left = 3
             Top = 71
@@ -2262,10 +2322,11 @@ object MainForm: TMainForm
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 752
+        Width = 789
         Height = 41
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 752
         object Label1: TLabel
           Left = 15
           Top = 11
@@ -2286,18 +2347,20 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
+      ExplicitWidth = 752
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
-        Width = 752
+        Width = 789
         Height = 506
         Align = alClient
         Caption = 'ChangeLog'
         TabOrder = 0
+        ExplicitWidth = 752
         object Memo1: TMemo
           Left = 2
           Top = 21
-          Width = 748
+          Width = 785
           Height = 483
           Align = alClient
           Anchors = [akLeft, akRight, akBottom]
@@ -2306,17 +2369,19 @@ object MainForm: TMainForm
           ScrollBars = ssBoth
           TabOrder = 0
           WordWrap = False
+          ExplicitWidth = 748
         end
       end
       object Panel5: TPanel
         Left = 0
         Top = 0
-        Width = 752
+        Width = 789
         Height = 186
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 752
         object Image2: TImage
-          Left = 566
+          Left = 603
           Top = 1
           Width = 185
           Height = 184
@@ -3201,6 +3266,7 @@ object MainForm: TMainForm
     object TabSheet8: TTabSheet
       Caption = 'Camera 2'
       ImageIndex = 3
+      ExplicitWidth = 752
       object mCamera2BackPanel: TPanel
         Left = 86
         Top = 88
@@ -3217,7 +3283,6 @@ object MainForm: TMainForm
         Height = 25
         Caption = 'Button3'
         TabOrder = 1
-        OnClick = Button3Click
       end
     end
   end

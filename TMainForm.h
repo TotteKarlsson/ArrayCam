@@ -32,6 +32,7 @@
 #include "/database/atATDBClientDBSession.h"
 #include <Vcl.Imaging.pngimage.hpp>
 #include "atCameraServiceThread.h"
+#include "atReticle.h"
 //---------------------------------------------------------------------------
 
 using Poco::Timestamp;
@@ -70,7 +71,7 @@ class TMainForm  : public TRegistryForm
 	TBitBtn *mClearLogMemoBtn;
 	TComboBox *LogLevelCB;
 	TScrollBox *ScrollBox1;
-	TArrayBotButton *Button2;
+	TArrayBotButton *mExitBtn;
 	TArrayBotButton *mFitToScreenButton;
 	TArrayBotButton *mFrontBackLEDBtn;
 	TArrayBotButton *mOneToOneBtn;
@@ -120,6 +121,8 @@ class TMainForm  : public TRegistryForm
 	TPanel *mCamera2BackPanel;
 	TButton *Button3;
 	TTimer *mStartupTimer;
+	TPaintBox *mPB;
+	TTrackBar *mReticleRadiusTB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -138,7 +141,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall Delete1Click(TObject *Sender);
 	void __fastcall DeleteAll1Click(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall mExitBtnClick(TObject *Sender);
 	void __fastcall mSettingsBtnClick(TObject *Sender);
 	void __fastcall mFrontBackLEDBtnClick(TObject *Sender);
 	void __fastcall LogLevelCBChange(TObject *Sender);
@@ -158,8 +161,9 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mSyncUsersBtnClick(TObject *Sender);
 	void __fastcall mImagesGridKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall PageControl1Change(TObject *Sender);
-	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
+	void __fastcall FormPaint(TObject *Sender);
+	void __fastcall mReticleRadiusTBChange(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -197,13 +201,12 @@ class TMainForm  : public TRegistryForm
         Property<string>						mMoviesFolder;
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
+
 								                // Camera variables
         								        //!The camera class
 		Cuc480   						        mCamera1;
         CameraServiceThread						mServiceCamera1;
-
-//		Cuc480   						        mCamera2;
-//        CameraServiceThread						mServiceCamera2;
+        TReticle								mReticle;
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window

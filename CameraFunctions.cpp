@@ -133,6 +133,7 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
             if(mCamera1.mImageMemory != NULL)
             {
                 mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
+				FormPaint(NULL);
             }
 
 //            if(mCamera2.mImageMemory != NULL)

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "ArrayCam"
-#define MyAppVersion "0.5.1"
+#define MyAppVersion "0.5.2b"
 #define MyAppPublisher "Smith Lab"
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "ArrayCam.exe"
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename={#MyAppName}-{#MyAppVersion}
-OutputDir=x:\arrayCam\versions
+OutputDir=x:\atSoftwareReleases
 Compression=lzma
 SolidCompression=yes
 

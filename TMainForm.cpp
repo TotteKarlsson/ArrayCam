@@ -57,9 +57,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mLocalDBName(""),
         mClientDBSession("umlocal"),
 		mServerDBSession("atdb"),
-        mServiceCamera1(mCamera1, 1, this->Handle)//,
-//        mServiceCamera2(mCamera2, 2, this->Handle)
-    {
+        mReticle(mPB->Canvas),
+        mServiceCamera1(mCamera1, 1, this->Handle)
+{
    	mLogFileReader.start(true);
 
 	//Setup UI/INI properties
@@ -92,11 +92,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     gLogger.setLogLevel(mLogLevel);
 
-    mServiceCamera1.onCameraOpen = onCameraOpen;
-//    mServiceCamera2.onCameraOpen = onCameraOpen;
-
-    mServiceCamera1.onCameraClose = onCameraClose;
-//    mServiceCamera2.onCameraClose = onCameraClose;
+    mServiceCamera1.onCameraOpen 	= onCameraOpen;
+    mServiceCamera1.onCameraClose 	= onCameraClose;
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -109,7 +106,6 @@ __fastcall TMainForm::~TMainForm()
 void __fastcall TMainForm::logMsg()
 {
     infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
-    mLogFileReader.purge();
 }
 
 //Callback from socket client class
@@ -179,7 +175,7 @@ void __fastcall TMainForm::mCameraStreamPanelDblClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::Button2Click(TObject *Sender)
+void __fastcall TMainForm::mExitBtnClick(TObject *Sender)
 {
 	Close();
 }
@@ -611,20 +607,22 @@ void __fastcall TMainForm::populateAbout()
     }
 
 }
-void __fastcall TMainForm::Button3Click(TObject *Sender)
-{
-//    if(!mCamera2.IsInit())
-//    {
-//        mServiceCamera2.openCamera();
-//    }
-}
 
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
-    //Set software gamme
-//    HCAM hCam = mCamera1.GetCameraHandle();
-//	int ret = is_SetGamma (hCam, mSoftwareGamma * 100);
 }
 
+
+void __fastcall TMainForm::FormPaint(TObject *Sender)
+{
+	mReticle.draw(mPB->Width, mPB->Height);
+}
+
+
+void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
+{
+	mReticle.setCircleRadius(mReticleRadiusTB->Position);
+}
+//---------------------------------------------------------------------------
 
