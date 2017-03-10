@@ -20,11 +20,6 @@ void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)
     {
     	mServiceCamera1.openCamera();
     }
-
-//    if(!mCamera2.IsInit())
-//    {
-//    	mServiceCamera2.openCamera();
-//    }
 }
 
 
@@ -80,36 +75,7 @@ void __fastcall	TMainForm::onCameraOpen(System::TObject* Sender)
         //Mirror stuff
 		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_LEFTRIGHT, mVerticalMirror.getValue(), 0);
 		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_UPDOWN, 	mHorizontalMirror.getValue(), 0);
-//		mStartupTimer->Enabled = true;
     }
-//    else if (camera == &mCamera2 && mCamera2.IsInit())
-//    {
-//        int x, y;
-//        mCamera2.GetMaxImageSize(&x,&y);
-//        Log(lInfo) << "Max image size (x,y): ("<<x<<", "<<y<<")";
-//        mCamera2.CaptureVideo( IS_WAIT );
-//
-//        HCAM hCam = mCamera2.GetCameraHandle();
-//
-//		//Setup camera using values from INI file
-//
-//        //Enable/Disable auto gain control:
-//        double dEnable = mAutoGain.getValue() ? 1 : 0;
-//        int ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_GAIN, &dEnable, 0);
-//
-//		dEnable = mAutoExposure.getValue() ? 1 : 0;
-//
-//        //Enable/Disable auto exposure
-//        ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_SHUTTER, &dEnable, 0);
-//
-//        //Set brightness setpoint to 128:
-//        double nominal = 128;
-//        ret = is_SetAutoParameter (hCam, IS_SET_AUTO_REFERENCE, &nominal, 0);
-//
-//        //Mirror stuff
-//		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_LEFTRIGHT, mVerticalMirror.getValue(), 0);
-//		is_SetRopEffect (hCam, IS_SET_ROP_MIRROR_UPDOWN, 	mHorizontalMirror.getValue(), 0);
-//    }
 }
 
 void __fastcall	TMainForm::onCameraClose(System::TObject* Sender)
@@ -117,29 +83,19 @@ void __fastcall	TMainForm::onCameraClose(System::TObject* Sender)
 	Log(lInfo) << "A Camera was closed..";
 }
 
-
 LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
 {
     switch ( msg.WParam )
     {
-        case IS_DEVICE_REMOVED:
-        	Beep( 400, 50 );
-        break;
-        case IS_DEVICE_RECONNECTED:
-        	Beep( 400, 50 );
-        break;
+        case IS_DEVICE_REMOVED:        	Beep( 400, 50 );        break;
+        case IS_DEVICE_RECONNECTED:    	Beep( 400, 50 );        break;
 
         case IS_FRAME:
             if(mCamera1.mImageMemory != NULL)
             {
                 mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
-				FormPaint(NULL);
+				mReticle.draw(mPB->Width, mPB->Height);
             }
-
-//            if(mCamera2.mImageMemory != NULL)
-//            {
-//                mCamera2.RenderBitmap(mCamera2.mMemoryId, mCamera2DisplayHandle, mRenderMode);
-//            }
         break;
     }
 

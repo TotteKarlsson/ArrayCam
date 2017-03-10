@@ -616,13 +616,11 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
 void __fastcall TMainForm::FormPaint(TObject *Sender)
 {
-	mReticle.draw(mPB->Width, mPB->Height);
+//	mReticle.draw(mPB->Width, mPB->Height);
 }
-
 
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
 {
 	mReticle.setCircleRadius(mReticleRadiusTB->Position);
 }
-//---------------------------------------------------------------------------
 
