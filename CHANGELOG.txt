@@ -1,3 +1,17 @@
+Release 0.5.3 (March 10)
+=======================
+* Added ability to move the reticle
+* Added ability to close lower UI panel
+* Removed toggleCoax functions
+* Removed stuff for second Camera
+* Changed VCL style to Obsidian
+* Added a Reticle to image
+* Added ability so set radius of reticle circle
+
+Release 0.5.2 (March 1)
+=======================
+* Backend changes
+
 Release 0.5.1 (Feb 15)
 =======================
 * Fixed closing down of Camera service thread
