@@ -58,7 +58,6 @@ class TMainForm  : public TRegistryForm
 	TPanel *mCamera1BackPanel;
 	TTimer *mCaptureVideoTimer;
 	TPanel *mBottomPanel;
-	TPanel *Panel1;
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
@@ -71,7 +70,6 @@ class TMainForm  : public TRegistryForm
 	TBitBtn *mClearLogMemoBtn;
 	TComboBox *LogLevelCB;
 	TScrollBox *ScrollBox1;
-	TArrayBotButton *mExitBtn;
 	TArrayBotButton *mFitToScreenButton;
 	TArrayBotButton *mFrontBackLEDBtn;
 	TArrayBotButton *mOneToOneBtn;
@@ -79,8 +77,6 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mRecordMovieBtn;
 	TArrayBotButton *mSettingsBtn;
 	TArrayBotButton *mSnapShotBtn;
-	TArrayBotButton *mToggleCoaxBtn;
-	TArrayBotButton *mToggleLogPanelBtn;
 	TPageControl *PageControl1;
 	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
@@ -117,12 +113,15 @@ class TMainForm  : public TRegistryForm
 	TLabel *Label2;
 	TLabel *logLabel;
 	TLabel *versionLabel;
-	TTabSheet *TabSheet8;
-	TPanel *mCamera2BackPanel;
-	TButton *Button3;
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
 	TTrackBar *mReticleRadiusTB;
+	TGroupBox *GroupBox4;
+	TTrackBar *mReticleCenterXTB;
+	TTrackBar *mReticleCenterYTB;
+	TArrayBotButton *mCenterReticleBtn;
+	TButton *mShowBottomPanelBtn;
+	TButton *mCloseBottomPanelBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -164,14 +163,24 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mStartupTimerTimer(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall mReticleRadiusTBChange(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall mCenterReticleBtnClick(TObject *Sender);
+	void __fastcall mCloseBottomPanelBtnClick(TObject *Sender);
+	void __fastcall mShowBottomPanelBtnClick(TObject *Sender);
+
 
     protected:
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
 		void 									loadCurrentImage();
 
+		bool									mMovingReticle;
     	EnvironmentaSensorReader				mEnvReader;
-
 		TSettingsForm* 							mSettingsForm;
 
 
@@ -195,8 +204,6 @@ class TMainForm  : public TRegistryForm
         Property<bool>						    mVerticalMirror;
         Property<bool>						    mHorizontalMirror;
 
-
-
         Property<string>						mSnapShotFolder;
         Property<string>						mMoviesFolder;
         Property<string>						mLocalDBName;
@@ -210,7 +217,7 @@ class TMainForm  : public TRegistryForm
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
-        HWND	                		        mCamera2DisplayHandle;	// handle to diplay window
+//        HWND	                		        mCamera2DisplayHandle;	// handle to diplay window
 		bool							        openCameras();
 
         								        //!Boolean to check if we are
@@ -242,7 +249,6 @@ class TMainForm  : public TRegistryForm
 		void 									onSensorsArduinoMessageReceived(const string& msg);
 		void 									onPufferArduinoMessageReceived(const string& msg);
 
-
         void									enableDisableClientControls(bool enable);
 		void    								populateUsers();
 		void       __fastcall					afterServerConnect(System::TObject* Sender);
@@ -250,8 +256,7 @@ class TMainForm  : public TRegistryForm
 
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
-
-
+    //=================================================================================================
     public:
     											//The environmenatl reader is accessed from a thread
  			       __fastcall 					TMainForm(TComponent* Owner);

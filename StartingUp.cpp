@@ -13,7 +13,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
     //Camera stuff
 	mCamera1DisplayHandle 	= this->mCamera1BackPanel->Handle;
-	mCamera2DisplayHandle 	= this->mCamera2BackPanel->Handle;
 
     Log(lDebug) << "Init camera..";
 

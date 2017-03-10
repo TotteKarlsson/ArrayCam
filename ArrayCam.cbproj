@@ -161,8 +161,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
-        <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="TSettingsForm.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

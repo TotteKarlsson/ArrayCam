@@ -49,6 +49,7 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	if(mLogFileReader.isRunning())
     {
 		mLogFileReader.stop();
+        mLogFileReader.assignOnMessageCallBack(NULL);
     }
 
     Close();

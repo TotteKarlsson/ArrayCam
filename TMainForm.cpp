@@ -58,7 +58,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mClientDBSession("umlocal"),
 		mServerDBSession("atdb"),
         mReticle(mPB->Canvas),
-        mServiceCamera1(mCamera1, 1, this->Handle)
+        mServiceCamera1(mCamera1, 1, this->Handle),
+        mMovingReticle(false)
 {
    	mLogFileReader.start(true);
 
@@ -136,7 +137,6 @@ void TMainForm::enableDisableClientControls(bool enable)
     {
     	enableDisableGroupBox(mSettingsForm->LightIntensitiesGB, enable);
     }
-	mToggleCoaxBtn->Enabled = enable;
     mFrontBackLEDBtn->Enabled = enable;
 }
 
@@ -159,7 +159,7 @@ void __fastcall TMainForm::mMainPanelResize(TObject *Sender)
 void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 {
 	mBottomPanel->Visible = !mBottomPanel->Visible;
-	mToggleLogPanelBtn->Caption =  (mBottomPanel->Visible) ? "Hide Bottom Panel" : "Show Bottom Panel";
+//	mToggleLogPanelBtn->Caption =  (mBottomPanel->Visible) ? "Hide Bottom Panel" : "Show Bottom Panel";
 	mFitToScreenButtonClick(Sender);
 }
 
@@ -201,11 +201,6 @@ void __fastcall TMainForm::mFrontBackLEDBtnClick(TObject *Sender)
     if(b == mFrontBackLEDBtn)
     {
     	mLightsArduinoClient.toggleLED();
-    }
-
-    if(b == mToggleCoaxBtn)
-    {
-    	mLightsArduinoClient.toggleCoax();
     }
 }
 
@@ -605,14 +600,12 @@ void __fastcall TMainForm::populateAbout()
     {
 	    Memo1->Lines->LoadFromFile("CHANGELOG.txt");
     }
-
 }
 
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
 }
-
 
 void __fastcall TMainForm::FormPaint(TObject *Sender)
 {
@@ -621,6 +614,88 @@ void __fastcall TMainForm::FormPaint(TObject *Sender)
 
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
 {
-	mReticle.setCircleRadius(mReticleRadiusTB->Position);
+	TTrackBar* tb = dynamic_cast<TTrackBar*>(Sender);
+
+    if(!mMovingReticle)
+    {
+        if(tb == mReticleRadiusTB)
+        {
+            mReticle.setCircleRadius(tb->Position);
+        }
+        else if(tb == mReticleCenterXTB)
+        {
+            mReticle.setReticleCenter(tb->Position, mReticleCenterYTB->Position);
+        }
+        else if(tb == mReticleCenterYTB)
+        {
+            mReticle.setReticleCenter(mReticleCenterXTB->Position, tb->Position);
+        }
+    }
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::FormResize(TObject *Sender)
+{
+	//
+    mReticleCenterXTB->Min = -mPB->Width/2;
+    mReticleCenterXTB->Max = mPB->Width/2;
+
+    mReticleCenterYTB->Min = -mPB->Height/2;
+    mReticleCenterYTB->Max = mPB->Height/2;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y)
+{
+	//If mouse is inside reticle center, allowing moving its center
+	mMovingReticle = true;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseMove(TObject *Sender, TShiftState Shift, int X,
+          int Y)
+{
+	//Update reticle center
+	if(mMovingReticle)
+    {
+    	int x =X - mPB->Width/2;
+        int y = Y - mPB->Height/2;
+    	mReticle.setReticleCenter(x, y);
+        mReticleCenterXTB->Position = x;
+        mReticleCenterYTB->Position = y;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+	mMovingReticle = false;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mCenterReticleBtnClick(TObject *Sender)
+{
+    	mReticle.setReticleCenter(0,0);
+        mReticleCenterXTB->Position = 0;
+        mReticleCenterYTB->Position = 0;
+}
+
+
+
+void __fastcall TMainForm::mCloseBottomPanelBtnClick(TObject *Sender)
+{
+	mBottomPanel->Visible = false;
+    mShowBottomPanelBtn->Visible = true;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mShowBottomPanelBtnClick(TObject *Sender)
+{
+	mBottomPanel->Visible = true;
+    mShowBottomPanelBtn->Visible = false;
+    Splitter2->Top = mBottomPanel->Top - 1;
+}
+
 

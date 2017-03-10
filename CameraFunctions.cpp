@@ -22,7 +22,6 @@ void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)
     }
 }
 
-
 //Called from a thread
 void __fastcall	TMainForm::onCameraOpen(System::TObject* Sender)
 {
