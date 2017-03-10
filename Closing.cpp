@@ -28,7 +28,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 
     if(mCamera1.IsInit())
     {
-	    mServiceCamera1.closeCamera();
+	    if(!mServiceCamera1.isRunning())
+        {
+	    	mServiceCamera1.closeCamera();
+        }
     }
 
     if(!mCamera1.IsInit() && mServiceCamera1.isRunning())

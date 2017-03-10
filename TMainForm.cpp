@@ -49,9 +49,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mVerticalMirror(false),
         mHorizontalMirror(false),
         mPairLEDs(false),
-		mGetReadyForZeroCutSound("SHORT_BEEP_2", 10, 500),
-		mSetZeroCutSound("SHORT_BEEP_2", 25, 150),
-		mRestoreFromZeroCutSound("CLOSING_DOWN_1", 15, 350),
+//		mGetReadyForZeroCutSound("SHORT_BEEP_2", 10, 500),
+//		mSetZeroCutSound("SHORT_BEEP_2", 25, 150),
+//		mRestoreFromZeroCutSound("CLOSING_DOWN_1", 15, 350),
         mSnapShotFolder(""),
         mMoviesFolder(""),
         mLocalDBName(""),
@@ -247,9 +247,9 @@ void __fastcall TMainForm::mAddImageFileBtnClick(TObject *Sender)
 
 void TMainForm::stopSounds()
 {
-    mGetReadyForZeroCutSound.stop();
-    mRestoreFromZeroCutSound.stop();
-    mSetZeroCutSound.stop();
+//    mGetReadyForZeroCutSound.stop();
+//    mRestoreFromZeroCutSound.stop();
+//    mSetZeroCutSound.stop();
 }
 
 

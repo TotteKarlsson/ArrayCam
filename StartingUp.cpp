@@ -31,9 +31,9 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     enableDisableClientControls(false);
 
 	//Setup sounds
-	mGetReadyForZeroCutSound.create(this->Handle);
-	mSetZeroCutSound.create(this->Handle);
-	mRestoreFromZeroCutSound.create(this->Handle);
+//	mGetReadyForZeroCutSound.create(this->Handle);
+//	mSetZeroCutSound.create(this->Handle);
+//	mRestoreFromZeroCutSound.create(this->Handle);
 
     //Setup LogLevel CB
     string logLevel = mtk::toString(gLogger.getLogLevel());

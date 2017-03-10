@@ -63,14 +63,14 @@ class TLocalArgs
         {
             Log(lInfo) <<"Steady for zero cut";
             MainForm->stopSounds();
-            MainForm->mGetReadyForZeroCutSound.play();
+//            MainForm->mGetReadyForZeroCutSound.play();
         }
 
         else if(startsWith("SET_ZERO_CUT", msg))
         {
             Log(lInfo) <<"Go for zero cut ";
             MainForm->stopSounds();
-            MainForm->mSetZeroCutSound.play();
+//            MainForm->mSetZeroCutSound.play();
         }
 
         else if(startsWith("RESTORE_FROM_ZERO_CUT", msg))

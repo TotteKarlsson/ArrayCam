@@ -217,7 +217,6 @@ class TMainForm  : public TRegistryForm
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
-//        HWND	                		        mCamera2DisplayHandle;	// handle to diplay window
 		bool							        openCameras();
 
         								        //!Boolean to check if we are
@@ -256,15 +255,16 @@ class TMainForm  : public TRegistryForm
 
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
+
     //=================================================================================================
     public:
     											//The environmenatl reader is accessed from a thread
  			       __fastcall 					TMainForm(TComponent* Owner);
  			       __fastcall 					~TMainForm();
 
-		SoundPlayer								mGetReadyForZeroCutSound;
-        SoundPlayer								mSetZeroCutSound;
-        SoundPlayer								mRestoreFromZeroCutSound;
+//		SoundPlayer								mGetReadyForZeroCutSound;
+//        SoundPlayer								mSetZeroCutSound;
+//        SoundPlayer								mRestoreFromZeroCutSound;
         void									stopSounds();
 
 												//!Camera stuff is processed in the message loop

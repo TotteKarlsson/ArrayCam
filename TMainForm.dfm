@@ -376,6 +376,10 @@ object MainForm: TMainForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Live'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mMainPanel: TPanel
         Left = 0
         Top = 0
@@ -412,18 +416,25 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
+      ExplicitLeft = 0
       ExplicitTop = 4
+      ExplicitWidth = 0
       ExplicitHeight = 469
       object PageControl2: TPageControl
         Left = 0
         Top = 41
         Width = 815
-        Height = 428
+        Height = 426
         ActivePage = TabSheet3
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 428
         object TabSheet3: TTabSheet
           Caption = 'Images'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Image1: TImage
             Left = 282
             Top = 0
@@ -2200,10 +2211,18 @@ object MainForm: TMainForm
         object TabSheet4: TTabSheet
           Caption = 'Movies'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSheet5: TTabSheet
           Caption = 'Sensor Data'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object DBGrid1: TDBGrid
             Left = 11
             Top = 11
@@ -2254,6 +2273,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'DB Sync'
           ImageIndex = 3
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object mATDBServerGB: TGroupBox
             Left = 3
             Top = 71
@@ -2337,21 +2360,24 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
+      ExplicitLeft = 0
       ExplicitTop = 4
+      ExplicitWidth = 0
       ExplicitHeight = 469
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
         Width = 815
-        Height = 283
+        Height = 281
         Align = alClient
         Caption = 'ChangeLog'
         TabOrder = 0
+        ExplicitHeight = 283
         object Memo1: TMemo
           Left = 2
           Top = 21
           Width = 811
-          Height = 260
+          Height = 258
           Align = alClient
           Anchors = [akLeft, akRight, akBottom]
           Lines.Strings = (
