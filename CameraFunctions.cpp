@@ -3,12 +3,32 @@
 #include "TMainForm.h"
 #include "mtkLogger.h"
 #include "mtkUtils.h"
+#include "mtkVCLUtils.h"
 #include "mtkWin32Utils.h"
 #include "camera/uc480_tools.h"
 #include "vcl/atVCLUtils.h"
 #include "database/atDBUtils.h"
+
+
 using namespace mtk;
 using namespace ab;
+
+
+void TMainForm::loadCurrentImage()
+{
+	//Retrieve file name and show the image
+	String f =	ImagesAndMoviesDM->imagesCDS->FieldByName("file_name")->AsString;
+    string fName = joinPath(mSnapShotFolder, stdstr(f));
+
+    if(fileExists(fName))
+    {
+		Image1->Picture->LoadFromFile(fName.c_str());
+    }
+    else
+    {
+    	Log(lError) << "The file: "<<fName<<" could not be found";
+    }
+}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)

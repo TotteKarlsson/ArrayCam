@@ -131,6 +131,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="Closing.cpp">
             <BuildOrder>4</BuildOrder>
         </CppCompile>
+        <CppCompile Include="DBLogic.cpp">
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Miscellaneous.cpp">
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
         <CppCompile Include="StartingUp.cpp">
             <BuildOrder>9</BuildOrder>
         </CppCompile>

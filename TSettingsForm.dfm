@@ -24,11 +24,15 @@ object SettingsForm: TSettingsForm
     Top = 0
     Width = 625
     Height = 486
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Camera'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -329,16 +333,9 @@ object SettingsForm: TSettingsForm
         Left = 3
         Top = 16
         Width = 350
-        Height = 137
+        Height = 105
         Caption = 'Light Intensities'
         TabOrder = 0
-        object mCoaxLbl: TLabel
-          Left = 151
-          Top = 103
-          Width = 54
-          Height = 13
-          Caption = 'Coax (122)'
-        end
         object mBackLEDLbl: TLabel
           Left = 151
           Top = 65
@@ -357,7 +354,7 @@ object SettingsForm: TSettingsForm
           Left = 2
           Top = 15
           Width = 143
-          Height = 120
+          Height = 88
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
@@ -373,18 +370,6 @@ object SettingsForm: TSettingsForm
             TickStyle = tsNone
             OnChange = SettingsChange
           end
-          object mCoaxTB: TTrackBar
-            Left = 0
-            Top = 80
-            Width = 143
-            Height = 40
-            Align = alTop
-            Max = 255
-            TabOrder = 1
-            ThumbLength = 30
-            TickStyle = tsNone
-            OnChange = SettingsChange
-          end
           object mFrontLEDTB: TTrackBar
             Left = 0
             Top = 0
@@ -392,7 +377,7 @@ object SettingsForm: TSettingsForm
             Height = 40
             Align = alTop
             Max = 255
-            TabOrder = 2
+            TabOrder = 1
             ThumbLength = 30
             TickStyle = tsNone
             OnChange = SettingsChange
@@ -412,6 +397,10 @@ object SettingsForm: TSettingsForm
     object TabSheet2: TTabSheet
       Caption = 'Connections'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 3
         Top = 16

@@ -15,7 +15,6 @@
 #include "TRegistryForm.h"
 #include "camera/uc480Class.h"
 #include "arduino/atLightsArduinoClient.h"
-#include "arduino/atSensorsArduinoClient.h"
 #include "mtkFloatLabel.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ToolWin.hpp>
@@ -122,6 +121,7 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mCenterReticleBtn;
 	TButton *mShowBottomPanelBtn;
 	TButton *mCloseBottomPanelBtn;
+	TTimer *mCheckSocketConnectionTimer;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -161,7 +161,6 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mImagesGridKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall PageControl1Change(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
-	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall mReticleRadiusTBChange(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
@@ -172,6 +171,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mCenterReticleBtnClick(TObject *Sender);
 	void __fastcall mCloseBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mShowBottomPanelBtnClick(TObject *Sender);
+	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
 
 
     protected:
@@ -233,11 +233,8 @@ class TMainForm  : public TRegistryForm
                                                 //onArduinoMessageReceived
 		LightsArduinoClient    			        mLightsArduinoClient;
 
-        										//!The arduino client connects to
-                                                //an arduino server. The client processes
-                                                //incoming messages over a socket, in
-                                                //onArduinoMessageReceived
-		SensorsArduinoClient    	   	        mSensorsArduinoClient;
+        bool									mCheckArduinoServerConnection;
+
 
         										//Callbacks
         void									onArduinoClientConnected();
@@ -261,11 +258,6 @@ class TMainForm  : public TRegistryForm
     											//The environmenatl reader is accessed from a thread
  			       __fastcall 					TMainForm(TComponent* Owner);
  			       __fastcall 					~TMainForm();
-
-//		SoundPlayer								mGetReadyForZeroCutSound;
-//        SoundPlayer								mSetZeroCutSound;
-//        SoundPlayer								mRestoreFromZeroCutSound;
-        void									stopSounds();
 
 												//!Camera stuff is processed in the message loop
 	LRESULT 									OnUSBCameraMessage(TMessage msg);

@@ -11,7 +11,9 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
     	mCamera1.IsInit() 					||
         mServiceCamera1.isRunning()			||
         mLightsArduinoClient.isConnected() 	||
-        mSensorsArduinoClient.isConnected())
+        mCheckSocketConnectionTimer->Enabled
+        )
+
     {
         CanClose = false;
         mShutDownTimer->Enabled = true;
@@ -44,9 +46,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 		mLightsArduinoClient.disConnect();
     }
 
-    if(mSensorsArduinoClient.isConnected())
+    if(mCheckSocketConnectionTimer->Enabled)
     {
-		mSensorsArduinoClient.disConnect();
+	    mCheckArduinoServerConnection = false;
+	    mCheckSocketConnectionTimer->Enabled = false;
     }
 
 	if(mLogFileReader.isRunning())

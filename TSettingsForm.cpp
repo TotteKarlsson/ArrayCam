@@ -73,8 +73,6 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
         mExposureTimeTB->Enabled = false;
     }
 
-
-
 	mIsStartingUp = false;
 }
 
@@ -85,9 +83,12 @@ void __fastcall TSettingsForm::mASStartBtnClick(TObject *Sender)
     {
     	mMainForm.mLightsArduinoClient.connect(mArduinoServerPortE->getValue());
         mASStartBtn->Caption == "Connecting";
+        mMainForm.mCheckArduinoServerConnection = true;
     }
     else
     {
+		//User closed connection manually - don't restore automatically
+		mMainForm.mCheckArduinoServerConnection = false;
     	mMainForm.mLightsArduinoClient.disConnect();
     }
 }
@@ -98,7 +99,6 @@ void __fastcall TSettingsForm::mUIUpdateTimerTimer(TObject *Sender)
    	mASStartBtn->Caption 			= mMainForm.mLightsArduinoClient.isConnected()	? "Stop" : "Start";
 	mArduinoServerPortE->Enabled 	= !mMainForm.mLightsArduinoClient.isConnected();
    	enableDisableGroupBox(LightIntensitiesGB, !mArduinoServerPortE->Enabled);
-
 
     HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
     double dblMin, dblMax, dblInc, dCurrent;
@@ -183,7 +183,6 @@ void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
         {
         	//INT is_Exposure (HIDS hCam, UINT nCommand, void* pParam, UINT cbSizeOfParam)
             enableManualExposureTimeSetting();
-
         }
     }
     else if (cb == mAutoBlackLevelCB)
@@ -195,7 +194,6 @@ void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
         	mBlackLevelTB->Enabled = false;
 			int nMode = IS_AUTO_BLACKLEVEL_ON;
 			ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
-
         }
         else
         {
@@ -207,9 +205,7 @@ void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
 	    mAutoWhiteBalanceCB->OnClick(Sender);
   	    ret = is_SetAutoParameter (hCam, IS_SET_ENABLE_AUTO_WHITEBALANCE, &dEnable, 0);
     }
-
 }
-
 
 void  __fastcall TSettingsForm::enableManualExposureTimeSetting()
 {
@@ -300,7 +296,7 @@ void __fastcall TSettingsForm::BrowseForFolder(TObject *Sender)
         }
 
     	mMoviesFolderE->setValue(f);
-    }    
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -399,16 +395,6 @@ void __fastcall TSettingsForm::SettingsChange(TObject *Sender)
         mBackLEDLbl->Caption = "Back LED (" + IntToStr(pos) + ")";
 
     }
-    else if(tb == mCoaxTB)
-    {
-        if(tb->Tag != 1) //Means we are updating UI
-        {
-			stringstream s;
-	        s<<"SET_COAX_INTENSITY="<<pos;
-    	    mMainForm.mLightsArduinoClient.request(s.str());
-        }
-        mCoaxLbl->Caption = "Coax (" + IntToStr(pos) + ")";
-    }
 }
 
 //---------------------------------------------------------------------------
@@ -417,13 +403,11 @@ void __fastcall TSettingsForm::FormHide(TObject *Sender)
 	mUIUpdateTimer->Enabled = false;
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::FormShow(TObject *Sender)
 {
 	mUIUpdateTimer->Enabled = true;
 }
-
 
 void __fastcall TSettingsForm::mGainTBChange(TObject *Sender)
 {
@@ -479,7 +463,6 @@ the driver file (uc480_usb.sys) do not match. ";
         	Log(lInfo) << "Unknown return value";
         break;
     }
-
 }
 
 //---------------------------------------------------------------------------
@@ -505,7 +488,6 @@ void __fastcall TSettingsForm::mGainBoostCBClick(TObject *Sender)
     {
 		ret = is_SetGainBoost(hCam, IS_SET_GAINBOOST_OFF);
     }
-
 
     switch(ret)
     {
@@ -534,14 +516,11 @@ void __fastcall TSettingsForm::mExposureTimeTBChange(TObject *Sender)
 	if(mAutoExposureCB->Checked == false)
     {
         HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
-
-
         int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, &dCurrent, sizeof(dCurrent));
         mExposureTimeTB->Position = round(dCurrent * 1000);
      }
      mExposureTimeLbl->SetValue(dCurrent);
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
@@ -554,5 +533,3 @@ void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
      }
      mBlackLevelLbl->setValue(Current);
 }
-
-

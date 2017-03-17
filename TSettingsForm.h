@@ -39,12 +39,10 @@ __published:	// IDE-managed Components
 	TPropertyCheckBox *mPairLEDsCB;
 	TGroupBox *GroupBox6;
 	TGroupBox *LightIntensitiesGB;
-	TLabel *mCoaxLbl;
 	TLabel *mBackLEDLbl;
 	TLabel *mFrontLEDLbl;
 	TPanel *Panel2;
 	TTrackBar *mBackLEDTB;
-	TTrackBar *mCoaxTB;
 	TTrackBar *mFrontLEDTB;
 	TTabSheet *TabSheet4;
 	TGroupBox *GroupBox4;
@@ -85,16 +83,17 @@ __published:	// IDE-managed Components
 	void __fastcall mExposureTimeTBChange(TObject *Sender);
 	void __fastcall mBlackLevelTBChange(TObject *Sender);
 
-private:	// User declarations
-	bool						mIsStartingUp;
-	void  			__fastcall  enableManualExposureTimeSetting();
-	void  			__fastcall  enableManualBlackLevelSetting();
-public:		// User declarations
-	TMainForm&			mMainForm;
+    private:	// User declarations
+        bool						mIsStartingUp;
+        void  			__fastcall  enableManualExposureTimeSetting();
+        void  			__fastcall  enableManualBlackLevelSetting();
 
-	__fastcall TSettingsForm(TMainForm& mf);
+    public:		// User declarations
+        TMainForm&			mMainForm;
+
+        __fastcall TSettingsForm(TMainForm& mf);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TSettingsForm *SettingsForm;
-//---------------------------------------------------------------------------
+
 #endif

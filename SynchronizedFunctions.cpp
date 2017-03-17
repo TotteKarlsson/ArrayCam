@@ -59,37 +59,7 @@ class TLocalArgs
         //If mouse is down.. do not update certain UI objects
         bool isMouseBtnDown = (bool) GetAsyncKeyState(VK_LBUTTON);
 
-        if(startsWith("GET_READY_FOR_ZERO_CUT_2", msg))
-        {
-            Log(lInfo) <<"Steady for zero cut";
-            MainForm->stopSounds();
-//            MainForm->mGetReadyForZeroCutSound.play();
-        }
-
-        else if(startsWith("SET_ZERO_CUT", msg))
-        {
-            Log(lInfo) <<"Go for zero cut ";
-            MainForm->stopSounds();
-//            MainForm->mSetZeroCutSound.play();
-        }
-
-        else if(startsWith("RESTORE_FROM_ZERO_CUT", msg))
-        {
-            Log(lInfo) <<"Restore from zero Cut ";
-            MainForm->stopSounds();
-            //MainForm->mRestoreFromZeroCutSound.play();
-        }
-        else if(startsWith("COAX_DRIVE", msg) && isMouseBtnDown == false )
-        {
-            StringList l(msg,'=');
-            if(l.size() == 2 && MainForm->mSettingsForm)
-            {
-                MainForm->mSettingsForm->mCoaxTB->Tag = 1;
-                MainForm->mSettingsForm->mCoaxTB->Position = toInt(l[1]);
-                MainForm->mSettingsForm->mCoaxTB->Tag = 0;
-            }
-        }
-        else if(startsWith("FRONT_LED_DRIVE", msg) && isMouseBtnDown == false)
+        if(startsWith("FRONT_LED_DRIVE", msg) && isMouseBtnDown == false)
         {
             StringList l(msg,'=');
             if(l.size() == 2 && MainForm->mSettingsForm)
