@@ -131,6 +131,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="Closing.cpp">
             <BuildOrder>4</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ConnectToArduinoServerThread.cpp">
+            <DependentOn>ConnectToArduinoServerThread.h</DependentOn>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
         <CppCompile Include="DBLogic.cpp">
             <BuildOrder>12</BuildOrder>
         </CppCompile>

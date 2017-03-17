@@ -6,6 +6,9 @@
         <Projects Include="P:\libs\dslib\Common\mtkCommon.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\dslib\Common\IPC\mtkIPC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\dslib\VCL\Components\DuneComponents.cbproj">
             <Dependencies/>
         </Projects>
@@ -34,6 +37,15 @@
     </Target>
     <Target Name="mtkCommon:Make">
         <MSBuild Projects="P:\libs\dslib\Common\mtkCommon.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="mtkIPC">
+        <MSBuild Projects="P:\libs\dslib\Common\IPC\mtkIPC.cbproj"/>
+    </Target>
+    <Target Name="mtkIPC:Clean">
+        <MSBuild Projects="P:\libs\dslib\Common\IPC\mtkIPC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mtkIPC:Make">
+        <MSBuild Projects="P:\libs\dslib\Common\IPC\mtkIPC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="DuneComponents">
         <MSBuild Projects="P:\libs\dslib\VCL\Components\DuneComponents.cbproj"/>
@@ -72,13 +84,13 @@
         <MSBuild Projects="ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkCommon;DuneComponents;atCore;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="mtkCommon;mtkIPC;DuneComponents;atCore;atVCLCore;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkCommon:Clean;DuneComponents:Clean;atCore:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkCommon:Clean;mtkIPC:Clean;DuneComponents:Clean;atCore:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkCommon:Make;DuneComponents:Make;atCore:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkCommon:Make;mtkIPC:Make;DuneComponents:Make;atCore:Make;atVCLCore:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

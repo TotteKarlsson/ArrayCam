@@ -32,6 +32,7 @@
 #include <Vcl.Imaging.pngimage.hpp>
 #include "atCameraServiceThread.h"
 #include "atReticle.h"
+#include "ConnectToArduinoServerThread.h"
 //---------------------------------------------------------------------------
 
 using Poco::Timestamp;
@@ -232,6 +233,8 @@ class TMainForm  : public TRegistryForm
                                                 //incoming messages over a socket, in
                                                 //onArduinoMessageReceived
 		LightsArduinoClient    			        mLightsArduinoClient;
+
+        ConnectToArduinoServerThread			mConnectToArduinoServerThread;
 
         bool									mCheckArduinoServerConnection;
 

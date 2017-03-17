@@ -55,7 +55,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mReticle(mPB->Canvas),
         mServiceCamera1(mCamera1, 1, this->Handle),
         mMovingReticle(false),
-        mCheckArduinoServerConnection(true)
+        mCheckArduinoServerConnection(true),
+        mConnectToArduinoServerThread(mLightsArduinoClient, 50000)
 
 {
    	mLogFileReader.start(true);
@@ -245,7 +246,11 @@ void __fastcall TMainForm::mCenterReticleBtnClick(TObject *Sender)
 void __fastcall TMainForm::mCheckSocketConnectionTimerTimer(TObject *Sender)
 {
 	Log(lDebug) << "Trying to connect to Arduino server";
-	mLightsArduinoClient.connect(50000);
+    if(!mConnectToArduinoServerThread.isRunning() && !mLightsArduinoClient.isConnected())
+    {
+    	mConnectToArduinoServerThread.start();
+    }
+
 }
 
 
