@@ -6,7 +6,7 @@
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
 using namespace mtk;
-using namespace ab;
+using namespace at;
 extern bool   gAppIsStartingUp;
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)

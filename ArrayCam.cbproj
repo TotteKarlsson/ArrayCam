@@ -105,7 +105,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <LinkPackageStatics>atVCLCore.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
-        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;P:\libs\dslib\VCL\Components\;P:\libs\dslib\Common\Math\;P:\libs\dslib\Common\IPC\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;P:\libs\dslib\VCL\Components\;P:\libs\dslib\Common\Math\;P:\libs\dslib\Common\IPC\;P:\libs\dslib\VCL\Forms\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
         <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -172,8 +172,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
-        <FormResources Include="TSettingsForm.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="TSettingsForm.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

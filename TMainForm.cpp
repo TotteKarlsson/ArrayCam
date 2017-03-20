@@ -12,7 +12,7 @@
 #include "TSettingsForm.h"
 
 using namespace mtk;
-using namespace ab;
+using namespace at;
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -103,6 +103,11 @@ __fastcall TMainForm::~TMainForm()
 //This one is called from the reader thread
 void __fastcall TMainForm::logMsg()
 {
+	if(infoMemo->Lines->Count > 1000)
+    {
+	    infoMemo->Clear();
+    }
+
     infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
 }
 

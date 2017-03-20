@@ -87,7 +87,7 @@ void setupLogging()
 #endif
 
 
-#pragma comment(lib, "SQLite-static.lib")
+//#pragma comment(lib, "SQLite-static.lib")
 #pragma comment(lib, "libmysqlB.lib")
 
 #pragma comment(lib, "poco_mysql_connector-static.lib")

@@ -5,7 +5,7 @@
 #include "mtkStringList.h"
 #include "TSettingsForm.h"
 using namespace mtk;
-using namespace ab;
+using namespace at;
 
 
 class TLocalArgs
@@ -80,6 +80,44 @@ class TLocalArgs
                 MainForm->mSettingsForm->mBackLEDTB->Tag = 0;
             }
         }
+        if(startsWith("DHT22_DATA", msg))
+        {
+            //Parse the message
+            StringList l(msg,',');
+            if(l.size() == 4)
+            {
+                //Fourth parameter is sensor number
+                int sensorNum = toInt(l[3]);
+
+                MainForm->mEnvReader.addReading(toDouble(l[1]), toDouble(l[2]), toInt(l[3]));
+
+                //Get average when it makes sense
+                if(MainForm->mEnvReader.getNumberOfReadings() == MainForm->mEnvReader.getNumberOfSensors())
+                {
+                    MainForm->mTemperatureLbl->SetValue(MainForm->mEnvReader.getAverageTemperature());
+                    MainForm->mHumidityE->SetValue(MainForm->mEnvReader.getAverageHumidity());
+
+                    //Put the numbers into the DB (change this to be outside the main thread(!)
+                    vector<SensorReading> readings = MainForm->mEnvReader.getReadings();
+                    for(uint i = 0; i < readings.size(); i++)
+                    {
+                        SensorReading r = readings[i];
+                        try
+                        {
+                            Poco::ScopedLock<Poco::Mutex> lock(MainForm->mClientDBMutex);
+                            MainForm->mClientDBSession.insertSensorData(r.mSensorID, r.mTemperature, r.mHumidity);
+                        }
+                        catch(...)
+                        {
+                            handleMySQLException();
+                        }
+                    }
+
+                    //Purge reader
+                    MainForm->mEnvReader.purge();
+                }
+            }
+        }
     }
 };
 
@@ -103,44 +141,7 @@ void TMainForm::onSensorsArduinoMessageReceived(const string& msg)
 
 	//Populate DB
 
-    if(startsWith("DHT22_DATA", msg))
-    {
-        //Parse the message
-        StringList l(msg,',');
-        if(l.size() == 4)
-        {
-            //Fourth parameter is sensor number
-            int sensorNum = toInt(l[3]);
 
-            mEnvReader.addReading(toDouble(l[1]), toDouble(l[2]), toInt(l[3]));
-
-            //Get average when it makes sense
-            if(mEnvReader.getNumberOfReadings() == mEnvReader.getNumberOfSensors())
-            {
-                //MainForm->mTemperatureLbl->SetValue(MainForm->mEnvReader.getAverageTemperature());
-                //MainForm->mHumidityE->SetValue(MainForm->mEnvReader.getAverageHumidity());
-
-                //Put the numbers into the DB (change this to be outside the main thread(!)
-                vector<SensorReading> readings = mEnvReader.getReadings();
-                for(uint i = 0; i < readings.size(); i++)
-                {
-                    SensorReading r = readings[i];
-                    try
-                    {
-                        Poco::ScopedLock<Poco::Mutex> lock(mClientDBMutex);
-                        mClientDBSession.insertSensorData(r.mSensorID, r.mTemperature, r.mHumidity);
-                    }
-                    catch(...)
-                    {
-                        handleMySQLException();
-                    }
-                }
-
-                //Purge reader
-                mEnvReader.purge();
-            }
-        }
-    }
 }
 
 
