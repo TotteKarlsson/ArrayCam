@@ -88,7 +88,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <VerInfo_Release>3</VerInfo_Release>
+        <VerInfo_Release>4</VerInfo_Release>
         <VerInfo_MinorVer>5</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
@@ -101,11 +101,11 @@ xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y
 xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
 xcopy *.txt $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
-        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.5.3.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.5.4.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
         <LinkPackageStatics>atVCLCore.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
-        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;P:\libs\dslib\VCL\Components\;P:\libs\dslib\Common\Math\;P:\libs\dslib\Common\IPC\;P:\libs\dslib\VCL\Forms\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dslib\Common\;P:\libs\dslib\VCL\Components\;P:\libs\dslib\Common\Math\;P:\libs\dslib\Common\IPC\;P:\libs\dslib\VCL\Forms\;P:\libs\dsl\VCL\Common\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
         <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -137,6 +137,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </CppCompile>
         <CppCompile Include="DBLogic.cpp">
             <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="HandleUC7Messages.cpp">
+            <BuildOrder>14</BuildOrder>
         </CppCompile>
         <CppCompile Include="Miscellaneous.cpp">
             <BuildOrder>11</BuildOrder>

@@ -11,14 +11,15 @@
 using std::string;
 using namespace mtk;
 
-USEFORM("TSettingsForm.cpp", SettingsForm);
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("TSettingsForm.cpp", SettingsForm);
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
-extern string       gLogFileName                = "ArrayCam.log";
+extern string		gAppName					= "ArrayCam";
+extern string       gLogFileName                = gAppName + ".log";
 extern string 		gApplicationRegistryRoot  	= "\\Software\\Allen Institute\\array_cam\\0.5.0";
-extern string 		gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "ArrayBot");
+extern string 		gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
 extern bool         gAppIsStartingUp            = true;
 extern bool         gAppIsClosing	            = false;
 void setupLogging();
@@ -57,7 +58,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 void setupLogging()
 {
 	//Get Application folder
-	string fldr =  joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "ArrayBot");
+	string fldr =  joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
 	if(!folderExists(fldr))
 	{
 		createFolder(fldr);

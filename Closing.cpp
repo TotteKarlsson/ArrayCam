@@ -52,6 +52,11 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	    mCheckSocketConnectionTimer->Enabled = false;
     }
 
+    if(mUC7.isConnected())
+    {
+	    mUC7.disConnect();
+    }
+
 	if(mLogFileReader.isRunning())
     {
 		mLogFileReader.stop();
@@ -60,4 +65,23 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 
     Close();
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	mCOMPort = mComportCB->ItemIndex + 1;
+	Log(lInfo) << "In FormClose";
+//	mIniFileC->clear();
+
+	//Save project history
+//	mBottomPanelHeight          	= BottomPanel->Height;
+
+	mCOMPort = mComportCB->ItemIndex + 1;
+	mProperties.write();
+
+	//Write to file
+	mIniFile.save();
+
+}
+
 

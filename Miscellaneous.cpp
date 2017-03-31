@@ -94,6 +94,12 @@ void __fastcall TMainForm::mExitBtnClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
+int	TMainForm::getCOMPortNumber()
+{
+	return mComportCB->ItemIndex + 1;
+}
+
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mSettingsBtnClick(TObject *Sender)
 {
 	//Open settings form

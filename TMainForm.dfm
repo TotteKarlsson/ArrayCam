@@ -14,6 +14,7 @@ object MainForm: TMainForm
   OldCreateOrder = False
   Position = poDefault
   ShowHint = True
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
@@ -34,8 +35,8 @@ object MainForm: TMainForm
   end
   object Splitter2: TSplitter
     Left = 816
-    Top = 0
-    Height = 633
+    Top = 146
+    Height = 487
     Align = alRight
     ExplicitLeft = 784
     ExplicitTop = 184
@@ -43,16 +44,16 @@ object MainForm: TMainForm
   end
   object Panel2: TPanel
     Left = 819
-    Top = 0
+    Top = 146
     Width = 179
-    Height = 633
+    Height = 487
     Align = alRight
     TabOrder = 0
     object ScrollBox1: TScrollBox
       Left = 1
       Top = 1
       Width = 177
-      Height = 631
+      Height = 485
       VertScrollBar.Position = 26
       Align = alClient
       TabOrder = 0
@@ -364,9 +365,9 @@ object MainForm: TMainForm
   end
   object PageControl1: TPageControl
     Left = 0
-    Top = 0
+    Top = 146
     Width = 816
-    Height = 633
+    Height = 487
     ActivePage = TabSheet1
     Align = alClient
     MultiLine = True
@@ -374,15 +375,11 @@ object MainForm: TMainForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Live'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object mMainPanel: TPanel
         Left = 0
         Top = 0
         Width = 808
-        Height = 599
+        Height = 453
         Align = alClient
         TabOrder = 0
         OnResize = mMainPanelResize
@@ -414,29 +411,21 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PageControl2: TPageControl
         Left = 0
         Top = 41
         Width = 808
-        Height = 558
+        Height = 412
         ActivePage = TabSheet3
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet
           Caption = 'Images'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Image1: TImage
             Left = 282
             Top = 0
             Width = 518
-            Height = 524
+            Height = 378
             Align = alClient
             IncrementalDisplay = True
             Picture.Data = {
@@ -2105,7 +2094,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 282
-            Height = 524
+            Height = 378
             Align = alLeft
             Caption = 'Images'
             TabOrder = 0
@@ -2357,15 +2346,11 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
         Width = 808
-        Height = 413
+        Height = 267
         Align = alClient
         Caption = 'ChangeLog'
         TabOrder = 0
@@ -2373,7 +2358,7 @@ object MainForm: TMainForm
           Left = 2
           Top = 21
           Width = 804
-          Height = 390
+          Height = 244
           Align = alClient
           Anchors = [akLeft, akRight, akBottom]
           Lines.Strings = (
@@ -3273,6 +3258,258 @@ object MainForm: TMainForm
         end
       end
     end
+    object TabSheet8: TTabSheet
+      Caption = 'UC7 Settings'
+      ImageIndex = 3
+      object NorthSouthGB: TGroupBox
+        Left = 473
+        Top = 41
+        Width = 333
+        Height = 412
+        Align = alLeft
+        Caption = 'North-South Knife Stage Position (0-100 000)'
+        TabOrder = 0
+        object mKnifeStageNSAbsPosE: TIntegerLabeledEdit
+          Left = 14
+          Top = 58
+          Width = 73
+          Height = 27
+          EditLabel.Width = 145
+          EditLabel.Height = 19
+          EditLabel.Caption = 'Current N/S Position'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+          Text = '0'
+        end
+        object mNorthLimitPosE: TIntegerLabeledEdit
+          Left = 183
+          Top = 58
+          Width = 83
+          Height = 27
+          EditLabel.Width = 138
+          EditLabel.Height = 19
+          EditLabel.Caption = 'North MAX Position'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          Text = '0'
+          OnKeyDown = uc7EditKeyDown
+        end
+        object mKnifeStageJogStep: TIntegerLabeledEdit
+          Left = 14
+          Top = 248
+          Width = 91
+          Height = 27
+          EditLabel.Width = 150
+          EditLabel.Height = 19
+          EditLabel.Caption = 'Knife Stage Jog Step '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+          Text = '1'
+          OnKeyDown = uc7EditKeyDown
+          Value = 1
+        end
+        object mMoveSouthBtn: TArrayBotButton
+          Left = 14
+          Top = 112
+          Width = 90
+          Height = 90
+          Caption = 'Move South'
+          Enabled = False
+          ParentDoubleBuffered = True
+          TabOrder = 1
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object mMoveNorthBtn: TArrayBotButton
+          Left = 176
+          Top = 112
+          Width = 90
+          Height = 90
+          Caption = 'Move North'
+          Enabled = False
+          ParentDoubleBuffered = True
+          TabOrder = 2
+          SoundID = 'BUTTON_CLICK_4'
+        end
+      end
+      object CuttingMotorGB: TGroupBox
+        Left = 257
+        Top = 41
+        Width = 216
+        Height = 412
+        Align = alLeft
+        Caption = 'Cutting Parameters'
+        TabOrder = 1
+        object mPresetFeedRateE: TIntegerLabeledEdit
+          Left = 23
+          Top = 58
+          Width = 73
+          Height = 27
+          EditLabel.Width = 148
+          EditLabel.Height = 19
+          EditLabel.Caption = 'Preset Feed (nm/cut)'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          Text = '50'
+          OnKeyDown = uc7EditKeyDown
+          Value = 50
+        end
+        object mFeedRateE: TIntegerLabeledEdit
+          Left = 23
+          Top = 137
+          Width = 73
+          Height = 27
+          EditLabel.Width = 158
+          EditLabel.Height = 19
+          EditLabel.Caption = 'Current Feed (nm/cut)'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          Text = '0'
+          OnKeyDown = uc7EditKeyDown
+        end
+        object mSetZeroCutBtn: TArrayBotButton
+          Left = 23
+          Top = 200
+          Width = 104
+          Height = 81
+          Caption = 'Set zero-cut'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          SoundID = 'BUTTON_CLICK_4'
+        end
+      end
+      object mTopPanel: TPanel
+        Left = 0
+        Top = 0
+        Width = 808
+        Height = 41
+        Align = alTop
+        TabOrder = 2
+        object mComportCB: TComboBox
+          Left = 8
+          Top = 12
+          Width = 145
+          Height = 27
+          ItemIndex = 0
+          TabOrder = 0
+          Text = 'COM1'
+          Items.Strings = (
+            'COM1'
+            'COM2'
+            'COM3'
+            'COM4'
+            'COM5'
+            'COM6'
+            'COM7'
+            'COM8'
+            'COM9'
+            'COM10'
+            'COM11'
+            'COM12'
+            'COM13'
+            'COM14'
+            'COM15'
+            'COM16'
+            'COM17'
+            'COM18'
+            'COM19'
+            'COM20')
+        end
+        object mConnectUC7Btn: TButton
+          Left = 165
+          Top = 10
+          Width = 50
+          Height = 25
+          Caption = 'Open'
+          TabOrder = 1
+          OnClick = mConnectUC7BtnClick
+        end
+      end
+      object GroupBox7: TGroupBox
+        Left = 0
+        Top = 41
+        Width = 257
+        Height = 412
+        Align = alLeft
+        Caption = 'Misc parameters'
+        TabOrder = 3
+        object mStageMoveDelayE: TIntegerLabeledEdit
+          Left = 26
+          Top = 66
+          Width = 73
+          Height = 27
+          EditLabel.Width = 156
+          EditLabel.Height = 19
+          EditLabel.Caption = 'StageMove delay (ms)'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          Text = '50'
+          OnKeyDown = uc7EditKeyDown
+          Value = 50
+        end
+        object mZeroCutsE: TIntegerLabeledEdit
+          Left = 26
+          Top = 134
+          Width = 81
+          Height = 31
+          EditLabel.Width = 210
+          EditLabel.Height = 19
+          EditLabel.Caption = 'Zero cuts before knife backoff'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -16
+          EditLabel.Font.Name = 'Tahoma'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          Text = '0'
+          OnKeyDown = uc7EditKeyDown
+        end
+      end
+    end
   end
   object mShowBottomPanelBtn: TButton
     Left = 0
@@ -3285,23 +3522,231 @@ object MainForm: TMainForm
     Visible = False
     OnClick = mShowBottomPanelBtnClick
   end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 998
+    Height = 146
+    Align = alTop
+    AutoSize = True
+    TabOrder = 4
+    object HandwheelGB: TGroupBox
+      Left = 1
+      Top = 1
+      Width = 996
+      Height = 144
+      Align = alTop
+      Caption = 'UC7 Control'
+      TabOrder = 0
+      object mHWPosShape: TShape
+        Left = 19
+        Top = 50
+        Width = 65
+        Height = 8
+        Brush.Color = clBlue
+        Pen.Style = psClear
+      end
+      object mRetractLbl: TLabel
+        Left = 21
+        Top = 20
+        Width = 89
+        Height = 25
+        Caption = 'Retracting'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = []
+        ParentFont = False
+      end
+      object mCuttingLbl: TLabel
+        Left = 287
+        Top = 20
+        Width = 64
+        Height = 25
+        Caption = 'Cutting'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = []
+        ParentFont = False
+      end
+      object mAfterCuttingLbl: TLabel
+        Left = 391
+        Top = 20
+        Width = 113
+        Height = 25
+        Caption = 'After Cutting'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = []
+        ParentFont = False
+      end
+      object mBeforeCuttingLbl: TLabel
+        Left = 135
+        Top = 20
+        Width = 125
+        Height = 25
+        Caption = 'Before Cutting'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Panel6: TPanel
+        Left = 2
+        Top = 56
+        Width = 992
+        Height = 86
+        Align = alBottom
+        TabOrder = 0
+        object mStartStopBtn: TArrayBotButton
+          Left = 1
+          Top = 1
+          Width = 148
+          Height = 84
+          Align = alLeft
+          Caption = 'Start'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -21
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentDoubleBuffered = True
+          ParentFont = False
+          TabOrder = 0
+          OnClick = CreateUC7Message
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object mRibbonStartBtn: TArrayBotButton
+          Left = 419
+          Top = 1
+          Width = 241
+          Height = 84
+          Align = alLeft
+          Caption = 'Resume Cutting'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -21
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentDoubleBuffered = True
+          ParentFont = False
+          TabOrder = 1
+          OnClick = CreateUC7Message
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object CounterGB: TGroupBox
+          Left = 149
+          Top = 1
+          Width = 270
+          Height = 84
+          Align = alLeft
+          Caption = 'Ribbon Creation'
+          TabOrder = 2
+          object mCounterLabel: TIntLabel
+            Left = 232
+            Top = 41
+            Width = 16
+            Height = 35
+            Caption = '1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -29
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Value = 1
+            TheFont.Charset = DEFAULT_CHARSET
+            TheFont.Color = clWindowText
+            TheFont.Height = -29
+            TheFont.Name = 'Tahoma'
+            TheFont.Style = []
+          end
+          object mCountToE: TIntegerLabeledEdit
+            Left = 14
+            Top = 48
+            Width = 65
+            Height = 31
+            EditLabel.Width = 66
+            EditLabel.Height = 19
+            EditLabel.Caption = 'Count To'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            Text = '0'
+          end
+          object mResetCounterBtn: TArrayBotButton
+            Left = 100
+            Top = 37
+            Width = 106
+            Height = 42
+            Caption = 'Reset Counter'
+            Enabled = False
+            ParentDoubleBuffered = True
+            TabOrder = 1
+            OnClick = mResetCounterBtnClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
+        end
+        object mRibbonCreatorActiveCB: TPropertyCheckBox
+          Left = 672
+          Top = 32
+          Width = 241
+          Height = 17
+          Caption = 'Ribbon Creator On/Off'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -21
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          OnClick = mRibbonCreatorActiveCBClick
+        end
+        object mSynchUIBtn: TArrayBotButton
+          Left = 864
+          Top = 1
+          Width = 127
+          Height = 84
+          Align = alRight
+          Caption = 'Refresh Status'
+          ParentDoubleBuffered = True
+          TabOrder = 4
+          OnClick = mSynchUIBtnClick
+          SoundID = 'BUTTON_CLICK_4'
+        end
+      end
+    end
+  end
   object mShutDownTimer: TTimer
     Enabled = False
     Interval = 10
     OnTimer = mShutDownTimerTimer
-    Left = 568
-    Top = 480
+    Left = 800
+    Top = 96
   end
   object mCaptureVideoTimer: TTimer
     Enabled = False
     Interval = 1
     OnTimer = mCaptureVideoTimerTimer
-    Left = 680
-    Top = 480
+    Left = 704
+    Top = 176
   end
   object mMediaPopup: TPopupMenu
-    Left = 80
-    Top = 648
+    Left = 136
+    Top = 544
     object Delete1: TMenuItem
       Caption = 'Delete'
       OnClick = Delete1Click
@@ -3315,14 +3760,14 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 250
     OnTimer = mStartupTimerTimer
-    Left = 464
-    Top = 480
+    Left = 704
+    Top = 96
   end
   object mCheckSocketConnectionTimer: TTimer
     Enabled = False
     Interval = 3000
     OnTimer = mCheckSocketConnectionTimerTimer
-    Left = 680
-    Top = 400
+    Left = 896
+    Top = 96
   end
 end

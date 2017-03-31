@@ -6,8 +6,14 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
-#include "TPropertyCheckBox.h"
 #include <Vcl.Menus.hpp>
+#include <Vcl.Buttons.hpp>
+#include <Vcl.ToolWin.hpp>
+#include <Vcl.DBCtrls.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
 #include "mtkLogFileReader.h"
 #include "mtkIniFileProperties.h"
 #include "mtkIniFile.h"
@@ -16,29 +22,35 @@
 #include "camera/uc480Class.h"
 #include "arduino/atLightsArduinoClient.h"
 #include "mtkFloatLabel.h"
-#include <Vcl.Buttons.hpp>
-#include <Vcl.ToolWin.hpp>
-#include "TArrayBotBtn.h"
-#include "sound/atSoundPlayer.h"
-#include <Vcl.DBCtrls.hpp>
-#include <Vcl.DBGrids.hpp>
-#include <Vcl.Grids.hpp>
-#include <Vcl.Imaging.jpeg.hpp>
-
+#include "TPropertyCheckBox.h"
+#include "uc7/atUC7Component.h"
 #include "TATDBImagesAndMoviesDataModule.h"
 #include "arraybot/atEnvironmentalSensorReader.h"
 #include "database/atATDBServerSession.h"
 #include "/database/atATDBClientDBSession.h"
-#include <Vcl.Imaging.pngimage.hpp>
+#include "TArrayBotBtn.h"
+#include "sound/atSoundPlayer.h"
 #include "atCameraServiceThread.h"
 #include "atReticle.h"
 #include "ConnectToArduinoServerThread.h"
+#include "atVCLUtils.h"
+#include "TIntegerLabeledEdit.h"
+#include "TIntLabel.h"
 //---------------------------------------------------------------------------
-
 using Poco::Timestamp;
 using mtk::IniFileProperties;
 using mtk::IniFile;
 using mtk::Property;
+
+#define UWM_MESSAGE   (WM_APP + 5)
+
+enum ApplicationMessageEnum
+{
+    atUC7SplashWasClosed = 0,
+    atUC7Message,
+    atEnableResumeBtn
+
+};
 
 class TSettingsForm;
 class TLocalArgs;
@@ -123,6 +135,39 @@ class TMainForm  : public TRegistryForm
 	TButton *mShowBottomPanelBtn;
 	TButton *mCloseBottomPanelBtn;
 	TTimer *mCheckSocketConnectionTimer;
+	TPanel *Panel1;
+	TGroupBox *HandwheelGB;
+	TShape *mHWPosShape;
+	TLabel *mRetractLbl;
+	TLabel *mCuttingLbl;
+	TLabel *mAfterCuttingLbl;
+	TLabel *mBeforeCuttingLbl;
+	TPropertyCheckBox *mRibbonCreatorActiveCB;
+	TTabSheet *TabSheet8;
+	TGroupBox *NorthSouthGB;
+	TIntegerLabeledEdit *mKnifeStageNSAbsPosE;
+	TIntegerLabeledEdit *mNorthLimitPosE;
+	TIntegerLabeledEdit *mKnifeStageJogStep;
+	TArrayBotButton *mMoveSouthBtn;
+	TArrayBotButton *mMoveNorthBtn;
+	TGroupBox *CuttingMotorGB;
+	TIntegerLabeledEdit *mPresetFeedRateE;
+	TIntegerLabeledEdit *mFeedRateE;
+	TArrayBotButton *mSetZeroCutBtn;
+	TPanel *mTopPanel;
+	TComboBox *mComportCB;
+	TButton *mConnectUC7Btn;
+	TArrayBotButton *mSynchUIBtn;
+	TGroupBox *GroupBox7;
+	TIntegerLabeledEdit *mStageMoveDelayE;
+	TIntegerLabeledEdit *mZeroCutsE;
+	TArrayBotButton *mRibbonStartBtn;
+	TGroupBox *CounterGB;
+	TIntLabel *mCounterLabel;
+	TIntegerLabeledEdit *mCountToE;
+	TArrayBotButton *mResetCounterBtn;
+	TArrayBotButton *mStartStopBtn;
+	TPanel *Panel6;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -173,11 +218,22 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mCloseBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mShowBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
+	void __fastcall mConnectUC7BtnClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall mSynchUIBtnClick(TObject *Sender);
+	void __fastcall CreateUC7Message(TObject *Sender);
+	void __fastcall mResetCounterBtnClick(TObject *Sender);
+	void __fastcall mRibbonCreatorActiveCBClick(TObject *Sender);
+	void __fastcall uc7EditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
 
 
     protected:
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
+		UC7						 				mUC7;
+        int						 				getCOMPortNumber();
+
 		void 									loadCurrentImage();
 
 		bool									mMovingReticle;
@@ -210,6 +266,8 @@ class TMainForm  : public TRegistryForm
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
 
+		mtk::Property<int>	              		mCOMPort;
+        mtk::Property<int>                     	mCountTo;
 								                // Camera variables
         								        //!The camera class
 		Cuc480   						        mCamera1;
@@ -243,6 +301,15 @@ class TMainForm  : public TRegistryForm
         void									onArduinoClientConnected();
         void									onArduinoClientDisconnected();
 
+		void __fastcall 						onConnectedToUC7();
+        void __fastcall 						onDisConnectedToUC7();
+		
+        bool									handleUC7Message(const UC7Message& m);
+		void __fastcall 						enableDisableUI(bool enableDisable);
+        void 									onUC7Count();
+        void 									onUC7CountedTo();
+		void __fastcall                         AppInBox(ATWindowStructMessage& Msg);		
+		
         										//Callbacks
 		void 									onLightsArduinoMessageReceived(const string& msg);
 		void 									onSensorsArduinoMessageReceived(const string& msg);
@@ -267,7 +334,8 @@ class TMainForm  : public TRegistryForm
 	void 		__fastcall 						populateAbout();
 
     BEGIN_MESSAGE_MAP
-          MESSAGE_HANDLER(IS_UC480_MESSAGE, TMessage, OnUSBCameraMessage);
+          MESSAGE_HANDLER(IS_UC480_MESSAGE, 	TMessage, 						OnUSBCameraMessage);
+          MESSAGE_HANDLER(UWM_MESSAGE,        	ATWindowStructMessage,         	AppInBox);
     END_MESSAGE_MAP(TForm)
 };
 

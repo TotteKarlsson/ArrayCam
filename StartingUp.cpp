@@ -103,5 +103,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 //    }
 
     gAppIsStartingUp = false;
+    enableDisableUI(false);
 }
 
