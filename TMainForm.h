@@ -19,7 +19,7 @@
 #include "mtkIniFile.h"
 #include "mtkLogger.h"
 #include "TRegistryForm.h"
-#include "camera/uc480Class.h"
+#include "uc480/uc480Class.h"
 #include "arduino/atLightsArduinoClient.h"
 #include "mtkFloatLabel.h"
 #include "TPropertyCheckBox.h"
@@ -36,20 +36,20 @@
 #include "atVCLUtils.h"
 #include "TIntegerLabeledEdit.h"
 #include "TIntLabel.h"
+#include "uc7/atUC7ApplicationMessages.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
 using mtk::IniFile;
 using mtk::Property;
 
-#define UWM_MESSAGE   (WM_APP + 5)
+//#define UWM_MESSAGE   (WM_APP + 5)
 
 enum ApplicationMessageEnum
 {
     atUC7SplashWasClosed = 0,
     atUC7Message,
     atEnableResumeBtn
-
 };
 
 class TSettingsForm;
@@ -241,11 +241,11 @@ class TMainForm  : public TRegistryForm
 		TSettingsForm* 							mSettingsForm;
 
 
-        Poco::Mutex								mClientDBMutex;
-		ATDBClientDBSession						mClientDBSession;
-
-		Poco::Mutex								mServerDBMutex;
-		ATDBServerSession						mServerDBSession;
+//        Poco::Mutex								mClientDBMutex;
+//		ATDBClientDBSession						mClientDBSession;
+//
+//		Poco::Mutex								mServerDBMutex;
+//		ATDBServerSession						mServerDBSession;
 
         IniFile						            mIniFile;
         IniFileProperties  			            mProperties;
@@ -291,7 +291,6 @@ class TMainForm  : public TRegistryForm
                                                 //incoming messages over a socket, in
                                                 //onArduinoMessageReceived
 		LightsArduinoClient    			        mLightsArduinoClient;
-
         ConnectToArduinoServerThread			mConnectToArduinoServerThread;
 
         bool									mCheckArduinoServerConnection;
@@ -335,7 +334,7 @@ class TMainForm  : public TRegistryForm
 
     BEGIN_MESSAGE_MAP
           MESSAGE_HANDLER(IS_UC480_MESSAGE, 	TMessage, 						OnUSBCameraMessage);
-          MESSAGE_HANDLER(UWM_MESSAGE,        	ATWindowStructMessage,         	AppInBox);
+          MESSAGE_HANDLER(UWM_UC7_MESSAGE,      ATWindowStructMessage,         	AppInBox);
     END_MESSAGE_MAP(TForm)
 };
 

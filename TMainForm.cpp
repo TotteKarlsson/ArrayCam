@@ -6,7 +6,7 @@
 #include "mtkVCLUtils.h"
 #include "mtkWin32Utils.h"
 #include "mtkUtils.h"
-#include "camera/uc480_tools.h"
+#include "uc480/uc480_tools.h"
 #include "database/atDBUtils.h"
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
@@ -26,6 +26,7 @@ using namespace at;
 TMainForm *MainForm;
 
 extern string gLogFileName;
+extern string gAppName;
 extern string gApplicationRegistryRoot;
 extern string gLogFileLocation;
 extern string gLogFileName;
@@ -36,7 +37,7 @@ extern bool   gAppIsClosing;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
-    	mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "ArrayBot", gLogFileName), &logMsg),
+    	mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName, gLogFileName), &logMsg),
         mCaptureVideo(false),
         mSettingsForm(NULL),
         mAVIID(0),
@@ -53,8 +54,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mSnapShotFolder(""),
         mMoviesFolder(""),
         mLocalDBName(""),
-        mClientDBSession("umlocal"),
-		mServerDBSession("atdb"),
+//        mClientDBSession("umlocal"),
+//		mServerDBSession("atdb"),
         mReticle(mPB->Canvas),
         mServiceCamera1(mCamera1, 1, this->Handle),
         mMovingReticle(false),
@@ -131,9 +132,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 }
 
 __fastcall TMainForm::~TMainForm()
-{
-
-}
+{}
 
 //This one is called from the reader thread
 void __fastcall TMainForm::logMsg()
@@ -191,7 +190,6 @@ void __fastcall TMainForm::mFrontBackLEDBtnClick(TObject *Sender)
     	mLightsArduinoClient.toggleLED();
     }
 }
-
 
 void __fastcall TMainForm::Panel3Resize(TObject *Sender)
 {

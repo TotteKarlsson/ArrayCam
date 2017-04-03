@@ -24,7 +24,7 @@ object SettingsForm: TSettingsForm
     Top = 0
     Width = 625
     Height = 486
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -389,7 +389,7 @@ object SettingsForm: TSettingsForm
         Left = 3
         Top = 16
         Width = 273
-        Height = 145
+        Height = 169
         Caption = 'Arduino Client'
         TabOrder = 0
         object mArduinoServerPortE: TIntegerLabeledEdit
@@ -412,6 +412,17 @@ object SettingsForm: TSettingsForm
           Caption = 'Start'
           TabOrder = 1
           OnClick = mASStartBtnClick
+        end
+        object mAutoCheckConnectionCB: TPropertyCheckBox
+          Left = 16
+          Top = 128
+          Width = 145
+          Height = 17
+          Caption = 'Reconnect Automatically'
+          Checked = True
+          State = cbChecked
+          TabOrder = 2
+          OnClick = mAutoCheckConnectionCBClick
         end
       end
     end

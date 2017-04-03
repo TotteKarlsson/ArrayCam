@@ -533,3 +533,11 @@ void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
      }
      mBlackLevelLbl->setValue(Current);
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
+{
+	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
+}
+
+

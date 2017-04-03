@@ -64,6 +64,7 @@ __published:	// IDE-managed Components
 	TGroupBox *GroupBox5;
 	TPropertyCheckBox *mAutoWhiteBalanceCB;
 	mtkFloatLabel *mSoftwareGammaLbl;
+	TPropertyCheckBox *mAutoCheckConnectionCB;
 	void __fastcall mASStartBtnClick(TObject *Sender);
 	void __fastcall mUIUpdateTimerTimer(TObject *Sender);
 	void __fastcall mVerticalMirrorCBClick(TObject *Sender);
@@ -82,6 +83,7 @@ __published:	// IDE-managed Components
 	void __fastcall mGainBoostCBClick(TObject *Sender);
 	void __fastcall mExposureTimeTBChange(TObject *Sender);
 	void __fastcall mBlackLevelTBChange(TObject *Sender);
+	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 
     private:	// User declarations
         bool						mIsStartingUp;

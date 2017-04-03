@@ -25,9 +25,9 @@ void __fastcall TMainForm::mAddImageFileBtnClick(TObject *Sender)
         //Add this file to DB and open a metadata entry form for the user
         try
         {
-            mClientDBSession.insertImageFile(getFileNameNoPath(f), getCurrentUserID(mUsersCB), "Note..");
-            DBNavigator1->BtnClick(nbRefresh);
-            DBNavigator1->BtnClick(nbRefresh);
+//            mClientDBSession.insertImageFile(getFileNameNoPath(f), getCurrentUserID(mUsersCB), "Note..");
+//            DBNavigator1->BtnClick(nbRefresh);
+//            DBNavigator1->BtnClick(nbRefresh);
         }
         catch(...)
         {
@@ -62,7 +62,7 @@ void __fastcall TMainForm::DBNavigator2Click(TObject *Sender, TNavigateBtn Butto
                 string note("Image Note..");
                 try
                 {
-                    mClientDBSession.insertImageNote(imageID, uID, note);
+//                    mClientDBSession.insertImageNote(imageID, uID, note);
                 }
                 catch(...)
                 {
@@ -131,7 +131,7 @@ void TMainForm::populateUsers()
 {
     try
     {
-    	populateUsersCB(mUsersCB, mClientDBSession);
+//    	populateUsersCB(mUsersCB, mClientDBSession);
     }
     catch(...)
     {
@@ -303,26 +303,26 @@ void __fastcall TMainForm::mSyncUsersBtnClick(TObject *Sender)
 	//Get users from server
     try
     {
-        Poco::ScopedLock<Poco::Mutex> lock(mClientDBMutex);
-        RecordSet* localUsers 	= mClientDBSession.getUsers();
-	    RecordSet* remoteUsers 	= mServerDBSession.getUsers();
-
-        if(!localUsers || !remoteUsers)
-		{
-        	Log(lError) << "Failed to fetch users from database";
-            return;
-        }
-
-		//Insert ot Update users
-        for (RecordSet::Iterator it = remoteUsers->begin(); it != remoteUsers->end(); ++it)
-        {
-        	Poco::Data::Row& row = *it;
-            int id(row[0].convert<int>());
-            string user(row[1].convert<std::string>());
-            Log(lInfo) <<user;
-			mClientDBSession.insertOrUpdateUser(id, user);
-        }
-		populateUsers();
+//        Poco::ScopedLock<Poco::Mutex> lock(mClientDBMutex);
+//        RecordSet* localUsers 	= mClientDBSession.getUsers();
+//	    RecordSet* remoteUsers 	= mServerDBSession.getUsers();
+//
+//        if(!localUsers || !remoteUsers)
+//		{
+//        	Log(lError) << "Failed to fetch users from database";
+//            return;
+//        }
+//
+//		//Insert ot Update users
+//        for (RecordSet::Iterator it = remoteUsers->begin(); it != remoteUsers->end(); ++it)
+//        {
+//        	Poco::Data::Row& row = *it;
+//            int id(row[0].convert<int>());
+//            string user(row[1].convert<std::string>());
+//            Log(lInfo) <<user;
+//			mClientDBSession.insertOrUpdateUser(id, user);
+//        }
+//		populateUsers();
     }
     catch(...)
     {

@@ -5,7 +5,7 @@
 #include "mtkUtils.h"
 #include "mtkVCLUtils.h"
 #include "mtkWin32Utils.h"
-#include "camera/uc480_tools.h"
+#include "uc480/uc480_tools.h"
 #include "vcl/atVCLUtils.h"
 #include "database/atDBUtils.h"
 
@@ -150,6 +150,7 @@ bool TMainForm::openCameras()
 //    }
 
 //	return result;
+	return false;
 }
 
 //---------------------------------------------------------------------------
@@ -229,7 +230,7 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 		try
         {
 	        //save to DB
-	        mClientDBSession.insertImageFile(getFileNameNoPath(fName), getCurrentUserID(mUsersCB), "Note..");
+//	        mClientDBSession.insertImageFile(getFileNameNoPath(fName), getCurrentUserID(mUsersCB), "Note..");
         }
         catch(...)
         {

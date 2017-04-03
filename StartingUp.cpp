@@ -53,35 +53,35 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	//Connect to local database
 	try
     {
-        if(!mClientDBSession.isConnected())
-        {
-//        const string& ip, const string& user, const string& pwd, const string& db)
-            mClientDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "umlocal");
-        }
-
-        if(mClientDBSession.isConnected())
-        {
-            Log(lInfo) << "Connected to local database.";
-            populateUsersCB(mUsersCB, mClientDBSession);
-        }
-        else
-        {
-            Log(lError) << "Failed to connect to database server...";
-        }
-
-        if(!mServerDBSession.isConnected())
-        {
-            mServerDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "atdb");
-        }
-
-        if(mServerDBSession.isConnected())
-        {
-            Log(lInfo) << "Connected to remote database.";
-        }
-        else
-        {
-            Log(lError) << "Failed to connect to database server...";
-        }
+//        if(!mClientDBSession.isConnected())
+//        {
+////        const string& ip, const string& user, const string& pwd, const string& db)
+//            mClientDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "umlocal");
+//        }
+//
+//        if(mClientDBSession.isConnected())
+//        {
+//            Log(lInfo) << "Connected to local database.";
+//            populateUsersCB(mUsersCB, mClientDBSession);
+//        }
+//        else
+//        {
+//            Log(lError) << "Failed to connect to database server...";
+//        }
+//
+//        if(!mServerDBSession.isConnected())
+//        {
+//            mServerDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "atdb");
+//        }
+//
+//        if(mServerDBSession.isConnected())
+//        {
+//            Log(lInfo) << "Connected to remote database.";
+//        }
+//        else
+//        {
+//            Log(lError) << "Failed to connect to database server...";
+//        }
     }
     catch(...)
     {

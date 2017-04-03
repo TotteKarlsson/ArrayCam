@@ -1,3 +1,13 @@
+Release 0.5.4 (March 31)
+=======================
+* Integrating UC7 control into ArrayCam application
+* Refactored dslib -> dsl
+* Enabled reading of temperature data
+* Added clearing of logMemo when more than 1000 messages
+* Added thread for handling of arduino connection
+* Cleaning up thread logic regarding arduinoserver socket connection
+* Fixed thread closing down issues
+
 Release 0.5.3 (March 10)
 =======================
 * Added ability to move the reticle

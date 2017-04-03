@@ -411,6 +411,10 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = 'History'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PageControl2: TPageControl
         Left = 0
         Top = 41
@@ -421,6 +425,10 @@ object MainForm: TMainForm
         TabOrder = 0
         object TabSheet3: TTabSheet
           Caption = 'Images'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Image1: TImage
             Left = 282
             Top = 0
@@ -2346,6 +2354,10 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
@@ -3261,6 +3273,10 @@ object MainForm: TMainForm
     object TabSheet8: TTabSheet
       Caption = 'UC7 Settings'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object NorthSouthGB: TGroupBox
         Left = 473
         Top = 41
@@ -3334,6 +3350,7 @@ object MainForm: TMainForm
           Enabled = False
           ParentDoubleBuffered = True
           TabOrder = 1
+          OnClick = CreateUC7Message
           SoundID = 'BUTTON_CLICK_4'
         end
         object mMoveNorthBtn: TArrayBotButton
@@ -3345,6 +3362,7 @@ object MainForm: TMainForm
           Enabled = False
           ParentDoubleBuffered = True
           TabOrder = 2
+          OnClick = CreateUC7Message
           SoundID = 'BUTTON_CLICK_4'
         end
       end
@@ -3407,6 +3425,7 @@ object MainForm: TMainForm
           Font.Style = []
           ParentFont = False
           TabOrder = 2
+          OnClick = CreateUC7Message
           SoundID = 'BUTTON_CLICK_4'
         end
       end
@@ -3767,7 +3786,7 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 3000
     OnTimer = mCheckSocketConnectionTimerTimer
-    Left = 896
-    Top = 96
+    Left = 712
+    Top = 248
   end
 end
