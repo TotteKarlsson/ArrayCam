@@ -83,7 +83,6 @@ class TMainForm  : public TRegistryForm
 	TComboBox *LogLevelCB;
 	TScrollBox *ScrollBox1;
 	TArrayBotButton *mFitToScreenButton;
-	TArrayBotButton *mFrontBackLEDBtn;
 	TArrayBotButton *mOneToOneBtn;
 	TArrayBotButton *mOneToTwoBtn;
 	TArrayBotButton *mRecordMovieBtn;
@@ -168,6 +167,7 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mResetCounterBtn;
 	TArrayBotButton *mStartStopBtn;
 	TPanel *Panel6;
+	TArrayBotButton *mRegisterRibbonBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -225,6 +225,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mResetCounterBtnClick(TObject *Sender);
 	void __fastcall mRibbonCreatorActiveCBClick(TObject *Sender);
 	void __fastcall uc7EditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall mRegisterRibbonBtnClick(TObject *Sender);
 
 
 

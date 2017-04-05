@@ -178,17 +178,17 @@ void TMainForm::enableDisableClientControls(bool enable)
     {
     	enableDisableGroupBox(mSettingsForm->LightIntensitiesGB, enable);
     }
-    mFrontBackLEDBtn->Enabled = enable;
+//    mFrontBackLEDBtn->Enabled = enable;
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mFrontBackLEDBtnClick(TObject *Sender)
 {
-	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
-    if(b == mFrontBackLEDBtn)
-    {
-    	mLightsArduinoClient.toggleLED();
-    }
+//	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
+//    if(b == mFrontBackLEDBtn)
+//    {
+//    	mLightsArduinoClient.toggleLED();
+//    }
 }
 
 void __fastcall TMainForm::Panel3Resize(TObject *Sender)
@@ -528,4 +528,10 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
     }
 }
 
+
+void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
+{
+	MessageDlg("Register Ribbon", mtWarning, TMsgDlgButtons() << mbOK, 0);
+}
+//---------------------------------------------------------------------------
 
