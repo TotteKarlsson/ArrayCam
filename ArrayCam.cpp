@@ -14,6 +14,8 @@ using namespace mtk;
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("TSettingsForm.cpp", SettingsForm);
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string		gAppName					= "ArrayCam";
@@ -35,6 +37,8 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TSettingsForm), &SettingsForm);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
+		Application->CreateForm(__classid(TATDBConnectionFrame), &ATDBConnectionFrame);
+		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->Run();
 	}
 	catch (Exception &exception)

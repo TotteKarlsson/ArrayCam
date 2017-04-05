@@ -11,6 +11,7 @@
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "mtkFloatLabel"
 #pragma link "TIntLabel"
+#pragma link "TATDBConnectionFrame"
 #pragma resource "*.dfm"
 TSettingsForm *SettingsForm;
 

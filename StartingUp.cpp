@@ -5,6 +5,8 @@
 #include "mtkVCLUtils.h"
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
+#include "TATDBDataModule.h"
+
 using namespace mtk;
 using namespace at;
 extern bool   gAppIsStartingUp;
@@ -53,43 +55,18 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	//Connect to local database
 	try
     {
-//        if(!mClientDBSession.isConnected())
-//        {
-////        const string& ip, const string& user, const string& pwd, const string& db)
-//            mClientDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "umlocal");
-//        }
-//
-//        if(mClientDBSession.isConnected())
-//        {
-//            Log(lInfo) << "Connected to local database.";
-//            populateUsersCB(mUsersCB, mClientDBSession);
-//        }
-//        else
-//        {
-//            Log(lError) << "Failed to connect to database server...";
-//        }
-//
-//        if(!mServerDBSession.isConnected())
-//        {
-//            mServerDBSession.connect("127.0.0.1", "atdb_client", "atdb123", "atdb");
-//        }
-//
-//        if(mServerDBSession.isConnected())
-//        {
-//            Log(lInfo) << "Connected to remote database.";
-//        }
-//        else
-//        {
-//            Log(lError) << "Failed to connect to database server...";
-//        }
+
+        atdbDM->SQLConnection1->AfterConnect 	= afterServerConnect;
+        atdbDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
+
+//        ImagesAndMoviesDM->SQLConnection1->AfterConnect 	= afterServerConnect;
+//        ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
     }
     catch(...)
     {
     	handleMySQLException();
     }
 
-   	ImagesAndMoviesDM->SQLConnection1->AfterConnect 	= afterServerConnect;
-   	ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
 
     //UI DB connection
 //    if (ImagesAndMoviesDM->connect("127.0.0.1", "atdb_client", "atdb123", dBase))

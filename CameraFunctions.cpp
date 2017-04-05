@@ -13,23 +13,6 @@
 using namespace mtk;
 using namespace at;
 
-
-void TMainForm::loadCurrentImage()
-{
-	//Retrieve file name and show the image
-	String f =	ImagesAndMoviesDM->imagesCDS->FieldByName("file_name")->AsString;
-    string fName = joinPath(mSnapShotFolder, stdstr(f));
-
-    if(fileExists(fName))
-    {
-		Image1->Picture->LoadFromFile(fName.c_str());
-    }
-    else
-    {
-    	Log(lError) << "The file: "<<fName<<" could not be found";
-    }
-}
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)
 {
@@ -229,15 +212,11 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 
 		try
         {
-	        //save to DB
-//	        mClientDBSession.insertImageFile(getFileNameNoPath(fName), getCurrentUserID(mUsersCB), "Note..");
         }
         catch(...)
         {
         	handleMySQLException();
         }
-    	    DBNavigator1->BtnClick(nbRefresh);
-	        DBNavigator1->BtnClick(nbRefresh);
     }
 }
 

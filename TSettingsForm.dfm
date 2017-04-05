@@ -24,7 +24,7 @@ object SettingsForm: TSettingsForm
     Top = 0
     Width = 625
     Height = 486
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -386,8 +386,8 @@ object SettingsForm: TSettingsForm
       Caption = 'Connections'
       ImageIndex = 1
       object GroupBox1: TGroupBox
-        Left = 3
-        Top = 16
+        Left = 19
+        Top = 264
         Width = 273
         Height = 169
         Caption = 'Arduino Client'
@@ -424,6 +424,16 @@ object SettingsForm: TSettingsForm
           TabOrder = 2
           OnClick = mAutoCheckConnectionCBClick
         end
+      end
+      inline TATDBConnectionFrame1: TATDBConnectionFrame
+        Left = 19
+        Top = 16
+        Width = 286
+        Height = 233
+        AutoSize = True
+        TabOrder = 1
+        ExplicitLeft = 19
+        ExplicitTop = 16
       end
     end
   end

@@ -13,6 +13,7 @@
 #include "TSTDStringLabeledEdit.h"
 #include "mtkFloatLabel.h"
 #include "TIntLabel.h"
+#include "TATDBConnectionFrame.h"
 //---------------------------------------------------------------------------
 class TSettingsForm : public TForm
 {
@@ -65,6 +66,7 @@ __published:	// IDE-managed Components
 	TPropertyCheckBox *mAutoWhiteBalanceCB;
 	mtkFloatLabel *mSoftwareGammaLbl;
 	TPropertyCheckBox *mAutoCheckConnectionCB;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
 	void __fastcall mASStartBtnClick(TObject *Sender);
 	void __fastcall mUIUpdateTimerTimer(TObject *Sender);
 	void __fastcall mVerticalMirrorCBClick(TObject *Sender);
