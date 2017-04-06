@@ -533,7 +533,7 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 {
-	TRegisterNewRibbonForm* rrf = new TNewRegisterRibbonForm(this);
+	TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(this);
 	    rrf->ShowModal();
     delete rrf;
 }

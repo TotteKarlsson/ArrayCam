@@ -158,6 +158,10 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -317,6 +321,10 @@ object SettingsForm: TSettingsForm
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16
@@ -444,14 +452,14 @@ object SettingsForm: TSettingsForm
     Height = 55
     Align = alBottom
     TabOrder = 1
-    object Button1: TButton
+    object mCloseButton: TButton
       Left = 512
       Top = 2
       Width = 99
       Height = 45
       Caption = 'Close'
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = mCloseButtonClick
     end
   end
   object mUIUpdateTimer: TTimer

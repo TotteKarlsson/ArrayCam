@@ -23,7 +23,7 @@ __published:	// IDE-managed Components
 	TPropertyCheckBox *mVerticalMirrorCB;
 	TPropertyCheckBox *mHorizontalMirrorCB;
 	TGroupBox *GroupBox3;
-	TButton *Button1;
+	TButton *mCloseButton;
 	TPropertyCheckBox *mAutoExposureCB;
 	TSTDStringLabeledEdit *mPhotoOutputBaseFolder;
 	TSTDStringLabeledEdit *mMoviesFolderE;
@@ -72,7 +72,7 @@ __published:	// IDE-managed Components
 	void __fastcall mVerticalMirrorCBClick(TObject *Sender);
 	void __fastcall mHorizontalMirrorCBClick(TObject *Sender);
 	void __fastcall AutoParaCBClick(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall mCloseButtonClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall mPairLEDsCBClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -96,6 +96,8 @@ __published:	// IDE-managed Components
         TMainForm&			mMainForm;
 
         __fastcall TSettingsForm(TMainForm& mf);
+		void __fastcall	afterServerConnect(System::TObject* Sender);
+		void __fastcall	afterServerDisconnect(System::TObject* Sender);
 };
 
 extern PACKAGE TSettingsForm *SettingsForm;

@@ -23,7 +23,10 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf)
 {
+	TATDBConnectionFrame1->init(&(mf.mIniFile));
 	mIsStartingUp = true;
+
+
     //Bind properties
     mAutoExposureCB->setReference(mMainForm.mAutoExposure.getReference());
 	mAutoExposureCB->Update();
@@ -246,16 +249,17 @@ void  __fastcall TSettingsForm::enableManualBlackLevelSetting()
     ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
 }
 
-void __fastcall TSettingsForm::Button1Click(TObject *Sender)
+void __fastcall TSettingsForm::mCloseButtonClick(TObject *Sender)
 {
-	this->Visible = false;
+//	this->Visible = false;
+	Close();
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::FormClose(TObject *Sender, TCloseAction &Action)
-
 {
 	mUIUpdateTimer->Enabled = false;
+	TATDBConnectionFrame1->purge();
 }
 
 void __fastcall TSettingsForm::mPairLEDsCBClick(TObject *Sender)
@@ -541,4 +545,13 @@ void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
 	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
 }
 
+void __fastcall	TSettingsForm::afterServerConnect(System::TObject* Sender)
+{
+	TATDBConnectionFrame1->afterConnect();
+}
+
+void __fastcall	TSettingsForm::afterServerDisconnect(System::TObject* Sender)
+{
+	TATDBConnectionFrame1->afterDisconnect();
+}
 

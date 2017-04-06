@@ -108,6 +108,6 @@ void __fastcall TMainForm::mSettingsBtnClick(TObject *Sender)
 		mSettingsForm = new TSettingsForm(*this);
     }
 
-	this->Visible = true;
+//	this->Visible = true;
     mSettingsForm->Show();
 }
