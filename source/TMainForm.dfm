@@ -49,7 +49,6 @@ object MainForm: TMainForm
     Height = 395
     Align = alRight
     TabOrder = 0
-    ExplicitHeight = 487
     object ScrollBox1: TScrollBox
       Left = 1
       Top = 1
@@ -58,7 +57,6 @@ object MainForm: TMainForm
       VertScrollBar.Position = 264
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 485
       object GroupBox5: TGroupBox
         Left = 0
         Top = -264
@@ -252,7 +250,6 @@ object MainForm: TMainForm
           TabOrder = 2
           TickStyle = tsNone
           OnChange = mReticleRadiusTBChange
-          ExplicitLeft = 1
         end
         object mCenterReticleBtn: TArrayBotButton
           Left = 56
@@ -294,7 +291,6 @@ object MainForm: TMainForm
       Align = alLeft
       Caption = 'Panel4'
       TabOrder = 0
-      ExplicitHeight = 157
       object GroupBox8: TGroupBox
         Left = 1
         Top = 1
@@ -372,7 +368,6 @@ object MainForm: TMainForm
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 1
-        ExplicitHeight = 105
       end
     end
     object GroupBox1: TGroupBox
@@ -383,7 +378,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Misc'
       TabOrder = 1
-      ExplicitHeight = 157
     end
   end
   object PageControl1: TPageControl
@@ -396,10 +390,12 @@ object MainForm: TMainForm
     MultiLine = True
     TabOrder = 2
     OnChange = PageControl1Change
-    ExplicitHeight = 487
     object TabSheet1: TTabSheet
       Caption = 'Live'
-      ExplicitHeight = 453
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mMainPanel: TPanel
         Left = 0
         Top = 0
@@ -408,7 +404,6 @@ object MainForm: TMainForm
         Align = alClient
         TabOrder = 0
         OnResize = mMainPanelResize
-        ExplicitHeight = 453
         object mCamera1BackPanel: TPanel
           Left = 32
           Top = 40
@@ -437,7 +432,10 @@ object MainForm: TMainForm
     object TabSheet8: TTabSheet
       Caption = 'UC7 Settings'
       ImageIndex = 3
-      ExplicitHeight = 453
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object NorthSouthGB: TGroupBox
         Left = 473
         Top = 41
@@ -446,7 +444,6 @@ object MainForm: TMainForm
         Align = alLeft
         Caption = 'North-South Knife Stage Position (0-100 000)'
         TabOrder = 0
-        ExplicitHeight = 412
         object mKnifeStageNSAbsPosE: TIntegerLabeledEdit
           Left = 14
           Top = 58
@@ -536,7 +533,6 @@ object MainForm: TMainForm
         Align = alLeft
         Caption = 'Cutting Parameters'
         TabOrder = 1
-        ExplicitHeight = 412
         object mPresetFeedRateE: TIntegerLabeledEdit
           Left = 23
           Top = 58
@@ -647,7 +643,6 @@ object MainForm: TMainForm
         Align = alLeft
         Caption = 'Misc parameters'
         TabOrder = 3
-        ExplicitHeight = 412
         object mStageMoveDelayE: TIntegerLabeledEdit
           Left = 26
           Top = 66
@@ -696,7 +691,10 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
-      ExplicitHeight = 453
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186
@@ -705,7 +703,6 @@ object MainForm: TMainForm
         Align = alClient
         Caption = 'ChangeLog'
         TabOrder = 0
-        ExplicitHeight = 267
         object Memo1: TMemo
           Left = 2
           Top = 21
@@ -718,7 +715,6 @@ object MainForm: TMainForm
           ScrollBars = ssBoth
           TabOrder = 0
           WordWrap = False
-          ExplicitHeight = 244
         end
       end
       object Panel5: TPanel

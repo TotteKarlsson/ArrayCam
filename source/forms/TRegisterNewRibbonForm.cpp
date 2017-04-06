@@ -39,4 +39,25 @@ void __fastcall TRegisterNewRibbonForm::mCloseBtnClick(TObject *Sender)
 	Close();
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
+{
+	//Make any necessary queries..
+
+
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TRegisterNewRibbonForm::mProcessIDCBChange(TObject *Sender)
+{
+	//Select blocks for the currently selected Process ID
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TRegisterNewRibbonForm::mRibbonNavigatorClick(TObject *Sender, TNavigateBtn Button)
+{
+	//
+}
+
 

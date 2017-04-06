@@ -7,11 +7,11 @@ extern bool gAppIsClosing;
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 	gAppIsClosing = true;
-	if(mLogFileReader.isRunning() 			||
-    	mCamera1.IsInit() 					||
-        mServiceCamera1.isRunning()			||
-        mLightsArduinoClient.isConnected() 	||
-        mCheckSocketConnectionTimer->Enabled ||
+	if(mLogFileReader.isRunning() 				||
+    	mCamera1.IsInit() 						||
+        mServiceCamera1.isRunning()				||
+        mLightsArduinoClient.isConnected() 		||
+        mCheckSocketConnectionTimer->Enabled 	||
         atdbDM->SQLConnection1->Connected
         )
 

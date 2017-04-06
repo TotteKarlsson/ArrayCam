@@ -259,6 +259,7 @@ class TMainForm  : public TRegistryForm
 
         										//Database stuff
 		mtk::Property<int>	                    mDBUserID;
+        mtk::Property<int>						mProcessID;
 
         										//Callbacks
         void									onArduinoClientConnected();

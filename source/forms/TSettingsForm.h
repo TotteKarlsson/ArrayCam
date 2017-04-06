@@ -89,6 +89,7 @@ class TSettingsForm : public TForm
         void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
 
+
     private:
         bool						mIsStartingUp;
         void  			__fastcall  enableManualExposureTimeSetting();
@@ -96,11 +97,11 @@ class TSettingsForm : public TForm
 		void 						populateUsersCB();
 
     public:
-        TMainForm&			mMainForm;
+        TMainForm&					mMainForm;
+        __fastcall 					TSettingsForm(TMainForm& mf);
 
-        __fastcall TSettingsForm(TMainForm& mf);
-		void __fastcall	afterServerConnect(System::TObject* Sender);
-		void __fastcall	afterServerDisconnect(System::TObject* Sender);
+		void __fastcall	            afterServerConnect(System::TObject* Sender);
+		void __fastcall	            afterServerDisconnect(System::TObject* Sender);
 };
 
 extern PACKAGE TSettingsForm *SettingsForm;

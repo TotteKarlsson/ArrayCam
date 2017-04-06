@@ -80,18 +80,8 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 //        Log(lInfo) << "Datamodule failed to connect to database: "<<dBase;
 //    }
 
-    if(!mSettingsForm)
-    {
-		mSettingsForm = new TSettingsForm(*this);
-    }
-
-    if(mSettingsForm)
-    {
-    	mSettingsForm->TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
-    }
-
-
     gAppIsStartingUp = false;
     enableDisableUI(false);
+	mStartupTimer->Enabled = true;
 }
 

@@ -29,6 +29,10 @@ object SettingsForm: TSettingsForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Camera'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -158,6 +162,10 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -317,6 +325,10 @@ object SettingsForm: TSettingsForm
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16
@@ -385,6 +397,10 @@ object SettingsForm: TSettingsForm
     object TabSheet2: TTabSheet
       Caption = 'Connections'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         617
         458)
@@ -437,18 +453,6 @@ object SettingsForm: TSettingsForm
         TabOrder = 1
         ExplicitLeft = 19
         ExplicitTop = 16
-        inherited GroupBox1: TGroupBox
-          inherited mPasswordE: TSTDStringLabeledEdit
-            EditLabel.ExplicitLeft = 0
-            EditLabel.ExplicitTop = -16
-            EditLabel.ExplicitWidth = 60
-          end
-          inherited mDatabaseE: TSTDStringLabeledEdit
-            EditLabel.ExplicitLeft = 0
-            EditLabel.ExplicitTop = -16
-            EditLabel.ExplicitWidth = 60
-          end
-        end
       end
       object mUsersCB: TComboBox
         Left = 311

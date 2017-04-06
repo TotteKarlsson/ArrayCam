@@ -66,7 +66,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mCOMPort(0),
         mUC7(Handle),
         mCountTo(0),
-	    mDBUserID(0)
+	    mDBUserID(0),
+	    mProcessID(0)
 {
    	mLogFileReader.start(true);
 
@@ -102,6 +103,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		"C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			"umlocal.db"));
 	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
+	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	"LAST_PROCESS_ID",                  0));
+
+
+
     //UC7
    	mProperties.add((BaseProperty*)  &mCOMPort.setup( 	                        "UC7_COM_PORT",    	   	0));
 	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	"COUNT_TO",                     	5));
@@ -213,6 +218,17 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
+
+    if(!mSettingsForm)
+    {
+		mSettingsForm = new TSettingsForm(*this);
+    }
+
+    if(mSettingsForm)
+    {
+    	mSettingsForm->TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
+    }
+
 }
 
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
@@ -239,10 +255,8 @@ void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormResize(TObject *Sender)
 {
-	//
     mReticleCenterXTB->Min = -mPB->Width/2;
     mReticleCenterXTB->Max = mPB->Width/2;
-
     mReticleCenterYTB->Min = -mPB->Height/2;
     mReticleCenterYTB->Max = mPB->Height/2;
 }
@@ -538,5 +552,3 @@ void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 	    rrf->ShowModal();
     delete rrf;
 }
-
-//---------------------------------------------------------------------------
