@@ -23,6 +23,7 @@ using namespace at;
 #pragma link "TArrayBotBtn"
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TIntLabel"
+#pragma link "TATDBConnectionFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -64,7 +65,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mConnectToArduinoServerThread(mLightsArduinoClient, 50000),
         mCOMPort(0),
         mUC7(Handle),
-        mCountTo(0)
+        mCountTo(0),
+	    mDBUserID(0)
 {
    	mLogFileReader.start(true);
 
@@ -99,7 +101,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",     "C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		"C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			"umlocal.db"));
-
+	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
     //UC7
    	mProperties.add((BaseProperty*)  &mCOMPort.setup( 	                        "UC7_COM_PORT",    	   	0));
 	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	"COUNT_TO",                     	5));
@@ -529,7 +531,6 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
     }
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 {
@@ -538,4 +539,4 @@ void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
     delete rrf;
 }
 
-
+//---------------------------------------------------------------------------

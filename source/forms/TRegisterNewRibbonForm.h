@@ -10,6 +10,7 @@
 #include "TArrayBotBtn.h"
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
+#include <Vcl.DBCtrls.hpp>
 
 //---------------------------------------------------------------------------
 class TRegisterNewRibbonForm : public TForm
@@ -20,8 +21,11 @@ __published:	// IDE-managed Components
 	TPanel *Panel1;
 	TArrayBotButton *mCloseBtn;
 	TDBGrid *mBlocksForRibbonsGrid;
+	TDBNavigator *DBNavigator1;
+	TDBLookupComboBox *mProcessIDCB;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall mCloseBtnClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations

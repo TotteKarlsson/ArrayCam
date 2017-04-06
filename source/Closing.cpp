@@ -11,7 +11,8 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
     	mCamera1.IsInit() 					||
         mServiceCamera1.isRunning()			||
         mLightsArduinoClient.isConnected() 	||
-        mCheckSocketConnectionTimer->Enabled
+        mCheckSocketConnectionTimer->Enabled ||
+        atdbDM->SQLConnection1->Connected
         )
 
     {
@@ -57,6 +58,11 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	    mUC7.disConnect();
     }
 
+    if(atdbDM->SQLConnection1->Connected)
+    {
+    	atdbDM->SQLConnection1->Connected = false;
+	    atdbDM->SQLConnection1->Close();
+    }
 	if(mLogFileReader.isRunning())
     {
 		mLogFileReader.stop();
@@ -71,17 +77,15 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mCOMPort = mComportCB->ItemIndex + 1;
 	Log(lInfo) << "In FormClose";
-//	mIniFileC->clear();
 
 	//Save project history
-//	mBottomPanelHeight          	= BottomPanel->Height;
+	//	mBottomPanelHeight          	= BottomPanel->Height;
 
 	mCOMPort = mComportCB->ItemIndex + 1;
 	mProperties.write();
 
 	//Write to file
 	mIniFile.save();
-
 }
 
 

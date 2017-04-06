@@ -37,6 +37,8 @@
 #include "TIntegerLabeledEdit.h"
 #include "TIntLabel.h"
 #include "uc7/atUC7ApplicationMessages.h"
+#include "TCoverSlipDataModule.h"
+#include "TATDBConnectionFrame.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -143,6 +145,8 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mStartStopBtn;
 	TPanel *Panel6;
 	TArrayBotButton *mRegisterRibbonBtn;
+	TPanel *Panel4;
+	TGroupBox *GroupBox1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -253,6 +257,8 @@ class TMainForm  : public TRegistryForm
 
         bool									mCheckArduinoServerConnection;
 
+        										//Database stuff
+		mtk::Property<int>	                    mDBUserID;
 
         										//Callbacks
         void									onArduinoClientConnected();

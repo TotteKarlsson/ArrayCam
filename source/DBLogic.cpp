@@ -4,7 +4,6 @@
 #include "mtkVCLUtils.h"
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
-#include "database/atDBUtils.h"
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
 using namespace at;
@@ -13,6 +12,9 @@ using namespace at;
 void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Succesfully connected to DB Server";
+
+	atdbDM->afterConnect();
+    csDM->afterConnect();
 
     if(mSettingsForm)
     {
@@ -27,6 +29,6 @@ void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
     {
 		mSettingsForm->afterServerDisconnect(Sender);
     }
-
 }
+
 

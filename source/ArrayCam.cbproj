@@ -42,9 +42,9 @@
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Obsidian|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Obsidian.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
         <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
-        <IncludePath>source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
+        <IncludePath>forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <ILINK_LibraryPath>source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -137,6 +137,14 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="DBLogic.cpp">
             <BuildOrder>12</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TRegisterNewRibbonForm.cpp">
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="forms\TSettingsForm.cpp">
+            <Form>SettingsForm</Form>
+            <DependentOn>forms\TSettingsForm.h</DependentOn>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
         <CppCompile Include="HandleUC7Messages.cpp">
             <BuildOrder>14</BuildOrder>
         </CppCompile>
@@ -150,12 +158,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="TMainForm.cpp">
-            <BuildOrder>17</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="TSettingsForm.cpp">
-            <Form>SettingsForm</Form>
-            <DependentOn>TSettingsForm.h</DependentOn>
-            <BuildOrder>3</BuildOrder>
+            <Form>MainForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>TMainForm.h</DependentOn>
+            <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\camera\atCameraServiceThread.cpp">
             <DependentOn>P:\libs\atapi\source\camera\atCameraServiceThread.h</DependentOn>
@@ -177,16 +183,24 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp">
+            <Form>csDM</Form>
+            <DesignClass>TDataModule</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.h</DependentOn>
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp">
             <Form>ATDBConnectionFrame</Form>
             <DesignClass>TFrame</DesignClass>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
-        <FormResources Include="TSettingsForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="forms\TSettingsForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

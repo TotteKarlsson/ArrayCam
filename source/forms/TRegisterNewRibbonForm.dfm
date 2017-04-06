@@ -14,7 +14,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnCloseQuery = FormCloseQuery
+  OnClose = FormClose
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,12 +22,12 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     Left = 16
     Top = 24
     Width = 401
-    Height = 241
+    Height = 329
     Caption = 'Origin'
     TabOrder = 0
     object mBlocksForRibbonsGrid: TDBGrid
-      Left = 22
-      Top = 24
+      Left = 14
+      Top = 72
       Width = 291
       Height = 201
       DataSource = atdbDM.blocksDataSource
@@ -64,6 +64,24 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
           Visible = True
         end>
     end
+    object DBNavigator1: TDBNavigator
+      Left = 2
+      Top = 302
+      Width = 397
+      Height = 25
+      DataSource = atdbDM.blocksDataSource
+      Align = alBottom
+      TabOrder = 1
+    end
+    object mProcessIDCB: TDBLookupComboBox
+      Left = 14
+      Top = 45
+      Width = 145
+      Height = 21
+      DataField = 'process_id'
+      DataSource = atdbDM.specimenDataSource
+      TabOrder = 2
+    end
   end
   object GroupBox2: TGroupBox
     Left = 463
@@ -90,7 +108,9 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Height = 57
       Anchors = [akTop, akRight]
       Caption = 'Close'
+      ModalResult = 1
       TabOrder = 0
+      OnClick = mCloseBtnClick
       SoundID = 'BUTTON_CLICK_4'
     end
   end
