@@ -273,6 +273,7 @@ object MainForm: TMainForm
         TabOrder = 8
         OnClick = mRegisterRibbonBtnClick
         SoundID = 'BUTTON_CLICK_4'
+        ExplicitTop = 360
       end
     end
   end
