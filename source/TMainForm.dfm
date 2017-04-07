@@ -376,8 +376,109 @@ object MainForm: TMainForm
       Width = 654
       Height = 249
       Align = alClient
-      Caption = 'Misc'
+      Caption = 'Zebra'
       TabOrder = 1
+      object mBCLabel: TLabel
+        AlignWithMargins = True
+        Left = 5
+        Top = 76
+        Width = 644
+        Height = 168
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'Barcode'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -32
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Layout = tlCenter
+        ExplicitWidth = 131
+        ExplicitHeight = 39
+      end
+      object Panel7: TPanel
+        Left = 2
+        Top = 21
+        Width = 650
+        Height = 52
+        Align = alTop
+        TabOrder = 0
+        object mZebraCOMPortCB: TComboBox
+          Left = 8
+          Top = 14
+          Width = 87
+          Height = 27
+          TabOrder = 0
+          Text = 'COM1'
+          Items.Strings = (
+            'COM1'
+            'COM2'
+            'COM3'
+            'COM4'
+            'COM5'
+            'COM6'
+            'COM7'
+            'COM8'
+            'COM9'
+            'COM10'
+            'COM11'
+            'COM12'
+            'COM13'
+            'COM14'
+            'COM15'
+            'COM16'
+            'COM17'
+            'COM18'
+            'COM19'
+            'COM20')
+        end
+        object mConnectZebraBtn: TButton
+          Left = 209
+          Top = 12
+          Width = 50
+          Height = 25
+          Caption = 'Open'
+          TabOrder = 1
+          OnClick = mConnectZebraBtnClick
+        end
+        object mZebraBaudRateCB: TComboBox
+          Left = 111
+          Top = 15
+          Width = 76
+          Height = 27
+          ItemIndex = 0
+          TabOrder = 2
+          Text = '9600'
+          Items.Strings = (
+            '9600'
+            '14400'
+            '19200'
+            '38400'
+            '57600'
+            '115200'
+            '128000'
+            '256000')
+        end
+      end
+      object mDecodeSessionBtn: TButton
+        Left = 5
+        Top = 96
+        Width = 89
+        Height = 81
+        Caption = 'Start'
+        TabOrder = 1
+        OnClick = mBtnClick
+      end
+      object mBeepBtn: TButton
+        Left = 113
+        Top = 96
+        Width = 75
+        Height = 33
+        Caption = 'Beep'
+        TabOrder = 2
+        OnClick = mBtnClick
+      end
     end
   end
   object PageControl1: TPageControl
@@ -392,10 +493,6 @@ object MainForm: TMainForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Live'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object mMainPanel: TPanel
         Left = 0
         Top = 0
@@ -432,10 +529,6 @@ object MainForm: TMainForm
     object TabSheet8: TTabSheet
       Caption = 'UC7 Settings'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object NorthSouthGB: TGroupBox
         Left = 473
         Top = 41
@@ -691,10 +784,6 @@ object MainForm: TMainForm
     object TabSheet7: TTabSheet
       Caption = 'About'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 0
         Top = 186

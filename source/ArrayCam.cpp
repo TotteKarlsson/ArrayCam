@@ -102,6 +102,10 @@ void setupLogging()
 
 #pragma comment(lib, "atCore.lib")
 #pragma comment(lib, "atDataBase.lib")
+#pragma comment(lib, "atBarcodeReader.lib")
+#pragma comment(lib, "atSSI.lib")
+
+
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "uc480_B.lib")
 #pragma comment(lib, "uc480_tools_B.lib")

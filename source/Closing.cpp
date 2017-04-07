@@ -12,7 +12,8 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         mServiceCamera1.isRunning()				||
         mLightsArduinoClient.isConnected() 		||
         mCheckSocketConnectionTimer->Enabled 	||
-        atdbDM->SQLConnection1->Connected
+        atdbDM->SQLConnection1->Connected 		||
+        mZebra.isConnected()
         )
 
     {
@@ -53,6 +54,12 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	    mCheckSocketConnectionTimer->Enabled = false;
     }
 
+   	if(mZebra.isConnected())
+    {
+    	mZebra.disconnect();
+    }
+
+
     if(mUC7.isConnected())
     {
 	    mUC7.disConnect();
@@ -77,11 +84,11 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mCOMPort = mComportCB->ItemIndex + 1;
 	Log(lInfo) << "In FormClose";
-
-	//Save project history
-	//	mBottomPanelHeight          	= BottomPanel->Height;
-
 	mCOMPort = mComportCB->ItemIndex + 1;
+
+	mZebraCOMPort = mZebraCOMPortCB->ItemIndex + 1;
+    mZebraBaudRate = mZebraBaudRateCB->Items->Strings[mZebraBaudRateCB->ItemIndex].ToInt();
+
 	mProperties.write();
 
 	//Write to file

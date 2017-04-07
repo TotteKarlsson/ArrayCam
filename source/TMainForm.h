@@ -39,6 +39,8 @@
 #include "uc7/atUC7ApplicationMessages.h"
 #include "TCoverSlipDataModule.h"
 #include "TATDBConnectionFrame.h"
+#include "barcodereader/atDS457.h"
+
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -46,7 +48,7 @@ using mtk::IniFile;
 using mtk::Property;
 
 //#define UWM_MESSAGE   (WM_APP + 5)
-
+#define UWM_MESSAGE                                     (WM_APP + 5)
 enum ApplicationMessageEnum
 {
     atUC7SplashWasClosed = 0,
@@ -147,6 +149,13 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mRegisterRibbonBtn;
 	TPanel *Panel4;
 	TGroupBox *GroupBox1;
+	TPanel *Panel7;
+	TComboBox *mZebraCOMPortCB;
+	TButton *mConnectZebraBtn;
+	TComboBox *mZebraBaudRateCB;
+	TButton *mDecodeSessionBtn;
+	TButton *mBeepBtn;
+	TLabel *mBCLabel;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -189,6 +198,8 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mRibbonCreatorActiveCBClick(TObject *Sender);
 	void __fastcall uc7EditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall mRegisterRibbonBtnClick(TObject *Sender);
+	void __fastcall mConnectZebraBtnClick(TObject *Sender);
+	void __fastcall mBtnClick(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -287,6 +298,28 @@ class TMainForm  : public TRegistryForm
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
 
+
+        // Barcode reader
+        												//!The barcode reader
+        DS457											mZebra;
+
+                                                        //INI Parameters...
+		mtk::Property<int>	                			mZebraCOMPort;
+		mtk::Property<int>	                			mZebraBaudRate;
+        int												getZebraCOMPortNumber();
+		void __fastcall 								onConnectedToZebra();
+        void __fastcall 								onDisConnectedToZebra();
+
+														//Decoder events
+		void __fastcall                                 onWMDecode(TMessage& Msg);
+		void __fastcall                                 onSSIEvent(TMessage& Msg);
+		void __fastcall                                 onSSIImage(TMessage& Msg);
+		void __fastcall                                 onSSIError(TMessage& Msg);
+		void __fastcall                                 onSSITimeout(TMessage& Msg);
+		void __fastcall                                 onSSICapabilities(TMessage& Msg);
+
+
+
     //=================================================================================================
     public:
     											//The environmenatl reader is accessed from a thread
@@ -300,6 +333,26 @@ class TMainForm  : public TRegistryForm
     BEGIN_MESSAGE_MAP
           MESSAGE_HANDLER(IS_UC480_MESSAGE, 	TMessage, 						OnUSBCameraMessage);
           MESSAGE_HANDLER(UWM_UC7_MESSAGE,      ATWindowStructMessage,         	AppInBox);
+
+            MESSAGE_HANDLER(WM_DECODE, TMessage, 		onWMDecode);
+//          ON_MESSAGE(WM_SWVERSION, OnSSIVersion)
+          	MESSAGE_HANDLER(WM_CAPABILITIES, TMessage, 	onSSICapabilities)
+			MESSAGE_HANDLER(WM_IMAGE, TMessage, 		onSSIImage)
+//          ON_MESSAGE(WM_XFERSTATUS, OnSSIxferStatus)
+//          ON_MESSAGE(WM_VIDEOIMAGE, OnSSIVideo)
+          	MESSAGE_HANDLER(WM_ERROR, TMessage, 		onSSIError)
+//          ON_MESSAGE(WM_PARAMS, OnSSIParams)
+          	MESSAGE_HANDLER(WM_TIMEOUT, TMessage, 		onSSITimeout)
+            MESSAGE_HANDLER(WM_EVENT, TMessage, 		onSSIEvent)
+//          ON_MESSAGE(WM_CMDCOMPLETEMSG, OnSSICommandCompleted)
+//          ON_MESSAGE(WM_USER_GETSWTRIGPARAM, OnGetSWTrigParam)
+//          ON_MESSAGE(WM_USER_GETIMAGETYPES, OnGetImageFileTypesParam)
+//          ON_MESSAGE(WM_USER_GETVIEWFINDERPARAM, OnGetViewFinderParam)
+//          ON_MESSAGE(WM_SENDGETVERSIONMSG, OnWM_SENDGETVERSIONMSG)
+//          ON_MESSAGE(WM_SENDGETCAPABILITIESMSG, OnWM_SENDGETCAPABILITIESMSG)
+
+
+
     END_MESSAGE_MAP(TForm)
 };
 
