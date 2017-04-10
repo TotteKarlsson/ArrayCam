@@ -317,8 +317,8 @@ object MainForm: TMainForm
             Font.Style = [fsBold]
             ParentFont = False
             Layout = tlCenter
-            ExplicitLeft = 11
-            ExplicitTop = 75
+            ExplicitWidth = 131
+            ExplicitHeight = 39
           end
           object Panel7: TPanel
             Left = 2
@@ -546,9 +546,6 @@ object MainForm: TMainForm
           Align = alLeft
           Caption = 'Select DB User'
           TabOrder = 0
-          ExplicitLeft = 311
-          ExplicitTop = 14
-          ExplicitHeight = 201
           object mUsersCB: TDBLookupComboBox
             Left = 16
             Top = 32
@@ -569,8 +566,7 @@ object MainForm: TMainForm
           Align = alLeft
           AutoSize = True
           TabOrder = 1
-          ExplicitLeft = 19
-          ExplicitTop = 14
+          ExplicitHeight = 215
           inherited GroupBox1: TGroupBox
             inherited mServerIPE: TSTDStringLabeledEdit
               Height = 27
@@ -626,14 +622,14 @@ object MainForm: TMainForm
           Width = 354
           Height = 215
           Align = alLeft
-          Caption = 'Blocks'
+          Caption = 'Select Block'
           TabOrder = 2
           object DBGrid1: TDBGrid
             AlignWithMargins = True
             Left = 12
-            Top = 31
+            Top = 72
             Width = 330
-            Height = 147
+            Height = 106
             Margins.Left = 10
             Margins.Top = 10
             Margins.Right = 10
@@ -658,7 +654,7 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'label'
-                Width = 108
+                Width = 127
                 Visible = True
               end>
           end
@@ -671,8 +667,32 @@ object MainForm: TMainForm
             VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
             Align = alBottom
             TabOrder = 1
-            ExplicitTop = 210
-            ExplicitWidth = 1178
+          end
+          object Panel8: TPanel
+            Left = 2
+            Top = 21
+            Width = 350
+            Height = 41
+            Align = alTop
+            TabOrder = 2
+            object Label1: TLabel
+              Left = 4
+              Top = 8
+              Width = 200
+              Height = 19
+              Caption = 'Select Specimen Process ID:'
+            end
+            object DBLookupComboBox1: TDBLookupComboBox
+              Left = 224
+              Top = 1
+              Width = 125
+              Height = 27
+              Align = alRight
+              KeyField = 'process_id'
+              ListField = 'process_id'
+              ListSource = atdbDM.specimenDataSource
+              TabOrder = 0
+            end
           end
         end
       end
@@ -2008,7 +2028,7 @@ object MainForm: TMainForm
           SoundID = 'BUTTON_CLICK_4'
         end
         object mRibbonStartBtn: TArrayBotButton
-          Left = 473
+          Left = 577
           Top = 1
           Width = 176
           Height = 84
@@ -2029,13 +2049,32 @@ object MainForm: TMainForm
         object CounterGB: TGroupBox
           Left = 149
           Top = 1
-          Width = 324
+          Width = 428
           Height = 84
           Align = alLeft
           Caption = 'Ribbon Creation'
           TabOrder = 2
-          object mCounterLabel: TIntLabel
-            Left = 232
+          object mSectionCounterLabel: TIntLabel
+            Left = 176
+            Top = 39
+            Width = 16
+            Height = 35
+            Caption = '1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -29
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Value = 1
+            TheFont.Charset = DEFAULT_CHARSET
+            TheFont.Color = clWindowText
+            TheFont.Height = -29
+            TheFont.Name = 'Tahoma'
+            TheFont.Style = []
+          end
+          object mRibbonOrderCountLabel: TIntLabel
+            Left = 328
             Top = 41
             Width = 16
             Height = 35
@@ -2072,20 +2111,32 @@ object MainForm: TMainForm
           end
           object mResetCounterBtn: TArrayBotButton
             Left = 85
-            Top = 37
-            Width = 132
+            Top = 39
+            Width = 68
             Height = 42
-            Caption = 'Reset Counter'
+            Caption = 'Reset'
             Enabled = False
             ParentDoubleBuffered = True
             TabOrder = 1
             OnClick = mResetCounterBtnClick
             SoundID = 'BUTTON_CLICK_4'
           end
+          object mResetRibbonOrderBtn: TArrayBotButton
+            Left = 240
+            Top = 39
+            Width = 68
+            Height = 42
+            Caption = 'Reset'
+            Enabled = False
+            ParentDoubleBuffered = True
+            TabOrder = 2
+            OnClick = mResetCounterBtnClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
         end
         object mRibbonCreatorActiveCB: TPropertyCheckBox
-          Left = 672
-          Top = 32
+          Left = 800
+          Top = 40
           Width = 241
           Height = 17
           Caption = 'Ribbon Creator On/Off'

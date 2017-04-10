@@ -62,7 +62,6 @@ void __fastcall TRegisterNewRibbonForm::mProcessIDCBChange(TObject *Sender)
 	//Select blocks for the currently selected Process ID
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall TRegisterNewRibbonForm::mRibbonNavigatorClick(TObject *Sender, TNavigateBtn Button)
 {
@@ -71,10 +70,16 @@ void __fastcall TRegisterNewRibbonForm::mRibbonNavigatorClick(TObject *Sender, T
     	case TNavigateBtn::nbDelete:        break;
     	case TNavigateBtn::nbInsert:
         {
-	        atdbDM->mRibbonCDS->FieldByName("id")->Value 		= getUUID().c_str();
-	        atdbDM->mRibbonCDS->FieldByName("block_id")->Value 	= atdbDM->blocksCDS->FieldByName("id")->Value;
-            atdbDM->mRibbonCDS->Post();
-			atdbDM->mRibbonCDS->First();
+	        atdbDM->mRibbonCDS->FieldByName("created_by")->Value 	= atdbDM->usersCDS->FieldByName("id")->Value;
+	        atdbDM->mRibbonCDS->FieldByName("id")->Value 			= getUUID().c_str();
+	        atdbDM->mRibbonCDS->FieldByName("block_id")->Value 		= atdbDM->blocksCDS->FieldByName("id")->Value;
+	        atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = 12;
+	        atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value  = 2;
+
+
+//            atdbDM->mRibbonCDS->Post();
+
+//			atdbDM->mRibbonCDS->First();
         }
         break;
         case TNavigateBtn::nbPost:        break;
@@ -121,23 +126,32 @@ void __fastcall TRegisterNewRibbonForm::miscBtnClick(TObject *Sender)
 	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
     if(b == mIncrementSectionBtn)
     {
-    	int nr = mNrOfSectionsEdit->Text.ToInt();
-		mNrOfSectionsEdit->Text = IntToStr(nr + 1);
+    	int nr = atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
+        atdbDM->mRibbonCDS->Edit();
+        atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr + 1);
+//        atdbDM->mRibbonCDS->Post();
     }
     else if(b == mDecrementSectionBtn)
     {
-    	int nr = mNrOfSectionsEdit->Text.ToInt();
-		mNrOfSectionsEdit->Text = IntToStr(nr - 1);
+    	int nr = atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
+        atdbDM->mRibbonCDS->Edit();
+        atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr - 1);
+//        atdbDM->mRibbonCDS->Post();
     }
     else if(b == mIncrementCuttingOrderBtn)
     {
-       	int nr = mCuttingOrderEdit->Text.ToInt();
-		mCuttingOrderEdit->Text = IntToStr(nr + 1);
+    	int nr = atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value;
+        atdbDM->mRibbonCDS->Edit();
+        atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr + 1);
+//        atdbDM->mRibbonCDS->Post();
+
     }
     else if(b == mDecrementCuttingOrderBtn)
     {
-       	int nr = mCuttingOrderEdit->Text.ToInt();
-		mCuttingOrderEdit->Text = IntToStr(nr - 1);
+    	int nr = atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value;
+        atdbDM->mRibbonCDS->Edit();
+        atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr - 1);
+//        atdbDM->mRibbonCDS->Post();
     }
 
 }

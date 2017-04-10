@@ -129,7 +129,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 else if(d == "03") //Cutting
                 {
                    	Log(lDebug3) << "Cutting";
-                   	mUC7.getCounter().increase();
+                   	mUC7.getSectionCounter().increase();
                    	mUC7.setStrokeState(UC7::ssCutting);
                     mHWPosShape->Left = mCuttingLbl->Left;
                     mHWPosShape->Width = mCuttingLbl->Width;
@@ -140,6 +140,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                    	mUC7.setStrokeState(UC7::ssAfterCutting);
                     mHWPosShape->Left = mAfterCuttingLbl->Left;
                     mHWPosShape->Width = mAfterCuttingLbl->Width;
+					mRibbonOrderCountLabel->update();
 
                 }
                 else if(d == "E0")

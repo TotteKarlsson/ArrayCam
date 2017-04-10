@@ -3,7 +3,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Register New Ribbon'
-  ClientHeight = 663
+  ClientHeight = 718
   ClientWidth = 943
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,15 +23,14 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     Left = 0
     Top = 0
     Width = 297
-    Height = 583
+    Height = 638
     Align = alLeft
     Caption = 'Ribbon Origin'
     TabOrder = 0
-    ExplicitHeight = 581
     object Splitter1: TSplitter
       Left = 2
       Top = 21
-      Height = 560
+      Height = 615
       ExplicitLeft = 160
       ExplicitTop = 192
       ExplicitHeight = 100
@@ -40,20 +39,16 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Left = 5
       Top = 21
       Width = 290
-      Height = 560
+      Height = 615
       Align = alClient
       Caption = 'Ribbons'
       TabOrder = 0
-      ExplicitLeft = 24
-      ExplicitTop = 96
-      ExplicitWidth = 185
-      ExplicitHeight = 105
       object mBlocksForRibbonsGrid: TDBGrid
         AlignWithMargins = True
         Left = 12
         Top = 31
         Width = 266
-        Height = 476
+        Height = 531
         Margins.Left = 10
         Margins.Top = 10
         Margins.Right = 10
@@ -83,7 +78,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       end
       object mRibbonNavigator: TDBNavigator
         Left = 2
-        Top = 517
+        Top = 572
         Width = 286
         Height = 41
         DataSource = atdbDM.mRibbonDSource
@@ -91,7 +86,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Align = alBottom
         TabOrder = 1
         OnClick = mRibbonNavigatorClick
-        ExplicitTop = 280
       end
     end
   end
@@ -99,16 +93,13 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     Left = 297
     Top = 0
     Width = 646
-    Height = 583
+    Height = 638
     Align = alClient
     Caption = 'Coverslip and Ribbon Details'
     TabOrder = 1
-    ExplicitLeft = 385
-    ExplicitWidth = 436
-    ExplicitHeight = 449
     object mCSBarcode: TLabel
       Left = 144
-      Top = 116
+      Top = 129
       Width = 92
       Height = 29
       Caption = 'C000123'
@@ -121,14 +112,14 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     end
     object Label1: TLabel
       Left = 24
-      Top = 124
+      Top = 137
       Width = 93
       Height = 19
       Caption = 'Coverslip ID:'
     end
     object Label2: TLabel
       Left = 24
-      Top = 151
+      Top = 164
       Width = 139
       Height = 19
       Caption = 'Number of Sections'
@@ -164,21 +155,21 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     end
     object Label4: TLabel
       Left = 24
-      Top = 231
+      Top = 244
       Width = 97
       Height = 19
       Caption = 'Cutting Order'
     end
     object Label5: TLabel
       Left = 24
-      Top = 76
+      Top = 71
       Width = 123
       Height = 19
       Caption = 'Block Process ID:'
     end
     object DBText3: TDBText
       Left = 160
-      Top = 76
+      Top = 71
       Width = 97
       Height = 17
       DataField = 'process_id'
@@ -192,14 +183,14 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     end
     object Label6: TLabel
       Left = 318
-      Top = 76
+      Top = 71
       Width = 87
       Height = 19
       Caption = 'Block Serial:'
     end
     object DBText4: TDBText
       Left = 411
-      Top = 76
+      Top = 71
       Width = 97
       Height = 17
       DataField = 'serial'
@@ -211,23 +202,63 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Font.Style = []
       ParentFont = False
     end
-    object mNrOfSectionsEdit: TDBEdit
+    object Label7: TLabel
       Left = 24
-      Top = 176
-      Width = 145
-      Height = 27
+      Top = 99
+      Width = 85
+      Height = 19
+      Caption = 'Block Label:'
+    end
+    object DBText5: TDBText
+      Left = 160
+      Top = 99
+      Width = 152
+      Height = 17
+      DataField = 'label'
+      DataSource = atdbDM.blocksDataSource
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBText6: TDBText
+      Left = 216
+      Top = 202
+      Width = 152
+      Height = 36
       DataField = 'nr_of_sections'
       DataSource = atdbDM.mRibbonDSource
-      TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBText7: TDBText
+      Left = 216
+      Top = 283
+      Width = 152
+      Height = 36
+      DataField = 'cutting_order'
+      DataSource = atdbDM.mRibbonDSource
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object GroupBox5: TGroupBox
       Left = 2
-      Top = 289
+      Top = 344
       Width = 642
       Height = 292
       Align = alBottom
       Caption = 'Ribbon Notes'
-      TabOrder = 1
+      TabOrder = 0
       object mRibbonNotesGrid: TDBGrid
         Left = 12
         Top = 58
@@ -281,38 +312,29 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       end
     end
     object mDecrementCuttingOrderBtn: TArrayBotButton
-      Left = 318
-      Top = 233
+      Left = 105
+      Top = 269
       Width = 75
       Height = 50
       Caption = '-'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = miscBtnClick
       SoundID = 'BUTTON_CLICK_4'
     end
     object mIncrementSectionBtn: TArrayBotButton
-      Left = 207
-      Top = 165
+      Left = 24
+      Top = 188
       Width = 75
       Height = 50
       Caption = '+'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = miscBtnClick
       SoundID = 'BUTTON_CLICK_4'
-    end
-    object mCuttingOrderEdit: TDBEdit
-      Left = 24
-      Top = 256
-      Width = 145
-      Height = 27
-      DataField = 'cutting_order'
-      DataSource = atdbDM.mRibbonDSource
-      TabOrder = 4
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 583
+    Top = 638
     Width = 943
     Height = 80
     Align = alBottom
@@ -334,8 +356,8 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     end
   end
   object mDecrementSectionBtn: TArrayBotButton
-    Left = 615
-    Top = 165
+    Left = 402
+    Top = 188
     Width = 75
     Height = 50
     Caption = '-'
@@ -344,8 +366,8 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     SoundID = 'BUTTON_CLICK_4'
   end
   object mIncrementCuttingOrderBtn: TArrayBotButton
-    Left = 504
-    Top = 233
+    Left = 321
+    Top = 269
     Width = 75
     Height = 50
     Caption = '+'

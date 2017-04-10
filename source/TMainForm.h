@@ -144,7 +144,7 @@ class TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mZeroCutsE;
 	TArrayBotButton *mRibbonStartBtn;
 	TGroupBox *CounterGB;
-	TIntLabel *mCounterLabel;
+	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
 	TArrayBotButton *mResetCounterBtn;
 	TArrayBotButton *mStartStopBtn;
@@ -172,6 +172,11 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid1;
 	TDBNavigator *DBNavigator1;
 	TDBLookupComboBox *mUsersCB;
+	TDBLookupComboBox *DBLookupComboBox1;
+	TPanel *Panel8;
+	TLabel *Label1;
+	TIntLabel *mRibbonOrderCountLabel;
+	TArrayBotButton *mResetRibbonOrderBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

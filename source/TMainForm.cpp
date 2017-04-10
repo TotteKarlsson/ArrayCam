@@ -78,12 +78,14 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	//Setup references
   	//The following causes the editbox, and its property to reference the counters CountTo value
-   	mCountToE->setReference(mUC7.getCounter().getCountToReference());
-   	mCounterLabel->setReference(mUC7.getCounter().getCountReference());
+   	mCountToE->setReference(mUC7.getSectionCounter().getCountToReference());
+   	mSectionCounterLabel->setReference(mUC7.getSectionCounter().getCountReference());
+    mRibbonOrderCountLabel->setReference(mUC7.getRibbonOrderCounter().getCountReference());
     mZeroCutsE->setReference(mUC7.getNumberOfZeroStrokesReference());
 
     mCountToE->update();
-    mCounterLabel->update();
+    mSectionCounterLabel->update();
+    mRibbonOrderCountLabel->update();
     mZeroCutsE->update();
 
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
@@ -399,8 +401,10 @@ void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
 void __fastcall TMainForm::onConnectedToUC7()
 {
 	//Setup callbacks
-    mUC7.getCounter().assignOnCountCallBack(onUC7Count);
-    mUC7.getCounter().assignOnCountedToCallBack(onUC7CountedTo);
+    mUC7.getSectionCounter().assignOnCountCallBack(onUC7Count);
+    mUC7.getSectionCounter().assignOnCountedToCallBack(onUC7CountedTo);
+
+
 	enableDisableUI(true);
 	mSynchUIBtnClick(NULL);
 }
@@ -428,11 +432,11 @@ void __fastcall TMainForm::enableDisableUI(bool enableDisable)
 //---------------------------------------------------------------------------
 void TMainForm::onUC7Count()
 {
-	mCounterLabel->update();
+	mSectionCounterLabel->update();
     if(mRibbonCreatorActiveCB->Checked)
     {
     	//Check if we are close to ribbon separation
-        if(mCounterLabel->getValue() >= (mCountToE->getValue() - 3))
+        if(mSectionCounterLabel->getValue() >= (mCountToE->getValue() - 3))
         {
 			playABSound(absBeforeBackOff, SND_ASYNC);
         }
@@ -444,7 +448,7 @@ void TMainForm::onUC7CountedTo()
 {
 	if(mUC7.isActive())
     {
-	    mUC7.getCounter().reset();
+	    mUC7.getSectionCounter().reset();
 		Log(lInfo) << "Creating new ribbon";
 	    mUC7.prepareToCutRibbon(true);
         mRibbonStartBtn->Enabled = false;
@@ -515,8 +519,13 @@ void __fastcall TMainForm::mResetCounterBtnClick(TObject *Sender)
 	TArrayBotButton* btn = dynamic_cast<TArrayBotButton*>(Sender);
     if(btn == mResetCounterBtn)
     {
-    	mUC7.getCounter().reset();
-        mCounterLabel->update();
+    	mUC7.getSectionCounter().reset();
+        mSectionCounterLabel->update();
+    }
+    else if(btn == mResetRibbonOrderBtn)
+    {
+		mUC7.getRibbonOrderCounter().reset();
+        mRibbonOrderCountLabel->update();
     }
 }
 
