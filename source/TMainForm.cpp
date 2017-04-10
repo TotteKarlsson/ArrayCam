@@ -68,7 +68,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mProcessID(0),
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
-	    mZebra(this->Handle)
+	    mZebra()
 
 {
    	mLogFileReader.start(true);
@@ -244,11 +244,8 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 		mSettingsForm = new TSettingsForm(*this);
     }
 
-    if(mSettingsForm)
-    {
-    	mSettingsForm->TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
-    }
-
+   	TATDBConnectionFrame1->init(&(mIniFile));
+    TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
 }
 
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
@@ -568,9 +565,20 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 {
-	TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(this);
-	    rrf->ShowModal();
-    delete rrf;
+	//Check that we have a valid barcode for the coverslip
+//    if(mBCLabel->Caption == "")
+//    {
+//    	MessageDlg("A valid coverslip barcode is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
+//    }
+//    else
+    {
+		TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
+//        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+        rrf->setCoverSlipBarcode("Test-123");
+		    rrf->ShowModal();
+	    delete rrf;
+        mBCLabel->Caption = "";
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -584,7 +592,7 @@ void __fastcall TMainForm::mConnectZebraBtnClick(TObject *Sender)
 	int Comport = getZebraCOMPortNumber();
    	if(mConnectZebraBtn->Caption == "Open")
     {
-        if(mZebra.connect(Comport, mZebraBaudRate) != true)
+        if(mZebra.connect(Comport, mZebraBaudRate, this->Handle) != true)
         {
         	Log(lError) << "Failed to connect barcode reader";
         }
@@ -607,7 +615,7 @@ void __fastcall TMainForm::mConnectZebraBtnClick(TObject *Sender)
 void __fastcall TMainForm::onConnectedToZebra()
 {
     mConnectZebraBtn->Caption = "Close";
-//    enableDisableGroupBox(mImagerSettingsGB, true);
+    enableDisableGroupBox(mImagerSettingsGB, true);
 
     //Turn into a 'known' state
 //	mZebra.beep(ONESHORTLO);
@@ -617,7 +625,7 @@ void __fastcall TMainForm::onConnectedToZebra()
 void __fastcall TMainForm::onDisConnectedToZebra()
 {
     mConnectZebraBtn->Caption = "Open";
-//    enableDisableGroupBox(mImagerSettingsGB, false);
+    enableDisableGroupBox(mImagerSettingsGB, false);
 }
 
 
@@ -819,5 +827,32 @@ void __fastcall TMainForm::onSSICapabilities(TMessage& Msg)
     Log(lInfo) << "There was an onSSICapabilities event..";
 }
 
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
+{
+	//Check which one was clicked
+    TRadioGroup* rg = dynamic_cast<TRadioGroup*>(Sender);
+
+    int status;
+    if(rg == mScannerAimRG)
+    {
+    	status  = (rg->ItemIndex == 0 ) ? mZebra.aimOn() : mZebra.aimOff();
+    }
+    else if(rg == mScannerEnabledRG)
+    {
+    	status  = (rg->ItemIndex == 0 ) ? mZebra.scanEnable() : mZebra.scanDisable();
+    }
+
+    Log(lInfo) << "Status: "<<status;
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
+{
+    mDBUserID.setValue(mUsersCB->KeyValue);
+}
 
 

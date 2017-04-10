@@ -66,8 +66,6 @@ class TSettingsForm : public TForm
         TPropertyCheckBox *mAutoWhiteBalanceCB;
         mtkFloatLabel *mSoftwareGammaLbl;
         TPropertyCheckBox *mAutoCheckConnectionCB;
-        TATDBConnectionFrame *TATDBConnectionFrame1;
-	TComboBox *mUsersCB;
         void __fastcall mASStartBtnClick(TObject *Sender);
         void __fastcall mUIUpdateTimerTimer(TObject *Sender);
         void __fastcall mVerticalMirrorCBClick(TObject *Sender);
@@ -87,7 +85,6 @@ class TSettingsForm : public TForm
         void __fastcall mExposureTimeTBChange(TObject *Sender);
         void __fastcall mBlackLevelTBChange(TObject *Sender);
         void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
-	void __fastcall mUsersCBCloseUp(TObject *Sender);
 
 
     private:
@@ -99,9 +96,6 @@ class TSettingsForm : public TForm
     public:
         TMainForm&					mMainForm;
         __fastcall 					TSettingsForm(TMainForm& mf);
-
-		void __fastcall	            afterServerConnect(System::TObject* Sender);
-		void __fastcall	            afterServerDisconnect(System::TObject* Sender);
 };
 
 extern PACKAGE TSettingsForm *SettingsForm;

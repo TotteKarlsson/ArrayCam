@@ -40,6 +40,7 @@
 #include "TCoverSlipDataModule.h"
 #include "TATDBConnectionFrame.h"
 #include "barcodereader/atDS457.h"
+#include "TATDBDataModule.h"
 
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
@@ -58,10 +59,12 @@ enum ApplicationMessageEnum
 
 class TSettingsForm;
 class TLocalArgs;
+class TRegisterNewRibbonForm;
 //---------------------------------------------------------------------------
 class TMainForm  : public TRegistryForm
 {
 	friend TSettingsForm;
+	friend TRegisterNewRibbonForm;
 	friend TLocalArgs;
 
 	__published:	// IDE-managed Components
@@ -156,6 +159,19 @@ class TMainForm  : public TRegistryForm
 	TButton *mDecodeSessionBtn;
 	TButton *mBeepBtn;
 	TLabel *mBCLabel;
+	TGroupBox *mImagerSettingsGB;
+	TRadioGroup *mScannerAimRG;
+	TRadioGroup *mScannerEnabledRG;
+	TPageControl *PageControl3;
+	TTabSheet *TabSheet2;
+	TTabSheet *TabSheet3;
+	TTabSheet *TabSheet4;
+	TGroupBox *UsersGB;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
+	TGroupBox *BlocksGB;
+	TDBGrid *DBGrid1;
+	TDBNavigator *DBNavigator1;
+	TDBLookupComboBox *mUsersCB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -200,6 +216,8 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mRegisterRibbonBtnClick(TObject *Sender);
 	void __fastcall mConnectZebraBtnClick(TObject *Sender);
 	void __fastcall mBtnClick(TObject *Sender);
+	void __fastcall scannerSettingsClick(TObject *Sender);
+	void __fastcall mUsersCBCloseUp(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -271,6 +289,9 @@ class TMainForm  : public TRegistryForm
         										//Database stuff
 		mtk::Property<int>	                    mDBUserID;
         mtk::Property<int>						mProcessID;
+		int 									getCurrentUserID();
+		string 									getCurrentUserName();
+		void 									populateUsersCB();
 
         										//Callbacks
         void									onArduinoClientConnected();

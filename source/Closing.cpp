@@ -82,6 +82,8 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	TATDBConnectionFrame1->purge();
+
 	mCOMPort = mComportCB->ItemIndex + 1;
 	Log(lInfo) << "In FormClose";
 	mCOMPort = mComportCB->ItemIndex + 1;

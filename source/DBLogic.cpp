@@ -15,20 +15,30 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
 
 	atdbDM->afterConnect();
     csDM->afterConnect();
-
-    if(mSettingsForm)
-    {
-		mSettingsForm->afterServerConnect(Sender);
-    }
+	TATDBConnectionFrame1->afterConnect();
+    mUsersCB->KeyValue = mDBUserID.getValue();
+    enableDisableGroupBox(BlocksGB, true);
+    enableDisableGroupBox(UsersGB, true);
+    mRegisterRibbonBtn->Enabled = true;
 }
 
 void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Disconnected from the DB Server";
-    if(mSettingsForm)
-    {
-		mSettingsForm->afterServerDisconnect(Sender);
-    }
+	TATDBConnectionFrame1->afterDisconnect();
+    mUsersCB->Enabled = false;
+    BlocksGB->Enabled = false;
+    enableDisableGroupBox(BlocksGB, false);
+    enableDisableGroupBox(UsersGB, false);
+    mRegisterRibbonBtn->Enabled = false;
 }
 
+int TMainForm::getCurrentUserID()
+{
+	return  mUsersCB->KeyValue;
+}
 
+string TMainForm::getCurrentUserName()
+{
+	return  stdstr(atdbDM->usersCDS->FieldByName("user_name")->Value);
+}

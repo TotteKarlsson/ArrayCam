@@ -283,201 +283,398 @@ object MainForm: TMainForm
     Height = 251
     Align = alBottom
     TabOrder = 1
-    object Panel4: TPanel
+    object PageControl3: TPageControl
       Left = 1
       Top = 1
-      Width = 536
+      Width = 1190
       Height = 249
-      Align = alLeft
-      Caption = 'Panel4'
+      ActivePage = TabSheet4
+      Align = alClient
       TabOrder = 0
-      object GroupBox8: TGroupBox
-        Left = 1
-        Top = 1
-        Width = 534
-        Height = 50
-        Align = alTop
-        Caption = 'Logs'
-        TabOrder = 0
-        object mCloseBottomPanelBtn: TButton
-          Left = 464
-          Top = 21
-          Width = 68
-          Height = 27
-          Align = alRight
-          Caption = 'x'
+      object TabSheet2: TTabSheet
+        Caption = 'Barcode Reading'
+        object GroupBox1: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 1182
+          Height = 215
+          Align = alClient
+          Caption = 'Zebra'
           TabOrder = 0
-          OnClick = mCloseBottomPanelBtnClick
+          object mBCLabel: TLabel
+            AlignWithMargins = True
+            Left = 5
+            Top = 73
+            Width = 848
+            Height = 137
+            Align = alClient
+            Alignment = taCenter
+            Caption = 'Barcode'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -32
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Layout = tlCenter
+            ExplicitLeft = 11
+            ExplicitTop = 75
+          end
+          object Panel7: TPanel
+            Left = 2
+            Top = 21
+            Width = 1178
+            Height = 49
+            Align = alTop
+            TabOrder = 0
+            object mZebraCOMPortCB: TComboBox
+              Left = 1
+              Top = 1
+              Width = 87
+              Height = 27
+              Align = alLeft
+              TabOrder = 0
+              Text = 'COM1'
+              Items.Strings = (
+                'COM1'
+                'COM2'
+                'COM3'
+                'COM4'
+                'COM5'
+                'COM6'
+                'COM7'
+                'COM8'
+                'COM9'
+                'COM10'
+                'COM11'
+                'COM12'
+                'COM13'
+                'COM14'
+                'COM15'
+                'COM16'
+                'COM17'
+                'COM18'
+                'COM19'
+                'COM20')
+            end
+            object mConnectZebraBtn: TButton
+              Left = 164
+              Top = 1
+              Width = 77
+              Height = 47
+              Align = alLeft
+              Caption = 'Open'
+              TabOrder = 1
+              OnClick = mConnectZebraBtnClick
+            end
+            object mZebraBaudRateCB: TComboBox
+              Left = 88
+              Top = 1
+              Width = 76
+              Height = 27
+              Align = alLeft
+              ItemIndex = 0
+              TabOrder = 2
+              Text = '9600'
+              Items.Strings = (
+                '9600'
+                '14400'
+                '19200'
+                '38400'
+                '57600'
+                '115200'
+                '128000'
+                '256000')
+            end
+          end
+          object mDecodeSessionBtn: TButton
+            Left = 5
+            Top = 96
+            Width = 89
+            Height = 81
+            Caption = 'Start'
+            TabOrder = 1
+            OnClick = mBtnClick
+          end
+          object mBeepBtn: TButton
+            Left = 113
+            Top = 96
+            Width = 75
+            Height = 33
+            Caption = 'Beep'
+            TabOrder = 2
+            OnClick = mBtnClick
+          end
+          object mImagerSettingsGB: TGroupBox
+            Left = 856
+            Top = 70
+            Width = 324
+            Height = 143
+            Align = alRight
+            Caption = 'Functions and Settings'
+            TabOrder = 3
+            object mScannerAimRG: TRadioGroup
+              Left = 11
+              Top = 78
+              Width = 145
+              Height = 49
+              Caption = 'Aim'
+              Columns = 2
+              ItemIndex = 1
+              Items.Strings = (
+                'On'
+                'Off')
+              TabOrder = 0
+              OnClick = scannerSettingsClick
+            end
+            object mScannerEnabledRG: TRadioGroup
+              Left = 9
+              Top = 23
+              Width = 145
+              Height = 49
+              Caption = 'Enabled'
+              Columns = 2
+              ItemIndex = 0
+              Items.Strings = (
+                'On'
+                'Off')
+              TabOrder = 1
+              OnClick = scannerSettingsClick
+            end
+          end
         end
-        object ToolBar1: TToolBar
-          Left = 2
-          Top = 21
-          Width = 258
-          Height = 27
+      end
+      object TabSheet3: TTabSheet
+        Caption = 'Logs'
+        ImageIndex = 1
+        object Panel4: TPanel
+          Left = 0
+          Top = 0
+          Width = 1182
+          Height = 215
+          Align = alClient
+          Caption = 'Panel4'
+          TabOrder = 0
+          object GroupBox8: TGroupBox
+            Left = 1
+            Top = 1
+            Width = 1180
+            Height = 50
+            Align = alTop
+            Caption = 'Logs'
+            TabOrder = 0
+            object mCloseBottomPanelBtn: TButton
+              Left = 1110
+              Top = 21
+              Width = 68
+              Height = 27
+              Align = alRight
+              Caption = 'x'
+              TabOrder = 0
+              OnClick = mCloseBottomPanelBtnClick
+            end
+            object ToolBar1: TToolBar
+              Left = 2
+              Top = 21
+              Width = 258
+              Height = 27
+              Align = alLeft
+              AutoSize = True
+              ButtonHeight = 25
+              Caption = 'ToolBar1'
+              TabOrder = 1
+              object mClearLogMemoBtn: TBitBtn
+                Left = 0
+                Top = 0
+                Width = 113
+                Height = 25
+                Align = alLeft
+                Caption = 'Clear'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 0
+                OnClick = ClearLogMemo
+              end
+              object LogLevelCB: TComboBox
+                Left = 113
+                Top = 0
+                Width = 145
+                Height = 21
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 1
+                Text = 'INFO'
+                OnChange = LogLevelCBChange
+                Items.Strings = (
+                  'INFO'
+                  'DEBUG'
+                  'DEBUG1'
+                  'DEBUG2'
+                  'DEBUG3'
+                  'DEBUG4'
+                  'DEBUG5')
+              end
+            end
+          end
+          object infoMemo: TMemo
+            Left = 1
+            Top = 51
+            Width = 1180
+            Height = 163
+            Align = alClient
+            ScrollBars = ssVertical
+            TabOrder = 1
+          end
+        end
+      end
+      object TabSheet4: TTabSheet
+        Caption = 'Database'
+        ImageIndex = 2
+        object UsersGB: TGroupBox
+          Left = 286
+          Top = 0
+          Width = 185
+          Height = 215
+          Align = alLeft
+          Caption = 'Select DB User'
+          TabOrder = 0
+          ExplicitLeft = 311
+          ExplicitTop = 14
+          ExplicitHeight = 201
+          object mUsersCB: TDBLookupComboBox
+            Left = 16
+            Top = 32
+            Width = 145
+            Height = 27
+            KeyField = 'id'
+            ListField = 'user_name'
+            ListSource = atdbDM.usersDataSource
+            TabOrder = 0
+            OnCloseUp = mUsersCBCloseUp
+          end
+        end
+        inline TATDBConnectionFrame1: TATDBConnectionFrame
+          Left = 0
+          Top = 0
+          Width = 286
+          Height = 215
           Align = alLeft
           AutoSize = True
-          ButtonHeight = 25
-          Caption = 'ToolBar1'
           TabOrder = 1
-          object mClearLogMemoBtn: TBitBtn
-            Left = 0
-            Top = 0
-            Width = 113
-            Height = 25
-            Align = alLeft
-            Caption = 'Clear'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            OnClick = ClearLogMemo
+          ExplicitLeft = 19
+          ExplicitTop = 14
+          inherited GroupBox1: TGroupBox
+            inherited mServerIPE: TSTDStringLabeledEdit
+              Height = 27
+              EditLabel.Width = 65
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 16
+              EditLabel.ExplicitTop = 18
+              EditLabel.ExplicitWidth = 65
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+            inherited mDBUserE: TSTDStringLabeledEdit
+              Height = 27
+              EditLabel.Width = 32
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 16
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 32
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+            inherited mPasswordE: TSTDStringLabeledEdit
+              Height = 27
+              EditLabel.Width = 67
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 146
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 67
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+            inherited mATDBServerBtnConnect: TArrayBotButton
+              Left = 40
+              Width = 171
+              ExplicitLeft = 40
+              ExplicitWidth = 171
+            end
+            inherited mDatabaseE: TSTDStringLabeledEdit
+              Height = 27
+              EditLabel.Width = 64
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 146
+              EditLabel.ExplicitTop = 18
+              EditLabel.ExplicitWidth = 64
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
           end
-          object LogLevelCB: TComboBox
-            Left = 113
-            Top = 0
-            Width = 145
-            Height = 21
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            Text = 'INFO'
-            OnChange = LogLevelCBChange
-            Items.Strings = (
-              'INFO'
-              'DEBUG'
-              'DEBUG1'
-              'DEBUG2'
-              'DEBUG3'
-              'DEBUG4'
-              'DEBUG5')
-          end
         end
-      end
-      object infoMemo: TMemo
-        Left = 1
-        Top = 51
-        Width = 534
-        Height = 197
-        Align = alClient
-        ScrollBars = ssVertical
-        TabOrder = 1
-      end
-    end
-    object GroupBox1: TGroupBox
-      Left = 537
-      Top = 1
-      Width = 654
-      Height = 249
-      Align = alClient
-      Caption = 'Zebra'
-      TabOrder = 1
-      object mBCLabel: TLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 76
-        Width = 644
-        Height = 168
-        Align = alClient
-        Alignment = taCenter
-        Caption = 'Barcode'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clRed
-        Font.Height = -32
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Layout = tlCenter
-        ExplicitWidth = 131
-        ExplicitHeight = 39
-      end
-      object Panel7: TPanel
-        Left = 2
-        Top = 21
-        Width = 650
-        Height = 52
-        Align = alTop
-        TabOrder = 0
-        object mZebraCOMPortCB: TComboBox
-          Left = 8
-          Top = 14
-          Width = 87
-          Height = 27
-          TabOrder = 0
-          Text = 'COM1'
-          Items.Strings = (
-            'COM1'
-            'COM2'
-            'COM3'
-            'COM4'
-            'COM5'
-            'COM6'
-            'COM7'
-            'COM8'
-            'COM9'
-            'COM10'
-            'COM11'
-            'COM12'
-            'COM13'
-            'COM14'
-            'COM15'
-            'COM16'
-            'COM17'
-            'COM18'
-            'COM19'
-            'COM20')
-        end
-        object mConnectZebraBtn: TButton
-          Left = 209
-          Top = 12
-          Width = 50
-          Height = 25
-          Caption = 'Open'
-          TabOrder = 1
-          OnClick = mConnectZebraBtnClick
-        end
-        object mZebraBaudRateCB: TComboBox
-          Left = 111
-          Top = 15
-          Width = 76
-          Height = 27
-          ItemIndex = 0
+        object BlocksGB: TGroupBox
+          Left = 471
+          Top = 0
+          Width = 354
+          Height = 215
+          Align = alLeft
+          Caption = 'Blocks'
           TabOrder = 2
-          Text = '9600'
-          Items.Strings = (
-            '9600'
-            '14400'
-            '19200'
-            '38400'
-            '57600'
-            '115200'
-            '128000'
-            '256000')
+          object DBGrid1: TDBGrid
+            AlignWithMargins = True
+            Left = 12
+            Top = 31
+            Width = 330
+            Height = 147
+            Margins.Left = 10
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alClient
+            DataSource = atdbDM.blocksDataSource
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+            ReadOnly = True
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -16
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'process_id'
+                Width = 141
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'label'
+                Width = 108
+                Visible = True
+              end>
+          end
+          object DBNavigator1: TDBNavigator
+            Left = 2
+            Top = 188
+            Width = 350
+            Height = 25
+            DataSource = atdbDM.blocksDataSource
+            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+            Align = alBottom
+            TabOrder = 1
+            ExplicitTop = 210
+            ExplicitWidth = 1178
+          end
         end
-      end
-      object mDecodeSessionBtn: TButton
-        Left = 5
-        Top = 96
-        Width = 89
-        Height = 81
-        Caption = 'Start'
-        TabOrder = 1
-        OnClick = mBtnClick
-      end
-      object mBeepBtn: TButton
-        Left = 113
-        Top = 96
-        Width = 75
-        Height = 33
-        Caption = 'Beep'
-        TabOrder = 2
-        OnClick = mBtnClick
       end
     end
   end
@@ -1931,8 +2128,8 @@ object MainForm: TMainForm
     Top = 176
   end
   object mMediaPopup: TPopupMenu
-    Left = 136
-    Top = 544
+    Left = 616
+    Top = 632
     object Delete1: TMenuItem
       Caption = 'Delete'
     end

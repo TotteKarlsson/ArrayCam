@@ -29,10 +29,6 @@ object SettingsForm: TSettingsForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Camera'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -162,10 +158,6 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -325,10 +317,6 @@ object SettingsForm: TSettingsForm
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16
@@ -397,13 +385,6 @@ object SettingsForm: TSettingsForm
     object TabSheet2: TTabSheet
       Caption = 'Connections'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      DesignSize = (
-        617
-        458)
       object GroupBox1: TGroupBox
         Left = 19
         Top = 264
@@ -443,26 +424,6 @@ object SettingsForm: TSettingsForm
           TabOrder = 2
           OnClick = mAutoCheckConnectionCBClick
         end
-      end
-      inline TATDBConnectionFrame1: TATDBConnectionFrame
-        Left = 19
-        Top = 16
-        Width = 286
-        Height = 201
-        AutoSize = True
-        TabOrder = 1
-        ExplicitLeft = 19
-        ExplicitTop = 16
-      end
-      object mUsersCB: TComboBox
-        Left = 311
-        Top = 29
-        Width = 145
-        Height = 21
-        Style = csDropDownList
-        Anchors = [akTop, akRight]
-        TabOrder = 2
-        OnCloseUp = mUsersCBCloseUp
       end
     end
   end

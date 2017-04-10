@@ -24,7 +24,6 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
     mMainForm(mf)
 {
 	//Retriew conenction credentials from inifile
-	TATDBConnectionFrame1->init(&(mf.mIniFile));
 	mIsStartingUp = true;
 
     //Bind properties
@@ -259,7 +258,6 @@ void __fastcall TSettingsForm::mCloseButtonClick(TObject *Sender)
 void __fastcall TSettingsForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mUIUpdateTimer->Enabled = false;
-	TATDBConnectionFrame1->purge();
 }
 
 void __fastcall TSettingsForm::mPairLEDsCBClick(TObject *Sender)
@@ -545,63 +543,6 @@ void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
 	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
 }
 
-void __fastcall	TSettingsForm::afterServerConnect(System::TObject* Sender)
-{
-	TATDBConnectionFrame1->afterConnect();
-	populateUsersCB();
-    mUsersCB->Enabled = true;
-}
-
-void __fastcall	TSettingsForm::afterServerDisconnect(System::TObject* Sender)
-{
-	TATDBConnectionFrame1->afterDisconnect();
-    mUsersCB->Enabled = false;
-}
-
-
-void __fastcall TSettingsForm::mUsersCBCloseUp(TObject *Sender)
-{
-	if(mUsersCB->ItemIndex == -1)
-    {
-//    	enableDisableGroupBox(mBlocksGB, false);
-    }
-    else
-    {
-//    	enableDisableGroupBox(mBlocksGB, true);
-		mMainForm.mDBUserID = *(int*) (mUsersCB->Items->Objects[mUsersCB->ItemIndex]);
-    }
-}
-
-void TSettingsForm::populateUsersCB()
-{
-    //Populate users CB
-    TSQLQuery* q = new TSQLQuery(NULL);
-    q->SQLConnection = atdbDM->SQLConnection1;
-    q->SQL->Add("SELECT id,user_name from users ORDER by user_name");
-    q->Open();
-
-	mUsersCB->Clear();
-	while(!q->Eof)
-    {
-	    String s = (*q)["user_name"];
-        int *id = new int((*q)["id"]);
-	    mUsersCB->Items->AddObject(s, (TObject*) id);
-	   	q->Next();
-    }
-
-    //select current user
-    for(int i = 0; i < mUsersCB->Items->Count; i++)
-    {
-    	int uid = *(int*) mUsersCB->Items->Objects[i];
-        if(uid == mMainForm.mDBUserID.getValue())
-        {
-			mUsersCB->ItemIndex = i;
-            break;
-        }
-    }
-
-	mUsersCB->Enabled = true;
-}
 
 
 

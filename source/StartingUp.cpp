@@ -52,8 +52,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 void __fastcall TMainForm::FormShow(TObject *Sender)
 {
 	string dBase(mLocalDBName);
-	//Our low level db connection
-	//Connect to local database
 	try
     {
 
@@ -68,7 +66,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
     	handleMySQLException();
     }
 
-
     //UI DB connection
 //    if (ImagesAndMoviesDM->connect("127.0.0.1", "atdb_client", "atdb123", dBase))
 //    {
@@ -82,6 +79,8 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
     gAppIsStartingUp = false;
     enableDisableUI(false);
+    enableDisableGroupBox(mImagerSettingsGB, false);
+    mBCLabel->Caption = "";
 	mStartupTimer->Enabled = true;
 }
 
