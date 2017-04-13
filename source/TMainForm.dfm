@@ -288,7 +288,7 @@ object MainForm: TMainForm
       Top = 1
       Width = 1190
       Height = 249
-      ActivePage = TabSheet2
+      ActivePage = TabSheet4
       Align = alClient
       TabOrder = 0
       object TabSheet2: TTabSheet
@@ -453,7 +453,7 @@ object MainForm: TMainForm
           Width = 185
           Height = 215
           Align = alLeft
-          Caption = 'Select DB User'
+          Caption = 'User'
           TabOrder = 0
           object mUsersCB: TDBLookupComboBox
             Left = 16
@@ -531,7 +531,7 @@ object MainForm: TMainForm
           Width = 354
           Height = 215
           Align = alLeft
-          Caption = 'Select Block'
+          Caption = 'Block Selection'
           TabOrder = 2
           object DBGrid1: TDBGrid
             AlignWithMargins = True
@@ -588,20 +588,20 @@ object MainForm: TMainForm
             object Label1: TLabel
               Left = 4
               Top = 8
-              Width = 200
+              Width = 81
               Height = 19
-              Caption = 'Select Specimen Process ID:'
+              Caption = 'Process ID:'
             end
-            object DBLookupComboBox1: TDBLookupComboBox
-              Left = 225
-              Top = 0
-              Width = 125
+            object mBlockProcessIDCB: TDBLookupComboBox
+              Left = 98
+              Top = 5
+              Width = 111
               Height = 27
-              Align = alRight
               KeyField = 'process_id'
               ListField = 'process_id'
               ListSource = atdbDM.specimenDataSource
               TabOrder = 0
+              OnCloseUp = mBlockProcessIDCBCloseUp
             end
           end
         end
@@ -2180,8 +2180,8 @@ object MainForm: TMainForm
     Top = 176
   end
   object mMediaPopup: TPopupMenu
-    Left = 616
-    Top = 632
+    Left = 728
+    Top = 712
     object Delete1: TMenuItem
       Caption = 'Delete'
     end

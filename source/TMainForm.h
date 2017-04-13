@@ -172,7 +172,7 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid1;
 	TDBNavigator *DBNavigator1;
 	TDBLookupComboBox *mUsersCB;
-	TDBLookupComboBox *DBLookupComboBox1;
+	TDBLookupComboBox *mBlockProcessIDCB;
 	TPanel *Panel8;
 	TLabel *Label1;
 	TIntLabel *mRibbonOrderCountLabel;
@@ -223,6 +223,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mBtnClick(TObject *Sender);
 	void __fastcall scannerSettingsClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
+	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;

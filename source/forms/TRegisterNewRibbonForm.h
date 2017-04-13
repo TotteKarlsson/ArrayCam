@@ -50,7 +50,6 @@ __published:	// IDE-managed Components
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall mOkCancelBtnClick(TObject *Sender);
-	void __fastcall mProcessIDCBChange(TObject *Sender);
 	void __fastcall miscBtnClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);

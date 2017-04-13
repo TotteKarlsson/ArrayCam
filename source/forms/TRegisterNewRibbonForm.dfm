@@ -28,8 +28,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
     Align = alClient
     Caption = 'Coverslip, Block and Ribbon Details'
     TabOrder = 0
-    ExplicitLeft = 297
-    ExplicitWidth = 646
     object GroupBox5: TGroupBox
       Left = 2
       Top = 448
@@ -38,7 +36,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Align = alBottom
       Caption = 'Ribbon Note'
       TabOrder = 0
-      ExplicitWidth = 642
       object Panel3: TPanel
         Left = 2
         Top = 21
@@ -46,8 +43,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Height = 270
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 211
-        ExplicitWidth = 429
         object mRibbonNoteMemo: TMemo
           Left = 1
           Top = 1
@@ -55,10 +50,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
           Height = 268
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 112
-          ExplicitTop = 96
-          ExplicitWidth = 185
-          ExplicitHeight = 89
         end
       end
     end
@@ -70,7 +61,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Align = alTop
       Caption = 'Block Info'
       TabOrder = 1
-      ExplicitWidth = 642
       object DBText3: TDBText
         Left = 160
         Top = 32
@@ -143,7 +133,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Align = alTop
       Caption = 'Misc'
       TabOrder = 2
-      ExplicitWidth = 642
       object DBText2: TDBText
         Left = 160
         Top = 28
@@ -180,8 +169,8 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         ParentFont = False
       end
       object DBText6: TDBText
-        Left = 412
-        Top = 61
+        Left = 470
+        Top = 59
         Width = 201
         Height = 17
         DataField = 'LStatus'
@@ -190,9 +179,9 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       object Label8: TLabel
         Left = 357
         Top = 59
-        Width = 49
+        Width = 107
         Height = 19
-        Caption = 'Status:'
+        Caption = 'Current Status:'
       end
     end
     object GroupBox7: TGroupBox
@@ -203,7 +192,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Align = alClient
       Caption = 'Ribbon Info'
       TabOrder = 3
-      ExplicitWidth = 642
       object Label2: TLabel
         Left = 24
         Top = 36
@@ -319,7 +307,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       Height = 57
       Anchors = [akTop, akRight]
       Caption = 'Cancel'
-      ModalResult = 1
+      ModalResult = 2
       TabOrder = 0
       OnClick = mOkCancelBtnClick
       SoundID = 'BUTTON_CLICK_4'

@@ -16,7 +16,10 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
 	atdbDM->afterConnect();
     csDM->afterConnect();
 	TATDBConnectionFrame1->afterConnect();
+
+	//Setup UI
     mUsersCB->KeyValue = mDBUserID.getValue();
+    mBlockProcessIDCB->KeyValue = mProcessID.getValue();
     enableDisableGroupBox(BlocksGB, true);
     enableDisableGroupBox(UsersGB, true);
     mRegisterRibbonBtn->Enabled = true;

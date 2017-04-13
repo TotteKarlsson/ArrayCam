@@ -18,8 +18,7 @@ __fastcall TRegisterNewRibbonForm::TRegisterNewRibbonForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf),
     mBarCode("")
-{
-}
+{}
 
 //---------------------------------------------------------------------------
 void __fastcall TRegisterNewRibbonForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -28,12 +27,6 @@ void __fastcall TRegisterNewRibbonForm::FormKeyDown(TObject *Sender, WORD &Key, 
     {
     	Close();
     }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TRegisterNewRibbonForm::FormClose(TObject *Sender, TCloseAction &Action)
-{
-	Log(lInfo) << "Closed Register new ribbon form..";
 }
 
 void TRegisterNewRibbonForm::setCoverSlipBarcode(const string& barcode)
@@ -65,7 +58,7 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 	if(b == mCancelBtn)
     {
 		atdbDM->mRibbonCDS->Cancel();
-    }
+	}
     else if (b == mRegisterBtn)
     {
 		atdbDM->mRibbonCDS->Post();
@@ -74,16 +67,13 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
         	Log(lDebug) << "Creating ribbon note";
             createNoteForCurrentRibbon();
         }
-
     }
-
-    Close();
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TRegisterNewRibbonForm::mProcessIDCBChange(TObject *Sender)
+void __fastcall TRegisterNewRibbonForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
-	//Select blocks for the currently selected Process ID
+	Log(lInfo) << "Closed Register new ribbon form. Modal result is: " <<this->ModalResult;
 }
 
 //---------------------------------------------------------------------------
@@ -99,8 +89,6 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
     tq->SQLConnection = atdbDM->SQLConnection1;
     tq->SQLConnection->AutoClone = false;
     stringstream q;
-
-
     vector<string> lines(stdlines(mRibbonNoteMemo->Lines));
 
     StringList m(lines);
@@ -176,5 +164,6 @@ void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
     atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value  = mMainForm.mRibbonOrderCountLabel->Caption.ToInt();
     atdbDM->mRibbonCDS->FieldByName("coverslip_id")->Value   = extractCoverSlipID(mBarCode);
 }
+
 
 

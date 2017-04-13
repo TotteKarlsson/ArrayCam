@@ -578,18 +578,23 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
 void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 {
 	//Check that we have a valid barcode for the coverslip
-    if(mBCLabel->Caption == "")
+    //Block Label
+    System::Variant lbl = atdbDM->blocksCDS->FieldByName("label")->Value;
+    if(mBCLabel->Caption == "" || lbl.IsNull())
     {
-    	MessageDlg("A valid coverslip barcode is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
+    	MessageDlg("A valid coverslip barcode and a valid block is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
     }
     else
     {
 		TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
-        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
-//        rrf->setCoverSlipBarcode("C0002632");
-		rrf->ShowModal();
+//        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+        rrf->setCoverSlipBarcode("C0002632");
+
+        if(rrf->ShowModal() == mrOk)
+        {
+	        mBCLabel->Caption = "";
+        }
 	    delete rrf;
-        mBCLabel->Caption = "";
     }
 }
 
@@ -864,6 +869,12 @@ void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
 void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 {
     mDBUserID.setValue(mUsersCB->KeyValue);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
+{
+    mProcessID.setValue(mBlockProcessIDCB->KeyValue);
 }
 
 
