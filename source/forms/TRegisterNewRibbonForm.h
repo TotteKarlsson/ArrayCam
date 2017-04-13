@@ -16,22 +16,13 @@
 class TRegisterNewRibbonForm : public TForm
 {
 __published:	// IDE-managed Components
-	TGroupBox *GroupBox1;
 	TGroupBox *GroupBox2;
 	TPanel *Panel1;
-	TArrayBotButton *mCloseBtn;
-	TDBGrid *mBlocksForRibbonsGrid;
-	TDBNavigator *mRibbonNavigator;
-	TSplitter *Splitter1;
+	TArrayBotButton *mCancelBtn;
 	TLabel *mCSBarcode;
 	TLabel *Label1;
-	TGroupBox *GroupBox3;
 	TLabel *Label2;
 	TGroupBox *GroupBox5;
-	TDBGrid *mRibbonNotesGrid;
-	TDBMemo *mRibbonNoteMemo;
-	TDBNavigator *mRibbonNoteNavigator;
-	TDBNavigator *mRibbonNotesNavigator;
 	TDBText *DBText1;
 	TDBText *DBText2;
 	TLabel *Label3;
@@ -46,21 +37,30 @@ __published:	// IDE-managed Components
 	TDBText *DBText4;
 	TLabel *Label7;
 	TDBText *DBText5;
+	TDBText *mNrOfSectionsDBLbl;
+	TDBText *mCuttingOrderDBLbl;
+	TArrayBotButton *mRegisterBtn;
+	TGroupBox *GroupBox4;
+	TGroupBox *GroupBox6;
+	TGroupBox *GroupBox7;
 	TDBText *DBText6;
-	TDBText *DBText7;
+	TLabel *Label8;
+	TPanel *Panel3;
+	TMemo *mRibbonNoteMemo;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall mCloseBtnClick(TObject *Sender);
-	void __fastcall FormShow(TObject *Sender);
+	void __fastcall mOkCancelBtnClick(TObject *Sender);
 	void __fastcall mProcessIDCBChange(TObject *Sender);
-	void __fastcall mRibbonNavigatorClick(TObject *Sender, TNavigateBtn Button);
-	void __fastcall mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall miscBtnClick(TObject *Sender);
-
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 
     private:
-		string						mBarcode;
+		string						mBarCode;
         TMainForm&					mMainForm;
+		int 						extractCoverSlipID(const string& bc);
+        bool            			createNoteForCurrentRibbon();
+
     public:
                         __fastcall	TRegisterNewRibbonForm(TMainForm& mf);
 		void						setCoverSlipBarcode(const string& barcode);

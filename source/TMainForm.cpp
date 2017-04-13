@@ -248,6 +248,9 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
    	TATDBConnectionFrame1->init(&(mIniFile));
     TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
+
+    //Auto connect to the barcode reader
+	mConnectZebraBtnClick(Sender);
 }
 
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
@@ -575,16 +578,16 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
 void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
 {
 	//Check that we have a valid barcode for the coverslip
-//    if(mBCLabel->Caption == "")
-//    {
-//    	MessageDlg("A valid coverslip barcode is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
-//    }
-//    else
+    if(mBCLabel->Caption == "")
+    {
+    	MessageDlg("A valid coverslip barcode is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
+    }
+    else
     {
 		TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
-//        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
-        rrf->setCoverSlipBarcode("Test-123");
-		    rrf->ShowModal();
+        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+//        rrf->setCoverSlipBarcode("C0002632");
+		rrf->ShowModal();
 	    delete rrf;
         mBCLabel->Caption = "";
     }
@@ -625,9 +628,9 @@ void __fastcall TMainForm::onConnectedToZebra()
 {
     mConnectZebraBtn->Caption = "Close";
     enableDisableGroupBox(mImagerSettingsGB, true);
-
+	Log(lInfo) << "Connected to a Zebra barcode scanner";
     //Turn into a 'known' state
-//	mZebra.beep(ONESHORTLO);
+	//	mZebra.beep(ONESHORTLO);
 }
 
 //---------------------------------------------------------------------------
@@ -635,9 +638,8 @@ void __fastcall TMainForm::onDisConnectedToZebra()
 {
     mConnectZebraBtn->Caption = "Open";
     enableDisableGroupBox(mImagerSettingsGB, false);
+	Log(lInfo) << "DisConnected from a Zebra barcode scanner";
 }
-
-
 
 void __fastcall TMainForm::mBtnClick(TObject *Sender)
 {

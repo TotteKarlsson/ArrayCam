@@ -38,7 +38,7 @@ int TMainForm::getCurrentUserID()
 	return  mUsersCB->KeyValue;
 }
 
-string TMainForm::getCurrentUserName()
-{
-	return  stdstr(atdbDM->usersCDS->FieldByName("user_name")->Value);
-}
+//string TMainForm::getCurrentUserName()
+//{
+//	return  atdbDM->getCurrentUserName();
+//}

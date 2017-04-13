@@ -141,7 +141,6 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                     mHWPosShape->Left = mAfterCuttingLbl->Left;
                     mHWPosShape->Width = mAfterCuttingLbl->Width;
 					mRibbonOrderCountLabel->update();
-
                 }
                 else if(d == "E0")
                 {
