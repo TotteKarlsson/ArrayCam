@@ -61,6 +61,13 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 	}
     else if (b == mRegisterBtn)
     {
+    	//Update coverslip status to post sectioning
+		if(!updateCoverSlipStatus())
+        {
+        	Log(lError) << "There was a problem updating status for current coverslip (" <<mBarCode<<")";
+        }
+
+
 		atdbDM->mRibbonCDS->Post();
     	if(mRibbonNoteMemo->Lines->Count)
         {
@@ -68,6 +75,21 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
             createNoteForCurrentRibbon();
         }
     }
+}
+
+bool TRegisterNewRibbonForm::updateCoverSlipStatus()
+{
+    TSQLQuery* tq = new TSQLQuery(NULL);
+    tq->SQLConnection = atdbDM->SQLConnection1;
+    tq->SQLConnection->AutoClone = false;
+    stringstream q;
+    q <<"UPDATE coverslips SET status = 6 WHERE id = "<<extractCoverSlipID(mBarCode);
+    tq->SQL->Add(q.str().c_str());
+    int rAffected = tq->ExecSQL();
+    tq->Close();
+
+	Log(lInfo) <<"Updated status for " <<rAffected<<" coverslip";
+    tq->SQL->Clear();
 }
 
 //---------------------------------------------------------------------------
@@ -93,7 +115,6 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
 
     StringList m(lines);
     q <<"INSERT INTO notes (created_by, note) VALUES ("<<uID<<", '"<<m.asString('\n')<<"')";
-    Log(lInfo) << "Query is: "<<q.str();
     tq->SQL->Add(q.str().c_str());
 
     tq->ExecSQL();
@@ -110,7 +131,6 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
 
     q.str("");
     q << "INSERT INTO ribbon_note (ribbon_id, note_id) VALUES ('"<<stdstr(rID)<<"', "<<noteID<<")";
-    Log(lInfo) << "Query is: "<<q.str();
     tq->SQL->Add(q.str().c_str());
     tq->ExecSQL();
     tq->Close();

@@ -59,6 +59,7 @@ __published:	// IDE-managed Components
         TMainForm&					mMainForm;
 		int 						extractCoverSlipID(const string& bc);
         bool            			createNoteForCurrentRibbon();
+        bool						updateCoverSlipStatus();
 
     public:
                         __fastcall	TRegisterNewRibbonForm(TMainForm& mf);
