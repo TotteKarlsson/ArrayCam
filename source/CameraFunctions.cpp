@@ -162,17 +162,17 @@ void __fastcall TMainForm::mOneToOneBtnClick(TObject *Sender)
 void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
 {
 	//Check widths and heights
-    double wRatio = (double) mMainPanel->Width / mCamera1BackPanel->Width;
-    double hRatio = (double) mMainPanel->Height / mCamera1BackPanel->Height;
+    double wRatio = (double) mMainPhotoPanel->Width / mCamera1BackPanel->Width;
+    double hRatio = (double) mMainPhotoPanel->Height / mCamera1BackPanel->Height;
 
     if(hRatio < wRatio)
     {
-	    mCamera1BackPanel->Height = mMainPanel->Height;
+	    mCamera1BackPanel->Height = mMainPhotoPanel->Height;
         mCamera1BackPanel->Width *= hRatio;
     }
     else
     {
-	    mCamera1BackPanel->Width = mMainPanel->Width;
+	    mCamera1BackPanel->Width = mMainPhotoPanel->Width;
         mCamera1BackPanel->Height *= wRatio;
     }
 

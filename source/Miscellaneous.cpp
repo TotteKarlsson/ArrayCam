@@ -15,7 +15,7 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
     }
 }
 
-void __fastcall TMainForm::mMainPanelResize(TObject *Sender)
+void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 {
 //	mFitToScreenButtonClick(Sender);
 }

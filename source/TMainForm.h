@@ -73,7 +73,7 @@ class TMainForm  : public TRegistryForm
 	TPanel *Panel2;
 	TSplitter *Splitter1;
 	TSplitter *Splitter2;
-	TPanel *mMainPanel;
+	TPanel *mMainPhotoPanel;
 	TPanel *mCamera1BackPanel;
 	TTimer *mCaptureVideoTimer;
 	TPanel *mBottomPanel;
@@ -96,7 +96,6 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mSettingsBtn;
 	TArrayBotButton *mSnapShotBtn;
 	TPageControl *PageControl1;
-	TTabSheet *TabSheet1;
 	TPanel *Panel3;
 	TTabSheet *TabSheet7;
 	TGroupBox *GroupBox2;
@@ -116,7 +115,7 @@ class TMainForm  : public TRegistryForm
 	TButton *mShowBottomPanelBtn;
 	TButton *mCloseBottomPanelBtn;
 	TTimer *mCheckSocketConnectionTimer;
-	TPanel *Panel1;
+	TPanel *MainTopPanel;
 	TGroupBox *HandwheelGB;
 	TShape *mHWPosShape;
 	TLabel *mRetractLbl;
@@ -177,6 +176,7 @@ class TMainForm  : public TRegistryForm
 	TLabel *Label1;
 	TIntLabel *mRibbonOrderCountLabel;
 	TArrayBotButton *mResetRibbonOrderBtn;
+	TPanel *mMainLeftPanel;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -185,7 +185,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mOneToTwoBtnClick(TObject *Sender);
 	void __fastcall mOneToOneBtnClick(TObject *Sender);
 	void __fastcall mFitToScreenButtonClick(TObject *Sender);
-	void __fastcall mMainPanelResize(TObject *Sender);
+	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
 	void __fastcall mSnapShotBtnClick(TObject *Sender);
 	void __fastcall mRecordMovieBtnClick(TObject *Sender);
