@@ -1,3 +1,26 @@
+Release 0.5.5 (April 14)
+=======================
+* Added coverslip status update when a ribbon-coverslip is registered.
+* Added history for selected ProcessID
+* Fixed so scanned barcode stays if user presses cancel in the Registration form.
+* Added check on valid block and coverslip before opening the registration form
+* Added auto connect of barcode scanner at application startup.
+* Added coverslip/ribbon note creation logic at registration moment
+* Added counter for ribbon order.
+* More automation for registering a ribbon
+* Simplifying ribbon registration
+* Fixed DBuser application setting consistent
+* Moved Block selection to lower tab in main window
+* Added barcode reader functions
+* Integrated barcode scanner, Zebra, functionality into ArrayCam
+* Enabled Arraycams startuptimer to allow a graceful DB connection
+* Implemented opening/closing of atdb datamodule
+* Re adding sources
+* Reorganising code somewhat
+* Removed old image and movie DB  logic
+* Finished UC7 integration.. needs more testing
+* Disabled much DB logic
+
 Release 0.5.4 (March 31)
 =======================
 * Integrating UC7 control into ArrayCam application
