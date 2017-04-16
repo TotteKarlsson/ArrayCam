@@ -68,7 +68,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mProcessID(0),
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
-	    mZebra()
+	    mZebra(),
+        mMainContentPanelWidth(700)
 
 {
    	mLogFileReader.start(true);
@@ -93,24 +94,27 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	//Setup UI/INI properties
     mProperties.setSection("GENERAL");
 	mProperties.setIniFile(&mIniFile);
-	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                "LOG_LEVEL",    		lAny));
-	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                "AUTO_GAIN",    		false));
-	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                "AUTO_EXPOSURE",    	false));
-	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                "AUTO_BLACK_LEVEL",    	false));
-	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	                "AUTO_WHITE_BALANCE",  	false));
-	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                "SOFTWARE_GAMMA",  		0));
-	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                "VERTICAL_MIRROR",    	false));
-	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",    false));
-	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",    false));
-	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                "PAIR_LEDS",    		true));
-    mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",     "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		"C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			"umlocal.db"));
+	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                "LOG_LEVEL",    					lAny));
+	mProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	        "MAIN_CONTENT_PANEL_WIDTH",   		700));
+
+
+	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                "AUTO_GAIN",    		            false));
+	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                "AUTO_EXPOSURE",    	            false));
+	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                "AUTO_BLACK_LEVEL",    	            false));
+	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	                "AUTO_WHITE_BALANCE",  	            false));
+	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                "SOFTWARE_GAMMA",  		            0));
+	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                "VERTICAL_MIRROR",    	            false));
+	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",                false));
+	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",                false));
+	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                "PAIR_LEDS",    		            true));
+    mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
+	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		            "C:\\Temp"	));
+	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			            "umlocal.db"));
 	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
 	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	"LAST_PROCESS_ID",                  0));
 
     //UC7
-   	mProperties.add((BaseProperty*)  &mCOMPort.setup( 	                        "UC7_COM_PORT",    	   	0));
+   	mProperties.add((BaseProperty*)  &mCOMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
 	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	"COUNT_TO",                     	5));
 	mProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	"NUMBER_OF_ZERO_CUTS",           	2));
 	mProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	"KNIFE_STAGE_MOVE_DELAY",          	10));
@@ -137,6 +141,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mServiceCamera1.onCameraClose 	= onCameraClose;
 
     //Update UI controls
+    MainContentPanel->Width = mMainContentPanelWidth;
+
 	mCountToE->update();
     mPresetFeedRateE->update();
     mKnifeStageJogStep->update();
@@ -156,9 +162,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
-
-
-
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -587,8 +590,7 @@ void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
     else
     {
 		TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
-//        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
-        rrf->setCoverSlipBarcode("C0002632");
+        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
 
         if(rrf->ShowModal() == mrOk)
         {
@@ -876,6 +878,7 @@ void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
 {
     mProcessID.setValue(mBlockProcessIDCB->KeyValue);
 }
+
 
 
 

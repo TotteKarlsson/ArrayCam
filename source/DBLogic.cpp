@@ -21,7 +21,7 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
     mUsersCB->KeyValue = mDBUserID.getValue();
     mBlockProcessIDCB->KeyValue = mProcessID.getValue();
     enableDisableGroupBox(BlocksGB, true);
-    enableDisableGroupBox(UsersGB, true);
+//    enableDisableGroupBox(UsersGB, true);
     mRegisterRibbonBtn->Enabled = true;
 }
 
@@ -32,7 +32,7 @@ void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
     mUsersCB->Enabled = false;
     BlocksGB->Enabled = false;
     enableDisableGroupBox(BlocksGB, false);
-    enableDisableGroupBox(UsersGB, false);
+//    enableDisableGroupBox(UsersGB, false);
     mRegisterRibbonBtn->Enabled = false;
 }
 

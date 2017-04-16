@@ -82,6 +82,9 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	mMainContentPanelWidth = MainContentPanel->Width;
+
+
 	TATDBConnectionFrame1->purge();
 
 	mCOMPort = mComportCB->ItemIndex + 1;

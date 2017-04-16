@@ -23,7 +23,7 @@ void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 {
-	mBottomPanel->Visible = !mBottomPanel->Visible;
+//	mBottomPanel->Visible = !mBottomPanel->Visible;
 //	mToggleLogPanelBtn->Caption =  (mBottomPanel->Visible) ? "Hide Bottom Panel" : "Show Bottom Panel";
 	mFitToScreenButtonClick(Sender);
 }
@@ -31,16 +31,16 @@ void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mShowBottomPanelBtnClick(TObject *Sender)
 {
-	mBottomPanel->Visible = true;
-    mShowBottomPanelBtn->Visible = false;
-    Splitter2->Top = mBottomPanel->Top - 1;
+//	mBottomPanel->Visible = true;
+//    mShowBottomPanelBtn->Visible = false;
+//    Splitter2->Top = mBottomPanel->Top - 1;
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCloseBottomPanelBtnClick(TObject *Sender)
 {
-	mBottomPanel->Visible = false;
-    mShowBottomPanelBtn->Visible = true;
+//	mBottomPanel->Visible = false;
+//    mShowBottomPanelBtn->Visible = true;
 }
 
 //---------------------------------------------------------------------------

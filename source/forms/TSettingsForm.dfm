@@ -24,7 +24,7 @@ object SettingsForm: TSettingsForm
     Top = 0
     Width = 625
     Height = 486
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
