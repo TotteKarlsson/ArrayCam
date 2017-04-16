@@ -589,14 +589,31 @@ void __fastcall TMainForm::mRegisterRibbonBtnClick(TObject *Sender)
     }
     else
     {
-		TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
-        rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+		//Make sure the barcode exists in the database..
+        TSQLQuery* tq = new TSQLQuery(NULL);
+        tq->SQLConnection = atdbDM->SQLConnection1;
+        tq->SQLConnection->AutoClone = false;
+        stringstream q;
+        q <<"SELECT * FROM coverslips where id = "<<extractCoverSlipID(stdstr(mBCLabel->Caption));
+        tq->SQL->Add(q.str().c_str());
+        int affected = tq->ExecSQL();
 
-        if(rrf->ShowModal() == mrOk)
+        if(tq->RecordCount < 1)
         {
-	        mBCLabel->Caption = "";
+        	MessageDlg("This barcode could not be found in the database.. can't continue registration.\nChange or register barcode!", mtWarning, TMsgDlgButtons() << mbOK, 0);
         }
-	    delete rrf;
+        else
+        {
+            TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
+            rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+
+            if(rrf->ShowModal() == mrOk)
+            {
+            	mBCLabel->Caption = "";
+            }
+            delete rrf;
+        }
+        delete tq;
     }
 }
 
@@ -636,6 +653,7 @@ void __fastcall TMainForm::onConnectedToZebra()
     mConnectZebraBtn->Caption = "Close";
     enableDisableGroupBox(mImagerSettingsGB, true);
 	Log(lInfo) << "Connected to a Zebra barcode scanner";
+    mZebra.scanDisable();
     //Turn into a 'known' state
 	//	mZebra.beep(ONESHORTLO);
 }
@@ -658,19 +676,21 @@ void __fastcall TMainForm::mBtnClick(TObject *Sender)
     }
     else if(b == mDecodeSessionBtn)
     {
-    	if(b->Caption == "Start")
+    	if(b->Caption == "Scan Barcode")
         {
         	//Start session
+            mZebra.scanEnable();
+            sleep(150);
 			status = mZebra.startDecodeSession();
-			b->Caption = "Stop";
+			b->Caption = "Stop Scan";
         }
         else
         {
         	//Stop session
 			status = mZebra.stopDecodeSession();
-            b->Caption = "Start";
+            b->Caption = "Scan Barcode";
             Sleep(100);
-            mZebra.illuminationOff();
+            mZebra.scanDisable();
         }
     }
 
@@ -714,14 +734,11 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
     	Log(lInfo) << "A Datamatrix barcode was encoded: "<<data;
         Log(lInfo) << decodeBuffer;
         mBCLabel->Caption = vclstr(data);
+        mDecodeSessionBtn->Caption = "Scan Barcode";
+
         //Stop session
-//		mZebra.stopDecodeSession();
-        mDecodeSessionBtn->Caption = "Start";
-//        Sleep(100);
-//        mZebra.illuminationOff();
-//        Sleep(100);
-//        mZebra.aimOff();
-//        Sleep(100);
+        sleep(100);
+		mZebra.scanDisable();
     }
     else
     {

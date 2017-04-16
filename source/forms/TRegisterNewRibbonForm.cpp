@@ -67,7 +67,7 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
         	Log(lError) << "There was a problem updating status for current coverslip (" <<mBarCode<<")";
         }
 
-
+        //Post data
 		atdbDM->mRibbonCDS->Post();
     	if(mRibbonNoteMemo->Lines->Count)
         {

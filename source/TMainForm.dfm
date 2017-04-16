@@ -57,7 +57,6 @@ object MainForm: TMainForm
       Align = alTop
       AutoSize = True
       TabOrder = 0
-      ExplicitWidth = 1016
       object HandwheelGB: TGroupBox
         Left = 1
         Top = 1
@@ -66,7 +65,6 @@ object MainForm: TMainForm
         Align = alTop
         Caption = 'UC7 Control'
         TabOrder = 0
-        ExplicitWidth = 1014
         object mHWPosShape: TShape
           Left = 21
           Top = 51
@@ -134,7 +132,6 @@ object MainForm: TMainForm
           Height = 86
           Align = alBottom
           TabOrder = 0
-          ExplicitWidth = 1010
           object mStartStopBtn: TArrayBotButton
             Left = 1
             Top = 1
@@ -172,7 +169,6 @@ object MainForm: TMainForm
             TabOrder = 1
             OnClick = CreateUC7Message
             SoundID = 'BUTTON_CLICK_4'
-            ExplicitLeft = 833
           end
           object CounterGB: TGroupBox
             Left = 149
@@ -273,7 +269,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 1
-      ExplicitWidth = 1016
       object PageControl1: TPageControl
         Left = 1
         Top = 1
@@ -284,11 +279,9 @@ object MainForm: TMainForm
         MultiLine = True
         TabOrder = 0
         OnChange = PageControl1Change
-        ExplicitWidth = 1014
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitWidth = 1006
           object Panel2: TPanel
             Left = 509
             Top = 0
@@ -296,7 +289,6 @@ object MainForm: TMainForm
             Height = 627
             Align = alRight
             TabOrder = 0
-            ExplicitLeft = 827
             object ScrollBox1: TScrollBox
               Left = 1
               Top = 1
@@ -518,7 +510,6 @@ object MainForm: TMainForm
             Height = 627
             Align = alClient
             TabOrder = 1
-            ExplicitWidth = 827
             object BlocksGB: TGroupBox
               Left = 1
               Top = 285
@@ -527,7 +518,6 @@ object MainForm: TMainForm
               Align = alClient
               Caption = 'Ribbon  Registration'
               TabOrder = 0
-              ExplicitWidth = 825
               object DBNavigator1: TDBNavigator
                 Left = 2
                 Top = 314
@@ -537,7 +527,6 @@ object MainForm: TMainForm
                 VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
                 Align = alBottom
                 TabOrder = 0
-                ExplicitWidth = 821
               end
               object Panel8: TPanel
                 Left = 2
@@ -547,7 +536,6 @@ object MainForm: TMainForm
                 Align = alTop
                 BevelOuter = bvNone
                 TabOrder = 1
-                ExplicitWidth = 821
                 object Label1: TLabel
                   Left = 14
                   Top = 44
@@ -578,18 +566,19 @@ object MainForm: TMainForm
                   OnCloseUp = mUsersCBCloseUp
                 end
                 object mDecodeSessionBtn: TButton
-                  Left = 360
+                  Left = 217
                   Top = 0
                   Width = 143
                   Height = 100
                   Align = alRight
-                  Caption = 'Read Barcode'
+                  Caption = 'Scan Barcode'
                   TabOrder = 2
                   OnClick = mBtnClick
-                  ExplicitLeft = 678
+                  ExplicitLeft = 144
+                  ExplicitTop = 8
                 end
                 object mRegisterRibbonBtn: TArrayBotButton
-                  Left = 217
+                  Left = 360
                   Top = 0
                   Width = 143
                   Height = 100
@@ -599,7 +588,7 @@ object MainForm: TMainForm
                   TabOrder = 3
                   OnClick = mRegisterRibbonBtnClick
                   SoundID = 'BUTTON_CLICK_4'
-                  ExplicitLeft = 535
+                  ExplicitLeft = 217
                 end
               end
               object GroupBox3: TGroupBox
@@ -610,7 +599,6 @@ object MainForm: TMainForm
                 Align = alClient
                 Caption = 'Blocks'
                 TabOrder = 2
-                ExplicitWidth = 821
                 object DBGrid1: TDBGrid
                   AlignWithMargins = True
                   Left = 12
@@ -634,14 +622,20 @@ object MainForm: TMainForm
                   Columns = <
                     item
                       Expanded = False
-                      FieldName = 'process_id'
-                      Width = 141
+                      FieldName = 'id'
+                      Width = 50
                       Visible = True
                     end
                     item
                       Expanded = False
                       FieldName = 'label'
-                      Width = 127
+                      Width = 155
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'process_id'
+                      Width = 107
                       Visible = True
                     end>
                 end
@@ -655,7 +649,6 @@ object MainForm: TMainForm
               Align = alTop
               Caption = 'UC7'
               TabOrder = 1
-              ExplicitWidth = 825
               DesignSize = (
                 507
                 284)
@@ -706,11 +699,11 @@ object MainForm: TMainForm
                 SoundID = 'BUTTON_CLICK_4'
               end
               object mRibbonCreatorActiveCB: TPropertyCheckBox
-                Left = -121
+                Left = 237
                 Top = 38
                 Width = 268
                 Height = 26
-                Anchors = [akTop, akRight]
+                Anchors = [akLeft, akTop, akRight]
                 Caption = 'Ribbon Creator On/Off'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -720,7 +713,6 @@ object MainForm: TMainForm
                 ParentFont = False
                 TabOrder = 3
                 OnClick = mRibbonCreatorActiveCBClick
-                ExplicitLeft = 197
               end
             end
           end
@@ -728,7 +720,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7 Settings'
           ImageIndex = 3
-          ExplicitWidth = 1006
           object NorthSouthGB: TGroupBox
             Left = 0
             Top = 329
@@ -737,7 +728,6 @@ object MainForm: TMainForm
             Align = alTop
             Caption = 'North-South Knife Stage Position (0-100 000)'
             TabOrder = 0
-            ExplicitWidth = 1006
             object mKnifeStageNSAbsPosE: TIntegerLabeledEdit
               Left = 14
               Top = 58
@@ -827,7 +817,6 @@ object MainForm: TMainForm
             Align = alTop
             Caption = 'Cutting Parameters'
             TabOrder = 1
-            ExplicitWidth = 1006
             object mPresetFeedRateE: TIntegerLabeledEdit
               Left = 23
               Top = 58
@@ -855,7 +844,6 @@ object MainForm: TMainForm
             Height = 41
             Align = alTop
             TabOrder = 2
-            ExplicitWidth = 1006
             object mComportCB: TComboBox
               Left = 8
               Top = 12
@@ -904,7 +892,6 @@ object MainForm: TMainForm
             Align = alTop
             Caption = 'Misc parameters'
             TabOrder = 3
-            ExplicitWidth = 1006
             object mStageMoveDelayE: TIntegerLabeledEdit
               Left = 26
               Top = 66
@@ -952,7 +939,6 @@ object MainForm: TMainForm
         end
         object TabSheet2: TTabSheet
           Caption = 'Barcode Reading'
-          ExplicitWidth = 1006
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
@@ -961,7 +947,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'Zebra'
             TabOrder = 0
-            ExplicitWidth = 1006
             object Panel7: TPanel
               Left = 2
               Top = 21
@@ -969,7 +954,6 @@ object MainForm: TMainForm
               Height = 49
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 1002
               object mZebraCOMPortCB: TComboBox
                 Left = 1
                 Top = 1
@@ -1081,16 +1065,15 @@ object MainForm: TMainForm
         object TabSheet4: TTabSheet
           Caption = 'Database'
           ImageIndex = 2
-          ExplicitWidth = 1006
           inline TATDBConnectionFrame1: TATDBConnectionFrame
             Left = 0
             Top = 0
-            Width = 286
-            Height = 627
-            Align = alLeft
+            Width = 688
+            Height = 201
+            Align = alTop
             AutoSize = True
             TabOrder = 0
-            ExplicitHeight = 627
+            ExplicitWidth = 688
             inherited GroupBox1: TGroupBox
               inherited mServerIPE: TSTDStringLabeledEdit
                 Height = 27
@@ -1140,11 +1123,78 @@ object MainForm: TMainForm
               end
             end
           end
+          object DBGrid2: TDBGrid
+            Left = 0
+            Top = 201
+            Width = 688
+            Height = 345
+            Align = alClient
+            DataSource = atdbDM.mRibbonDSource
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -16
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'status'
+                Width = 80
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'block_id'
+                Width = 80
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'cutting_order'
+                Width = 80
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'nr_of_sections'
+                Width = 80
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'created'
+                Width = 87
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'created_by'
+                Width = 89
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'coverslip_id'
+                Width = 110
+                Visible = True
+              end>
+          end
+          object DBNavigator2: TDBNavigator
+            Left = 0
+            Top = 546
+            Width = 688
+            Height = 81
+            DataSource = atdbDM.mRibbonDSource
+            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+            Align = alBottom
+            TabOrder = 2
+          end
         end
         object TabSheet3: TTabSheet
           Caption = 'Logs'
           ImageIndex = 1
-          ExplicitWidth = 1006
           object Panel4: TPanel
             Left = 0
             Top = 0
@@ -1153,7 +1203,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'Panel4'
             TabOrder = 0
-            ExplicitWidth = 1006
             object GroupBox8: TGroupBox
               Left = 1
               Top = 1
@@ -1162,7 +1211,6 @@ object MainForm: TMainForm
               Align = alTop
               Caption = 'Logs'
               TabOrder = 0
-              ExplicitWidth = 1004
               object mCloseBottomPanelBtn: TButton
                 Left = 616
                 Top = 21
@@ -1172,7 +1220,6 @@ object MainForm: TMainForm
                 Caption = 'x'
                 TabOrder = 0
                 OnClick = mCloseBottomPanelBtnClick
-                ExplicitLeft = 934
               end
               object ToolBar1: TToolBar
                 Left = 2
@@ -1233,14 +1280,12 @@ object MainForm: TMainForm
               Align = alClient
               ScrollBars = ssVertical
               TabOrder = 1
-              ExplicitWidth = 1004
             end
           end
         end
         object TabSheet7: TTabSheet
           Caption = 'About'
           ImageIndex = 8
-          ExplicitWidth = 1006
           object GroupBox2: TGroupBox
             Left = 0
             Top = 186
@@ -1249,7 +1294,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'ChangeLog'
             TabOrder = 0
-            ExplicitWidth = 1006
             object Memo1: TMemo
               Left = 2
               Top = 21
@@ -1262,7 +1306,6 @@ object MainForm: TMainForm
               ScrollBars = ssBoth
               TabOrder = 0
               WordWrap = False
-              ExplicitWidth = 1002
             end
           end
           object Panel5: TPanel
@@ -1272,7 +1315,6 @@ object MainForm: TMainForm
             Height = 186
             Align = alTop
             TabOrder = 1
-            ExplicitWidth = 1006
             object Image2: TImage
               Left = 502
               Top = 1
@@ -2167,7 +2209,6 @@ object MainForm: TMainForm
     Align = alClient
     TabOrder = 1
     OnResize = mMainPhotoPanelResize
-    ExplicitWidth = 221
     object mBCLabel: TLabel
       AlignWithMargins = True
       Left = 4

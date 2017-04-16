@@ -178,6 +178,8 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mSynchUIBtn;
 	TGroupBox *GroupBox9;
 	TPropertyCheckBox *mRibbonCreatorActiveCB;
+	TDBGrid *DBGrid2;
+	TDBNavigator *DBNavigator2;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -300,6 +302,7 @@ class TMainForm  : public TRegistryForm
 		int 									getCurrentUserID();
 		string 									getCurrentUserName();
 		void 									populateUsersCB();
+		int 									extractCoverSlipID(const string& bc);
 
         										//Callbacks
         void									onArduinoClientConnected();
