@@ -1,3 +1,10 @@
+Release 0.5.6 (April 16)
+=======================
+* Added code to deal with barcodes not found in the database
+* Added code to properly disable/enable the barcode reader
+* Added property for maincontent width history
+* Re-organizing UI
+
 Release 0.5.5 (April 14)
 =======================
 * Added coverslip status update when a ribbon-coverslip is registered.
