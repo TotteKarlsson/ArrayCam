@@ -61,11 +61,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mMovingReticle(false),
         mCheckArduinoServerConnection(true),
         mConnectToArduinoServerThread(mLightsArduinoClient, 50000),
-        mCOMPort(0),
+        mUC7COMPort(0),
         mUC7(Handle),
         mCountTo(0),
 	    mDBUserID(0),
 	    mProcessID(0),
+	    mBlockID(0),
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
 	    mZebra(),
@@ -89,6 +90,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mRibbonOrderCountLabel->update();
     mZeroCutsE->update();
 
+
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
 	//Setup UI/INI properties
@@ -96,8 +98,13 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.setIniFile(&mIniFile);
 	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                "LOG_LEVEL",    					lAny));
 	mProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	        "MAIN_CONTENT_PANEL_WIDTH",   		700));
+	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                "PAIR_LEDS",    		            true));
+	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
+	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	"LAST_PROCESS_ID",                  0));
+	mProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		"BLOCK_ID",                  		0));
+	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			            "umlocal.db"));
 
-
+    //Camera Settings
 	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                "AUTO_GAIN",    		            false));
 	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                "AUTO_EXPOSURE",    	            false));
 	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                "AUTO_BLACK_LEVEL",    	            false));
@@ -105,16 +112,13 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                "SOFTWARE_GAMMA",  		            0));
 	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                "VERTICAL_MIRROR",    	            false));
 	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",                false));
-	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",                false));
-	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                "PAIR_LEDS",    		            true));
     mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		            "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			            "umlocal.db"));
-	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
-	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	"LAST_PROCESS_ID",                  0));
+	mProperties.add((BaseProperty*)  &mReticleVisibilityCB->getProperty()->setup("RETICLE_VISIBILITY",              false));
+	mProperties.add((BaseProperty*)  &CameraEnabledCB->getProperty()->setup(	"CAMERA_ENABLED",              		false));
 
     //UC7
-   	mProperties.add((BaseProperty*)  &mCOMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
+   	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                    "UC7_COM_PORT",    	   				0));
 	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	"COUNT_TO",                     	5));
 	mProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	"NUMBER_OF_ZERO_CUTS",           	2));
 	mProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	"KNIFE_STAGE_MOVE_DELAY",          	10));
@@ -148,7 +152,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mKnifeStageJogStep->update();
     mStageMoveDelayE->update();
 	mZeroCutsE->update();
-	mComportCB->ItemIndex = mCOMPort - 1;
+	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
+    mReticleVisibilityCB->update();
+    CameraEnabledCB->update();
 
     //Setup UI elements
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
@@ -167,6 +173,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 __fastcall TMainForm::~TMainForm()
 {}
 
+//---------------------------------------------------------------------------
 //This one is called from the reader thread
 void __fastcall TMainForm::logMsg()
 {
@@ -178,6 +185,7 @@ void __fastcall TMainForm::logMsg()
     infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
 }
 
+//---------------------------------------------------------------------------
 //Callback from socket client class
 void TMainForm::onArduinoClientConnected()
 {
@@ -189,6 +197,7 @@ void TMainForm::onArduinoClientConnected()
     enableDisableClientControls(true);
 }
 
+//---------------------------------------------------------------------------
 void TMainForm::onArduinoClientDisconnected()
 {
     Log(lDebug) << "Arduino Client was disconnected..";
@@ -204,6 +213,7 @@ void TMainForm::onArduinoClientDisconnected()
     }
 }
 
+//---------------------------------------------------------------------------
 void TMainForm::enableDisableClientControls(bool enable)
 {
 	//Disable client related components..
@@ -224,6 +234,7 @@ void __fastcall TMainForm::mFrontBackLEDBtnClick(TObject *Sender)
 //    }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::Panel3Resize(TObject *Sender)
 {
 	mOneToOneBtn->Width = Panel3->Width / 2;
@@ -240,6 +251,7 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
@@ -256,6 +268,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 	mConnectZebraBtnClick(Sender);
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
 {
 	TTrackBar* tb = dynamic_cast<TTrackBar*>(Sender);
@@ -323,6 +336,7 @@ void __fastcall TMainForm::mCenterReticleBtnClick(TObject *Sender)
     mReticleCenterYTB->Position = 0;
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mCheckSocketConnectionTimerTimer(TObject *Sender)
 {
 	Log(lDebug) << "Trying to connect to Arduino server";
@@ -332,6 +346,7 @@ void __fastcall TMainForm::mCheckSocketConnectionTimerTimer(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 {
     if(msg.lparam == NULL)
@@ -431,7 +446,7 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 	enableDisableGroupBox(CounterGB, 		enableDisable);
     enableDisableGroupBox(HandwheelGB, 		enableDisable);
     enableDisableGroupBox(NorthSouthGB,		enableDisable);
-    enableDisableGroupBox(MaunUC7GB,			enableDisable);
+    enableDisableGroupBox(MaunUC7GB,		enableDisable);
 }
 
 //---------------------------------------------------------------------------
@@ -460,12 +475,13 @@ void TMainForm::onUC7CountedTo()
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mSynchUIBtnClick(TObject *Sender)
 {
     mUC7.getStatus();
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
 {
 	TArrayBotButton* btn = dynamic_cast<TArrayBotButton*>(Sender);
@@ -647,6 +663,7 @@ void __fastcall TMainForm::mConnectZebraBtnClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onConnectedToZebra()
 {
     mConnectZebraBtn->Caption = "Close";
@@ -663,6 +680,7 @@ void __fastcall TMainForm::onDisConnectedToZebra()
 	Log(lInfo) << "DisConnected from a Zebra barcode scanner";
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mBtnClick(TObject *Sender)
 {
 	TButton* b = dynamic_cast<TButton*>(Sender);
@@ -694,6 +712,7 @@ void __fastcall TMainForm::mBtnClick(TObject *Sender)
     Log(lInfo) << "Command return status: "<<status;
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onWMDecode(TMessage& Msg)
 {
 	WPARAM w = Msg.WParam;
@@ -743,6 +762,7 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSIEvent(TMessage& Msg)
 {
 	WPARAM w = Msg.WParam;
@@ -750,6 +770,8 @@ void __fastcall TMainForm::onSSIEvent(TMessage& Msg)
     Log(lInfo) << "There was an onSSIEvent event..";
 }
 
+
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSIImage(TMessage& Msg)
 {
 //	WPARAM w = Msg.WParam;
@@ -838,6 +860,7 @@ void __fastcall TMainForm::onSSIImage(TMessage& Msg)
 //	m_WaitingForSnapShot = FALSE;
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSITimeout(TMessage& Msg)
 {
 	WPARAM w = Msg.WParam;
@@ -845,6 +868,7 @@ void __fastcall TMainForm::onSSITimeout(TMessage& Msg)
     Log(lInfo) << "There was an onSSITimeout event..";
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSIError(TMessage& Msg)
 {
 	WPARAM w = Msg.WParam;
@@ -852,6 +876,7 @@ void __fastcall TMainForm::onSSIError(TMessage& Msg)
     Log(lInfo) << "There was an onSSIError event.."<<w<<" : "<<l;
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSICapabilities(TMessage& Msg)
 {
 	WPARAM w = Msg.WParam;
@@ -887,9 +912,29 @@ void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
 {
-    mProcessID.setValue(mBlockProcessIDCB->KeyValue);
+	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
+    if(b == mBlockProcessIDCB)
+    {
+    	mProcessID.setValue(b->KeyValue);
+    }
+
+    else if(b == BlockIDCB)
+    {
+    	mBlockID.setValue(b->KeyValue);
+    }
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mReticleVisibilityCBClick(TObject *Sender)
+{
+	//
+	mReticleVisibilityCB->OnClick(Sender);
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CameraEnabledCBClick(TObject *Sender)
+{
+	CameraEnabledCB->OnClick(Sender);
+}
 
 

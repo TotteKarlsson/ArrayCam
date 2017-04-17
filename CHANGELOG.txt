@@ -1,3 +1,8 @@
+Release 0.5.7 (April 17)
+=======================
+* More UI reorganisiation
+* This version for the pre bigrun
+
 Release 0.5.6 (April 16)
 =======================
 * Added code to deal with barcodes not found in the database

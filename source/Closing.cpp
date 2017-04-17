@@ -87,9 +87,8 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 
 	TATDBConnectionFrame1->purge();
 
-	mCOMPort = mComportCB->ItemIndex + 1;
 	Log(lInfo) << "In FormClose";
-	mCOMPort = mComportCB->ItemIndex + 1;
+	mUC7COMPort = mUC7ComportCB->ItemIndex + 1;
 
 	mZebraCOMPort = mZebraCOMPortCB->ItemIndex + 1;
     mZebraBaudRate = mZebraBaudRateCB->Items->Strings[mZebraBaudRateCB->ItemIndex].ToInt();

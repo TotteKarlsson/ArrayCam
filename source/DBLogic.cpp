@@ -20,6 +20,7 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
 	//Setup UI
     mUsersCB->KeyValue = mDBUserID.getValue();
     mBlockProcessIDCB->KeyValue = mProcessID.getValue();
+    BlockIDCB->KeyValue = mBlockID.getValue();
     enableDisableGroupBox(BlocksGB, true);
 //    enableDisableGroupBox(UsersGB, true);
     mRegisterRibbonBtn->Enabled = true;

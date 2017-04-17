@@ -123,7 +123,7 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mMoveSouthBtn;
 	TArrayBotButton *mMoveNorthBtn;
 	TPanel *mTopPanel;
-	TComboBox *mComportCB;
+	TComboBox *mUC7ComportCB;
 	TButton *mConnectUC7Btn;
 	TGroupBox *GroupBox7;
 	TIntegerLabeledEdit *mStageMoveDelayE;
@@ -163,7 +163,6 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid2;
 	TDBNavigator *DBNavigator2;
 	TGroupBox *atdbGB;
-	TGroupBox *RibbonsGB;
 	TGroupBox *UC7GB;
 	TTabSheet *TabSheet1;
 	TScrollBox *ScrollBox2;
@@ -177,11 +176,12 @@ class TMainForm  : public TRegistryForm
 	TDBLookupComboBox *mBlockProcessIDCB;
 	TDBLookupComboBox *mUsersCB;
 	TLabel *Label1;
-	TGroupBox *BlockGB;
-	TDBGrid *DBGrid1;
-	TDBNavigator *DBNavigator1;
 	TGroupBox *RibbonsDataGB;
 	TIntegerLabeledEdit *mPresetFeedRateE;
+	TDBLookupComboBox *BlockIDCB;
+	TLabel *Label3;
+	TPropertyCheckBox *mReticleVisibilityCB;
+	TPropertyCheckBox *CameraEnabledCB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -229,6 +229,8 @@ class TMainForm  : public TRegistryForm
 	void __fastcall scannerSettingsClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
 	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
+	void __fastcall mReticleVisibilityCBClick(TObject *Sender);
+	void __fastcall CameraEnabledCBClick(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -237,23 +239,15 @@ class TMainForm  : public TRegistryForm
         int						 				getCOMPortNumber();
 
 		void 									loadCurrentImage();
-
 		bool									mMovingReticle;
     	EnvironmentaSensorReader				mEnvReader;
 		TSettingsForm* 							mSettingsForm;
 
-
-//        Poco::Mutex								mClientDBMutex;
-//		ATDBClientDBSession						mClientDBSession;
-//
-//		Poco::Mutex								mServerDBMutex;
-//		ATDBServerSession						mServerDBSession;
-
         IniFile						            mIniFile;
         IniFileProperties  			            mProperties;
 		Property<mtk::LogLevel>            		mLogLevel;
-
         mtk::Property<int>                     	mMainContentPanelWidth;
+
         										//Camera Settings
         Property<bool>						    mAutoGain;
         Property<bool>						    mAutoExposure;
@@ -269,7 +263,7 @@ class TMainForm  : public TRegistryForm
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
 
-		mtk::Property<int>	              		mCOMPort;
+		mtk::Property<int>	              		mUC7COMPort;
         mtk::Property<int>                     	mCountTo;
 								                // Camera variables
         								        //!The camera class
@@ -279,7 +273,6 @@ class TMainForm  : public TRegistryForm
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
-		bool							        openCameras();
 
         								        //!Boolean to check if we are
                                                 //capturing video to file
@@ -301,6 +294,7 @@ class TMainForm  : public TRegistryForm
         										//Database stuff
 		mtk::Property<int>	                    mDBUserID;
         mtk::Property<int>						mProcessID;
+        mtk::Property<int>						mBlockID;
 		int 									getCurrentUserID();
 		string 									getCurrentUserName();
 		void 									populateUsersCB();
@@ -334,25 +328,23 @@ class TMainForm  : public TRegistryForm
 
 
         // Barcode reader
-        												//!The barcode reader
-        DS457											mZebra;
+        										//!The barcode reader
+        DS457									mZebra;
 
-                                                        //INI Parameters...
-		mtk::Property<int>	                			mZebraCOMPort;
-		mtk::Property<int>	                			mZebraBaudRate;
-        int												getZebraCOMPortNumber();
-		void __fastcall 								onConnectedToZebra();
-        void __fastcall 								onDisConnectedToZebra();
+                                                //INI Parameters...
+		mtk::Property<int>	                	mZebraCOMPort;
+		mtk::Property<int>	                	mZebraBaudRate;
+        int										getZebraCOMPortNumber();
+		void __fastcall 						onConnectedToZebra();
+        void __fastcall 						onDisConnectedToZebra();
 
-														//Decoder events
-		void __fastcall                                 onWMDecode(TMessage& Msg);
-		void __fastcall                                 onSSIEvent(TMessage& Msg);
-		void __fastcall                                 onSSIImage(TMessage& Msg);
-		void __fastcall                                 onSSIError(TMessage& Msg);
-		void __fastcall                                 onSSITimeout(TMessage& Msg);
-		void __fastcall                                 onSSICapabilities(TMessage& Msg);
-
-
+												//Decoder events
+		void __fastcall                         onWMDecode(TMessage& Msg);
+		void __fastcall                         onSSIEvent(TMessage& Msg);
+		void __fastcall                         onSSIImage(TMessage& Msg);
+		void __fastcall                         onSSIError(TMessage& Msg);
+		void __fastcall                         onSSITimeout(TMessage& Msg);
+		void __fastcall                         onSSICapabilities(TMessage& Msg);
 
     //=================================================================================================
     public:
@@ -365,28 +357,24 @@ class TMainForm  : public TRegistryForm
 	void 		__fastcall 						populateAbout();
 
     BEGIN_MESSAGE_MAP
-          MESSAGE_HANDLER(IS_UC480_MESSAGE, 	TMessage, 						OnUSBCameraMessage);
-          MESSAGE_HANDLER(UWM_UC7_MESSAGE,      ATWindowStructMessage,         	AppInBox);
-
-            MESSAGE_HANDLER(WM_DECODE, TMessage, 		onWMDecode);
-//          ON_MESSAGE(WM_SWVERSION, OnSSIVersion)
-          	MESSAGE_HANDLER(WM_CAPABILITIES, TMessage, 	onSSICapabilities)
-			MESSAGE_HANDLER(WM_IMAGE, TMessage, 		onSSIImage)
-//          ON_MESSAGE(WM_XFERSTATUS, OnSSIxferStatus)
-//          ON_MESSAGE(WM_VIDEOIMAGE, OnSSIVideo)
-          	MESSAGE_HANDLER(WM_ERROR, TMessage, 		onSSIError)
-//          ON_MESSAGE(WM_PARAMS, OnSSIParams)
-          	MESSAGE_HANDLER(WM_TIMEOUT, TMessage, 		onSSITimeout)
-            MESSAGE_HANDLER(WM_EVENT, TMessage, 		onSSIEvent)
-//          ON_MESSAGE(WM_CMDCOMPLETEMSG, OnSSICommandCompleted)
-//          ON_MESSAGE(WM_USER_GETSWTRIGPARAM, OnGetSWTrigParam)
-//          ON_MESSAGE(WM_USER_GETIMAGETYPES, OnGetImageFileTypesParam)
-//          ON_MESSAGE(WM_USER_GETVIEWFINDERPARAM, OnGetViewFinderParam)
-//          ON_MESSAGE(WM_SENDGETVERSIONMSG, OnWM_SENDGETVERSIONMSG)
-//          ON_MESSAGE(WM_SENDGETCAPABILITIESMSG, OnWM_SENDGETCAPABILITIESMSG)
-
-
-
+    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 			TMessage, 						OnUSBCameraMessage);
+        MESSAGE_HANDLER(UWM_UC7_MESSAGE,      		ATWindowStructMessage,         	AppInBox);
+        MESSAGE_HANDLER(WM_DECODE, 					TMessage, 		                onWMDecode);
+        MESSAGE_HANDLER(WM_CAPABILITIES, 			TMessage, 	                    onSSICapabilities)
+		MESSAGE_HANDLER(WM_IMAGE,                   TMessage, 		                onSSIImage)
+        MESSAGE_HANDLER(WM_ERROR,                   TMessage, 		                onSSIError)
+        MESSAGE_HANDLER(WM_TIMEOUT,                 TMessage, 		                onSSITimeout)
+        MESSAGE_HANDLER(WM_EVENT, 	                TMessage, 		                onSSIEvent)
+//      ON_MESSAGE(WM_SWVERSION, OnSSIVersion)
+//      ON_MESSAGE(WM_XFERSTATUS, OnSSIxferStatus)
+//      ON_MESSAGE(WM_VIDEOIMAGE, OnSSIVideo)
+//      ON_MESSAGE(WM_PARAMS, OnSSIParams)
+//      ON_MESSAGE(WM_CMDCOMPLETEMSG, OnSSICommandCompleted)
+//      ON_MESSAGE(WM_USER_GETSWTRIGPARAM, OnGetSWTrigParam)
+//      ON_MESSAGE(WM_USER_GETIMAGETYPES, OnGetImageFileTypesParam)
+//      ON_MESSAGE(WM_USER_GETVIEWFINDERPARAM, OnGetViewFinderParam)
+//      ON_MESSAGE(WM_SENDGETVERSIONMSG, OnWM_SENDGETVERSIONMSG)
+//      ON_MESSAGE(WM_SENDGETCAPABILITIESMSG, OnWM_SENDGETCAPABILITIESMSG)
     END_MESSAGE_MAP(TForm)
 };
 

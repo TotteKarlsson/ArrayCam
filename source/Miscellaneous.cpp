@@ -112,7 +112,7 @@ void __fastcall TMainForm::mExitBtnClick(TObject *Sender)
 //---------------------------------------------------------------------------
 int	TMainForm::getCOMPortNumber()
 {
-	return mComportCB->ItemIndex + 1;
+	return mUC7ComportCB->ItemIndex + 1;
 }
 
 //---------------------------------------------------------------------------

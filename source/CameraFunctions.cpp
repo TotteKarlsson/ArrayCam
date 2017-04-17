@@ -8,7 +8,7 @@
 #include "uc480/uc480_tools.h"
 #include "vcl/atVCLUtils.h"
 #include "database/atDBUtils.h"
-
+#include "TATDBDataModule.h"
 
 using namespace mtk;
 using namespace at;
@@ -95,45 +95,20 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
         case IS_FRAME:
             if(mCamera1.mImageMemory != NULL)
             {
-                mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
-				mReticle.draw(mPB->Width, mPB->Height);
+	            if(CameraEnabledCB->Checked)
+                {
+                	mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
+                }
+
+                if(mReticleVisibilityCB->Checked)
+                {
+					mReticle.draw(mPB->Width, mPB->Height);
+                }
             }
         break;
     }
 
     return 0;
-}
-
-//---------------------------------------------------------------------------
-bool TMainForm::openCameras()
-{
-//	bool result = false;
-//	Log(lInfo) << "Opening Camera 1";
-//    if(mCamera1.openCamera(this->Handle, 0))
-//    {
-//    	Log(lInfo) << "Camera 1 was opened";
-//        result = true;
-//    }
-//    else
-//    {
-//    	Log(lError) << "Failed opening Camera 1";
-//        result = false;
-//    }
-
-//	Log(lInfo) << "Opening Camera 2";
-//    if(mCamera2.openCamera(this->Handle,1))
-//    {
-//    	Log(lInfo) << "Camera 2 was opened";
-//        result = true;
-//    }
-//    else
-//    {
-//    	Log(lError) << "Failed opening Camera 2";
-//        result = false;
-//    }
-
-//	return result;
-	return false;
 }
 
 //---------------------------------------------------------------------------
@@ -182,24 +157,27 @@ void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
 
 void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 {
-	string fldr =  mSnapShotFolder;
-
-    if(!folderExists(fldr))
+    string ext(".jpg");
+	string uuid = getUUID();
+	int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+    if(csID == -1)
     {
-    	Log(lInfo) << "Creating folder: "<<fldr;
-    	createFolder(fldr);
+    	csID = 0; //So we can create fileFolder '0'
     }
 
-    string ext(".jpg");
-    //Count files in folder
-    int nrOfShots = countFiles(fldr, "*" + ext) + 1;
-    string fName = joinPath(fldr, mtk::toString(nrOfShots) + ext);
-    int i = 1;
-
-    while(fileExists(fName))
+    int blockID = atdbDM->getCurrentBlockID();
+    if(blockID == -1)
     {
-        nrOfShots = countFiles(fldr, "*" + ext) + ++i;
-        fName = joinPath(fldr, mtk::toString(nrOfShots) + ext);
+    	blockID = 0;
+    }
+
+	string base_fldr =  joinPath(mSnapShotFolder, mtk::toString(blockID));
+    string fName = joinPath(base_fldr, mtk::toString(csID) + string("_") + uuid + ext);
+
+    if(!folderExists(base_fldr))
+    {
+    	Log(lInfo) << "Creating folder: "<<base_fldr;
+    	createFolder(base_fldr);
     }
 
 	if(mCamera1.SaveImage(fName.c_str()))
@@ -212,19 +190,24 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 
 		try
         {
-			int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+			if(atdbDM->SQLConnection1->Connected == false)
+            {
+            	MessageDlg("Not connected to the database!\nThis image is not registered!", mtError, TMsgDlgButtons() << mbOK, 0);
+                return;
+            }
+
         	//Add image to database
             //Make sure the barcode exists in the database..
             TSQLQuery* tq = new TSQLQuery(NULL);
             tq->SQLConnection = atdbDM->SQLConnection1;
             tq->SQLConnection->AutoClone = false;
             stringstream q;
-            q <<"INSERT INTO images (id, filename, fileextension, created_by, coverslip_id) VALUES ('"
-            			<<getUUID()<<"', '"
-                        <<getFileNameNoPathNoExtension(fName)<<"', '"
+            q <<"INSERT INTO images (id, fileextension, created_by, coverslip_id, block_id) VALUES ('"
+            			<<uuid<<"', '"
                         <<getFileExtension(fName)<<"', '"
                         <<getCurrentUserID()<<"', '"
-	                    <<csID<<"')";
+						<<csID<<"', '"
+	                    <<blockID<<"')";
 
             string s(q.str());
 			Log(lDebug) <<"Image Insertion Query: "<<s;
@@ -245,7 +228,11 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
 {
-	static string mCurrentVideoFileName;
+	static string lCurrentVideoFileName;
+    static string lUUID;
+    static int lCSID;
+    static int lBlockID;
+
 	if(mRecordMovieBtn->Caption == "Record Movie")
     {
         mCaptureVideoTimer->Enabled = true;
@@ -269,24 +256,30 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
             return;
         }
 
-        string fldr =  mMoviesFolder;
-        if(!folderExists(fldr))
+        lCSID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+        if(lCSID == -1)
         {
-            Log(lInfo) << "Creating folder: "<<fldr;
-            createFolder(fldr);
+            lCSID = 0; //So we can create fileFolder '0'
         }
 
-        //Count files in folder
-        int nrOfMovies = countFiles(fldr, "*.avi") + 1;
-        string fName = joinPath(fldr, mtk::toString(nrOfMovies) + ".avi");
-        int i = 1;
-        while(fileExists(fName))
+        string ext(".avi");
+        lUUID = getUUID();
+        lBlockID = atdbDM->getCurrentBlockID();
+        if(lBlockID == -1)
         {
-        	nrOfMovies = countFiles(fldr, "*.avi") + ++i;
-        	fName = joinPath(fldr, mtk::toString(nrOfMovies) + ".avi");
+            lBlockID = 0;
         }
 
-		mCurrentVideoFileName = fName;
+        string base_fldr =  joinPath(mMoviesFolder, mtk::toString(lBlockID));
+        string fName = joinPath(base_fldr, mtk::toString(lCSID) + string("_") + lUUID + ext);
+
+        if(!folderExists(base_fldr))
+        {
+            Log(lInfo) << "Creating folder: "<<base_fldr;
+            createFolder(base_fldr);
+        }
+
+		lCurrentVideoFileName = fName;
 
         retVal = isavi_OpenAVI(mAVIID, fName.c_str());
         if(retVal != IS_AVI_NO_ERR)
@@ -336,33 +329,30 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
         }
 
         //Register in the database
-    	string fName(mCurrentVideoFileName);
-    	Log(lInfo) << "Saved snapshot to file: "<< fName;
+    	string fName(lCurrentVideoFileName);
+    	Log(lInfo) << "Saving movie to file: "<< fName;
 
 		try
         {
-			int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
         	//Add image to database
             //Make sure the barcode exists in the database..
             TSQLQuery* tq = new TSQLQuery(NULL);
             tq->SQLConnection = atdbDM->SQLConnection1;
             tq->SQLConnection->AutoClone = false;
             stringstream q;
-            q <<"INSERT INTO movies (id, filename, fileextension, created_by, coverslip_id) VALUES ('"
-            			<<getUUID()<<"', '"
-                        <<getFileNameNoPathNoExtension(fName)<<"', '"
+            q <<"INSERT INTO movies (id, fileextension, created_by, coverslip_id, block_id) VALUES ('"
+            			<<lUUID<<"', '"
                         <<getFileExtension(fName)<<"', '"
                         <<getCurrentUserID()<<"', '"
-	                    <<csID<<"')";
+                        <<lCSID<<"', '"
+	                    <<lBlockID<<"')";
 
             string s(q.str());
 			Log(lDebug) <<"Image Insertion Query: "<<s;
             tq->SQL->Add(q.str().c_str());
             tq->ExecSQL();
             tq->Close();
-            tq->SQL->Clear();
-            q.str("");
-
+            delete tq;
         }
         catch(...)
         {
@@ -387,6 +377,6 @@ void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
     else
     {
         frames++;
-        Log(lInfo) << "Added frame: "<<frames;
+        Log(lDebug5) << "Added frame: "<<frames;
     }
 }

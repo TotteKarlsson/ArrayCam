@@ -90,6 +90,7 @@ bool TRegisterNewRibbonForm::updateCoverSlipStatus()
 
 	Log(lInfo) <<"Updated status for " <<rAffected<<" coverslip";
     tq->SQL->Clear();
+    return true;
 }
 
 //---------------------------------------------------------------------------
@@ -134,6 +135,7 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
     tq->SQL->Add(q.str().c_str());
     tq->ExecSQL();
     tq->Close();
+    return true;
 }
 
 //---------------------------------------------------------------------------
