@@ -212,6 +212,28 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 
 		try
         {
+			int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+        	//Add image to database
+            //Make sure the barcode exists in the database..
+            TSQLQuery* tq = new TSQLQuery(NULL);
+            tq->SQLConnection = atdbDM->SQLConnection1;
+            tq->SQLConnection->AutoClone = false;
+            stringstream q;
+            q <<"INSERT INTO images (id, filename, fileextension, created_by, coverslip_id) VALUES ('"
+            			<<getUUID()<<"', '"
+                        <<getFileNameNoPathNoExtension(fName)<<"', '"
+                        <<getFileExtension(fName)<<"', '"
+                        <<getCurrentUserID()<<"', '"
+	                    <<csID<<"')";
+
+            string s(q.str());
+			Log(lDebug) <<"Image Insertion Query: "<<s;
+            tq->SQL->Add(q.str().c_str());
+            tq->ExecSQL();
+            tq->Close();
+            tq->SQL->Clear();
+            q.str("");
+
         }
         catch(...)
         {
@@ -223,6 +245,7 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
 {
+	static string mCurrentVideoFileName;
 	if(mRecordMovieBtn->Caption == "Record Movie")
     {
         mCaptureVideoTimer->Enabled = true;
@@ -246,7 +269,7 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
             return;
         }
 
-        string fldr =  mMoviesFolder; //joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "ArrayBot", "movies");
+        string fldr =  mMoviesFolder;
         if(!folderExists(fldr))
         {
             Log(lInfo) << "Creating folder: "<<fldr;
@@ -262,6 +285,8 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
         	nrOfMovies = countFiles(fldr, "*.avi") + ++i;
         	fName = joinPath(fldr, mtk::toString(nrOfMovies) + ".avi");
         }
+
+		mCurrentVideoFileName = fName;
 
         retVal = isavi_OpenAVI(mAVIID, fName.c_str());
         if(retVal != IS_AVI_NO_ERR)
@@ -308,6 +333,40 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
         {
             Log(lError) << "There was a ExitAVI error: "<<retVal;
             return;
+        }
+
+        //Register in the database
+    	string fName(mCurrentVideoFileName);
+    	Log(lInfo) << "Saved snapshot to file: "<< fName;
+
+		try
+        {
+			int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+        	//Add image to database
+            //Make sure the barcode exists in the database..
+            TSQLQuery* tq = new TSQLQuery(NULL);
+            tq->SQLConnection = atdbDM->SQLConnection1;
+            tq->SQLConnection->AutoClone = false;
+            stringstream q;
+            q <<"INSERT INTO movies (id, filename, fileextension, created_by, coverslip_id) VALUES ('"
+            			<<getUUID()<<"', '"
+                        <<getFileNameNoPathNoExtension(fName)<<"', '"
+                        <<getFileExtension(fName)<<"', '"
+                        <<getCurrentUserID()<<"', '"
+	                    <<csID<<"')";
+
+            string s(q.str());
+			Log(lDebug) <<"Image Insertion Query: "<<s;
+            tq->SQL->Add(q.str().c_str());
+            tq->ExecSQL();
+            tq->Close();
+            tq->SQL->Clear();
+            q.str("");
+
+        }
+        catch(...)
+        {
+        	handleMySQLException();
         }
     }
 }

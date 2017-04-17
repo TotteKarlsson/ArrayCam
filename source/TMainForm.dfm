@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Array Cam 0.5'
-  ClientHeight = 814
+  ClientHeight = 826
   ClientWidth = 1242
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -25,30 +25,20 @@ object MainForm: TMainForm
   object Splitter2: TSplitter
     Left = 539
     Top = 0
-    Height = 814
+    Height = 826
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
+    ExplicitHeight = 814
   end
   object MainContentPanel: TPanel
     Left = 542
     Top = 0
     Width = 700
-    Height = 814
+    Height = 826
     Align = alRight
     Caption = 'MainContentPanel'
     TabOrder = 0
-    object Splitter1: TSplitter
-      Left = 1
-      Top = 810
-      Width = 698
-      Height = 3
-      Cursor = crVSplit
-      Align = alBottom
-      ExplicitLeft = 8
-      ExplicitTop = 528
-      ExplicitWidth = 967
-    end
     object MainTopPanel: TPanel
       Left = 1
       Top = 1
@@ -67,7 +57,7 @@ object MainForm: TMainForm
         TabOrder = 0
         object mHWPosShape: TShape
           Left = 21
-          Top = 51
+          Top = 43
           Width = 65
           Height = 8
           Brush.Color = clBlue
@@ -132,55 +122,16 @@ object MainForm: TMainForm
           Height = 86
           Align = alBottom
           TabOrder = 0
-          object mStartStopBtn: TArrayBotButton
+          object CounterGB: TGroupBox
             Left = 1
             Top = 1
-            Width = 148
+            Width = 690
             Height = 84
-            Align = alLeft
-            Caption = 'Start'
-            Enabled = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -21
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentDoubleBuffered = True
-            ParentFont = False
+            Align = alClient
             TabOrder = 0
-            OnClick = CreateUC7Message
-            SoundID = 'BUTTON_CLICK_4'
-          end
-          object mRibbonStartBtn: TArrayBotButton
-            Left = 515
-            Top = 1
-            Width = 176
-            Height = 84
-            Align = alRight
-            Caption = 'Resume Cutting'
-            Enabled = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -21
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentDoubleBuffered = True
-            ParentFont = False
-            TabOrder = 1
-            OnClick = CreateUC7Message
-            SoundID = 'BUTTON_CLICK_4'
-          end
-          object CounterGB: TGroupBox
-            Left = 149
-            Top = 1
-            Width = 360
-            Height = 84
-            Align = alLeft
-            Caption = 'Ribbon Creation'
-            TabOrder = 2
             object mSectionCounterLabel: TIntLabel
               Left = 176
-              Top = 39
+              Top = 24
               Width = 16
               Height = 35
               Caption = '1'
@@ -199,7 +150,7 @@ object MainForm: TMainForm
             end
             object mRibbonOrderCountLabel: TIntLabel
               Left = 317
-              Top = 41
+              Top = 26
               Width = 16
               Height = 35
               Caption = '1'
@@ -218,7 +169,7 @@ object MainForm: TMainForm
             end
             object mCountToE: TIntegerLabeledEdit
               Left = 14
-              Top = 48
+              Top = 33
               Width = 65
               Height = 31
               EditLabel.Width = 66
@@ -235,7 +186,7 @@ object MainForm: TMainForm
             end
             object mResetCounterBtn: TArrayBotButton
               Left = 85
-              Top = 39
+              Top = 24
               Width = 68
               Height = 42
               Caption = 'Reset'
@@ -247,7 +198,7 @@ object MainForm: TMainForm
             end
             object mResetRibbonOrderBtn: TArrayBotButton
               Left = 229
-              Top = 39
+              Top = 24
               Width = 68
               Height = 42
               Caption = 'Reset'
@@ -257,6 +208,43 @@ object MainForm: TMainForm
               OnClick = mResetCounterBtnClick
               SoundID = 'BUTTON_CLICK_4'
             end
+            object mNorthLimitPosE: TIntegerLabeledEdit
+              Left = 542
+              Top = 41
+              Width = 83
+              Height = 27
+              EditLabel.Width = 108
+              EditLabel.Height = 19
+              EditLabel.Caption = 'Max North Pos.'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 3
+              Text = '0'
+              OnKeyDown = uc7EditKeyDown
+            end
+            object mKnifeStageNSAbsPosE: TIntegerLabeledEdit
+              Left = 403
+              Top = 41
+              Width = 73
+              Height = 27
+              EditLabel.Width = 119
+              EditLabel.Height = 19
+              EditLabel.Caption = 'Current N/S Pos.'
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 4
+              Text = '0'
+            end
           end
         end
       end
@@ -265,7 +253,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 147
       Width = 698
-      Height = 663
+      Height = 678
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 1
@@ -273,7 +261,7 @@ object MainForm: TMainForm
         Left = 1
         Top = 1
         Width = 696
-        Height = 661
+        Height = 676
         ActivePage = Main
         Align = alClient
         MultiLine = True
@@ -286,14 +274,14 @@ object MainForm: TMainForm
             Left = 509
             Top = 0
             Width = 179
-            Height = 627
+            Height = 642
             Align = alRight
             TabOrder = 0
             object ScrollBox1: TScrollBox
               Left = 1
               Top = 1
               Width = 177
-              Height = 625
+              Height = 640
               Align = alClient
               TabOrder = 0
               object GroupBox5: TGroupBox
@@ -491,7 +479,7 @@ object MainForm: TMainForm
               end
               object mSettingsBtn: TArrayBotButton
                 Left = 0
-                Top = 561
+                Top = 576
                 Width = 173
                 Height = 60
                 Align = alBottom
@@ -507,154 +495,63 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 509
-            Height = 627
+            Height = 642
             Align = alClient
             TabOrder = 1
             object BlocksGB: TGroupBox
               Left = 1
-              Top = 285
+              Top = 273
               Width = 507
-              Height = 341
+              Height = 368
               Align = alClient
               Caption = 'Ribbon  Registration'
               TabOrder = 0
-              object DBNavigator1: TDBNavigator
-                Left = 2
-                Top = 314
-                Width = 503
-                Height = 25
-                DataSource = atdbDM.blocksDataSource
-                VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
-                Align = alBottom
-                TabOrder = 0
-              end
               object Panel8: TPanel
                 Left = 2
                 Top = 21
                 Width = 503
-                Height = 100
+                Height = 140
                 Align = alTop
                 BevelOuter = bvNone
-                TabOrder = 1
-                object Label1: TLabel
-                  Left = 14
-                  Top = 44
-                  Width = 81
-                  Height = 19
-                  Caption = 'Process ID:'
-                end
-                object mBlockProcessIDCB: TDBLookupComboBox
-                  Left = 12
-                  Top = 67
-                  Width = 143
-                  Height = 27
-                  KeyField = 'process_id'
-                  ListField = 'process_id'
-                  ListSource = atdbDM.specimenDataSource
-                  TabOrder = 0
-                  OnCloseUp = mBlockProcessIDCBCloseUp
-                end
-                object mUsersCB: TDBLookupComboBox
-                  Left = 10
-                  Top = 11
-                  Width = 145
-                  Height = 27
-                  KeyField = 'id'
-                  ListField = 'user_name'
-                  ListSource = atdbDM.usersDataSource
-                  TabOrder = 1
-                  OnCloseUp = mUsersCBCloseUp
-                end
+                TabOrder = 0
                 object mDecodeSessionBtn: TButton
-                  Left = 217
-                  Top = 0
+                  Left = 25
+                  Top = 16
                   Width = 143
                   Height = 100
-                  Align = alRight
                   Caption = 'Scan Barcode'
-                  TabOrder = 2
+                  TabOrder = 0
                   OnClick = mBtnClick
-                  ExplicitLeft = 144
-                  ExplicitTop = 8
                 end
                 object mRegisterRibbonBtn: TArrayBotButton
-                  Left = 360
-                  Top = 0
+                  Left = 312
+                  Top = 16
                   Width = 143
                   Height = 100
-                  Align = alRight
                   Caption = 'Register Ribbon'
                   ParentDoubleBuffered = True
-                  TabOrder = 3
+                  TabOrder = 1
                   OnClick = mRegisterRibbonBtnClick
                   SoundID = 'BUTTON_CLICK_4'
-                  ExplicitLeft = 217
-                end
-              end
-              object GroupBox3: TGroupBox
-                Left = 2
-                Top = 121
-                Width = 503
-                Height = 193
-                Align = alClient
-                Caption = 'Blocks'
-                TabOrder = 2
-                object DBGrid1: TDBGrid
-                  AlignWithMargins = True
-                  Left = 12
-                  Top = 31
-                  Width = 479
-                  Height = 150
-                  Margins.Left = 10
-                  Margins.Top = 10
-                  Margins.Right = 10
-                  Margins.Bottom = 10
-                  Align = alClient
-                  DataSource = atdbDM.blocksDataSource
-                  Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
-                  ReadOnly = True
-                  TabOrder = 0
-                  TitleFont.Charset = DEFAULT_CHARSET
-                  TitleFont.Color = clWindowText
-                  TitleFont.Height = -16
-                  TitleFont.Name = 'Tahoma'
-                  TitleFont.Style = []
-                  Columns = <
-                    item
-                      Expanded = False
-                      FieldName = 'id'
-                      Width = 50
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'label'
-                      Width = 155
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'process_id'
-                      Width = 107
-                      Visible = True
-                    end>
                 end
               end
             end
-            object GroupBox9: TGroupBox
+            object MaunUC7GB: TGroupBox
               Left = 1
               Top = 1
               Width = 507
-              Height = 284
+              Height = 272
               Align = alTop
               Caption = 'UC7'
               TabOrder = 1
+              ExplicitLeft = 0
+              ExplicitTop = -5
               DesignSize = (
                 507
-                284)
+                272)
               object mFeedRateE: TIntegerLabeledEdit
-                Left = 25
-                Top = 39
+                Left = 13
+                Top = 45
                 Width = 120
                 Height = 27
                 EditLabel.Width = 158
@@ -671,10 +568,10 @@ object MainForm: TMainForm
                 OnKeyDown = uc7EditKeyDown
               end
               object mSetZeroCutBtn: TArrayBotButton
-                Left = 25
-                Top = 89
-                Width = 126
-                Height = 105
+                Left = 392
+                Top = 22
+                Width = 110
+                Height = 50
                 Caption = 'Set zero-cut'
                 Enabled = False
                 Font.Charset = DEFAULT_CHARSET
@@ -687,21 +584,10 @@ object MainForm: TMainForm
                 OnClick = CreateUC7Message
                 SoundID = 'BUTTON_CLICK_4'
               end
-              object mSynchUIBtn: TArrayBotButton
-                Left = 177
-                Top = 89
-                Width = 126
-                Height = 106
-                Caption = 'Refresh Status'
-                ParentDoubleBuffered = True
-                TabOrder = 2
-                OnClick = mSynchUIBtnClick
-                SoundID = 'BUTTON_CLICK_4'
-              end
               object mRibbonCreatorActiveCB: TPropertyCheckBox
-                Left = 237
-                Top = 38
-                Width = 268
+                Left = 13
+                Top = 102
+                Width = 244
                 Height = 26
                 Anchors = [akLeft, akTop, akRight]
                 Caption = 'Ribbon Creator On/Off'
@@ -711,485 +597,64 @@ object MainForm: TMainForm
                 Font.Name = 'Tahoma'
                 Font.Style = []
                 ParentFont = False
-                TabOrder = 3
+                TabOrder = 2
                 OnClick = mRibbonCreatorActiveCBClick
               end
-            end
-          end
-        end
-        object TabSheet8: TTabSheet
-          Caption = 'UC7 Settings'
-          ImageIndex = 3
-          object NorthSouthGB: TGroupBox
-            Left = 0
-            Top = 329
-            Width = 688
-            Height = 376
-            Align = alTop
-            Caption = 'North-South Knife Stage Position (0-100 000)'
-            TabOrder = 0
-            object mKnifeStageNSAbsPosE: TIntegerLabeledEdit
-              Left = 14
-              Top = 58
-              Width = 73
-              Height = 27
-              EditLabel.Width = 145
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Current N/S Position'
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              ReadOnly = True
-              TabOrder = 0
-              Text = '0'
-            end
-            object mNorthLimitPosE: TIntegerLabeledEdit
-              Left = 183
-              Top = 58
-              Width = 83
-              Height = 27
-              EditLabel.Width = 138
-              EditLabel.Height = 19
-              EditLabel.Caption = 'North MAX Position'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 3
-              Text = '0'
-              OnKeyDown = uc7EditKeyDown
-            end
-            object mKnifeStageJogStep: TIntegerLabeledEdit
-              Left = 14
-              Top = 229
-              Width = 91
-              Height = 27
-              EditLabel.Width = 150
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Knife Stage Jog Step '
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 4
-              Text = '1'
-              OnKeyDown = uc7EditKeyDown
-              Value = 1
-            end
-            object mMoveSouthBtn: TArrayBotButton
-              Left = 14
-              Top = 99
-              Width = 90
-              Height = 90
-              Caption = 'Move South'
-              Enabled = False
-              ParentDoubleBuffered = True
-              TabOrder = 1
-              OnClick = CreateUC7Message
-              SoundID = 'BUTTON_CLICK_4'
-            end
-            object mMoveNorthBtn: TArrayBotButton
-              Left = 176
-              Top = 99
-              Width = 90
-              Height = 90
-              Caption = 'Move North'
-              Enabled = False
-              ParentDoubleBuffered = True
-              TabOrder = 2
-              OnClick = CreateUC7Message
-              SoundID = 'BUTTON_CLICK_4'
-            end
-          end
-          object CuttingMotorGB: TGroupBox
-            Left = 0
-            Top = 225
-            Width = 688
-            Height = 104
-            Align = alTop
-            Caption = 'Cutting Parameters'
-            TabOrder = 1
-            object mPresetFeedRateE: TIntegerLabeledEdit
-              Left = 23
-              Top = 58
-              Width = 73
-              Height = 27
-              EditLabel.Width = 148
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Preset Feed (nm/cut)'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 0
-              Text = '50'
-              OnKeyDown = uc7EditKeyDown
-              Value = 50
-            end
-          end
-          object mTopPanel: TPanel
-            Left = 0
-            Top = 0
-            Width = 688
-            Height = 41
-            Align = alTop
-            TabOrder = 2
-            object mComportCB: TComboBox
-              Left = 8
-              Top = 12
-              Width = 145
-              Height = 27
-              ItemIndex = 0
-              TabOrder = 0
-              Text = 'COM1'
-              Items.Strings = (
-                'COM1'
-                'COM2'
-                'COM3'
-                'COM4'
-                'COM5'
-                'COM6'
-                'COM7'
-                'COM8'
-                'COM9'
-                'COM10'
-                'COM11'
-                'COM12'
-                'COM13'
-                'COM14'
-                'COM15'
-                'COM16'
-                'COM17'
-                'COM18'
-                'COM19'
-                'COM20')
-            end
-            object mConnectUC7Btn: TButton
-              Left = 165
-              Top = 10
-              Width = 50
-              Height = 25
-              Caption = 'Open'
-              TabOrder = 1
-              OnClick = mConnectUC7BtnClick
-            end
-          end
-          object GroupBox7: TGroupBox
-            Left = 0
-            Top = 41
-            Width = 688
-            Height = 184
-            Align = alTop
-            Caption = 'Misc parameters'
-            TabOrder = 3
-            object mStageMoveDelayE: TIntegerLabeledEdit
-              Left = 26
-              Top = 66
-              Width = 159
-              Height = 27
-              EditLabel.Width = 156
-              EditLabel.Height = 19
-              EditLabel.Caption = 'StageMove delay (ms)'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 0
-              Text = '50'
-              OnKeyDown = uc7EditKeyDown
-              Value = 50
-            end
-            object mZeroCutsE: TIntegerLabeledEdit
-              Left = 26
-              Top = 134
-              Width = 159
-              Height = 31
-              EditLabel.Width = 171
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Zero cuts before backoff'
-              EditLabel.Font.Charset = DEFAULT_CHARSET
-              EditLabel.Font.Color = clWindowText
-              EditLabel.Font.Height = -16
-              EditLabel.Font.Name = 'Tahoma'
-              EditLabel.Font.Style = []
-              EditLabel.ParentFont = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -19
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              Text = '0'
-              OnKeyDown = uc7EditKeyDown
-            end
-          end
-        end
-        object TabSheet2: TTabSheet
-          Caption = 'Barcode Reading'
-          object GroupBox1: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 688
-            Height = 627
-            Align = alClient
-            Caption = 'Zebra'
-            TabOrder = 0
-            object Panel7: TPanel
-              Left = 2
-              Top = 21
-              Width = 684
-              Height = 49
-              Align = alTop
-              TabOrder = 0
-              object mZebraCOMPortCB: TComboBox
-                Left = 1
-                Top = 1
-                Width = 87
-                Height = 27
-                Align = alLeft
-                TabOrder = 0
-                Text = 'COM1'
-                Items.Strings = (
-                  'COM1'
-                  'COM2'
-                  'COM3'
-                  'COM4'
-                  'COM5'
-                  'COM6'
-                  'COM7'
-                  'COM8'
-                  'COM9'
-                  'COM10'
-                  'COM11'
-                  'COM12'
-                  'COM13'
-                  'COM14'
-                  'COM15'
-                  'COM16'
-                  'COM17'
-                  'COM18'
-                  'COM19'
-                  'COM20')
-              end
-              object mConnectZebraBtn: TButton
-                Left = 164
-                Top = 1
-                Width = 77
-                Height = 47
-                Align = alLeft
-                Caption = 'Open'
-                TabOrder = 1
-                OnClick = mConnectZebraBtnClick
-              end
-              object mZebraBaudRateCB: TComboBox
-                Left = 88
-                Top = 1
-                Width = 76
-                Height = 27
-                Align = alLeft
-                ItemIndex = 0
-                TabOrder = 2
-                Text = '9600'
-                Items.Strings = (
-                  '9600'
-                  '14400'
-                  '19200'
-                  '38400'
-                  '57600'
-                  '115200'
-                  '128000'
-                  '256000')
-              end
-            end
-            object mBeepBtn: TButton
-              Left = 182
-              Top = 93
-              Width = 89
-              Height = 37
-              Caption = 'Beep'
-              TabOrder = 1
-              OnClick = mBtnClick
-            end
-            object mImagerSettingsGB: TGroupBox
-              Left = 2
-              Top = 70
-              Width = 174
-              Height = 555
-              Align = alLeft
-              Caption = 'Functions and Settings'
-              TabOrder = 2
-              object mScannerAimRG: TRadioGroup
+              object mStartStopBtn: TArrayBotButton
                 Left = 11
-                Top = 78
-                Width = 145
-                Height = 49
-                Caption = 'Aim'
-                Columns = 2
-                ItemIndex = 1
-                Items.Strings = (
-                  'On'
-                  'Off')
-                TabOrder = 0
-                OnClick = scannerSettingsClick
+                Top = 155
+                Width = 222
+                Height = 90
+                Caption = 'Start'
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -21
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentDoubleBuffered = True
+                ParentFont = False
+                TabOrder = 3
+                OnClick = CreateUC7Message
+                SoundID = 'BUTTON_CLICK_4'
               end
-              object mScannerEnabledRG: TRadioGroup
-                Left = 9
-                Top = 23
-                Width = 145
-                Height = 49
-                Caption = 'Enabled'
-                Columns = 2
-                ItemIndex = 0
-                Items.Strings = (
-                  'On'
-                  'Off')
-                TabOrder = 1
-                OnClick = scannerSettingsClick
+              object mRibbonStartBtn: TArrayBotButton
+                Left = 244
+                Top = 155
+                Width = 254
+                Height = 90
+                Caption = 'Resume Cutting'
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -21
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentDoubleBuffered = True
+                ParentFont = False
+                TabOrder = 4
+                OnClick = CreateUC7Message
+                SoundID = 'BUTTON_CLICK_4'
+              end
+              object mPresetFeedRateE: TIntegerLabeledEdit
+                Left = 215
+                Top = 45
+                Width = 73
+                Height = 27
+                EditLabel.Width = 148
+                EditLabel.Height = 19
+                EditLabel.Caption = 'Preset Feed (nm/cut)'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 5
+                Text = '0'
+                OnKeyDown = uc7EditKeyDown
               end
             end
-          end
-        end
-        object TabSheet4: TTabSheet
-          Caption = 'Database'
-          ImageIndex = 2
-          inline TATDBConnectionFrame1: TATDBConnectionFrame
-            Left = 0
-            Top = 0
-            Width = 688
-            Height = 201
-            Align = alTop
-            AutoSize = True
-            TabOrder = 0
-            ExplicitWidth = 688
-            inherited GroupBox1: TGroupBox
-              inherited mServerIPE: TSTDStringLabeledEdit
-                Height = 27
-                EditLabel.Width = 65
-                EditLabel.Height = 19
-                EditLabel.ExplicitLeft = 16
-                EditLabel.ExplicitTop = 18
-                EditLabel.ExplicitWidth = 65
-                EditLabel.ExplicitHeight = 19
-                ExplicitHeight = 27
-              end
-              inherited mDBUserE: TSTDStringLabeledEdit
-                Height = 27
-                EditLabel.Width = 32
-                EditLabel.Height = 19
-                EditLabel.ExplicitLeft = 16
-                EditLabel.ExplicitTop = 67
-                EditLabel.ExplicitWidth = 32
-                EditLabel.ExplicitHeight = 19
-                ExplicitHeight = 27
-              end
-              inherited mPasswordE: TSTDStringLabeledEdit
-                Height = 27
-                EditLabel.Width = 67
-                EditLabel.Height = 19
-                EditLabel.ExplicitLeft = 146
-                EditLabel.ExplicitTop = 67
-                EditLabel.ExplicitWidth = 67
-                EditLabel.ExplicitHeight = 19
-                ExplicitHeight = 27
-              end
-              inherited mATDBServerBtnConnect: TArrayBotButton
-                Left = 40
-                Width = 171
-                ExplicitLeft = 40
-                ExplicitWidth = 171
-              end
-              inherited mDatabaseE: TSTDStringLabeledEdit
-                Height = 27
-                EditLabel.Width = 64
-                EditLabel.Height = 19
-                EditLabel.ExplicitLeft = 146
-                EditLabel.ExplicitTop = 18
-                EditLabel.ExplicitWidth = 64
-                EditLabel.ExplicitHeight = 19
-                ExplicitHeight = 27
-              end
-            end
-          end
-          object DBGrid2: TDBGrid
-            Left = 0
-            Top = 201
-            Width = 688
-            Height = 345
-            Align = alClient
-            DataSource = atdbDM.mRibbonDSource
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-            TabOrder = 1
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -16
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'status'
-                Width = 80
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'block_id'
-                Width = 80
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'cutting_order'
-                Width = 80
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'nr_of_sections'
-                Width = 80
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'created'
-                Width = 87
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'created_by'
-                Width = 89
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'coverslip_id'
-                Width = 110
-                Visible = True
-              end>
-          end
-          object DBNavigator2: TDBNavigator
-            Left = 0
-            Top = 546
-            Width = 688
-            Height = 81
-            DataSource = atdbDM.mRibbonDSource
-            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
-            Align = alBottom
-            TabOrder = 2
           end
         end
         object TabSheet3: TTabSheet
@@ -1199,7 +664,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 688
-            Height = 627
+            Height = 642
             Align = alClient
             Caption = 'Panel4'
             TabOrder = 0
@@ -1276,7 +741,7 @@ object MainForm: TMainForm
               Left = 1
               Top = 51
               Width = 686
-              Height = 575
+              Height = 590
               Align = alClient
               ScrollBars = ssVertical
               TabOrder = 1
@@ -1290,7 +755,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 186
             Width = 688
-            Height = 441
+            Height = 456
             Align = alClient
             Caption = 'ChangeLog'
             TabOrder = 0
@@ -1298,7 +763,7 @@ object MainForm: TMainForm
               Left = 2
               Top = 21
               Width = 684
-              Height = 418
+              Height = 433
               Align = alClient
               Anchors = [akLeft, akRight, akBottom]
               Lines.Strings = (
@@ -2198,6 +1663,564 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet1: TTabSheet
+          Caption = 'Settings'
+          ImageIndex = 6
+          object ScrollBox2: TScrollBox
+            Left = 0
+            Top = 0
+            Width = 688
+            Height = 642
+            Align = alClient
+            TabOrder = 0
+            object UC7GB: TGroupBox
+              Left = 0
+              Top = 0
+              Width = 667
+              Height = 345
+              Align = alTop
+              Caption = 'UC7'
+              TabOrder = 0
+              object GroupBox7: TGroupBox
+                Left = 2
+                Top = 209
+                Width = 663
+                Height = 119
+                Align = alTop
+                Caption = 'Misc parameters'
+                TabOrder = 0
+                object mStageMoveDelayE: TIntegerLabeledEdit
+                  Left = 26
+                  Top = 66
+                  Width = 151
+                  Height = 27
+                  EditLabel.Width = 156
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'StageMove delay (ms)'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 0
+                  Text = '50'
+                  OnKeyDown = uc7EditKeyDown
+                  Value = 50
+                end
+                object mZeroCutsE: TIntegerLabeledEdit
+                  Left = 210
+                  Top = 62
+                  Width = 159
+                  Height = 31
+                  EditLabel.Width = 171
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'Zero cuts before backoff'
+                  EditLabel.Font.Charset = DEFAULT_CHARSET
+                  EditLabel.Font.Color = clWindowText
+                  EditLabel.Font.Height = -16
+                  EditLabel.Font.Name = 'Tahoma'
+                  EditLabel.Font.Style = []
+                  EditLabel.ParentFont = False
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -19
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 1
+                  Text = '0'
+                  OnKeyDown = uc7EditKeyDown
+                end
+              end
+              object mTopPanel: TPanel
+                Left = 2
+                Top = 21
+                Width = 663
+                Height = 41
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 1
+                object mComportCB: TComboBox
+                  Left = 8
+                  Top = 4
+                  Width = 145
+                  Height = 27
+                  ItemIndex = 0
+                  TabOrder = 0
+                  Text = 'COM1'
+                  Items.Strings = (
+                    'COM1'
+                    'COM2'
+                    'COM3'
+                    'COM4'
+                    'COM5'
+                    'COM6'
+                    'COM7'
+                    'COM8'
+                    'COM9'
+                    'COM10'
+                    'COM11'
+                    'COM12'
+                    'COM13'
+                    'COM14'
+                    'COM15'
+                    'COM16'
+                    'COM17'
+                    'COM18'
+                    'COM19'
+                    'COM20')
+                end
+                object mConnectUC7Btn: TButton
+                  Left = 159
+                  Top = 2
+                  Width = 67
+                  Height = 33
+                  Caption = 'Open'
+                  TabOrder = 1
+                  OnClick = mConnectUC7BtnClick
+                end
+                object mSynchUIBtn: TArrayBotButton
+                  Left = 232
+                  Top = 2
+                  Width = 129
+                  Height = 33
+                  Caption = 'Refresh Status'
+                  ParentDoubleBuffered = True
+                  TabOrder = 2
+                  OnClick = mSynchUIBtnClick
+                  SoundID = 'BUTTON_CLICK_4'
+                end
+              end
+              object NorthSouthGB: TGroupBox
+                Left = 2
+                Top = 62
+                Width = 663
+                Height = 147
+                Align = alTop
+                Caption = 'North-South Knife Stage Position (0-100 000)'
+                TabOrder = 2
+                object mKnifeStageJogStep: TIntegerLabeledEdit
+                  Left = 350
+                  Top = 58
+                  Width = 91
+                  Height = 27
+                  EditLabel.Width = 150
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'Knife Stage Jog Step '
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -16
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  TabOrder = 2
+                  Text = '1'
+                  OnKeyDown = uc7EditKeyDown
+                  Value = 1
+                end
+                object mMoveSouthBtn: TArrayBotButton
+                  Left = 14
+                  Top = 33
+                  Width = 131
+                  Height = 90
+                  Caption = 'Move South'
+                  Enabled = False
+                  ParentDoubleBuffered = True
+                  TabOrder = 0
+                  OnClick = CreateUC7Message
+                  SoundID = 'BUTTON_CLICK_4'
+                end
+                object mMoveNorthBtn: TArrayBotButton
+                  Left = 184
+                  Top = 33
+                  Width = 137
+                  Height = 90
+                  Caption = 'Move North'
+                  Enabled = False
+                  ParentDoubleBuffered = True
+                  TabOrder = 1
+                  OnClick = CreateUC7Message
+                  SoundID = 'BUTTON_CLICK_4'
+                end
+              end
+            end
+            object atdbGB: TGroupBox
+              Left = 0
+              Top = 345
+              Width = 667
+              Height = 758
+              Align = alTop
+              Caption = 'ATDB'
+              TabOrder = 1
+              inline TATDBConnectionFrame1: TATDBConnectionFrame
+                Left = 2
+                Top = 21
+                Width = 663
+                Height = 201
+                Align = alTop
+                AutoSize = True
+                TabOrder = 0
+                ExplicitLeft = 2
+                ExplicitTop = 21
+                ExplicitWidth = 663
+                inherited GroupBox1: TGroupBox
+                  Caption = 'Connection'
+                  inherited mServerIPE: TSTDStringLabeledEdit
+                    Height = 27
+                    EditLabel.Width = 65
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 18
+                    EditLabel.ExplicitWidth = 65
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitHeight = 27
+                  end
+                  inherited mDBUserE: TSTDStringLabeledEdit
+                    Height = 27
+                    EditLabel.Width = 32
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 67
+                    EditLabel.ExplicitWidth = 32
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitHeight = 27
+                  end
+                  inherited mPasswordE: TSTDStringLabeledEdit
+                    Height = 27
+                    EditLabel.Width = 67
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 146
+                    EditLabel.ExplicitTop = 67
+                    EditLabel.ExplicitWidth = 67
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitHeight = 27
+                  end
+                  inherited mATDBServerBtnConnect: TArrayBotButton
+                    Left = 16
+                    Top = 122
+                    Width = 249
+                    ExplicitLeft = 16
+                    ExplicitTop = 122
+                    ExplicitWidth = 249
+                  end
+                  inherited mDatabaseE: TSTDStringLabeledEdit
+                    Height = 27
+                    EditLabel.Width = 64
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 146
+                    EditLabel.ExplicitTop = 18
+                    EditLabel.ExplicitWidth = 64
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitHeight = 27
+                  end
+                end
+              end
+              object RibbonsGB: TGroupBox
+                Left = 2
+                Top = 222
+                Width = 663
+                Height = 315
+                Align = alTop
+                Caption = 'Ribbons'
+                TabOrder = 1
+                object BlockSelectionGB: TGroupBox
+                  Left = 2
+                  Top = 21
+                  Width = 659
+                  Height = 76
+                  Align = alTop
+                  Caption = 'DB/Block Selection'
+                  TabOrder = 0
+                  object Label1: TLabel
+                    Left = 174
+                    Top = 36
+                    Width = 81
+                    Height = 19
+                    Caption = 'Process ID:'
+                  end
+                  object mBlockProcessIDCB: TDBLookupComboBox
+                    Left = 261
+                    Top = 37
+                    Width = 143
+                    Height = 27
+                    KeyField = 'process_id'
+                    ListField = 'process_id'
+                    ListSource = atdbDM.specimenDataSource
+                    TabOrder = 0
+                    OnCloseUp = mBlockProcessIDCBCloseUp
+                  end
+                  object mUsersCB: TDBLookupComboBox
+                    Left = 12
+                    Top = 37
+                    Width = 145
+                    Height = 27
+                    KeyField = 'id'
+                    ListField = 'user_name'
+                    ListSource = atdbDM.usersDataSource
+                    TabOrder = 1
+                    OnCloseUp = mUsersCBCloseUp
+                  end
+                end
+                object BlockGB: TGroupBox
+                  Left = 2
+                  Top = 97
+                  Width = 659
+                  Height = 200
+                  Align = alTop
+                  Caption = 'Blocks'
+                  TabOrder = 1
+                  object DBGrid1: TDBGrid
+                    AlignWithMargins = True
+                    Left = 5
+                    Top = 24
+                    Width = 649
+                    Height = 146
+                    Align = alClient
+                    DataSource = atdbDM.blocksDataSource
+                    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+                    ReadOnly = True
+                    TabOrder = 0
+                    TitleFont.Charset = DEFAULT_CHARSET
+                    TitleFont.Color = clWindowText
+                    TitleFont.Height = -16
+                    TitleFont.Name = 'Tahoma'
+                    TitleFont.Style = []
+                    Columns = <
+                      item
+                        Expanded = False
+                        FieldName = 'id'
+                        Width = 50
+                        Visible = True
+                      end
+                      item
+                        Expanded = False
+                        FieldName = 'label'
+                        Width = 155
+                        Visible = True
+                      end
+                      item
+                        Expanded = False
+                        FieldName = 'process_id'
+                        Width = 107
+                        Visible = True
+                      end>
+                  end
+                  object DBNavigator1: TDBNavigator
+                    Left = 2
+                    Top = 173
+                    Width = 655
+                    Height = 25
+                    DataSource = atdbDM.blocksDataSource
+                    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+                    Align = alBottom
+                    TabOrder = 1
+                  end
+                end
+              end
+              object RibbonsDataGB: TGroupBox
+                Left = 2
+                Top = 537
+                Width = 663
+                Height = 208
+                Align = alTop
+                Caption = 'RibbonsDataGB'
+                TabOrder = 2
+                object DBGrid2: TDBGrid
+                  Left = 2
+                  Top = 21
+                  Width = 659
+                  Height = 163
+                  Align = alClient
+                  DataSource = atdbDM.mRibbonDSource
+                  Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                  TabOrder = 0
+                  TitleFont.Charset = DEFAULT_CHARSET
+                  TitleFont.Color = clWindowText
+                  TitleFont.Height = -16
+                  TitleFont.Name = 'Tahoma'
+                  TitleFont.Style = []
+                  Columns = <
+                    item
+                      Expanded = False
+                      FieldName = 'status'
+                      Width = 80
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'block_id'
+                      Width = 80
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'cutting_order'
+                      Width = 104
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'nr_of_sections'
+                      Width = 99
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'created'
+                      Width = 87
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'created_by'
+                      Width = 89
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'coverslip_id'
+                      Width = 110
+                      Visible = True
+                    end>
+                end
+                object DBNavigator2: TDBNavigator
+                  Left = 2
+                  Top = 184
+                  Width = 659
+                  Height = 22
+                  DataSource = atdbDM.mRibbonDSource
+                  VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+                  Align = alBottom
+                  TabOrder = 1
+                end
+              end
+            end
+            object BarCodeGB: TGroupBox
+              Left = 0
+              Top = 1103
+              Width = 667
+              Height = 217
+              Align = alTop
+              Caption = 'Zebra'
+              TabOrder = 2
+              object Panel7: TPanel
+                Left = 2
+                Top = 21
+                Width = 663
+                Height = 49
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 0
+                object mZebraCOMPortCB: TComboBox
+                  Left = 0
+                  Top = 0
+                  Width = 87
+                  Height = 27
+                  Align = alLeft
+                  TabOrder = 0
+                  Text = 'COM1'
+                  Items.Strings = (
+                    'COM1'
+                    'COM2'
+                    'COM3'
+                    'COM4'
+                    'COM5'
+                    'COM6'
+                    'COM7'
+                    'COM8'
+                    'COM9'
+                    'COM10'
+                    'COM11'
+                    'COM12'
+                    'COM13'
+                    'COM14'
+                    'COM15'
+                    'COM16'
+                    'COM17'
+                    'COM18'
+                    'COM19'
+                    'COM20')
+                end
+                object mConnectZebraBtn: TButton
+                  Left = 163
+                  Top = 0
+                  Width = 77
+                  Height = 49
+                  Align = alLeft
+                  Caption = 'Open'
+                  TabOrder = 1
+                  OnClick = mConnectZebraBtnClick
+                end
+                object mZebraBaudRateCB: TComboBox
+                  Left = 87
+                  Top = 0
+                  Width = 76
+                  Height = 27
+                  Align = alLeft
+                  ItemIndex = 0
+                  TabOrder = 2
+                  Text = '9600'
+                  Items.Strings = (
+                    '9600'
+                    '14400'
+                    '19200'
+                    '38400'
+                    '57600'
+                    '115200'
+                    '128000'
+                    '256000')
+                end
+              end
+              object mImagerSettingsGB: TGroupBox
+                Left = 2
+                Top = 70
+                Width = 295
+                Height = 145
+                Align = alLeft
+                Caption = 'Functions and Settings'
+                TabOrder = 1
+                object mScannerAimRG: TRadioGroup
+                  Left = 11
+                  Top = 78
+                  Width = 145
+                  Height = 49
+                  Caption = 'Aim'
+                  Columns = 2
+                  ItemIndex = 1
+                  Items.Strings = (
+                    'On'
+                    'Off')
+                  TabOrder = 0
+                  OnClick = scannerSettingsClick
+                end
+                object mScannerEnabledRG: TRadioGroup
+                  Left = 9
+                  Top = 23
+                  Width = 145
+                  Height = 49
+                  Caption = 'Enabled'
+                  Columns = 2
+                  ItemIndex = 0
+                  Items.Strings = (
+                    'On'
+                    'Off')
+                  TabOrder = 1
+                  OnClick = scannerSettingsClick
+                end
+                object mBeepBtn: TButton
+                  Left = 174
+                  Top = 87
+                  Width = 89
+                  Height = 37
+                  Caption = 'Beep'
+                  TabOrder = 2
+                  OnClick = mBtnClick
+                end
+              end
+            end
+          end
+        end
       end
     end
   end
@@ -2205,14 +2228,14 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 539
-    Height = 814
+    Height = 826
     Align = alClient
     TabOrder = 1
     OnResize = mMainPhotoPanelResize
     object mBCLabel: TLabel
       AlignWithMargins = True
       Left = 4
-      Top = 771
+      Top = 783
       Width = 531
       Height = 39
       Align = alBottom
@@ -2279,8 +2302,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 250
     OnTimer = mStartupTimerTimer
-    Left = 928
-    Top = 576
+    Left = 1032
+    Top = 536
   end
   object mCheckSocketConnectionTimer: TTimer
     Enabled = False

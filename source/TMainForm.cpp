@@ -410,19 +410,18 @@ void __fastcall TMainForm::onConnectedToUC7()
     mUC7.getSectionCounter().assignOnCountCallBack(onUC7Count);
     mUC7.getSectionCounter().assignOnCountedToCallBack(onUC7CountedTo);
 
-
-	enableDisableUI(true);
+	enableDisableUC7UI(true);
 	mSynchUIBtnClick(NULL);
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::onDisConnectedToUC7()
 {
-	enableDisableUI(false);
+	enableDisableUC7UI(false);
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::enableDisableUI(bool enableDisable)
+void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 {
 	//Buttons
     mConnectUC7Btn->Caption                 = enableDisable ? "Close" : "Open";
@@ -430,9 +429,9 @@ void __fastcall TMainForm::enableDisableUI(bool enableDisable)
 
     //group boxes
 	enableDisableGroupBox(CounterGB, 		enableDisable);
-	enableDisableGroupBox(CuttingMotorGB, 	enableDisable);
     enableDisableGroupBox(HandwheelGB, 		enableDisable);
     enableDisableGroupBox(NorthSouthGB,		enableDisable);
+    enableDisableGroupBox(MaunUC7GB,			enableDisable);
 }
 
 //---------------------------------------------------------------------------
@@ -654,8 +653,6 @@ void __fastcall TMainForm::onConnectedToZebra()
     enableDisableGroupBox(mImagerSettingsGB, true);
 	Log(lInfo) << "Connected to a Zebra barcode scanner";
     mZebra.scanDisable();
-    //Turn into a 'known' state
-	//	mZebra.beep(ONESHORTLO);
 }
 
 //---------------------------------------------------------------------------
@@ -862,8 +859,6 @@ void __fastcall TMainForm::onSSICapabilities(TMessage& Msg)
     Log(lInfo) << "There was an onSSICapabilities event..";
 }
 
-
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
 {
@@ -882,7 +877,6 @@ void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
 
     Log(lInfo) << "Status: "<<status;
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)

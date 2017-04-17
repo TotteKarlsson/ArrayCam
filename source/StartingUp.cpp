@@ -78,7 +78,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 //    }
 
     gAppIsStartingUp = false;
-    enableDisableUI(false);
+    enableDisableUC7UI(false);
     enableDisableGroupBox(mImagerSettingsGB, false);
     mBCLabel->Caption = "";
 	mStartupTimer->Enabled = true;
