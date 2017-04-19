@@ -1,6 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
+  ActiveControl = mFitToScreenButton
   Caption = 'Array Cam 0.5'
   ClientHeight = 826
   ClientWidth = 1242
@@ -377,6 +378,8 @@ object MainForm: TMainForm
                 TabOrder = 4
                 OnClick = mSnapShotBtnClick
                 SoundID = 'CAMERA_SHUTTER_1'
+                ExplicitLeft = 2
+                ExplicitTop = 260
               end
               object Panel3: TPanel
                 Left = 0
@@ -552,8 +555,6 @@ object MainForm: TMainForm
                 Align = alClient
                 Caption = 'Ribbons'
                 TabOrder = 1
-                ExplicitTop = 143
-                ExplicitHeight = 226
                 object DBGrid1: TDBGrid
                   Left = 2
                   Top = 73
@@ -621,7 +622,6 @@ object MainForm: TMainForm
                   VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
                   Align = alBottom
                   TabOrder = 1
-                  ExplicitTop = 184
                 end
                 object RibTopPanel: TPanel
                   Left = 2
@@ -678,9 +678,6 @@ object MainForm: TMainForm
               Align = alTop
               Caption = 'UC7'
               TabOrder = 1
-              DesignSize = (
-                507
-                272)
               object mFeedRateE: TIntegerLabeledEdit
                 Left = 13
                 Top = 45
@@ -721,7 +718,6 @@ object MainForm: TMainForm
                 Top = 102
                 Width = 244
                 Height = 26
-                Anchors = [akLeft, akTop, akRight]
                 Caption = 'Ribbon Creator On/Off'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -1803,12 +1799,12 @@ object MainForm: TMainForm
             Top = 0
             Width = 688
             Height = 642
-            VertScrollBar.Position = 254
+            VertScrollBar.Position = 250
             Align = alClient
             TabOrder = 0
             object UC7GB: TGroupBox
               Left = 0
-              Top = -254
+              Top = -250
               Width = 667
               Height = 308
               Align = alTop
@@ -1816,12 +1812,13 @@ object MainForm: TMainForm
               TabOrder = 0
               object GroupBox7: TGroupBox
                 Left = 2
-                Top = 209
+                Top = 203
                 Width = 663
                 Height = 88
                 Align = alTop
                 Caption = 'Misc parameters'
                 TabOrder = 0
+                ExplicitTop = 209
                 object mStageMoveDelayE: TIntegerLabeledEdit
                   Left = 26
                   Top = 48
@@ -1929,7 +1926,7 @@ object MainForm: TMainForm
                 Left = 2
                 Top = 62
                 Width = 663
-                Height = 147
+                Height = 141
                 Align = alTop
                 Caption = 'North-South Knife Stage Position (0-100 000)'
                 TabOrder = 2
@@ -1980,9 +1977,9 @@ object MainForm: TMainForm
             end
             object atdbGB: TGroupBox
               Left = 0
-              Top = 54
+              Top = 58
               Width = 667
-              Height = 571
+              Height = 317
               Align = alTop
               Caption = 'ATDB'
               TabOrder = 1
@@ -2055,7 +2052,7 @@ object MainForm: TMainForm
                 Left = 2
                 Top = 222
                 Width = 663
-                Height = 132
+                Height = 75
                 Align = alTop
                 Caption = 'DB/Block Selection'
                 TabOrder = 1
@@ -2074,9 +2071,9 @@ object MainForm: TMainForm
             end
             object BarCodeGB: TGroupBox
               Left = 0
-              Top = 625
+              Top = 375
               Width = 667
-              Height = 217
+              Height = 158
               Align = alTop
               Caption = 'Zebra'
               TabOrder = 2
@@ -2153,14 +2150,16 @@ object MainForm: TMainForm
               object mImagerSettingsGB: TGroupBox
                 Left = 2
                 Top = 70
-                Width = 295
-                Height = 145
+                Width = 439
+                Height = 86
                 Align = alLeft
                 Caption = 'Functions and Settings'
                 TabOrder = 1
+                ExplicitTop = 96
+                ExplicitHeight = 119
                 object mScannerAimRG: TRadioGroup
-                  Left = 11
-                  Top = 78
+                  Left = 179
+                  Top = 22
                   Width = 145
                   Height = 49
                   Caption = 'Aim'
@@ -2187,14 +2186,34 @@ object MainForm: TMainForm
                   OnClick = scannerSettingsClick
                 end
                 object mBeepBtn: TButton
-                  Left = 174
-                  Top = 87
+                  Left = 342
+                  Top = 31
                   Width = 89
                   Height = 37
                   Caption = 'Beep'
                   TabOrder = 2
                   OnClick = mBtnClick
                 end
+              end
+            end
+            object GroupBox1: TGroupBox
+              Left = 0
+              Top = 533
+              Width = 667
+              Height = 105
+              Align = alTop
+              Caption = 'Server'
+              TabOrder = 3
+              object mArrayCamServerPortE: TIntegerLabeledEdit
+                Left = 16
+                Top = 56
+                Width = 153
+                Height = 27
+                EditLabel.Width = 155
+                EditLabel.Height = 19
+                EditLabel.Caption = 'ArrayCam Server Port'
+                TabOrder = 0
+                Text = '0'
               end
             end
           end
@@ -2264,19 +2283,19 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 10
     OnTimer = mShutDownTimerTimer
-    Left = 1112
-    Top = 504
+    Left = 448
+    Top = 152
   end
   object mCaptureVideoTimer: TTimer
     Enabled = False
     Interval = 1
     OnTimer = mCaptureVideoTimerTimer
-    Left = 984
-    Top = 632
+    Left = 448
+    Top = 80
   end
   object mMediaPopup: TPopupMenu
-    Left = 728
-    Top = 712
+    Left = 752
+    Top = 656
     object Delete1: TMenuItem
       Caption = 'Delete'
     end
@@ -2288,14 +2307,14 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 250
     OnTimer = mStartupTimerTimer
-    Left = 1032
-    Top = 536
+    Left = 448
+    Top = 280
   end
   object mCheckSocketConnectionTimer: TTimer
     Enabled = False
     Interval = 3000
     OnTimer = mCheckSocketConnectionTimerTimer
-    Left = 984
-    Top = 552
+    Left = 448
+    Top = 216
   end
 end

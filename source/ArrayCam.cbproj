@@ -121,9 +121,19 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="ArrayCam.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ArrayCamIPCServerReceiver.cpp">
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
         <PCHCompile Include="ArrayCamPCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <CppCompile Include="ArrayCamServer.cpp">
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ArrayCamUtils.cpp">
+            <DependentOn>ArrayCamUtils.h</DependentOn>
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
         <CppCompile Include="CameraFunctions.cpp">
             <BuildOrder>5</BuildOrder>
         </CppCompile>
@@ -194,8 +204,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

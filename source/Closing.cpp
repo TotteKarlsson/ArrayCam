@@ -59,6 +59,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     	mZebra.disconnect();
     }
 
+    if(mACServer.isRunning())
+    {
+    	mACServer.shutDown();
+    }
 
     if(mUC7.isConnected())
     {

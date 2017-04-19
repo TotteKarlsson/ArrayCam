@@ -46,6 +46,9 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 
 	//Connect to the arduino server..
 	mCheckSocketConnectionTimer->Enabled = true;
+
+    //Setup the server
+    mACServer.start(mArrayCamServerPortE->getValue());
 }
 
 //---------------------------------------------------------------------------

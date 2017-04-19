@@ -26,8 +26,6 @@
 #include "uc7/atUC7Component.h"
 #include "TATDBImagesAndMoviesDataModule.h"
 #include "arraybot/atEnvironmentalSensorReader.h"
-#include "database/atATDBServerSession.h"
-#include "/database/atATDBClientDBSession.h"
 #include "TArrayBotBtn.h"
 #include "sound/atSoundPlayer.h"
 #include "atCameraServiceThread.h"
@@ -41,7 +39,7 @@
 #include "TATDBConnectionFrame.h"
 #include "barcodereader/atDS457.h"
 #include "TATDBDataModule.h"
-
+#include "ArrayCamServer.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -183,6 +181,8 @@ class TMainForm  : public TRegistryForm
 	TDBGrid *DBGrid1;
 	TDBNavigator *DBNavigator1;
 	TPanel *RibTopPanel;
+	TGroupBox *GroupBox1;
+	TIntegerLabeledEdit *mArrayCamServerPortE;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -326,6 +326,10 @@ class TMainForm  : public TRegistryForm
 
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
+
+
+        //Server functions
+        ArrayCamServer							mACServer;
 
 
         // Barcode reader

@@ -70,8 +70,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
 	    mZebra(),
-        mMainContentPanelWidth(700)
-
+        mMainContentPanelWidth(700),
+        mACServer(*this, -1)
 {
    	mLogFileReader.start(true);
 
@@ -118,16 +118,17 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.add((BaseProperty*)  &CameraEnabledCB->getProperty()->setup(	"CAMERA_ENABLED",              		false));
 
     //UC7
-   	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                    "UC7_COM_PORT",    	   				0));
-	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	"COUNT_TO",                     	5));
-	mProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	"NUMBER_OF_ZERO_CUTS",           	2));
-	mProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	"KNIFE_STAGE_MOVE_DELAY",          	10));
-	mProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	"PRESET_FEED_RATE",               	100));
-	mProperties.add((BaseProperty*)  &mKnifeStageJogStep->getProperty()->setup(	"KNIFE_STAGE_JOG_SIZE",          	100));
+   	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
+	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	    "COUNT_TO",                     	5));
+	mProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	    "NUMBER_OF_ZERO_CUTS",           	2));
+	mProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	    "KNIFE_STAGE_MOVE_DELAY",          	10));
+	mProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	    "PRESET_FEED_RATE",               	100));
+	mProperties.add((BaseProperty*)  &mKnifeStageJogStep->getProperty()->setup(	    "KNIFE_STAGE_JOG_SIZE",          	100));
+	mProperties.add((BaseProperty*)  &mArrayCamServerPortE->getProperty()->setup(	"ARRAYCAM_SERVER_PORT",          	50001));
 
     //Zebra
-	mProperties.add((BaseProperty*)  &mZebraCOMPort.setup( 	                    "ZEBRA_COM_PORT",                   0));
-	mProperties.add((BaseProperty*)  &mZebraBaudRate.setup( 	                "ZEBRA_BAUD_RATE",                  9600));
+	mProperties.add((BaseProperty*)  &mZebraCOMPort.setup( 	                    	"ZEBRA_COM_PORT",                   0));
+	mProperties.add((BaseProperty*)  &mZebraBaudRate.setup( 	                	"ZEBRA_BAUD_RATE",                  9600));
 
     mProperties.read();
 
@@ -155,8 +156,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
     mReticleVisibilityCB->update();
     CameraEnabledCB->update();
+	mArrayCamServerPortE->update();
 
-    //Setup UI elements
+	//Setup UI elements
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
     //Find which item should be selected
@@ -168,6 +170,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
+
+    //This will update the UI from a thread
+    //mACServer.assignOnUpdateCallBack(onUpdatesFromArduinoServer);
 }
 
 __fastcall TMainForm::~TMainForm()
