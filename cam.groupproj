@@ -3,6 +3,9 @@
         <ProjectGuid>{17786869-76D5-488B-8D65-AA6E38A4E217}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="P:\libs\dsl\Common\IPC\mtkIPC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
             <Dependencies/>
         </Projects>
@@ -29,6 +32,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="mtkIPC">
+        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj"/>
+    </Target>
+    <Target Name="mtkIPC:Clean">
+        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mtkIPC:Make">
+        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="atSSI">
         <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj"/>
     </Target>
@@ -84,13 +96,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="atSSI;atCore;atDatabase;atBarcodeReader;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="mtkIPC;atSSI;atCore;atDatabase;atBarcodeReader;atVCLCore;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="atSSI:Clean;atCore:Clean;atDatabase:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkIPC:Clean;atSSI:Clean;atCore:Clean;atDatabase:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="atSSI:Make;atCore:Make;atDatabase:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkIPC:Make;atSSI:Make;atCore:Make;atDatabase:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

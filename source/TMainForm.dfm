@@ -378,8 +378,6 @@ object MainForm: TMainForm
                 TabOrder = 4
                 OnClick = mSnapShotBtnClick
                 SoundID = 'CAMERA_SHUTTER_1'
-                ExplicitLeft = 2
-                ExplicitTop = 260
               end
               object Panel3: TPanel
                 Left = 0
@@ -1818,7 +1816,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'Misc parameters'
                 TabOrder = 0
-                ExplicitTop = 209
                 object mStageMoveDelayE: TIntegerLabeledEdit
                   Left = 26
                   Top = 48
@@ -2155,8 +2152,6 @@ object MainForm: TMainForm
                 Align = alLeft
                 Caption = 'Functions and Settings'
                 TabOrder = 1
-                ExplicitTop = 96
-                ExplicitHeight = 119
                 object mScannerAimRG: TRadioGroup
                   Left = 179
                   Top = 22
@@ -2214,6 +2209,16 @@ object MainForm: TMainForm
                 EditLabel.Caption = 'ArrayCam Server Port'
                 TabOrder = 0
                 Text = '0'
+              end
+              object SendServerStatusMessageBtn: TArrayBotButton
+                Left = 200
+                Top = 40
+                Width = 153
+                Height = 49
+                Caption = 'Broadcast Status'
+                TabOrder = 1
+                OnClick = SendServerStatusMessageBtnClick
+                SoundID = 'BUTTON_CLICK_4'
               end
             end
           end

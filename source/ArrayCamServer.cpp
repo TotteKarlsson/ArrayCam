@@ -2,7 +2,7 @@
 #include "TMainForm.h"
 #include "ArrayCamServer.h"
 #include "mtkLogger.h"
-#include "atArduinoIPCServerReceiver.h"
+//#include "atArduinoIPCServerReceiver.h"
 #include "mtkSocketWorker.h"
 #include "mtkStringUtils.h"
 
@@ -45,12 +45,13 @@ void ArrayCamServer::notifyClients(const string& msg)
         onMessageUpdateCB(msg);
     }
 
-//    broadcast(msg);
+    broadcast(msg);
 }
 
 void ArrayCamServer::broadcastStatus()
 {
     stringstream msg;
+    msg << "IS_RECORDING="<<mtk::toString(mMainForm.mCaptureVideoTimer->Enabled);
    	notifyClients(msg.str());
 }
 
@@ -104,6 +105,11 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     {
     	Log(lInfo) << "Take snapshot";
         TThread::Synchronize(NULL, mMainForm.mSnapShotBtn->Click);
+    }
+    else if(startsWith("GET_SERVER_STATUS", msg))
+    {
+    	Log(lInfo) << "Broadcast status";
+		broadcastStatus();
     }
     else
     {

@@ -932,7 +932,6 @@ void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mReticleVisibilityCBClick(TObject *Sender)
 {
-	//
 	mReticleVisibilityCB->OnClick(Sender);
 }
 
@@ -940,6 +939,12 @@ void __fastcall TMainForm::mReticleVisibilityCBClick(TObject *Sender)
 void __fastcall TMainForm::CameraEnabledCBClick(TObject *Sender)
 {
 	CameraEnabledCB->OnClick(Sender);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
+{
+	mACServer.broadcastStatus();
 }
 
 

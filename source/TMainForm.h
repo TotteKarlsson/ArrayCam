@@ -183,6 +183,7 @@ class TMainForm  : public TRegistryForm
 	TPanel *RibTopPanel;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
+	TArrayBotButton *SendServerStatusMessageBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -232,6 +233,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
 	void __fastcall mReticleVisibilityCBClick(TObject *Sender);
 	void __fastcall CameraEnabledCBClick(TObject *Sender);
+	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;

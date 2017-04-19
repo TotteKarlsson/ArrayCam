@@ -359,6 +359,8 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
         	handleMySQLException();
         }
     }
+
+  	mACServer.broadcastStatus();
 }
 
 //---------------------------------------------------------------------------
