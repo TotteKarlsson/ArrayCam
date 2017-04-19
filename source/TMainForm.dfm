@@ -544,6 +544,131 @@ object MainForm: TMainForm
                   SoundID = 'BUTTON_CLICK_4'
                 end
               end
+              object RibbonsDataGB: TGroupBox
+                Left = 2
+                Top = 161
+                Width = 503
+                Height = 205
+                Align = alClient
+                Caption = 'Ribbons'
+                TabOrder = 1
+                ExplicitTop = 143
+                ExplicitHeight = 226
+                object DBGrid1: TDBGrid
+                  Left = 2
+                  Top = 73
+                  Width = 499
+                  Height = 108
+                  Align = alClient
+                  DataSource = atdbDM.mRibbonDSource
+                  Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                  TabOrder = 0
+                  TitleFont.Charset = DEFAULT_CHARSET
+                  TitleFont.Color = clWindowText
+                  TitleFont.Height = -16
+                  TitleFont.Name = 'Tahoma'
+                  TitleFont.Style = []
+                  Columns = <
+                    item
+                      Expanded = False
+                      FieldName = 'status'
+                      Width = 80
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'block_id'
+                      Width = 80
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'cutting_order'
+                      Width = 104
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'nr_of_sections'
+                      Width = 99
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'created'
+                      Width = 87
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'created_by'
+                      Width = 89
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'coverslip_id'
+                      Width = 110
+                      Visible = True
+                    end>
+                end
+                object DBNavigator1: TDBNavigator
+                  Left = 2
+                  Top = 181
+                  Width = 499
+                  Height = 22
+                  DataSource = atdbDM.mRibbonDSource
+                  VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+                  Align = alBottom
+                  TabOrder = 1
+                  ExplicitTop = 184
+                end
+                object RibTopPanel: TPanel
+                  Left = 2
+                  Top = 21
+                  Width = 499
+                  Height = 52
+                  Align = alTop
+                  BevelOuter = bvNone
+                  TabOrder = 2
+                  object Label1: TLabel
+                    Left = 20
+                    Top = 14
+                    Width = 75
+                    Height = 19
+                    Caption = 'Process ID'
+                  end
+                  object Label3: TLabel
+                    Left = 249
+                    Top = 14
+                    Width = 59
+                    Height = 19
+                    Caption = 'Block ID'
+                  end
+                  object BlockIDCB: TDBLookupComboBox
+                    Left = 320
+                    Top = 6
+                    Width = 108
+                    Height = 27
+                    KeyField = 'id'
+                    ListField = 'id'
+                    ListSource = atdbDM.blocksDataSource
+                    TabOrder = 0
+                    OnCloseUp = mBlockProcessIDCBCloseUp
+                  end
+                  object mBlockProcessIDCB: TDBLookupComboBox
+                    Left = 101
+                    Top = 6
+                    Width = 91
+                    Height = 27
+                    KeyField = 'process_id'
+                    ListField = 'process_id'
+                    ListSource = atdbDM.specimenDataSource
+                    TabOrder = 1
+                    OnCloseUp = mBlockProcessIDCBCloseUp
+                  end
+                end
+              end
             end
             object MaunUC7GB: TGroupBox
               Left = 1
@@ -1678,13 +1803,14 @@ object MainForm: TMainForm
             Top = 0
             Width = 688
             Height = 642
+            VertScrollBar.Position = 254
             Align = alClient
             TabOrder = 0
             object UC7GB: TGroupBox
               Left = 0
-              Top = 0
+              Top = -254
               Width = 667
-              Height = 323
+              Height = 308
               Align = alTop
               Caption = 'UC7'
               TabOrder = 0
@@ -1692,13 +1818,13 @@ object MainForm: TMainForm
                 Left = 2
                 Top = 209
                 Width = 663
-                Height = 104
+                Height = 88
                 Align = alTop
                 Caption = 'Misc parameters'
                 TabOrder = 0
                 object mStageMoveDelayE: TIntegerLabeledEdit
                   Left = 26
-                  Top = 66
+                  Top = 48
                   Width = 151
                   Height = 27
                   EditLabel.Width = 156
@@ -1717,7 +1843,7 @@ object MainForm: TMainForm
                 end
                 object mZeroCutsE: TIntegerLabeledEdit
                   Left = 210
-                  Top = 62
+                  Top = 44
                   Width = 159
                   Height = 31
                   EditLabel.Width = 171
@@ -1854,7 +1980,7 @@ object MainForm: TMainForm
             end
             object atdbGB: TGroupBox
               Left = 0
-              Top = 323
+              Top = 54
               Width = 667
               Height = 571
               Align = alTop
@@ -1933,31 +2059,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'DB/Block Selection'
                 TabOrder = 1
-                object Label1: TLabel
-                  Left = 12
-                  Top = 70
-                  Width = 75
-                  Height = 19
-                  Caption = 'Process ID'
-                end
-                object Label3: TLabel
-                  Left = 193
-                  Top = 68
-                  Width = 59
-                  Height = 19
-                  Caption = 'Block ID'
-                end
-                object mBlockProcessIDCB: TDBLookupComboBox
-                  Left = 12
-                  Top = 93
-                  Width = 143
-                  Height = 27
-                  KeyField = 'process_id'
-                  ListField = 'process_id'
-                  ListSource = atdbDM.specimenDataSource
-                  TabOrder = 0
-                  OnCloseUp = mBlockProcessIDCBCloseUp
-                end
                 object mUsersCB: TDBLookupComboBox
                   Left = 12
                   Top = 37
@@ -1966,102 +2067,14 @@ object MainForm: TMainForm
                   KeyField = 'id'
                   ListField = 'user_name'
                   ListSource = atdbDM.usersDataSource
-                  TabOrder = 1
-                  OnCloseUp = mUsersCBCloseUp
-                end
-                object BlockIDCB: TDBLookupComboBox
-                  Left = 193
-                  Top = 93
-                  Width = 115
-                  Height = 27
-                  KeyField = 'id'
-                  ListField = 'id'
-                  ListSource = atdbDM.blocksDataSource
-                  TabOrder = 2
-                  OnCloseUp = mBlockProcessIDCBCloseUp
-                end
-              end
-              object RibbonsDataGB: TGroupBox
-                Left = 2
-                Top = 354
-                Width = 663
-                Height = 208
-                Align = alTop
-                Caption = 'Ribbons'
-                TabOrder = 2
-                object DBGrid2: TDBGrid
-                  Left = 2
-                  Top = 21
-                  Width = 659
-                  Height = 163
-                  Align = alClient
-                  DataSource = atdbDM.mRibbonDSource
-                  Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                   TabOrder = 0
-                  TitleFont.Charset = DEFAULT_CHARSET
-                  TitleFont.Color = clWindowText
-                  TitleFont.Height = -16
-                  TitleFont.Name = 'Tahoma'
-                  TitleFont.Style = []
-                  Columns = <
-                    item
-                      Expanded = False
-                      FieldName = 'status'
-                      Width = 80
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'block_id'
-                      Width = 80
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'cutting_order'
-                      Width = 104
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'nr_of_sections'
-                      Width = 99
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'created'
-                      Width = 87
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'created_by'
-                      Width = 89
-                      Visible = True
-                    end
-                    item
-                      Expanded = False
-                      FieldName = 'coverslip_id'
-                      Width = 110
-                      Visible = True
-                    end>
-                end
-                object DBNavigator2: TDBNavigator
-                  Left = 2
-                  Top = 184
-                  Width = 659
-                  Height = 22
-                  DataSource = atdbDM.mRibbonDSource
-                  VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
-                  Align = alBottom
-                  TabOrder = 1
+                  OnCloseUp = mUsersCBCloseUp
                 end
               end
             end
             object BarCodeGB: TGroupBox
               Left = 0
-              Top = 894
+              Top = 625
               Width = 667
               Height = 217
               Align = alTop

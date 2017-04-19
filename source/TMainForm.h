@@ -49,7 +49,7 @@ using mtk::IniFile;
 using mtk::Property;
 
 //#define UWM_MESSAGE   (WM_APP + 5)
-#define UWM_MESSAGE                                     (WM_APP + 5)
+#define UWM_MESSAGE      (WM_APP + 5)
 enum ApplicationMessageEnum
 {
     atUC7SplashWasClosed = 0,
@@ -160,8 +160,6 @@ class TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mFeedRateE;
 	TGroupBox *MaunUC7GB;
 	TPropertyCheckBox *mRibbonCreatorActiveCB;
-	TDBGrid *DBGrid2;
-	TDBNavigator *DBNavigator2;
 	TGroupBox *atdbGB;
 	TGroupBox *UC7GB;
 	TTabSheet *TabSheet1;
@@ -173,15 +171,18 @@ class TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mNorthLimitPosE;
 	TIntegerLabeledEdit *mKnifeStageNSAbsPosE;
 	TGroupBox *BlockSelectionGB;
-	TDBLookupComboBox *mBlockProcessIDCB;
 	TDBLookupComboBox *mUsersCB;
-	TLabel *Label1;
-	TGroupBox *RibbonsDataGB;
 	TIntegerLabeledEdit *mPresetFeedRateE;
-	TDBLookupComboBox *BlockIDCB;
-	TLabel *Label3;
 	TPropertyCheckBox *mReticleVisibilityCB;
 	TPropertyCheckBox *CameraEnabledCB;
+	TDBLookupComboBox *BlockIDCB;
+	TLabel *Label3;
+	TLabel *Label1;
+	TDBLookupComboBox *mBlockProcessIDCB;
+	TGroupBox *RibbonsDataGB;
+	TDBGrid *DBGrid1;
+	TDBNavigator *DBNavigator1;
+	TPanel *RibTopPanel;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
