@@ -2282,7 +2282,7 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 3000
     OnTimer = mCheckSocketConnectionTimerTimer
-    Left = 992
-    Top = 504
+    Left = 984
+    Top = 552
   end
 end
