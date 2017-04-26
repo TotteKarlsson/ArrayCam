@@ -115,7 +115,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		            "C:\\Temp"	));
 	mProperties.add((BaseProperty*)  &mReticleVisibilityCB->getProperty()->setup("RETICLE_VISIBILITY",              false));
-	mProperties.add((BaseProperty*)  &CameraEnabledCB->getProperty()->setup(	"CAMERA_ENABLED",              		false));
+//	mProperties.add((BaseProperty*)  &CameraEnabledCB->getProperty()->setup(	"CAMERA_ENABLED",              		false));
 
     //UC7
    	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
@@ -155,7 +155,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mZeroCutsE->update();
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
     mReticleVisibilityCB->update();
-    CameraEnabledCB->update();
+//    CameraEnabledCB->update();
 	mArrayCamServerPortE->update();
 
 	//Setup UI elements
@@ -699,6 +699,7 @@ void __fastcall TMainForm::mBtnClick(TObject *Sender)
     	if(b->Caption == "Scan Barcode")
         {
         	//Start session
+            mBCLabel->Caption = "";
             mZebra.scanEnable();
             sleep(150);
 			status = mZebra.startDecodeSession();
@@ -731,7 +732,7 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
 	unsigned char decodeBuffer[3001];
 
 	// first thing is to copy the contents of the dll's data buffer to our own.
-	if((l < 3000) && ((w & BUFFERSIZE_MASK) == BUFFERSIZE_GOOD ))
+	if((l < 3000) && ((w & BUFFERSIZE_MASK) == BUFFERSIZE_GOOD))
 	{
 		memcpy(decodeBuffer, mZebra.getMemoryBuffer(), l);
 		decodeBuffer[l] = 0;
@@ -748,7 +749,6 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
 	decodeBuffer[3000] = 0;
     if(decodeBuffer[0] == 0x1B)
     {
-
         decodeBuffer[0] = ' ';
         string data(reinterpret_cast<char const*>(decodeBuffer));
         data = trimWS(data);
@@ -758,12 +758,14 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
         mDecodeSessionBtn->Caption = "Scan Barcode";
 
         //Stop session
-        sleep(100);
+        sleep(50);
 		mZebra.scanDisable();
+        mACServer.broadcast(mACServer.IPCCommand(acrBarcodeScanSucceded));
     }
     else
     {
     	Log(lError) << "Bad barcode reader memory buffer";
+        mACServer.broadcast(mACServer.IPCCommand(acrBarcodeScanFailed));
     }
 }
 
@@ -774,7 +776,6 @@ void __fastcall TMainForm::onSSIEvent(TMessage& Msg)
     LPARAM l = Msg.LParam;
     Log(lInfo) << "There was an onSSIEvent event..";
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSIImage(TMessage& Msg)
@@ -921,8 +922,8 @@ void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
     if(b == mBlockProcessIDCB)
     {
     	mProcessID.setValue(b->KeyValue);
+        BlockIDCB->KeyValue = -1;
     }
-
     else if(b == BlockIDCB)
     {
     	mBlockID.setValue(b->KeyValue);
@@ -938,7 +939,7 @@ void __fastcall TMainForm::mReticleVisibilityCBClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CameraEnabledCBClick(TObject *Sender)
 {
-	CameraEnabledCB->OnClick(Sender);
+//	CameraEnabledCB->OnClick(Sender);
 }
 
 //---------------------------------------------------------------------------

@@ -2,10 +2,9 @@
 #include "TMainForm.h"
 #include "ArrayCamServer.h"
 #include "mtkLogger.h"
-//#include "atArduinoIPCServerReceiver.h"
 #include "mtkSocketWorker.h"
 #include "mtkStringUtils.h"
-
+#include "arraycam/atArrayCamProtocol.h"
 //---------------------------------------------------------------------------
 using namespace mtk;
 
@@ -14,8 +13,6 @@ ArrayCamServer::ArrayCamServer(TMainForm& mf, int portNumber)
 IPCServer(portNumber, "ARRAYCAM_SERVER", createArrayCamIPCReceiver),
 mMainForm(mf)
 {
-    //Assign receive callbacks
-//    mSensorsArrayCam.assignSerialMessageReceivedCallBack(sensorsArrayCamMessageReceived);
 }
 
 ArrayCamServer::~ArrayCamServer()
@@ -48,20 +45,17 @@ void ArrayCamServer::notifyClients(const string& msg)
     broadcast(msg);
 }
 
+string ArrayCamServer::IPCCommand(ACMessageID id)
+{
+	return mProtocol[id];
+}
+
 void ArrayCamServer::broadcastStatus()
 {
     stringstream msg;
     msg << "IS_RECORDING="<<mtk::toString(mMainForm.mCaptureVideoTimer->Enabled);
    	notifyClients(msg.str());
 }
-
-////This is called from the arduino devices class upon receiving
-////a message from the arduino thread over the serial port
-////Socket clients are updated using the notifyClients funtion
-//void ArrayCamServer::lightsArrayCamMessageReceived(const string& msg)
-//{
-//	notifyClients(msg);
-//}
 
 //Handle incoming client requests over the socket
 //These messages are handled in a thread
@@ -75,8 +69,9 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         msg.unPack();
     }
 
-    //LIGHTS ARDUINO MESSAGES ******************************************
-    if(startsWith("START_RECORDING_VIDEO", msg))
+	ArrayCamProtocol ap;
+    //INCOMING MESSAGES ******************************************
+    if(compareStrings(ap[acrStartVideoRecorder], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Starting recording video";
         if(mMainForm.mRecordMovieBtn->Caption != "Record Movie")
@@ -88,7 +83,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
 	        TThread::Synchronize(NULL, mMainForm.mRecordMovieBtn->Click);
         }
     }
-    else if(startsWith("STOP_RECORDING_VIDEO", msg))
+    else if(compareStrings(ap[acrStopVideoRecorder], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Stop recording video";
         if(mMainForm.mRecordMovieBtn->Caption != "Stop Recording")
@@ -101,12 +96,38 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         }
     }
 
-    else if(startsWith("TAKE_SNAPSHOT", msg))
+    else if(compareStrings(ap[acrTakeSnapShot], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Take snapshot";
         TThread::Synchronize(NULL, mMainForm.mSnapShotBtn->Click);
     }
-    else if(startsWith("GET_SERVER_STATUS", msg))
+
+    else if(compareStrings(ap[acrEnableBarcodeScanner], msg, csCaseInsensitive))
+    {
+    	Log(lInfo) << "Enabling barcode scanner";
+        if(mMainForm.mDecodeSessionBtn->Caption == "Stop Scan")
+        {
+        	Log(lError) << "Scanner already enabled.";
+        }
+        else
+        {
+	        TThread::Synchronize(NULL, mMainForm.mDecodeSessionBtn->Click);
+        }
+    }
+    else if(compareStrings(ap[acrDisableBarcodeScanner], msg, csCaseInsensitive))
+    {
+    	Log(lInfo) << "Disable Barcode scanner";
+        if(mMainForm.mDecodeSessionBtn->Caption == "Scan Barcode")
+        {
+        	Log(lError) << "Scanner already disabled.";
+        }
+        else
+        {
+        	TThread::Synchronize(NULL, mMainForm.mDecodeSessionBtn->Click);
+        }
+    }
+
+    else if(compareStrings("GET_SERVER_STATUS", msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Broadcast status";
 		broadcastStatus();

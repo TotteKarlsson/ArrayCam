@@ -172,18 +172,35 @@ class TMainForm  : public TRegistryForm
 	TDBLookupComboBox *mUsersCB;
 	TIntegerLabeledEdit *mPresetFeedRateE;
 	TPropertyCheckBox *mReticleVisibilityCB;
-	TPropertyCheckBox *CameraEnabledCB;
-	TDBLookupComboBox *BlockIDCB;
-	TLabel *Label3;
-	TLabel *Label1;
-	TDBLookupComboBox *mBlockProcessIDCB;
 	TGroupBox *RibbonsDataGB;
 	TDBGrid *DBGrid1;
 	TDBNavigator *DBNavigator1;
-	TPanel *RibTopPanel;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
+	TDBLookupComboBox *BlockIDCB;
+	TLabel *Label3;
+	TDBLookupComboBox *mBlockProcessIDCB;
+	TLabel *Label1;
+	TLabel *Label5;
+	TLabel *Label6;
+	TDBText *DBText1;
+	TDBText *DBText2;
+	TPanel *Panel10;
+	TDBMemo *DBMemo1;
+	TGroupBox *GroupBox3;
+	TDBLookupComboBox *DBLookupComboBox1;
+	TLabel *Label7;
+	TLabel *Label8;
+	TLabel *Label9;
+	TLabel *Label10;
+	TDBText *DBText3;
+	TDBText *DBText4;
+	TDBText *DBText5;
+	TDBText *DBText6;
+	TDBMemo *DBMemo2;
+	TLabel *Label11;
+	TDBText *DBText7;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -332,6 +349,7 @@ class TMainForm  : public TRegistryForm
 
         //Server functions
         ArrayCamServer							mACServer;
+
 
 
         // Barcode reader

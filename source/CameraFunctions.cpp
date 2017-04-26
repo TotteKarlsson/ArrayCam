@@ -95,7 +95,7 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
         case IS_FRAME:
             if(mCamera1.mImageMemory != NULL)
             {
-	            if(CameraEnabledCB->Checked)
+//	            if(CameraEnabledCB->Checked)
                 {
                 	mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
                 }
@@ -187,7 +187,7 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
     else
     {
     	Log(lInfo) << "Saved snapshot to file: "<< fName;
-
+        mACServer.broadcast(mACServer.IPCCommand(acrSnapShotTaken));
 		try
         {
 			if(atdbDM->SQLConnection1->Connected == false)
@@ -301,6 +301,7 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
             Log(lError) << "There was a StartAVI error: "<<retVal;
             return;
         }
+        mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStarted));
         mRecordMovieBtn->Caption = "Stop Recording";
     }
     else
@@ -328,6 +329,7 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
             return;
         }
 
+        mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStopped));
         //Register in the database
     	string fName(lCurrentVideoFileName);
     	Log(lInfo) << "Saving movie to file: "<< fName;

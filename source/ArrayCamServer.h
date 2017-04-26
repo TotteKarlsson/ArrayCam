@@ -4,11 +4,9 @@
 #include "mtkSocketWorker.h"
 #include <vector>
 #include "mtkTimer.h"
+#include "arraycam/atArrayCamProtocol.h"
 //---------------------------------------------------------------------------
 using mtk::IPCServer;
-using mtk::IPCMessage;
-using std::vector;
-
 mtk::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* parent);
 
 typedef void (__closure *OnMessageUpdateCB)(const string& msg);
@@ -17,10 +15,6 @@ typedef void (__closure *OnMessageUpdateCB)(const string& msg);
 //tcp/ip socket. The ArrayCam server is designed to handle messages and data related to the
 //arraybot project. The ArrayCam server is a descendant of the IPC server class that is implementing all
 //network functionality.
-//The ArrayCam server forwards any messages sent from the arduino board to any connected tcp/ip clients.
-
-//There are currently two ArrayCam boards, the 'Lights' board, and a 'Sensor' board containing sensors and
-//light controlling logic respectively.
 
 class TMainForm;
 class ArrayCamServer : public IPCServer
@@ -38,13 +32,13 @@ class ArrayCamServer : public IPCServer
         void								assignOnUpdateCallBack(OnMessageUpdateCB cb);
 		void								onUpdateClientsTimer();
         void								broadcastStatus();
+        string								IPCCommand(ACMessageID id);
 
     protected:
         OnMessageUpdateCB					onMessageUpdateCB;
         TMainForm&							mMainForm;
-
-
         void								notifyClients(const string& msg);
+        ArrayCamProtocol					mProtocol;
 };
 
 #endif
