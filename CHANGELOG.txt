@@ -1,3 +1,17 @@
+Release 0.5.8 (April 26)
+=======================
+* Enabled more commands for the server component
+* Added code for broadcasting status changes
+* Added support for server status requests
+* Added server abilities to ArrayCam, added server class, and a server receiver thread class
+* Added ability to start/stop recording from a client
+* Added ability to take snapshots from the client
+* Moved Ribbon DB data entry to main page
+* Added combobox for BlockID
+* Some refactoring
+* Added ability to turn on/off reticle and camera
+* Changed how images/movies are saved to disk, as well as DB changes
+
 Release 0.5.7 (April 17)
 =======================
 * More UI reorganisiation
