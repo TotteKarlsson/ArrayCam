@@ -161,7 +161,6 @@ class TMainForm  : public TRegistryForm
 	TGroupBox *atdbGB;
 	TGroupBox *UC7GB;
 	TTabSheet *TabSheet1;
-	TScrollBox *ScrollBox2;
 	TArrayBotButton *mSynchUIBtn;
 	TButton *mBeepBtn;
 	TArrayBotButton *mStartStopBtn;
@@ -201,6 +200,10 @@ class TMainForm  : public TRegistryForm
 	TDBMemo *DBMemo2;
 	TLabel *Label11;
 	TDBText *DBText7;
+	TPageControl *PageControl2;
+	TTabSheet *TabSheet2;
+	TTabSheet *TabSheet4;
+	TTabSheet *TabSheet5;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

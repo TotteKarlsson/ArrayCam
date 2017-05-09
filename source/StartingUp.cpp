@@ -85,5 +85,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
     enableDisableGroupBox(mImagerSettingsGB, false);
     mBCLabel->Caption = "";
 	mStartupTimer->Enabled = true;
+	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
 }
 

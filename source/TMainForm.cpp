@@ -90,7 +90,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mRibbonOrderCountLabel->update();
     mZeroCutsE->update();
 
-
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
 	//Setup UI/INI properties
@@ -947,5 +946,6 @@ void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
 {
 	mACServer.broadcastStatus();
 }
+
 
 
