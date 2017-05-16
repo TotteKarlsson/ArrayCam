@@ -271,6 +271,9 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
     //Auto connect to the barcode reader
 	mConnectZebraBtnClick(Sender);
+
+    //Connect to the UC7
+    mConnectUC7Btn->Click();
 }
 
 //---------------------------------------------------------------------------

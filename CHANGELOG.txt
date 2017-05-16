@@ -1,3 +1,8 @@
+Release 0.6.0 (May 16)
+=======================
+* Added a select integer form in order to set the ribbon order counter
+* Fixing units for knifestage movement
+
 Release 0.5.9 (May 9)
 =======================
 * Fixed Application Title

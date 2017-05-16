@@ -263,7 +263,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 696
         Height = 676
-        ActivePage = Main
+        ActivePage = TabSheet1
         Align = alClient
         MultiLine = True
         TabOrder = 0
