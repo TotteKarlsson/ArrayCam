@@ -150,6 +150,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="forms\TRegisterNewRibbonForm.cpp">
             <BuildOrder>17</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TSelectIntegerForm.cpp">
+            <Form>SelectIntegerForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>forms\TSelectIntegerForm.h</DependentOn>
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
         <CppCompile Include="forms\TSettingsForm.cpp">
             <Form>SettingsForm</Form>
             <DependentOn>forms\TSettingsForm.h</DependentOn>
@@ -207,6 +213,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
+        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

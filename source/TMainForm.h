@@ -254,6 +254,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mReticleVisibilityCBClick(TObject *Sender);
 	void __fastcall CameraEnabledCBClick(TObject *Sender);
 	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
+	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
 
     protected:
         LogFileReader                           mLogFileReader;

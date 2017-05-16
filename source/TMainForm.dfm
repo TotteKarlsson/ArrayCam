@@ -160,6 +160,7 @@ object MainForm: TMainForm
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
+              OnClick = mRibbonOrderCountLabelClick
               Value = 1
               TheFont.Charset = DEFAULT_CHARSET
               TheFont.Color = clWindowText
@@ -823,8 +824,6 @@ object MainForm: TMainForm
             TabOrder = 0
             object TabSheet2: TTabSheet
               Caption = 'UC7'
-              ExplicitWidth = 281
-              ExplicitHeight = 159
               object UC7GB: TGroupBox
                 Left = 0
                 Top = 0
@@ -833,7 +832,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'UC7'
                 TabOrder = 0
-                ExplicitWidth = 667
                 object GroupBox7: TGroupBox
                   Left = 2
                   Top = 203
@@ -842,7 +840,6 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'Misc parameters'
                   TabOrder = 0
-                  ExplicitWidth = 663
                   object mStageMoveDelayE: TIntegerLabeledEdit
                     Left = 26
                     Top = 48
@@ -895,7 +892,6 @@ object MainForm: TMainForm
                   Align = alTop
                   BevelOuter = bvNone
                   TabOrder = 1
-                  ExplicitWidth = 663
                   object mUC7ComportCB: TComboBox
                     Left = 8
                     Top = 4
@@ -955,15 +951,14 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'North-South Knife Stage Position (0-100 000)'
                   TabOrder = 2
-                  ExplicitWidth = 663
                   object mKnifeStageJogStep: TIntegerLabeledEdit
                     Left = 350
                     Top = 58
                     Width = 91
                     Height = 27
-                    EditLabel.Width = 150
+                    EditLabel.Width = 225
                     EditLabel.Height = 19
-                    EditLabel.Caption = 'Knife Stage Jog Step '
+                    EditLabel.Caption = 'Knife Stage Jog Step  (x100nm)'
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindowText
                     Font.Height = -16
@@ -1013,7 +1008,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'ATDB'
                 TabOrder = 0
-                ExplicitWidth = 667
                 inline TATDBConnectionFrame1: TATDBConnectionFrame
                   Left = 2
                   Top = 21
@@ -1024,7 +1018,7 @@ object MainForm: TMainForm
                   TabOrder = 0
                   ExplicitLeft = 2
                   ExplicitTop = 21
-                  ExplicitWidth = 663
+                  ExplicitWidth = 676
                   inherited GroupBox1: TGroupBox
                     Left = 13
                     Caption = 'Connection'
@@ -1087,7 +1081,6 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'DB/Block Selection'
                   TabOrder = 1
-                  ExplicitWidth = 663
                   object Panel10: TPanel
                     Left = 2
                     Top = 21
@@ -1182,7 +1175,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Block Note'
                     TabOrder = 1
-                    ExplicitWidth = 324
                     object DBMemo1: TDBMemo
                       Left = 2
                       Top = 48
@@ -1192,7 +1184,6 @@ object MainForm: TMainForm
                       DataField = 'note'
                       DataSource = atdbDM.blockNotesDSource
                       TabOrder = 0
-                      ExplicitWidth = 320
                     end
                     object DBLookupComboBox1: TDBLookupComboBox
                       Left = 2
@@ -1204,7 +1195,6 @@ object MainForm: TMainForm
                       ListField = 'created_on'
                       ListSource = atdbDM.blockNotesDSource
                       TabOrder = 1
-                      ExplicitWidth = 320
                     end
                   end
                 end
@@ -1221,8 +1211,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'Zebra'
                 TabOrder = 0
-                ExplicitTop = 0
-                ExplicitWidth = 667
                 object Panel7: TPanel
                   Left = 2
                   Top = 21
@@ -1231,7 +1219,6 @@ object MainForm: TMainForm
                   Align = alTop
                   BevelOuter = bvNone
                   TabOrder = 0
-                  ExplicitWidth = 663
                   object mZebraCOMPortCB: TComboBox
                     Left = 0
                     Top = 0
@@ -1349,7 +1336,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'Server'
                 TabOrder = 1
-                ExplicitWidth = 684
                 object mArrayCamServerPortE: TIntegerLabeledEdit
                   Left = 16
                   Top = 56

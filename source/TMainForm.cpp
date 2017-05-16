@@ -13,6 +13,7 @@
 #include "sound/atSounds.h"
 #include "atCore.h"
 #include "Forms/TRegisterNewRibbonForm.h"
+#include "TSelectIntegerForm.h"
 using namespace mtk;
 using namespace at;
 
@@ -947,5 +948,17 @@ void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
 	mACServer.broadcastStatus();
 }
 
+void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
+{
+    TSelectIntegerForm* f = new TSelectIntegerForm(this);
+    f->setCurrentNumber(mRibbonOrderCountLabel->getValue());
+    int res = f->ShowModal();
+    if(res == mrOk)
+    {
+    	mRibbonOrderCountLabel->setValue(f->mTheNumberLbl->getValue());
+    }
+
+    delete f;
+}
 
 
