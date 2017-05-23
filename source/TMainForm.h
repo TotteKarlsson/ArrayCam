@@ -58,6 +58,10 @@ enum ApplicationMessageEnum
 class TSettingsForm;
 class TLocalArgs;
 class TRegisterNewRibbonForm;
+class TReticlePopupForm;
+
+
+
 //---------------------------------------------------------------------------
 class TMainForm  : public TRegistryForm
 {
@@ -84,14 +88,7 @@ class TMainForm  : public TRegistryForm
 	TToolBar *ToolBar1;
 	TBitBtn *mClearLogMemoBtn;
 	TComboBox *LogLevelCB;
-	TScrollBox *ScrollBox1;
-	TArrayBotButton *mFitToScreenButton;
-	TArrayBotButton *mOneToOneBtn;
-	TArrayBotButton *mOneToTwoBtn;
-	TArrayBotButton *mRecordMovieBtn;
-	TArrayBotButton *mSnapShotBtn;
 	TPageControl *PageControl1;
-	TPanel *Panel3;
 	TTabSheet *TabSheet7;
 	TGroupBox *GroupBox2;
 	TMemo *Memo1;
@@ -102,12 +99,6 @@ class TMainForm  : public TRegistryForm
 	TLabel *versionLabel;
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
-	TTrackBar *mReticleRadiusTB;
-	TGroupBox *GroupBox4;
-	TTrackBar *mReticleCenterXTB;
-	TTrackBar *mReticleCenterYTB;
-	TArrayBotButton *mCenterReticleBtn;
-	TButton *mCloseBottomPanelBtn;
 	TTimer *mCheckSocketConnectionTimer;
 	TPanel *MainTopPanel;
 	TGroupBox *HandwheelGB;
@@ -132,14 +123,6 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mResetCounterBtn;
 	TPanel *Panel6;
 	TPanel *Panel4;
-	TGroupBox *BarCodeGB;
-	TPanel *Panel7;
-	TComboBox *mZebraCOMPortCB;
-	TButton *mConnectZebraBtn;
-	TComboBox *mZebraBaudRateCB;
-	TGroupBox *mImagerSettingsGB;
-	TRadioGroup *mScannerAimRG;
-	TRadioGroup *mScannerEnabledRG;
 	TTabSheet *TabSheet3;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TIntLabel *mRibbonOrderCountLabel;
@@ -147,33 +130,18 @@ class TMainForm  : public TRegistryForm
 	TPanel *MainContentPanel;
 	TPanel *Panel1;
 	TTabSheet *Main;
-	TLabel *mBCLabel;
 	TGroupBox *BlocksGB;
-	TPanel *Panel8;
 	TButton *mDecodeSessionBtn;
-	TArrayBotButton *mSettingsBtn;
 	TArrayBotButton *mRegisterRibbonBtn;
 	TPanel *Panel9;
-	TArrayBotButton *mSetZeroCutBtn;
-	TIntegerLabeledEdit *mFeedRateE;
-	TGroupBox *MaunUC7GB;
-	TPropertyCheckBox *mRibbonCreatorActiveCB;
 	TGroupBox *atdbGB;
 	TGroupBox *UC7GB;
 	TTabSheet *TabSheet1;
 	TArrayBotButton *mSynchUIBtn;
-	TButton *mBeepBtn;
 	TArrayBotButton *mStartStopBtn;
 	TArrayBotButton *mRibbonStartBtn;
-	TIntegerLabeledEdit *mNorthLimitPosE;
-	TIntegerLabeledEdit *mKnifeStageNSAbsPosE;
 	TGroupBox *BlockSelectionGB;
 	TDBLookupComboBox *mUsersCB;
-	TIntegerLabeledEdit *mPresetFeedRateE;
-	TPropertyCheckBox *mReticleVisibilityCB;
-	TGroupBox *RibbonsDataGB;
-	TDBGrid *DBGrid1;
-	TDBNavigator *DBNavigator1;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
@@ -204,6 +172,43 @@ class TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet2;
 	TTabSheet *TabSheet4;
 	TTabSheet *TabSheet5;
+	TGroupBox *RibbonsDataGB;
+	TDBGrid *DBGrid1;
+	TDBNavigator *DBNavigator1;
+	TGroupBox *GroupBox9;
+	TGroupBox *GroupBox10;
+	TPropertyCheckBox *mRibbonCreatorActiveCB;
+	TGroupBox *GroupBox11;
+	TIntegerLabeledEdit *mNorthLimitPosE;
+	TArrayBotButton *PopulateMaxNorthPosBtn;
+	TIntegerLabeledEdit *mKnifeStageNSAbsPosE;
+	TGroupBox *GroupBox12;
+	TArrayBotButton *mSetZeroCutBtn;
+	TIntegerLabeledEdit *mPresetFeedRateE;
+	TIntegerLabeledEdit *mFeedRateE;
+	TGroupBox *UC7OperationGB;
+	THeaderControl *CameraHC;
+	TPopupMenu *CameraPopup;
+	TMenuItem *FittoScreen1;
+	TMenuItem *N111;
+	TMenuItem *N121;
+	TMenuItem *N1;
+	TMenuItem *N2;
+	TPopupMenu *ReticlePopup;
+	TMenuItem *Reset1;
+	TMenuItem *OpenSettings1;
+	TPanel *LeftPanel;
+	TLabel *mBCLabel;
+	TTabSheet *TabSheet6;
+	TGroupBox *BarCodeGB;
+	TPanel *Panel3;
+	TComboBox *mZebraCOMPortCB;
+	TButton *mConnectZebraBtn;
+	TComboBox *mZebraBaudRateCB;
+	TGroupBox *mImagerSettingsGB;
+	TRadioGroup *mScannerAimRG;
+	TRadioGroup *mScannerEnabledRG;
+	TButton *mBeepBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -214,27 +219,24 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mFitToScreenButtonClick(TObject *Sender);
 	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
-	void __fastcall mSnapShotBtnClick(TObject *Sender);
-	void __fastcall mRecordMovieBtnClick(TObject *Sender);
+//	void __fastcall mSnapShotBtnClick(TObject *Sender);
+//	void __fastcall mRecordMovieBtnClick(TObject *Sender);
 	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
 	void __fastcall ClearLogMemo(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
 	void __fastcall mExitBtnClick(TObject *Sender);
 	void __fastcall mSettingsBtnClick(TObject *Sender);
-	void __fastcall mFrontBackLEDBtnClick(TObject *Sender);
 	void __fastcall LogLevelCBChange(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall Panel3Resize(TObject *Sender);
 	void __fastcall PageControl1Change(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
-	void __fastcall mReticleRadiusTBChange(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-	void __fastcall mCenterReticleBtnClick(TObject *Sender);
+
 	void __fastcall mCloseBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mShowBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
@@ -251,10 +253,10 @@ class TMainForm  : public TRegistryForm
 	void __fastcall scannerSettingsClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
 	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
-	void __fastcall mReticleVisibilityCBClick(TObject *Sender);
-	void __fastcall CameraEnabledCBClick(TObject *Sender);
 	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
 	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
+	void __fastcall PopulateMaxNorthPosBtnClick(TObject *Sender);
+	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -281,6 +283,10 @@ class TMainForm  : public TRegistryForm
 
         Property<bool>						    mVerticalMirror;
         Property<bool>						    mHorizontalMirror;
+
+												//!Reticle
+		auto_ptr<TReticlePopupForm>				mReticleForm;
+        Property<bool>						    mReticleVisible;
 
         Property<string>						mSnapShotFolder;
         Property<string>						mMoviesFolder;
@@ -330,7 +336,7 @@ class TMainForm  : public TRegistryForm
 
 		void __fastcall 						onConnectedToUC7();
         void __fastcall 						onDisConnectedToUC7();
-		
+
         bool									handleUC7Message(const UC7Message& m);
 		void __fastcall 						enableDisableUC7UI(bool enableDisable);
         void 									onUC7Count();
@@ -353,8 +359,6 @@ class TMainForm  : public TRegistryForm
 
         //Server functions
         ArrayCamServer							mACServer;
-
-
 
         // Barcode reader
         										//!The barcode reader
@@ -382,8 +386,12 @@ class TMainForm  : public TRegistryForm
  			       __fastcall 					~TMainForm();
 
 												//!Camera stuff is processed in the message loop
-	LRESULT 									OnUSBCameraMessage(TMessage msg);
-	void 		__fastcall 						populateAbout();
+		LRESULT 					  			OnUSBCameraMessage(TMessage msg);
+		void 		__fastcall 		  			populateAbout();
+        void 		__fastcall		  			takeSnapShot();
+	    void 		__fastcall		  			startStopRecordingMovie();
+	    void 		__fastcall		  			startRecordingMovie();
+	    void 		__fastcall		  			stopRecordingMovie();
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 			TMessage, 						OnUSBCameraMessage);

@@ -24,7 +24,7 @@ object SettingsForm: TSettingsForm
     Top = 0
     Width = 625
     Height = 486
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -387,7 +387,7 @@ object SettingsForm: TSettingsForm
       ImageIndex = 1
       object GroupBox1: TGroupBox
         Left = 19
-        Top = 264
+        Top = 24
         Width = 273
         Height = 169
         Caption = 'Arduino Client'

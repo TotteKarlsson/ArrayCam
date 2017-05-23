@@ -80,11 +80,13 @@ void __fastcall	TMainForm::onCameraOpen(System::TObject* Sender)
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall	TMainForm::onCameraClose(System::TObject* Sender)
 {
 	Log(lInfo) << "A Camera was closed..";
 }
 
+//---------------------------------------------------------------------------
 LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
 {
     switch ( msg.WParam )
@@ -95,12 +97,9 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
         case IS_FRAME:
             if(mCamera1.mImageMemory != NULL)
             {
-//	            if(CameraEnabledCB->Checked)
-                {
-                	mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
-                }
+            	mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
 
-                if(mReticleVisibilityCB->Checked)
+                if(mReticleVisible)
                 {
 					mReticle.draw(mPB->Width, mPB->Height);
                 }
@@ -155,7 +154,10 @@ void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
 	Log(lInfo) << "W x H = " <<mCamera1BackPanel->Width<<","<<mCamera1BackPanel->Height<<" Ratio = "<<(double) mCamera1BackPanel->Width / mCamera1BackPanel->Height;
 }
 
-void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
+//void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
+//{
+
+void __fastcall TMainForm::takeSnapShot()
 {
     string ext(".jpg");
 	string uuid = getUUID();
@@ -225,19 +227,44 @@ void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
     }
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
+void __fastcall TMainForm::startRecordingMovie()
 {
-	static string lCurrentVideoFileName;
-    static string lUUID;
-    static int lCSID;
-    static int lBlockID;
+	if(mCaptureVideoTimer->Enabled == false)
+    {
+		startStopRecordingMovie();
+    }
+    else
+    {
+    	Log(lWarning) << "Can't start recording as recording is already enabled";
+    }
 
-	if(mRecordMovieBtn->Caption == "Record Movie")
+}
+
+void __fastcall TMainForm::stopRecordingMovie()
+{
+	if(mCaptureVideoTimer->Enabled == true)
+    {
+		startStopRecordingMovie();
+    }
+    else
+    {
+    	Log(lWarning) << "Can't stop rectording movie as recording is already disabled";
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::startStopRecordingMovie()
+{
+	static string 	lCurrentVideoFileName;
+    static string 	lUUID;
+    static int 		lCSID;
+    static int 		lBlockID;
+
+	if(mCaptureVideoTimer->Enabled == false)
     {
         mCaptureVideoTimer->Enabled = true;
-
         isavi_InitAVI(&mAVIID, mCamera1.GetCameraHandle());
+
+        Log(lInfo) << "Starting recording movie";
 
         int w = mCamera1.mSizeX;
         int h = mCamera1.mSizeY;
@@ -302,12 +329,11 @@ void __fastcall TMainForm::mRecordMovieBtnClick(TObject *Sender)
             return;
         }
         mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStarted));
-        mRecordMovieBtn->Caption = "Stop Recording";
     }
     else
     {
+        Log(lInfo) << "Stopping Video Recording";
         mCaptureVideoTimer->Enabled = false;
-        mRecordMovieBtn->Caption = "Record Movie";
         int retVal = isavi_StopAVI(mAVIID);
         if(retVal != IS_AVI_NO_ERR)
         {

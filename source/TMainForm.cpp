@@ -14,6 +14,7 @@
 #include "atCore.h"
 #include "Forms/TRegisterNewRibbonForm.h"
 #include "TSelectIntegerForm.h"
+#include "TReticlePopupForm.h"
 using namespace mtk;
 using namespace at;
 
@@ -72,7 +73,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     	mZebraBaudRate(9600),
 	    mZebra(),
         mMainContentPanelWidth(700),
-        mACServer(*this, -1)
+        mACServer(*this, -1),
+        mReticleVisible(false)
 {
    	mLogFileReader.start(true);
 
@@ -96,26 +98,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	//Setup UI/INI properties
     mProperties.setSection("GENERAL");
 	mProperties.setIniFile(&mIniFile);
-	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                "LOG_LEVEL",    					lAny));
-	mProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	        "MAIN_CONTENT_PANEL_WIDTH",   		700));
-	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                "PAIR_LEDS",    		            true));
-	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	"ATDB_USER_ID",                    	0));
-	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	"LAST_PROCESS_ID",                  0));
-	mProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		"BLOCK_ID",                  		0));
-	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                "LOCAL_DB",   			            "umlocal.db"));
+	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                    "LOG_LEVEL",    					lAny));
+	mProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	            "MAIN_CONTENT_PANEL_WIDTH",   		700));
+	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                    "PAIR_LEDS",    		            true));
+	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	    "ATDB_USER_ID",                    	0));
+	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	    "LAST_PROCESS_ID",                  0));
+	mProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		    "BLOCK_ID",                  		0));
+	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                    "LOCAL_DB",   			            "umlocal.db"));
 
     //Camera Settings
-	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                "AUTO_GAIN",    		            false));
-	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                "AUTO_EXPOSURE",    	            false));
-	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                "AUTO_BLACK_LEVEL",    	            false));
-	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	                "AUTO_WHITE_BALANCE",  	            false));
-	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                "SOFTWARE_GAMMA",  		            0));
-	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                "VERTICAL_MIRROR",    	            false));
-	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                "HORIZONTAL_MIRROR",                false));
-    mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                "MOVIES_FOLDER",   		            "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mReticleVisibilityCB->getProperty()->setup("RETICLE_VISIBILITY",              false));
-//	mProperties.add((BaseProperty*)  &CameraEnabledCB->getProperty()->setup(	"CAMERA_ENABLED",              		false));
+	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                    "AUTO_GAIN",    		            false));
+	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                    "AUTO_EXPOSURE",    	            false));
+	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                    "AUTO_BLACK_LEVEL",    	            false));
+	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	                    "AUTO_WHITE_BALANCE",  	            false));
+	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                    "SOFTWARE_GAMMA",  		            0));
+	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                    "VERTICAL_MIRROR",    	            false));
+	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                    "HORIZONTAL_MIRROR",                false));
+    mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                    "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
+	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                    "MOVIES_FOLDER",   		            "C:\\Temp"	));
+	mProperties.add((BaseProperty*)  &mReticleVisible.setup(					    "RETICLE_VISIBILITY",              false));
 
     //UC7
    	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
@@ -136,12 +137,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;
 
 	mLightsArduinoClient.assignOnMessageReceivedCallBack(onLightsArduinoMessageReceived);
-
     mLightsArduinoClient.onConnected 		= onArduinoClientConnected;
 	mLightsArduinoClient.onDisconnected 	= onArduinoClientDisconnected;
 
     gLogger.setLogLevel(mLogLevel);
-
     mServiceCamera1.onCameraOpen 	= onCameraOpen;
     mServiceCamera1.onCameraClose 	= onCameraClose;
 
@@ -150,12 +149,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	mCountToE->update();
     mPresetFeedRateE->update();
+    mUC7.setFeedRatePreset(mPresetFeedRateE->getValue());
     mKnifeStageJogStep->update();
     mStageMoveDelayE->update();
 	mZeroCutsE->update();
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
-    mReticleVisibilityCB->update();
-//    CameraEnabledCB->update();
 	mArrayCamServerPortE->update();
 
 	//Setup UI elements
@@ -170,9 +168,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
-
-    //This will update the UI from a thread
-    //mACServer.assignOnUpdateCallBack(onUpdatesFromArduinoServer);
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -226,24 +221,6 @@ void TMainForm::enableDisableClientControls(bool enable)
     {
     	enableDisableGroupBox(mSettingsForm->LightIntensitiesGB, enable);
     }
-//    mFrontBackLEDBtn->Enabled = enable;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mFrontBackLEDBtnClick(TObject *Sender)
-{
-//	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
-//    if(b == mFrontBackLEDBtn)
-//    {
-//    	mLightsArduinoClient.toggleLED();
-//    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::Panel3Resize(TObject *Sender)
-{
-	mOneToOneBtn->Width = Panel3->Width / 2;
-	mOneToTwoBtn->Width = Panel3->Width / 2;
 }
 
 //---------------------------------------------------------------------------
@@ -277,41 +254,16 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mReticleRadiusTBChange(TObject *Sender)
-{
-	TTrackBar* tb = dynamic_cast<TTrackBar*>(Sender);
-
-    if(!mMovingReticle)
-    {
-        if(tb == mReticleRadiusTB)
-        {
-            mReticle.setCircleRadius(tb->Position);
-        }
-        else if(tb == mReticleCenterXTB)
-        {
-            mReticle.setReticleCenter(tb->Position, mReticleCenterYTB->Position);
-        }
-        else if(tb == mReticleCenterYTB)
-        {
-            mReticle.setReticleCenter(mReticleCenterXTB->Position, tb->Position);
-        }
-    }
-}
-
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::FormResize(TObject *Sender)
 {
-    mReticleCenterXTB->Min = -mPB->Width/2;
-    mReticleCenterXTB->Max = mPB->Width/2;
-    mReticleCenterYTB->Min = -mPB->Height/2;
-    mReticleCenterYTB->Max = mPB->Height/2;
+;
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mPBMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-	//If mouse is inside reticle center, allowing moving its center
+	//If mouse is inside reticle center, allowe moving its center
 	mMovingReticle = true;
 }
 
@@ -328,20 +280,15 @@ void __fastcall TMainForm::mPBMouseMove(TObject *Sender, TShiftState Shift, int 
 	//Update reticle center
 	if(mMovingReticle)
     {
-    	int x =X - mPB->Width/2;
+    	int x = X - mPB->Width/2;
         int y = Y - mPB->Height/2;
     	mReticle.setReticleCenter(x, y);
-        mReticleCenterXTB->Position = x;
-        mReticleCenterYTB->Position = y;
+		if(mReticleForm.get() && mReticleForm->Visible)
+    	{
+        	mReticleForm->mReticleCenterXTB->Position = x;
+        	mReticleForm->mReticleCenterYTB->Position = y;
+        }
     }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mCenterReticleBtnClick(TObject *Sender)
-{
-    mReticle.setReticleCenter(0,0);
-    mReticleCenterXTB->Position = 0;
-    mReticleCenterYTB->Position = 0;
 }
 
 //---------------------------------------------------------------------------
@@ -416,6 +363,7 @@ void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
     //Give it some time to close down..
     //These should be UC7 callbacks..
     Sleep(100);
+
     if(mUC7.isConnected())
     {
 	    onConnectedToUC7();
@@ -454,7 +402,7 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 	enableDisableGroupBox(CounterGB, 		enableDisable);
     enableDisableGroupBox(HandwheelGB, 		enableDisable);
     enableDisableGroupBox(NorthSouthGB,		enableDisable);
-    enableDisableGroupBox(MaunUC7GB,		enableDisable);
+    enableDisableGroupBox(UC7OperationGB, 	enableDisable);
 }
 
 //---------------------------------------------------------------------------
@@ -934,23 +882,12 @@ void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mReticleVisibilityCBClick(TObject *Sender)
-{
-	mReticleVisibilityCB->OnClick(Sender);
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::CameraEnabledCBClick(TObject *Sender)
-{
-//	CameraEnabledCB->OnClick(Sender);
-}
-
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
 {
 	mACServer.broadcastStatus();
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
 {
     TSelectIntegerForm* f = new TSelectIntegerForm(this);
@@ -962,6 +899,49 @@ void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
     }
 
     delete f;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PopulateMaxNorthPosBtnClick(TObject *Sender)
+{
+	mNorthLimitPosE->setValue(mKnifeStageNSAbsPosE->getValue());
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
+          THeaderSection *Section)
+{
+    POINT p;
+    GetCursorPos(&p);
+
+	if(Section == CameraHC->Sections->Items[0])
+    {
+        //Show popup
+        CameraPopup->Popup(p.x, p.y);
+    }
+    else if(Section == CameraHC->Sections->Items[1])
+    {
+		if(mReticleForm.get() == NULL)
+        {
+        	mReticleForm = auto_ptr<TReticlePopupForm>(new TReticlePopupForm(mReticle, this));
+            mReticleForm->mReticleVisibilityCB->setReference(mReticleVisible.getReference());
+			mReticleForm->mReticleVisibilityCB->update();
+
+        }
+
+        mReticleForm->Top = p.y - mReticleForm->Height;
+        mReticleForm->Left = p.x;
+        mReticleForm->Show();
+    }
+    else if(Section == CameraHC->Sections->Items[2])
+    {
+	    takeSnapShot();
+    }
+    else if(Section == CameraHC->Sections->Items[3])
+    {
+	    startStopRecordingMovie();
+    }
+
 }
 
 

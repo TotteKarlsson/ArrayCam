@@ -29,8 +29,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	mCamera1BackPanel->Height 	= 1024;
 	mCamera1BackPanel->Top 		= 0;
 	mCamera1BackPanel->Left 	= 0;
-	mFitToScreenButtonClick(Sender);
-
     enableDisableClientControls(false);
 
     //Setup LogLevel CB
@@ -86,5 +84,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
     mBCLabel->Caption = "";
 	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
+	mFitToScreenButtonClick(Sender);
 }
 

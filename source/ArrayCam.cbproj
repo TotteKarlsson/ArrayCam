@@ -149,6 +149,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="forms\TRegisterNewRibbonForm.cpp">
             <BuildOrder>17</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TReticlePopupForm.cpp">
+            <Form>ReticlePopupForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>forms\TReticlePopupForm.h</DependentOn>
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
         <CppCompile Include="forms\TSelectIntegerForm.cpp">
             <Form>SelectIntegerForm</Form>
             <FormType>dfm</FormType>
@@ -208,11 +214,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
+        <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -274,6 +281,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="P:\build\xe3_ide\BPL\ArrayBotPackage.bpl">ArrayBotPackage</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>

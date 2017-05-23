@@ -5,6 +5,7 @@
 #include "mtkVCLUtils.h"
 #include "mtkApplicationInfo.h"
 #include "mtkVersion.h"
+#include "TReticlePopupForm.h"
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -17,7 +18,14 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
 
 void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 {
-//	mFitToScreenButtonClick(Sender);
+	mFitToScreenButtonClick(Sender);
+	if(mReticleForm.get() && mReticleForm->Visible)
+    {
+        mReticleForm->mReticleCenterXTB->Min = -mPB->Width/2;
+        mReticleForm->mReticleCenterXTB->Max = mPB->Width/2;
+        mReticleForm->mReticleCenterYTB->Min = -mPB->Height/2;
+        mReticleForm->mReticleCenterYTB->Max = mPB->Height/2;
+    }
 }
 
 int TMainForm::extractCoverSlipID(const string& bc)

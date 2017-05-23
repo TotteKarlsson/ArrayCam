@@ -74,32 +74,20 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     if(compareStrings(ap[acrStartVideoRecorder], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Starting recording video";
-        if(mMainForm.mRecordMovieBtn->Caption != "Record Movie")
-        {
-        	Log(lError) << "Can't start recording video..";
-        }
-        else
-        {
-	        TThread::Synchronize(NULL, mMainForm.mRecordMovieBtn->Click);
-        }
+        TThread::Synchronize(NULL, mMainForm.startRecordingMovie);
+
     }
     else if(compareStrings(ap[acrStopVideoRecorder], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Stop recording video";
-        if(mMainForm.mRecordMovieBtn->Caption != "Stop Recording")
-        {
-        	Log(lError) << "Can't stop recording video..";
-        }
-        else
-        {
-        	TThread::Synchronize(NULL, mMainForm.mRecordMovieBtn->Click);
-        }
+       	TThread::Synchronize(NULL, mMainForm.stopRecordingMovie);
+
     }
 
     else if(compareStrings(ap[acrTakeSnapShot], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Take snapshot";
-        TThread::Synchronize(NULL, mMainForm.mSnapShotBtn->Click);
+        TThread::Synchronize(NULL, mMainForm.takeSnapShot);
     }
 
     else if(compareStrings(ap[acrEnableBarcodeScanner], msg, csCaseInsensitive))
