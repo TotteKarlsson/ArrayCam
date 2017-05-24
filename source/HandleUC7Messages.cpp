@@ -54,11 +54,14 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
             }
             else if(m.getCommand() == "30")
             {
-            	if(m.getXX() == "FF") //This is info about absolute North_south stage position
+	            //This is info about absolute North_south stage position
+            	if(m.getXX() == "FF")
                 {
 	               string absPos  = m.getData().substr(2);
-                   mKnifeStageNSAbsPosE->setValue(hexToDec(absPos));
-                   mUC7.setNorthSouthStageAbsolutePosition(mKnifeStageNSAbsPosE->getValue(), false);
+//                   mKnifeStageNSAbsPosE->setValue(hexToDec(absPos));
+                   CurrentStagePosFrame->setValue(hexToDec(absPos));
+//                   mUC7.setNorthSouthStageAbsolutePosition(mKnifeStageNSAbsPosE->getValue(), false);
+                   mUC7.setNorthSouthStageAbsolutePosition(CurrentStagePosFrame->getValue(), false);
 
                 }
             }

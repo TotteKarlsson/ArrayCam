@@ -19,6 +19,7 @@ USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnecti
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
 USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
 USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string		gAppName					= "ArrayCam";

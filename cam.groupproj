@@ -9,10 +9,10 @@
         <Projects Include="P:\libs\dsl\VCL\Common\VCLCommon.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\VCL\Forms\DuneForms.cbproj">
+        <Projects Include="P:\libs\dsl\VCL\Components\DuneComponents.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\VCL\Components\DuneComponents.cbproj">
+        <Projects Include="P:\libs\dsl\VCL\Forms\DuneForms.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
@@ -59,15 +59,6 @@
     <Target Name="VCLCommon:Make">
         <MSBuild Projects="P:\libs\dsl\VCL\Common\VCLCommon.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="DuneForms">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj"/>
-    </Target>
-    <Target Name="DuneForms:Clean">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="DuneForms:Make">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="DuneComponents">
         <MSBuild Projects="P:\libs\dsl\VCL\Components\DuneComponents.cbproj"/>
     </Target>
@@ -76,6 +67,15 @@
     </Target>
     <Target Name="DuneComponents:Make">
         <MSBuild Projects="P:\libs\dsl\VCL\Components\DuneComponents.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DuneForms">
+        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj"/>
+    </Target>
+    <Target Name="DuneForms:Clean">
+        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DuneForms:Make">
+        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Make"/>
     </Target>
     <Target Name="atSSI">
         <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj"/>
@@ -132,13 +132,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkIPC;VCLCommon;DuneForms;DuneComponents;atSSI;atCore;atDatabase;atBarcodeReader;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="mtkIPC;VCLCommon;DuneComponents;DuneForms;atSSI;atCore;atDatabase;atBarcodeReader;atVCLCore;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkIPC:Clean;VCLCommon:Clean;DuneForms:Clean;DuneComponents:Clean;atSSI:Clean;atCore:Clean;atDatabase:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkIPC:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atSSI:Clean;atCore:Clean;atDatabase:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkIPC:Make;VCLCommon:Make;DuneForms:Make;DuneComponents:Make;atSSI:Make;atCore:Make;atDatabase:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkIPC:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atSSI:Make;atCore:Make;atDatabase:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

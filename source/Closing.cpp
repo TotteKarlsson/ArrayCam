@@ -97,6 +97,8 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 	mZebraCOMPort = mZebraCOMPortCB->ItemIndex + 1;
     mZebraBaudRate = mZebraBaudRateCB->Items->Strings[mZebraBaudRateCB->ItemIndex].ToInt();
 
+    mKnifeStageMaxPos.setValue(MaxStagePosFrame->getValue());
+
 	mProperties.write();
 
 	//Write to file

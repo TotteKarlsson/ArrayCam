@@ -26,6 +26,7 @@ using namespace at;
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TIntLabel"
 #pragma link "TATDBConnectionFrame"
+#pragma link "TUC7StagePositionFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -74,7 +75,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mZebra(),
         mMainContentPanelWidth(700),
         mACServer(*this, -1),
-        mReticleVisible(false)
+        mReticleVisible(false),
+        mKnifeStageMaxPos(0)
+
 {
    	mLogFileReader.start(true);
 
@@ -126,6 +129,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	    "PRESET_FEED_RATE",               	100));
 	mProperties.add((BaseProperty*)  &mKnifeStageJogStep->getProperty()->setup(	    "KNIFE_STAGE_JOG_SIZE",          	100));
 	mProperties.add((BaseProperty*)  &mArrayCamServerPortE->getProperty()->setup(	"ARRAYCAM_SERVER_PORT",          	50001));
+	mProperties.add((BaseProperty*)  &mKnifeStageMaxPos.setup(						"KNIFE_STAGE_MAX_POSITION",        	0));
 
     //Zebra
 	mProperties.add((BaseProperty*)  &mZebraCOMPort.setup( 	                    	"ZEBRA_COM_PORT",                   0));
@@ -156,7 +160,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
 	mArrayCamServerPortE->update();
 
-	//Setup UI elements
+    MaxStagePosFrame->setValue(mKnifeStageMaxPos.getValue());
+
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
     //Find which item should be selected
@@ -403,6 +408,8 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
     enableDisableGroupBox(HandwheelGB, 		enableDisable);
     enableDisableGroupBox(NorthSouthGB,		enableDisable);
     enableDisableGroupBox(UC7OperationGB, 	enableDisable);
+    enableDisableGroupBox(CuttingGB, 		enableDisable);
+    enableDisableGroupBox(KnifeStageGB,		enableDisable);
 }
 
 //---------------------------------------------------------------------------
@@ -516,11 +523,11 @@ void __fastcall TMainForm::mRibbonCreatorActiveCBClick(TObject *Sender)
 void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift)
 {
-	TIntegerLabeledEdit* e = dynamic_cast<TIntegerLabeledEdit*>(Sender);
+	TIntegerLabeledEdit* 	e  = dynamic_cast<TIntegerLabeledEdit*>(Sender);
+	TIntegerEdit* 			ie = dynamic_cast<TIntegerEdit*>(Sender);
 
     if(Key == VK_RETURN)
     {
-
         if(e == mPresetFeedRateE)
         {
             mUC7.setFeedRatePreset(e->getValue());
@@ -534,6 +541,10 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
         {
             //Set feedrate
             mUC7.setFeedRate(e->getValue());
+
+            //This will also change preset feed
+            mPresetFeedRateE->setValue(e->getValue());
+	        mUC7.setFeedRatePreset(e->getValue());
         }
 
         else if(e == mKnifeStageJogStep)
@@ -541,9 +552,10 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
             mUC7.setKnifeStageJogStepPreset(e->getValue());
         }
 
-        else if(e == mNorthLimitPosE)
+        else if(ie == MaxStagePosFrame->AbsPosE)
         {
-            mUC7.setNorthLimitPosition(e->getValue());
+	        MaxStagePosFrame->AbsPosEKeyDown(Sender, Key, Shift);
+            mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
         }
     }
 }
@@ -904,7 +916,8 @@ void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::PopulateMaxNorthPosBtnClick(TObject *Sender)
 {
-	mNorthLimitPosE->setValue(mKnifeStageNSAbsPosE->getValue());
+//	mNorthLimitPosE->setValue(mKnifeStageNSAbsPosE->getValue());
+    MaxStagePosFrame->setValue(CurrentStagePosFrame->getValue());
 }
 
 //---------------------------------------------------------------------------
@@ -943,5 +956,6 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
     }
 
 }
+
 
 

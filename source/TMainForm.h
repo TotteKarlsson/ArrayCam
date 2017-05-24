@@ -40,6 +40,7 @@
 #include "barcodereader/atDS457.h"
 #include "TATDBDataModule.h"
 #include "ArrayCamServer.h"
+#include "TUC7StagePositionFrame.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -107,16 +108,6 @@ class TMainForm  : public TRegistryForm
 	TLabel *mCuttingLbl;
 	TLabel *mAfterCuttingLbl;
 	TLabel *mBeforeCuttingLbl;
-	TGroupBox *NorthSouthGB;
-	TIntegerLabeledEdit *mKnifeStageJogStep;
-	TArrayBotButton *mMoveSouthBtn;
-	TArrayBotButton *mMoveNorthBtn;
-	TPanel *mTopPanel;
-	TComboBox *mUC7ComportCB;
-	TButton *mConnectUC7Btn;
-	TGroupBox *GroupBox7;
-	TIntegerLabeledEdit *mStageMoveDelayE;
-	TIntegerLabeledEdit *mZeroCutsE;
 	TGroupBox *CounterGB;
 	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
@@ -124,7 +115,6 @@ class TMainForm  : public TRegistryForm
 	TPanel *Panel6;
 	TPanel *Panel4;
 	TTabSheet *TabSheet3;
-	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TIntLabel *mRibbonOrderCountLabel;
 	TArrayBotButton *mResetRibbonOrderBtn;
 	TPanel *MainContentPanel;
@@ -134,29 +124,12 @@ class TMainForm  : public TRegistryForm
 	TButton *mDecodeSessionBtn;
 	TArrayBotButton *mRegisterRibbonBtn;
 	TPanel *Panel9;
-	TGroupBox *atdbGB;
-	TGroupBox *UC7GB;
 	TTabSheet *TabSheet1;
-	TArrayBotButton *mSynchUIBtn;
 	TArrayBotButton *mStartStopBtn;
 	TArrayBotButton *mRibbonStartBtn;
-	TGroupBox *BlockSelectionGB;
-	TDBLookupComboBox *mUsersCB;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
-	TDBLookupComboBox *BlockIDCB;
-	TLabel *Label3;
-	TDBLookupComboBox *mBlockProcessIDCB;
-	TLabel *Label1;
-	TLabel *Label5;
-	TLabel *Label6;
-	TDBText *DBText1;
-	TDBText *DBText2;
-	TPanel *Panel10;
-	TDBMemo *DBMemo1;
-	TGroupBox *GroupBox3;
-	TDBLookupComboBox *DBLookupComboBox1;
 	TLabel *Label7;
 	TLabel *Label8;
 	TLabel *Label9;
@@ -169,23 +142,12 @@ class TMainForm  : public TRegistryForm
 	TLabel *Label11;
 	TDBText *DBText7;
 	TPageControl *PageControl2;
-	TTabSheet *TabSheet2;
-	TTabSheet *TabSheet4;
 	TTabSheet *TabSheet5;
-	TGroupBox *RibbonsDataGB;
-	TDBGrid *DBGrid1;
-	TDBNavigator *DBNavigator1;
 	TGroupBox *GroupBox9;
 	TGroupBox *GroupBox10;
 	TPropertyCheckBox *mRibbonCreatorActiveCB;
-	TGroupBox *GroupBox11;
-	TIntegerLabeledEdit *mNorthLimitPosE;
+	TGroupBox *CuttingGB;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
-	TIntegerLabeledEdit *mKnifeStageNSAbsPosE;
-	TGroupBox *GroupBox12;
-	TArrayBotButton *mSetZeroCutBtn;
-	TIntegerLabeledEdit *mPresetFeedRateE;
-	TIntegerLabeledEdit *mFeedRateE;
 	TGroupBox *UC7OperationGB;
 	THeaderControl *CameraHC;
 	TPopupMenu *CameraPopup;
@@ -209,6 +171,45 @@ class TMainForm  : public TRegistryForm
 	TRadioGroup *mScannerAimRG;
 	TRadioGroup *mScannerEnabledRG;
 	TButton *mBeepBtn;
+	TTabSheet *TabSheet8;
+	TGroupBox *UC7GB;
+	TGroupBox *GroupBox4;
+	TIntegerLabeledEdit *mStageMoveDelayE;
+	TPanel *mTopPanel;
+	TComboBox *mUC7ComportCB;
+	TButton *mConnectUC7Btn;
+	TArrayBotButton *mSynchUIBtn;
+	TGroupBox *NorthSouthGB;
+	TTabSheet *TabSheet2;
+	TGroupBox *atdbGB;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
+	TGroupBox *BlockSelectionGB;
+	TPanel *Panel7;
+	TDBText *DBText1;
+	TDBText *DBText2;
+	TLabel *Label1;
+	TLabel *Label3;
+	TLabel *Label4;
+	TLabel *Label5;
+	TDBLookupComboBox *BlockIDCB;
+	TDBLookupComboBox *mBlockProcessIDCB;
+	TDBLookupComboBox *mUsersCB;
+	TGroupBox *GroupBox3;
+	TDBMemo *DBMemo1;
+	TDBLookupComboBox *DBLookupComboBox1;
+	TGroupBox *RibbonsDataGB;
+	TDBGrid *DBGrid1;
+	TDBNavigator *DBNavigator1;
+	TArrayBotButton *mSetZeroCutBtn;
+	TIntegerLabeledEdit *mFeedRateE;
+	TUC7StagePositionFrame *CurrentStagePosFrame;
+	TArrayBotButton *mMoveNorthBtn;
+	TArrayBotButton *mMoveSouthBtn;
+	TIntegerLabeledEdit *mKnifeStageJogStep;
+	TUC7StagePositionFrame *MaxStagePosFrame;
+	TGroupBox *KnifeStageGB;
+	TIntegerLabeledEdit *mZeroCutsE;
+	TIntegerLabeledEdit *mPresetFeedRateE;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -295,6 +296,7 @@ class TMainForm  : public TRegistryForm
 
 		mtk::Property<int>	              		mUC7COMPort;
         mtk::Property<int>                     	mCountTo;
+
 								                // Camera variables
         								        //!The camera class
 		Cuc480   						        mCamera1;
@@ -321,6 +323,7 @@ class TMainForm  : public TRegistryForm
 
         bool									mCheckArduinoServerConnection;
 
+        mtk::Property<int>	                    mKnifeStageMaxPos;
         										//Database stuff
 		mtk::Property<int>	                    mDBUserID;
         mtk::Property<int>						mProcessID;
@@ -341,8 +344,8 @@ class TMainForm  : public TRegistryForm
 		void __fastcall 						enableDisableUC7UI(bool enableDisable);
         void 									onUC7Count();
         void 									onUC7CountedTo();
-		void __fastcall                         AppInBox(ATWindowStructMessage& Msg);		
-		
+		void __fastcall                         AppInBox(ATWindowStructMessage& Msg);
+
         										//Callbacks
 		void 									onLightsArduinoMessageReceived(const string& msg);
 		void 									onSensorsArduinoMessageReceived(const string& msg);
@@ -365,7 +368,7 @@ class TMainForm  : public TRegistryForm
         DS457									mZebra;
 
                                                 //INI Parameters...
-		mtk::Property<int>	                	mZebraCOMPort;
+		Property<int>	     		           	mZebraCOMPort;
 		mtk::Property<int>	                	mZebraBaudRate;
         int										getZebraCOMPortNumber();
 		void __fastcall 						onConnectedToZebra();
