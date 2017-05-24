@@ -1,3 +1,13 @@
+Release 0.6.1 (May 24)
+=======================
+* Added Knife stage position controls with mm, um and nm resolution control.
+* Added saving of knife stage max position to ini file
+* Added headercontrol for some Camera actions
+* Moved several pagecontrol pages out of sub pagecontrol into main page control, i.e UC7, ATDB and Barcode Reader pages
+* Cleaning/Simplifying UI
+* Added a reticle Popup
+* Added headersection component to camera panel
+
 Release 0.6.0 (May 16)
 =======================
 * Added a select integer form in order to set the ribbon order counter
