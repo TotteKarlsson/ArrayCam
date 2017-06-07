@@ -56,6 +56,8 @@ void TMainForm::setupProperties()
     mSoundProperties.setSection("SOUNDS");
 	mSoundProperties.setIniFile(&mIniFile);
 	mSoundProperties.add((BaseProperty*)  &mKnifeCuttingSound.setup( 	               		"KNIFE_CUTTING_SOUND",              ApplicationSound("BUTTON_CLICK_1")));
+	mSoundProperties.add((BaseProperty*)  &mBeforeKnifeBackOffSound.setup( 	           		"BEFORE_KNIFE_BACKOFF_SOUND",       ApplicationSound("SHORT_BEEP_1")));
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)

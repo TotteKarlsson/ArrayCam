@@ -1293,7 +1293,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 28
+                Height = 27
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1308,6 +1308,7 @@ object MainForm: TMainForm
                   '115200'
                   '128000'
                   '256000')
+                ExplicitHeight = 28
               end
             end
             object mImagerSettingsGB: TGroupBox
@@ -1360,6 +1361,10 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0

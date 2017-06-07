@@ -81,7 +81,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mKnifeStageMaxPos(0),
         mKnifeStageJogStep(0),
         mKnifeStageResumeDelta(0),
-        mKnifeCuttingSound(ApplicationSound(""))
+        mKnifeCuttingSound(ApplicationSound("")),
+		mBeforeKnifeBackOffSound(ApplicationSound(""))
 {
    	mLogFileReader.start(true);
 
@@ -110,6 +111,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     //Give all sounds a Handle
     mKnifeCuttingSound.getReference().setHandle(this->Handle);
+	mBeforeKnifeBackOffSound.getReference().setHandle(this->Handle);
+
 
 	//Camera rendering mode
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;
@@ -397,7 +400,7 @@ void TMainForm::onUC7Count()
     	//Check if we are close to ribbon separation
         if(mSectionCounterLabel->getValue() >= (mCountToE->getValue() - 3))
         {
-			playABSound(absBeforeBackOff, SND_ASYNC);
+            mBeforeKnifeBackOffSound.getReference().play();
         }
     }
 }
