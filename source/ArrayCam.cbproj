@@ -89,7 +89,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
-        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
@@ -101,7 +101,7 @@ xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y
 xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
 xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
-        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.6.1.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.6.2.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
         <LinkPackageStatics>atVCLCore.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
@@ -241,15 +241,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>25</BuildOrder>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
-        <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -311,7 +311,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="P:\build\xe3_ide\BPL\ArrayBotPackage.bpl">ArrayBotPackage</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>

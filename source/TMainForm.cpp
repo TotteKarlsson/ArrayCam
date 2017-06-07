@@ -82,7 +82,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mKnifeStageJogStep(0),
         mKnifeStageResumeDelta(0),
         mKnifeCuttingSound(ApplicationSound("")),
-		mBeforeKnifeBackOffSound(ApplicationSound(""))
+		mKnifeBeforeCuttingSound(ApplicationSound("")),
+		mBeforeKnifeBackOffSound(ApplicationSound("")),
+        mKnifeAfterCuttingSound(ApplicationSound("")),
+		mArmRetractingSound(ApplicationSound(""))
 {
    	mLogFileReader.start(true);
 
@@ -110,9 +113,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	gLogger.setLogLevel(mLogLevel);
 
     //Give all sounds a Handle
-    mKnifeCuttingSound.getReference().setHandle(this->Handle);
-	mBeforeKnifeBackOffSound.getReference().setHandle(this->Handle);
 
+	mKnifeBeforeCuttingSound.getReference().setHandle(this->Handle);
+	mBeforeKnifeBackOffSound.getReference().setHandle(this->Handle);
+    mKnifeCuttingSound.getReference().setHandle(this->Handle);
+	mKnifeAfterCuttingSound.getReference().setHandle(this->Handle);
+	mArmRetractingSound.getReference().setHandle(this->Handle);
 
 	//Camera rendering mode
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;

@@ -323,8 +323,13 @@ class TMainForm  : public TRegistryForm
 
         										//Sound properties
         IniFileProperties  			            mSoundProperties;
-        Property<ApplicationSound>				mKnifeCuttingSound;
         Property<ApplicationSound>				mBeforeKnifeBackOffSound;
+        Property<ApplicationSound>				mKnifeBeforeCuttingSound;
+        Property<ApplicationSound>				mKnifeCuttingSound;
+        Property<ApplicationSound>				mKnifeAfterCuttingSound;
+        Property<ApplicationSound>				mArmRetractingSound;
+
+
 
         										// Camera variables
         								        //!The camera class

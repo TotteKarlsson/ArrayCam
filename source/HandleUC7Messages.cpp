@@ -119,6 +119,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 	mUC7.setStrokeState(UC7::ssRetracting);
                     mHWPosShape->Left = mRetractLbl->Left;
                     mHWPosShape->Width = mRetractLbl->Width;
+					mArmRetractingSound.getReference().play();
                 }
                 else if(d == "01")  //Before cutting
                 {
@@ -126,6 +127,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                    	mUC7.setStrokeState(UC7::ssBeforeCutting);
                     mHWPosShape->Left 	= mBeforeCuttingLbl->Left;
                     mHWPosShape->Width 	= mBeforeCuttingLbl->Width;
+	                mKnifeBeforeCuttingSound.getReference().play();
                 }
                 else if(d == "03") //Cutting
                 {
@@ -134,7 +136,6 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                    	mUC7.setStrokeState(UC7::ssCutting);
                     mHWPosShape->Left 	= mCuttingLbl->Left;
                     mHWPosShape->Width 	= mCuttingLbl->Width;
-                    //Play sound
                     mKnifeCuttingSound.getReference().play();
                 }
                 else if(d == "02") //After cutting
@@ -144,6 +145,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                     mHWPosShape->Left 	= mAfterCuttingLbl->Left;
                     mHWPosShape->Width 	= mAfterCuttingLbl->Width;
 					mRibbonOrderCountLabel->update();
+	                mKnifeAfterCuttingSound.getReference().play();
                 }
                 else if(d == "E0")
                 {
