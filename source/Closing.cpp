@@ -88,7 +88,6 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mMainContentPanelWidth = MainContentPanel->Width;
 
-
 	TATDBConnectionFrame1->purge();
 
 	Log(lInfo) << "In FormClose";
@@ -98,8 +97,11 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
     mZebraBaudRate = mZebraBaudRateCB->Items->Strings[mZebraBaudRateCB->ItemIndex].ToInt();
 
     mKnifeStageMaxPos.setValue(MaxStagePosFrame->getValue());
+    mKnifeStageJogStep.setValue(BackOffStepFrame->getValue());
+    mKnifeStageResumeDelta.setValue(ResumeDeltaDistanceFrame->getValue());
 
-	mProperties.write();
+	mGeneralProperties.write();
+	mSoundProperties.write();
 
 	//Write to file
 	mIniFile.save();

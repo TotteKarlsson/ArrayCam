@@ -79,29 +79,29 @@ __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
 	mIsStartingUp = false;
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TSettingsForm::mASStartBtnClick(TObject *Sender)
-{
-	if(mASStartBtn->Caption == "Start")
-    {
-    	mMainForm.mLightsArduinoClient.connect(mArduinoServerPortE->getValue());
-        mASStartBtn->Caption == "Connecting";
-        mMainForm.mCheckArduinoServerConnection = true;
-    }
-    else
-    {
-		//User closed connection manually - don't restore automatically
-		mMainForm.mCheckArduinoServerConnection = false;
-    	mMainForm.mLightsArduinoClient.disConnect();
-    }
-}
+////---------------------------------------------------------------------------
+//void __fastcall TSettingsForm::mASStartBtnClick(TObject *Sender)
+//{
+//	if(mASStartBtn->Caption == "Start")
+//    {
+//    	mMainForm.mLightsArduinoClient.connect(mArduinoServerPortE->getValue());
+//        mASStartBtn->Caption == "Connecting";
+//        mMainForm.mCheckArduinoServerConnection = true;
+//    }
+//    else
+//    {
+//		//User closed connection manually - don't restore automatically
+//		mMainForm.mCheckArduinoServerConnection = false;
+//    	mMainForm.mLightsArduinoClient.disConnect();
+//    }
+//}
 
 //--------------------------------------------------------------------------
 void __fastcall TSettingsForm::mUIUpdateTimerTimer(TObject *Sender)
 {
-   	mASStartBtn->Caption 			= mMainForm.mLightsArduinoClient.isConnected()	? "Stop" : "Start";
-	mArduinoServerPortE->Enabled 	= !mMainForm.mLightsArduinoClient.isConnected();
-   	enableDisableGroupBox(LightIntensitiesGB, !mArduinoServerPortE->Enabled);
+//   	mASStartBtn->Caption 			= mMainForm.mLightsArduinoClient.isConnected()	? "Stop" : "Start";
+//	mArduinoServerPortE->Enabled 	= !mMainForm.mLightsArduinoClient.isConnected();
+//   	enableDisableGroupBox(LightIntensitiesGB, !mArduinoServerPortE->Enabled);
 
     HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
     double dblMin, dblMax, dblInc, dCurrent;
@@ -540,7 +540,7 @@ void __fastcall TSettingsForm::mBlackLevelTBChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
 {
-	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
+//	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
 }
 
 

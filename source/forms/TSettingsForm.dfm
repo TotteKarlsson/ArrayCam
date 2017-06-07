@@ -382,50 +382,6 @@ object SettingsForm: TSettingsForm
         end
       end
     end
-    object TabSheet2: TTabSheet
-      Caption = 'Connections'
-      ImageIndex = 1
-      object GroupBox1: TGroupBox
-        Left = 19
-        Top = 24
-        Width = 273
-        Height = 169
-        Caption = 'Arduino Client'
-        TabOrder = 0
-        object mArduinoServerPortE: TIntegerLabeledEdit
-          Left = 16
-          Top = 56
-          Width = 121
-          Height = 21
-          EditLabel.Width = 63
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Network Port'
-          TabOrder = 0
-          Text = '50000'
-          Value = 50000
-        end
-        object mASStartBtn: TButton
-          Left = 143
-          Top = 20
-          Width = 104
-          Height = 97
-          Caption = 'Start'
-          TabOrder = 1
-          OnClick = mASStartBtnClick
-        end
-        object mAutoCheckConnectionCB: TPropertyCheckBox
-          Left = 16
-          Top = 128
-          Width = 145
-          Height = 17
-          Caption = 'Reconnect Automatically'
-          Checked = True
-          State = cbChecked
-          TabOrder = 2
-          OnClick = mAutoCheckConnectionCBClick
-        end
-      end
-    end
   end
   object Panel1: TPanel
     Left = 0
@@ -448,7 +404,7 @@ object SettingsForm: TSettingsForm
     Enabled = False
     Interval = 200
     OnTimer = mUIUpdateTimerTimer
-    Left = 368
-    Top = 312
+    Left = 496
+    Top = 104
   end
 end

@@ -38,17 +38,17 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                     mUC7.setFeedRate(rate, false);
                     mFeedRateE->setValue(rate);
 
-                   	mRibbonStartBtn->Enabled = (rate != 0) ? false : true;
+                   	//mRibbonStartBtn->Enabled = (rate != 0) ? false : true;
                     if(rate)
                     {
-                    	mRibbonStartBtn->Caption = "Back off";
-                        mRibbonStartBtn->Enabled = true;
-                        mSetZeroCutBtn->Enabled = true;
+                    	mRibbonStartBtn->Caption = "Back off Knife";
+                        //mRibbonStartBtn->Enabled = true;
+                        mSetZeroCutBtn->Enabled  = true;
                     }
                     else //Feed rate == zero
                     {
-                    	mRibbonStartBtn->Caption = "Resume";
-                        mSetZeroCutBtn->Enabled = false;
+                    	mRibbonStartBtn->Caption = "Resume Knife";
+                        mSetZeroCutBtn->Enabled  = false;
                     }
                 }
             }
@@ -58,9 +58,7 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
             	if(m.getXX() == "FF")
                 {
 	               string absPos  = m.getData().substr(2);
-//                   mKnifeStageNSAbsPosE->setValue(hexToDec(absPos));
                    CurrentStagePosFrame->setValue(hexToDec(absPos));
-//                   mUC7.setNorthSouthStageAbsolutePosition(mKnifeStageNSAbsPosE->getValue(), false);
                    mUC7.setNorthSouthStageAbsolutePosition(CurrentStagePosFrame->getValue(), false);
 
                 }
@@ -126,23 +124,25 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 {
                    	Log(lDebug3) << "Before Cutting";
                    	mUC7.setStrokeState(UC7::ssBeforeCutting);
-                    mHWPosShape->Left = mBeforeCuttingLbl->Left;
-                    mHWPosShape->Width = mBeforeCuttingLbl->Width;
+                    mHWPosShape->Left 	= mBeforeCuttingLbl->Left;
+                    mHWPosShape->Width 	= mBeforeCuttingLbl->Width;
                 }
                 else if(d == "03") //Cutting
                 {
                    	Log(lDebug3) << "Cutting";
                    	mUC7.getSectionCounter().increase();
                    	mUC7.setStrokeState(UC7::ssCutting);
-                    mHWPosShape->Left = mCuttingLbl->Left;
-                    mHWPosShape->Width = mCuttingLbl->Width;
+                    mHWPosShape->Left 	= mCuttingLbl->Left;
+                    mHWPosShape->Width 	= mCuttingLbl->Width;
+                    //Play sound
+                    mKnifeCuttingSound.getReference().play();
                 }
                 else if(d == "02") //After cutting
                 {
                    	Log(lDebug3) << "After Cutting";
                    	mUC7.setStrokeState(UC7::ssAfterCutting);
-                    mHWPosShape->Left = mAfterCuttingLbl->Left;
-                    mHWPosShape->Width = mAfterCuttingLbl->Width;
+                    mHWPosShape->Left 	= mAfterCuttingLbl->Left;
+                    mHWPosShape->Width 	= mAfterCuttingLbl->Width;
 					mRibbonOrderCountLabel->update();
                 }
                 else if(d == "E0")

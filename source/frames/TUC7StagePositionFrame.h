@@ -5,6 +5,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "TIntegerEdit.h"
+#include "TIntLabel.h"
 //---------------------------------------------------------------------------
 
 
@@ -18,9 +19,8 @@ class PACKAGE TUC7StagePositionFrame : public TFrame
         TLabel *Label2;
         TIntegerEdit *Valuenm;
         TLabel *Label3;
-        TIntegerEdit *AbsPosE;
-        TLabel *Label4;
 	TGroupBox *GroupBox1;
+	TIntLabel *AbsPosE;
         void __fastcall AbsPosEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall posEdit(TObject *Sender, WORD &Key, TShiftState Shift);
 

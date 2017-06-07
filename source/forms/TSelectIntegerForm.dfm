@@ -24,7 +24,7 @@ object SelectIntegerForm: TSelectIntegerForm
     Height = 398
     Align = alClient
     Alignment = taCenter
-    Caption = '0'
+    Caption = '-1'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -85
@@ -32,13 +32,13 @@ object SelectIntegerForm: TSelectIntegerForm
     Font.Style = [fsBold]
     ParentFont = False
     Layout = tlCenter
+    Value = -1
     TheFont.Charset = DEFAULT_CHARSET
     TheFont.Color = clWindowText
     TheFont.Height = -85
     TheFont.Name = 'Segoe UI Semibold'
     TheFont.Style = [fsBold]
-    ExplicitLeft = 257
-    ExplicitWidth = 47
+    ExplicitWidth = 81
     ExplicitHeight = 113
   end
   object Panel1: TPanel

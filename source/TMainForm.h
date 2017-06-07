@@ -41,6 +41,9 @@
 #include "TATDBDataModule.h"
 #include "ArrayCamServer.h"
 #include "TUC7StagePositionFrame.h"
+#include "TSoundsFrame.h"
+#include "sound/atApplicationSound.h"
+#include "TApplicationSounds.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -61,7 +64,7 @@ class TLocalArgs;
 class TRegisterNewRibbonForm;
 class TReticlePopupForm;
 
-
+using mtk::Property;
 
 //---------------------------------------------------------------------------
 class TMainForm  : public TRegistryForm
@@ -126,7 +129,6 @@ class TMainForm  : public TRegistryForm
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
 	TArrayBotButton *mStartStopBtn;
-	TArrayBotButton *mRibbonStartBtn;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
@@ -205,11 +207,26 @@ class TMainForm  : public TRegistryForm
 	TUC7StagePositionFrame *CurrentStagePosFrame;
 	TArrayBotButton *mMoveNorthBtn;
 	TArrayBotButton *mMoveSouthBtn;
-	TIntegerLabeledEdit *mKnifeStageJogStep;
 	TUC7StagePositionFrame *MaxStagePosFrame;
 	TGroupBox *KnifeStageGB;
 	TIntegerLabeledEdit *mZeroCutsE;
 	TIntegerLabeledEdit *mPresetFeedRateE;
+	TArrayBotButton *StopKnifeStageMotionBtn;
+	TLabel *Label6;
+	TGroupBox *GroupBox7;
+	TIntegerLabeledEdit *mArduinoServerPortE;
+	TButton *mASStartBtn;
+	TPropertyCheckBox *mAutoCheckConnectionCB;
+	TScrollBox *ScrollBox1;
+	TGroupBox *GroupBox11;
+	TGroupBox *GroupBox12;
+	TUC7StagePositionFrame *BackOffStepFrame;
+	TUC7StagePositionFrame *ResumeDeltaDistanceFrame;
+	TArrayBotButton *SetPresetFeedBtn;
+	TArrayBotButton *mRibbonStartBtn;
+	TTabSheet *TabSheet4;
+	TSoundsFrame *TSoundsFrame1;
+	TApplicationSounds *TApplicationSounds1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -220,8 +237,6 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mFitToScreenButtonClick(TObject *Sender);
 	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
-//	void __fastcall mSnapShotBtnClick(TObject *Sender);
-//	void __fastcall mRecordMovieBtnClick(TObject *Sender);
 	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
 	void __fastcall ClearLogMemo(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
@@ -238,8 +253,6 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 
-	void __fastcall mCloseBottomPanelBtnClick(TObject *Sender);
-	void __fastcall mShowBottomPanelBtnClick(TObject *Sender);
 	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
 	void __fastcall mConnectUC7BtnClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
@@ -258,6 +271,16 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
 	void __fastcall PopulateMaxNorthPosBtnClick(TObject *Sender);
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
+	void __fastcall KnifePosChange(TObject *Sender, WORD &Key,
+          TShiftState Shift);
+	void __fastcall MaxKnifePosKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall mASStartBtnClick(TObject *Sender);
+	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
+	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
+
+
+
 
     protected:
         LogFileReader                           mLogFileReader;
@@ -270,10 +293,11 @@ class TMainForm  : public TRegistryForm
     	EnvironmentaSensorReader				mEnvReader;
 		TSettingsForm* 							mSettingsForm;
 
+		void							        setupProperties();
         IniFile						            mIniFile;
-        IniFileProperties  			            mProperties;
+        IniFileProperties  			            mGeneralProperties;
 		Property<mtk::LogLevel>            		mLogLevel;
-        mtk::Property<int>                     	mMainContentPanelWidth;
+        Property<int>                     		mMainContentPanelWidth;
 
         										//Camera Settings
         Property<bool>						    mAutoGain;
@@ -294,10 +318,14 @@ class TMainForm  : public TRegistryForm
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
 
-		mtk::Property<int>	              		mUC7COMPort;
-        mtk::Property<int>                     	mCountTo;
+		Property<int>	              			mUC7COMPort;
+        Property<int>                     		mCountTo;
 
-								                // Camera variables
+        										//Sound properties
+        IniFileProperties  			            mSoundProperties;
+        Property<ApplicationSound>				mKnifeCuttingSound;
+
+        										// Camera variables
         								        //!The camera class
 		Cuc480   						        mCamera1;
         CameraServiceThread						mServiceCamera1;
@@ -323,11 +351,14 @@ class TMainForm  : public TRegistryForm
 
         bool									mCheckArduinoServerConnection;
 
-        mtk::Property<int>	                    mKnifeStageMaxPos;
+        Property<int>	                    	mKnifeStageMaxPos;
+        Property<int>	                    	mKnifeStageJogStep;
+        Property<int>	                    	mKnifeStageResumeDelta;
+
         										//Database stuff
-		mtk::Property<int>	                    mDBUserID;
-        mtk::Property<int>						mProcessID;
-        mtk::Property<int>						mBlockID;
+		Property<int>	                    	mDBUserID;
+        Property<int>							mProcessID;
+        Property<int>							mBlockID;
 		int 									getCurrentUserID();
 		string 									getCurrentUserName();
 		void 									populateUsersCB();
@@ -360,16 +391,15 @@ class TMainForm  : public TRegistryForm
 		void       __fastcall					onCameraClose(System::TObject* Sender);
 
 
-        //Server functions
+        										//Server functions
         ArrayCamServer							mACServer;
 
-        // Barcode reader
         										//!The barcode reader
         DS457									mZebra;
 
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;
-		mtk::Property<int>	                	mZebraBaudRate;
+		Property<int>	                		mZebraBaudRate;
         int										getZebraCOMPortNumber();
 		void __fastcall 						onConnectedToZebra();
         void __fastcall 						onDisConnectedToZebra();

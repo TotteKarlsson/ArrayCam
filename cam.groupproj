@@ -3,6 +3,9 @@
         <ProjectGuid>{17786869-76D5-488B-8D65-AA6E38A4E217}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="P:\libs\dsl\Common\mtkCommon.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\dsl\Common\IPC\mtkIPC.cbproj">
             <Dependencies/>
         </Projects>
@@ -18,10 +21,10 @@
         <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\atapi\source\atCore.cbproj">
+        <Projects Include="P:\libs\atapi\source\database\atDatabase.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\atapi\source\database\atDatabase.cbproj">
+        <Projects Include="P:\libs\atapi\source\atCore.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj">
@@ -41,6 +44,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="mtkCommon">
+        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj"/>
+    </Target>
+    <Target Name="mtkCommon:Clean">
+        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mtkCommon:Make">
+        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="mtkIPC">
         <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj"/>
     </Target>
@@ -86,15 +98,6 @@
     <Target Name="atSSI:Make">
         <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="atCore">
-        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj"/>
-    </Target>
-    <Target Name="atCore:Clean">
-        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atCore:Make">
-        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="atDatabase">
         <MSBuild Projects="P:\libs\atapi\source\database\atDatabase.cbproj"/>
     </Target>
@@ -103,6 +106,15 @@
     </Target>
     <Target Name="atDatabase:Make">
         <MSBuild Projects="P:\libs\atapi\source\database\atDatabase.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atCore">
+        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj"/>
+    </Target>
+    <Target Name="atCore:Clean">
+        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atCore:Make">
+        <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj" Targets="Make"/>
     </Target>
     <Target Name="atBarcodeReader">
         <MSBuild Projects="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj"/>
@@ -132,13 +144,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkIPC;VCLCommon;DuneComponents;DuneForms;atSSI;atCore;atDatabase;atBarcodeReader;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="mtkCommon;mtkIPC;VCLCommon;DuneComponents;DuneForms;atSSI;atDatabase;atCore;atBarcodeReader;atVCLCore;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkIPC:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atSSI:Clean;atCore:Clean;atDatabase:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkCommon:Clean;mtkIPC:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atSSI:Clean;atDatabase:Clean;atCore:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkIPC:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atSSI:Make;atCore:Make;atDatabase:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkCommon:Make;mtkIPC:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atSSI:Make;atDatabase:Make;atCore:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

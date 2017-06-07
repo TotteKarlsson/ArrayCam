@@ -32,10 +32,6 @@ class TSettingsForm : public TForm
         TPageControl *PageControl1;
         TTabSheet *TabSheet1;
         TPanel *Panel1;
-        TTabSheet *TabSheet2;
-        TGroupBox *GroupBox1;
-        TIntegerLabeledEdit *mArduinoServerPortE;
-        TButton *mASStartBtn;
         TTabSheet *TabSheet3;
         TPropertyCheckBox *mPairLEDsCB;
         TGroupBox *GroupBox6;
@@ -65,8 +61,7 @@ class TSettingsForm : public TForm
         TGroupBox *GroupBox5;
         TPropertyCheckBox *mAutoWhiteBalanceCB;
         mtkFloatLabel *mSoftwareGammaLbl;
-        TPropertyCheckBox *mAutoCheckConnectionCB;
-        void __fastcall mASStartBtnClick(TObject *Sender);
+//        void __fastcall mASStartBtnClick(TObject *Sender);
         void __fastcall mUIUpdateTimerTimer(TObject *Sender);
         void __fastcall mVerticalMirrorCBClick(TObject *Sender);
         void __fastcall mHorizontalMirrorCBClick(TObject *Sender);

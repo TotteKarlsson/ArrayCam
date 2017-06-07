@@ -13,13 +13,15 @@ using std::string;
 using namespace mtk;
 
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("forms\TSettingsForm.cpp", SettingsForm);
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
-USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
-USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TSoundsFrame.cpp", SoundsFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
+USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
+USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
+USEFORM("forms\TSettingsForm.cpp", SettingsForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\TApplicationSounds.cpp", ApplicationSounds); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string		gAppName					= "ArrayCam";

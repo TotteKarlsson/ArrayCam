@@ -15,9 +15,6 @@
 #include "Forms/TRegisterNewRibbonForm.h"
 #include "TSelectIntegerForm.h"
 #include "TReticlePopupForm.h"
-using namespace mtk;
-using namespace at;
-
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -27,6 +24,8 @@ using namespace at;
 #pragma link "TIntLabel"
 #pragma link "TATDBConnectionFrame"
 #pragma link "TUC7StagePositionFrame"
+#pragma link "TSoundsFrame"
+#pragma link "TApplicationSounds"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -38,6 +37,9 @@ extern string gLogFileName;
 extern string gAppDataFolder;
 extern bool   gAppIsStartingUp;
 extern bool   gAppIsClosing;
+
+using namespace mtk;
+using namespace at;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -76,8 +78,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mMainContentPanelWidth(700),
         mACServer(*this, -1),
         mReticleVisible(false),
-        mKnifeStageMaxPos(0)
-
+        mKnifeStageMaxPos(0),
+        mKnifeStageJogStep(0),
+        mKnifeStageResumeDelta(0),
+        mKnifeCuttingSound(ApplicationSound(""))
 {
    	mLogFileReader.start(true);
 
@@ -98,55 +102,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
-	//Setup UI/INI properties
-    mProperties.setSection("GENERAL");
-	mProperties.setIniFile(&mIniFile);
-	mProperties.add((BaseProperty*)  &mLogLevel.setup( 	    	                    "LOG_LEVEL",    					lAny));
-	mProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	            "MAIN_CONTENT_PANEL_WIDTH",   		700));
-	mProperties.add((BaseProperty*)  &mPairLEDs.setup(			                    "PAIR_LEDS",    		            true));
-	mProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	    "ATDB_USER_ID",                    	0));
-	mProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	    "LAST_PROCESS_ID",                  0));
-	mProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		    "BLOCK_ID",                  		0));
-	mProperties.add((BaseProperty*)  &mLocalDBName.setup(		                    "LOCAL_DB",   			            "umlocal.db"));
+    setupProperties();
+    mGeneralProperties.read();
+    mSoundProperties.read();
 
-    //Camera Settings
-	mProperties.add((BaseProperty*)  &mAutoGain.setup(			                    "AUTO_GAIN",    		            false));
-	mProperties.add((BaseProperty*)  &mAutoExposure.setup( 		                    "AUTO_EXPOSURE",    	            false));
-	mProperties.add((BaseProperty*)  &mAutoBlackLevel.setup(  	                    "AUTO_BLACK_LEVEL",    	            false));
-	mProperties.add((BaseProperty*)  &mAutoWhiteBalance.setup( 	                    "AUTO_WHITE_BALANCE",  	            false));
-	mProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                    "SOFTWARE_GAMMA",  		            0));
-	mProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                    "VERTICAL_MIRROR",    	            false));
-	mProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                    "HORIZONTAL_MIRROR",                false));
-    mProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                    "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                    "MOVIES_FOLDER",   		            "C:\\Temp"	));
-	mProperties.add((BaseProperty*)  &mReticleVisible.setup(					    "RETICLE_VISIBILITY",              false));
+	gLogger.setLogLevel(mLogLevel);
 
-    //UC7
-   	mProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
-	mProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	    "COUNT_TO",                     	5));
-	mProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	    "NUMBER_OF_ZERO_CUTS",           	2));
-	mProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	    "KNIFE_STAGE_MOVE_DELAY",          	10));
-	mProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	    "PRESET_FEED_RATE",               	100));
-	mProperties.add((BaseProperty*)  &mKnifeStageJogStep->getProperty()->setup(	    "KNIFE_STAGE_JOG_SIZE",          	100));
-	mProperties.add((BaseProperty*)  &mArrayCamServerPortE->getProperty()->setup(	"ARRAYCAM_SERVER_PORT",          	50001));
-	mProperties.add((BaseProperty*)  &mKnifeStageMaxPos.setup(						"KNIFE_STAGE_MAX_POSITION",        	0));
-
-    //Zebra
-	mProperties.add((BaseProperty*)  &mZebraCOMPort.setup( 	                    	"ZEBRA_COM_PORT",                   0));
-	mProperties.add((BaseProperty*)  &mZebraBaudRate.setup( 	                	"ZEBRA_BAUD_RATE",                  9600));
-
-    mProperties.read();
+    //Give all sounds a Handle
+    mKnifeCuttingSound.getReference().setHandle(this->Handle);
 
 	//Camera rendering mode
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;
 
+    //Setup callbacks
 	mLightsArduinoClient.assignOnMessageReceivedCallBack(onLightsArduinoMessageReceived);
     mLightsArduinoClient.onConnected 		= onArduinoClientConnected;
 	mLightsArduinoClient.onDisconnected 	= onArduinoClientDisconnected;
 
-    gLogger.setLogLevel(mLogLevel);
-    mServiceCamera1.onCameraOpen 	= onCameraOpen;
-    mServiceCamera1.onCameraClose 	= onCameraClose;
+    mServiceCamera1.onCameraOpen 			= onCameraOpen;
+    mServiceCamera1.onCameraClose 			= onCameraClose;
 
     //Update UI controls
     MainContentPanel->Width = mMainContentPanelWidth;
@@ -154,17 +128,19 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mCountToE->update();
     mPresetFeedRateE->update();
     mUC7.setFeedRatePreset(mPresetFeedRateE->getValue());
-    mKnifeStageJogStep->update();
     mStageMoveDelayE->update();
 	mZeroCutsE->update();
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
 	mArrayCamServerPortE->update();
-
     MaxStagePosFrame->setValue(mKnifeStageMaxPos.getValue());
+    BackOffStepFrame->setValue(mKnifeStageJogStep.getValue());
+    ResumeDeltaDistanceFrame->setValue(mKnifeStageResumeDelta.getValue());
+    mUC7.setKnifeStageResumeDelta(mKnifeStageResumeDelta.getValue());
+    mUC7.setKnifeStageJogStepPreset(mKnifeStageJogStep.getValue());
 
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
-    //Find which item should be selected
+    //Find out which item in the CB that should be selected
     for(int i = 0; i < mZebraBaudRateCB->Items->Count; i++)
     {
 		if(mZebraBaudRateCB->Items->Strings[i].ToInt() == mZebraBaudRate)
@@ -322,6 +298,7 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
         {
 			case atUC7Message:
             {
+            	//Cast data
             	UC7Message* m = (UC7Message*) msg.lparam;
                 Log(lDebug) << "Handling UC7 message: \"" << m->getMessageNameAsString()<<"\" with data: "<<m->getData();
                 bool result = handleUC7Message(*m);
@@ -340,8 +317,6 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 		Log(lError) << "An exception was thrown in AppInBox.";
 	}
 }
-
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
@@ -385,6 +360,7 @@ void __fastcall TMainForm::onConnectedToUC7()
 	//Setup callbacks
     mUC7.getSectionCounter().assignOnCountCallBack(onUC7Count);
     mUC7.getSectionCounter().assignOnCountedToCallBack(onUC7CountedTo);
+    mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
 
 	enableDisableUC7UI(true);
 	mSynchUIBtnClick(NULL);
@@ -434,7 +410,7 @@ void TMainForm::onUC7CountedTo()
 	    mUC7.getSectionCounter().reset();
 		Log(lInfo) << "Creating new ribbon";
 	    mUC7.prepareToCutRibbon(true);
-        mRibbonStartBtn->Enabled = false;
+        //mRibbonStartBtn->Enabled = false;
     }
 }
 
@@ -470,27 +446,41 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
     {
 		mUC7.setFeedRate(0);
     }
+    else if(btn == SetPresetFeedBtn)
+    {
+		mUC7.setFeedRate(mPresetFeedRateE->getValue());
+    }
+
     else if(btn == mRibbonStartBtn)
     {
     	if(btn->Caption == "Back off")
         {
 			mUC7.prepareToCutRibbon(true);
             btn->Caption = "Preparing for IDLE";
+
+            //check if this screws up things
+			mUC7.setFeedRate(0);
         }
         else
         {
             mUC7.prepareForNewRibbon(true);
             btn->Caption = "Preparing start of Ribbon";
-            btn->Enabled = false;
+            //btn->Enabled = false;
         }
     }
     else if(btn == mMoveSouthBtn)
     {
-    	mUC7.moveKnifeStageSouth(mKnifeStageJogStep->getValue());
+   		mUC7.setFeedRate(0);
+    	mUC7.jogKnifeStageSouth(BackOffStepFrame->getValue(), true);
     }
     else if(btn == mMoveNorthBtn)
     {
-    	mUC7.moveKnifeStageNorth(mKnifeStageJogStep->getValue());
+		mUC7.setFeedRate(0);
+    	mUC7.jogKnifeStageNorth(BackOffStepFrame->getValue(), true);
+    }
+    else if(btn == StopKnifeStageMotionBtn)
+    {
+    	mUC7.stopKnifeStageNSMotion();
     }
 
     string msg = mUC7.getLastSentMessage().getMessage();
@@ -546,16 +536,15 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
             mPresetFeedRateE->setValue(e->getValue());
 	        mUC7.setFeedRatePreset(e->getValue());
         }
-
-        else if(e == mKnifeStageJogStep)
-        {
-            mUC7.setKnifeStageJogStepPreset(e->getValue());
-        }
-
         else if(ie == MaxStagePosFrame->AbsPosE)
         {
 	        MaxStagePosFrame->AbsPosEKeyDown(Sender, Key, Shift);
             mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
+        }
+        else if(ie == CurrentStagePosFrame->AbsPosE)
+        {
+	        CurrentStagePosFrame->AbsPosEKeyDown(Sender, Key, Shift);
+            mUC7.moveKnifeStageNSAbsolute(CurrentStagePosFrame->AbsPosE->getValue());
         }
     }
 }
@@ -916,8 +905,8 @@ void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::PopulateMaxNorthPosBtnClick(TObject *Sender)
 {
-//	mNorthLimitPosE->setValue(mKnifeStageNSAbsPosE->getValue());
     MaxStagePosFrame->setValue(CurrentStagePosFrame->getValue());
+	mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
 }
 
 //---------------------------------------------------------------------------
@@ -954,8 +943,69 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
     {
 	    startStopRecordingMovie();
     }
-
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::KnifePosChange(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    CurrentStagePosFrame->posEdit(Sender, Key, Shift);
+		mUC7.moveKnifeStageNSAbsolute(CurrentStagePosFrame->AbsPosE->getValue());
+    }
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::MaxKnifePosKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    MaxStagePosFrame->posEdit(Sender, Key, Shift);
+		mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
+    }
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mASStartBtnClick(TObject *Sender)
+{
+	if(mASStartBtn->Caption == "Start")
+    {
+    	mLightsArduinoClient.connect(mArduinoServerPortE->getValue());
+        mASStartBtn->Caption == "Connecting";
+        mCheckArduinoServerConnection = true;
+    }
+    else
+    {
+		//User closed connection manually - don't restore automatically
+		mCheckArduinoServerConnection = false;
+    	mLightsArduinoClient.disConnect();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mAutoCheckConnectionCBClick(TObject *Sender)
+{
+	mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    BackOffStepFrame->posEdit(Sender, Key, Shift);
+		mUC7.setKnifeStageJogStepPreset(BackOffStepFrame->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    ResumeDeltaDistanceFrame->posEdit(Sender, Key, Shift);
+		mUC7.setKnifeStageResumeDelta(ResumeDeltaDistanceFrame->AbsPosE->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------

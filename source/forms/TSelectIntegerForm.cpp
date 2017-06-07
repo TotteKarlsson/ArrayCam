@@ -12,7 +12,7 @@ __fastcall TSelectIntegerForm::TSelectIntegerForm(TComponent* Owner)
 	: TForm(Owner)
 {
 	NumbersList->Clear();
-	for(int i = 0; i < 101; i++)
+	for(int i = 0; i < 501; i++)
     {
 		NumbersList->AddItem(IntToStr(i), NULL);
     }
@@ -40,6 +40,7 @@ bool TSelectIntegerForm::setCurrentNumber(int nr)
         }
     }
 	NumbersListClick(NULL);
+    return true;
 }
 
 //---------------------------------------------------------------------------

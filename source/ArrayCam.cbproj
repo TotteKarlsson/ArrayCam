@@ -40,11 +40,11 @@
         <Defines>POCO_STATIC;$(Defines)</Defines>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Obsidian|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Obsidian.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
-        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;DbxDevartSQLiteDriver170.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib;bindengine.lib;bindcomp.lib;bindcompvcl.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
-        <IncludePath>frames\;forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
+        <IncludePath>P:\libs\atapi\source\resources\;frames\;forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <ILINK_LibraryPath>frames\;forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>P:\libs\atapi\source\resources\;frames\;forms\;source\forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -88,6 +88,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
         <VerInfo_Release>1</VerInfo_Release>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
@@ -111,7 +112,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <IncludePath>$(DEBUG_BUILD)\include;$(AT_ROOT)\source;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;DbxDevartSQLiteDriver170.bpi;vclimg.bpi;DBXMySQLDriver.bpi;bcbsmp.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;DbxDevartSQLiteDriver170.bpi;vclimg.bpi;DBXMySQLDriver.bpi;bcbsmp.bpi;bindengine.bpi;bindcomp.bpi;bindcompvcl.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -196,6 +197,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\camera\atCameraServiceThread.h</DependentOn>
             <BuildOrder>9</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\resources\atResourceManager.cpp">
+            <DependentOn>P:\libs\atapi\source\resources\atResourceManager.h</DependentOn>
+            <BuildOrder>27</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\atReticle.cpp">
             <DependentOn>P:\libs\atapi\source\vcl\atReticle.h</DependentOn>
             <BuildOrder>10</BuildOrder>
@@ -215,20 +220,36 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp">
             <BuildOrder>18</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.cpp">
+            <Form>ApplicationSounds</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TApplicationSounds.h</DependentOn>
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp">
             <Form>ATDBConnectionFrame</Form>
             <DesignClass>TFrame</DesignClass>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.cpp">
+            <Form>SoundsFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TSoundsFrame.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
-        <FormResources Include="forms\TSettingsForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
+        <FormResources Include="forms\TSettingsForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

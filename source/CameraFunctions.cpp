@@ -150,12 +150,12 @@ void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
         mCamera1BackPanel->Height *= wRatio;
     }
 
+    mPB->Height = mCamera1BackPanel->Height;
+    mPB->Width = mCamera1BackPanel->Width;
+
     mCamera1BackPanel->Invalidate();
 	Log(lInfo) << "W x H = " <<mCamera1BackPanel->Width<<","<<mCamera1BackPanel->Height<<" Ratio = "<<(double) mCamera1BackPanel->Width / mCamera1BackPanel->Height;
 }
-
-//void __fastcall TMainForm::mSnapShotBtnClick(TObject *Sender)
-//{
 
 void __fastcall TMainForm::takeSnapShot()
 {

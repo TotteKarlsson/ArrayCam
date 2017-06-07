@@ -4,6 +4,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerEdit"
+#pragma link "TIntLabel"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 

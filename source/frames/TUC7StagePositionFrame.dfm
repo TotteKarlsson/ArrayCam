@@ -1,8 +1,8 @@
 object UC7StagePositionFrame: TUC7StagePositionFrame
   Left = 0
   Top = 0
-  Width = 280
-  Height = 102
+  Width = 257
+  Height = 81
   AutoSize = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,13 +14,13 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 280
-    Height = 102
+    Width = 257
+    Height = 81
     Caption = 'Position'
     TabOrder = 0
     object Label1: TLabel
-      Left = 59
-      Top = 32
+      Left = 55
+      Top = 33
       Width = 32
       Height = 23
       Caption = 'mm'
@@ -32,8 +32,8 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 141
-      Top = 32
+      Left = 136
+      Top = 33
       Width = 27
       Height = 23
       Caption = 'um'
@@ -45,8 +45,8 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 228
-      Top = 32
+      Left = 214
+      Top = 33
       Width = 27
       Height = 23
       Caption = 'nm'
@@ -57,26 +57,23 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       Font.Style = []
       ParentFont = False
     end
-    object Label4: TLabel
-      Left = 15
-      Top = 69
-      Width = 46
+    object AbsPosE: TIntLabel
+      Left = 211
+      Top = 61
+      Width = 30
       Height = 13
-      Caption = 'Abs. Pos.'
-    end
-    object AbsPosE: TIntegerEdit
-      Left = 67
-      Top = 66
-      Width = 70
-      Height = 21
-      NumbersOnly = True
-      TabOrder = 3
-      Text = '44725'
-      OnKeyDown = AbsPosEKeyDown
+      Caption = '44725'
+      Color = clWindow
+      ParentColor = False
       Value = 44725
+      TheFont.Charset = DEFAULT_CHARSET
+      TheFont.Color = clWindowText
+      TheFont.Height = -11
+      TheFont.Name = 'Tahoma'
+      TheFont.Style = []
     end
     object ValueMM: TIntegerEdit
-      Left = 16
+      Left = 13
       Top = 24
       Width = 40
       Height = 31
@@ -93,7 +90,7 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       Value = 1
     end
     object Valuenm: TIntegerEdit
-      Left = 184
+      Left = 173
       Top = 24
       Width = 40
       Height = 31
@@ -110,7 +107,7 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       Value = 100
     end
     object Valueum: TIntegerEdit
-      Left = 97
+      Left = 93
       Top = 24
       Width = 40
       Height = 31

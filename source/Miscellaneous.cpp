@@ -47,24 +47,7 @@ int TMainForm::extractCoverSlipID(const string& bc)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 {
-//	mBottomPanel->Visible = !mBottomPanel->Visible;
-//	mToggleLogPanelBtn->Caption =  (mBottomPanel->Visible) ? "Hide Bottom Panel" : "Show Bottom Panel";
 	mFitToScreenButtonClick(Sender);
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mShowBottomPanelBtnClick(TObject *Sender)
-{
-//	mBottomPanel->Visible = true;
-//    mShowBottomPanelBtn->Visible = false;
-//    Splitter2->Top = mBottomPanel->Top - 1;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mCloseBottomPanelBtnClick(TObject *Sender)
-{
-//	mBottomPanel->Visible = false;
-//    mShowBottomPanelBtn->Visible = true;
 }
 
 //---------------------------------------------------------------------------
@@ -132,6 +115,5 @@ void __fastcall TMainForm::mSettingsBtnClick(TObject *Sender)
 		mSettingsForm = new TSettingsForm(*this);
     }
 
-//	this->Visible = true;
     mSettingsForm->Show();
 }
