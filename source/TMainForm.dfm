@@ -316,7 +316,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = TabSheet1
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -1345,7 +1345,7 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 716
-            ActivePage = TabSheet4
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
@@ -1463,7 +1463,6 @@ object MainForm: TMainForm
                 AutoSize = True
                 TabOrder = 1
                 ExplicitWidth = 798
-                ExplicitHeight = 241
                 inherited GroupBox1: TGroupBox
                   Width = 798
                   ExplicitWidth = 798
@@ -1481,13 +1480,10 @@ object MainForm: TMainForm
                     Top = 21
                     Width = 466
                     Height = 218
-                    ExplicitLeft = 249
+                    ExplicitLeft = 330
                     ExplicitTop = 21
-                    ExplicitWidth = 547
+                    ExplicitWidth = 466
                     ExplicitHeight = 218
-                    inherited EnabledCB: TCheckBox
-                      Enabled = True
-                    end
                     inherited SoundCB: TComboBox
                       Height = 27
                       ExplicitHeight = 27
