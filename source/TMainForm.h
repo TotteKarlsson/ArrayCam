@@ -25,7 +25,7 @@
 #include "TPropertyCheckBox.h"
 #include "uc7/atUC7Component.h"
 #include "TATDBImagesAndMoviesDataModule.h"
-#include "arraybot/atEnvironmentalSensorReader.h"
+#include "atEnvironmentalSensorReader.h"
 #include "TArrayBotBtn.h"
 #include "sound/atSoundPlayer.h"
 #include "atCameraServiceThread.h"

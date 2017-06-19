@@ -316,7 +316,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = TabSheet9
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -835,6 +835,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'Leica UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -944,6 +948,10 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1212,6 +1220,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1273,7 +1285,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 27
+                Height = 28
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1440,10 +1452,6 @@ object MainForm: TMainForm
             Height = 716
             Align = alClient
             TabOrder = 1
-            ExplicitLeft = 480
-            ExplicitTop = 256
-            ExplicitWidth = 185
-            ExplicitHeight = 41
             inline TNavitarMotorFrame1: TNavitarMotorFrame
               Left = 1
               Top = 1
@@ -1451,7 +1459,9 @@ object MainForm: TMainForm
               Height = 120
               Align = alTop
               TabOrder = 0
-              ExplicitWidth = 806
+              ExplicitLeft = 1
+              ExplicitTop = 1
+              ExplicitWidth = 491
               inherited MotorGB: TGroupBox
                 Width = 491
                 ExplicitWidth = 806
@@ -1478,10 +1488,12 @@ object MainForm: TMainForm
               Height = 120
               Align = alTop
               TabOrder = 1
-              ExplicitLeft = 72
-              ExplicitTop = 256
+              ExplicitLeft = 1
+              ExplicitTop = 121
+              ExplicitWidth = 491
               inherited MotorGB: TGroupBox
                 Width = 491
+                ExplicitWidth = 491
                 inherited Label1: TLabel
                   Width = 63
                   Height = 19
@@ -1507,15 +1519,21 @@ object MainForm: TMainForm
               TabOrder = 2
               ExplicitLeft = 72
               ExplicitTop = 304
+              ExplicitWidth = 491
+              ExplicitHeight = 474
               inherited GroupBox1: TGroupBox
                 Width = 491
                 Height = 474
+                ExplicitWidth = 491
+                ExplicitHeight = 474
                 inherited TNavitarPreset1: TNavitarPreset
                   Top = 87
                   Width = 487
                   ExplicitTop = 87
+                  ExplicitWidth = 487
                   inherited GroupBox1: TGroupBox
                     Width = 487
+                    ExplicitWidth = 487
                     inherited ZoomPos: TIntegerLabeledEdit
                       Height = 27
                       EditLabel.Width = 41
@@ -1542,8 +1560,10 @@ object MainForm: TMainForm
                   Top = 21
                   Width = 487
                   ExplicitTop = 21
+                  ExplicitWidth = 487
                   inherited GroupBox1: TGroupBox
                     Width = 487
+                    ExplicitWidth = 487
                     inherited ZoomPos: TIntegerLabeledEdit
                       Height = 27
                       EditLabel.Width = 41
@@ -1570,8 +1590,10 @@ object MainForm: TMainForm
                   Top = 153
                   Width = 487
                   ExplicitTop = 153
+                  ExplicitWidth = 487
                   inherited GroupBox1: TGroupBox
                     Width = 487
+                    ExplicitWidth = 487
                     inherited ZoomPos: TIntegerLabeledEdit
                       Height = 27
                       EditLabel.Width = 41
@@ -1612,6 +1634,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1758,6 +1784,10 @@ object MainForm: TMainForm
         object TabSheet3: TTabSheet
           Caption = 'Logs'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel4: TPanel
             Left = 0
             Top = 0
@@ -1847,6 +1877,10 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'About'
           ImageIndex = 8
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox2: TGroupBox
             Left = 0
             Top = 186
@@ -2786,8 +2820,8 @@ object MainForm: TMainForm
         Caption = 'No Camera...'
         TabOrder = 0
         object mPB: TPaintBox
-          Left = 0
-          Top = 0
+          Left = 1
+          Top = -3
           Width = 315
           Height = 460
           PopupMenu = CameraPopup

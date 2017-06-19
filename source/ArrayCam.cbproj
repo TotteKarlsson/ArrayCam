@@ -259,19 +259,19 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TSoundsFrame.h</DependentOn>
             <BuildOrder>25</BuildOrder>
         </CppCompile>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarPreset.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
-        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
