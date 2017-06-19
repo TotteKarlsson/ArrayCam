@@ -13,15 +13,18 @@ using std::string;
 using namespace mtk;
 
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TNavitarPreset.cpp", NavitarPreset); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TSoundsFrame.cpp", SoundsFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TApplicationSounds.cpp", ApplicationSounds); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
-USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
 USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
-USEFORM("P:\libs\atapi\source\vcl\frames\TApplicationSounds.cpp", ApplicationSounds); /* TFrame: File Type */
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.cpp", NavitarMotorFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.cpp", PresetsFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 extern string       gLogFileLocation            = "";
 extern string		gAppName					= "ArrayCam";
@@ -43,6 +46,9 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
 		Application->CreateForm(__classid(TMainForm), &MainForm);
+		Application->CreateForm(__classid(TNavitarPreset), &NavitarPreset);
+		Application->CreateForm(__classid(TNavitarMotorFrame), &NavitarMotorFrame);
+		Application->CreateForm(__classid(TPresetsFrame), &PresetsFrame);
 		Application->Run();
 	}
 	catch (Exception &exception)

@@ -99,6 +99,7 @@ xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
 xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y
 xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y
 xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
+copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y
 xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.6.2.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
@@ -233,6 +234,24 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.cpp">
+            <Form>PresetsFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.h</DependentOn>
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.cpp">
+            <Form>NavitarMotorFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.h</DependentOn>
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TNavitarPreset.cpp">
+            <Form>NavitarPreset</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TNavitarPreset.h</DependentOn>
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.cpp">
             <Form>SoundsFrame</Form>
             <FormType>dfm</FormType>
@@ -241,15 +260,18 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>25</BuildOrder>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarPreset.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TSoundsFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TApplicationSounds.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarMotorFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -311,6 +333,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="P:\build\xe3_ide\BPL\ArrayBotPackage.bpl">File P:\build\xe3_ide\BPL\ArrayBotPackage.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
@@ -329,7 +352,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
+        <PostBuildEvent>xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\build\xe3_ide\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

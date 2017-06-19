@@ -26,6 +26,9 @@
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TSoundsFrame"
 #pragma link "TApplicationSounds"
+#pragma link "TNavitarPreset"
+#pragma link "TNavitarMotorFrame"
+#pragma link "TNavatarPresetsFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -1017,4 +1020,61 @@ void __fastcall TMainForm::ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, 
     }
 }
 
+void  TMainForm::onNavitarConnected()
+{
+	ConnectBtn->Caption         = "Disconnect";
+    ProdIdLbl->Caption 	        = vclstr(mNavitarMotorController.getProductID());
+	HWVerLbl->Caption           = vclstr(mNavitarMotorController.getHardwareVersion());
+   	SWVerLbl->Caption           = vclstr(mNavitarMotorController.getSoftwareVersion());
+    FirmWareDateLbl->Caption   	= vclstr(mNavitarMotorController.getDriverSoftwareBuildDate());
+
+    TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
+    TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
+	TPresetsFrame1->populate(mNavitarMotorController);
+    TNavitarPreset1->populate(mNavitarMotorController);
+    TNavitarPreset2->populate(mNavitarMotorController);
+
+    enableDisableGroupBox(ControllerInfoGB, true);
+}
+
+void  TMainForm::onNavitarDisconnected()
+{
+	ConnectBtn->Caption = "Connect";
+    ProdIdLbl->Caption 	        = "N/A";
+	HWVerLbl->Caption           = "N/A";
+   	SWVerLbl->Caption           = "N/A";
+    FirmWareDateLbl->Caption   	= "N/A";
+
+    enableDisableGroupBox(ControllerInfoGB, false);
+
+    TNavitarMotorFrame1->dePopulate();
+    TNavitarMotorFrame2->dePopulate();
+}
+
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::ConnectBtnClick(TObject *Sender)
+{
+	TButton* b = dynamic_cast<TButton*>(Sender);
+
+    if(b == ConnectBtn)
+    {
+        if(!mNavitarMotorController.isConnected())
+        {
+            if(mNavitarMotorController.connect())
+            {
+            	onNavitarConnected();
+            }
+        }
+        else
+        {
+            if(mNavitarMotorController.disConnect())
+            {
+            	onNavitarDisconnected();
+            }
+        }
+    }
+}
+
+
+
+

@@ -44,6 +44,10 @@
 #include "TSoundsFrame.h"
 #include "sound/atApplicationSound.h"
 #include "TApplicationSounds.h"
+#include "TNavitarPreset.h"
+#include "navitar/atNavitarMotorController.h"
+#include "TNavitarMotorFrame.h"
+#include "TNavatarPresetsFrame.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -227,6 +231,25 @@ class TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet4;
 	TSoundsFrame *TSoundsFrame1;
 	TApplicationSounds *TApplicationSounds1;
+	TPanel *CameraBottomPanel;
+	TNavitarPreset *TNavitarPreset1;
+	TNavitarPreset *TNavitarPreset2;
+	TTabSheet *TabSheet9;
+	TGroupBox *GroupBox13;
+	TButton *ConnectBtn;
+	TGroupBox *ControllerInfoGB;
+	TLabel *Label12;
+	TLabel *Label13;
+	TLabel *Label14;
+	TLabel *Label15;
+	TLabel *ProdIdLbl;
+	TLabel *HWVerLbl;
+	TLabel *SWVerLbl;
+	TLabel *FirmWareDateLbl;
+	TNavitarMotorFrame *TNavitarMotorFrame1;
+	TPanel *Panel8;
+	TNavitarMotorFrame *TNavitarMotorFrame2;
+	TPresetsFrame *TPresetsFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -278,6 +301,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall ConnectBtnClick(TObject *Sender);
 
 
 
@@ -328,8 +352,6 @@ class TMainForm  : public TRegistryForm
         Property<ApplicationSound>				mKnifeCuttingSound;
         Property<ApplicationSound>				mKnifeAfterCuttingSound;
         Property<ApplicationSound>				mArmRetractingSound;
-
-
 
         										// Camera variables
         								        //!The camera class
@@ -402,6 +424,13 @@ class TMainForm  : public TRegistryForm
 
         										//!The barcode reader
         DS457									mZebra;
+
+
+												//!Navitar motor controller stuff
+		NavitarMotorController					mNavitarMotorController;
+		void  									onNavitarConnected();
+		void  									onNavitarDisconnected();
+
 
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;

@@ -316,7 +316,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = Main
+        ActivePage = TabSheet9
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -1333,6 +1333,267 @@ object MainForm: TMainForm
                 Caption = 'Beep'
                 TabOrder = 2
                 OnClick = mBtnClick
+              end
+            end
+          end
+        end
+        object TabSheet9: TTabSheet
+          Caption = 'Navitar'
+          ImageIndex = 7
+          object GroupBox13: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 313
+            Height = 716
+            Align = alLeft
+            Caption = 'Misc.'
+            Color = clBtnFace
+            ParentColor = False
+            TabOrder = 0
+            object ConnectBtn: TButton
+              Left = 20
+              Top = 24
+              Width = 153
+              Height = 57
+              Caption = 'Connect'
+              TabOrder = 0
+              OnClick = ConnectBtnClick
+            end
+            object ControllerInfoGB: TGroupBox
+              Left = 2
+              Top = 599
+              Width = 309
+              Height = 115
+              Align = alBottom
+              Caption = 'Controller Info'
+              TabOrder = 1
+              object Label12: TLabel
+                Left = 16
+                Top = 24
+                Width = 82
+                Height = 19
+                Caption = 'Product ID:'
+                Transparent = True
+              end
+              object Label13: TLabel
+                Left = 16
+                Top = 45
+                Width = 132
+                Height = 19
+                Caption = 'Hardware Version:'
+                Transparent = True
+              end
+              object Label14: TLabel
+                Left = 16
+                Top = 66
+                Width = 120
+                Height = 19
+                Caption = 'Software Version'
+                Transparent = True
+              end
+              object Label15: TLabel
+                Left = 16
+                Top = 85
+                Width = 109
+                Height = 19
+                Caption = 'Firmware Date:'
+                Transparent = True
+              end
+              object ProdIdLbl: TLabel
+                Left = 166
+                Top = 22
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object HWVerLbl: TLabel
+                Left = 166
+                Top = 43
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object SWVerLbl: TLabel
+                Left = 166
+                Top = 64
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object FirmWareDateLbl: TLabel
+                Left = 166
+                Top = 85
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+            end
+          end
+          object Panel8: TPanel
+            Left = 313
+            Top = 0
+            Width = 493
+            Height = 716
+            Align = alClient
+            TabOrder = 1
+            ExplicitLeft = 480
+            ExplicitTop = 256
+            ExplicitWidth = 185
+            ExplicitHeight = 41
+            inline TNavitarMotorFrame1: TNavitarMotorFrame
+              Left = 1
+              Top = 1
+              Width = 491
+              Height = 120
+              Align = alTop
+              TabOrder = 0
+              ExplicitWidth = 806
+              inherited MotorGB: TGroupBox
+                Width = 491
+                ExplicitWidth = 806
+                inherited Label1: TLabel
+                  Width = 63
+                  Height = 19
+                  ExplicitWidth = 63
+                  ExplicitHeight = 19
+                end
+                inherited MotorPosition: TIntegerLabeledEdit
+                  EditLabel.Width = 114
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 135
+                  EditLabel.ExplicitTop = 50
+                  EditLabel.ExplicitWidth = 114
+                  EditLabel.ExplicitHeight = 19
+                end
+              end
+            end
+            inline TNavitarMotorFrame2: TNavitarMotorFrame
+              Left = 1
+              Top = 121
+              Width = 491
+              Height = 120
+              Align = alTop
+              TabOrder = 1
+              ExplicitLeft = 72
+              ExplicitTop = 256
+              inherited MotorGB: TGroupBox
+                Width = 491
+                inherited Label1: TLabel
+                  Width = 63
+                  Height = 19
+                  ExplicitWidth = 63
+                  ExplicitHeight = 19
+                end
+                inherited MotorPosition: TIntegerLabeledEdit
+                  EditLabel.Width = 114
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 135
+                  EditLabel.ExplicitTop = 50
+                  EditLabel.ExplicitWidth = 114
+                  EditLabel.ExplicitHeight = 19
+                end
+              end
+            end
+            inline TPresetsFrame1: TPresetsFrame
+              Left = 1
+              Top = 241
+              Width = 491
+              Height = 474
+              Align = alClient
+              TabOrder = 2
+              ExplicitLeft = 72
+              ExplicitTop = 304
+              inherited GroupBox1: TGroupBox
+                Width = 491
+                Height = 474
+                inherited TNavitarPreset1: TNavitarPreset
+                  Top = 87
+                  Width = 487
+                  ExplicitTop = 87
+                  inherited GroupBox1: TGroupBox
+                    Width = 487
+                    inherited ZoomPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 41
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 24
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 41
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                    inherited FocusPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 40
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 120
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 40
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                  end
+                end
+                inherited NavitarPreset1: TNavitarPreset
+                  Top = 21
+                  Width = 487
+                  ExplicitTop = 21
+                  inherited GroupBox1: TGroupBox
+                    Width = 487
+                    inherited ZoomPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 41
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 24
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 41
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                    inherited FocusPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 40
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 120
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 40
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                  end
+                end
+                inherited NavitarPreset2: TNavitarPreset
+                  Top = 153
+                  Width = 487
+                  ExplicitTop = 153
+                  inherited GroupBox1: TGroupBox
+                    Width = 487
+                    inherited ZoomPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 41
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 24
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 41
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                    inherited FocusPos: TIntegerLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 40
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 120
+                      EditLabel.ExplicitTop = 14
+                      EditLabel.ExplicitWidth = 40
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
+                    end
+                  end
+                end
               end
             end
           end
@@ -2571,6 +2832,84 @@ object MainForm: TMainForm
           OnSectionClick = CameraHCSectionClick
           ParentBiDiMode = False
           PopupMenu = CameraPopup
+        end
+      end
+      object CameraBottomPanel: TPanel
+        Left = 1
+        Top = 799
+        Width = 417
+        Height = 98
+        Align = alBottom
+        TabOrder = 1
+        inline TNavitarPreset1: TNavitarPreset
+          Left = 1
+          Top = 1
+          Width = 283
+          Height = 96
+          Align = alLeft
+          TabOrder = 0
+          ExplicitLeft = 1
+          ExplicitTop = 1
+          ExplicitHeight = 96
+          inherited GroupBox1: TGroupBox
+            Height = 96
+            ExplicitHeight = 96
+            inherited ZoomPos: TIntegerLabeledEdit
+              Height = 27
+              EditLabel.Width = 41
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 24
+              EditLabel.ExplicitTop = 14
+              EditLabel.ExplicitWidth = 41
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+            inherited FocusPos: TIntegerLabeledEdit
+              Height = 27
+              EditLabel.Width = 40
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 120
+              EditLabel.ExplicitTop = 14
+              EditLabel.ExplicitWidth = 40
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+          end
+        end
+        inline TNavitarPreset2: TNavitarPreset
+          Left = 284
+          Top = 1
+          Width = 283
+          Height = 96
+          Align = alLeft
+          TabOrder = 1
+          ExplicitLeft = 284
+          ExplicitTop = 1
+          ExplicitHeight = 96
+          inherited GroupBox1: TGroupBox
+            Height = 96
+            ExplicitHeight = 96
+            inherited ZoomPos: TIntegerLabeledEdit
+              Height = 27
+              EditLabel.Width = 41
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 24
+              EditLabel.ExplicitTop = 14
+              EditLabel.ExplicitWidth = 41
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+            inherited FocusPos: TIntegerLabeledEdit
+              Height = 27
+              EditLabel.Width = 40
+              EditLabel.Height = 19
+              EditLabel.ExplicitLeft = 120
+              EditLabel.ExplicitTop = 14
+              EditLabel.ExplicitWidth = 40
+              EditLabel.ExplicitHeight = 19
+              ExplicitHeight = 27
+            end
+          end
         end
       end
     end
