@@ -6,9 +6,6 @@
         <Projects Include="P:\libs\atapi\source\atCore.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="P:\libs\atapi\source\vcl\atVCLCore.cbproj">
             <Dependencies/>
         </Projects>
@@ -34,15 +31,6 @@
     </Target>
     <Target Name="atCore:Make">
         <MSBuild Projects="P:\libs\atapi\source\atCore.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atBarcodeReader">
-        <MSBuild Projects="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj"/>
-    </Target>
-    <Target Name="atBarcodeReader:Clean">
-        <MSBuild Projects="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atBarcodeReader:Make">
-        <MSBuild Projects="P:\libs\atapi\source\barcodereader\atBarcodeReader.cbproj" Targets="Make"/>
     </Target>
     <Target Name="atVCLCore">
         <MSBuild Projects="P:\libs\atapi\source\vcl\atVCLCore.cbproj"/>
@@ -72,13 +60,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="atCore;atBarcodeReader;atVCLCore;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="atCore;atVCLCore;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="atCore:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="atCore:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="atCore:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="atCore:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

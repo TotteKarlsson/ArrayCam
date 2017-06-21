@@ -102,8 +102,9 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 	mGeneralProperties.write();
 	mSoundProperties.write();
 
-    mNavitarPreset1.setValue(1000,1000);
     mNavitarPreset1.write();
+    mNavitarPreset2.write();
+    mNavitarPreset3.write();
 
 	//Write to file
 	mIniFile.save();

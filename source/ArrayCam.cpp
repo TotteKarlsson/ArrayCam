@@ -19,7 +19,6 @@ USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp", csDM); /* TDataModule: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TNavatarPresetsFrame.cpp", NavatarPresetsFrame); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TNavitarPresetFrame.cpp", NavitarPresetFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
@@ -44,7 +43,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
-		Application->CreateForm(__classid(TNavatarPresetsFrame), &NavatarPresetsFrame);
 		Application->CreateForm(__classid(TNavitarPresetFrame), &NavitarPresetFrame);
 		Application->Run();
 	}

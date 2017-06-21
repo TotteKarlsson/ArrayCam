@@ -324,6 +324,10 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -944,6 +948,10 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1498,38 +1506,14 @@ object MainForm: TMainForm
                 end
               end
             end
-            inline TNavitarPresetFrame1: TNavitarPresetFrame
+            object NavitarPresetGB: TGroupBox
               Left = 1
               Top = 241
               Width = 491
-              Height = 66
-              Align = alTop
+              Height = 474
+              Align = alClient
+              Caption = 'Presets'
               TabOrder = 2
-              ExplicitLeft = 8
-              ExplicitTop = 8
-              inherited GroupBox1: TGroupBox
-                Width = 491
-                inherited ZoomPos: TIntegerLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 41
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 24
-                  EditLabel.ExplicitTop = 14
-                  EditLabel.ExplicitWidth = 41
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
-                end
-                inherited FocusPos: TIntegerLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 40
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 120
-                  EditLabel.ExplicitTop = 14
-                  EditLabel.ExplicitWidth = 40
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
-                end
-              end
             end
           end
         end
@@ -1547,6 +1531,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0

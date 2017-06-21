@@ -7,7 +7,7 @@
 #include "vcl/atVCLUtils.h"
 #include "TATDBDataModule.h"
 #include "TSettingsForm.h"
-
+#include "TNavitarPresetFrame.h"
 using namespace mtk;
 using namespace at;
 extern bool   gAppIsStartingUp;
@@ -62,7 +62,8 @@ void TMainForm::setupProperties()
 	mSoundProperties.add((BaseProperty*)  &mBeforeKnifeBackOffSound.setup( 	           		"BEFORE_KNIFE_BACKOFF_SOUND",       ApplicationSound("SHORT_BEEP_1")));
 
 	mNavitarPreset1.setup("NAVITAR_PRESET_1", mIniFile);
-
+	mNavitarPreset2.setup("NAVITAR_PRESET_2", mIniFile);
+   	mNavitarPreset3.setup("NAVITAR_PRESET_3", mIniFile);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
@@ -104,6 +105,21 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     //Populate misc frames
 	TSoundsFrame1->populate();
     TApplicationSounds1->populate(mSoundProperties);
+
+    //Setup some navitar preset frames
+    TNavitarPresetFrame* f1 = new TNavitarPresetFrame(mNavitarPreset1, this);
+    f1->Parent = NavitarPresetGB;
+    f1->Align = alTop;
+
+    TNavitarPresetFrame* f2 = new TNavitarPresetFrame(mNavitarPreset2, this);
+    f2->Parent = NavitarPresetGB;
+    f2->Align = alTop;
+
+    TNavitarPresetFrame* f3 = new TNavitarPresetFrame(mNavitarPreset3, this);
+    f3->Parent = NavitarPresetGB;
+    f3->Align = alTop;
+
+
 }
 
 //---------------------------------------------------------------------------

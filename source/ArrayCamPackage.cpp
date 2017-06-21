@@ -19,7 +19,7 @@ extern "C" int _libmain(unsigned long reason)
 #pragma comment(lib, "atCore.lib")
 #pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "atResources.lib")
-#pragma comment(lib, "atArrayBotCore.lib")
+//#pragma comment(lib, "atArrayBotCore.lib")
 
 #pragma comment(lib, "libmysqlB.lib")
 #pragma comment(lib, "poco_mysql_connector-static.lib")

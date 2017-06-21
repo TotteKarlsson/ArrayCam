@@ -27,7 +27,6 @@
 #pragma link "TSoundsFrame"
 #pragma link "TApplicationSounds"
 #pragma link "TNavitarMotorFrame"
-#pragma link "TNavatarPresetsFrame"
 #pragma link "TNavitarPresetFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
@@ -90,6 +89,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mKnifeAfterCuttingSound(ApplicationSound("")),
 		mArmRetractingSound(ApplicationSound("")),
         mNavitarPreset1(mNavitarMotorController, "NAVITAR_PRESET_1"),
+        mNavitarPreset2(mNavitarMotorController, "NAVITAR_PRESET_2"),
+        mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW)
 {
    	mLogFileReader.start(true);
@@ -115,8 +116,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     setupProperties();
     mGeneralProperties.read();
     mSoundProperties.read();
-	mNavitarPreset1.read();
 
+	//Navitarpresets
+	mNavitarPreset1.read();
+	mNavitarPreset2.read();
+	mNavitarPreset3.read();
 
     //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);

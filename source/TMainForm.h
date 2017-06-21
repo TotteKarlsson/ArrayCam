@@ -46,7 +46,6 @@
 #include "TApplicationSounds.h"
 #include "navitar/atNavitarMotorController.h"
 #include "TNavitarMotorFrame.h"
-#include "TNavatarPresetsFrame.h"
 #include "navitar/atNavitarPreset.h"
 #include "TNavitarPresetFrame.h"
 //---------------------------------------------------------------------------
@@ -248,7 +247,7 @@ class TMainForm  : public TRegistryForm
 	TNavitarMotorFrame *TNavitarMotorFrame1;
 	TPanel *Panel8;
 	TNavitarMotorFrame *TNavitarMotorFrame2;
-	TNavitarPresetFrame *TNavitarPresetFrame1;
+	TGroupBox *NavitarPresetGB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -424,7 +423,8 @@ class TMainForm  : public TRegistryForm
 		void  									onNavitarDisconnected();
 
         NavitarPreset							mNavitarPreset1;
-
+        NavitarPreset							mNavitarPreset2;
+        NavitarPreset							mNavitarPreset3;
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;
 		Property<int>	                		mZebraBaudRate;
