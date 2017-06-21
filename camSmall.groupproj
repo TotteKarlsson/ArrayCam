@@ -12,6 +12,9 @@
         <Projects Include="P:\libs\atapi\source\vcl\atVCLCore.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="source\ArrayCamPackage.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="source\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
@@ -50,6 +53,15 @@
     <Target Name="atVCLCore:Make">
         <MSBuild Projects="P:\libs\atapi\source\vcl\atVCLCore.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="ArrayCamPackage">
+        <MSBuild Projects="source\ArrayCamPackage.cbproj"/>
+    </Target>
+    <Target Name="ArrayCamPackage:Clean">
+        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArrayCamPackage:Make">
+        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="ArrayCam">
         <MSBuild Projects="source\ArrayCam.cbproj"/>
     </Target>
@@ -60,13 +72,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="atCore;atBarcodeReader;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="atCore;atBarcodeReader;atVCLCore;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="atCore:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="atCore:Clean;atBarcodeReader:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="atCore:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="atCore:Make;atBarcodeReader:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -28,7 +28,7 @@
 #include "atEnvironmentalSensorReader.h"
 #include "TArrayBotBtn.h"
 #include "sound/atSoundPlayer.h"
-#include "atCameraServiceThread.h"
+#include "camera/atCameraServiceThread.h"
 #include "atReticle.h"
 #include "ConnectToArduinoServerThread.h"
 #include "atVCLUtils.h"
@@ -44,10 +44,11 @@
 #include "TSoundsFrame.h"
 #include "sound/atApplicationSound.h"
 #include "TApplicationSounds.h"
-#include "TNavitarPreset.h"
 #include "navitar/atNavitarMotorController.h"
 #include "TNavitarMotorFrame.h"
 #include "TNavatarPresetsFrame.h"
+#include "navitar/atNavitarPreset.h"
+#include "TNavitarPresetFrame.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -232,8 +233,6 @@ class TMainForm  : public TRegistryForm
 	TSoundsFrame *TSoundsFrame1;
 	TApplicationSounds *TApplicationSounds1;
 	TPanel *CameraBottomPanel;
-	TNavitarPreset *TNavitarPreset1;
-	TNavitarPreset *TNavitarPreset2;
 	TTabSheet *TabSheet9;
 	TGroupBox *GroupBox13;
 	TButton *ConnectBtn;
@@ -249,7 +248,7 @@ class TMainForm  : public TRegistryForm
 	TNavitarMotorFrame *TNavitarMotorFrame1;
 	TPanel *Panel8;
 	TNavitarMotorFrame *TNavitarMotorFrame2;
-	TPresetsFrame *TPresetsFrame1;
+	TNavitarPresetFrame *TNavitarPresetFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -303,9 +302,6 @@ class TMainForm  : public TRegistryForm
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ConnectBtnClick(TObject *Sender);
 
-
-
-
     protected:
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
@@ -329,7 +325,6 @@ class TMainForm  : public TRegistryForm
         Property<bool>						    mAutoBlackLevel;
         Property<bool>						    mAutoWhiteBalance;
         Property<double>   					    mSoftwareGamma;
-
         Property<bool>						    mVerticalMirror;
         Property<bool>						    mHorizontalMirror;
 
@@ -376,7 +371,6 @@ class TMainForm  : public TRegistryForm
                                                 //onArduinoMessageReceived
 		LightsArduinoClient    			        mLightsArduinoClient;
         ConnectToArduinoServerThread			mConnectToArduinoServerThread;
-
         bool									mCheckArduinoServerConnection;
 
         Property<int>	                    	mKnifeStageMaxPos;
@@ -418,19 +412,18 @@ class TMainForm  : public TRegistryForm
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
 
-
         										//Server functions
         ArrayCamServer							mACServer;
 
         										//!The barcode reader
         DS457									mZebra;
 
-
 												//!Navitar motor controller stuff
 		NavitarMotorController					mNavitarMotorController;
 		void  									onNavitarConnected();
 		void  									onNavitarDisconnected();
 
+        NavitarPreset							mNavitarPreset1;
 
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;

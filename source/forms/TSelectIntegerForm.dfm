@@ -48,8 +48,6 @@ object SelectIntegerForm: TSelectIntegerForm
     Height = 106
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 360
-    ExplicitWidth = 607
     object OkBtn: TArrayBotButton
       Left = 112
       Top = 32
@@ -79,9 +77,6 @@ object SelectIntegerForm: TSelectIntegerForm
     Align = alLeft
     Caption = 'Numbers'
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 128
-    ExplicitHeight = 105
     object NumbersList: TListBox
       AlignWithMargins = True
       Left = 7
@@ -118,10 +113,6 @@ object SelectIntegerForm: TSelectIntegerForm
       TabOrder = 0
       OnClick = NumbersListClick
       OnDrawItem = NumbersListDrawItem
-      ExplicitLeft = -96
-      ExplicitTop = 25
-      ExplicitWidth = 281
-      ExplicitHeight = 361
     end
   end
 end

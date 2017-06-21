@@ -316,7 +316,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = Main
+        ActivePage = TabSheet9
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -835,10 +835,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'Leica UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -948,10 +944,6 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1220,10 +1212,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1285,7 +1273,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 28
+                Height = 27
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1464,7 +1452,7 @@ object MainForm: TMainForm
               ExplicitWidth = 491
               inherited MotorGB: TGroupBox
                 Width = 491
-                ExplicitWidth = 806
+                ExplicitWidth = 491
                 inherited Label1: TLabel
                   Width = 63
                   Height = 19
@@ -1510,111 +1498,36 @@ object MainForm: TMainForm
                 end
               end
             end
-            inline TPresetsFrame1: TPresetsFrame
+            inline TNavitarPresetFrame1: TNavitarPresetFrame
               Left = 1
               Top = 241
               Width = 491
-              Height = 474
-              Align = alClient
+              Height = 66
+              Align = alTop
               TabOrder = 2
-              ExplicitLeft = 72
-              ExplicitTop = 304
-              ExplicitWidth = 491
-              ExplicitHeight = 474
+              ExplicitLeft = 8
+              ExplicitTop = 8
               inherited GroupBox1: TGroupBox
                 Width = 491
-                Height = 474
-                ExplicitWidth = 491
-                ExplicitHeight = 474
-                inherited TNavitarPreset1: TNavitarPreset
-                  Top = 87
-                  Width = 487
-                  ExplicitTop = 87
-                  ExplicitWidth = 487
-                  inherited GroupBox1: TGroupBox
-                    Width = 487
-                    ExplicitWidth = 487
-                    inherited ZoomPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 41
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 24
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 41
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited FocusPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 40
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 120
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 40
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                  end
+                inherited ZoomPos: TIntegerLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 41
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 24
+                  EditLabel.ExplicitTop = 14
+                  EditLabel.ExplicitWidth = 41
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
                 end
-                inherited NavitarPreset1: TNavitarPreset
-                  Top = 21
-                  Width = 487
-                  ExplicitTop = 21
-                  ExplicitWidth = 487
-                  inherited GroupBox1: TGroupBox
-                    Width = 487
-                    ExplicitWidth = 487
-                    inherited ZoomPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 41
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 24
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 41
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited FocusPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 40
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 120
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 40
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                  end
-                end
-                inherited NavitarPreset2: TNavitarPreset
-                  Top = 153
-                  Width = 487
-                  ExplicitTop = 153
-                  ExplicitWidth = 487
-                  inherited GroupBox1: TGroupBox
-                    Width = 487
-                    ExplicitWidth = 487
-                    inherited ZoomPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 41
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 24
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 41
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited FocusPos: TIntegerLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 40
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 120
-                      EditLabel.ExplicitTop = 14
-                      EditLabel.ExplicitWidth = 40
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                  end
+                inherited FocusPos: TIntegerLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 40
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 120
+                  EditLabel.ExplicitTop = 14
+                  EditLabel.ExplicitWidth = 40
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
                 end
               end
             end
@@ -1634,10 +1547,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1784,10 +1693,6 @@ object MainForm: TMainForm
         object TabSheet3: TTabSheet
           Caption = 'Logs'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel4: TPanel
             Left = 0
             Top = 0
@@ -1877,10 +1782,6 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'About'
           ImageIndex = 8
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox2: TGroupBox
             Left = 0
             Top = 186
@@ -2875,76 +2776,6 @@ object MainForm: TMainForm
         Height = 98
         Align = alBottom
         TabOrder = 1
-        inline TNavitarPreset1: TNavitarPreset
-          Left = 1
-          Top = 1
-          Width = 283
-          Height = 96
-          Align = alLeft
-          TabOrder = 0
-          ExplicitLeft = 1
-          ExplicitTop = 1
-          ExplicitHeight = 96
-          inherited GroupBox1: TGroupBox
-            Height = 96
-            ExplicitHeight = 96
-            inherited ZoomPos: TIntegerLabeledEdit
-              Height = 27
-              EditLabel.Width = 41
-              EditLabel.Height = 19
-              EditLabel.ExplicitLeft = 24
-              EditLabel.ExplicitTop = 14
-              EditLabel.ExplicitWidth = 41
-              EditLabel.ExplicitHeight = 19
-              ExplicitHeight = 27
-            end
-            inherited FocusPos: TIntegerLabeledEdit
-              Height = 27
-              EditLabel.Width = 40
-              EditLabel.Height = 19
-              EditLabel.ExplicitLeft = 120
-              EditLabel.ExplicitTop = 14
-              EditLabel.ExplicitWidth = 40
-              EditLabel.ExplicitHeight = 19
-              ExplicitHeight = 27
-            end
-          end
-        end
-        inline TNavitarPreset2: TNavitarPreset
-          Left = 284
-          Top = 1
-          Width = 283
-          Height = 96
-          Align = alLeft
-          TabOrder = 1
-          ExplicitLeft = 284
-          ExplicitTop = 1
-          ExplicitHeight = 96
-          inherited GroupBox1: TGroupBox
-            Height = 96
-            ExplicitHeight = 96
-            inherited ZoomPos: TIntegerLabeledEdit
-              Height = 27
-              EditLabel.Width = 41
-              EditLabel.Height = 19
-              EditLabel.ExplicitLeft = 24
-              EditLabel.ExplicitTop = 14
-              EditLabel.ExplicitWidth = 41
-              EditLabel.ExplicitHeight = 19
-              ExplicitHeight = 27
-            end
-            inherited FocusPos: TIntegerLabeledEdit
-              Height = 27
-              EditLabel.Width = 40
-              EditLabel.Height = 19
-              EditLabel.ExplicitLeft = 120
-              EditLabel.ExplicitTop = 14
-              EditLabel.ExplicitWidth = 40
-              EditLabel.ExplicitHeight = 19
-              ExplicitHeight = 27
-            end
-          end
-        end
       end
     end
   end

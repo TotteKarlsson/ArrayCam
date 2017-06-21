@@ -15,7 +15,6 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         atdbDM->SQLConnection1->Connected 		||
         mZebra.isConnected()
         )
-
     {
         CanClose = false;
         mShutDownTimer->Enabled = true;
@@ -102,6 +101,9 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 
 	mGeneralProperties.write();
 	mSoundProperties.write();
+
+    mNavitarPreset1.setValue(1000,1000);
+    mNavitarPreset1.write();
 
 	//Write to file
 	mIniFile.save();

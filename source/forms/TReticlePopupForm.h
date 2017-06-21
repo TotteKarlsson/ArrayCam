@@ -12,8 +12,7 @@
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------
-class TReticlePopupForm : public TForm
+class PACKAGE TReticlePopupForm : public TForm
 {
     __published:	// IDE-managed Components
         TGroupBox *GroupBox1;

@@ -26,9 +26,9 @@
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TSoundsFrame"
 #pragma link "TApplicationSounds"
-#pragma link "TNavitarPreset"
 #pragma link "TNavitarMotorFrame"
 #pragma link "TNavatarPresetsFrame"
+#pragma link "TNavitarPresetFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -88,7 +88,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 		mKnifeBeforeCuttingSound(ApplicationSound("")),
 		mBeforeKnifeBackOffSound(ApplicationSound("")),
         mKnifeAfterCuttingSound(ApplicationSound("")),
-		mArmRetractingSound(ApplicationSound(""))
+		mArmRetractingSound(ApplicationSound("")),
+        mNavitarPreset1(mNavitarMotorController, "NAVITAR_PRESET_1"),
+	    mRenderMode(IS_RENDER_FIT_TO_WINDOW)
 {
    	mLogFileReader.start(true);
 
@@ -109,22 +111,22 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
+    //Properties are retrieved and saved to an ini file
     setupProperties();
     mGeneralProperties.read();
     mSoundProperties.read();
+	mNavitarPreset1.read();
 
+
+    //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);
 
-    //Give all sounds a Handle
-
+    //Give all sounds a Handle (create a sound container..)
 	mKnifeBeforeCuttingSound.getReference().setHandle(this->Handle);
 	mBeforeKnifeBackOffSound.getReference().setHandle(this->Handle);
     mKnifeCuttingSound.getReference().setHandle(this->Handle);
 	mKnifeAfterCuttingSound.getReference().setHandle(this->Handle);
 	mArmRetractingSound.getReference().setHandle(this->Handle);
-
-	//Camera rendering mode
-    mRenderMode = IS_RENDER_FIT_TO_WINDOW;
 
     //Setup callbacks
 	mLightsArduinoClient.assignOnMessageReceivedCallBack(onLightsArduinoMessageReceived);
@@ -1030,9 +1032,9 @@ void  TMainForm::onNavitarConnected()
 
     TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
     TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
-	TPresetsFrame1->populate(mNavitarMotorController);
-    TNavitarPreset1->populate(mNavitarMotorController);
-    TNavitarPreset2->populate(mNavitarMotorController);
+//	TPresetsFrame1->populate(mNavitarMotorController);
+//    TNavitarPreset1->populate(mNavitarMotorController);
+//    TNavitarPreset2->populate(mNavitarMotorController);
 
     enableDisableGroupBox(ControllerInfoGB, true);
 }
