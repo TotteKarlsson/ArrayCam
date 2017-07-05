@@ -55,7 +55,6 @@ using mtk::IniFileProperties;
 using mtk::IniFile;
 using mtk::Property;
 
-//#define UWM_MESSAGE   (WM_APP + 5)
 #define UWM_MESSAGE      (WM_APP + 5)
 enum ApplicationMessageEnum
 {
@@ -105,17 +104,10 @@ class TMainForm  : public TRegistryForm
 	TPaintBox *mPB;
 	TTimer *mCheckSocketConnectionTimer;
 	TPanel *MainTopPanel;
-	TGroupBox *HandwheelGB;
-	TShape *mHWPosShape;
-	TLabel *mRetractLbl;
-	TLabel *mCuttingLbl;
-	TLabel *mAfterCuttingLbl;
-	TLabel *mBeforeCuttingLbl;
 	TGroupBox *CounterGB;
 	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
 	TArrayBotButton *mResetCounterBtn;
-	TPanel *Panel6;
 	TPanel *Panel4;
 	TTabSheet *TabSheet3;
 	TIntLabel *mRibbonOrderCountLabel;
@@ -296,7 +288,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall StatusBar1Hint(TObject *Sender);
 
     protected:
-    	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity};
+    	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
 		UC7						 				mUC7;

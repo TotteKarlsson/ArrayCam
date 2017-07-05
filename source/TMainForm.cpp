@@ -171,9 +171,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     TStatusPanel* p1 = mSBManager.addPanel(120, sbpTemperature);
     TStatusPanel* p2 = mSBManager.addPanel(120, sbpHumidity);
+    TStatusPanel* p3 = mSBManager.addPanel(120, sbpHandWheelPosition);
 
     p1->Text = "";
 	p2->Text = "";
+	p3->Text = "Wheel Position: N/A";
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -409,7 +411,6 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 
     //group boxes
 	enableDisableGroupBox(CounterGB, 		enableDisable);
-    enableDisableGroupBox(HandwheelGB, 		enableDisable);
     enableDisableGroupBox(NorthSouthGB,		enableDisable);
     enableDisableGroupBox(UC7OperationGB, 	enableDisable);
     enableDisableGroupBox(CuttingGB, 		enableDisable);

@@ -112,40 +112,38 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
             }
         	else if(m.getCommand() == "40")
             {
+            	TStatusPanel* p = mSBManager.getPanel(sbpHandWheelPosition);
+                p->Text = "Wheel Position: ";
             	string d = m.getData().substr(2,2);
                 if(d == "00")  //Retract
                 {
                 	Log(lDebug3) << "Retracting";
                 	mUC7.setStrokeState(UC7::ssRetracting);
-                    mHWPosShape->Left = mRetractLbl->Left;
-                    mHWPosShape->Width = mRetractLbl->Width;
 					mArmRetractingSound.getReference().play();
+                    p->Text += "Retracting";
                 }
                 else if(d == "01")  //Before cutting
                 {
                    	Log(lDebug3) << "Before Cutting";
                    	mUC7.setStrokeState(UC7::ssBeforeCutting);
-                    mHWPosShape->Left 	= mBeforeCuttingLbl->Left;
-                    mHWPosShape->Width 	= mBeforeCuttingLbl->Width;
 	                mKnifeBeforeCuttingSound.getReference().play();
+                    p->Text += "Before Cutting";
                 }
                 else if(d == "03") //Cutting
                 {
                    	Log(lDebug3) << "Cutting";
                    	mUC7.getSectionCounter().increase();
                    	mUC7.setStrokeState(UC7::ssCutting);
-                    mHWPosShape->Left 	= mCuttingLbl->Left;
-                    mHWPosShape->Width 	= mCuttingLbl->Width;
                     mKnifeCuttingSound.getReference().play();
+                    p->Text += "Cutting";
                 }
                 else if(d == "02") //After cutting
                 {
                    	Log(lDebug3) << "After Cutting";
                    	mUC7.setStrokeState(UC7::ssAfterCutting);
-                    mHWPosShape->Left 	= mAfterCuttingLbl->Left;
-                    mHWPosShape->Width 	= mAfterCuttingLbl->Width;
 					mRibbonOrderCountLabel->update();
 	                mKnifeAfterCuttingSound.getReference().play();
+                    p->Text += "After Cutting";
                 }
                 else if(d == "E0")
                 {

@@ -7,14 +7,8 @@ Coordinates=751,919,83,51
 [Panel9]
 Coordinates=333,1184,47,51
 
-[mBeforeCuttingLbl]
-Coordinates=1133,1105,107,51
-
 [atdbDM.fixativeTBL]
 Coordinates=1314,911,110,51
-
-[mRetractLbl]
-Coordinates=112,1506,74,51
 
 [Panel7]
 Coordinates=964,1055,47,51
@@ -24,9 +18,6 @@ Coordinates=1314,421,77,51
 
 [logLabel]
 Coordinates=1314,1331,56,51
-
-[mHWPosShape]
-Coordinates=680,1792,90,33
 
 [GroupBox10]
 Coordinates=1133,1595,76,51
@@ -93,9 +84,6 @@ Coordinates=1314,1681,141,51
 
 [BlockIDCB]
 Coordinates=88,1792,67,33
-
-[mAfterCuttingLbl]
-Coordinates=550,695,99,51
 
 [TabSheet2]
 Coordinates=1523,1,66,33
@@ -250,14 +238,8 @@ Coordinates=256,1345,62,51
 [mZeroCutsE]
 Coordinates=1314,71,75,51
 
-[HandwheelGB]
-Coordinates=707,1667,84,51
-
 [RibbonsDataGB]
 Coordinates=1133,1315,93,51
-
-[mCuttingLbl]
-Coordinates=964,1125,74,51
 
 [atdbDM.fixationMethodDS]
 Coordinates=382,1184,142,51
@@ -466,9 +448,6 @@ Coordinates=1133,1385,102,51
 [mRibbonStartBtn]
 Coordinates=1314,1121,99,51
 
-[Panel6]
-Coordinates=304,933,47,51
-
 [atdbDM.noteDS]
 Coordinates=1133,701,91,51
 
@@ -515,5 +494,5 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1314,1191,47,51
+Coordinates=707,1667,84,51
 
