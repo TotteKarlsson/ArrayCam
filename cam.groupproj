@@ -9,6 +9,9 @@
         <Projects Include="P:\libs\dsl\Common\IPC\mtkIPC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\dsl\Common\Math\mtkMath.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\dsl\VCL\Common\VCLCommon.cbproj">
             <Dependencies/>
         </Projects>
@@ -70,6 +73,15 @@
     </Target>
     <Target Name="mtkIPC:Make">
         <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="mtkMath">
+        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj"/>
+    </Target>
+    <Target Name="mtkMath:Clean">
+        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mtkMath:Make">
+        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj" Targets="Make"/>
     </Target>
     <Target Name="VCLCommon">
         <MSBuild Projects="P:\libs\dsl\VCL\Common\VCLCommon.cbproj"/>
@@ -180,13 +192,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkCommon;mtkIPC;VCLCommon;DuneComponents;DuneForms;atCore;atSerialAPI;atSSI;atUC7API;atDatabase;atBarcodeReader;atArduino;atVCLCore;ArrayCam"/>
+        <CallTarget Targets="mtkCommon;mtkIPC;mtkMath;VCLCommon;DuneComponents;DuneForms;atCore;atSerialAPI;atSSI;atUC7API;atDatabase;atBarcodeReader;atArduino;atVCLCore;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkCommon:Clean;mtkIPC:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atCore:Clean;atSerialAPI:Clean;atSSI:Clean;atUC7API:Clean;atDatabase:Clean;atBarcodeReader:Clean;atArduino:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkCommon:Clean;mtkIPC:Clean;mtkMath:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atCore:Clean;atSerialAPI:Clean;atSSI:Clean;atUC7API:Clean;atDatabase:Clean;atBarcodeReader:Clean;atArduino:Clean;atVCLCore:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkCommon:Make;mtkIPC:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atCore:Make;atSerialAPI:Make;atSSI:Make;atUC7API:Make;atDatabase:Make;atBarcodeReader:Make;atArduino:Make;atVCLCore:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkCommon:Make;mtkIPC:Make;mtkMath:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atCore:Make;atSerialAPI:Make;atSSI:Make;atUC7API:Make;atDatabase:Make;atBarcodeReader:Make;atArduino:Make;atVCLCore:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

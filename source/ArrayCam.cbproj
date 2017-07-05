@@ -157,6 +157,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>forms\TSettingsForm.h</DependentOn>
             <BuildOrder>18</BuildOrder>
         </CppCompile>
+        <CppCompile Include="frames\TUC7StagePositionFrame.cpp">
+            <Form>UC7StagePositionFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>frames\TUC7StagePositionFrame.h</DependentOn>
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
         <CppCompile Include="HandleUC7Messages.cpp">
             <BuildOrder>14</BuildOrder>
         </CppCompile>
@@ -198,23 +204,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>20</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp">
-            <Form>ATDBConnectionFrame</Form>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
-            <BuildOrder>20</BuildOrder>
+            <BuildOrder>21</BuildOrder>
         </CppCompile>
-        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TNavitarPresetFrame.cpp">
-            <Form>NavitarPresetFrame</Form>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>P:\libs\atapi\source\vcl\frames\TNavitarPresetFrame.h</DependentOn>
-            <BuildOrder>22</BuildOrder>
-        </CppCompile>
-        <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TNavitarPresetFrame.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -282,10 +278,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
@@ -363,7 +359,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
@@ -372,12 +374,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\DbxDevartSQLiteDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">

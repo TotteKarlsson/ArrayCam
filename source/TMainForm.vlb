@@ -202,9 +202,6 @@ Coordinates=167,465,114,87
 [atdbDM.settingsDS]
 Coordinates=410,1667,113,87
 
-[DBText6]
-Coordinates=1314,1611,56,51
-
 [CurrentStagePosFrame]
 Coordinates=1523,417,129,33
 
@@ -343,9 +340,6 @@ Coordinates=1133,631,115,51
 [atdbDM.ROnCS_CDS]
 Coordinates=1133,71,118,51
 
-[DBText1]
-Coordinates=353,287,56,51
-
 [TabSheet6]
 Coordinates=1523,937,66,33
 
@@ -415,9 +409,6 @@ Coordinates=563,1345,70,51
 [atdbDM.notesCDS]
 Coordinates=16,1184,104,123
 
-[Label10]
-Coordinates=964,1405,52,51
-
 [mFeedRateE]
 Coordinates=389,1506,76,51
 
@@ -432,9 +423,6 @@ Coordinates=1314,701,56,51
 
 [TabSheet5]
 Coordinates=1523,1405,66,33
-
-[Label5]
-Coordinates=751,709,46,51
 
 [Label8]
 Coordinates=751,1341,46,51
@@ -540,4 +528,7 @@ Coordinates=1733,247,179,51
 
 [TApplicationSounds1.VolumeTB]
 Coordinates=1714,317,174,33
+
+[]
+Coordinates=964,1405,52,51
 

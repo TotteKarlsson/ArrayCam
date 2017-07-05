@@ -43,11 +43,11 @@
 #include "TUC7StagePositionFrame.h"
 #include "TSoundsFrame.h"
 #include "sound/atApplicationSound.h"
-#include "frames/TApplicationSoundsFrame.h"
 #include "navitar/atNavitarMotorController.h"
 #include "TNavitarMotorFrame.h"
 #include "navitar/atNavitarPreset.h"
 #include "TNavitarPresetFrame.h"
+#include "TApplicationSoundsFrame.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -139,11 +139,9 @@ class TMainForm  : public TRegistryForm
 	TLabel *Label7;
 	TLabel *Label8;
 	TLabel *Label9;
-	TLabel *Label10;
 	TDBText *DBText3;
 	TDBText *DBText4;
 	TDBText *DBText5;
-	TDBText *DBText6;
 	TDBMemo *DBMemo2;
 	TLabel *Label11;
 	TDBText *DBText7;
@@ -191,12 +189,10 @@ class TMainForm  : public TRegistryForm
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TGroupBox *BlockSelectionGB;
 	TPanel *Panel7;
-	TDBText *DBText1;
 	TDBText *DBText2;
 	TLabel *Label1;
 	TLabel *Label3;
 	TLabel *Label4;
-	TLabel *Label5;
 	TDBLookupComboBox *BlockIDCB;
 	TDBLookupComboBox *mBlockProcessIDCB;
 	TDBLookupComboBox *mUsersCB;

@@ -13,13 +13,12 @@
 using std::string;
 using namespace mtk;
 
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp", csDM); /* TDataModule: File Type */
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp", csDM); /* TDataModule: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TNavitarPresetFrame.cpp", NavitarPresetFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -43,7 +42,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
-		Application->CreateForm(__classid(TNavitarPresetFrame), &NavitarPresetFrame);
 		Application->Run();
 	}
 	catch (Exception &exception)

@@ -316,7 +316,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = TabSheet9
+        ActivePage = TabSheet2
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -324,10 +324,6 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -371,7 +367,7 @@ object MainForm: TMainForm
                     Top = 96
                     Width = 170
                     Height = 17
-                    DataField = 'process_id'
+                    DataField = 'case_id'
                     DataSource = atdbDM.specimenDataSource
                   end
                   object DBText5: TDBText
@@ -382,14 +378,6 @@ object MainForm: TMainForm
                     DataField = 'specimen_id'
                     DataSource = atdbDM.specimenDataSource
                   end
-                  object DBText6: TDBText
-                    Left = 341
-                    Top = 97
-                    Width = 170
-                    Height = 17
-                    DataField = 'additional_identifier'
-                    DataSource = atdbDM.specimenDataSource
-                  end
                   object DBText7: TDBText
                     Left = 133
                     Top = 68
@@ -397,13 +385,6 @@ object MainForm: TMainForm
                     Height = 17
                     DataField = 'id'
                     DataSource = atdbDM.blocksDataSource
-                  end
-                  object Label10: TLabel
-                    Left = 220
-                    Top = 95
-                    Width = 100
-                    Height = 19
-                    Caption = 'Additional ID:'
                   end
                   object Label11: TLabel
                     Left = 12
@@ -422,9 +403,9 @@ object MainForm: TMainForm
                   object Label8: TLabel
                     Left = 12
                     Top = 95
-                    Width = 81
+                    Width = 55
                     Height = 19
-                    Caption = 'Process ID:'
+                    Caption = 'Case ID'
                   end
                   object Label9: TLabel
                     Left = 220
@@ -948,10 +929,6 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1041,14 +1018,6 @@ object MainForm: TMainForm
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                object DBText1: TDBText
-                  Left = 128
-                  Top = 159
-                  Width = 170
-                  Height = 17
-                  DataField = 'additional_identifier'
-                  DataSource = atdbDM.specimenDataSource
-                end
                 object DBText2: TDBText
                   Left = 128
                   Top = 131
@@ -1060,9 +1029,9 @@ object MainForm: TMainForm
                 object Label1: TLabel
                   Left = 13
                   Top = 56
-                  Width = 81
+                  Width = 96
                   Height = 19
-                  Caption = 'Process ID:'
+                  Caption = 'Specimen ID:'
                 end
                 object Label3: TLabel
                   Left = 13
@@ -1077,13 +1046,6 @@ object MainForm: TMainForm
                   Width = 96
                   Height = 19
                   Caption = 'Specimen ID:'
-                end
-                object Label5: TLabel
-                  Left = 13
-                  Top = 158
-                  Width = 100
-                  Height = 19
-                  Caption = 'Additional ID:'
                 end
                 object BlockIDCB: TDBLookupComboBox
                   Left = 128
@@ -1101,8 +1063,8 @@ object MainForm: TMainForm
                   Top = 52
                   Width = 134
                   Height = 27
-                  KeyField = 'process_id'
-                  ListField = 'process_id'
+                  KeyField = 'specimen_id'
+                  ListField = 'specimen_id'
                   ListSource = atdbDM.specimenDataSource
                   TabOrder = 1
                   OnCloseUp = mBlockProcessIDCBCloseUp
@@ -1531,10 +1493,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0

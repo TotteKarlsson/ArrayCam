@@ -25,9 +25,9 @@
 #pragma link "TATDBConnectionFrame"
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TSoundsFrame"
-#pragma link "TApplicationSoundsFrame"
 #pragma link "TNavitarMotorFrame"
 #pragma link "TNavitarPresetFrame"
+#pragma link "TApplicationSoundsFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
