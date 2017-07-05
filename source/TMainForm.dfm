@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Array Cam 0.5'
-  ClientHeight = 900
+  ClientHeight = 919
   ClientWidth = 1242
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -51,11 +51,12 @@ object MainForm: TMainForm
       object HandwheelGB: TGroupBox
         Left = 1
         Top = 1
-        Width = 669
+        Width = 814
         Height = 144
         Align = alClient
         Caption = 'UC7 Control'
         TabOrder = 0
+        ExplicitWidth = 669
         object mHWPosShape: TShape
           Left = 21
           Top = 43
@@ -119,17 +120,19 @@ object MainForm: TMainForm
         object Panel6: TPanel
           Left = 2
           Top = 56
-          Width = 665
+          Width = 810
           Height = 86
           Align = alBottom
           TabOrder = 0
+          ExplicitWidth = 665
           object CounterGB: TGroupBox
             Left = 1
             Top = 1
-            Width = 663
+            Width = 808
             Height = 84
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 663
             object mSectionCounterLabel: TIntLabel
               Left = 91
               Top = 33
@@ -236,72 +239,6 @@ object MainForm: TMainForm
           end
         end
       end
-      object Panel2: TPanel
-        Left = 670
-        Top = 1
-        Width = 145
-        Height = 144
-        Align = alRight
-        TabOrder = 1
-        object GroupBox5: TGroupBox
-          Left = 1
-          Top = 71
-          Width = 143
-          Height = 70
-          Align = alTop
-          Caption = 'Temperature (C)'
-          TabOrder = 0
-          object mTemperatureLbl: mtkFloatLabel
-            Left = 32
-            Top = 23
-            Width = 43
-            Height = 23
-            Caption = '-1.00'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            ValueString = '-1.00'
-            Value = -1.000000000000000000
-            TheFont.Charset = DEFAULT_CHARSET
-            TheFont.Color = clWindowText
-            TheFont.Height = -19
-            TheFont.Name = 'Tahoma'
-            TheFont.Style = []
-          end
-        end
-        object GroupBox6: TGroupBox
-          Left = 1
-          Top = 1
-          Width = 143
-          Height = 70
-          Align = alTop
-          Caption = 'Rel. Humidity (%)'
-          TabOrder = 1
-          object mHumidityE: mtkFloatLabel
-            Left = 32
-            Top = 23
-            Width = 43
-            Height = 23
-            Caption = '-1.00'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            ValueString = '-1.00'
-            Value = -1.000000000000000000
-            TheFont.Charset = DEFAULT_CHARSET
-            TheFont.Color = clWindowText
-            TheFont.Height = -19
-            TheFont.Name = 'Tahoma'
-            TheFont.Style = []
-          end
-        end
-      end
     end
     object Panel1: TPanel
       Left = 1
@@ -316,7 +253,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = TabSheet1
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -367,7 +304,7 @@ object MainForm: TMainForm
                     Top = 96
                     Width = 170
                     Height = 17
-                    DataField = 'process_id'
+                    DataField = 'case_id'
                     DataSource = atdbDM.specimenDataSource
                   end
                   object DBText5: TDBText
@@ -378,14 +315,6 @@ object MainForm: TMainForm
                     DataField = 'specimen_id'
                     DataSource = atdbDM.specimenDataSource
                   end
-                  object DBText6: TDBText
-                    Left = 341
-                    Top = 97
-                    Width = 170
-                    Height = 17
-                    DataField = 'additional_identifier'
-                    DataSource = atdbDM.specimenDataSource
-                  end
                   object DBText7: TDBText
                     Left = 133
                     Top = 68
@@ -393,13 +322,6 @@ object MainForm: TMainForm
                     Height = 17
                     DataField = 'id'
                     DataSource = atdbDM.blocksDataSource
-                  end
-                  object Label10: TLabel
-                    Left = 220
-                    Top = 95
-                    Width = 100
-                    Height = 19
-                    Caption = 'Additional ID:'
                   end
                   object Label11: TLabel
                     Left = 12
@@ -418,13 +340,13 @@ object MainForm: TMainForm
                   object Label8: TLabel
                     Left = 12
                     Top = 95
-                    Width = 81
+                    Width = 55
                     Height = 19
-                    Caption = 'Process ID:'
+                    Caption = 'Case ID'
                   end
                   object Label9: TLabel
                     Left = 220
-                    Top = 67
+                    Top = 68
                     Width = 96
                     Height = 19
                     Caption = 'Specimen ID:'
@@ -1033,14 +955,6 @@ object MainForm: TMainForm
                 Align = alLeft
                 BevelOuter = bvNone
                 TabOrder = 0
-                object DBText1: TDBText
-                  Left = 128
-                  Top = 159
-                  Width = 170
-                  Height = 17
-                  DataField = 'additional_identifier'
-                  DataSource = atdbDM.specimenDataSource
-                end
                 object DBText2: TDBText
                   Left = 128
                   Top = 131
@@ -1052,9 +966,9 @@ object MainForm: TMainForm
                 object Label1: TLabel
                   Left = 13
                   Top = 56
-                  Width = 81
+                  Width = 96
                   Height = 19
-                  Caption = 'Process ID:'
+                  Caption = 'Specimen ID:'
                 end
                 object Label3: TLabel
                   Left = 13
@@ -1069,13 +983,6 @@ object MainForm: TMainForm
                   Width = 96
                   Height = 19
                   Caption = 'Specimen ID:'
-                end
-                object Label5: TLabel
-                  Left = 13
-                  Top = 158
-                  Width = 100
-                  Height = 19
-                  Caption = 'Additional ID:'
                 end
                 object BlockIDCB: TDBLookupComboBox
                   Left = 128
@@ -1093,8 +1000,8 @@ object MainForm: TMainForm
                   Top = 52
                   Width = 134
                   Height = 27
-                  KeyField = 'process_id'
-                  ListField = 'process_id'
+                  KeyField = 'specimen_id'
+                  ListField = 'specimen_id'
                   ListSource = atdbDM.specimenDataSource
                   TabOrder = 1
                   OnCloseUp = mBlockProcessIDCBCloseUp
@@ -1337,6 +1244,178 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet9: TTabSheet
+          Caption = 'Navitar'
+          ImageIndex = 7
+          object GroupBox13: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 313
+            Height = 716
+            Align = alLeft
+            Caption = 'Misc.'
+            Color = clBtnFace
+            ParentColor = False
+            TabOrder = 0
+            object ConnectBtn: TButton
+              Left = 20
+              Top = 24
+              Width = 153
+              Height = 57
+              Caption = 'Connect'
+              TabOrder = 0
+              OnClick = ConnectBtnClick
+            end
+            object ControllerInfoGB: TGroupBox
+              Left = 2
+              Top = 599
+              Width = 309
+              Height = 115
+              Align = alBottom
+              Caption = 'Controller Info'
+              TabOrder = 1
+              object Label12: TLabel
+                Left = 16
+                Top = 24
+                Width = 82
+                Height = 19
+                Caption = 'Product ID:'
+                Transparent = True
+              end
+              object Label13: TLabel
+                Left = 16
+                Top = 45
+                Width = 132
+                Height = 19
+                Caption = 'Hardware Version:'
+                Transparent = True
+              end
+              object Label14: TLabel
+                Left = 16
+                Top = 66
+                Width = 120
+                Height = 19
+                Caption = 'Software Version'
+                Transparent = True
+              end
+              object Label15: TLabel
+                Left = 16
+                Top = 85
+                Width = 109
+                Height = 19
+                Caption = 'Firmware Date:'
+                Transparent = True
+              end
+              object ProdIdLbl: TLabel
+                Left = 166
+                Top = 22
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object HWVerLbl: TLabel
+                Left = 166
+                Top = 43
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object SWVerLbl: TLabel
+                Left = 166
+                Top = 64
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+              object FirmWareDateLbl: TLabel
+                Left = 166
+                Top = 85
+                Width = 28
+                Height = 19
+                Caption = 'N/A'
+                Transparent = True
+              end
+            end
+          end
+          object Panel8: TPanel
+            Left = 313
+            Top = 0
+            Width = 493
+            Height = 716
+            Align = alClient
+            TabOrder = 1
+            inline TNavitarMotorFrame1: TNavitarMotorFrame
+              Left = 1
+              Top = 1
+              Width = 491
+              Height = 120
+              Align = alTop
+              TabOrder = 0
+              ExplicitLeft = 1
+              ExplicitTop = 1
+              ExplicitWidth = 491
+              inherited MotorGB: TGroupBox
+                Width = 491
+                ExplicitWidth = 491
+                inherited Label1: TLabel
+                  Width = 63
+                  Height = 19
+                  ExplicitWidth = 63
+                  ExplicitHeight = 19
+                end
+                inherited MotorPosition: TIntegerLabeledEdit
+                  EditLabel.Width = 114
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 135
+                  EditLabel.ExplicitTop = 50
+                  EditLabel.ExplicitWidth = 114
+                  EditLabel.ExplicitHeight = 19
+                end
+              end
+            end
+            inline TNavitarMotorFrame2: TNavitarMotorFrame
+              Left = 1
+              Top = 121
+              Width = 491
+              Height = 120
+              Align = alTop
+              TabOrder = 1
+              ExplicitLeft = 1
+              ExplicitTop = 121
+              ExplicitWidth = 491
+              inherited MotorGB: TGroupBox
+                Width = 491
+                ExplicitWidth = 491
+                inherited Label1: TLabel
+                  Width = 63
+                  Height = 19
+                  ExplicitWidth = 63
+                  ExplicitHeight = 19
+                end
+                inherited MotorPosition: TIntegerLabeledEdit
+                  EditLabel.Width = 114
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 135
+                  EditLabel.ExplicitTop = 50
+                  EditLabel.ExplicitWidth = 114
+                  EditLabel.ExplicitHeight = 19
+                end
+              end
+            end
+            object NavitarPresetGB: TGroupBox
+              Left = 1
+              Top = 241
+              Width = 491
+              Height = 474
+              Align = alClient
+              Caption = 'Presets'
+              TabOrder = 2
+            end
+          end
+        end
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
@@ -1345,7 +1424,7 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 716
-            ActivePage = TabSheet4
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
@@ -1454,7 +1533,7 @@ object MainForm: TMainForm
                   end
                 end
               end
-              inline TApplicationSounds1: TApplicationSounds
+              inline TApplicationSoundsFrame1: TApplicationSoundsFrame
                 Left = 0
                 Top = 0
                 Width = 798
@@ -1463,7 +1542,6 @@ object MainForm: TMainForm
                 AutoSize = True
                 TabOrder = 1
                 ExplicitWidth = 798
-                ExplicitHeight = 241
                 inherited GroupBox1: TGroupBox
                   Width = 798
                   ExplicitWidth = 798
@@ -1481,13 +1559,10 @@ object MainForm: TMainForm
                     Top = 21
                     Width = 466
                     Height = 218
-                    ExplicitLeft = 249
+                    ExplicitLeft = 330
                     ExplicitTop = 21
-                    ExplicitWidth = 547
+                    ExplicitWidth = 466
                     ExplicitHeight = 218
-                    inherited EnabledCB: TCheckBox
-                      Enabled = True
-                    end
                     inherited SoundCB: TComboBox
                       Height = 27
                       ExplicitHeight = 27
@@ -2529,8 +2604,8 @@ object MainForm: TMainForm
         Caption = 'No Camera...'
         TabOrder = 0
         object mPB: TPaintBox
-          Left = 0
-          Top = 0
+          Left = 1
+          Top = -3
           Width = 315
           Height = 460
           PopupMenu = CameraPopup
@@ -2577,7 +2652,24 @@ object MainForm: TMainForm
           PopupMenu = CameraPopup
         end
       end
+      object CameraBottomPanel: TPanel
+        Left = 1
+        Top = 799
+        Width = 417
+        Height = 98
+        Align = alBottom
+        TabOrder = 1
+      end
     end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 900
+    Width = 1242
+    Height = 19
+    Hint = 'Test'
+    Panels = <>
+    OnHint = StatusBar1Hint
   end
   object mShutDownTimer: TTimer
     Enabled = False

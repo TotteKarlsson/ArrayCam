@@ -25,10 +25,10 @@
 #include "TPropertyCheckBox.h"
 #include "uc7/atUC7Component.h"
 #include "TATDBImagesAndMoviesDataModule.h"
-#include "arraybot/atEnvironmentalSensorReader.h"
+#include "core/atEnvironmentalSensorReader.h"
 #include "TArrayBotBtn.h"
 #include "sound/atSoundPlayer.h"
-#include "atCameraServiceThread.h"
+#include "camera/atCameraServiceThread.h"
 #include "atReticle.h"
 #include "ConnectToArduinoServerThread.h"
 #include "atVCLUtils.h"
@@ -43,7 +43,12 @@
 #include "TUC7StagePositionFrame.h"
 #include "TSoundsFrame.h"
 #include "sound/atApplicationSound.h"
-#include "TApplicationSounds.h"
+#include "navitar/atNavitarMotorController.h"
+#include "TNavitarMotorFrame.h"
+#include "navitar/atNavitarPreset.h"
+#include "TNavitarPresetFrame.h"
+#include "TApplicationSoundsFrame.h"
+#include "TStatusBarManager.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -76,7 +81,6 @@ class TMainForm  : public TRegistryForm
 	__published:	// IDE-managed Components
 	TMemo *infoMemo;
 	TTimer *mShutDownTimer;
-	TPanel *Panel2;
 	TSplitter *Splitter2;
 	TPanel *mMainPhotoPanel;
 	TPanel *mCamera1BackPanel;
@@ -84,10 +88,6 @@ class TMainForm  : public TRegistryForm
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
-	TGroupBox *GroupBox6;
-	mtkFloatLabel *mHumidityE;
-	TGroupBox *GroupBox5;
-	mtkFloatLabel *mTemperatureLbl;
 	TGroupBox *GroupBox8;
 	TToolBar *ToolBar1;
 	TBitBtn *mClearLogMemoBtn;
@@ -135,11 +135,9 @@ class TMainForm  : public TRegistryForm
 	TLabel *Label7;
 	TLabel *Label8;
 	TLabel *Label9;
-	TLabel *Label10;
 	TDBText *DBText3;
 	TDBText *DBText4;
 	TDBText *DBText5;
-	TDBText *DBText6;
 	TDBMemo *DBMemo2;
 	TLabel *Label11;
 	TDBText *DBText7;
@@ -187,12 +185,10 @@ class TMainForm  : public TRegistryForm
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TGroupBox *BlockSelectionGB;
 	TPanel *Panel7;
-	TDBText *DBText1;
 	TDBText *DBText2;
 	TLabel *Label1;
 	TLabel *Label3;
 	TLabel *Label4;
-	TLabel *Label5;
 	TDBLookupComboBox *BlockIDCB;
 	TDBLookupComboBox *mBlockProcessIDCB;
 	TDBLookupComboBox *mUsersCB;
@@ -226,7 +222,25 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mRibbonStartBtn;
 	TTabSheet *TabSheet4;
 	TSoundsFrame *TSoundsFrame1;
-	TApplicationSounds *TApplicationSounds1;
+	TApplicationSoundsFrame *TApplicationSoundsFrame1;
+	TPanel *CameraBottomPanel;
+	TTabSheet *TabSheet9;
+	TGroupBox *GroupBox13;
+	TButton *ConnectBtn;
+	TGroupBox *ControllerInfoGB;
+	TLabel *Label12;
+	TLabel *Label13;
+	TLabel *Label14;
+	TLabel *Label15;
+	TLabel *ProdIdLbl;
+	TLabel *HWVerLbl;
+	TLabel *SWVerLbl;
+	TLabel *FirmWareDateLbl;
+	TNavitarMotorFrame *TNavitarMotorFrame1;
+	TPanel *Panel8;
+	TNavitarMotorFrame *TNavitarMotorFrame2;
+	TGroupBox *NavitarPresetGB;
+	TStatusBar *StatusBar1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -278,11 +292,11 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
-
-
-
+	void __fastcall ConnectBtnClick(TObject *Sender);
+	void __fastcall StatusBar1Hint(TObject *Sender);
 
     protected:
+    	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity};
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
 		UC7						 				mUC7;
@@ -305,7 +319,6 @@ class TMainForm  : public TRegistryForm
         Property<bool>						    mAutoBlackLevel;
         Property<bool>						    mAutoWhiteBalance;
         Property<double>   					    mSoftwareGamma;
-
         Property<bool>						    mVerticalMirror;
         Property<bool>						    mHorizontalMirror;
 
@@ -328,8 +341,6 @@ class TMainForm  : public TRegistryForm
         Property<ApplicationSound>				mKnifeCuttingSound;
         Property<ApplicationSound>				mKnifeAfterCuttingSound;
         Property<ApplicationSound>				mArmRetractingSound;
-
-
 
         										// Camera variables
         								        //!The camera class
@@ -354,7 +365,6 @@ class TMainForm  : public TRegistryForm
                                                 //onArduinoMessageReceived
 		LightsArduinoClient    			        mLightsArduinoClient;
         ConnectToArduinoServerThread			mConnectToArduinoServerThread;
-
         bool									mCheckArduinoServerConnection;
 
         Property<int>	                    	mKnifeStageMaxPos;
@@ -396,12 +406,20 @@ class TMainForm  : public TRegistryForm
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);
 
-
         										//Server functions
         ArrayCamServer							mACServer;
 
         										//!The barcode reader
         DS457									mZebra;
+
+												//!Navitar motor controller stuff
+		NavitarMotorController					mNavitarMotorController;
+		void  									onNavitarConnected();
+		void  									onNavitarDisconnected();
+
+        NavitarPreset							mNavitarPreset1;
+        NavitarPreset							mNavitarPreset2;
+        NavitarPreset							mNavitarPreset3;
 
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;
@@ -418,9 +436,10 @@ class TMainForm  : public TRegistryForm
 		void __fastcall                         onSSITimeout(TMessage& Msg);
 		void __fastcall                         onSSICapabilities(TMessage& Msg);
 
+		TStatusBarManager						mSBManager;
     //=================================================================================================
     public:
-    											//The environmenatl reader is accessed from a thread
+
  			       __fastcall 					TMainForm(TComponent* Owner);
  			       __fastcall 					~TMainForm();
 
@@ -431,6 +450,8 @@ class TMainForm  : public TRegistryForm
 	    void 		__fastcall		  			startStopRecordingMovie();
 	    void 		__fastcall		  			startRecordingMovie();
 	    void 		__fastcall		  			stopRecordingMovie();
+        void		__fastcall					updateTemperature(double t);
+        void		__fastcall					updateHumidity(double h);
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 			TMessage, 						OnUSBCameraMessage);
@@ -441,16 +462,6 @@ class TMainForm  : public TRegistryForm
         MESSAGE_HANDLER(WM_ERROR,                   TMessage, 		                onSSIError)
         MESSAGE_HANDLER(WM_TIMEOUT,                 TMessage, 		                onSSITimeout)
         MESSAGE_HANDLER(WM_EVENT, 	                TMessage, 		                onSSIEvent)
-//      ON_MESSAGE(WM_SWVERSION, OnSSIVersion)
-//      ON_MESSAGE(WM_XFERSTATUS, OnSSIxferStatus)
-//      ON_MESSAGE(WM_VIDEOIMAGE, OnSSIVideo)
-//      ON_MESSAGE(WM_PARAMS, OnSSIParams)
-//      ON_MESSAGE(WM_CMDCOMPLETEMSG, OnSSICommandCompleted)
-//      ON_MESSAGE(WM_USER_GETSWTRIGPARAM, OnGetSWTrigParam)
-//      ON_MESSAGE(WM_USER_GETIMAGETYPES, OnGetImageFileTypesParam)
-//      ON_MESSAGE(WM_USER_GETVIEWFINDERPARAM, OnGetViewFinderParam)
-//      ON_MESSAGE(WM_SENDGETVERSIONMSG, OnWM_SENDGETVERSIONMSG)
-//      ON_MESSAGE(WM_SENDGETCAPABILITIESMSG, OnWM_SENDGETCAPABILITIESMSG)
     END_MESSAGE_MAP(TForm)
 };
 

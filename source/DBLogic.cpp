@@ -21,8 +21,10 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
     mUsersCB->KeyValue = mDBUserID.getValue();
     mBlockProcessIDCB->KeyValue = mProcessID.getValue();
     BlockIDCB->KeyValue = mBlockID.getValue();
+    enableDisableGroupBox(BlockSelectionGB, true);
     enableDisableGroupBox(BlocksGB, true);
-//    enableDisableGroupBox(UsersGB, true);
+    enableDisableGroupBox(RibbonsDataGB, true);
+
     mRegisterRibbonBtn->Enabled = true;
 }
 
@@ -30,10 +32,10 @@ void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Disconnected from the DB Server";
 	TATDBConnectionFrame1->afterDisconnect();
-    mUsersCB->Enabled = false;
-    BlocksGB->Enabled = false;
+
     enableDisableGroupBox(BlocksGB, false);
-//    enableDisableGroupBox(UsersGB, false);
+    enableDisableGroupBox(BlockSelectionGB, false);
+    enableDisableGroupBox(RibbonsDataGB, false);
     mRegisterRibbonBtn->Enabled = false;
 }
 
@@ -41,8 +43,3 @@ int TMainForm::getCurrentUserID()
 {
 	return  mUsersCB->KeyValue;
 }
-
-//string TMainForm::getCurrentUserName()
-//{
-//	return  atdbDM->getCurrentUserName();
-//}

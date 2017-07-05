@@ -1,4 +1,14 @@
-Release 0.6.2 (June 7)
+Release 0.6.3 (July 5)
+=======================
+* Minor updates to new database schema
+* Renamed TApplicationSounds to TApplicationSoundsFrame
+* Project file change
+* Added navitar preset frames
+* Added package for misc units
+* After restructure of atapi
+* Added simple navitar control, with a few presets
+
+Release 0.6.2 (June 27)
 =======================
 * Added enabled flag to application sounds
 * Added sounds to each state of the tissue arm movement

@@ -11,7 +11,7 @@
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
 #include "sound/atSounds.h"
-#include "atCore.h"
+#include "core/atCore.h"
 #include "Forms/TRegisterNewRibbonForm.h"
 #include "TSelectIntegerForm.h"
 #include "TReticlePopupForm.h"
@@ -25,7 +25,9 @@
 #pragma link "TATDBConnectionFrame"
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TSoundsFrame"
-#pragma link "TApplicationSounds"
+#pragma link "TNavitarMotorFrame"
+#pragma link "TNavitarPresetFrame"
+#pragma link "TApplicationSoundsFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -85,7 +87,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 		mKnifeBeforeCuttingSound(ApplicationSound("")),
 		mBeforeKnifeBackOffSound(ApplicationSound("")),
         mKnifeAfterCuttingSound(ApplicationSound("")),
-		mArmRetractingSound(ApplicationSound(""))
+		mArmRetractingSound(ApplicationSound("")),
+        mNavitarPreset1(mNavitarMotorController, "NAVITAR_PRESET_1"),
+        mNavitarPreset2(mNavitarMotorController, "NAVITAR_PRESET_2"),
+        mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
+	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
+        mSBManager(*StatusBar1)
 {
    	mLogFileReader.start(true);
 
@@ -106,22 +113,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
+    //Properties are retrieved and saved to an ini file
     setupProperties();
     mGeneralProperties.read();
     mSoundProperties.read();
 
+	//Navitarpresets
+	mNavitarPreset1.read();
+	mNavitarPreset2.read();
+	mNavitarPreset3.read();
+
+    //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);
 
-    //Give all sounds a Handle
-
+    //Give all sounds a Handle (create a sound container..)
 	mKnifeBeforeCuttingSound.getReference().setHandle(this->Handle);
 	mBeforeKnifeBackOffSound.getReference().setHandle(this->Handle);
     mKnifeCuttingSound.getReference().setHandle(this->Handle);
 	mKnifeAfterCuttingSound.getReference().setHandle(this->Handle);
 	mArmRetractingSound.getReference().setHandle(this->Handle);
-
-	//Camera rendering mode
-    mRenderMode = IS_RENDER_FIT_TO_WINDOW;
 
     //Setup callbacks
 	mLightsArduinoClient.assignOnMessageReceivedCallBack(onLightsArduinoMessageReceived);
@@ -158,6 +168,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
+
+    TStatusPanel* p1 = mSBManager.addPanel(120, sbpTemperature);
+    TStatusPanel* p2 = mSBManager.addPanel(120, sbpHumidity);
+
+    p1->Text = "";
+	p2->Text = "";
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -241,6 +257,9 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
     //Connect to the UC7
     mConnectUC7Btn->Click();
+
+    updateTemperature(-1);
+	updateHumidity(-1);
 }
 
 //---------------------------------------------------------------------------
@@ -1017,4 +1036,61 @@ void __fastcall TMainForm::ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, 
     }
 }
 
+void  TMainForm::onNavitarConnected()
+{
+	ConnectBtn->Caption         = "Disconnect";
+    ProdIdLbl->Caption 	        = vclstr(mNavitarMotorController.getProductID());
+	HWVerLbl->Caption           = vclstr(mNavitarMotorController.getHardwareVersion());
+   	SWVerLbl->Caption           = vclstr(mNavitarMotorController.getSoftwareVersion());
+    FirmWareDateLbl->Caption   	= vclstr(mNavitarMotorController.getDriverSoftwareBuildDate());
+
+    TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
+    TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
+    enableDisableGroupBox(ControllerInfoGB, true);
+}
+
+void  TMainForm::onNavitarDisconnected()
+{
+	ConnectBtn->Caption = "Connect";
+    ProdIdLbl->Caption 	        = "N/A";
+	HWVerLbl->Caption           = "N/A";
+   	SWVerLbl->Caption           = "N/A";
+    FirmWareDateLbl->Caption   	= "N/A";
+
+    enableDisableGroupBox(ControllerInfoGB, false);
+
+    TNavitarMotorFrame1->dePopulate();
+    TNavitarMotorFrame2->dePopulate();
+}
+
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::ConnectBtnClick(TObject *Sender)
+{
+	TButton* b = dynamic_cast<TButton*>(Sender);
+
+    if(b == ConnectBtn)
+    {
+        if(!mNavitarMotorController.isConnected())
+        {
+            if(mNavitarMotorController.connect())
+            {
+            	onNavitarConnected();
+            }
+        }
+        else
+        {
+            if(mNavitarMotorController.disConnect())
+            {
+            	onNavitarDisconnected();
+            }
+        }
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::StatusBar1Hint(TObject *Sender)
+{
+	;
+}
+
+
