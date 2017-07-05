@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Array Cam 0.5'
-  ClientHeight = 900
+  ClientHeight = 919
   ClientWidth = 1242
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -51,11 +51,12 @@ object MainForm: TMainForm
       object HandwheelGB: TGroupBox
         Left = 1
         Top = 1
-        Width = 669
+        Width = 814
         Height = 144
         Align = alClient
         Caption = 'UC7 Control'
         TabOrder = 0
+        ExplicitWidth = 669
         object mHWPosShape: TShape
           Left = 21
           Top = 43
@@ -119,17 +120,19 @@ object MainForm: TMainForm
         object Panel6: TPanel
           Left = 2
           Top = 56
-          Width = 665
+          Width = 810
           Height = 86
           Align = alBottom
           TabOrder = 0
+          ExplicitWidth = 665
           object CounterGB: TGroupBox
             Left = 1
             Top = 1
-            Width = 663
+            Width = 808
             Height = 84
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 663
             object mSectionCounterLabel: TIntLabel
               Left = 91
               Top = 33
@@ -236,72 +239,6 @@ object MainForm: TMainForm
           end
         end
       end
-      object Panel2: TPanel
-        Left = 670
-        Top = 1
-        Width = 145
-        Height = 144
-        Align = alRight
-        TabOrder = 1
-        object GroupBox5: TGroupBox
-          Left = 1
-          Top = 71
-          Width = 143
-          Height = 70
-          Align = alTop
-          Caption = 'Temperature (C)'
-          TabOrder = 0
-          object mTemperatureLbl: mtkFloatLabel
-            Left = 32
-            Top = 23
-            Width = 43
-            Height = 23
-            Caption = '-1.00'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            ValueString = '-1.00'
-            Value = -1.000000000000000000
-            TheFont.Charset = DEFAULT_CHARSET
-            TheFont.Color = clWindowText
-            TheFont.Height = -19
-            TheFont.Name = 'Tahoma'
-            TheFont.Style = []
-          end
-        end
-        object GroupBox6: TGroupBox
-          Left = 1
-          Top = 1
-          Width = 143
-          Height = 70
-          Align = alTop
-          Caption = 'Rel. Humidity (%)'
-          TabOrder = 1
-          object mHumidityE: mtkFloatLabel
-            Left = 32
-            Top = 23
-            Width = 43
-            Height = 23
-            Caption = '-1.00'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            ValueString = '-1.00'
-            Value = -1.000000000000000000
-            TheFont.Charset = DEFAULT_CHARSET
-            TheFont.Color = clWindowText
-            TheFont.Height = -19
-            TheFont.Name = 'Tahoma'
-            TheFont.Style = []
-          end
-        end
-      end
     end
     object Panel1: TPanel
       Left = 1
@@ -316,7 +253,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 750
-        ActivePage = TabSheet2
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -409,7 +346,7 @@ object MainForm: TMainForm
                   end
                   object Label9: TLabel
                     Left = 220
-                    Top = 67
+                    Top = 68
                     Width = 96
                     Height = 19
                     Caption = 'Specimen ID:'
@@ -2724,6 +2661,15 @@ object MainForm: TMainForm
         TabOrder = 1
       end
     end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 900
+    Width = 1242
+    Height = 19
+    Hint = 'Test'
+    Panels = <>
+    OnHint = StatusBar1Hint
   end
   object mShutDownTimer: TTimer
     Enabled = False

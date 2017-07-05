@@ -169,9 +169,6 @@ Coordinates=1133,421,84,51
 [mStageMoveDelayE]
 Coordinates=1314,1261,112,51
 
-[mHumidityE]
-Coordinates=964,1335,74,51
-
 [UC7GB]
 Coordinates=550,835,50,51
 
@@ -207,9 +204,6 @@ Coordinates=1523,417,129,33
 
 [mAutoCheckConnectionCB]
 Coordinates=751,989,149,51
-
-[mTemperatureLbl]
-Coordinates=964,213,101,51
 
 [mStartStopBtn]
 Coordinates=1314,1401,86,51
@@ -268,17 +262,11 @@ Coordinates=964,1125,74,51
 [atdbDM.fixationMethodDS]
 Coordinates=382,1184,142,51
 
-[Panel2]
-Coordinates=1314,1191,47,51
-
 [atdbDM.ribbonNotesCDS]
 Coordinates=751,1199,137,123
 
 [Main]
 Coordinates=1523,729,40,33
-
-[GroupBox5]
-Coordinates=964,353,70,51
 
 [mSectionCounterLabel]
 Coordinates=1133,1035,127,51
@@ -303,9 +291,6 @@ Coordinates=964,985,52,51
 
 [GroupBox2]
 Coordinates=1133,491,70,51
-
-[GroupBox6]
-Coordinates=550,765,70,51
 
 [TabSheet8]
 Coordinates=1523,833,66,33
@@ -530,5 +515,5 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=964,1405,52,51
+Coordinates=1314,1191,47,51
 

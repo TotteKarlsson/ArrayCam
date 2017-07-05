@@ -1,3 +1,22 @@
+Release 0.6.3 (July )
+=======================
+
+Release 0.6.2 (July 5)
+=======================
+* Minor updates to new database schema
+* Renamed TApplicationSounds to TApplicationSoundsFrame
+* Project file change
+* Added navitar preset frames
+* Added package for misc units
+* After restructure of atapi
+* Added simple navitar control, with a few presets
+* Added enabled flag to application sounds
+* Added sounds to each state of the tissue arm movement
+* Changed to using Application sound objects instead of playing hard coded sounds
+* Added new Property group holding sounds
+* Got selection of sound and sound volume implemented
+* Added mini project group
+
 Release 0.6.1 (May 24)
 =======================
 * Added Knife stage position controls with mm, um and nm resolution control.

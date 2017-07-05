@@ -48,6 +48,7 @@
 #include "navitar/atNavitarPreset.h"
 #include "TNavitarPresetFrame.h"
 #include "TApplicationSoundsFrame.h"
+#include "TStatusBarManager.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -80,7 +81,6 @@ class TMainForm  : public TRegistryForm
 	__published:	// IDE-managed Components
 	TMemo *infoMemo;
 	TTimer *mShutDownTimer;
-	TPanel *Panel2;
 	TSplitter *Splitter2;
 	TPanel *mMainPhotoPanel;
 	TPanel *mCamera1BackPanel;
@@ -88,10 +88,6 @@ class TMainForm  : public TRegistryForm
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
-	TGroupBox *GroupBox6;
-	mtkFloatLabel *mHumidityE;
-	TGroupBox *GroupBox5;
-	mtkFloatLabel *mTemperatureLbl;
 	TGroupBox *GroupBox8;
 	TToolBar *ToolBar1;
 	TBitBtn *mClearLogMemoBtn;
@@ -244,6 +240,7 @@ class TMainForm  : public TRegistryForm
 	TPanel *Panel8;
 	TNavitarMotorFrame *TNavitarMotorFrame2;
 	TGroupBox *NavitarPresetGB;
+	TStatusBar *StatusBar1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -296,8 +293,10 @@ class TMainForm  : public TRegistryForm
 	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ConnectBtnClick(TObject *Sender);
+	void __fastcall StatusBar1Hint(TObject *Sender);
 
     protected:
+    	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity};
         LogFileReader                           mLogFileReader;
         void __fastcall                         logMsg();
 		UC7						 				mUC7;
@@ -421,6 +420,7 @@ class TMainForm  : public TRegistryForm
         NavitarPreset							mNavitarPreset1;
         NavitarPreset							mNavitarPreset2;
         NavitarPreset							mNavitarPreset3;
+
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;
 		Property<int>	                		mZebraBaudRate;
@@ -436,9 +436,10 @@ class TMainForm  : public TRegistryForm
 		void __fastcall                         onSSITimeout(TMessage& Msg);
 		void __fastcall                         onSSICapabilities(TMessage& Msg);
 
+		TStatusBarManager						mSBManager;
     //=================================================================================================
     public:
-    											//The environmenatl reader is accessed from a thread
+
  			       __fastcall 					TMainForm(TComponent* Owner);
  			       __fastcall 					~TMainForm();
 
@@ -449,6 +450,8 @@ class TMainForm  : public TRegistryForm
 	    void 		__fastcall		  			startStopRecordingMovie();
 	    void 		__fastcall		  			startRecordingMovie();
 	    void 		__fastcall		  			stopRecordingMovie();
+        void		__fastcall					updateTemperature(double t);
+        void		__fastcall					updateHumidity(double h);
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 			TMessage, 						OnUSBCameraMessage);
@@ -459,16 +462,6 @@ class TMainForm  : public TRegistryForm
         MESSAGE_HANDLER(WM_ERROR,                   TMessage, 		                onSSIError)
         MESSAGE_HANDLER(WM_TIMEOUT,                 TMessage, 		                onSSITimeout)
         MESSAGE_HANDLER(WM_EVENT, 	                TMessage, 		                onSSIEvent)
-//      ON_MESSAGE(WM_SWVERSION, OnSSIVersion)
-//      ON_MESSAGE(WM_XFERSTATUS, OnSSIxferStatus)
-//      ON_MESSAGE(WM_VIDEOIMAGE, OnSSIVideo)
-//      ON_MESSAGE(WM_PARAMS, OnSSIParams)
-//      ON_MESSAGE(WM_CMDCOMPLETEMSG, OnSSICommandCompleted)
-//      ON_MESSAGE(WM_USER_GETSWTRIGPARAM, OnGetSWTrigParam)
-//      ON_MESSAGE(WM_USER_GETIMAGETYPES, OnGetImageFileTypesParam)
-//      ON_MESSAGE(WM_USER_GETVIEWFINDERPARAM, OnGetViewFinderParam)
-//      ON_MESSAGE(WM_SENDGETVERSIONMSG, OnWM_SENDGETVERSIONMSG)
-//      ON_MESSAGE(WM_SENDGETCAPABILITIESMSG, OnWM_SENDGETCAPABILITIESMSG)
     END_MESSAGE_MAP(TForm)
 };
 

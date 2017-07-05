@@ -91,7 +91,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mNavitarPreset1(mNavitarMotorController, "NAVITAR_PRESET_1"),
         mNavitarPreset2(mNavitarMotorController, "NAVITAR_PRESET_2"),
         mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
-	    mRenderMode(IS_RENDER_FIT_TO_WINDOW)
+	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
+        mSBManager(*StatusBar1)
 {
    	mLogFileReader.start(true);
 
@@ -167,6 +168,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
+
+    TStatusPanel* p1 = mSBManager.addPanel(120, sbpTemperature);
+    TStatusPanel* p2 = mSBManager.addPanel(120, sbpHumidity);
+
+    p1->Text = "";
+	p2->Text = "";
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -250,6 +257,9 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
     //Connect to the UC7
     mConnectUC7Btn->Click();
+
+    updateTemperature(-1);
+	updateHumidity(-1);
 }
 
 //---------------------------------------------------------------------------
@@ -1036,10 +1046,6 @@ void  TMainForm::onNavitarConnected()
 
     TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
     TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
-//	TPresetsFrame1->populate(mNavitarMotorController);
-//    TNavitarPreset1->populate(mNavitarMotorController);
-//    TNavitarPreset2->populate(mNavitarMotorController);
-
     enableDisableGroupBox(ControllerInfoGB, true);
 }
 
@@ -1081,6 +1087,10 @@ void __fastcall TMainForm::ConnectBtnClick(TObject *Sender)
     }
 }
 
-
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::StatusBar1Hint(TObject *Sender)
+{
+	;
+}
 
 
