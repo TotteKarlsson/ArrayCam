@@ -25,7 +25,7 @@
 #include "TPropertyCheckBox.h"
 #include "uc7/atUC7Component.h"
 #include "TATDBImagesAndMoviesDataModule.h"
-#include "atEnvironmentalSensorReader.h"
+#include "core/atEnvironmentalSensorReader.h"
 #include "TArrayBotBtn.h"
 #include "sound/atSoundPlayer.h"
 #include "camera/atCameraServiceThread.h"
@@ -43,7 +43,7 @@
 #include "TUC7StagePositionFrame.h"
 #include "TSoundsFrame.h"
 #include "sound/atApplicationSound.h"
-#include "TApplicationSounds.h"
+#include "frames/TApplicationSoundsFrame.h"
 #include "navitar/atNavitarMotorController.h"
 #include "TNavitarMotorFrame.h"
 #include "navitar/atNavitarPreset.h"
@@ -230,7 +230,7 @@ class TMainForm  : public TRegistryForm
 	TArrayBotButton *mRibbonStartBtn;
 	TTabSheet *TabSheet4;
 	TSoundsFrame *TSoundsFrame1;
-	TApplicationSounds *TApplicationSounds1;
+	TApplicationSoundsFrame *TApplicationSoundsFrame1;
 	TPanel *CameraBottomPanel;
 	TTabSheet *TabSheet9;
 	TGroupBox *GroupBox13;

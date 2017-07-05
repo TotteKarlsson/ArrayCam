@@ -104,7 +104,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 
     //Populate misc frames
 	TSoundsFrame1->populate();
-    TApplicationSounds1->populate(mSoundProperties);
+    TApplicationSoundsFrame1->populate(mSoundProperties);
 
     //Setup some navitar preset frames
     TNavitarPresetFrame* f1 = new TNavitarPresetFrame(mNavitarPreset1, this);

@@ -1638,7 +1638,7 @@ object MainForm: TMainForm
                   end
                 end
               end
-              inline TApplicationSounds1: TApplicationSounds
+              inline TApplicationSoundsFrame1: TApplicationSoundsFrame
                 Left = 0
                 Top = 0
                 Width = 798
