@@ -31,14 +31,14 @@ void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 void __fastcall	TMainForm::updateTemperature(double t)
 {
 	TStatusPanel* p = mSBManager.getPanel(sbpTemperature);
-    p->Text = "Temperature: " + FloatToStr(t);
+    p->Text = "Temperature: " + FloatToStrF(t, ffNumber, 4, 1);
 
 }
 
 void __fastcall	TMainForm::updateHumidity(double h)
 {
 	TStatusPanel* p = mSBManager.getPanel(sbpHumidity);
-    p->Text = "Humidity: " + FloatToStr(h);
+    p->Text = "Humidity: " + FloatToStrF(h, ffNumber, 4, 1);
 }
 
 int TMainForm::extractCoverSlipID(const string& bc)
