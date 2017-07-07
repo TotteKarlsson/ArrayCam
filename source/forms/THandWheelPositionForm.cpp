@@ -51,6 +51,7 @@ void THandWheelPositionForm::plot()
         }
     }
 }
+
 void __fastcall THandWheelPositionForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	Log(lInfo) << "Closing Hand WheelPosition form";
@@ -61,17 +62,36 @@ void __fastcall THandWheelPositionForm::FormClose(TObject *Sender, TCloseAction 
 void __fastcall THandWheelPositionForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 	//Main app need to 'allow' form to close. If not allowed, just hide the forme
-
    	CanClose = mTimeToClose ? true : false;
     if(!CanClose)
     {
     	this->Visible = false;
     }
+   	WriteToRegistry();
 }
 
 void THandWheelPositionForm::setTimeToClose()
 {
 	mTimeToClose = true;
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
+{
+//	this->Set
+//	if(this->SetBounds())
+//    {
+//
+//
+//    }
+	ReadRegistry();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall THandWheelPositionForm::FormCreate(TObject *Sender)
+{
+	ReadRegistry();
 }
 
 

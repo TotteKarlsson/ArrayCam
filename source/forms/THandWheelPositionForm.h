@@ -19,6 +19,8 @@ class THandWheelPositionForm : public TRegistryForm
         TLineSeries*				            Series1;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+	void __fastcall FormShow(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
 
     private:
 		UC7StatusHistory&			            mUC7StatusHistory;

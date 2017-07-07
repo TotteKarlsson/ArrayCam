@@ -12,9 +12,11 @@ object HandWheelPositionForm: THandWheelPositionForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poDefault
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Chart1: TChart
@@ -44,7 +46,6 @@ object HandWheelPositionForm: THandWheelPositionForm
     View3D = False
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 525
     ColorPaletteIndex = 13
     object Series1: TLineSeries
       Marks.Arrow.Visible = True

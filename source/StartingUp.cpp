@@ -118,8 +118,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     TNavitarPresetFrame* f3 = new TNavitarPresetFrame(mNavitarPreset3, this);
     f3->Parent = NavitarPresetGB;
     f3->Align = alTop;
-
-
+    ReadRegistry();
 }
 
 //---------------------------------------------------------------------------

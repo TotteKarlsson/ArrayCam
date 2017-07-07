@@ -41,8 +41,6 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
-    ExplicitTop = 0
-    ExplicitHeight = 900
     object MainTopPanel: TPanel
       Left = 1
       Top = 1
@@ -171,7 +169,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 1
-      ExplicitHeight = 816
       object PageControl1: TPageControl
         Left = 1
         Top = 1
@@ -182,11 +179,9 @@ object MainForm: TMainForm
         MultiLine = True
         TabOrder = 0
         OnChange = PageControl1Change
-        ExplicitHeight = 814
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitHeight = 780
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -194,7 +189,6 @@ object MainForm: TMainForm
             Height = 750
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 780
             object Panel9: TPanel
               Left = 0
               Top = 0
@@ -202,7 +196,6 @@ object MainForm: TMainForm
               Height = 746
               Align = alClient
               TabOrder = 0
-              ExplicitHeight = 776
               object BlocksGB: TGroupBox
                 Left = 1
                 Top = 480
@@ -211,7 +204,6 @@ object MainForm: TMainForm
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
-                ExplicitTop = 510
                 object GroupBox9: TGroupBox
                   Left = 2
                   Top = 132
@@ -450,7 +442,6 @@ object MainForm: TMainForm
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
-                ExplicitHeight = 165
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
@@ -459,7 +450,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
-                  ExplicitHeight = 142
                   object mStartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
@@ -489,7 +479,6 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
-                  ExplicitHeight = 136
                   object mMoveNorthBtn: TArrayBotButton
                     Left = 475
                     Top = 24
@@ -689,6 +678,9 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'Leica UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
           ExplicitHeight = 780
           object UC7GB: TGroupBox
             Left = 0
@@ -800,6 +792,9 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
           ExplicitHeight = 780
           object atdbGB: TGroupBox
             Left = 0
@@ -1057,6 +1052,9 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
           ExplicitHeight = 780
           object BarCodeGB: TGroupBox
             Left = 0
@@ -1119,7 +1117,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 27
+                Height = 28
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1186,7 +1184,6 @@ object MainForm: TMainForm
         object TabSheet9: TTabSheet
           Caption = 'Navitar'
           ImageIndex = 7
-          ExplicitHeight = 780
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
@@ -1289,7 +1286,6 @@ object MainForm: TMainForm
             Height = 750
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 780
             inline TNavitarMotorFrame1: TNavitarMotorFrame
               Left = 1
               Top = 1
@@ -1363,7 +1359,6 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
-          ExplicitHeight = 780
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1372,10 +1367,12 @@ object MainForm: TMainForm
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 780
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
               ExplicitHeight = 746
               object GroupBox1: TGroupBox
                 Left = 0
@@ -1452,7 +1449,6 @@ object MainForm: TMainForm
             object TabSheet4: TTabSheet
               Caption = 'Sounds'
               ImageIndex = 1
-              ExplicitHeight = 746
               inline TSoundsFrame1: TSoundsFrame
                 Left = 0
                 Top = 241
@@ -1463,13 +1459,13 @@ object MainForm: TMainForm
                 TabOrder = 0
                 ExplicitTop = 241
                 ExplicitWidth = 798
-                ExplicitHeight = 505
+                ExplicitHeight = 475
                 inherited GroupBox1: TGroupBox
                   Width = 798
                   Height = 475
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 505
+                  ExplicitHeight = 475
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
@@ -1477,7 +1473,7 @@ object MainForm: TMainForm
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 482
+                    ExplicitHeight = 452
                   end
                 end
               end
@@ -1524,6 +1520,9 @@ object MainForm: TMainForm
         object TabSheet3: TTabSheet
           Caption = 'Logs'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
           ExplicitHeight = 780
           object Panel4: TPanel
             Left = 0
@@ -1616,6 +1615,9 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'About'
           ImageIndex = 8
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
           ExplicitHeight = 780
           object GroupBox2: TGroupBox
             Left = 0
@@ -1638,7 +1640,6 @@ object MainForm: TMainForm
               ScrollBars = ssBoth
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 571
             end
           end
           object Panel5: TPanel
@@ -2541,8 +2542,6 @@ object MainForm: TMainForm
     Height = 870
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 0
-    ExplicitHeight = 900
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
@@ -2551,7 +2550,6 @@ object MainForm: TMainForm
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitHeight = 898
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -2616,7 +2614,6 @@ object MainForm: TMainForm
         Height = 98
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 799
       end
     end
   end
