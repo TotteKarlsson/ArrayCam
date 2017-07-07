@@ -49,6 +49,10 @@
 #include "TNavitarPresetFrame.h"
 #include "TApplicationSoundsFrame.h"
 #include "TStatusBarManager.h"
+#include "atUC7StatusHistory.h"
+#include <System.Actions.hpp>
+#include <Vcl.ActnList.hpp>
+#include <Vcl.StdActns.hpp>
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -67,6 +71,7 @@ class TSettingsForm;
 class TLocalArgs;
 class TRegisterNewRibbonForm;
 class TReticlePopupForm;
+class THandWheelPositionForm;
 
 using mtk::Property;
 
@@ -233,6 +238,19 @@ class TMainForm  : public TRegistryForm
 	TNavitarMotorFrame *TNavitarMotorFrame2;
 	TGroupBox *NavitarPresetGB;
 	TStatusBar *StatusBar1;
+	TMainMenu *MainMenu1;
+	TMenuItem *File1;
+	TMenuItem *Misc1;
+	TMenuItem *UC7StatusChart1;
+	TControlBar *ControlBar1;
+	TToolBar *ToolBar2;
+	TToolButton *ToolButton1;
+	TToolButton *ToolButton2;
+	TToolButton *ToolButton3;
+	TActionList *MenuActions;
+	TFileExit *FileExit1;
+	TMenuItem *Exit1;
+	TAction *OpenHandWheelPositionFormA;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -286,6 +304,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ConnectBtnClick(TObject *Sender);
 	void __fastcall StatusBar1Hint(TObject *Sender);
+	void __fastcall OpenHandWheelPositionFormAExecute(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
@@ -429,6 +448,7 @@ class TMainForm  : public TRegistryForm
 		void __fastcall                         onSSICapabilities(TMessage& Msg);
 
 		TStatusBarManager						mSBManager;
+        THandWheelPositionForm* 				mHandWheelPositionForm;
     //=================================================================================================
     public:
 

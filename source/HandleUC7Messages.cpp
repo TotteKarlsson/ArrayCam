@@ -3,7 +3,7 @@
 #include "atVCLUtils.h"
 #include "TMainForm.h"
 #include "mtkLogger.h"
-
+#include "THandWheelPositionForm.h"
 using namespace mtk;
 
 //---------------------------------------------------------------------------
@@ -118,14 +118,14 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 if(d == "00")  //Retract
                 {
                 	Log(lDebug3) << "Retracting";
-                	mUC7.setStrokeState(UC7::ssRetracting);
+                	mUC7.setStrokeState(ssRetracting);
 					mArmRetractingSound.getReference().play();
                     p->Text += "Retracting";
                 }
                 else if(d == "01")  //Before cutting
                 {
                    	Log(lDebug3) << "Before Cutting";
-                   	mUC7.setStrokeState(UC7::ssBeforeCutting);
+                   	mUC7.setStrokeState(ssBeforeCutting);
 	                mKnifeBeforeCuttingSound.getReference().play();
                     p->Text += "Before Cutting";
                 }
@@ -133,22 +133,28 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 {
                    	Log(lDebug3) << "Cutting";
                    	mUC7.getSectionCounter().increase();
-                   	mUC7.setStrokeState(UC7::ssCutting);
+                   	mUC7.setStrokeState(ssCutting);
                     mKnifeCuttingSound.getReference().play();
                     p->Text += "Cutting";
                 }
                 else if(d == "02") //After cutting
                 {
                    	Log(lDebug3) << "After Cutting";
-                   	mUC7.setStrokeState(UC7::ssAfterCutting);
+                   	mUC7.setStrokeState(ssAfterCutting);
 					mRibbonOrderCountLabel->update();
 	                mKnifeAfterCuttingSound.getReference().play();
                     p->Text += "After Cutting";
                 }
                 else if(d == "E0")
                 {
-                   	mUC7.setStrokeState(UC7::ssUndefined);
+                   	mUC7.setStrokeState(ssUndefined);
                 }
+
+               	if(mHandWheelPositionForm)
+			    {
+					mHandWheelPositionForm->plot();
+                }
+
             }
             else
             {

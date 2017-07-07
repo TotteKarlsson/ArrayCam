@@ -73,6 +73,7 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     	atdbDM->SQLConnection1->Connected = false;
 	    atdbDM->SQLConnection1->Close();
     }
+
 	if(mLogFileReader.isRunning())
     {
 		mLogFileReader.stop();

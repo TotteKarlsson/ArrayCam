@@ -15,6 +15,7 @@
 #include "Forms/TRegisterNewRibbonForm.h"
 #include "TSelectIntegerForm.h"
 #include "TReticlePopupForm.h"
+#include "THandWheelPositionForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -92,7 +93,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mNavitarPreset2(mNavitarMotorController, "NAVITAR_PRESET_2"),
         mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
-        mSBManager(*StatusBar1)
+        mSBManager(*StatusBar1),
+        mHandWheelPositionForm(NULL)
 {
    	mLogFileReader.start(true);
 
@@ -1094,4 +1096,18 @@ void __fastcall TMainForm::StatusBar1Hint(TObject *Sender)
 	;
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
+{
+	if(!mHandWheelPositionForm)
+    {
+    	mHandWheelPositionForm = new THandWheelPositionForm(mUC7.getStatusHistoryRef(), this);
+        mHandWheelPositionForm->Show();
+    }
+    else
+    {
+		mHandWheelPositionForm->Visible = true;
+    }
+}
+//---------------------------------------------------------------------------
 
