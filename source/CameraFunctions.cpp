@@ -9,6 +9,7 @@
 #include "vcl/atVCLUtils.h"
 #include "database/atDBUtils.h"
 #include "TATDBDataModule.h"
+#include "TSettingsForm.h"
 
 using namespace mtk;
 using namespace at;
@@ -110,18 +111,7 @@ LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
     return 0;
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mOneToTwoBtnClick(TObject *Sender)
-{
-	mRenderMode = IS_RENDER_DOWNSCALE_1_2;
-
-   	int x, y;
-	mCamera1.GetMaxImageSize(&x,&y);
-	mCamera1BackPanel->Width = x/2.;
-	mCamera1BackPanel->Height = y/2.;
-}
-
-void __fastcall TMainForm::mOneToOneBtnClick(TObject *Sender)
+void __fastcall TMainForm::Zoom1To1AExecute(TObject *Sender)
 {
     mRenderMode = IS_RENDER_FIT_TO_WINDOW;
     mCamera1BackPanel->Invalidate();
@@ -132,8 +122,17 @@ void __fastcall TMainForm::mOneToOneBtnClick(TObject *Sender)
 	mCamera1BackPanel->Height = y;
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
+void __fastcall TMainForm::Zoom1To2AExecute(TObject *Sender)
+{
+	mRenderMode = IS_RENDER_DOWNSCALE_1_2;
+
+   	int x, y;
+	mCamera1.GetMaxImageSize(&x,&y);
+	mCamera1BackPanel->Width = x/2.;
+	mCamera1BackPanel->Height = y/2.;
+}
+
+void __fastcall TMainForm::FitToScreenAExecute(TObject *Sender)
 {
 	//Check widths and heights
     double wRatio = (double) mMainPhotoPanel->Width / mCamera1BackPanel->Width;
@@ -154,7 +153,22 @@ void __fastcall TMainForm::mFitToScreenButtonClick(TObject *Sender)
     mPB->Width = mCamera1BackPanel->Width;
 
     mCamera1BackPanel->Invalidate();
-	Log(lInfo) << "W x H = " <<mCamera1BackPanel->Width<<","<<mCamera1BackPanel->Height<<" Ratio = "<<(double) mCamera1BackPanel->Width / mCamera1BackPanel->Height;
+	if(mCamera1BackPanel->Height)
+    {
+		Log(lInfo) << "W x H = " <<mCamera1BackPanel->Width<<","<<mCamera1BackPanel->Height<<" Ratio = "<<(double) mCamera1BackPanel->Width / mCamera1BackPanel->Height;
+    }
+}
+
+
+void __fastcall TMainForm::OpenCameraSettingsAExecute(TObject *Sender)
+{
+	//Open settings form
+    if(!mSettingsForm)
+    {
+		mSettingsForm = new TSettingsForm(*this);
+    }
+
+    mSettingsForm->Show();
 }
 
 void __fastcall TMainForm::takeSnapShot()

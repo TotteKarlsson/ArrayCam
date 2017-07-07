@@ -156,6 +156,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
     mBCLabel->Caption = "";
 	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
-	mFitToScreenButtonClick(Sender);
+	FitToScreenAExecute(Sender);
 }
 

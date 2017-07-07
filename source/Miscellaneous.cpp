@@ -1,7 +1,6 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "TSettingsForm.h"
 #include "mtkVCLUtils.h"
 #include "mtkApplicationInfo.h"
 #include "mtkVersion.h"
@@ -18,7 +17,8 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
 
 void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 {
-	mFitToScreenButtonClick(Sender);
+	FitToScreenAExecute(Sender);
+
 	if(mReticleForm.get() && mReticleForm->Visible)
     {
         mReticleForm->mReticleCenterXTB->Min = -mPB->Width/2;
@@ -60,7 +60,7 @@ int TMainForm::extractCoverSlipID(const string& bc)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 {
-	mFitToScreenButtonClick(Sender);
+	FitToScreenAExecute(Sender);
 }
 
 //---------------------------------------------------------------------------
@@ -108,25 +108,8 @@ void __fastcall TMainForm::mCameraStreamPanelDblClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mExitBtnClick(TObject *Sender)
-{
-	Close();
-}
-
-//---------------------------------------------------------------------------
 int	TMainForm::getCOMPortNumber()
 {
 	return mUC7ComportCB->ItemIndex + 1;
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mSettingsBtnClick(TObject *Sender)
-{
-	//Open settings form
-    if(!mSettingsForm)
-    {
-		mSettingsForm = new TSettingsForm(*this);
-    }
-
-    mSettingsForm->Show();
-}

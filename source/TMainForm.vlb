@@ -28,9 +28,6 @@ Coordinates=1314,1541,140,51
 [DBText3]
 Coordinates=330,1506,56,51
 
-[BackOffStepFrame]
-Coordinates=571,1792,107,33
-
 [Label3]
 Coordinates=16,1667,46,51
 
@@ -297,9 +294,6 @@ Coordinates=65,1667,51,51
 
 [Label4]
 Coordinates=1133,771,46,51
-
-[ResumeDeltaDistanceFrame]
-Coordinates=1523,885,153,33
 
 [mClearLogMemoBtn]
 Coordinates=1133,631,115,51

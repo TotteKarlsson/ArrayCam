@@ -198,15 +198,15 @@ object MainForm: TMainForm
               TabOrder = 0
               object BlocksGB: TGroupBox
                 Left = 1
-                Top = 480
+                Top = 413
                 Width = 800
-                Height = 265
+                Height = 332
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
                 object GroupBox9: TGroupBox
                   Left = 2
-                  Top = 132
+                  Top = 199
                   Width = 796
                   Height = 131
                   Align = alBottom
@@ -334,13 +334,13 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 1
                 Width = 800
-                Height = 130
+                Height = 112
                 Align = alTop
                 Caption = 'Feed'
                 TabOrder = 1
                 object mSetZeroCutBtn: TArrayBotButton
                   Left = 134
-                  Top = 58
+                  Top = 45
                   Width = 104
                   Height = 50
                   Caption = 'Set zero-cut'
@@ -357,7 +357,7 @@ object MainForm: TMainForm
                 end
                 object mFeedRateE: TIntegerLabeledEdit
                   Left = 28
-                  Top = 61
+                  Top = 48
                   Width = 100
                   Height = 47
                   EditLabel.Width = 100
@@ -375,7 +375,7 @@ object MainForm: TMainForm
                 end
                 object mZeroCutsE: TIntegerLabeledEdit
                   Left = 616
-                  Top = 61
+                  Top = 48
                   Width = 169
                   Height = 47
                   EditLabel.Width = 171
@@ -399,7 +399,7 @@ object MainForm: TMainForm
                 end
                 object mPresetFeedRateE: TIntegerLabeledEdit
                   Left = 276
-                  Top = 61
+                  Top = 48
                   Width = 146
                   Height = 47
                   EditLabel.Width = 148
@@ -417,7 +417,7 @@ object MainForm: TMainForm
                 end
                 object SetPresetFeedBtn: TArrayBotButton
                   Left = 428
-                  Top = 58
+                  Top = 45
                   Width = 120
                   Height = 50
                   Caption = 'Set Preset Feed'
@@ -435,9 +435,9 @@ object MainForm: TMainForm
               end
               object UC7OperationGB: TGroupBox
                 Left = 1
-                Top = 345
+                Top = 225
                 Width = 800
-                Height = 135
+                Height = 188
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
@@ -446,7 +446,7 @@ object MainForm: TMainForm
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 112
+                  Height = 165
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
@@ -474,7 +474,7 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 106
+                  Height = 159
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
@@ -537,15 +537,15 @@ object MainForm: TMainForm
               end
               object KnifeStageGB: TGroupBox
                 Left = 1
-                Top = 131
+                Top = 113
                 Width = 800
-                Height = 214
+                Height = 112
                 Align = alTop
                 Caption = 'Knife Stage'
                 TabOrder = 3
                 inline MaxStagePosFrame: TUC7StagePositionFrame
-                  Left = 13
-                  Top = 116
+                  Left = 339
+                  Top = 24
                   Width = 257
                   Height = 81
                   AutoSize = True
@@ -556,8 +556,8 @@ object MainForm: TMainForm
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 13
-                  ExplicitTop = 116
+                  ExplicitLeft = 339
+                  ExplicitTop = 24
                   inherited GroupBox1: TGroupBox
                     Caption = 'Max Knife Position'
                     inherited ValueMM: TIntegerEdit
@@ -572,11 +572,11 @@ object MainForm: TMainForm
                   end
                 end
                 object PopulateMaxNorthPosBtn: TArrayBotButton
-                  Left = 276
-                  Top = 103
-                  Width = 29
+                  Left = 275
+                  Top = 51
+                  Width = 58
                   Height = 28
-                  Caption = 'v'
+                  Caption = '->'
                   TabOrder = 1
                   OnClick = PopulateMaxNorthPosBtnClick
                   SoundID = 'BUTTON_CLICK_4'
@@ -609,79 +609,13 @@ object MainForm: TMainForm
                     end
                   end
                 end
-                inline BackOffStepFrame: TUC7StagePositionFrame
-                  Left = 368
-                  Top = 24
-                  Width = 257
-                  Height = 81
-                  AutoSize = True
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 3
-                  ExplicitLeft = 368
-                  ExplicitTop = 24
-                  inherited GroupBox1: TGroupBox
-                    Caption = 'Backoff Step'
-                    inherited ValueMM: TIntegerEdit
-                      OnKeyDown = BackOffStepFrameKeyDown
-                    end
-                    inherited Valuenm: TIntegerEdit
-                      OnKeyDown = BackOffStepFrameKeyDown
-                    end
-                    inherited Valueum: TIntegerEdit
-                      OnKeyDown = BackOffStepFrameKeyDown
-                    end
-                  end
-                end
-                inline ResumeDeltaDistanceFrame: TUC7StagePositionFrame
-                  Left = 368
-                  Top = 116
-                  Width = 257
-                  Height = 81
-                  AutoSize = True
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 4
-                  ExplicitLeft = 368
-                  ExplicitTop = 116
-                  inherited GroupBox1: TGroupBox
-                    Caption = 'Resume Delta Distance'
-                    inherited Label1: TLabel
-                      Visible = False
-                    end
-                    inherited ValueMM: TIntegerEdit
-                      Enabled = False
-                      Text = '0'
-                      OnKeyDown = ResumeDeltaDistanceOnKey
-                      Value = 0
-                    end
-                    inherited Valuenm: TIntegerEdit
-                      OnKeyDown = ResumeDeltaDistanceOnKey
-                    end
-                    inherited Valueum: TIntegerEdit
-                      OnKeyDown = ResumeDeltaDistanceOnKey
-                    end
-                  end
-                end
               end
             end
           end
         end
         object TabSheet8: TTabSheet
-          Caption = 'Leica UC7'
+          Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 780
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -690,18 +624,17 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
-            ExplicitHeight = 780
             object GroupBox4: TGroupBox
               Left = 2
               Top = 203
               Width = 802
-              Height = 198
+              Height = 94
               Align = alTop
               Caption = 'Misc parameters'
               TabOrder = 0
               object mStageMoveDelayE: TIntegerLabeledEdit
-                Left = 15
-                Top = 104
+                Left = 23
+                Top = 48
                 Width = 151
                 Height = 27
                 EditLabel.Width = 156
@@ -787,15 +720,66 @@ object MainForm: TMainForm
               Caption = 'North-South Knife Stage Position (0-100 000)'
               TabOrder = 2
             end
+            object KnifeGB: TGroupBox
+              Left = 2
+              Top = 297
+              Width = 802
+              Height = 120
+              Align = alTop
+              Caption = 'Knife position'
+              TabOrder = 3
+              inline BackOffStepFrame: TUC7StagePositionFrame
+                Left = 10
+                Top = 24
+                Width = 257
+                Height = 81
+                AutoSize = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 0
+                ExplicitLeft = 10
+                ExplicitTop = 24
+                inherited GroupBox1: TGroupBox
+                  Caption = 'Backoff Step'
+                end
+              end
+              inline ResumeDeltaDistanceFrame: TUC7StagePositionFrame
+                Left = 280
+                Top = 24
+                Width = 257
+                Height = 81
+                AutoSize = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 1
+                ExplicitLeft = 280
+                ExplicitTop = 24
+                inherited GroupBox1: TGroupBox
+                  Caption = 'Resume Delta Distance'
+                  inherited Label1: TLabel
+                    Visible = False
+                  end
+                  inherited ValueMM: TIntegerEdit
+                    Enabled = False
+                    Text = '0'
+                    Value = 0
+                  end
+                end
+              end
+            end
           end
         end
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 780
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -804,7 +788,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'ATDB'
             TabOrder = 0
-            ExplicitHeight = 780
             inline TATDBConnectionFrame1: TATDBConnectionFrame
               Left = 2
               Top = 21
@@ -988,7 +971,6 @@ object MainForm: TMainForm
               Align = alClient
               Caption = 'Ribbons'
               TabOrder = 2
-              ExplicitHeight = 345
               object DBGrid1: TDBGrid
                 Left = 2
                 Top = 21
@@ -1044,7 +1026,6 @@ object MainForm: TMainForm
                 VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
                 Align = alBottom
                 TabOrder = 1
-                ExplicitTop = 321
               end
             end
           end
@@ -1052,10 +1033,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 780
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1117,7 +1094,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 28
+                Height = 27
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1194,7 +1171,6 @@ object MainForm: TMainForm
             Color = clBtnFace
             ParentColor = False
             TabOrder = 0
-            ExplicitHeight = 780
             object ConnectBtn: TButton
               Left = 20
               Top = 24
@@ -1212,7 +1188,6 @@ object MainForm: TMainForm
               Align = alBottom
               Caption = 'Controller Info'
               TabOrder = 1
-              ExplicitTop = 663
               object Label12: TLabel
                 Left = 16
                 Top = 24
@@ -1352,7 +1327,6 @@ object MainForm: TMainForm
               Align = alClient
               Caption = 'Presets'
               TabOrder = 2
-              ExplicitHeight = 538
             end
           end
         end
@@ -1370,10 +1344,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 746
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1520,10 +1490,6 @@ object MainForm: TMainForm
         object TabSheet3: TTabSheet
           Caption = 'Logs'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 780
           object Panel4: TPanel
             Left = 0
             Top = 0
@@ -1532,7 +1498,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'Panel4'
             TabOrder = 0
-            ExplicitHeight = 780
             object GroupBox8: TGroupBox
               Left = 1
               Top = 1
@@ -1608,17 +1573,12 @@ object MainForm: TMainForm
               ScrollBars = ssBoth
               TabOrder = 1
               WordWrap = False
-              ExplicitHeight = 728
             end
           end
         end
         object TabSheet7: TTabSheet
           Caption = 'About'
           ImageIndex = 8
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 780
           object GroupBox2: TGroupBox
             Left = 0
             Top = 186
@@ -1627,7 +1587,6 @@ object MainForm: TMainForm
             Align = alClient
             Caption = 'ChangeLog'
             TabOrder = 0
-            ExplicitHeight = 594
             object Memo1: TMemo
               Left = 2
               Top = 21
@@ -2570,10 +2529,9 @@ object MainForm: TMainForm
         end
         object CameraHC: THeaderControl
           Left = 1
-          Top = 573
+          Top = 1
           Width = 387
           Height = 30
-          Align = alBottom
           BiDiMode = bdLeftToRight
           Sections = <
             item
@@ -2607,14 +2565,6 @@ object MainForm: TMainForm
           PopupMenu = CameraPopup
         end
       end
-      object CameraBottomPanel: TPanel
-        Left = 1
-        Top = 769
-        Width = 417
-        Height = 98
-        Align = alBottom
-        TabOrder = 1
-      end
     end
   end
   object StatusBar1: TStatusBar
@@ -2634,12 +2584,13 @@ object MainForm: TMainForm
     Align = alTop
     AutoSize = True
     TabOrder = 3
-    object ToolBar2: TToolBar
+    object MainToolBar: TToolBar
       Left = 11
       Top = 2
       Width = 150
       Height = 22
-      Caption = 'ToolBar2'
+      Hint = 'Main Actions'
+      Caption = 'MainToolBar'
       TabOrder = 0
       object ToolButton1: TToolButton
         Left = 0
@@ -2658,6 +2609,35 @@ object MainForm: TMainForm
         Left = 31
         Top = 0
         Action = OpenHandWheelPositionFormA
+      end
+    end
+    object CameraToolbar: TToolBar
+      Left = 184
+      Top = 2
+      Width = 150
+      Height = 22
+      Hint = 'Camera Actions'
+      Caption = 'CameraToolbar'
+      TabOrder = 1
+      object ToolButton4: TToolButton
+        Left = 0
+        Top = 0
+        Action = FitToScreenA
+      end
+      object ToolButton5: TToolButton
+        Left = 23
+        Top = 0
+        Action = Zoom1To1A
+      end
+      object ToolButton6: TToolButton
+        Left = 46
+        Top = 0
+        Action = Zoom1To2A
+      end
+      object ToolButton7: TToolButton
+        Left = 69
+        Top = 0
+        Action = OpenCameraSettingsA
       end
     end
   end
@@ -2703,26 +2683,22 @@ object MainForm: TMainForm
     Left = 240
     Top = 576
     object FittoScreen1: TMenuItem
-      Caption = 'Fit to Screen'
-      OnClick = mFitToScreenButtonClick
+      Action = FitToScreenA
     end
     object N1: TMenuItem
       Caption = '-'
     end
     object N111: TMenuItem
-      Caption = 'Zoom 1:1'
-      OnClick = mOneToOneBtnClick
+      Action = Zoom1To1A
     end
     object N121: TMenuItem
-      Caption = 'Zoom 1:2'
-      OnClick = mOneToTwoBtnClick
+      Action = Zoom1To2A
     end
     object N2: TMenuItem
       Caption = '-'
     end
     object OpenSettings1: TMenuItem
-      Caption = 'Open Settings'
-      OnClick = mSettingsBtnClick
+      Action = OpenCameraSettingsA
     end
   end
   object ReticlePopup: TPopupMenu
@@ -2739,6 +2715,27 @@ object MainForm: TMainForm
       Caption = 'File'
       object Exit1: TMenuItem
         Action = FileExit1
+      end
+    end
+    object Camera1: TMenuItem
+      Caption = 'Camera'
+      object FitToScreenA1: TMenuItem
+        Action = FitToScreenA
+      end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object Zoom111: TMenuItem
+        Action = Zoom1To1A
+      end
+      object Zoom121: TMenuItem
+        Action = Zoom1To2A
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object CameraSettings1: TMenuItem
+        Action = OpenCameraSettingsA
       end
     end
     object Misc1: TMenuItem
@@ -2760,7 +2757,36 @@ object MainForm: TMainForm
     object OpenHandWheelPositionFormA: TAction
       Category = 'File'
       Caption = 'Open Handwheel Position Form'
+      Hint = 'OPen Handwheel position Form'
       OnExecute = OpenHandWheelPositionFormAExecute
+    end
+  end
+  object CameraActions: TActionList
+    Left = 56
+    Top = 192
+    object FitToScreenA: TAction
+      Category = 'Camera'
+      Caption = 'Fit to Screen'
+      Hint = 'Fit To Screen'
+      OnExecute = FitToScreenAExecute
+    end
+    object Zoom1To1A: TAction
+      Category = 'Camera'
+      Caption = 'Zoom 1:1'
+      Hint = 'Zoom 1:1'
+      OnExecute = Zoom1To1AExecute
+    end
+    object Zoom1To2A: TAction
+      Category = 'Camera'
+      Caption = 'Zoom 1:2'
+      Hint = 'Zoom 1:2'
+      OnExecute = Zoom1To2AExecute
+    end
+    object OpenCameraSettingsA: TAction
+      Category = 'Camera'
+      Caption = 'Camera Settings'
+      Hint = 'Open Camera settings form'
+      OnExecute = OpenCameraSettingsAExecute
     end
   end
 end
