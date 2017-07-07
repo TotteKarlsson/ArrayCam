@@ -1109,5 +1109,5 @@ void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
 		mHandWheelPositionForm->Visible = true;
     }
 }
-//---------------------------------------------------------------------------
+
 
