@@ -1,8 +1,9 @@
 object HandWheelPositionForm: THandWheelPositionForm
   Left = 0
   Top = 0
+  BorderStyle = bsSizeToolWin
   Caption = 'HandWheelPositionForm'
-  ClientHeight = 525
+  ClientHeight = 529
   ClientWidth = 1127
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +12,7 @@ object HandWheelPositionForm: THandWheelPositionForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   PixelsPerInch = 96
@@ -19,7 +21,7 @@ object HandWheelPositionForm: THandWheelPositionForm
     Left = 0
     Top = 0
     Width = 1127
-    Height = 525
+    Height = 529
     Legend.Visible = False
     Title.Text.Strings = (
       'TChart')
@@ -42,6 +44,7 @@ object HandWheelPositionForm: THandWheelPositionForm
     View3D = False
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 525
     ColorPaletteIndex = 13
     object Series1: TLineSeries
       Marks.Arrow.Visible = True

@@ -1,6 +1,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
+#include "THandWheelPositionForm.h"
 //---------------------------------------------------------------------------
 
 extern bool gAppIsClosing;
@@ -13,7 +14,8 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         mLightsArduinoClient.isConnected() 		||
         mCheckSocketConnectionTimer->Enabled 	||
         atdbDM->SQLConnection1->Connected 		||
-        mZebra.isConnected()
+        mZebra.isConnected()                    ||
+        mHandWheelPositionForm
         )
     {
         CanClose = false;
@@ -45,6 +47,14 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     if(mLightsArduinoClient.isConnected())
     {
 		mLightsArduinoClient.disConnect();
+    }
+
+	if(mHandWheelPositionForm)
+    {
+    	mHandWheelPositionForm->setTimeToClose();
+        mHandWheelPositionForm->Close();
+        mHandWheelPositionForm = NULL;
+
     }
 
     if(mCheckSocketConnectionTimer->Enabled)

@@ -11,10 +11,15 @@ using namespace mtk;
 THandWheelPositionForm *HandWheelPositionForm;
 
 //---------------------------------------------------------------------------
-__fastcall THandWheelPositionForm::THandWheelPositionForm(UC7StatusHistory& h, TComponent* Owner)
-	: TForm(Owner),
+__fastcall THandWheelPositionForm::THandWheelPositionForm(UC7StatusHistory& h, const string& regRoot, TComponent* Owner)
+	: TRegistryForm(regRoot, "HandWheelPositionForm", Owner),
     mUC7StatusHistory(h)
 {
+}
+
+__fastcall THandWheelPositionForm::~THandWheelPositionForm()
+{
+
 }
 
 void THandWheelPositionForm::plot()
@@ -49,9 +54,8 @@ void THandWheelPositionForm::plot()
 void __fastcall THandWheelPositionForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	Log(lInfo) << "Closing Hand WheelPosition form";
-
+    TRegistryForm::FormClose(Sender, Action);
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormCloseQuery(TObject *Sender, bool &CanClose)

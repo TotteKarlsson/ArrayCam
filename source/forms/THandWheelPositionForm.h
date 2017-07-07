@@ -10,8 +10,9 @@
 #include <VCLTee.TeEngine.hpp>
 #include <VCLTee.TeeProcs.hpp>
 #include "atUC7StatusHistory.h"
+#include "TRegistryForm.h"
 
-class THandWheelPositionForm : public TForm
+class THandWheelPositionForm : public TRegistryForm
 {
     __published:
         TChart*						            Chart1;
@@ -22,8 +23,10 @@ class THandWheelPositionForm : public TForm
     private:
 		UC7StatusHistory&			            mUC7StatusHistory;
         bool									mTimeToClose;
+
     public:
-    					__fastcall              THandWheelPositionForm(UC7StatusHistory& h, TComponent* Owner);
+    					__fastcall              THandWheelPositionForm(UC7StatusHistory& h,  const string& regRoot, TComponent* Owner);
+    					__fastcall              ~THandWheelPositionForm();
 		void						            reset();
         void									plot();
         void									setTimeToClose();
