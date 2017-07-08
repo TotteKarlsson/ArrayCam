@@ -2,8 +2,6 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "mtkVCLUtils.h"
-#include "mtkApplicationInfo.h"
-#include "mtkVersion.h"
 #include "TReticlePopupForm.h"
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -66,40 +64,20 @@ void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LogLevelCBChange(TObject *Sender)
 {
-	if(LogLevelCB->ItemIndex == -1)
-    {
-    	return;
-    }
-
-    string lvl = stdstr(LogLevelCB->Items->Strings[LogLevelCB->ItemIndex]);
-    mLogLevel = toLogLevel(lvl);
-    gLogger.setLogLevel(mLogLevel);
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::populateAbout()
-{
-	//Populate MEMO
-    stringstream ss;
-    mtkApplicationInfo appInfo(Application);
-
-    //Current Version Info
-    Version version(stdstr(appInfo.mVersion));
-    ss <<version.getMajor()<<"."<<version.getMinor()<<"."<<version.getPatch();
-    String versionMajorMinorPatch(ss.str().c_str());
-    versionLabel->Caption = String("Version: ") + versionMajorMinorPatch;
-
-
-    if(fileExists("CHANGELOG.txt"))
-    {
-	    Memo1->Lines->LoadFromFile("CHANGELOG.txt");
-    }
+//	if(LogLevelCB->ItemIndex == -1)
+//    {
+//    	return;
+//    }
+//
+//    string lvl = stdstr(LogLevelCB->Items->Strings[LogLevelCB->ItemIndex]);
+//    mLogLevel = toLogLevel(lvl);
+//    gLogger.setLogLevel(mLogLevel);
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::ClearLogMemo(TObject *Sender)
 {
-	infoMemo->Clear();
+//	infoMemo->Clear();
 }
 
 void __fastcall TMainForm::mCameraStreamPanelDblClick(TObject *Sender)

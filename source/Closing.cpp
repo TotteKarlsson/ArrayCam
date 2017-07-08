@@ -2,6 +2,7 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "THandWheelPositionForm.h"
+#include "TLoggerForm.h"
 //---------------------------------------------------------------------------
 
 extern bool gAppIsClosing;
@@ -15,7 +16,8 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         mCheckSocketConnectionTimer->Enabled 	||
         atdbDM->SQLConnection1->Connected 		||
         mZebra.isConnected()                    ||
-        mHandWheelPositionForm
+        mHandWheelPositionForm                  ||
+        mLoggerForm
         )
     {
         CanClose = false;
@@ -54,7 +56,12 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     	mHandWheelPositionForm->setTimeToClose();
         mHandWheelPositionForm->Close();
         mHandWheelPositionForm = NULL;
+    }
 
+	if(mLoggerForm)
+    {
+        mLoggerForm->Close();
+        mLoggerForm = NULL;
     }
 
     if(mCheckSocketConnectionTimer->Enabled)

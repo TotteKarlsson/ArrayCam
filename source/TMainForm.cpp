@@ -16,6 +16,8 @@
 #include "TSelectIntegerForm.h"
 #include "TReticlePopupForm.h"
 #include "THandWheelPositionForm.h"
+#include "forms/TAboutForm.h"
+#include "forms/TLoggerForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -94,7 +96,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         mSBManager(*StatusBar1),
-        mHandWheelPositionForm(NULL)
+        mHandWheelPositionForm(NULL),
+        mLoggerForm(NULL)
 {
    	mLogFileReader.start(true);
 
@@ -187,12 +190,12 @@ __fastcall TMainForm::~TMainForm()
 //This one is called from the reader thread
 void __fastcall TMainForm::logMsg()
 {
-	if(infoMemo->Lines->Count > 1000)
-    {
-	    infoMemo->Clear();
-    }
-
-    infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
+//	if(infoMemo->Lines->Count > 1000)
+//    {
+//	    infoMemo->Clear();
+//    }
+//
+//    infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
 }
 
 //---------------------------------------------------------------------------
@@ -236,11 +239,8 @@ void TMainForm::enableDisableClientControls(bool enable)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::PageControl1Change(TObject *Sender)
 {
-	//Check if we are opening About tab
-    if(PageControl1->TabIndex == 2)
-    {
-    	populateAbout();
-    }
+	//Check if we need any processing as a tab changes
+
 }
 
 //---------------------------------------------------------------------------
@@ -1110,11 +1110,39 @@ void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
     }
 }
 
+void __fastcall TMainForm::ToggleMainContentPanelAExecute(TObject *Sender)
+{
+	MainContentPanel->Visible = !MainContentPanel->Visible;
+    if(MainContentPanel->Visible)
+    {
+		Splitter2->Left = MainContentPanel->Left - 1;
+	    Splitter2->Visible = true;
+    }
+    else
+    {
+	    Splitter2->Visible = false;
+    }
+}
 
+void __fastcall TMainForm::About1Click(TObject *Sender)
+{
+	TAboutForm* f = new TAboutForm(this);
+    f->ShowModal();
+    delete f;
+}
 
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenLoggerForm1Click(TObject *Sender)
+{
+	if(!mLoggerForm)
+    {
+    	mLoggerForm = new TLoggerForm(gApplicationRegistryRoot, this);
+        mLoggerForm->Show();
+    }
+    else
+    {
+    	mLoggerForm->Visible = true;
+    }
+}
 
-//---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 

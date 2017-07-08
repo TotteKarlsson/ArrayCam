@@ -72,7 +72,7 @@ class TLocalArgs;
 class TRegisterNewRibbonForm;
 class TReticlePopupForm;
 class THandWheelPositionForm;
-
+class TLoggerForm;
 using mtk::Property;
 
 //---------------------------------------------------------------------------
@@ -83,7 +83,6 @@ class TMainForm  : public TRegistryForm
 	friend TLocalArgs;
 
 	__published:	// IDE-managed Components
-	TMemo *infoMemo;
 	TTimer *mShutDownTimer;
 	TSplitter *Splitter2;
 	TPanel *mMainPhotoPanel;
@@ -92,19 +91,7 @@ class TMainForm  : public TRegistryForm
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
-	TGroupBox *GroupBox8;
-	TToolBar *ToolBar1;
-	TBitBtn *mClearLogMemoBtn;
-	TComboBox *LogLevelCB;
 	TPageControl *PageControl1;
-	TTabSheet *TabSheet7;
-	TGroupBox *GroupBox2;
-	TMemo *Memo1;
-	TPanel *Panel5;
-	TImage *Image2;
-	TLabel *Label2;
-	TLabel *logLabel;
-	TLabel *versionLabel;
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
 	TTimer *mCheckSocketConnectionTimer;
@@ -113,8 +100,6 @@ class TMainForm  : public TRegistryForm
 	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
 	TArrayBotButton *mResetCounterBtn;
-	TPanel *Panel4;
-	TTabSheet *TabSheet3;
 	TIntLabel *mRibbonOrderCountLabel;
 	TArrayBotButton *mResetRibbonOrderBtn;
 	TPanel *MainContentPanel;
@@ -268,6 +253,12 @@ class TMainForm  : public TRegistryForm
 	TToolButton *ToolButton5;
 	TToolButton *ToolButton6;
 	TToolButton *ToolButton7;
+	TToolButton *ToolButton8;
+	TAction *ToggleMainContentPanelA;
+	TMenuItem *Help1;
+	TMenuItem *About1;
+	TMenuItem *N5;
+	TMenuItem *OpenLoggerForm1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -321,6 +312,9 @@ class TMainForm  : public TRegistryForm
 	void __fastcall Zoom1To1AExecute(TObject *Sender);
 	void __fastcall Zoom1To2AExecute(TObject *Sender);
 	void __fastcall OpenCameraSettingsAExecute(TObject *Sender);
+	void __fastcall ToggleMainContentPanelAExecute(TObject *Sender);
+	void __fastcall About1Click(TObject *Sender);
+	void __fastcall OpenLoggerForm1Click(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
@@ -465,6 +459,8 @@ class TMainForm  : public TRegistryForm
 
 		TStatusBarManager						mSBManager;
         THandWheelPositionForm* 				mHandWheelPositionForm;
+
+		TLoggerForm*							mLoggerForm;
     //=================================================================================================
     public:
 
@@ -473,7 +469,6 @@ class TMainForm  : public TRegistryForm
 
 												//!Camera stuff is processed in the message loop
 		LRESULT 					  			OnUSBCameraMessage(TMessage msg);
-		void 		__fastcall 		  			populateAbout();
         void 		__fastcall		  			takeSnapShot();
 	    void 		__fastcall		  			startStopRecordingMovie();
 	    void 		__fastcall		  			startRecordingMovie();

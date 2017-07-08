@@ -20,6 +20,8 @@ USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
 USEFORM("forms\THandWheelPositionForm.cpp", HandWheelPositionForm);
+USEFORM("forms\TAboutForm.cpp", AboutForm);
+USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";

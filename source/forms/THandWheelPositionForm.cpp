@@ -67,7 +67,6 @@ void __fastcall THandWheelPositionForm::FormCloseQuery(TObject *Sender, bool &Ca
     {
     	this->Visible = false;
     }
-   	WriteToRegistry();
 }
 
 void THandWheelPositionForm::setTimeToClose()
@@ -79,12 +78,6 @@ void THandWheelPositionForm::setTimeToClose()
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
 {
-//	this->Set
-//	if(this->SetBounds())
-//    {
-//
-//
-//    }
 	ReadRegistry();
 }
 

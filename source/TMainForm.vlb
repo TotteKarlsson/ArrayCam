@@ -13,12 +13,6 @@ Coordinates=1314,911,110,51
 [Panel7]
 Coordinates=964,1055,47,51
 
-[versionLabel]
-Coordinates=1314,421,77,51
-
-[logLabel]
-Coordinates=1314,1331,56,51
-
 [GroupBox10]
 Coordinates=1133,1595,76,51
 
@@ -51,12 +45,6 @@ Coordinates=38,628,124,267
 
 [mBlockProcessIDCB]
 Coordinates=334,1792,116,33
-
-[TabSheet3]
-Coordinates=265,1792,66,33
-
-[ToolBar1]
-Coordinates=206,1792,58,33
 
 [GroupBox3]
 Coordinates=751,849,70,51
@@ -145,9 +133,6 @@ Coordinates=167,1,69,51
 [GroupBox12]
 Coordinates=1126,1792,76,51
 
-[Panel5]
-Coordinates=964,705,47,51
-
 [MainTopPanel]
 Coordinates=1133,421,84,51
 
@@ -157,14 +142,8 @@ Coordinates=1314,1261,112,51
 [UC7GB]
 Coordinates=550,835,50,51
 
-[GroupBox8]
-Coordinates=33,1506,70,51
-
 [TATDBConnectionFrame1]
 Coordinates=1523,209,142,33
-
-[TabSheet7]
-Coordinates=1523,261,66,33
 
 [mResetCounterBtn]
 Coordinates=468,1506,108,51
@@ -193,9 +172,6 @@ Coordinates=751,989,149,51
 [mStartStopBtn]
 Coordinates=1314,1401,86,51
 
-[Image2]
-Coordinates=1314,351,49,51
-
 [mMoveNorthBtn]
 Coordinates=1133,1175,94,51
 
@@ -214,23 +190,14 @@ Coordinates=1523,521,66,33
 [DBNavigator1]
 Coordinates=964,775,82,51
 
-[Panel4]
-Coordinates=751,1129,47,51
-
 [CameraHC]
 Coordinates=1523,573,66,33
-
-[Memo1]
-Coordinates=964,1265,53,51
 
 [Label6]
 Coordinates=124,1667,46,51
 
 [mScannerEnabledRG]
 Coordinates=1314,141,119,51
-
-[infoMemo]
-Coordinates=256,1345,62,51
 
 [mZeroCutsE]
 Coordinates=1314,71,75,51
@@ -268,9 +235,6 @@ Coordinates=642,1345,101,87
 [Label11]
 Coordinates=964,985,52,51
 
-[GroupBox2]
-Coordinates=1133,491,70,51
-
 [TabSheet8]
 Coordinates=1523,833,66,33
 
@@ -294,9 +258,6 @@ Coordinates=65,1667,51,51
 
 [Label4]
 Coordinates=1133,771,46,51
-
-[mClearLogMemoBtn]
-Coordinates=1133,631,115,51
 
 [atdbDM.ROnCS_CDS]
 Coordinates=1133,71,118,51
@@ -427,9 +388,6 @@ Coordinates=1004,1667,119,69
 [TabSheet1]
 Coordinates=1523,1717,66,33
 
-[LogLevelCB]
-Coordinates=751,533,84,87
-
 [atdbDM.documentsCDS]
 Coordinates=964,563,131,123
 
@@ -444,9 +402,6 @@ Coordinates=1314,1121,99,51
 
 [atdbDM.noteDS]
 Coordinates=1133,701,91,51
-
-[Label2]
-Coordinates=1314,771,46,51
 
 [TApplicationSounds1]
 Coordinates=1076,1881,120,33
@@ -488,5 +443,5 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=707,1667,84,51
+Coordinates=265,1792,66,33
 
