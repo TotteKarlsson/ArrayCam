@@ -11,11 +11,13 @@ object HandWheelPositionForm: THandWheelPositionForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poDefault
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,6 +26,7 @@ object HandWheelPositionForm: THandWheelPositionForm
     Top = 0
     Width = 1127
     Height = 529
+    Border.Visible = True
     Legend.Visible = False
     Title.Text.Strings = (
       'TChart')
@@ -31,20 +34,33 @@ object HandWheelPositionForm: THandWheelPositionForm
     BottomAxis.Automatic = False
     BottomAxis.AutomaticMaximum = False
     BottomAxis.AutomaticMinimum = False
+    BottomAxis.LabelsFont.Height = -19
+    BottomAxis.LabelsFont.Style = [fsBold]
     BottomAxis.Maximum = 5.000000000000000000
     BottomAxis.Minimum = -1.000000000000000000
     BottomAxis.Title.Caption = 'Time'
+    BottomAxis.Title.Font.Color = clBlue
+    BottomAxis.Title.Font.Height = -19
+    BottomAxis.Title.Font.Style = [fsBold]
     LeftAxis.Automatic = False
     LeftAxis.AutomaticMaximum = False
     LeftAxis.AutomaticMinimum = False
     LeftAxis.ExactDateTime = False
     LeftAxis.Increment = 1.000000000000000000
+    LeftAxis.LabelsFont.Height = -16
+    LeftAxis.LabelsFont.Style = [fsBold]
     LeftAxis.Maximum = 4.000000000000000000
     LeftAxis.MaximumOffset = 4
     LeftAxis.Minimum = -1.000000000000000000
-    LeftAxis.Title.Caption = 'State'
+    LeftAxis.Title.Caption = 'Cutting Arm State'
+    LeftAxis.Title.Font.Color = clRed
+    LeftAxis.Title.Font.Height = -16
+    LeftAxis.Title.Font.Style = [fsBold]
+    LeftAxis.Title.Color = clRed
+    LeftAxis.Title.Emboss.Visible = True
     View3D = False
     Align = alClient
+    BevelInner = bvRaised
     TabOrder = 0
     ColorPaletteIndex = 13
     object Series1: TLineSeries

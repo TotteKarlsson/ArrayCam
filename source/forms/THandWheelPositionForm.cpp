@@ -15,6 +15,8 @@ __fastcall THandWheelPositionForm::THandWheelPositionForm(UC7StatusHistory& h, c
 	: TRegistryForm(regRoot, "HandWheelPositionForm", Owner),
     mUC7StatusHistory(h)
 {
+
+
 }
 
 __fastcall THandWheelPositionForm::~THandWheelPositionForm()
@@ -30,6 +32,10 @@ void THandWheelPositionForm::plot()
     }
 
 	Series1->Clear();
+
+
+
+
     deque<UC7StatusPoint> c = mUC7StatusHistory.getCurrentCycle();
 
     if(!c.size())
@@ -79,12 +85,28 @@ void THandWheelPositionForm::setTimeToClose()
 void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
 {
 	ReadRegistry();
+    Chart1->Axes->Left->Items->Clear();
+    Chart1->Axes->Left->Items->Add(ssBeforeCutting, toText(ssBeforeCutting).c_str());
+    Chart1->Axes->Left->Items->Add(ssCutting, 		toText(ssCutting).c_str());
+    Chart1->Axes->Left->Items->Add(ssAfterCutting, 	toText(ssAfterCutting).c_str());
+    Chart1->Axes->Left->Items->Add(ssRetracting, 	toText(ssRetracting).c_str());
 }
 
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormCreate(TObject *Sender)
 {
 	ReadRegistry();
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall THandWheelPositionForm::FormKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift)
+{
+    if(Key == VK_ESCAPE)
+    {
+        Close();
+    }
 }
 
 

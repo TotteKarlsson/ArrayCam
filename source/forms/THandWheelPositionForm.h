@@ -21,6 +21,8 @@ class THandWheelPositionForm : public TRegistryForm
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
 
     private:
 		UC7StatusHistory&			            mUC7StatusHistory;
