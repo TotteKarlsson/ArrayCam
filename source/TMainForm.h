@@ -14,43 +14,44 @@
 #include <Vcl.Grids.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
-#include "mtkIniFileProperties.h"
-#include "mtkIniFile.h"
-#include "TRegistryForm.h"
-#include "uc480/uc480Class.h"
-#include "arduino/atLightsArduinoClient.h"
-#include "mtkFloatLabel.h"
-#include "TPropertyCheckBox.h"
-#include "uc7/atUC7Component.h"
-#include "TATDBImagesAndMoviesDataModule.h"
-#include "core/atEnvironmentalSensorReader.h"
-#include "TArrayBotBtn.h"
-#include "sound/atSoundPlayer.h"
-#include "camera/atCameraServiceThread.h"
-#include "atReticle.h"
-#include "ConnectToArduinoServerThread.h"
-#include "atVCLUtils.h"
-#include "TIntegerLabeledEdit.h"
-#include "TIntLabel.h"
-#include "uc7/atUC7ApplicationMessages.h"
-#include "TCoverSlipDataModule.h"
-#include "TATDBConnectionFrame.h"
-#include "barcodereader/atDS457.h"
-#include "TATDBDataModule.h"
-#include "ArrayCamServer.h"
-#include "TUC7StagePositionFrame.h"
-#include "TSoundsFrame.h"
-#include "sound/atApplicationSound.h"
-#include "navitar/atNavitarMotorController.h"
-#include "TNavitarMotorFrame.h"
-#include "navitar/atNavitarPreset.h"
-#include "TNavitarPresetFrame.h"
-#include "TApplicationSoundsFrame.h"
-#include "TStatusBarManager.h"
-#include "atUC7StatusHistory.h"
 #include <System.Actions.hpp>
 #include <Vcl.ActnList.hpp>
 #include <Vcl.StdActns.hpp>
+
+#include "arduino/atLightsArduinoClient.h"
+#include "ArrayCamServer.h"
+#include "atReticle.h"
+#include "uc7/atUC7StatusHistory.h"
+#include "atVCLUtils.h"
+#include "barcodereader/atDS457.h"
+#include "camera/atCameraServiceThread.h"
+#include "ConnectToArduinoServerThread.h"
+#include "core/atEnvironmentalSensorReader.h"
+#include "mtkFloatLabel.h"
+#include "mtkIniFile.h"
+#include "mtkIniFileProperties.h"
+#include "navitar/atNavitarMotorController.h"
+#include "navitar/atNavitarPreset.h"
+#include "sound/atApplicationSound.h"
+#include "sound/atSoundPlayer.h"
+#include "TApplicationSoundsFrame.h"
+#include "TArrayBotBtn.h"
+#include "TATDBConnectionFrame.h"
+#include "TATDBDataModule.h"
+#include "TATDBImagesAndMoviesDataModule.h"
+#include "TCoverSlipDataModule.h"
+#include "TIntegerLabeledEdit.h"
+#include "TIntLabel.h"
+#include "TNavitarMotorFrame.h"
+#include "TNavitarPresetFrame.h"
+#include "TPropertyCheckBox.h"
+#include "TRegistryForm.h"
+#include "TSoundsFrame.h"
+#include "TStatusBarManager.h"
+#include "TUC7StagePositionFrame.h"
+#include "uc480/uc480Class.h"
+#include "uc7/atUC7ApplicationMessages.h"
+#include "uc7/atUC7Component.h"
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -71,15 +72,16 @@ class TRegisterNewRibbonForm;
 class TReticlePopupForm;
 class THandWheelPositionForm;
 class TLoggerForm;
+class TActionsForm;
 using mtk::Property;
 
 //---------------------------------------------------------------------------
-class TMainForm  : public TRegistryForm
+class PACKAGE TMainForm  : public TRegistryForm
 {
 	friend TSettingsForm;
 	friend TRegisterNewRibbonForm;
 	friend TLocalArgs;
-//    friend class TLoggerForm;
+
 	__published:	// IDE-managed Components
 	TTimer *mShutDownTimer;
 	TSplitter *Splitter2;
@@ -220,10 +222,6 @@ class TMainForm  : public TRegistryForm
 	TMenuItem *Misc1;
 	TMenuItem *UC7StatusChart1;
 	TControlBar *ControlBar1;
-	TToolBar *MainToolBar;
-	TToolButton *ToolButton1;
-	TToolButton *ToolButton2;
-	TToolButton *ToolButton3;
 	TActionList *MenuActions;
 	TFileExit *FileExit1;
 	TMenuItem *Exit1;
@@ -243,17 +241,15 @@ class TMainForm  : public TRegistryForm
 	TMenuItem *CameraSettings1;
 	TMenuItem *N3;
 	TMenuItem *N4;
-	TToolBar *CameraToolbar;
-	TToolButton *ToolButton4;
-	TToolButton *ToolButton5;
-	TToolButton *ToolButton6;
-	TToolButton *ToolButton7;
-	TToolButton *ToolButton8;
 	TAction *ToggleMainContentPanelA;
 	TMenuItem *Help1;
 	TMenuItem *About1;
 	TMenuItem *N5;
 	TMenuItem *OpenLoggerForm1;
+	TAction *OpenCloseShortcutForm;
+	TMenuItem *Actions1;
+	TArrayBotButton *ArrayBotButton2;
+	TToolBar *ToolBar1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -262,19 +258,14 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
 	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
-//	void __fastcall ClearLogMemo(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
-//	void __fastcall LogLevelCBChange(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall PageControl1Change(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
-	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
+	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
-
+	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
 	void __fastcall mConnectUC7BtnClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
@@ -293,8 +284,7 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
 	void __fastcall PopulateMaxNorthPosBtnClick(TObject *Sender);
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
-	void __fastcall KnifePosChange(TObject *Sender, WORD &Key,
-          TShiftState Shift);
+	void __fastcall KnifePosChange(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall MaxKnifePosKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall mASStartBtnClick(TObject *Sender);
 	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
@@ -310,11 +300,12 @@ class TMainForm  : public TRegistryForm
 	void __fastcall ToggleMainContentPanelAExecute(TObject *Sender);
 	void __fastcall About1Click(TObject *Sender);
 	void __fastcall OpenLoggerForm1Click(TObject *Sender);
+	void __fastcall OpenCloseShortcutFormExecute(TObject *Sender);
+	void __fastcall OpenCloseShortcutFormUpdate(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
-//        LogFileReader                           mLogFileReader;
-//        void __fastcall                         logMsg();
+
 		UC7						 				mUC7;
         int						 				getCOMPortNumber();
 
@@ -456,6 +447,7 @@ class TMainForm  : public TRegistryForm
         THandWheelPositionForm* 				mHandWheelPositionForm;
 
 		TLoggerForm*							LoggerForm;
+		TActionsForm*							ActionsForm;
     //=================================================================================================
     public:
 

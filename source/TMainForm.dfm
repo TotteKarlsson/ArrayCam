@@ -25,8 +25,8 @@ object MainForm: TMainForm
   TextHeight = 19
   object Splitter2: TSplitter
     Left = 421
-    Top = 30
-    Height = 914
+    Top = 84
+    Height = 860
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
@@ -34,9 +34,9 @@ object MainForm: TMainForm
   end
   object MainContentPanel: TPanel
     Left = 424
-    Top = 30
+    Top = 84
     Width = 818
-    Height = 914
+    Height = 860
     Align = alRight
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
@@ -165,7 +165,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 83
       Width = 816
-      Height = 830
+      Height = 776
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 1
@@ -173,7 +173,7 @@ object MainForm: TMainForm
         Left = 1
         Top = 1
         Width = 814
-        Height = 828
+        Height = 774
         ActivePage = Main
         Align = alClient
         MultiLine = True
@@ -182,23 +182,27 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 794
+            Height = 740
             Align = alClient
             TabOrder = 0
             object Panel9: TPanel
               Left = 0
               Top = 0
               Width = 802
-              Height = 790
+              Height = 736
               Align = alClient
               TabOrder = 0
               object BlocksGB: TGroupBox
                 Left = 1
-                Top = 520
+                Top = 466
                 Width = 800
                 Height = 138
                 Align = alBottom
@@ -348,21 +352,19 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 225
                 Width = 800
-                Height = 295
+                Height = 241
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
-                ExplicitHeight = 188
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 272
+                  Height = 218
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
-                  ExplicitHeight = 165
                   object mStartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
@@ -387,12 +389,11 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 266
+                  Height = 212
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
-                  ExplicitHeight = 159
                   object mMoveNorthBtn: TArrayBotButton
                     Left = 307
                     Top = 24
@@ -514,14 +515,12 @@ object MainForm: TMainForm
               end
               object GroupBox9: TGroupBox
                 Left = 1
-                Top = 658
+                Top = 604
                 Width = 800
                 Height = 131
                 Align = alBottom
                 Caption = 'Current Block Info'
                 TabOrder = 4
-                ExplicitLeft = -2
-                ExplicitTop = 751
                 object DBText3: TDBText
                   Left = 133
                   Top = 40
@@ -589,16 +588,18 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitHeight = 750
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 794
+            Height = 740
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
-            ExplicitHeight = 750
             object GroupBox4: TGroupBox
               Left = 2
               Top = 203
@@ -755,16 +756,18 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitHeight = 750
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 794
+            Height = 740
             Align = alClient
             Caption = 'ATDB'
             TabOrder = 0
-            ExplicitHeight = 750
             inline TATDBConnectionFrame1: TATDBConnectionFrame
               Left = 2
               Top = 21
@@ -944,16 +947,15 @@ object MainForm: TMainForm
               Left = 2
               Top = 433
               Width = 802
-              Height = 359
+              Height = 305
               Align = alClient
               Caption = 'Ribbons'
               TabOrder = 2
-              ExplicitHeight = 315
               object DBGrid1: TDBGrid
                 Left = 2
                 Top = 21
                 Width = 798
-                Height = 314
+                Height = 260
                 Align = alClient
                 DataSource = atdbDM.mRibbonDSource
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -997,14 +999,13 @@ object MainForm: TMainForm
               end
               object DBNavigator1: TDBNavigator
                 Left = 2
-                Top = 335
+                Top = 281
                 Width = 798
                 Height = 22
                 DataSource = atdbDM.mRibbonDSource
                 VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
                 Align = alBottom
                 TabOrder = 1
-                ExplicitTop = 291
               end
             end
           end
@@ -1012,7 +1013,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitHeight = 750
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1141,18 +1145,16 @@ object MainForm: TMainForm
         object TabSheet9: TTabSheet
           Caption = 'Navitar'
           ImageIndex = 7
-          ExplicitHeight = 750
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
             Width = 313
-            Height = 794
+            Height = 740
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
             ParentColor = False
             TabOrder = 0
-            ExplicitHeight = 750
             object ConnectBtn: TButton
               Left = 20
               Top = 24
@@ -1164,13 +1166,12 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 677
+              Top = 623
               Width = 309
               Height = 115
               Align = alBottom
               Caption = 'Controller Info'
               TabOrder = 1
-              ExplicitTop = 633
               object Label12: TLabel
                 Left = 16
                 Top = 24
@@ -1241,10 +1242,9 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 794
+            Height = 740
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 750
             inline TNavitarMotorFrame1: TNavitarMotorFrame
               Left = 1
               Top = 1
@@ -1307,31 +1307,35 @@ object MainForm: TMainForm
               Left = 1
               Top = 241
               Width = 491
-              Height = 552
+              Height = 498
               Align = alClient
               Caption = 'Presets'
               TabOrder = 2
-              ExplicitHeight = 508
             end
           end
         end
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
-          ExplicitHeight = 750
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
             Width = 806
-            Height = 794
+            Height = 740
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 750
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitHeight = 716
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1407,32 +1411,31 @@ object MainForm: TMainForm
             object TabSheet4: TTabSheet
               Caption = 'Sounds'
               ImageIndex = 1
-              ExplicitHeight = 716
               inline TSoundsFrame1: TSoundsFrame
                 Left = 0
                 Top = 241
                 Width = 798
-                Height = 519
+                Height = 465
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
                 ExplicitTop = 241
                 ExplicitWidth = 798
-                ExplicitHeight = 475
+                ExplicitHeight = 465
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 519
+                  Height = 465
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 475
+                  ExplicitHeight = 465
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 496
+                    Height = 442
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 452
+                    ExplicitHeight = 442
                   end
                 end
               end
@@ -1481,21 +1484,19 @@ object MainForm: TMainForm
   end
   object LeftPanel: TPanel
     Left = 0
-    Top = 30
+    Top = 84
     Width = 421
-    Height = 914
+    Height = 860
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 870
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
       Width = 419
-      Height = 912
+      Height = 858
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitHeight = 868
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -1562,76 +1563,32 @@ object MainForm: TMainForm
     Hint = 'Test'
     Panels = <>
     OnHint = StatusBar1Hint
-    ExplicitTop = 900
   end
   object ControlBar1: TControlBar
     Left = 0
     Top = 0
     Width = 1242
-    Height = 30
+    Height = 84
     Align = alTop
-    AutoSize = True
     TabOrder = 3
-    object MainToolBar: TToolBar
-      Left = 11
+    object ToolBar1: TToolBar
+      Left = 15
       Top = 2
-      Width = 150
-      Height = 22
-      Hint = 'Main Actions'
-      Caption = 'MainToolBar'
+      Width = 434
+      Height = 60
+      AutoSize = True
+      ButtonHeight = 60
+      Caption = 'ToolBar1'
       TabOrder = 0
-      object ToolButton1: TToolButton
+      object ArrayBotButton2: TArrayBotButton
         Left = 0
         Top = 0
-        Action = FileExit1
-      end
-      object ToolButton2: TToolButton
-        Left = 23
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton2'
-        ImageIndex = 1
-        Style = tbsSeparator
-      end
-      object ToolButton3: TToolButton
-        Left = 31
-        Top = 0
-        Hint = 'Open handwheel position form'
-        Action = OpenHandWheelPositionFormA
-      end
-      object ToolButton8: TToolButton
-        Left = 54
-        Top = 0
-        Action = ToggleMainContentPanelA
-      end
-    end
-    object CameraToolbar: TToolBar
-      Left = 184
-      Top = 2
-      Width = 150
-      Height = 22
-      Hint = 'Camera Actions'
-      Caption = 'CameraToolbar'
-      TabOrder = 1
-      object ToolButton4: TToolButton
-        Left = 0
-        Top = 0
-        Action = FitToScreenA
-      end
-      object ToolButton5: TToolButton
-        Left = 23
-        Top = 0
-        Action = Zoom1To1A
-      end
-      object ToolButton6: TToolButton
-        Left = 46
-        Top = 0
-        Action = Zoom1To2A
-      end
-      object ToolButton7: TToolButton
-        Left = 69
-        Top = 0
-        Action = OpenCameraSettingsA
+        Width = 145
+        Height = 60
+        Caption = 'Word wrapped Button'
+        TabOrder = 0
+        WordWrap = True
+        SoundID = 'BUTTON_CLICK_4'
       end
     end
   end
@@ -1703,8 +1660,8 @@ object MainForm: TMainForm
     end
   end
   object MainMenu1: TMainMenu
-    Left = 160
-    Top = 8
+    Left = 192
+    Top = 168
     object File1: TMenuItem
       Caption = 'File'
       object Exit1: TMenuItem
@@ -1744,6 +1701,9 @@ object MainForm: TMainForm
         Caption = 'Open Logger Form'
         OnClick = OpenLoggerForm1Click
       end
+      object Actions1: TMenuItem
+        Action = OpenCloseShortcutForm
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'
@@ -1764,7 +1724,7 @@ object MainForm: TMainForm
     end
     object OpenHandWheelPositionFormA: TAction
       Category = 'File'
-      Caption = 'Open Handwheel Position Form'
+      Caption = 'Open Handwheel \n Position Form'
       Hint = 'OPen Handwheel position Form'
       OnExecute = OpenHandWheelPositionFormAExecute
     end
@@ -1773,6 +1733,12 @@ object MainForm: TMainForm
       AutoCheck = True
       Caption = 'Show/Hide Main Content Panel'
       OnExecute = ToggleMainContentPanelAExecute
+    end
+    object OpenCloseShortcutForm: TAction
+      Category = 'File'
+      Caption = 'Open Actions'
+      OnExecute = OpenCloseShortcutFormExecute
+      OnUpdate = OpenCloseShortcutFormUpdate
     end
   end
   object CameraActions: TActionList

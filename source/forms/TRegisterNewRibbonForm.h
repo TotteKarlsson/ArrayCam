@@ -13,7 +13,7 @@
 #include "TMainForm.h"
 #include <Vcl.Mask.hpp>
 //---------------------------------------------------------------------------
-class TRegisterNewRibbonForm : public TForm
+class PACKAGE TRegisterNewRibbonForm : public TForm
 {
 __published:	// IDE-managed Components
 	TGroupBox *GroupBox2;

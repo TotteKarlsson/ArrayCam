@@ -12,4 +12,14 @@ __fastcall TActionsForm::TActionsForm(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+
 //---------------------------------------------------------------------------
+void __fastcall TActionsForm::FormMouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y)
+{
+	int sc_DragMove = 0xF012;
+    ReleaseCapture();
+    Perform( WM_SYSCOMMAND, sc_DragMove, 0 );
+}
+
+

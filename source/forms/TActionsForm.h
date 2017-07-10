@@ -10,6 +10,8 @@
 class PACKAGE TActionsForm : public TForm
 {
     __published:
+	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
     private:
 
 

@@ -18,6 +18,7 @@
 #include "THandWheelPositionForm.h"
 #include "forms/TAboutForm.h"
 #include "forms/TLoggerForm.h"
+#include "TActionsForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -93,7 +94,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         mSBManager(*StatusBar1),
         mHandWheelPositionForm(NULL),
-        LoggerForm(NULL)
+        LoggerForm(NULL),
+        ActionsForm(NULL)
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
@@ -1125,6 +1127,37 @@ void __fastcall TMainForm::OpenLoggerForm1Click(TObject *Sender)
     else
     {
     	LoggerForm->Visible = true;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenCloseShortcutFormExecute(TObject *Sender)
+{
+	if(!ActionsForm)
+    {
+    	ActionsForm = new TActionsForm(this);
+    }
+
+    if(!ActionsForm->Visible)
+    {
+    	ActionsForm->Show();
+    }
+    else
+    {
+    	ActionsForm->Hide();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenCloseShortcutFormUpdate(TObject *Sender)
+{
+	if(ActionsForm && ActionsForm->Visible)
+    {
+		OpenCloseShortcutForm->Caption = "Close Shortcuts";
+    }
+    else
+    {
+		OpenCloseShortcutForm->Caption = "Open ShortCuts";
     }
 }
 

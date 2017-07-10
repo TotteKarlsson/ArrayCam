@@ -5,6 +5,7 @@
 #include <vector>
 #include "mtkTimer.h"
 #include "arraycam/atArrayCamProtocol.h"
+#include "mtkIPCMessage.h"
 //---------------------------------------------------------------------------
 using mtk::IPCServer;
 mtk::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* parent);
@@ -15,7 +16,6 @@ typedef void (__closure *OnMessageUpdateCB)(const string& msg);
 //tcp/ip socket. The ArrayCam server is designed to handle messages and data related to the
 //arraybot project. The ArrayCam server is a descendant of the IPC server class that is implementing all
 //network functionality.
-
 class TMainForm;
 class ArrayCamServer : public IPCServer
 {
@@ -26,7 +26,7 @@ class ArrayCamServer : public IPCServer
 											//!Requests are sent to the server from a client.
                                             //!The process request is an overide from the IPCServer base class.
                                             //!ProcessRequest implements the ArrayCam server specific processing.
-    	bool 					            processRequest(IPCMessage& msg);
+    	bool 					            processRequest(mtk::IPCMessage& msg);
         bool            		            shutDown();
 
         void								assignOnUpdateCallBack(OnMessageUpdateCB cb);

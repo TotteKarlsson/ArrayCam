@@ -65,6 +65,7 @@ object UC7StagePositionFrame: TUC7StagePositionFrame
       Caption = '44725'
       Color = clWindow
       ParentColor = False
+      Visible = False
       Value = 44725
       TheFont.Charset = DEFAULT_CHARSET
       TheFont.Color = clWindowText

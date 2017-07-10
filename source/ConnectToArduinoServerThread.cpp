@@ -1,13 +1,9 @@
 #pragma hdrstop
 #include "ConnectToArduinoServerThread.h"
 #include "mtkLogger.h"
-
-
 //---------------------------------------------------------------------------
 
 using namespace mtk;
-
-
 
 ConnectToArduinoServerThread::ConnectToArduinoServerThread(ArduinoClient& c, int p)
 :

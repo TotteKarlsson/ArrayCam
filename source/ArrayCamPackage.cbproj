@@ -104,21 +104,89 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="ArrayBotPackage.bpi">
             <BuildOrder>12</BuildOrder>
         </PackageImport>
+        <CppCompile Include="ArrayCamIPCServerReceiver.cpp">
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ArrayCamPackage.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ArrayCamServer.cpp">
+            <DependentOn>ArrayCamServer.h</DependentOn>
+            <BuildOrder>27</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ArrayCamUtils.cpp">
+            <DependentOn>ArrayCamUtils.h</DependentOn>
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
+        <PackageImport Include="atVCLCore.bpi">
+            <BuildOrder>21</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="bindcomp.bpi">
+            <BuildOrder>22</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="bindcompvcl.bpi">
+            <BuildOrder>24</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="bindengine.bpi">
+            <BuildOrder>23</BuildOrder>
+        </PackageImport>
+        <CppCompile Include="ConnectToArduinoServerThread.cpp">
+            <DependentOn>ConnectToArduinoServerThread.h</DependentOn>
+            <BuildOrder>31</BuildOrder>
+        </CppCompile>
+        <PackageImport Include="dbexpress.bpi">
+            <BuildOrder>37</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="dbrtl.bpi">
+            <BuildOrder>19</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="dbxcds.bpi">
+            <BuildOrder>39</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="DbxCommonDriver.bpi">
+            <BuildOrder>38</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="DbxDevartSQLiteDriver170.bpi">
+            <BuildOrder>41</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="DBXMySQLDriver.bpi">
+            <BuildOrder>42</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="dsnap.bpi">
+            <BuildOrder>40</BuildOrder>
+        </PackageImport>
         <PackageImport Include="DuneComponents.bpi">
             <BuildOrder>17</BuildOrder>
         </PackageImport>
+        <CppCompile Include="forms\TAboutForm.cpp">
+            <Form>AboutForm</Form>
+            <DependentOn>forms\TAboutForm.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="forms\TActionsForm.cpp">
+            <Form>ActionsForm</Form>
+            <DependentOn>forms\TActionsForm.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="forms\THandWheelPositionForm.cpp">
+            <Form>HandWheelPositionForm</Form>
+            <DependentOn>forms\THandWheelPositionForm.h</DependentOn>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
         <CppCompile Include="forms\TReticlePopupForm.cpp">
             <Form>ReticlePopupForm</Form>
             <DependentOn>forms\TReticlePopupForm.h</DependentOn>
-            <BuildOrder>11</BuildOrder>
+            <BuildOrder>15</BuildOrder>
         </CppCompile>
         <CppCompile Include="forms\TSelectIntegerForm.cpp">
             <Form>SelectIntegerForm</Form>
             <DependentOn>forms\TSelectIntegerForm.h</DependentOn>
-            <BuildOrder>8</BuildOrder>
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="forms\TSettingsForm.cpp">
+            <Form>SettingsForm</Form>
+            <DependentOn>forms\TSettingsForm.h</DependentOn>
+            <BuildOrder>16</BuildOrder>
         </CppCompile>
         <CppCompile Include="frames\TUC7StagePositionFrame.cpp">
             <Form>UC7StagePositionFrame</Form>
@@ -129,6 +197,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="rtl.bpi">
             <BuildOrder>1</BuildOrder>
         </PackageImport>
+        <PackageImport Include="Tee.bpi">
+            <BuildOrder>20</BuildOrder>
+        </PackageImport>
         <PackageImport Include="vcl.bpi">
             <BuildOrder>16</BuildOrder>
         </PackageImport>
@@ -138,12 +209,22 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="VCLCommon.bpi">
             <BuildOrder>20</BuildOrder>
         </PackageImport>
+        <PackageImport Include="vcldb.bpi">
+            <BuildOrder>18</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="vclimg.bpi">
+            <BuildOrder>17</BuildOrder>
+        </PackageImport>
         <PackageImport Include="vclx.bpi">
             <BuildOrder>19</BuildOrder>
         </PackageImport>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="forms\TSettingsForm.dfm"/>
+        <FormResources Include="forms\TAboutForm.dfm"/>
+        <FormResources Include="forms\THandWheelPositionForm.dfm"/>
+        <FormResources Include="forms\TActionsForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -224,7 +305,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(BDSCOMMONDIR)\dcp\ArrayCamPackage.bpi  $(BDSCOMMONDIR)\dcp\ArrayCamPackage.lib</PostBuildEvent>
+        <PostBuildEvent>copy $(BDSCOMMONDIR)\dcp\ArrayCamPackage.bpi  $(BDSCOMMONDIR)\dcp\ArrayCamPackage.lib</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

@@ -9,10 +9,10 @@
 #include <VCLTee.Series.hpp>
 #include <VCLTee.TeEngine.hpp>
 #include <VCLTee.TeeProcs.hpp>
-#include "atUC7StatusHistory.h"
+#include "uc7/atUC7StatusHistory.h"
 #include "TRegistryForm.h"
 
-class THandWheelPositionForm : public TRegistryForm
+class PACKAGE THandWheelPositionForm : public TRegistryForm
 {
     __published:
         TChart*						            Chart1;

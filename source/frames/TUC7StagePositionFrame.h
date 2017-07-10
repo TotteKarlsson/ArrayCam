@@ -8,8 +8,6 @@
 #include "TIntLabel.h"
 //---------------------------------------------------------------------------
 
-
-
 class PACKAGE TUC7StagePositionFrame : public TFrame
 {
     __published:

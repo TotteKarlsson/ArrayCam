@@ -15,7 +15,7 @@
 #include "TATDBConnectionFrame.h"
 //---------------------------------------------------------------------------
 
-class TSettingsForm : public TForm
+class PACKAGE TSettingsForm : public TForm
 {
     __published:	// IDE-managed Components
         TTimer *mUIUpdateTimer;
