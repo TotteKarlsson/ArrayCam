@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Array Cam 0.5'
-  ClientHeight = 919
+  ClientHeight = 963
   ClientWidth = 1242
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,7 +26,7 @@ object MainForm: TMainForm
   object Splitter2: TSplitter
     Left = 421
     Top = 30
-    Height = 870
+    Height = 914
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
@@ -36,7 +36,7 @@ object MainForm: TMainForm
     Left = 424
     Top = 30
     Width = 818
-    Height = 870
+    Height = 914
     Align = alRight
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
@@ -165,7 +165,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 83
       Width = 816
-      Height = 786
+      Height = 830
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 1
@@ -173,7 +173,7 @@ object MainForm: TMainForm
         Left = 1
         Top = 1
         Width = 814
-        Height = 784
+        Height = 828
         ActivePage = Main
         Align = alClient
         MultiLine = True
@@ -186,146 +186,57 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 750
+            Height = 794
             Align = alClient
             TabOrder = 0
             object Panel9: TPanel
               Left = 0
               Top = 0
               Width = 802
-              Height = 746
+              Height = 790
               Align = alClient
               TabOrder = 0
               object BlocksGB: TGroupBox
                 Left = 1
-                Top = 413
+                Top = 520
                 Width = 800
-                Height = 332
+                Height = 138
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
-                object GroupBox9: TGroupBox
-                  Left = 2
-                  Top = 199
-                  Width = 796
-                  Height = 131
-                  Align = alBottom
-                  Caption = 'Current Block Info'
-                  TabOrder = 0
-                  object DBText3: TDBText
-                    Left = 133
-                    Top = 40
-                    Width = 170
-                    Height = 17
-                    DataField = 'user_name'
-                    DataSource = atdbDM.usersDataSource
-                  end
-                  object DBText4: TDBText
-                    Left = 133
-                    Top = 96
-                    Width = 170
-                    Height = 17
-                    DataField = 'case_id'
-                    DataSource = atdbDM.specimenDataSource
-                  end
-                  object DBText5: TDBText
-                    Left = 341
-                    Top = 69
-                    Width = 170
-                    Height = 17
-                    DataField = 'specimen_id'
-                    DataSource = atdbDM.specimenDataSource
-                  end
-                  object DBText7: TDBText
-                    Left = 133
-                    Top = 68
-                    Width = 170
-                    Height = 17
-                    DataField = 'id'
-                    DataSource = atdbDM.blocksDataSource
-                  end
-                  object Label11: TLabel
-                    Left = 12
-                    Top = 67
-                    Width = 65
-                    Height = 19
-                    Caption = 'Block ID:'
-                  end
-                  object Label7: TLabel
-                    Left = 12
-                    Top = 40
-                    Width = 38
-                    Height = 19
-                    Caption = 'User:'
-                  end
-                  object Label8: TLabel
-                    Left = 12
-                    Top = 95
-                    Width = 55
-                    Height = 19
-                    Caption = 'Case ID'
-                  end
-                  object Label9: TLabel
-                    Left = 220
-                    Top = 68
-                    Width = 96
-                    Height = 19
-                    Caption = 'Specimen ID:'
-                  end
-                  object mBCLabel: TLabel
-                    AlignWithMargins = True
-                    Left = 405
-                    Top = 24
-                    Width = 131
-                    Height = 39
-                    Alignment = taCenter
-                    Caption = 'Barcode'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clRed
-                    Font.Height = -32
-                    Font.Name = 'Tahoma'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                    Layout = tlCenter
-                  end
-                  object GroupBox10: TGroupBox
-                    Left = 609
-                    Top = 21
-                    Width = 185
-                    Height = 108
-                    Align = alRight
-                    Caption = 'Block Note'
-                    TabOrder = 0
-                    object DBMemo2: TDBMemo
-                      Left = 2
-                      Top = 21
-                      Width = 181
-                      Height = 85
-                      Align = alClient
-                      DataField = 'note'
-                      DataSource = atdbDM.blockNotesDSource
-                      ReadOnly = True
-                      TabOrder = 0
-                    end
-                  end
+                object mBCLabel: TLabel
+                  AlignWithMargins = True
+                  Left = 561
+                  Top = 48
+                  Width = 131
+                  Height = 39
+                  Alignment = taCenter
+                  Caption = 'Barcode'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clRed
+                  Font.Height = -32
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Layout = tlCenter
                 end
                 object mDecodeSessionBtn: TButton
                   Left = 25
                   Top = 37
                   Width = 143
-                  Height = 84
+                  Height = 85
                   Caption = 'Scan Barcode'
-                  TabOrder = 1
+                  TabOrder = 0
                   OnClick = mBtnClick
                 end
                 object mRegisterRibbonBtn: TArrayBotButton
-                  Left = 336
-                  Top = 37
+                  Left = 201
+                  Top = 39
                   Width = 143
-                  Height = 82
+                  Height = 85
                   Caption = 'Register Ribbon'
                   ParentDoubleBuffered = True
-                  TabOrder = 2
+                  TabOrder = 1
                   OnClick = mRegisterRibbonBtnClick
                   SoundID = 'BUTTON_CLICK_4'
                 end
@@ -437,19 +348,21 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 225
                 Width = 800
-                Height = 188
+                Height = 295
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
+                ExplicitHeight = 188
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 165
+                  Height = 272
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
+                  ExplicitHeight = 165
                   object mStartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
@@ -474,17 +387,18 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 159
+                  Height = 266
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
+                  ExplicitHeight = 159
                   object mMoveNorthBtn: TArrayBotButton
-                    Left = 475
+                    Left = 307
                     Top = 24
-                    Width = 100
+                    Width = 130
                     Height = 60
-                    Caption = 'Move North'
+                    Caption = 'Knife Reverse'
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 0
@@ -492,26 +406,14 @@ object MainForm: TMainForm
                     SoundID = 'BUTTON_CLICK_4'
                   end
                   object mMoveSouthBtn: TArrayBotButton
-                    Left = 475
-                    Top = 88
-                    Width = 100
+                    Left = 307
+                    Top = 90
+                    Width = 130
                     Height = 60
-                    Caption = 'Move South'
+                    Caption = 'Knife Forward'
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 1
-                    OnClick = CreateUC7Message
-                    SoundID = 'BUTTON_CLICK_4'
-                  end
-                  object StopKnifeStageMotionBtn: TArrayBotButton
-                    Left = 378
-                    Top = 24
-                    Width = 91
-                    Height = 60
-                    Caption = 'Stop'
-                    Enabled = False
-                    ParentDoubleBuffered = True
-                    TabOrder = 2
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
                   end
@@ -529,7 +431,7 @@ object MainForm: TMainForm
                     Font.Style = []
                     ParentDoubleBuffered = True
                     ParentFont = False
-                    TabOrder = 3
+                    TabOrder = 2
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
                   end
@@ -610,20 +512,93 @@ object MainForm: TMainForm
                   end
                 end
               end
+              object GroupBox9: TGroupBox
+                Left = 1
+                Top = 658
+                Width = 800
+                Height = 131
+                Align = alBottom
+                Caption = 'Current Block Info'
+                TabOrder = 4
+                ExplicitLeft = -2
+                ExplicitTop = 751
+                object DBText3: TDBText
+                  Left = 133
+                  Top = 40
+                  Width = 170
+                  Height = 17
+                  DataField = 'user_name'
+                  DataSource = atdbDM.usersDataSource
+                end
+                object DBText4: TDBText
+                  Left = 133
+                  Top = 96
+                  Width = 170
+                  Height = 17
+                  DataField = 'case_id'
+                  DataSource = atdbDM.specimenDataSource
+                end
+                object DBText5: TDBText
+                  Left = 341
+                  Top = 69
+                  Width = 170
+                  Height = 17
+                  DataField = 'specimen_id'
+                  DataSource = atdbDM.specimenDataSource
+                end
+                object DBText7: TDBText
+                  Left = 133
+                  Top = 68
+                  Width = 170
+                  Height = 17
+                  DataField = 'id'
+                  DataSource = atdbDM.blocksDataSource
+                end
+                object Label11: TLabel
+                  Left = 12
+                  Top = 67
+                  Width = 65
+                  Height = 19
+                  Caption = 'Block ID:'
+                end
+                object Label7: TLabel
+                  Left = 12
+                  Top = 40
+                  Width = 38
+                  Height = 19
+                  Caption = 'User:'
+                end
+                object Label8: TLabel
+                  Left = 12
+                  Top = 95
+                  Width = 55
+                  Height = 19
+                  Caption = 'Case ID'
+                end
+                object Label9: TLabel
+                  Left = 220
+                  Top = 68
+                  Width = 96
+                  Height = 19
+                  Caption = 'Specimen ID:'
+                end
+              end
             end
           end
         end
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitHeight = 750
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 750
+            Height = 794
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
+            ExplicitHeight = 750
             object GroupBox4: TGroupBox
               Left = 2
               Top = 203
@@ -780,14 +755,16 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitHeight = 750
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 750
+            Height = 794
             Align = alClient
             Caption = 'ATDB'
             TabOrder = 0
+            ExplicitHeight = 750
             inline TATDBConnectionFrame1: TATDBConnectionFrame
               Left = 2
               Top = 21
@@ -967,15 +944,16 @@ object MainForm: TMainForm
               Left = 2
               Top = 433
               Width = 802
-              Height = 315
+              Height = 359
               Align = alClient
               Caption = 'Ribbons'
               TabOrder = 2
+              ExplicitHeight = 315
               object DBGrid1: TDBGrid
                 Left = 2
                 Top = 21
                 Width = 798
-                Height = 270
+                Height = 314
                 Align = alClient
                 DataSource = atdbDM.mRibbonDSource
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -1019,13 +997,14 @@ object MainForm: TMainForm
               end
               object DBNavigator1: TDBNavigator
                 Left = 2
-                Top = 291
+                Top = 335
                 Width = 798
                 Height = 22
                 DataSource = atdbDM.mRibbonDSource
                 VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
                 Align = alBottom
                 TabOrder = 1
+                ExplicitTop = 291
               end
             end
           end
@@ -1033,6 +1012,7 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitHeight = 750
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1161,16 +1141,18 @@ object MainForm: TMainForm
         object TabSheet9: TTabSheet
           Caption = 'Navitar'
           ImageIndex = 7
+          ExplicitHeight = 750
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
             Width = 313
-            Height = 750
+            Height = 794
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
             ParentColor = False
             TabOrder = 0
+            ExplicitHeight = 750
             object ConnectBtn: TButton
               Left = 20
               Top = 24
@@ -1182,12 +1164,13 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 633
+              Top = 677
               Width = 309
               Height = 115
               Align = alBottom
               Caption = 'Controller Info'
               TabOrder = 1
+              ExplicitTop = 633
               object Label12: TLabel
                 Left = 16
                 Top = 24
@@ -1258,9 +1241,10 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 750
+            Height = 794
             Align = alClient
             TabOrder = 1
+            ExplicitHeight = 750
             inline TNavitarMotorFrame1: TNavitarMotorFrame
               Left = 1
               Top = 1
@@ -1323,27 +1307,31 @@ object MainForm: TMainForm
               Left = 1
               Top = 241
               Width = 491
-              Height = 508
+              Height = 552
               Align = alClient
               Caption = 'Presets'
               TabOrder = 2
+              ExplicitHeight = 508
             end
           end
         end
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
+          ExplicitHeight = 750
           object PageControl2: TPageControl
             Left = 0
             Top = 0
             Width = 806
-            Height = 750
+            Height = 794
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 750
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
+              ExplicitHeight = 716
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1419,11 +1407,12 @@ object MainForm: TMainForm
             object TabSheet4: TTabSheet
               Caption = 'Sounds'
               ImageIndex = 1
+              ExplicitHeight = 716
               inline TSoundsFrame1: TSoundsFrame
                 Left = 0
                 Top = 241
                 Width = 798
-                Height = 475
+                Height = 519
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
@@ -1432,14 +1421,14 @@ object MainForm: TMainForm
                 ExplicitHeight = 475
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 475
+                  Height = 519
                   Align = alClient
                   ExplicitWidth = 798
                   ExplicitHeight = 475
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 452
+                    Height = 496
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
@@ -1494,17 +1483,19 @@ object MainForm: TMainForm
     Left = 0
     Top = 30
     Width = 421
-    Height = 870
+    Height = 914
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 870
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
       Width = 419
-      Height = 868
+      Height = 912
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
+      ExplicitHeight = 868
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -1565,12 +1556,13 @@ object MainForm: TMainForm
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 900
+    Top = 944
     Width = 1242
     Height = 19
     Hint = 'Test'
     Panels = <>
     OnHint = StatusBar1Hint
+    ExplicitTop = 900
   end
   object ControlBar1: TControlBar
     Left = 0
@@ -1604,6 +1596,7 @@ object MainForm: TMainForm
       object ToolButton3: TToolButton
         Left = 31
         Top = 0
+        Hint = 'Open handwheel position form'
         Action = OpenHandWheelPositionFormA
       end
       object ToolButton8: TToolButton
@@ -1703,8 +1696,8 @@ object MainForm: TMainForm
     end
   end
   object ReticlePopup: TPopupMenu
-    Left = 304
-    Top = 584
+    Left = 328
+    Top = 552
     object Reset1: TMenuItem
       Caption = 'Reset'
     end

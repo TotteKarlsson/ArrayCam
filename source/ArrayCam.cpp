@@ -22,6 +22,7 @@ USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* 
 USEFORM("forms\TAboutForm.cpp", AboutForm);
 USEFORM("forms\THandWheelPositionForm.cpp", HandWheelPositionForm);
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("forms\TActionsForm.cpp", ActionsForm);
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -45,6 +46,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
+		Application->CreateForm(__classid(TActionsForm), &ActionsForm);
 		Application->Run();
 	}
 	catch (Exception &exception)

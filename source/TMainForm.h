@@ -118,13 +118,11 @@ class TMainForm  : public TRegistryForm
 	TDBText *DBText3;
 	TDBText *DBText4;
 	TDBText *DBText5;
-	TDBMemo *DBMemo2;
 	TLabel *Label11;
 	TDBText *DBText7;
 	TPageControl *PageControl2;
 	TTabSheet *TabSheet5;
 	TGroupBox *GroupBox9;
-	TGroupBox *GroupBox10;
 	TPropertyCheckBox *mRibbonCreatorActiveCB;
 	TGroupBox *CuttingGB;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
@@ -187,7 +185,6 @@ class TMainForm  : public TRegistryForm
 	TGroupBox *KnifeStageGB;
 	TIntegerLabeledEdit *mZeroCutsE;
 	TIntegerLabeledEdit *mPresetFeedRateE;
-	TArrayBotButton *StopKnifeStageMotionBtn;
 	TLabel *Label6;
 	TGroupBox *GroupBox7;
 	TIntegerLabeledEdit *mArduinoServerPortE;

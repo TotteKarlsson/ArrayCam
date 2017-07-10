@@ -1,37 +1,38 @@
 object AboutForm: TAboutForm
   Left = 0
   Top = 0
+  BorderStyle = bsToolWindow
   Caption = 'AboutForm'
-  ClientHeight = 648
-  ClientWidth = 804
+  ClientHeight = 662
+  ClientWidth = 814
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
     Top = 186
-    Width = 804
-    Height = 462
+    Width = 814
+    Height = 476
     Align = alClient
     Caption = 'ChangeLog'
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = 84
-    ExplicitWidth = 806
-    ExplicitHeight = 564
+    ExplicitWidth = 804
+    ExplicitHeight = 462
     object Memo1: TMemo
       Left = 2
       Top = 15
-      Width = 800
-      Height = 445
+      Width = 810
+      Height = 459
       Align = alClient
       Anchors = [akLeft, akRight, akBottom]
       Lines.Strings = (
@@ -39,21 +40,20 @@ object AboutForm: TAboutForm
       ScrollBars = ssBoth
       TabOrder = 0
       WordWrap = False
-      ExplicitWidth = 802
-      ExplicitHeight = 547
+      ExplicitWidth = 800
+      ExplicitHeight = 445
     end
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 804
+    Width = 814
     Height = 186
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -2
-    ExplicitWidth = 806
+    ExplicitWidth = 804
     object Image1: TImage
-      Left = 618
+      Left = 628
       Top = 1
       Width = 185
       Height = 184

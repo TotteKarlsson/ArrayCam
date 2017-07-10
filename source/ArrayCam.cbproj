@@ -155,6 +155,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>forms\TAboutForm.h</DependentOn>
             <BuildOrder>23</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TActionsForm.cpp">
+            <Form>ActionsForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>forms\TActionsForm.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
         <CppCompile Include="forms\THandWheelPositionForm.cpp">
             <Form>HandWheelPositionForm</Form>
             <FormType>dfm</FormType>
@@ -233,6 +239,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <FormResources Include="forms\TAboutForm.dfm"/>
         <FormResources Include="forms\THandWheelPositionForm.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
+        <FormResources Include="forms\TActionsForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -299,11 +306,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -380,7 +387,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
@@ -390,12 +403,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\DbxDevartSQLiteDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice">

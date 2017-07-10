@@ -19,6 +19,8 @@ class PACKAGE TAboutForm : public TForm
         TLabel *logLabel;
         TLabel *versionLabel;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
     private:
 
     public:

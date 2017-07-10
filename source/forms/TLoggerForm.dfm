@@ -1,8 +1,9 @@
 object LoggerForm: TLoggerForm
   Left = 0
   Top = 0
+  BorderStyle = bsSizeToolWin
   Caption = 'Logs'
-  ClientHeight = 421
+  ClientHeight = 425
   ClientWidth = 740
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,10 +23,11 @@ object LoggerForm: TLoggerForm
     Left = 0
     Top = 0
     Width = 740
-    Height = 421
+    Height = 425
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 0
+    ExplicitHeight = 421
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
@@ -91,7 +93,7 @@ object LoggerForm: TLoggerForm
       Left = 1
       Top = 51
       Width = 738
-      Height = 369
+      Height = 373
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -103,6 +105,7 @@ object LoggerForm: TLoggerForm
       ScrollBars = ssBoth
       TabOrder = 1
       WordWrap = False
+      ExplicitHeight = 369
     end
   end
   object ShutDownTimer: TTimer

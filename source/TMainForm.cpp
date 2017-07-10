@@ -491,10 +491,10 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
 		mUC7.setFeedRate(0);
     	mUC7.jogKnifeStageNorth(BackOffStepFrame->getValue(), true);
     }
-    else if(btn == StopKnifeStageMotionBtn)
-    {
-    	mUC7.stopKnifeStageNSMotion();
-    }
+//    else if(btn == StopKnifeStageMotionBtn)
+//    {
+//    	mUC7.stopKnifeStageNSMotion();
+//    }
 
     string msg = mUC7.getLastSentMessage().getMessage();
 	Log(lDebug3) << "Sent message: "<<msg;

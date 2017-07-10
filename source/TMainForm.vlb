@@ -13,9 +13,6 @@ Coordinates=1314,911,110,51
 [Panel7]
 Coordinates=964,1055,47,51
 
-[GroupBox10]
-Coordinates=1133,1595,76,51
-
 [atdbDM.freezeprotocolDS]
 Coordinates=1314,1541,140,51
 
@@ -48,9 +45,6 @@ Coordinates=334,1792,116,33
 
 [GroupBox3]
 Coordinates=751,849,70,51
-
-[StopKnifeStageMotionBtn]
-Coordinates=828,1792,141,51
 
 [atdbDM.mRibbonCDS]
 Coordinates=751,107,121,213
@@ -373,9 +367,6 @@ Coordinates=977,1792,141,51
 [atdbDM.infiltrationProtocolDS]
 Coordinates=1314,631,161,51
 
-[DBMemo2]
-Coordinates=1523,1561,64,33
-
 [TSoundsFrame1]
 Coordinates=1523,1613,95,33
 
@@ -443,5 +434,5 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=265,1792,66,33
+Coordinates=1133,1595,76,51
 
