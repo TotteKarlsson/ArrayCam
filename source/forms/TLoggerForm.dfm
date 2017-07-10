@@ -13,6 +13,8 @@ object LoggerForm: TLoggerForm
   OldCreateOrder = False
   Position = poDefault
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,10 +26,6 @@ object LoggerForm: TLoggerForm
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 0
-    ExplicitLeft = -66
-    ExplicitTop = -329
-    ExplicitWidth = 806
-    ExplicitHeight = 750
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
@@ -36,7 +34,6 @@ object LoggerForm: TLoggerForm
       Align = alTop
       Caption = 'Logs'
       TabOrder = 0
-      ExplicitWidth = 804
       object ToolBar1: TToolBar
         Left = 2
         Top = 15
@@ -61,6 +58,7 @@ object LoggerForm: TLoggerForm
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnClick = mClearLogMemoBtnClick
         end
         object LogLevelCB: TComboBox
           Left = 113
@@ -75,7 +73,10 @@ object LoggerForm: TLoggerForm
           ParentFont = False
           TabOrder = 1
           Text = 'INFO'
+          OnCloseUp = LogLevelCBCloseUp
           Items.Strings = (
+            'ERROR'
+            'WARNING'
             'INFO'
             'DEBUG'
             'DEBUG1'
@@ -102,8 +103,13 @@ object LoggerForm: TLoggerForm
       ScrollBars = ssBoth
       TabOrder = 1
       WordWrap = False
-      ExplicitWidth = 804
-      ExplicitHeight = 698
     end
+  end
+  object ShutDownTimer: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = ShutDownTimerTimer
+    Left = 552
+    Top = 80
   end
 end

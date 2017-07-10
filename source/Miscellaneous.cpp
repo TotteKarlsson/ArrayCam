@@ -3,6 +3,10 @@
 #include "TMainForm.h"
 #include "mtkVCLUtils.h"
 #include "TReticlePopupForm.h"
+#include "mtkLogger.h"
+//---------------------------------------------------------------------------
+using namespace mtk;
+
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -59,25 +63,6 @@ int TMainForm::extractCoverSlipID(const string& bc)
 void __fastcall TMainForm::mToggleLogPanelClick(TObject *Sender)
 {
 	FitToScreenAExecute(Sender);
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::LogLevelCBChange(TObject *Sender)
-{
-//	if(LogLevelCB->ItemIndex == -1)
-//    {
-//    	return;
-//    }
-//
-//    string lvl = stdstr(LogLevelCB->Items->Strings[LogLevelCB->ItemIndex]);
-//    mLogLevel = toLogLevel(lvl);
-//    gLogger.setLogLevel(mLogLevel);
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::ClearLogMemo(TObject *Sender)
-{
-//	infoMemo->Clear();
 }
 
 void __fastcall TMainForm::mCameraStreamPanelDblClick(TObject *Sender)

@@ -85,17 +85,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	mCamera1BackPanel->Left 	= 0;
     enableDisableClientControls(false);
 
-    //Setup LogLevel CB
-    string logLevel = mtk::toString(gLogger.getLogLevel());
-
-//    //Find item in CB with this loglevel
-//    int index = LogLevelCB->Items->IndexOf(vclstr(logLevel));
-//
-//    if(index > -1)
-//    {
-//		LogLevelCB->ItemIndex = index;
-//    }
-
 	//Connect to the arduino server..
 	mCheckSocketConnectionTimer->Enabled = true;
 

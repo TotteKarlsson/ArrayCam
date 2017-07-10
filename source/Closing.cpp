@@ -3,13 +3,16 @@
 #include "TMainForm.h"
 #include "THandWheelPositionForm.h"
 #include "TLoggerForm.h"
+#include "mtkLogger.h"
 //---------------------------------------------------------------------------
+using namespace mtk;
+
 
 extern bool gAppIsClosing;
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 	gAppIsClosing = true;
-	if(mLogFileReader.isRunning() 				||
+	if(//mLogFileReader.isRunning() 				||
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
         mLightsArduinoClient.isConnected() 		||
@@ -17,7 +20,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         atdbDM->SQLConnection1->Connected 		||
         mZebra.isConnected()                    ||
         mHandWheelPositionForm                  ||
-        mLoggerForm
+        LoggerForm
         )
     {
         CanClose = false;
@@ -58,10 +61,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
         mHandWheelPositionForm = NULL;
     }
 
-	if(mLoggerForm)
+	if(LoggerForm)
     {
-        mLoggerForm->Close();
-        mLoggerForm = NULL;
+        LoggerForm->Close();
+        LoggerForm = NULL;
     }
 
     if(mCheckSocketConnectionTimer->Enabled)
@@ -91,11 +94,11 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	    atdbDM->SQLConnection1->Close();
     }
 
-	if(mLogFileReader.isRunning())
-    {
-		mLogFileReader.stop();
-        mLogFileReader.assignOnMessageCallBack(NULL);
-    }
+//	if(mLogFileReader.isRunning())
+//    {
+//		mLogFileReader.stop();
+//        mLogFileReader.assignOnMessageCallBack(NULL);
+//    }
 
     Close();
 }

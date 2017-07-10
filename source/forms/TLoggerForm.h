@@ -9,10 +9,14 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ToolWin.hpp>
 #include "TRegistryForm.h"
+#include "mtkLogFileReader.h"
+#include "mtkLogLevel.h"
+
 
 //---------------------------------------------------------------------------
 class PACKAGE TLoggerForm : public TRegistryForm
 {
+    friend class TMainForm;
     __published:	// IDE-managed Components
         TPanel *Panel1;
         TGroupBox *GroupBox1;
@@ -20,13 +24,24 @@ class PACKAGE TLoggerForm : public TRegistryForm
         TBitBtn *mClearLogMemoBtn;
         TComboBox *LogLevelCB;
         TMemo *infoMemo;
+	TTimer *ShutDownTimer;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-    private:
+	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+	void __fastcall ShutDownTimerTimer(TObject *Sender);
+	void __fastcall mClearLogMemoBtnClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall LogLevelCBCloseUp(TObject *Sender);
+
+    protected:
+        LogFileReader                           mLogFileReader;
+		mtk::LogLevel		            		mLogLevel;
+        void __fastcall                         logMsg();
+		void __fastcall 						LogLevelCBChange(TObject *Sender);
 
     public:
-        __fastcall TLoggerForm(const string& regRoot, TComponent* Owner);
-        __fastcall ~TLoggerForm();
+        						__fastcall 		TLoggerForm(const string& regRoot, TComponent* Owner);
+        						__fastcall 		~TLoggerForm();
 };
 
 extern PACKAGE TLoggerForm *LoggerForm;

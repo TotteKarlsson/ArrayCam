@@ -14,15 +14,10 @@ THandWheelPositionForm *HandWheelPositionForm;
 __fastcall THandWheelPositionForm::THandWheelPositionForm(UC7StatusHistory& h, const string& regRoot, TComponent* Owner)
 	: TRegistryForm(regRoot, "HandWheelPositionForm", Owner),
     mUC7StatusHistory(h)
-{
-
-
-}
+{}
 
 __fastcall THandWheelPositionForm::~THandWheelPositionForm()
-{
-
-}
+{}
 
 void THandWheelPositionForm::plot()
 {
@@ -32,9 +27,6 @@ void THandWheelPositionForm::plot()
     }
 
 	Series1->Clear();
-
-
-
 
     deque<UC7StatusPoint> c = mUC7StatusHistory.getCurrentCycle();
 
@@ -80,7 +72,6 @@ void THandWheelPositionForm::setTimeToClose()
 	mTimeToClose = true;
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
 {
@@ -98,7 +89,6 @@ void __fastcall THandWheelPositionForm::FormCreate(TObject *Sender)
 	ReadRegistry();
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift)
@@ -108,5 +98,3 @@ void __fastcall THandWheelPositionForm::FormKeyDown(TObject *Sender, WORD &Key,
         Close();
     }
 }
-
-

@@ -6,7 +6,10 @@
 #include "vcl/atVCLUtils.h"
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
+#include "mtkLogger.h"
+//---------------------------------------------------------------------------
 using namespace at;
+using namespace mtk;
 
 //---------------------------------------------------------------------------
 void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)

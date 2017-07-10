@@ -14,10 +14,8 @@
 #include <Vcl.Grids.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
-#include "mtkLogFileReader.h"
 #include "mtkIniFileProperties.h"
 #include "mtkIniFile.h"
-#include "mtkLogger.h"
 #include "TRegistryForm.h"
 #include "uc480/uc480Class.h"
 #include "arduino/atLightsArduinoClient.h"
@@ -81,7 +79,7 @@ class TMainForm  : public TRegistryForm
 	friend TSettingsForm;
 	friend TRegisterNewRibbonForm;
 	friend TLocalArgs;
-
+//    friend class TLoggerForm;
 	__published:	// IDE-managed Components
 	TTimer *mShutDownTimer;
 	TSplitter *Splitter2;
@@ -267,9 +265,9 @@ class TMainForm  : public TRegistryForm
 	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
 	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
-	void __fastcall ClearLogMemo(TObject *Sender);
+//	void __fastcall ClearLogMemo(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
-	void __fastcall LogLevelCBChange(TObject *Sender);
+//	void __fastcall LogLevelCBChange(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall PageControl1Change(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
@@ -318,8 +316,8 @@ class TMainForm  : public TRegistryForm
 
     protected:
     	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
-        LogFileReader                           mLogFileReader;
-        void __fastcall                         logMsg();
+//        LogFileReader                           mLogFileReader;
+//        void __fastcall                         logMsg();
 		UC7						 				mUC7;
         int						 				getCOMPortNumber();
 
@@ -460,7 +458,7 @@ class TMainForm  : public TRegistryForm
 		TStatusBarManager						mSBManager;
         THandWheelPositionForm* 				mHandWheelPositionForm;
 
-		TLoggerForm*							mLoggerForm;
+		TLoggerForm*							LoggerForm;
     //=================================================================================================
     public:
 
@@ -477,14 +475,14 @@ class TMainForm  : public TRegistryForm
         void		__fastcall					updateHumidity(double h);
 
     BEGIN_MESSAGE_MAP
-    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 			TMessage, 						OnUSBCameraMessage);
-        MESSAGE_HANDLER(UWM_UC7_MESSAGE,      		ATWindowStructMessage,         	AppInBox);
-        MESSAGE_HANDLER(WM_DECODE, 					TMessage, 		                onWMDecode);
-        MESSAGE_HANDLER(WM_CAPABILITIES, 			TMessage, 	                    onSSICapabilities)
-		MESSAGE_HANDLER(WM_IMAGE,                   TMessage, 		                onSSIImage)
-        MESSAGE_HANDLER(WM_ERROR,                   TMessage, 		                onSSIError)
-        MESSAGE_HANDLER(WM_TIMEOUT,                 TMessage, 		                onSSITimeout)
-        MESSAGE_HANDLER(WM_EVENT, 	                TMessage, 		                onSSIEvent)
+    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						OnUSBCameraMessage);
+        MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
+        MESSAGE_HANDLER(WM_DECODE, 				TMessage, 		                onWMDecode);
+        MESSAGE_HANDLER(WM_CAPABILITIES, 		TMessage, 	                    onSSICapabilities)
+		MESSAGE_HANDLER(WM_IMAGE,               TMessage, 		                onSSIImage)
+        MESSAGE_HANDLER(WM_ERROR,               TMessage, 		                onSSIError)
+        MESSAGE_HANDLER(WM_TIMEOUT,             TMessage, 		                onSSITimeout)
+        MESSAGE_HANDLER(WM_EVENT, 	            TMessage, 		                onSSIEvent)
     END_MESSAGE_MAP(TForm)
 };
 

@@ -4,6 +4,7 @@
 #include <sstream>
 #include "mtkVCLUtils.h"
 #include "mtkMathUtils.h"
+#include "mtkLogger.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"

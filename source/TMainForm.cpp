@@ -34,10 +34,7 @@
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
-extern string gLogFileName;
-extern string gAppName;
 extern string gApplicationRegistryRoot;
-extern string gLogFileLocation;
 extern string gLogFileName;
 extern string gAppDataFolder;
 extern bool   gAppIsStartingUp;
@@ -49,7 +46,6 @@ using namespace at;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
-    	mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName, gLogFileName), &logMsg),
         mCaptureVideo(false),
         mSettingsForm(NULL),
         mAVIID(0),
@@ -97,10 +93,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         mSBManager(*StatusBar1),
         mHandWheelPositionForm(NULL),
-        mLoggerForm(NULL)
+        LoggerForm(NULL)
 {
-   	mLogFileReader.start(true);
-
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
 
@@ -185,18 +179,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 __fastcall TMainForm::~TMainForm()
 {}
-
-//---------------------------------------------------------------------------
-//This one is called from the reader thread
-void __fastcall TMainForm::logMsg()
-{
-//	if(infoMemo->Lines->Count > 1000)
-//    {
-//	    infoMemo->Clear();
-//    }
-//
-//    infoMemo->Lines->Insert(0, (vclstr(mLogFileReader.getData())));
-}
 
 //---------------------------------------------------------------------------
 //Callback from socket client class
@@ -1134,14 +1116,15 @@ void __fastcall TMainForm::About1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OpenLoggerForm1Click(TObject *Sender)
 {
-	if(!mLoggerForm)
+	if(!LoggerForm)
     {
-    	mLoggerForm = new TLoggerForm(gApplicationRegistryRoot, this);
-        mLoggerForm->Show();
+    	LoggerForm = new TLoggerForm(gApplicationRegistryRoot, this);
+		mLogLevel.setReference(&(LoggerForm->mLogLevel));
+        LoggerForm->Show();
     }
     else
     {
-    	mLoggerForm->Visible = true;
+    	LoggerForm->Visible = true;
     }
 }
 
