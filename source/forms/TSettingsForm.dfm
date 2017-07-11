@@ -29,10 +29,6 @@ object SettingsForm: TSettingsForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Camera'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152

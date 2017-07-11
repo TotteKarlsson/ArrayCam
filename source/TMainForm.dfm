@@ -24,7 +24,7 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter2: TSplitter
-    Left = 421
+    Left = 390
     Top = 84
     Height = 860
     Align = alRight
@@ -33,7 +33,7 @@ object MainForm: TMainForm
     ExplicitHeight = 814
   end
   object MainContentPanel: TPanel
-    Left = 424
+    Left = 393
     Top = 84
     Width = 818
     Height = 860
@@ -41,139 +41,23 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
-    object MainTopPanel: TPanel
+    ExplicitLeft = 424
+    object Panel1: TPanel
       Left = 1
       Top = 1
       Width = 816
-      Height = 82
-      Align = alTop
-      AutoSize = True
-      TabOrder = 0
-      object CounterGB: TGroupBox
-        Left = 1
-        Top = 1
-        Width = 814
-        Height = 80
-        Align = alTop
-        TabOrder = 0
-        object mSectionCounterLabel: TIntLabel
-          Left = 91
-          Top = 33
-          Width = 16
-          Height = 35
-          Caption = '1'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -29
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Value = 1
-          TheFont.Charset = DEFAULT_CHARSET
-          TheFont.Color = clWindowText
-          TheFont.Height = -29
-          TheFont.Name = 'Tahoma'
-          TheFont.Style = []
-        end
-        object mRibbonOrderCountLabel: TIntLabel
-          Left = 261
-          Top = 33
-          Width = 16
-          Height = 35
-          Caption = '1'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -29
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          OnClick = mRibbonOrderCountLabelClick
-          Value = 1
-          TheFont.Charset = DEFAULT_CHARSET
-          TheFont.Color = clWindowText
-          TheFont.Height = -29
-          TheFont.Name = 'Tahoma'
-          TheFont.Style = []
-        end
-        object Label6: TLabel
-          Left = 239
-          Top = 7
-          Width = 96
-          Height = 19
-          Caption = 'Ribbon Order'
-        end
-        object mCountToE: TIntegerLabeledEdit
-          Left = 14
-          Top = 37
-          Width = 65
-          Height = 31
-          EditLabel.Width = 66
-          EditLabel.Height = 19
-          EditLabel.Caption = 'Count To'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          Text = '0'
-        end
-        object mResetCounterBtn: TArrayBotButton
-          Left = 165
-          Top = 32
-          Width = 68
-          Height = 36
-          Caption = 'Reset'
-          Enabled = False
-          ParentDoubleBuffered = True
-          TabOrder = 1
-          OnClick = mResetCounterBtnClick
-          SoundID = 'BUTTON_CLICK_4'
-        end
-        object mResetRibbonOrderBtn: TArrayBotButton
-          Left = 308
-          Top = 32
-          Width = 68
-          Height = 36
-          Caption = 'Reset'
-          Enabled = False
-          ParentDoubleBuffered = True
-          TabOrder = 2
-          OnClick = mResetCounterBtnClick
-          SoundID = 'BUTTON_CLICK_4'
-        end
-        object mRibbonCreatorActiveCB: TPropertyCheckBox
-          Left = 390
-          Top = 35
-          Width = 280
-          Height = 26
-          Caption = 'Ribbon Creator On/Off'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -21
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          WordWrap = True
-          OnClick = mRibbonCreatorActiveCBClick
-        end
-      end
-    end
-    object Panel1: TPanel
-      Left = 1
-      Top = 83
-      Width = 816
-      Height = 776
+      Height = 858
       Align = alClient
       Caption = 'Panel1'
-      TabOrder = 1
+      TabOrder = 0
+      DesignSize = (
+        816
+        858)
       object PageControl1: TPageControl
         Left = 1
         Top = 1
         Width = 814
-        Height = 774
+        Height = 856
         ActivePage = Main
         Align = alClient
         MultiLine = True
@@ -182,27 +66,23 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 740
+            Height = 822
             Align = alClient
             TabOrder = 0
             object Panel9: TPanel
               Left = 0
               Top = 0
               Width = 802
-              Height = 736
+              Height = 818
               Align = alClient
               TabOrder = 0
               object BlocksGB: TGroupBox
                 Left = 1
-                Top = 466
+                Top = 548
                 Width = 800
                 Height = 138
                 Align = alBottom
@@ -291,7 +171,7 @@ object MainForm: TMainForm
                 object mZeroCutsE: TIntegerLabeledEdit
                   Left = 616
                   Top = 48
-                  Width = 169
+                  Width = 89
                   Height = 47
                   EditLabel.Width = 171
                   EditLabel.Height = 19
@@ -352,7 +232,7 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 225
                 Width = 800
-                Height = 241
+                Height = 323
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
@@ -361,7 +241,7 @@ object MainForm: TMainForm
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 218
+                  Height = 300
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
@@ -389,7 +269,7 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 212
+                  Height = 294
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
@@ -515,7 +395,7 @@ object MainForm: TMainForm
               end
               object GroupBox9: TGroupBox
                 Left = 1
-                Top = 604
+                Top = 686
                 Width = 800
                 Height = 131
                 Align = alBottom
@@ -588,15 +468,11 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 740
+            Height = 822
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
@@ -756,15 +632,11 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 740
+            Height = 822
             Align = alClient
             Caption = 'ATDB'
             TabOrder = 0
@@ -779,7 +651,7 @@ object MainForm: TMainForm
               ExplicitLeft = 2
               ExplicitTop = 21
               ExplicitWidth = 802
-              inherited GroupBox1: TGroupBox
+              inherited GBox1: TGroupBox
                 Left = 13
                 Caption = 'Connection'
                 ExplicitLeft = 13
@@ -947,7 +819,7 @@ object MainForm: TMainForm
               Left = 2
               Top = 433
               Width = 802
-              Height = 305
+              Height = 387
               Align = alClient
               Caption = 'Ribbons'
               TabOrder = 2
@@ -955,7 +827,7 @@ object MainForm: TMainForm
                 Left = 2
                 Top = 21
                 Width = 798
-                Height = 260
+                Height = 342
                 Align = alClient
                 DataSource = atdbDM.mRibbonDSource
                 Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -999,7 +871,7 @@ object MainForm: TMainForm
               end
               object DBNavigator1: TDBNavigator
                 Left = 2
-                Top = 281
+                Top = 363
                 Width = 798
                 Height = 22
                 DataSource = atdbDM.mRibbonDSource
@@ -1013,10 +885,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1149,7 +1017,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 313
-            Height = 740
+            Height = 822
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
@@ -1166,7 +1034,7 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 623
+              Top = 705
               Width = 309
               Height = 115
               Align = alBottom
@@ -1242,7 +1110,7 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 740
+            Height = 822
             Align = alClient
             TabOrder = 1
             inline TNavitarMotorFrame1: TNavitarMotorFrame
@@ -1307,7 +1175,7 @@ object MainForm: TMainForm
               Left = 1
               Top = 241
               Width = 491
-              Height = 498
+              Height = 580
               Align = alClient
               Caption = 'Presets'
               TabOrder = 2
@@ -1317,25 +1185,17 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
             Width = 806
-            Height = 740
-            ActivePage = TabSheet5
+            Height = 822
+            ActivePage = TabSheet4
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1413,29 +1273,29 @@ object MainForm: TMainForm
               ImageIndex = 1
               inline TSoundsFrame1: TSoundsFrame
                 Left = 0
-                Top = 241
+                Top = 482
                 Width = 798
-                Height = 465
+                Height = 306
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
-                ExplicitTop = 241
+                ExplicitTop = 482
                 ExplicitWidth = 798
-                ExplicitHeight = 465
+                ExplicitHeight = 306
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 465
+                  Height = 306
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 465
+                  ExplicitHeight = 306
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 442
+                    Height = 283
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 442
+                    ExplicitHeight = 283
                   end
                 end
               end
@@ -1443,35 +1303,77 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 0
                 Width = 798
-                Height = 241
+                Height = 482
                 Align = alTop
                 AutoSize = True
                 TabOrder = 1
-                ExplicitWidth = 798
-                inherited GroupBox1: TGroupBox
+                object GBS: TGroupBox
+                  Left = 0
+                  Top = 0
                   Width = 798
-                  ExplicitWidth = 798
-                  inherited ApplicationSoundsLB: TListBox
+                  Height = 241
+                  Align = alTop
+                  Caption = 'Application Sounds'
+                  TabOrder = 0
+                  object ApplicationSoundsLB: TListBox
+                    Left = 2
                     Top = 21
-                    Width = 328
+                    Width = 247
                     Height = 218
+                    Align = alLeft
                     ItemHeight = 19
-                    ExplicitTop = 21
-                    ExplicitWidth = 328
-                    ExplicitHeight = 218
+                    TabOrder = 0
                   end
-                  inherited GroupBox2: TGroupBox
-                    Left = 330
+                  object GroupBox2: TGroupBox
+                    Left = 249
                     Top = 21
-                    Width = 466
+                    Width = 547
                     Height = 218
-                    ExplicitLeft = 330
-                    ExplicitTop = 21
-                    ExplicitWidth = 466
-                    ExplicitHeight = 218
-                    inherited SoundCB: TComboBox
+                    Align = alClient
+                    Caption = 'Sound Properties'
+                    TabOrder = 1
+                    object EnabledCB: TCheckBox
+                      Left = 24
+                      Top = 143
+                      Width = 97
+                      Height = 17
+                      Caption = 'Enabled'
+                      TabOrder = 0
+                    end
+                    object PlayBtn: TButton
+                      Left = 144
+                      Top = 105
+                      Width = 105
+                      Height = 32
+                      Caption = 'Play'
+                      TabOrder = 1
+                    end
+                    object RepeatCB: TCheckBox
+                      Left = 24
+                      Top = 120
+                      Width = 97
+                      Height = 17
+                      Caption = 'Repeat'
+                      TabOrder = 2
+                      Visible = False
+                    end
+                    object SoundCB: TComboBox
+                      Left = 24
+                      Top = 32
+                      Width = 233
                       Height = 27
-                      ExplicitHeight = 27
+                      TabOrder = 3
+                      Text = 'SoundCB'
+                    end
+                    object VolumeTB: TTrackBar
+                      Left = 24
+                      Top = 73
+                      Width = 233
+                      Height = 26
+                      Max = 0
+                      Min = -10000
+                      TabOrder = 4
+                      TickStyle = tsNone
                     end
                   end
                 end
@@ -1480,23 +1382,35 @@ object MainForm: TMainForm
           end
         end
       end
+      object Button1: TButton
+        Left = 783
+        Top = 1
+        Width = 25
+        Height = 25
+        Action = ToggleMainContentPanelA
+        Anchors = [akTop, akRight]
+        Caption = 'x'
+        TabOrder = 1
+      end
     end
   end
   object LeftPanel: TPanel
     Left = 0
     Top = 84
-    Width = 421
+    Width = 390
     Height = 860
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 421
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 419
+      Width = 388
       Height = 858
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
+      ExplicitWidth = 419
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -1527,7 +1441,7 @@ object MainForm: TMainForm
               BiDiMode = bdLeftToRight
               ImageIndex = -1
               ParentBiDiMode = False
-              Text = 'Camera'
+              Text = 'Settings'
               Width = 80
             end
             item
@@ -1572,25 +1486,156 @@ object MainForm: TMainForm
     Align = alTop
     TabOrder = 3
     object ToolBar1: TToolBar
-      Left = 15
+      Left = 706
       Top = 2
-      Width = 434
-      Height = 60
+      Width = 384
+      Height = 75
       AutoSize = True
-      ButtonHeight = 60
+      ButtonHeight = 75
       Caption = 'ToolBar1'
       TabOrder = 0
       object ArrayBotButton2: TArrayBotButton
         Left = 0
         Top = 0
         Width = 145
-        Height = 60
+        Height = 75
         Caption = 'Word wrapped Button'
         TabOrder = 0
         WordWrap = True
         SoundID = 'BUTTON_CLICK_4'
       end
     end
+    object CounterGB: TGroupBox
+      Left = 11
+      Top = 2
+      Width = 646
+      Height = 74
+      Align = alTop
+      TabOrder = 1
+      object mSectionCounterLabel: TIntLabel
+        Left = 91
+        Top = 33
+        Width = 16
+        Height = 35
+        Caption = '1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -29
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Value = 1
+        TheFont.Charset = DEFAULT_CHARSET
+        TheFont.Color = clWindowText
+        TheFont.Height = -29
+        TheFont.Name = 'Tahoma'
+        TheFont.Style = []
+      end
+      object mRibbonOrderCountLabel: TIntLabel
+        Left = 261
+        Top = 33
+        Width = 16
+        Height = 35
+        Caption = '1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -29
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = mRibbonOrderCountLabelClick
+        Value = 1
+        TheFont.Charset = DEFAULT_CHARSET
+        TheFont.Color = clWindowText
+        TheFont.Height = -29
+        TheFont.Name = 'Tahoma'
+        TheFont.Style = []
+      end
+      object Label6: TLabel
+        Left = 239
+        Top = 7
+        Width = 96
+        Height = 19
+        Caption = 'Ribbon Order'
+      end
+      object mCountToE: TIntegerLabeledEdit
+        Left = 14
+        Top = 37
+        Width = 65
+        Height = 31
+        EditLabel.Width = 66
+        EditLabel.Height = 19
+        EditLabel.Caption = 'Count To'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        Text = '0'
+      end
+      object mResetCounterBtn: TArrayBotButton
+        Left = 165
+        Top = 32
+        Width = 68
+        Height = 36
+        Caption = 'Reset'
+        Enabled = False
+        ParentDoubleBuffered = True
+        TabOrder = 1
+        OnClick = mResetCounterBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
+      object mResetRibbonOrderBtn: TArrayBotButton
+        Left = 308
+        Top = 32
+        Width = 68
+        Height = 36
+        Caption = 'Reset'
+        Enabled = False
+        ParentDoubleBuffered = True
+        TabOrder = 2
+        OnClick = mResetCounterBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
+      object mRibbonCreatorActiveCB: TPropertyCheckBox
+        Left = 390
+        Top = 35
+        Width = 280
+        Height = 26
+        Caption = 'Ribbon Creator On/Off'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        WordWrap = True
+        OnClick = mRibbonCreatorActiveCBClick
+      end
+    end
+  end
+  object ToggleMainContentBtn: TButton
+    Left = 1211
+    Top = 84
+    Width = 31
+    Height = 860
+    Action = ToggleMainContentPanelA
+    Align = alRight
+    Caption = '<'
+    TabOrder = 4
+    Visible = False
+    ExplicitLeft = 1225
+    ExplicitTop = 57
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    UseAppManager = True
+    Left = 148
+    Top = 165
   end
   object mShutDownTimer: TTimer
     Enabled = False
@@ -1631,8 +1676,8 @@ object MainForm: TMainForm
     Top = 216
   end
   object CameraPopup: TPopupMenu
-    Left = 240
-    Top = 576
+    Left = 224
+    Top = 288
     object FittoScreen1: TMenuItem
       Action = FitToScreenA
     end
@@ -1691,6 +1736,10 @@ object MainForm: TMainForm
     end
     object Misc1: TMenuItem
       Caption = 'Misc'
+      object ShowHideMainContentPanel1: TMenuItem
+        Action = ToggleMainContentPanelA
+        AutoCheck = True
+      end
       object UC7StatusChart1: TMenuItem
         Action = OpenHandWheelPositionFormA
       end
@@ -1764,9 +1813,16 @@ object MainForm: TMainForm
     end
     object OpenCameraSettingsA: TAction
       Category = 'Camera'
-      Caption = 'Camera Settings'
+      Caption = 'More Settings'
       Hint = 'Open Camera settings form'
       OnExecute = OpenCameraSettingsAExecute
     end
+  end
+  object BindingsList2: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    UseAppManager = True
+    Left = 672
+    Top = 16
   end
 end

@@ -943,10 +943,9 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
         	mReticleForm = auto_ptr<TReticlePopupForm>(new TReticlePopupForm(mReticle, this));
             mReticleForm->mReticleVisibilityCB->setReference(mReticleVisible.getReference());
 			mReticleForm->mReticleVisibilityCB->update();
-
         }
 
-        mReticleForm->Top = p.y - mReticleForm->Height;
+        mReticleForm->Top = p.y;// + mReticleForm->Height;
         mReticleForm->Left = p.x;
         mReticleForm->Show();
     }
@@ -1096,15 +1095,13 @@ void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
 
 void __fastcall TMainForm::ToggleMainContentPanelAExecute(TObject *Sender)
 {
-	MainContentPanel->Visible = !MainContentPanel->Visible;
+	MainContentPanel->Visible 		= !MainContentPanel->Visible;
+	ToggleMainContentBtn->Visible 	= !MainContentPanel->Visible;
+    Splitter2->Visible 				= MainContentPanel->Visible;
+
     if(MainContentPanel->Visible)
     {
 		Splitter2->Left = MainContentPanel->Left - 1;
-	    Splitter2->Visible = true;
-    }
-    else
-    {
-	    Splitter2->Visible = false;
     }
 }
 

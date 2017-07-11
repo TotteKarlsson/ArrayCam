@@ -52,6 +52,9 @@
 #include "uc480/uc480Class.h"
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
+#include <Data.Bind.Components.hpp>
+#include <Data.Bind.EngExt.hpp>
+#include <Vcl.Bind.DBEngExt.hpp>
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -95,7 +98,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
 	TTimer *mCheckSocketConnectionTimer;
-	TPanel *MainTopPanel;
 	TGroupBox *CounterGB;
 	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
@@ -250,6 +252,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *Actions1;
 	TArrayBotButton *ArrayBotButton2;
 	TToolBar *ToolBar1;
+	TBindingsList *BindingsList2;
+	TButton *Button1;
+	TMenuItem *ShowHideMainContentPanel1;
+	TButton *ToggleMainContentBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
