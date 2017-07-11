@@ -1085,11 +1085,15 @@ void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
 	if(!mHandWheelPositionForm)
     {
     	mHandWheelPositionForm = new THandWheelPositionForm(mUC7.getStatusHistoryRef(), gApplicationRegistryRoot, this);
-        mHandWheelPositionForm->Show();
+    }
+
+    if(!mHandWheelPositionForm->Visible)
+    {
+    	mHandWheelPositionForm->Show();
     }
     else
     {
-		mHandWheelPositionForm->Visible = true;
+		mHandWheelPositionForm->Hide();
     }
 }
 

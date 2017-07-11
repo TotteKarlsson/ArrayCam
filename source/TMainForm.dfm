@@ -41,7 +41,6 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
-    ExplicitLeft = 424
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -1315,13 +1314,14 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 0
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object GroupBox2: TGroupBox
@@ -1332,6 +1332,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1361,7 +1364,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1401,7 +1404,6 @@ object MainForm: TMainForm
     Height = 860
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 421
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
@@ -1410,7 +1412,6 @@ object MainForm: TMainForm
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitWidth = 419
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -1499,7 +1500,8 @@ object MainForm: TMainForm
         Top = 0
         Width = 145
         Height = 75
-        Caption = 'Word wrapped Button'
+        Action = OpenHandWheelPositionFormA
+        Caption = 'Open Handwheel Position Form'
         TabOrder = 0
         WordWrap = True
         SoundID = 'BUTTON_CLICK_4'
@@ -1627,8 +1629,6 @@ object MainForm: TMainForm
     Caption = '<'
     TabOrder = 4
     Visible = False
-    ExplicitLeft = 1225
-    ExplicitTop = 57
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -1740,11 +1740,11 @@ object MainForm: TMainForm
         Action = ToggleMainContentPanelA
         AutoCheck = True
       end
-      object UC7StatusChart1: TMenuItem
-        Action = OpenHandWheelPositionFormA
-      end
       object N5: TMenuItem
         Caption = '-'
+      end
+      object UC7StatusChart1: TMenuItem
+        Action = OpenHandWheelPositionFormA
       end
       object OpenLoggerForm1: TMenuItem
         Caption = 'Open Logger Form'
@@ -1773,8 +1773,8 @@ object MainForm: TMainForm
     end
     object OpenHandWheelPositionFormA: TAction
       Category = 'File'
-      Caption = 'Open Handwheel \n Position Form'
-      Hint = 'OPen Handwheel position Form'
+      Caption = 'Open Handwheel Position Form'
+      Hint = 'Open Handwheel position Form'
       OnExecute = OpenHandWheelPositionFormAExecute
     end
     object ToggleMainContentPanelA: TAction
