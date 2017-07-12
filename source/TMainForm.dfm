@@ -278,7 +278,7 @@ object MainForm: TMainForm
                     Top = 24
                     Width = 130
                     Height = 60
-                    Caption = 'Knife Reverse'
+                    Caption = 'Knife Forward'
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 0
@@ -290,7 +290,7 @@ object MainForm: TMainForm
                     Top = 90
                     Width = 130
                     Height = 60
-                    Caption = 'Knife Forward'
+                    Caption = 'Knife Reverse'
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 1
@@ -467,6 +467,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -631,6 +635,10 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -884,6 +892,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -945,7 +957,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 27
+                Height = 28
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1184,6 +1196,10 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1195,6 +1211,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1309,12 +1329,11 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 798
+                  Width = 509
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
-                  ExplicitWidth = 509
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
@@ -1763,8 +1782,8 @@ object MainForm: TMainForm
     end
   end
   object MenuActions: TActionList
-    Left = 40
-    Top = 88
+    Left = 96
+    Top = 144
     object FileExit1: TFileExit
       Category = 'File'
       Caption = 'E&xit'

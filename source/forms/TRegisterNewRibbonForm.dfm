@@ -64,9 +64,9 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       object DBText3: TDBText
         Left = 160
         Top = 32
-        Width = 97
+        Width = 65
         Height = 17
-        DataField = 'process_id'
+        DataField = 'specimen_id'
         DataSource = atdbDM.blocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -92,9 +92,9 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       object Label5: TLabel
         Left = 24
         Top = 30
-        Width = 123
+        Width = 96
         Height = 19
-        Caption = 'Block Process ID:'
+        Caption = 'Specimen ID:'
       end
       object Label6: TLabel
         Left = 247

@@ -19,6 +19,7 @@
 #include "forms/TAboutForm.h"
 #include "forms/TLoggerForm.h"
 #include "TActionsForm.h"
+#include "TATDBDataModule.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -324,6 +325,14 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
                 }
                 delete m;
             }
+            break;
+
+            case atMiscMessage:
+            {
+            	int* m = (int*) msg.lparam;
+                Log(lDebug) << "Handling Misc message: \"" << *m;//m->getMessageNameAsString()<<"\" with data: "<<m->getData();
+            }
+            break;
             default:
             break ;
         }
@@ -333,6 +342,7 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 		Log(lError) << "An exception was thrown in AppInBox.";
 	}
 }
+
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
@@ -1136,7 +1146,7 @@ void __fastcall TMainForm::OpenCloseShortcutFormExecute(TObject *Sender)
 {
 	if(!ActionsForm)
     {
-    	ActionsForm = new TActionsForm(this);
+    	ActionsForm = new TActionsForm(Handle, this);
     }
 
     if(!ActionsForm->Visible)

@@ -52,22 +52,16 @@
 #include "uc480/uc480Class.h"
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
+#include "ArrayCamMessages.h"
 #include <Data.Bind.Components.hpp>
 #include <Data.Bind.EngExt.hpp>
 #include <Vcl.Bind.DBEngExt.hpp>
+
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
 using mtk::IniFileProperties;
 using mtk::IniFile;
 using mtk::Property;
-
-#define UWM_MESSAGE      (WM_APP + 5)
-enum ApplicationMessageEnum
-{
-    atUC7SplashWasClosed = 0,
-    atUC7Message,
-    atEnableResumeBtn
-};
 
 class TSettingsForm;
 class TLocalArgs;
@@ -472,6 +466,7 @@ class PACKAGE TMainForm  : public TRegistryForm
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						OnUSBCameraMessage);
         MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
+
         MESSAGE_HANDLER(WM_DECODE, 				TMessage, 		                onWMDecode);
         MESSAGE_HANDLER(WM_CAPABILITIES, 		TMessage, 	                    onSSICapabilities)
 		MESSAGE_HANDLER(WM_IMAGE,               TMessage, 		                onSSIImage)

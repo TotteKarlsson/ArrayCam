@@ -118,4 +118,13 @@ void __fastcall TLoggerForm::LogLevelCBCloseUp(TObject *Sender)
     gLogger.setLogLevel(mLogLevel);
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TLoggerForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+    if(Key == VK_ESCAPE)
+    {
+        Close();
+    }
+}
+
 

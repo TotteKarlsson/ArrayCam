@@ -32,6 +32,8 @@ class PACKAGE TLoggerForm : public TRegistryForm
 	void __fastcall mClearLogMemoBtnClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall LogLevelCBCloseUp(TObject *Sender);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
 
     protected:
         LogFileReader                           mLogFileReader;
