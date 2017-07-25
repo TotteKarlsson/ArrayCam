@@ -155,7 +155,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TComboBox *mUC7ComportCB;
 	TButton *mConnectUC7Btn;
 	TArrayBotButton *mSynchUIBtn;
-	TGroupBox *NorthSouthGB;
 	TTabSheet *TabSheet2;
 	TGroupBox *atdbGB;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
@@ -250,6 +249,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TButton *Button1;
 	TMenuItem *ShowHideMainContentPanel1;
 	TButton *ToggleMainContentBtn;
+	TToolBar *ToolBar2;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

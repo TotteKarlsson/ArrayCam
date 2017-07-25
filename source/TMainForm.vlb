@@ -115,9 +115,6 @@ Coordinates=1133,281,65,51
 [atdbDM.ribbonsDS]
 Coordinates=550,195,107,213
 
-[NorthSouthGB]
-Coordinates=751,463,86,51
-
 [BlockSelectionGB]
 Coordinates=1205,1792,103,51
 
@@ -431,5 +428,5 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1133,421,84,51
+Coordinates=751,463,86,51
 

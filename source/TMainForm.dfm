@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = Main
+        ActivePage = TabSheet8
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -467,10 +467,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -481,12 +477,13 @@ object MainForm: TMainForm
             TabOrder = 0
             object GroupBox4: TGroupBox
               Left = 2
-              Top = 203
+              Top = 62
               Width = 802
               Height = 94
               Align = alTop
               Caption = 'Misc parameters'
               TabOrder = 0
+              ExplicitTop = 203
               object mStageMoveDelayE: TIntegerLabeledEdit
                 Left = 23
                 Top = 48
@@ -566,23 +563,15 @@ object MainForm: TMainForm
                 SoundID = 'BUTTON_CLICK_4'
               end
             end
-            object NorthSouthGB: TGroupBox
-              Left = 2
-              Top = 62
-              Width = 802
-              Height = 141
-              Align = alTop
-              Caption = 'North-South Knife Stage Position (0-100 000)'
-              TabOrder = 2
-            end
             object KnifeGB: TGroupBox
               Left = 2
-              Top = 297
+              Top = 156
               Width = 802
               Height = 120
               Align = alTop
               Caption = 'Knife position'
-              TabOrder = 3
+              TabOrder = 2
+              ExplicitTop = 297
               inline BackOffStepFrame: TUC7StagePositionFrame
                 Left = 10
                 Top = 24
@@ -635,10 +624,6 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -892,10 +877,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -957,7 +938,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 28
+                Height = 27
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1196,10 +1177,6 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1211,10 +1188,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Connections'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1329,11 +1302,12 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 509
+                  Width = 798
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
@@ -1508,7 +1482,7 @@ object MainForm: TMainForm
     object ToolBar1: TToolBar
       Left = 706
       Top = 2
-      Width = 384
+      Width = 223
       Height = 75
       AutoSize = True
       ButtonHeight = 75
@@ -1636,6 +1610,14 @@ object MainForm: TMainForm
         WordWrap = True
         OnClick = mRibbonCreatorActiveCBClick
       end
+    end
+    object ToolBar2: TToolBar
+      Left = 961
+      Top = 2
+      Width = 150
+      Height = 74
+      Caption = 'ToolBar2'
+      TabOrder = 2
     end
   end
   object ToggleMainContentBtn: TButton

@@ -407,7 +407,7 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 
     //group boxes
 	enableDisableGroupBox(CounterGB, 		enableDisable);
-    enableDisableGroupBox(NorthSouthGB,		enableDisable);
+//    enableDisableGroupBox(NorthSouthGB,		enableDisable);
     enableDisableGroupBox(UC7OperationGB, 	enableDisable);
     enableDisableGroupBox(CuttingGB, 		enableDisable);
     enableDisableGroupBox(KnifeStageGB,		enableDisable);
