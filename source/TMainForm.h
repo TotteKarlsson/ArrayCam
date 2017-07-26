@@ -183,10 +183,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mZeroCutsE;
 	TIntegerLabeledEdit *mPresetFeedRateE;
 	TLabel *Label6;
-	TGroupBox *GroupBox7;
-	TIntegerLabeledEdit *mArduinoServerPortE;
-	TButton *mASStartBtn;
-	TPropertyCheckBox *mAutoCheckConnectionCB;
 	TScrollBox *ScrollBox1;
 	TGroupBox *GroupBox11;
 	TGroupBox *GroupBox12;
@@ -250,6 +246,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *ShowHideMainContentPanel1;
 	TButton *ToggleMainContentBtn;
 	TToolBar *ToolBar2;
+	TTabSheet *TabSheet3;
+	TGroupBox *GroupBox2;
+	TIntegerLabeledEdit *mArduinoServerPortE;
+	TButton *mASStartBtn;
+	TPropertyCheckBox *mAutoCheckConnectionCB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -304,7 +305,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall OpenCloseShortcutFormUpdate(TObject *Sender);
 
     protected:
-    	enum StatusBarPanels{ sbpTemperature = 0, sbpHumidity, sbpHandWheelPosition};
+    	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
+        						sbpArrayBotConnection, 	sbpHandWheelPosition,
+                                sbpDBConnection, 		sbpArduinoConnection,
+                                sbpUC7Connection, 		sbpBarcodeReader,
+                                sbpNavitarController};
 
 		UC7						 				mUC7;
         int						 				getCOMPortNumber();
@@ -407,8 +412,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 
         void									enableDisableClientControls(bool enable);
 		void    								populateUsers();
-		void       __fastcall					afterServerConnect(System::TObject* Sender);
-		void       __fastcall					afterServerDisconnect(System::TObject* Sender);
+		void       __fastcall					afterDBServerConnect(System::TObject* Sender);
+		void       __fastcall					afterDBServerDisconnect(System::TObject* Sender);
 
    		void       __fastcall					onCameraOpen( System::TObject* Sender);
 		void       __fastcall					onCameraClose(System::TObject* Sender);

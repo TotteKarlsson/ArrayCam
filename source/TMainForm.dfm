@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Array Cam 0.5'
   ClientHeight = 963
-  ClientWidth = 1242
+  ClientWidth = 1553
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter2: TSplitter
-    Left = 390
+    Left = 701
     Top = 84
     Height = 860
     Align = alRight
@@ -33,7 +33,7 @@ object MainForm: TMainForm
     ExplicitHeight = 814
   end
   object MainContentPanel: TPanel
-    Left = 393
+    Left = 704
     Top = 84
     Width = 818
     Height = 860
@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = TabSheet8
+        ActivePage = TabSheet1
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -483,7 +483,6 @@ object MainForm: TMainForm
               Align = alTop
               Caption = 'Misc parameters'
               TabOrder = 0
-              ExplicitTop = 203
               object mStageMoveDelayE: TIntegerLabeledEdit
                 Left = 23
                 Top = 48
@@ -571,7 +570,6 @@ object MainForm: TMainForm
               Align = alTop
               Caption = 'Knife position'
               TabOrder = 2
-              ExplicitTop = 297
               inline BackOffStepFrame: TUC7StagePositionFrame
                 Left = 10
                 Top = 24
@@ -1182,11 +1180,11 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 822
-            ActivePage = TabSheet4
+            ActivePage = TabSheet3
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
-              Caption = 'ArrayCam Connections'
+              Caption = 'ArrayCam Server'
               ImageIndex = 2
               object GroupBox1: TGroupBox
                 Left = 0
@@ -1218,14 +1216,18 @@ object MainForm: TMainForm
                   SoundID = 'BUTTON_CLICK_4'
                 end
               end
-              object GroupBox7: TGroupBox
+            end
+            object TabSheet3: TTabSheet
+              Caption = 'Arduino Client'
+              ImageIndex = 2
+              object GroupBox2: TGroupBox
                 Left = 0
-                Top = 105
+                Top = 0
                 Width = 798
                 Height = 169
                 Align = alTop
                 Caption = 'Arduino Client'
-                TabOrder = 1
+                TabOrder = 0
                 object mArduinoServerPortE: TIntegerLabeledEdit
                   Left = 16
                   Top = 56
@@ -1307,17 +1309,16 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 0
-                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
-                  object GroupBox2: TGroupBox
+                  object SoundPropsGB: TGroupBox
                     Left = 249
                     Top = 21
                     Width = 547
@@ -1325,9 +1326,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1357,7 +1355,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1393,14 +1391,14 @@ object MainForm: TMainForm
   object LeftPanel: TPanel
     Left = 0
     Top = 84
-    Width = 390
+    Width = 701
     Height = 860
     Align = alClient
     TabOrder = 1
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 388
+      Width = 699
       Height = 858
       Align = alClient
       TabOrder = 0
@@ -1466,7 +1464,7 @@ object MainForm: TMainForm
   object StatusBar1: TStatusBar
     Left = 0
     Top = 944
-    Width = 1242
+    Width = 1553
     Height = 19
     Hint = 'Test'
     Panels = <>
@@ -1475,7 +1473,7 @@ object MainForm: TMainForm
   object ControlBar1: TControlBar
     Left = 0
     Top = 0
-    Width = 1242
+    Width = 1553
     Height = 84
     Align = alTop
     TabOrder = 3
@@ -1621,7 +1619,7 @@ object MainForm: TMainForm
     end
   end
   object ToggleMainContentBtn: TButton
-    Left = 1211
+    Left = 1522
     Top = 84
     Width = 31
     Height = 860

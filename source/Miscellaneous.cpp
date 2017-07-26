@@ -34,13 +34,15 @@ void __fastcall	TMainForm::updateTemperature(double t)
 {
 	TStatusPanel* p = mSBManager.getPanel(sbpTemperature);
     p->Text = "Temperature: " + FloatToStrF(t, ffNumber, 4, 1);
-
 }
 
 void __fastcall	TMainForm::updateHumidity(double h)
 {
 	TStatusPanel* p = mSBManager.getPanel(sbpHumidity);
-    p->Text = "Humidity: " + FloatToStrF(h, ffNumber, 4, 1);
+    if(p)
+    {
+    	p->Text = "Humidity: " + FloatToStrF(h, ffNumber, 4, 1);
+    }
 }
 
 int TMainForm::extractCoverSlipID(const string& bc)

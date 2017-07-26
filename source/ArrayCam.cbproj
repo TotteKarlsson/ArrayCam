@@ -211,15 +211,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>19</BuildOrder>
         </CppCompile>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
-        <FormResources Include="forms\TLoggerForm.dfm"/>
         <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="forms\TActionsForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
+        <FormResources Include="forms\TActionsForm.dfm"/>
+        <FormResources Include="forms\TLoggerForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -286,13 +286,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>ArrayCam.tds</RemoteName>
-                    </Platform>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\DbxDevartSQLiteDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -366,22 +364,24 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>ArrayCam.tds</RemoteName>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\DbxDevartSQLiteDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">

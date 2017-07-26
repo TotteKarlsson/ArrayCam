@@ -12,7 +12,7 @@ using namespace at;
 using namespace mtk;
 
 //---------------------------------------------------------------------------
-void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
+void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Succesfully connected to DB Server";
 
@@ -31,7 +31,8 @@ void __fastcall	TMainForm::afterServerConnect(System::TObject* Sender)
     mRegisterRibbonBtn->Enabled = true;
 }
 
-void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
+//---------------------------------------------------------------------------
+void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Disconnected from the DB Server";
 	TATDBConnectionFrame1->afterDisconnect();
@@ -42,6 +43,7 @@ void __fastcall	TMainForm::afterServerDisconnect(System::TObject* Sender)
     mRegisterRibbonBtn->Enabled = false;
 }
 
+//---------------------------------------------------------------------------
 int TMainForm::getCurrentUserID()
 {
 	return  mUsersCB->KeyValue;

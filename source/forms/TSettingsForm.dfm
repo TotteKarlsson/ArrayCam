@@ -321,10 +321,6 @@ object SettingsForm: TSettingsForm
     object TabSheet3: TTabSheet
       Caption = 'Peripherals'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LightIntensitiesGB: TGroupBox
         Left = 3
         Top = 16

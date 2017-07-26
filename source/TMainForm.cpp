@@ -171,13 +171,16 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         }
     }
 
-    TStatusPanel* p1 = mSBManager.addPanel(120, sbpTemperature);
-    TStatusPanel* p2 = mSBManager.addPanel(120, sbpHumidity);
-    TStatusPanel* p3 = mSBManager.addPanel(120, sbpHandWheelPosition);
-
-    p1->Text = "";
-	p2->Text = "";
-	p3->Text = "Wheel Position: N/A";
+    //Create statusbar panels
+    mSBManager.addPanel(120, sbpTemperature);
+    mSBManager.addPanel(120, sbpHumidity);
+    mSBManager.addPanel(180, sbpUC7Connection, 		"UC7: Not Connected");
+    mSBManager.addPanel(300, sbpHandWheelPosition, 	"Wheel Position: N/A");
+    mSBManager.addPanel(180, sbpArrayBotConnection,	"ArrayBot: Not Connected");
+    mSBManager.addPanel(220, sbpDBConnection, 		"MySQL Server: Not Connected");
+    mSBManager.addPanel(200, sbpNavitarController,	"Navitar Controller: Not Connected");
+    mSBManager.addPanel(220, sbpArduinoConnection,	"Arduino Server: Not Connected");
+    mSBManager.addPanel(200, sbpBarcodeReader, 		"BarcodeReader: Not Connected");
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -189,10 +192,14 @@ void TMainForm::onArduinoClientConnected()
 {
     Log(lDebug) << "ArduinoClient was connected..";
 	mCheckSocketConnectionTimer->Enabled = false;
+    mASStartBtn->Caption = "Stop";
 
     //Send message to update UI
     mLightsArduinoClient.getBoardStatus();
     enableDisableClientControls(true);
+
+  	TStatusPanel* p = mSBManager.getPanel(sbpArduinoConnection);
+    p->Text = "ArduinoServer: Connected";
 }
 
 //---------------------------------------------------------------------------
@@ -203,18 +210,24 @@ void TMainForm::onArduinoClientDisconnected()
 	//Don't worry if we are closing down..
     if(gAppIsClosing != true)
     {
+	    mASStartBtn->Caption = "Start";
     	enableDisableClientControls(false);
         if(mCheckArduinoServerConnection)
         {
 			mCheckSocketConnectionTimer->Enabled = true;
         }
+  		TStatusPanel* p = mSBManager.getPanel(sbpArduinoConnection);
+	    p->Text = "ArduinoServer: Not Connected";
     }
 }
 
 //---------------------------------------------------------------------------
 void TMainForm::enableDisableClientControls(bool enable)
 {
-	//Disable client related components..
+	mArduinoServerPortE->Enabled = !enable;
+
+
+	//Disable/Enable client related components..
     if(mSettingsForm)
     {
     	enableDisableGroupBox(mSettingsForm->LightIntensitiesGB, enable);
@@ -390,12 +403,17 @@ void __fastcall TMainForm::onConnectedToUC7()
 
 	enableDisableUC7UI(true);
 	mSynchUIBtnClick(NULL);
+
+  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
+    p->Text = "UC7: Connected";
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::onDisConnectedToUC7()
 {
 	enableDisableUC7UI(false);
+  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
+    p->Text = "UC7: Not Connected";
 }
 
 //---------------------------------------------------------------------------

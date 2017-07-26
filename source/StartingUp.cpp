@@ -118,11 +118,11 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	try
     {
 
-        atdbDM->SQLConnection1->AfterConnect 	= afterServerConnect;
-        atdbDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
+        atdbDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
+        atdbDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
 
-//        ImagesAndMoviesDM->SQLConnection1->AfterConnect 	= afterServerConnect;
-//        ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterServerDisconnect;
+//        ImagesAndMoviesDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
+//        ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
     }
     catch(...)
     {
