@@ -29,6 +29,9 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
     enableDisableGroupBox(RibbonsDataGB, true);
 
     RegisterRibbonBtn->Enabled = true;
+
+  	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
+    p->Text = "ATDB: Connected";
 }
 
 //---------------------------------------------------------------------------
@@ -41,6 +44,10 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
     enableDisableGroupBox(BlockSelectionGB, false);
     enableDisableGroupBox(RibbonsDataGB, false);
     RegisterRibbonBtn->Enabled = false;
+
+  	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
+    p->Text = "ATDB: Not Connected";
+
 }
 
 //---------------------------------------------------------------------------

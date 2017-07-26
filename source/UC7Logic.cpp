@@ -196,6 +196,27 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
     return true;
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mSynchUIBtnClick(TObject *Sender)
+{
+    mUC7.getStatus();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mResetCounterBtnClick(TObject *Sender)
+{
+	TArrayBotButton* btn = dynamic_cast<TArrayBotButton*>(Sender);
+    if(btn == mResetCounterBtn)
+    {
+    	mUC7.getSectionCounter().reset();
+        mSectionCounterLabel->update();
+    }
+    else if(btn == mResetRibbonOrderBtn)
+    {
+		mUC7.getRibbonOrderCounter().reset();
+        mRibbonOrderCountLabel->update();
+    }
+}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
@@ -364,4 +385,90 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
 	Log(lDebug3) << "Sent message: "<<msg;
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift)
+{
+	TIntegerLabeledEdit* 	e  = dynamic_cast<TIntegerLabeledEdit*>(Sender);
+	TIntegerEdit* 			ie = dynamic_cast<TIntegerEdit*>(Sender);
+
+    if(Key == VK_RETURN)
+    {
+        if(e == mPresetFeedRateE)
+        {
+            mUC7.setFeedRatePreset(e->getValue());
+        }
+        else if(e == mStageMoveDelayE)
+        {
+            mUC7.setStageMoveDelay(e->getValue());
+        }
+
+        else if(e == mFeedRateE)
+        {
+            //Set feedrate
+            mUC7.setFeedRate(e->getValue());
+
+            //This will also change preset feed
+            mPresetFeedRateE->setValue(e->getValue());
+	        mUC7.setFeedRatePreset(e->getValue());
+        }
+        else if(ie == MaxStagePosFrame->AbsPosE)
+        {
+	        MaxStagePosFrame->AbsPosEKeyDown(Sender, Key, Shift);
+            mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
+        }
+        else if(ie == CurrentStagePosFrame->AbsPosE)
+        {
+	        CurrentStagePosFrame->AbsPosEKeyDown(Sender, Key, Shift);
+            mUC7.moveKnifeStageNSAbsolute(CurrentStagePosFrame->AbsPosE->getValue());
+        }
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::KnifePosChange(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    CurrentStagePosFrame->posEdit(Sender, Key, Shift);
+		mUC7.moveKnifeStageNSAbsolute(CurrentStagePosFrame->AbsPosE->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::MaxKnifePosKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    MaxStagePosFrame->posEdit(Sender, Key, Shift);
+		mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    BackOffStepFrame->posEdit(Sender, Key, Shift);
+		mUC7.setKnifeStageJogStepPreset(BackOffStepFrame->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+	    ResumeDeltaDistanceFrame->posEdit(Sender, Key, Shift);
+		mUC7.setKnifeStageResumeDelta(ResumeDeltaDistanceFrame->AbsPosE->getValue());
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PopulateMaxNorthPosBtnClick(TObject *Sender)
+{
+    MaxStagePosFrame->setValue(CurrentStagePosFrame->getValue());
+	mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
+}
 

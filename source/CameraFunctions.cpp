@@ -10,9 +10,76 @@
 #include "database/atDBUtils.h"
 #include "TATDBDataModule.h"
 #include "TSettingsForm.h"
-
+#include "TReticlePopupForm.h"
 using namespace mtk;
 using namespace at;
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
+          THeaderSection *Section)
+{
+    POINT p;
+    GetCursorPos(&p);
+
+	if(Section == CameraHC->Sections->Items[0])
+    {
+        //Show popup
+        CameraPopup->Popup(p.x, p.y);
+    }
+    else if(Section == CameraHC->Sections->Items[1])
+    {
+		if(mReticleForm.get() == NULL)
+        {
+        	mReticleForm = auto_ptr<TReticlePopupForm>(new TReticlePopupForm(mReticle, this));
+            mReticleForm->mReticleVisibilityCB->setReference(mReticleVisible.getReference());
+			mReticleForm->mReticleVisibilityCB->update();
+        }
+
+        mReticleForm->Top = p.y;// + mReticleForm->Height;
+        mReticleForm->Left = p.x;
+        mReticleForm->Show();
+    }
+    else if(Section == CameraHC->Sections->Items[2])
+    {
+	    takeSnapShot();
+    }
+    else if(Section == CameraHC->Sections->Items[3])
+    {
+	    startStopRecordingMovie();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+	//If mouse is inside reticle center, allowe moving its center
+	mMovingReticle = true;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+	mMovingReticle = false;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
+{
+	//Update reticle center
+	if(mMovingReticle)
+    {
+    	int x = X - mPB->Width/2;
+        int y = Y - mPB->Height/2;
+    	mReticle.setReticleCenter(x, y);
+		if(mReticleForm.get() && mReticleForm->Visible)
+    	{
+        	mReticleForm->mReticleCenterXTB->Position = x;
+        	mReticleForm->mReticleCenterYTB->Position = y;
+        }
+    }
+}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCameraStartLiveBtnClick(TObject *Sender)

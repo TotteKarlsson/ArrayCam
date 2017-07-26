@@ -4,9 +4,10 @@
 #include "mtkVCLUtils.h"
 #include "TReticlePopupForm.h"
 #include "mtkLogger.h"
+#include "forms/TAboutForm.h"
 //---------------------------------------------------------------------------
 using namespace mtk;
-
+extern string gApplicationRegistryRoot;
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -14,6 +15,21 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
     {
 		mCamera1.exitCamera();
     	Close();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenLoggerForm1Click(TObject *Sender)
+{
+	if(!LoggerForm)
+    {
+    	LoggerForm = new TLoggerForm(gApplicationRegistryRoot, this);
+		mLogLevel.setReference(&(LoggerForm->mLogLevel));
+        LoggerForm->Show();
+    }
+    else
+    {
+    	LoggerForm->Visible = true;
     }
 }
 
@@ -77,4 +93,12 @@ int	TMainForm::getCOMPortNumber()
 {
 	return mUC7ComportCB->ItemIndex + 1;
 }
+
+void __fastcall TMainForm::About1Click(TObject *Sender)
+{
+	TAboutForm* f = new TAboutForm(this);
+    f->ShowModal();
+    delete f;
+}
+
 

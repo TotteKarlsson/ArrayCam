@@ -80,6 +80,9 @@ void __fastcall TMainForm::onConnectedToZebra()
     enableDisableGroupBox(mImagerSettingsGB, true);
 	Log(lInfo) << "Connected to a Zebra barcode scanner";
     mZebra.scanDisable();
+   	TStatusPanel* p = mSBManager.getPanel(sbpBarcodeReader);
+    p->Text = "BarcodeScanner: Connected";
+
 }
 
 //---------------------------------------------------------------------------
@@ -88,6 +91,9 @@ void __fastcall TMainForm::onDisConnectedToZebra()
     mConnectZebraBtn->Caption = "Open";
     enableDisableGroupBox(mImagerSettingsGB, false);
 	Log(lInfo) << "DisConnected from a Zebra barcode scanner";
+   	TStatusPanel* p = mSBManager.getPanel(sbpBarcodeReader);
+    p->Text = "BarcodeScanner: Not Connected";
+
 }
 
 //---------------------------------------------------------------------------
@@ -183,6 +189,49 @@ void __fastcall TMainForm::onSSIEvent(TMessage& Msg)
 }
 
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::onSSITimeout(TMessage& Msg)
+{
+	WPARAM w = Msg.WParam;
+    LPARAM l = Msg.LParam;
+    Log(lInfo) << "There was an onSSITimeout event..";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::onSSIError(TMessage& Msg)
+{
+	WPARAM w = Msg.WParam;
+    LPARAM l = Msg.LParam;
+    Log(lInfo) << "There was an onSSIError event.."<<w<<" : "<<l;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::onSSICapabilities(TMessage& Msg)
+{
+	WPARAM w = Msg.WParam;
+    LPARAM l = Msg.LParam;
+    Log(lInfo) << "There was an onSSICapabilities event..";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
+{
+	//Check which one was clicked
+    TRadioGroup* rg = dynamic_cast<TRadioGroup*>(Sender);
+
+    int status;
+    if(rg == mScannerAimRG)
+    {
+    	status  = (rg->ItemIndex == 0 ) ? mZebra.aimOn() : mZebra.aimOff();
+    }
+    else if(rg == mScannerEnabledRG)
+    {
+    	status  = (rg->ItemIndex == 0 ) ? mZebra.scanEnable() : mZebra.scanDisable();
+    }
+
+    Log(lInfo) << "Status: "<<status;
+}
+
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::onSSIImage(TMessage& Msg)
 {
 //	WPARAM w = Msg.WParam;
@@ -269,48 +318,5 @@ void __fastcall TMainForm::onSSIImage(TMessage& Msg)
 //        }
 //   }
 //	m_WaitingForSnapShot = FALSE;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::onSSITimeout(TMessage& Msg)
-{
-	WPARAM w = Msg.WParam;
-    LPARAM l = Msg.LParam;
-    Log(lInfo) << "There was an onSSITimeout event..";
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::onSSIError(TMessage& Msg)
-{
-	WPARAM w = Msg.WParam;
-    LPARAM l = Msg.LParam;
-    Log(lInfo) << "There was an onSSIError event.."<<w<<" : "<<l;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::onSSICapabilities(TMessage& Msg)
-{
-	WPARAM w = Msg.WParam;
-    LPARAM l = Msg.LParam;
-    Log(lInfo) << "There was an onSSICapabilities event..";
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::scannerSettingsClick(TObject *Sender)
-{
-	//Check which one was clicked
-    TRadioGroup* rg = dynamic_cast<TRadioGroup*>(Sender);
-
-    int status;
-    if(rg == mScannerAimRG)
-    {
-    	status  = (rg->ItemIndex == 0 ) ? mZebra.aimOn() : mZebra.aimOff();
-    }
-    else if(rg == mScannerEnabledRG)
-    {
-    	status  = (rg->ItemIndex == 0 ) ? mZebra.scanEnable() : mZebra.scanDisable();
-    }
-
-    Log(lInfo) << "Status: "<<status;
 }
 
