@@ -173,11 +173,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>frames\TUC7StagePositionFrame.h</DependentOn>
             <BuildOrder>20</BuildOrder>
         </CppCompile>
-        <CppCompile Include="HandleUC7Messages.cpp">
-            <BuildOrder>14</BuildOrder>
-        </CppCompile>
         <CppCompile Include="Miscellaneous.cpp">
             <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="NavitarLogic.cpp">
+            <BuildOrder>23</BuildOrder>
         </CppCompile>
         <CppCompile Include="StartingUp.cpp">
             <BuildOrder>9</BuildOrder>
@@ -189,6 +189,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <Form>MainForm</Form>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="UC7Logic.cpp">
+            <BuildOrder>14</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp">
             <Form>atdbDM</Form>

@@ -374,177 +374,11 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mConnectUC7BtnClick(TObject *Sender)
-{
-	if(mConnectUC7Btn->Caption == "Open")
-    {
-        if(mUC7.connect(getCOMPortNumber()))
-        {
-            Log(lInfo) << "Connected to a UC7 device";
-        }
-        else
-        {
-            Log(lInfo) << "Connection failed";
-        }
-    }
-    else
-    {
-        if(!mUC7.disConnect())
-        {
-			Log(lError) << "Failed to close serial port";
-        }
-    }
-
-    //Give it some time to close down..
-    //These should be UC7 callbacks..
-    Sleep(100);
-
-    if(mUC7.isConnected())
-    {
-	    onConnectedToUC7();
-    }
-    else
-    {
-		onDisConnectedToUC7();
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::onConnectedToUC7()
-{
-	//Setup callbacks
-    mUC7.getSectionCounter().assignOnCountCallBack(onUC7Count);
-    mUC7.getSectionCounter().assignOnCountedToCallBack(onUC7CountedTo);
-    mUC7.setNorthLimitPosition(MaxStagePosFrame->AbsPosE->getValue());
-
-	enableDisableUC7UI(true);
-	mSynchUIBtnClick(NULL);
-
-  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
-    p->Text = "UC7: Connected";
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::onDisConnectedToUC7()
-{
-	enableDisableUC7UI(false);
-  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
-    p->Text = "UC7: Not Connected";
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
-{
-	//Buttons
-    mConnectUC7Btn->Caption                 = enableDisable ? "Close" : "Open";
-    mSynchUIBtn->Enabled					= enableDisable;
-
-    //group boxes
-	enableDisableGroupBox(CounterGB, 		enableDisable);
-//    enableDisableGroupBox(NorthSouthGB,		enableDisable);
-    enableDisableGroupBox(UC7OperationGB, 	enableDisable);
-    enableDisableGroupBox(CuttingGB, 		enableDisable);
-    enableDisableGroupBox(KnifeStageGB,		enableDisable);
-}
-
-//---------------------------------------------------------------------------
-void TMainForm::onUC7Count()
-{
-	mSectionCounterLabel->update();
-    if(mRibbonCreatorActiveCB->Checked)
-    {
-    	//Check if we are close to ribbon separation
-        if(mSectionCounterLabel->getValue() >= (mCountToE->getValue() - 3))
-        {
-            mBeforeKnifeBackOffSound.getReference().play();
-        }
-    }
-}
-
-//---------------------------------------------------------------------------
-void TMainForm::onUC7CountedTo()
-{
-	if(mUC7.isActive())
-    {
-	    mUC7.getSectionCounter().reset();
-		Log(lInfo) << "Creating new ribbon";
-	    mUC7.prepareToCutRibbon(true);
-        //mRibbonStartBtn->Enabled = false;
-    }
-}
-
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::mSynchUIBtnClick(TObject *Sender)
 {
     mUC7.getStatus();
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
-{
-	TArrayBotButton* btn = dynamic_cast<TArrayBotButton*>(Sender);
-
-    if(!btn)
-    {
-    	Log(lError) << "Sender object was NULl!";
-    	return;
-    }
-
-	if (btn == mStartStopBtn)
-    {
-    	if(mStartStopBtn->Caption == "Start")
-        {
-            mUC7.startCutter();
-        }
-        else
-        {
-            mUC7.stopCutter();
-        }
-    }
-    else if(btn == mSetZeroCutBtn)
-    {
-		mUC7.setFeedRate(0);
-    }
-    else if(btn == SetPresetFeedBtn)
-    {
-		mUC7.setFeedRate(mPresetFeedRateE->getValue());
-    }
-
-    else if(btn == mRibbonStartBtn)
-    {
-    	if(btn->Caption == "Back off")
-        {
-			mUC7.prepareToCutRibbon(true);
-            btn->Caption = "Preparing for IDLE";
-
-            //check if this screws up things
-			mUC7.setFeedRate(0);
-        }
-        else
-        {
-            mUC7.prepareForNewRibbon(true);
-            btn->Caption = "Preparing start of Ribbon";
-            //btn->Enabled = false;
-        }
-    }
-    else if(btn == mMoveSouthBtn)
-    {
-   		mUC7.setFeedRate(0);
-    	mUC7.jogKnifeStageSouth(BackOffStepFrame->getValue(), true);
-    }
-    else if(btn == mMoveNorthBtn)
-    {
-		mUC7.setFeedRate(0);
-    	mUC7.jogKnifeStageNorth(BackOffStepFrame->getValue(), true);
-    }
-//    else if(btn == StopKnifeStageMotionBtn)
-//    {
-//    	mUC7.stopKnifeStageNSMotion();
-//    }
-
-    string msg = mUC7.getLastSentMessage().getMessage();
-	Log(lDebug3) << "Sent message: "<<msg;
-}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mResetCounterBtnClick(TObject *Sender)
@@ -607,7 +441,6 @@ void __fastcall TMainForm::uc7EditKeyDown(TObject *Sender, WORD &Key,
         }
     }
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
@@ -738,56 +571,6 @@ void __fastcall TMainForm::ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, 
     }
 }
 
-void  TMainForm::onNavitarConnected()
-{
-	ConnectBtn->Caption         = "Disconnect";
-    ProdIdLbl->Caption 	        = vclstr(mNavitarMotorController.getProductID());
-	HWVerLbl->Caption           = vclstr(mNavitarMotorController.getHardwareVersion());
-   	SWVerLbl->Caption           = vclstr(mNavitarMotorController.getSoftwareVersion());
-    FirmWareDateLbl->Caption   	= vclstr(mNavitarMotorController.getDriverSoftwareBuildDate());
-
-    TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
-    TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
-    enableDisableGroupBox(ControllerInfoGB, true);
-}
-
-void  TMainForm::onNavitarDisconnected()
-{
-	ConnectBtn->Caption = "Connect";
-    ProdIdLbl->Caption 	        = "N/A";
-	HWVerLbl->Caption           = "N/A";
-   	SWVerLbl->Caption           = "N/A";
-    FirmWareDateLbl->Caption   	= "N/A";
-
-    enableDisableGroupBox(ControllerInfoGB, false);
-
-    TNavitarMotorFrame1->dePopulate();
-    TNavitarMotorFrame2->dePopulate();
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::ConnectBtnClick(TObject *Sender)
-{
-	TButton* b = dynamic_cast<TButton*>(Sender);
-
-    if(b == ConnectBtn)
-    {
-        if(!mNavitarMotorController.isConnected())
-        {
-            if(mNavitarMotorController.connect())
-            {
-            	onNavitarConnected();
-            }
-        }
-        else
-        {
-            if(mNavitarMotorController.disConnect())
-            {
-            	onNavitarDisconnected();
-            }
-        }
-    }
-}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::StatusBar1Hint(TObject *Sender)

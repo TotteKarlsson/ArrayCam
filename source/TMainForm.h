@@ -193,7 +193,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TApplicationSoundsFrame *TApplicationSoundsFrame1;
 	TTabSheet *TabSheet9;
 	TGroupBox *GroupBox13;
-	TButton *ConnectBtn;
+	TButton *NavitarControllerConnectBtn;
 	TGroupBox *ControllerInfoGB;
 	TLabel *Label12;
 	TLabel *Label13;
@@ -291,7 +291,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall ConnectBtnClick(TObject *Sender);
+	void __fastcall NavitarControllerConnectBtnClick(TObject *Sender);
 	void __fastcall StatusBar1Hint(TObject *Sender);
 	void __fastcall OpenHandWheelPositionFormAExecute(TObject *Sender);
 	void __fastcall FitToScreenAExecute(TObject *Sender);

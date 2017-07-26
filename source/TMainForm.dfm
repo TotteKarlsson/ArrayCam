@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = Main
+        ActivePage = TabSheet9
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -1013,14 +1013,14 @@ object MainForm: TMainForm
             Color = clBtnFace
             ParentColor = False
             TabOrder = 0
-            object ConnectBtn: TButton
+            object NavitarControllerConnectBtn: TButton
               Left = 20
               Top = 24
               Width = 153
               Height = 57
               Caption = 'Connect'
               TabOrder = 0
-              OnClick = ConnectBtnClick
+              OnClick = NavitarControllerConnectBtnClick
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
