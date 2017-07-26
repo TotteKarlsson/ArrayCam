@@ -91,7 +91,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPageControl *PageControl1;
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
-	TTimer *mCheckSocketConnectionTimer;
+	TTimer *CheckArduinoServerConnectionTimer;
 	TGroupBox *CounterGB;
 	TIntLabel *mSectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
@@ -102,8 +102,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel1;
 	TTabSheet *Main;
 	TGroupBox *BlocksGB;
-	TButton *mDecodeSessionBtn;
-	TArrayBotButton *mRegisterRibbonBtn;
+	TButton *DecodeSessionBtn;
+	TArrayBotButton *RegisterRibbonBtn;
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
 	TArrayBotButton *mStartStopBtn;
@@ -249,7 +249,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet3;
 	TGroupBox *GroupBox2;
 	TIntegerLabeledEdit *mArduinoServerPortE;
-	TButton *mASStartBtn;
+	TButton *ArduinoServerStartStopButton;
 	TPropertyCheckBox *mAutoCheckConnectionCB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -267,7 +267,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall mCheckSocketConnectionTimerTimer(TObject *Sender);
+	void __fastcall CheckArduinoServerConnectionTimerTimer(TObject *Sender);
 	void __fastcall mConnectUC7BtnClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall mSynchUIBtnClick(TObject *Sender);
@@ -275,9 +275,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mResetCounterBtnClick(TObject *Sender);
 	void __fastcall mRibbonCreatorActiveCBClick(TObject *Sender);
 	void __fastcall uc7EditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall mRegisterRibbonBtnClick(TObject *Sender);
+	void __fastcall RegisterRibbonBtnClick(TObject *Sender);
 	void __fastcall mConnectZebraBtnClick(TObject *Sender);
-	void __fastcall mBtnClick(TObject *Sender);
+	void __fastcall DecodeBarcodeClick(TObject *Sender);
 	void __fastcall scannerSettingsClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
 	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
@@ -287,7 +287,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
 	void __fastcall KnifePosChange(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall MaxKnifePosKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall mASStartBtnClick(TObject *Sender);
+	void __fastcall ArduinoServerStartStopButtonClick(TObject *Sender);
 	void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
 	void __fastcall BackOffStepFrameKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ResumeDeltaDistanceOnKey(TObject *Sender, WORD &Key, TShiftState Shift);

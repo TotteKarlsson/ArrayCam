@@ -86,7 +86,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     enableDisableClientControls(false);
 
 	//Connect to the arduino server..
-	mCheckSocketConnectionTimer->Enabled = true;
+	CheckArduinoServerConnectionTimer->Enabled = true;
 
     //Setup the server
     mACServer.start(mArrayCamServerPortE->getValue());

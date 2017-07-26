@@ -28,7 +28,7 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
     enableDisableGroupBox(BlocksGB, true);
     enableDisableGroupBox(RibbonsDataGB, true);
 
-    mRegisterRibbonBtn->Enabled = true;
+    RegisterRibbonBtn->Enabled = true;
 }
 
 //---------------------------------------------------------------------------
@@ -40,7 +40,7 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
     enableDisableGroupBox(BlocksGB, false);
     enableDisableGroupBox(BlockSelectionGB, false);
     enableDisableGroupBox(RibbonsDataGB, false);
-    mRegisterRibbonBtn->Enabled = false;
+    RegisterRibbonBtn->Enabled = false;
 }
 
 //---------------------------------------------------------------------------

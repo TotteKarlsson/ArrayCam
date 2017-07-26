@@ -93,25 +93,25 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     else if(compareStrings(ap[acrEnableBarcodeScanner], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Enabling barcode scanner";
-        if(mMainForm.mDecodeSessionBtn->Caption == "Stop Scan")
+        if(mMainForm.DecodeSessionBtn->Caption == "Stop Scan")
         {
         	Log(lError) << "Scanner already enabled.";
         }
         else
         {
-	        TThread::Synchronize(NULL, mMainForm.mDecodeSessionBtn->Click);
+	        TThread::Synchronize(NULL, mMainForm.DecodeSessionBtn->Click);
         }
     }
     else if(compareStrings(ap[acrDisableBarcodeScanner], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Disable Barcode scanner";
-        if(mMainForm.mDecodeSessionBtn->Caption == "Scan Barcode")
+        if(mMainForm.DecodeSessionBtn->Caption == "Scan Barcode")
         {
         	Log(lError) << "Scanner already disabled.";
         }
         else
         {
-        	TThread::Synchronize(NULL, mMainForm.mDecodeSessionBtn->Click);
+        	TThread::Synchronize(NULL, mMainForm.DecodeSessionBtn->Click);
         }
     }
 

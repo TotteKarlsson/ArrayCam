@@ -97,9 +97,6 @@ Coordinates=964,423,103,51
 [PageControl1]
 Coordinates=1523,53,81,33
 
-[mDecodeSessionBtn]
-Coordinates=1133,1,117,51
-
 [DBText2]
 Coordinates=964,1475,56,51
 
@@ -337,9 +334,6 @@ Coordinates=1523,1509,81,33
 [mArrayCamServerPortE]
 Coordinates=194,1184,132,51
 
-[mRegisterRibbonBtn]
-Coordinates=964,1195,117,51
-
 [atdbDM.ribbonsOnCoverSlipsDS]
 Coordinates=751,639,175,51
 
@@ -417,4 +411,10 @@ Coordinates=1714,317,174,33
 
 []
 Coordinates=925,1667,70,51
+
+[DecodeSessionBtn]
+Coordinates=1133,1,117,51
+
+[RegisterRibbonBtn]
+Coordinates=964,1195,117,51
 

@@ -16,7 +16,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
         mLightsArduinoClient.isConnected() 		||
-        mCheckSocketConnectionTimer->Enabled 	||
+        CheckArduinoServerConnectionTimer->Enabled 	||
         atdbDM->SQLConnection1->Connected 		||
         mZebra.isConnected()                    ||
         mHandWheelPositionForm                  ||
@@ -67,10 +67,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
         LoggerForm = NULL;
     }
 
-    if(mCheckSocketConnectionTimer->Enabled)
+    if(CheckArduinoServerConnectionTimer->Enabled)
     {
 	    mCheckArduinoServerConnection = false;
-	    mCheckSocketConnectionTimer->Enabled = false;
+	    CheckArduinoServerConnectionTimer->Enabled = false;
     }
 
    	if(mZebra.isConnected())

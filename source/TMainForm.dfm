@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = TabSheet1
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -103,16 +103,16 @@ object MainForm: TMainForm
                   ParentFont = False
                   Layout = tlCenter
                 end
-                object mDecodeSessionBtn: TButton
+                object DecodeSessionBtn: TButton
                   Left = 25
                   Top = 37
                   Width = 143
                   Height = 85
                   Caption = 'Scan Barcode'
                   TabOrder = 0
-                  OnClick = mBtnClick
+                  OnClick = DecodeBarcodeClick
                 end
-                object mRegisterRibbonBtn: TArrayBotButton
+                object RegisterRibbonBtn: TArrayBotButton
                   Left = 201
                   Top = 39
                   Width = 143
@@ -120,7 +120,7 @@ object MainForm: TMainForm
                   Caption = 'Register Ribbon'
                   ParentDoubleBuffered = True
                   TabOrder = 1
-                  OnClick = mRegisterRibbonBtnClick
+                  OnClick = RegisterRibbonBtnClick
                   SoundID = 'BUTTON_CLICK_4'
                 end
               end
@@ -995,7 +995,7 @@ object MainForm: TMainForm
                 Height = 37
                 Caption = 'Beep'
                 TabOrder = 2
-                OnClick = mBtnClick
+                OnClick = DecodeBarcodeClick
               end
             end
           end
@@ -1240,14 +1240,14 @@ object MainForm: TMainForm
                   Text = '50000'
                   Value = 50000
                 end
-                object mASStartBtn: TButton
+                object ArduinoServerStartStopButton: TButton
                   Left = 143
-                  Top = 20
+                  Top = 25
                   Width = 104
                   Height = 97
                   Caption = 'Start'
                   TabOrder = 1
-                  OnClick = mASStartBtnClick
+                  OnClick = ArduinoServerStartStopButtonClick
                 end
                 object mAutoCheckConnectionCB: TPropertyCheckBox
                   Left = 16
@@ -1308,7 +1308,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
@@ -1667,10 +1667,10 @@ object MainForm: TMainForm
     Left = 368
     Top = 280
   end
-  object mCheckSocketConnectionTimer: TTimer
+  object CheckArduinoServerConnectionTimer: TTimer
     Enabled = False
     Interval = 3000
-    OnTimer = mCheckSocketConnectionTimerTimer
+    OnTimer = CheckArduinoServerConnectionTimerTimer
     Left = 368
     Top = 216
   end
