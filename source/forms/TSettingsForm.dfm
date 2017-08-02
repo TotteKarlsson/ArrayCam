@@ -14,6 +14,7 @@ object SettingsForm: TSettingsForm
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   OnHide = FormHide
   OnKeyDown = FormKeyDown
   OnShow = FormShow

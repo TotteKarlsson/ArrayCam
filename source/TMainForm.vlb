@@ -10,17 +10,8 @@ Coordinates=333,1184,47,51
 [atdbDM.fixativeTBL]
 Coordinates=1314,911,110,51
 
-[Panel7]
-Coordinates=964,1055,47,51
-
 [atdbDM.freezeprotocolDS]
 Coordinates=1314,1541,140,51
-
-[DBText3]
-Coordinates=330,1506,56,51
-
-[Label3]
-Coordinates=16,1667,46,51
 
 [SetPresetFeedBtn]
 Coordinates=1133,841,103,51
@@ -34,17 +25,8 @@ Coordinates=964,71,124,123
 [mResetRibbonOrderBtn]
 Coordinates=191,1506,132,51
 
-[mUsersCB]
-Coordinates=453,1792,66,33
-
 [atdbDM.specimenCDS]
 Coordinates=38,628,124,267
-
-[mBlockProcessIDCB]
-Coordinates=334,1792,116,33
-
-[GroupBox3]
-Coordinates=751,849,70,51
 
 [atdbDM.mRibbonCDS]
 Coordinates=751,107,121,213
@@ -52,17 +34,11 @@ Coordinates=751,107,121,213
 [mPB]
 Coordinates=157,1792,40,33
 
-[Label1]
-Coordinates=964,845,46,51
-
 [Panel1]
 Coordinates=173,1667,47,51
 
 [mRibbonCreatorActiveCB]
 Coordinates=1314,1681,141,51
-
-[BlockIDCB]
-Coordinates=88,1792,67,33
 
 [TabSheet2]
 Coordinates=1523,1,66,33
@@ -75,9 +51,6 @@ Coordinates=577,1506,56,51
 
 [mCamera1BackPanel]
 Coordinates=796,1667,119,51
-
-[BlocksGB]
-Coordinates=125,1184,63,51
 
 [mSetZeroCutBtn]
 Coordinates=1314,1051,96,51
@@ -97,9 +70,6 @@ Coordinates=964,423,103,51
 [PageControl1]
 Coordinates=1523,53,81,33
 
-[DBText2]
-Coordinates=964,1475,56,51
-
 [atdbDM.blockNotesCDS]
 Coordinates=167,571,132,123
 
@@ -108,9 +78,6 @@ Coordinates=1133,281,65,51
 
 [atdbDM.ribbonsDS]
 Coordinates=550,195,107,213
-
-[BlockSelectionGB]
-Coordinates=1205,1792,103,51
 
 [CounterGB]
 Coordinates=167,1,69,51
@@ -132,9 +99,6 @@ Coordinates=468,1506,108,51
 
 [atdbDM.postfix]
 Coordinates=1314,841,88,51
-
-[Label7]
-Coordinates=78,1345,46,51
 
 [SendServerStatusMessageBtn]
 Coordinates=550,1,163,51
@@ -160,14 +124,8 @@ Coordinates=291,1667,109,51
 [Splitter2]
 Coordinates=1523,469,55,33
 
-[GroupBox9]
-Coordinates=964,915,70,51
-
 [TabSheet4]
 Coordinates=1523,521,66,33
-
-[DBNavigator1]
-Coordinates=964,775,82,51
 
 [CameraHC]
 Coordinates=1523,573,66,33
@@ -180,9 +138,6 @@ Coordinates=1314,141,119,51
 
 [mZeroCutsE]
 Coordinates=1314,71,75,51
-
-[RibbonsDataGB]
-Coordinates=1133,1315,93,51
 
 [atdbDM.fixationMethodDS]
 Coordinates=382,1184,142,51
@@ -235,9 +190,6 @@ Coordinates=167,71,148,375
 [atdbGB]
 Coordinates=65,1667,51,51
 
-[Label4]
-Coordinates=1133,771,46,51
-
 [atdbDM.ROnCS_CDS]
 Coordinates=1133,71,118,51
 
@@ -256,17 +208,8 @@ Coordinates=353,499,148,609
 [CuttingGB]
 Coordinates=529,1667,65,51
 
-[DBMemo1]
-Coordinates=1523,989,64,33
-
 [DBText4]
 Coordinates=19,1345,56,51
-
-[DBLookupComboBox1]
-Coordinates=1523,1041,127,33
-
-[DBGrid1]
-Coordinates=1523,1093,56,33
 
 [MainContentPanel]
 Coordinates=1314,1471,104,51
@@ -410,11 +353,17 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=925,1667,70,51
+Coordinates=330,1506,56,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,117,51
 
 [RegisterRibbonBtn]
 Coordinates=964,1195,117,51
+
+[RibbonRegistrationGB]
+Coordinates=125,1184,63,51
+
+[BlockInfoGB]
+Coordinates=964,915,70,51
 

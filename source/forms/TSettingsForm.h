@@ -17,7 +17,7 @@
 
 class PACKAGE TSettingsForm : public TForm
 {
-    __published:	// IDE-managed Components
+    __published:
         TTimer *mUIUpdateTimer;
         TGroupBox *GroupBox2;
         TPropertyCheckBox *mVerticalMirrorCB;
@@ -61,7 +61,6 @@ class PACKAGE TSettingsForm : public TForm
         TGroupBox *GroupBox5;
         TPropertyCheckBox *mAutoWhiteBalanceCB;
         mtkFloatLabel *mSoftwareGammaLbl;
-//        void __fastcall mASStartBtnClick(TObject *Sender);
         void __fastcall mUIUpdateTimerTimer(TObject *Sender);
         void __fastcall mVerticalMirrorCBClick(TObject *Sender);
         void __fastcall mHorizontalMirrorCBClick(TObject *Sender);
@@ -80,10 +79,10 @@ class PACKAGE TSettingsForm : public TForm
         void __fastcall mExposureTimeTBChange(TObject *Sender);
         void __fastcall mBlackLevelTBChange(TObject *Sender);
         void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
 
 
     private:
-        bool						mIsStartingUp;
         void  			__fastcall  enableManualExposureTimeSetting();
         void  			__fastcall  enableManualBlackLevelSetting();
 		void 						populateUsersCB();

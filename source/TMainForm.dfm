@@ -32,6 +32,13 @@ object MainForm: TMainForm
     ExplicitTop = 52
     ExplicitHeight = 814
   end
+  object Label4: TLabel
+    Left = 21
+    Top = 104
+    Width = 60
+    Height = 19
+    Caption = 'Slice ID:'
+  end
   object MainContentPanel: TPanel
     Left = 704
     Top = 84
@@ -57,7 +64,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = TabSheet6
+        ActivePage = TabSheet7
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -65,6 +72,10 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -79,14 +90,15 @@ object MainForm: TMainForm
               Height = 818
               Align = alClient
               TabOrder = 0
-              object BlocksGB: TGroupBox
+              object RibbonRegistrationGB: TGroupBox
                 Left = 1
-                Top = 548
+                Top = 540
                 Width = 800
                 Height = 138
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
+                ExplicitTop = 548
                 object mBCLabel: TLabel
                   AlignWithMargins = True
                   Left = 561
@@ -231,19 +243,21 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 225
                 Width = 800
-                Height = 323
+                Height = 315
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
+                ExplicitHeight = 323
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 300
+                  Height = 292
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
+                  ExplicitHeight = 300
                   object mStartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
@@ -268,11 +282,12 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 294
+                  Height = 286
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
+                  ExplicitHeight = 294
                   object mMoveNorthBtn: TArrayBotButton
                     Left = 307
                     Top = 24
@@ -392,74 +407,390 @@ object MainForm: TMainForm
                   end
                 end
               end
-              object GroupBox9: TGroupBox
+              object BlockInfoGB: TGroupBox
                 Left = 1
-                Top = 686
+                Top = 678
                 Width = 800
-                Height = 131
+                Height = 139
                 Align = alBottom
-                Caption = 'Current Block Info'
+                Caption = 'Current Block Info (Change block on the Blocks and Ribbons tab)'
                 TabOrder = 4
-                object DBText3: TDBText
-                  Left = 133
-                  Top = 40
-                  Width = 170
-                  Height = 17
-                  DataField = 'user_name'
-                  DataSource = atdbDM.usersDataSource
-                end
                 object DBText4: TDBText
-                  Left = 133
-                  Top = 96
+                  Left = 316
+                  Top = 39
                   Width = 170
                   Height = 17
-                  DataField = 'case_id'
+                  DataField = 'id'
                   DataSource = atdbDM.specimenDataSource
                 end
                 object DBText5: TDBText
-                  Left = 341
-                  Top = 69
-                  Width = 170
+                  Left = 87
+                  Top = 61
+                  Width = 73
                   Height = 17
-                  DataField = 'specimen_id'
-                  DataSource = atdbDM.specimenDataSource
+                  DataField = 'id'
+                  DataSource = atdbDM.slicesDataSource
                 end
                 object DBText7: TDBText
-                  Left = 133
-                  Top = 68
-                  Width = 170
+                  Left = 87
+                  Top = 38
+                  Width = 73
                   Height = 17
                   DataField = 'id'
                   DataSource = atdbDM.blocksDataSource
                 end
                 object Label11: TLabel
-                  Left = 12
-                  Top = 67
+                  Left = 13
+                  Top = 37
                   Width = 65
                   Height = 19
                   Caption = 'Block ID:'
                 end
-                object Label7: TLabel
-                  Left = 12
-                  Top = 40
-                  Width = 38
-                  Height = 19
-                  Caption = 'User:'
-                end
                 object Label8: TLabel
-                  Left = 12
-                  Top = 95
-                  Width = 55
-                  Height = 19
-                  Caption = 'Case ID'
-                end
-                object Label9: TLabel
-                  Left = 220
-                  Top = 68
+                  Left = 213
+                  Top = 38
                   Width = 96
                   Height = 19
                   Caption = 'Specimen ID:'
                 end
+                object Label9: TLabel
+                  Left = 12
+                  Top = 60
+                  Width = 60
+                  Height = 19
+                  Caption = 'Slice ID:'
+                end
+                object Label7: TLabel
+                  Left = 213
+                  Top = 61
+                  Width = 78
+                  Height = 19
+                  Caption = 'Animal ID:'
+                end
+                object DBText1: TDBText
+                  Left = 316
+                  Top = 61
+                  Width = 170
+                  Height = 17
+                  DataField = 'animal_id'
+                  DataSource = atdbDM.specimenDataSource
+                end
+              end
+            end
+          end
+        end
+        object TabSheet7: TTabSheet
+          Caption = 'Blocks and Ribbons'
+          ImageIndex = 6
+          object BlockSelectionGB: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 806
+            Height = 193
+            Align = alTop
+            Caption = 'DB/Block Selection'
+            TabOrder = 0
+            object Panel2: TPanel
+              Left = 2
+              Top = 21
+              Width = 802
+              Height = 575
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 0
+              object Label1: TLabel
+                Left = 13
+                Top = 94
+                Width = 60
+                Height = 19
+                Caption = 'Slice ID:'
+              end
+              object Label3: TLabel
+                Left = 13
+                Top = 128
+                Width = 65
+                Height = 19
+                Caption = 'Block ID:'
+              end
+              object Label5: TLabel
+                Left = 13
+                Top = 61
+                Width = 96
+                Height = 19
+                Caption = 'Specimen ID:'
+              end
+              object Label10: TLabel
+                Left = 290
+                Top = 59
+                Width = 78
+                Height = 19
+                Caption = 'Animal ID:'
+              end
+              object DBText2: TDBText
+                Left = 374
+                Top = 59
+                Width = 65
+                Height = 17
+                DataField = 'animal_id'
+                DataSource = atdbDM.specimenDataSource
+              end
+              object BlockIDCB: TDBLookupComboBox
+                Left = 136
+                Top = 120
+                Width = 135
+                Height = 27
+                KeyField = 'id'
+                ListField = 'id'
+                ListSource = atdbDM.blocksDataSource
+                TabOrder = 0
+                OnCloseUp = DB_CBCloseUp
+              end
+              object mUsersCB: TDBLookupComboBox
+                Left = 12
+                Top = 13
+                Width = 109
+                Height = 27
+                KeyField = 'id'
+                ListField = 'user_name'
+                ListSource = atdbDM.usersDataSource
+                TabOrder = 1
+                OnCloseUp = mUsersCBCloseUp
+              end
+              object SliceIDCB: TDBLookupComboBox
+                Left = 136
+                Top = 86
+                Width = 135
+                Height = 27
+                KeyField = 'id'
+                ListField = 'id'
+                ListSource = atdbDM.slicesDataSource
+                TabOrder = 2
+                OnCloseUp = DB_CBCloseUp
+              end
+              object SpecimenIDCB: TDBLookupComboBox
+                Left = 136
+                Top = 53
+                Width = 135
+                Height = 27
+                KeyField = 'id'
+                ListField = 'id'
+                ListSource = atdbDM.specimenDataSource
+                TabOrder = 3
+                OnCloseUp = DB_CBCloseUp
+              end
+            end
+          end
+          object RibbonsDataGB: TGroupBox
+            Left = 0
+            Top = 473
+            Width = 806
+            Height = 349
+            Align = alClient
+            Caption = 'Ribbons'
+            TabOrder = 1
+            object DBGrid1: TDBGrid
+              Left = 2
+              Top = 21
+              Width = 802
+              Height = 160
+              Align = alClient
+              DataSource = atdbDM.mRibbonDSource
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -16
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'statusL'
+                  Width = 123
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'cutting_order'
+                  Width = 104
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'nr_of_sections'
+                  Width = 113
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'coverslip_id'
+                  Width = 120
+                  Visible = True
+                end>
+            end
+            object GroupBox3: TGroupBox
+              Left = 2
+              Top = 181
+              Width = 802
+              Height = 166
+              Align = alBottom
+              Caption = 'Ribbon Notes'
+              TabOrder = 1
+              object Panel6: TPanel
+                Left = 2
+                Top = 21
+                Width = 185
+                Height = 143
+                Align = alLeft
+                TabOrder = 0
+                object mRibbonNotesGrid: TDBGrid
+                  Left = 1
+                  Top = 1
+                  Width = 183
+                  Height = 116
+                  Align = alClient
+                  DataSource = atdbDM.ribbonNotesDSource
+                  Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                  TabOrder = 0
+                  TitleFont.Charset = DEFAULT_CHARSET
+                  TitleFont.Color = clWindowText
+                  TitleFont.Height = -16
+                  TitleFont.Name = 'Tahoma'
+                  TitleFont.Style = []
+                  Columns = <
+                    item
+                      Expanded = False
+                      FieldName = 'created_on'
+                      Title.Caption = 'Date'
+                      Width = 143
+                      Visible = True
+                    end>
+                end
+                object mRibbonNotesNavigator: TDBNavigator
+                  Left = 1
+                  Top = 117
+                  Width = 183
+                  Height = 25
+                  DataSource = atdbDM.ribbonNotesDSource
+                  VisibleButtons = [nbInsert, nbDelete, nbRefresh, nbApplyUpdates]
+                  Align = alBottom
+                  ConfirmDelete = False
+                  TabOrder = 1
+                  OnClick = mRibbonNotesNavigatorClick
+                end
+              end
+              object Panel7: TPanel
+                Left = 187
+                Top = 21
+                Width = 613
+                Height = 143
+                Align = alClient
+                TabOrder = 1
+                object mRibbonNoteMemo: TDBMemo
+                  Left = 1
+                  Top = 1
+                  Width = 611
+                  Height = 116
+                  Align = alClient
+                  DataField = 'note'
+                  DataSource = atdbDM.ribbonNotesDSource
+                  TabOrder = 0
+                end
+                object mRibbonNoteNavigator: TDBNavigator
+                  Left = 1
+                  Top = 117
+                  Width = 611
+                  Height = 25
+                  DataSource = atdbDM.ribbonNotesDSource
+                  VisibleButtons = [nbPost, nbCancel]
+                  Align = alBottom
+                  TabOrder = 1
+                end
+              end
+            end
+          end
+          object BlockNotesGB: TGroupBox
+            Left = 0
+            Top = 193
+            Width = 806
+            Height = 280
+            Align = alTop
+            Caption = 'Block Notes'
+            Padding.Left = 5
+            Padding.Top = 5
+            Padding.Right = 5
+            Padding.Bottom = 5
+            TabOrder = 2
+            object Panel4: TPanel
+              Left = 206
+              Top = 26
+              Width = 593
+              Height = 247
+              Align = alClient
+              TabOrder = 0
+              object mBlockNoteMemo: TDBMemo
+                Left = 1
+                Top = 1
+                Width = 591
+                Height = 220
+                Align = alClient
+                DataField = 'note'
+                DataSource = atdbDM.blockNotesDSource
+                TabOrder = 0
+              end
+              object DBNavigator2: TDBNavigator
+                Left = 1
+                Top = 221
+                Width = 591
+                Height = 25
+                DataSource = atdbDM.blockNotesDSource
+                VisibleButtons = [nbPost, nbCancel]
+                Align = alBottom
+                TabOrder = 1
+              end
+            end
+            object Panel5: TPanel
+              Left = 7
+              Top = 26
+              Width = 199
+              Height = 247
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+              object mBlockNoteNavigator: TDBNavigator
+                Left = 0
+                Top = 222
+                Width = 199
+                Height = 25
+                DataSource = atdbDM.blockNotesDSource
+                VisibleButtons = [nbInsert, nbDelete, nbRefresh, nbApplyUpdates]
+                Align = alBottom
+                ConfirmDelete = False
+                TabOrder = 0
+                OnClick = mBlockNoteNavigatorClick
+              end
+              object mBlockNotesGrid: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 199
+                Height = 222
+                Align = alClient
+                DataSource = atdbDM.blockNotesDSource
+                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                TabOrder = 1
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -16
+                TitleFont.Name = 'Tahoma'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'created_on'
+                    Title.Caption = 'Date'
+                    Width = 161
+                    Visible = True
+                  end>
               end
             end
           end
@@ -467,6 +798,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -622,6 +957,10 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -695,186 +1034,15 @@ object MainForm: TMainForm
                 end
               end
             end
-            object BlockSelectionGB: TGroupBox
-              Left = 2
-              Top = 222
-              Width = 802
-              Height = 211
-              Align = alTop
-              Caption = 'DB/Block Selection'
-              TabOrder = 1
-              object Panel7: TPanel
-                Left = 2
-                Top = 21
-                Width = 335
-                Height = 188
-                Align = alLeft
-                BevelOuter = bvNone
-                TabOrder = 0
-                object DBText2: TDBText
-                  Left = 128
-                  Top = 131
-                  Width = 169
-                  Height = 17
-                  DataField = 'specimen_id'
-                  DataSource = atdbDM.specimenDataSource
-                end
-                object Label1: TLabel
-                  Left = 13
-                  Top = 56
-                  Width = 96
-                  Height = 19
-                  Caption = 'Specimen ID:'
-                end
-                object Label3: TLabel
-                  Left = 13
-                  Top = 95
-                  Width = 65
-                  Height = 19
-                  Caption = 'Block ID:'
-                end
-                object Label4: TLabel
-                  Left = 13
-                  Top = 129
-                  Width = 96
-                  Height = 19
-                  Caption = 'Specimen ID:'
-                end
-                object BlockIDCB: TDBLookupComboBox
-                  Left = 128
-                  Top = 91
-                  Width = 135
-                  Height = 27
-                  KeyField = 'id'
-                  ListField = 'id'
-                  ListSource = atdbDM.blocksDataSource
-                  TabOrder = 0
-                  OnCloseUp = mBlockProcessIDCBCloseUp
-                end
-                object mBlockProcessIDCB: TDBLookupComboBox
-                  Left = 128
-                  Top = 52
-                  Width = 134
-                  Height = 27
-                  KeyField = 'specimen_id'
-                  ListField = 'specimen_id'
-                  ListSource = atdbDM.specimenDataSource
-                  TabOrder = 1
-                  OnCloseUp = mBlockProcessIDCBCloseUp
-                end
-                object mUsersCB: TDBLookupComboBox
-                  Left = 12
-                  Top = 13
-                  Width = 145
-                  Height = 27
-                  KeyField = 'id'
-                  ListField = 'user_name'
-                  ListSource = atdbDM.usersDataSource
-                  TabOrder = 2
-                  OnCloseUp = mUsersCBCloseUp
-                end
-              end
-              object GroupBox3: TGroupBox
-                Left = 337
-                Top = 21
-                Width = 463
-                Height = 188
-                Align = alClient
-                Caption = 'Block Note'
-                TabOrder = 1
-                object DBMemo1: TDBMemo
-                  Left = 2
-                  Top = 48
-                  Width = 459
-                  Height = 138
-                  Align = alClient
-                  DataField = 'note'
-                  DataSource = atdbDM.blockNotesDSource
-                  TabOrder = 0
-                end
-                object DBLookupComboBox1: TDBLookupComboBox
-                  Left = 2
-                  Top = 21
-                  Width = 459
-                  Height = 27
-                  Align = alTop
-                  KeyField = 'id'
-                  ListField = 'created_on'
-                  ListSource = atdbDM.blockNotesDSource
-                  TabOrder = 1
-                end
-              end
-            end
-            object RibbonsDataGB: TGroupBox
-              Left = 2
-              Top = 433
-              Width = 802
-              Height = 387
-              Align = alClient
-              Caption = 'Ribbons'
-              TabOrder = 2
-              object DBGrid1: TDBGrid
-                Left = 2
-                Top = 21
-                Width = 798
-                Height = 342
-                Align = alClient
-                DataSource = atdbDM.mRibbonDSource
-                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-                TabOrder = 0
-                TitleFont.Charset = DEFAULT_CHARSET
-                TitleFont.Color = clWindowText
-                TitleFont.Height = -16
-                TitleFont.Name = 'Tahoma'
-                TitleFont.Style = []
-                Columns = <
-                  item
-                    Expanded = False
-                    FieldName = 'status'
-                    Width = 52
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'cutting_order'
-                    Width = 112
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'nr_of_sections'
-                    Width = 117
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'created_by'
-                    Width = 91
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'coverslip_id'
-                    Width = 120
-                    Visible = True
-                  end>
-              end
-              object DBNavigator1: TDBNavigator
-                Left = 2
-                Top = 363
-                Width = 798
-                Height = 22
-                DataSource = atdbDM.mRibbonDSource
-                VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
-                Align = alBottom
-                TabOrder = 1
-              end
-            end
           end
         end
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -936,7 +1104,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 27
+                Height = 28
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1173,27 +1341,55 @@ object MainForm: TMainForm
           end
         end
         object TabSheet1: TTabSheet
-          Caption = 'Settings'
+          Caption = 'Miscellaneous'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
             Width = 806
             Height = 822
-            ActivePage = TabSheet3
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
                 Width = 798
-                Height = 105
+                Height = 193
                 Align = alTop
                 Caption = 'Server'
                 TabOrder = 0
+                object NrOfArrayCamServerClients: TIntLabel
+                  Left = 166
+                  Top = 120
+                  Width = 15
+                  Height = 19
+                  Caption = '-1'
+                  Value = -1
+                  TheFont.Charset = DEFAULT_CHARSET
+                  TheFont.Color = clWindowText
+                  TheFont.Height = -16
+                  TheFont.Name = 'Tahoma'
+                  TheFont.Style = []
+                end
+                object Label2: TLabel
+                  Left = 16
+                  Top = 120
+                  Width = 134
+                  Height = 19
+                  Caption = 'Number of Clients:'
+                end
                 object mArrayCamServerPortE: TIntegerLabeledEdit
                   Left = 16
                   Top = 56
@@ -1220,6 +1416,10 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1304,18 +1504,18 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 798
+                  Width = 509
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1326,6 +1526,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1355,7 +1558,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end

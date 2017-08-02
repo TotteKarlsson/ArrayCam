@@ -6,7 +6,6 @@
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
 #include "TATDBDataModule.h"
-#include "TSettingsForm.h"
 #include "TNavitarPresetFrame.h"
 using namespace mtk;
 using namespace at;
@@ -22,7 +21,8 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	                "MAIN_CONTENT_PANEL_WIDTH",   		700));
 	mGeneralProperties.add((BaseProperty*)  &mPairLEDs.setup(			                    "PAIR_LEDS",    		            true));
 	mGeneralProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	    "ATDB_USER_ID",                    	0));
-	mGeneralProperties.add((BaseProperty*)  &mProcessID.setup( 	                   	        "LAST_PROCESS_ID",                  0));
+	mGeneralProperties.add((BaseProperty*)  &mSpecimenID.setup( 	               	        "SPECIMEN_ID",      	            0));
+	mGeneralProperties.add((BaseProperty*)  &mSliceID.setup( 	              	 	        "SLICE_ID",      		            0));
 	mGeneralProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		    "BLOCK_ID",                  		0));
 	mGeneralProperties.add((BaseProperty*)  &mLocalDBName.setup(		                    "LOCAL_DB",   			            "umlocal.db"));
 

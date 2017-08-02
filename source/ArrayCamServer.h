@@ -12,7 +12,7 @@ mtk::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void*
 
 typedef void (__closure *OnMessageUpdateCB)(const string& msg);
 
-//!The ArrayCam server is a component that serve clients with ArrayCam connections over a
+//!The ArrayCam server is a component that serve clients with an ArrayCam connection over a
 //tcp/ip socket. The ArrayCam server is designed to handle messages and data related to the
 //arraybot project. The ArrayCam server is a descendant of the IPC server class that is implementing all
 //network functionality.

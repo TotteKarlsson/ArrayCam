@@ -19,65 +19,15 @@ TSettingsForm *SettingsForm;
 using namespace std;
 using namespace mtk;
 
+//!There might be a problem with this form, as checkboxes click functions are called
+//in the onCreate function, when references are assigned.
+
 //---------------------------------------------------------------------------
 __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf)
 {
-	//Retriew conenction credentials from inifile
-	mIsStartingUp = true;
 
-    //Bind properties
-    mAutoExposureCB->setReference(mMainForm.mAutoExposure.getReference());
-	mAutoExposureCB->Update();
-
-    mAutoBlackLevelCB->setReference(mMainForm.mAutoBlackLevel.getReference());
-    mAutoBlackLevelCB->Update();
-
-    mAutoGainCB->setReference(mMainForm.mAutoGain.getReference());
-	mAutoGainCB->Update();
-
-    mAutoWhiteBalanceCB->setReference(mMainForm.mAutoWhiteBalance.getReference());
-	mAutoWhiteBalanceCB->Update();
-
-
-	mSoftwareGammaLbl->SetReference(mMainForm.mSoftwareGamma.getReference());
-	mGammaSB->Position = 100.0 *mMainForm.mSoftwareGamma;
-
-    mVerticalMirrorCB->setReference(mMainForm.mVerticalMirror.getReference());
-	mVerticalMirrorCB->Update();
-
-    mHorizontalMirrorCB->setReference(mMainForm.mHorizontalMirror.getReference());
-	mHorizontalMirrorCB->Update();
-
-    mPairLEDsCB->setReference(mMainForm.mPairLEDs.getReference());
-    mPairLEDsCB->Update();
-
-    mPhotoOutputBaseFolder->setReference(mMainForm.mSnapShotFolder.getReference());
-    mMoviesFolderE->setReference(mMainForm.mMoviesFolder.getReference());
-
-
-    if(mMainForm.mAutoExposure == false)
-    {
-	    enableManualExposureTimeSetting();
-    }
-    else
-    {	//Initialize trackbar to current autoexposure time
-
-        HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
-        double dblMin, dblMax, dblInc, dCurrent;
-        int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
-            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MAX, (void*)&dblMax, sizeof(dblMax));
-            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_INC, (void*)&dblInc, sizeof(dblInc));
-
-        nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, &dCurrent, sizeof(dCurrent));
-        mExposureTimeTB->Min = round(dblMin * 1000);
-        mExposureTimeTB->Max = round(dblMax * 1000);
-        mExposureTimeTB->Position = round(dCurrent * 1000);
-        mExposureTimeTB->Enabled = false;
-    }
-
-	mIsStartingUp = false;
 }
 
 ////---------------------------------------------------------------------------
@@ -154,7 +104,7 @@ void __fastcall TSettingsForm::mHorizontalMirrorCBClick(TObject *Sender)
 void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
 {
 	TCheckBox* cb = dynamic_cast<TCheckBox*>(Sender);
-	if(mIsStartingUp || cb == NULL)
+	if(cb == NULL)
     {
     	return;
     }
@@ -544,6 +494,57 @@ void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
 //	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
 }
 
+void __fastcall TSettingsForm::FormCreate(TObject *Sender)
+{
+    //Bind properties
+    mAutoExposureCB->setReference(mMainForm.mAutoExposure.getReference());
+	mAutoExposureCB->Update();
+
+    mAutoBlackLevelCB->setReference(mMainForm.mAutoBlackLevel.getReference());
+    mAutoBlackLevelCB->Update();
+
+    mAutoGainCB->setReference(mMainForm.mAutoGain.getReference());
+	mAutoGainCB->Update();
+
+    mAutoWhiteBalanceCB->setReference(mMainForm.mAutoWhiteBalance.getReference());
+	mAutoWhiteBalanceCB->Update();
 
 
+	mSoftwareGammaLbl->SetReference(mMainForm.mSoftwareGamma.getReference());
+	mGammaSB->Position = 100.0 *mMainForm.mSoftwareGamma;
+
+    mVerticalMirrorCB->setReference(mMainForm.mVerticalMirror.getReference());
+	mVerticalMirrorCB->Update();
+
+    mHorizontalMirrorCB->setReference(mMainForm.mHorizontalMirror.getReference());
+	mHorizontalMirrorCB->Update();
+
+    mPairLEDsCB->setReference(mMainForm.mPairLEDs.getReference());
+    mPairLEDsCB->Update();
+
+    mPhotoOutputBaseFolder->setReference(mMainForm.mSnapShotFolder.getReference());
+    mMoviesFolderE->setReference(mMainForm.mMoviesFolder.getReference());
+
+
+    if(mMainForm.mAutoExposure == false)
+    {
+	    enableManualExposureTimeSetting();
+    }
+    else
+    {	//Initialize trackbar to current autoexposure time
+
+        HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
+        double dblMin, dblMax, dblInc, dCurrent;
+        int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
+            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MAX, (void*)&dblMax, sizeof(dblMax));
+            nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_INC, (void*)&dblInc, sizeof(dblInc));
+
+        nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, &dCurrent, sizeof(dCurrent));
+        mExposureTimeTB->Min = round(dblMin * 1000);
+        mExposureTimeTB->Max = round(dblMax * 1000);
+        mExposureTimeTB->Position = round(dCurrent * 1000);
+        mExposureTimeTB->Enabled = false;
+    }
+}
+//---------------------------------------------------------------------------
 

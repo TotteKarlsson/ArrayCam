@@ -56,6 +56,10 @@
 #include <Data.Bind.Components.hpp>
 #include <Data.Bind.EngExt.hpp>
 #include <Vcl.Bind.DBEngExt.hpp>
+#include <Vcl.Mask.hpp>
+#include <Data.DB.hpp>
+#include <Data.FMTBcd.hpp>
+#include <Data.SqlExpr.hpp>
 
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
@@ -101,7 +105,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *MainContentPanel;
 	TPanel *Panel1;
 	TTabSheet *Main;
-	TGroupBox *BlocksGB;
+	TGroupBox *RibbonRegistrationGB;
 	TButton *DecodeSessionBtn;
 	TArrayBotButton *RegisterRibbonBtn;
 	TPanel *Panel9;
@@ -110,17 +114,15 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
-	TLabel *Label7;
 	TLabel *Label8;
 	TLabel *Label9;
-	TDBText *DBText3;
 	TDBText *DBText4;
 	TDBText *DBText5;
 	TLabel *Label11;
 	TDBText *DBText7;
 	TPageControl *PageControl2;
 	TTabSheet *TabSheet5;
-	TGroupBox *GroupBox9;
+	TGroupBox *BlockInfoGB;
 	TPropertyCheckBox *mRibbonCreatorActiveCB;
 	TGroupBox *CuttingGB;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
@@ -158,21 +160,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet2;
 	TGroupBox *atdbGB;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
-	TGroupBox *BlockSelectionGB;
-	TPanel *Panel7;
-	TDBText *DBText2;
-	TLabel *Label1;
-	TLabel *Label3;
-	TLabel *Label4;
-	TDBLookupComboBox *BlockIDCB;
-	TDBLookupComboBox *mBlockProcessIDCB;
-	TDBLookupComboBox *mUsersCB;
-	TGroupBox *GroupBox3;
-	TDBMemo *DBMemo1;
-	TDBLookupComboBox *DBLookupComboBox1;
-	TGroupBox *RibbonsDataGB;
-	TDBGrid *DBGrid1;
-	TDBNavigator *DBNavigator1;
 	TArrayBotButton *mSetZeroCutBtn;
 	TIntegerLabeledEdit *mFeedRateE;
 	TUC7StagePositionFrame *CurrentStagePosFrame;
@@ -251,6 +238,39 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mArduinoServerPortE;
 	TButton *ArduinoServerStartStopButton;
 	TPropertyCheckBox *mAutoCheckConnectionCB;
+	TIntLabel *NrOfArrayCamServerClients;
+	TLabel *Label2;
+	TLabel *Label4;
+	TTabSheet *TabSheet7;
+	TGroupBox *BlockSelectionGB;
+	TPanel *Panel2;
+	TLabel *Label1;
+	TLabel *Label3;
+	TLabel *Label5;
+	TLabel *Label10;
+	TDBLookupComboBox *BlockIDCB;
+	TDBLookupComboBox *mUsersCB;
+	TDBLookupComboBox *SliceIDCB;
+	TDBLookupComboBox *SpecimenIDCB;
+	TGroupBox *RibbonsDataGB;
+	TDBGrid *DBGrid1;
+	TGroupBox *BlockNotesGB;
+	TPanel *Panel4;
+	TDBMemo *mBlockNoteMemo;
+	TDBNavigator *DBNavigator2;
+	TPanel *Panel5;
+	TDBNavigator *mBlockNoteNavigator;
+	TDBGrid *mBlockNotesGrid;
+	TLabel *Label7;
+	TDBText *DBText1;
+	TDBText *DBText2;
+	TGroupBox *GroupBox3;
+	TPanel *Panel6;
+	TDBGrid *mRibbonNotesGrid;
+	TDBNavigator *mRibbonNotesNavigator;
+	TPanel *Panel7;
+	TDBMemo *mRibbonNoteMemo;
+	TDBNavigator *mRibbonNoteNavigator;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -280,7 +300,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall DecodeBarcodeClick(TObject *Sender);
 	void __fastcall scannerSettingsClick(TObject *Sender);
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
-	void __fastcall mBlockProcessIDCBCloseUp(TObject *Sender);
+	void __fastcall DB_CBCloseUp(TObject *Sender);
 	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
 	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
 	void __fastcall PopulateMaxNorthPosBtnClick(TObject *Sender);
@@ -303,6 +323,12 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall OpenLoggerForm1Click(TObject *Sender);
 	void __fastcall OpenCloseShortcutFormExecute(TObject *Sender);
 	void __fastcall OpenCloseShortcutFormUpdate(TObject *Sender);
+
+	void __fastcall mBlockNoteNavigatorClick(TObject *Sender, TNavigateBtn Button);
+	void __fastcall mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button);
+
+
+
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -385,7 +411,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 
         										//Database stuff
 		Property<int>	                    	mDBUserID;
-        Property<int>							mProcessID;
+        Property<int>							mSpecimenID;
+        Property<int>							mSliceID;
         Property<int>							mBlockID;
 		int 									getCurrentUserID();
 		string 									getCurrentUserName();

@@ -1,12 +1,11 @@
 #include <System.hpp>
 #pragma hdrstop
-USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
-USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
-USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
-USEFORM("forms\THandWheelPositionForm.cpp", HandWheelPositionForm);
+USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 USEFORM("forms\TAboutForm.cpp", AboutForm);
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
+USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
+USEFORM("forms\THandWheelPositionForm.cpp", HandWheelPositionForm);
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
@@ -40,6 +39,7 @@ extern "C" int _libmain(unsigned long reason)
 #pragma comment(lib, "DuneForms.bpi")
 #pragma comment(lib, "DuneComponents.bpi")
 #pragma comment(lib, "atVCLCore.bpi")
+
 #pragma comment(lib, "DbxDevartSQLiteDriver170.bpi")
 #pragma comment(lib, "DbxMySQlDriver.bpi")
 #pragma comment(lib, "DbxMySQlDriver.bpi")

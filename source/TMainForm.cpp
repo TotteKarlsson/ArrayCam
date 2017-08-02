@@ -70,7 +70,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mUC7(Handle),
         mCountTo(0),
 	    mDBUserID(0),
-	    mProcessID(0),
+	    mSpecimenID(0),
+	    mSliceID(0),
 	    mBlockID(0),
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
@@ -194,11 +195,6 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
 
-    if(!mSettingsForm)
-    {
-		mSettingsForm = new TSettingsForm(*this);
-    }
-
    	TATDBConnectionFrame1->init(&(mIniFile));
     TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
 
@@ -275,18 +271,25 @@ void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mBlockProcessIDCBCloseUp(TObject *Sender)
+void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
 {
 	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
-    if(b == mBlockProcessIDCB)
+    if(b == SpecimenIDCB)
     {
-    	mProcessID.setValue(b->KeyValue);
+        mSpecimenID.setValue(b->KeyValue);
+        BlockIDCB->KeyValue = -1;
+        SliceIDCB->KeyValue = -1;
+    }
+    else if(b == SliceIDCB)
+    {
+        mSliceID.setValue(b->KeyValue);
         BlockIDCB->KeyValue = -1;
     }
-    else if(b == BlockIDCB)
+    else if(b == BlockIDCB )
     {
-    	mBlockID.setValue(b->KeyValue);
+        mBlockID.setValue(b->KeyValue);
     }
+
 }
 
 //---------------------------------------------------------------------------
@@ -373,6 +376,42 @@ void __fastcall TMainForm::OpenCloseShortcutFormUpdate(TObject *Sender)
     else
     {
 		OpenCloseShortcutForm->Caption = "Open ShortCuts";
+    }
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mBlockNoteNavigatorClick(TObject *Sender, TNavigateBtn Button)
+{
+	switch(Button)
+    {
+    	case TNavigateBtn::nbInsert:
+			{
+                int uID = atdbDM->usersCDS->FieldByName("id")->AsInteger;
+                int blockID = atdbDM->blocksCDSid->Value;
+                string note("Block Note..");
+            	atdbDM->insertBlockNote(uID, blockID, note);
+            }
+        break;
+    }
+}
+
+
+void __fastcall TMainForm::mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button)
+
+{
+	switch(Button)
+    {
+    	case TNavigateBtn::nbInsert:
+        {
+            int uID = getCurrentUserID();
+            String rID = atdbDM->mRibbonCDSid->Value;
+            string note("Ribbon Note..");
+           	atdbDM->insertRibbonNote(uID, stdstr(rID), note);
+        }
+        break;
+
+    	case TNavigateBtn::nbDelete:        break;
     }
 }
 

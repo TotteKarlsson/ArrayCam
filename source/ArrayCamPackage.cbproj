@@ -213,19 +213,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="vclx.bpi">
             <BuildOrder>19</BuildOrder>
         </PackageImport>
-        <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp">
-            <Form>atdbDM</Form>
-            <DesignClass>TDataModule</DesignClass>
-            <DependentOn>P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.h</DependentOn>
-            <BuildOrder>33</BuildOrder>
-        </CppCompile>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TAboutForm.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <FormResources Include="forms\THandWheelPositionForm.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

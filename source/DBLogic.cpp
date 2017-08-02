@@ -19,16 +19,21 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 	atdbDM->afterConnect();
     csDM->afterConnect();
 	TATDBConnectionFrame1->afterConnect();
+    RegisterRibbonBtn->Enabled = true;
 
 	//Setup UI
-    mUsersCB->KeyValue = mDBUserID.getValue();
-    mBlockProcessIDCB->KeyValue = mProcessID.getValue();
+    mUsersCB->KeyValue  	= mDBUserID.getValue();
+    SpecimenIDCB->KeyValue 	= mSpecimenID.getValue();
+    SliceIDCB->KeyValue 	= mSliceID.getValue();
+    BlockIDCB->KeyValue 	= mBlockID.getValue();
+
     BlockIDCB->KeyValue = mBlockID.getValue();
     enableDisableGroupBox(BlockSelectionGB, true);
-    enableDisableGroupBox(BlocksGB, true);
-    enableDisableGroupBox(RibbonsDataGB, true);
+    enableDisableGroupBox(RibbonRegistrationGB, true);
+    enableDisableGroupBox(BlockInfoGB, true);
+    enableDisableGroupBox(BlockNotesGB, true);
 
-    RegisterRibbonBtn->Enabled = true;
+    enableDisableGroupBox(RibbonsDataGB, true);
 
   	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
     p->Text = "ATDB: Connected";
@@ -38,16 +43,19 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Disconnected from the DB Server";
-	TATDBConnectionFrame1->afterDisconnect();
+	atdbDM->afterDisConnect();
 
-    enableDisableGroupBox(BlocksGB, false);
+	TATDBConnectionFrame1->afterDisconnect();
+	RegisterRibbonBtn->Enabled = false;
+
+    enableDisableGroupBox(RibbonRegistrationGB, false);
     enableDisableGroupBox(BlockSelectionGB, false);
     enableDisableGroupBox(RibbonsDataGB, false);
-    RegisterRibbonBtn->Enabled = false;
+    enableDisableGroupBox(BlockInfoGB, 	false);
+    enableDisableGroupBox(BlockNotesGB, true);
 
   	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
     p->Text = "ATDB: Not Connected";
-
 }
 
 //---------------------------------------------------------------------------
