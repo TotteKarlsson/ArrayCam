@@ -1,3 +1,33 @@
+Release 0.6.4 (Aug 3)
+=======================
+* Separating DB stuff from the application
+* Added more controls for dealing with registered blocks and ribbons
+* More refactoring
+* Added DB statuspanel update
+* Added barcode reader status update
+* Moved barcode logic to its own cpp file
+* Various refactoring
+* Added statusbar panels for various peripherals
+* Added logic for tracking the arduino server connection
+* Added required libraries to large arraycam compile group
+* Added close by escape key for logger forms
+* Fixed bug of db components loosing their datasources
+* Fixed zoom/focus mixup for navatar camera motors
+* Removed USEFORMS statements for some frames
+* Added button to toggle main content panel visibility
+* Decoupled bunch of code from main project
+* Adding a shortcut to actions form
+* Moved logmechanics to logger form
+* Added text labels to handwheel position form
+* Added an about and logger form
+* Refactored certain functions into actions, in order to populate menus and toolbar buttons
+* Fixed positioning of registry forms on multiple monitors
+* Fixed closing logic of Handwheel form
+* Added Handwheel position form, to track cutting cycle
+* Added Toolbar for some buttons
+* Added reporting of handwheel position to statusbar
+* Removed graphical reporting
+
 Release 0.6.3 (July 5)
 =======================
 * Minor updates to new database schema
