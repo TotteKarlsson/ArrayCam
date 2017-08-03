@@ -98,7 +98,6 @@ object MainForm: TMainForm
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
-                ExplicitTop = 548
                 object mBCLabel: TLabel
                   AlignWithMargins = True
                   Left = 561
@@ -248,7 +247,6 @@ object MainForm: TMainForm
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
-                ExplicitHeight = 323
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
@@ -257,7 +255,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
-                  ExplicitHeight = 300
                   object mStartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
@@ -287,7 +284,6 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
-                  ExplicitHeight = 294
                   object mMoveNorthBtn: TArrayBotButton
                     Left = 307
                     Top = 24
@@ -1508,7 +1504,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
