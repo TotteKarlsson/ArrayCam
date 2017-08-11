@@ -102,6 +102,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
 	        TThread::Synchronize(NULL, mMainForm.DecodeSessionBtn->Click);
         }
     }
+
     else if(compareStrings(ap[acrDisableBarcodeScanner], msg, csCaseInsensitive))
     {
     	Log(lInfo) << "Disable Barcode scanner";
@@ -120,9 +121,10 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     	Log(lInfo) << "Broadcast status";
 		broadcastStatus();
     }
+
     else
     {
-    	Log(lError) << "UNHANDLED ARDUINO SERVER MESSAGE: "<<msg;
+    	Log(lError) << "UNHANDLED SERVER MESSAGE: "<<msg;
     }
 
     if(clientMessage.str().size())

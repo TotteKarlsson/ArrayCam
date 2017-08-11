@@ -64,7 +64,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = TabSheet7
+        ActivePage = TabSheet9
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -478,6 +478,10 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BlockSelectionGB: TGroupBox
             Left = 0
             Top = 0
@@ -1339,10 +1343,6 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Miscellaneous'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
