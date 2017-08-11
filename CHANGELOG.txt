@@ -1,3 +1,9 @@
+Release 0.6.5 (Aug 11)
+=======================
+* Added functions to deal with arraycam focus, zoom request
+* Added logic to save zoom and focus parameters in an arraycam request
+* Main changes in atAPI
+
 Release 0.6.4 (Aug 3)
 =======================
 * Separating DB stuff from the application
