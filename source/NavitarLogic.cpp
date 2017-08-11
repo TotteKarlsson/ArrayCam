@@ -52,3 +52,34 @@ void __fastcall TMainForm::NavitarControllerConnectBtnClick(TObject *Sender)
     }
 }
 
+void __fastcall	TMainForm::setFocus(int f)
+{
+	if(!mNavitarMotorController.isConnected())
+    {
+    	Log(lError) <<"Can't set focus. Navitar controller is not connected";
+    }
+
+    mNavitarMotorController.setFocus(f);
+}
+
+void __fastcall	TMainForm::setZoom(int z)
+{
+	if(!mNavitarMotorController.isConnected())
+    {
+    	Log(lError) <<"Can't set zoom. Navitar controller is not connected";
+    }
+    mNavitarMotorController.setZoom(z);
+}
+
+void __fastcall	TMainForm::setFocusAndZoom(int f, int z)
+{
+	if(!mNavitarMotorController.isConnected())
+    {
+    	Log(lError) <<"Can't set focus. Navitar controller is not connected";
+        return;
+    }
+
+    mNavitarMotorController.setFocusAndZoom(f, z);
+    mACServer.broadcast(mACServer.IPCCommand(acrFocusAndZoomSet));
+}
+

@@ -32,13 +32,6 @@ object MainForm: TMainForm
     ExplicitTop = 52
     ExplicitHeight = 814
   end
-  object Label4: TLabel
-    Left = 21
-    Top = 104
-    Width = 60
-    Height = 19
-    Caption = 'Slice ID:'
-  end
   object MainContentPanel: TPanel
     Left = 704
     Top = 84
@@ -64,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 856
-        ActivePage = TabSheet9
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -72,10 +65,6 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -1504,7 +1493,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
@@ -1679,21 +1668,33 @@ object MainForm: TMainForm
     object ToolBar1: TToolBar
       Left = 706
       Top = 2
-      Width = 223
+      Width = 383
       Height = 75
       AutoSize = True
       ButtonHeight = 75
       Caption = 'ToolBar1'
       TabOrder = 0
-      object ArrayBotButton2: TArrayBotButton
+      object ArrayBotButton1: TArrayBotButton
         Left = 0
         Top = 0
         Width = 145
         Height = 75
         Action = OpenHandWheelPositionFormA
         Caption = 'Open Handwheel Position Form'
+        TabOrder = 1
+        WordWrap = True
+        SoundID = 'BUTTON_CLICK_4'
+      end
+      object ArrayBotButton2: TArrayBotButton
+        Left = 145
+        Top = 0
+        Width = 168
+        Height = 75
+        Hint = 'Open Handwheel position Form'
+        Caption = 'Open Logger Form'
         TabOrder = 0
         WordWrap = True
+        OnClick = OpenLoggerForm1Click
         SoundID = 'BUTTON_CLICK_4'
       end
     end
@@ -1809,7 +1810,7 @@ object MainForm: TMainForm
       end
     end
     object ToolBar2: TToolBar
-      Left = 961
+      Left = 1223
       Top = 2
       Width = 150
       Height = 74
@@ -1951,6 +1952,13 @@ object MainForm: TMainForm
       object Actions1: TMenuItem
         Action = OpenCloseShortcutForm
       end
+      object N6: TMenuItem
+        Caption = '-'
+      end
+      object Hide1: TMenuItem
+        Action = ToggleControlBar
+        AutoCheck = True
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'
@@ -1986,6 +1994,13 @@ object MainForm: TMainForm
       Caption = 'Open Actions'
       OnExecute = OpenCloseShortcutFormExecute
       OnUpdate = OpenCloseShortcutFormUpdate
+    end
+    object ToggleControlBar: TAction
+      Category = 'Misc'
+      AutoCheck = True
+      Caption = 'Toggle ControlBar'
+      OnExecute = ToggleControlBarExecute
+      OnUpdate = ToggleControlBarUpdate
     end
   end
   object CameraActions: TActionList

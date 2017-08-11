@@ -72,7 +72,7 @@ void TMainForm::enableDisableClientControls(bool enable)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CheckArduinoServerConnectionTimerTimer(TObject *Sender)
 {
-	Log(lDebug) << "Trying to connect to Arduino server";
+	Log(lDebug5) << "Trying to connect to Arduino server";
     if(!mConnectToArduinoServerThread.isRunning() && !mLightsArduinoClient.isConnected())
     {
     	mConnectToArduinoServerThread.start();

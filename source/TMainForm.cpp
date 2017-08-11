@@ -289,7 +289,6 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
     {
         mBlockID.setValue(b->KeyValue);
     }
-
 }
 
 //---------------------------------------------------------------------------
@@ -396,7 +395,6 @@ void __fastcall TMainForm::mBlockNoteNavigatorClick(TObject *Sender, TNavigateBt
     }
 }
 
-
 void __fastcall TMainForm::mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button)
 
 {
@@ -413,6 +411,18 @@ void __fastcall TMainForm::mRibbonNotesNavigatorClick(TObject *Sender, TNavigate
 
     	case TNavigateBtn::nbDelete:        break;
     }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ToggleControlBarExecute(TObject *Sender)
+{
+	ControlBar1->Visible = !ControlBar1->Visible;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ToggleControlBarUpdate(TObject *Sender)
+{
+	ToggleControlBar->Caption = ControlBar1->Visible ? "Hide ControlBar" : "Show ControlBar";
 }
 
 

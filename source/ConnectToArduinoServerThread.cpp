@@ -9,14 +9,12 @@ ConnectToArduinoServerThread::ConnectToArduinoServerThread(ArduinoClient& c, int
 :
 mClient(c),
 mPort(p)
-{
-
-}
+{}
 
 void ConnectToArduinoServerThread::run()
 {
 	mIsRunning = true;
-	Log(lDebug) << "Trying to connect to Arduino server";
+	Log(lDebug3) << "Trying to connect to Arduino server";
 	mClient.connect(mPort);
     mIsFinished = true;
     mIsRunning = false;

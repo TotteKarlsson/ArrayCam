@@ -155,7 +155,7 @@ void __fastcall	TMainForm::onCameraClose(System::TObject* Sender)
 }
 
 //---------------------------------------------------------------------------
-LRESULT TMainForm::OnUSBCameraMessage(TMessage msg)
+LRESULT TMainForm::onUSBCameraMessage(TMessage msg)
 {
     switch ( msg.WParam )
     {

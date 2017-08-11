@@ -71,26 +71,61 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
 
 	ArrayCamProtocol ap;
     //INCOMING MESSAGES ******************************************
-    if(compareStrings(ap[acrStartVideoRecorder], msg, csCaseInsensitive))
+
+    StringList msgList(msg, ',');
+
+    /* CAMERA */
+    if(compareStrings(ap[acrStartVideoRecorder], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Starting recording video";
         TThread::Synchronize(NULL, mMainForm.startRecordingMovie);
 
     }
-    else if(compareStrings(ap[acrStopVideoRecorder], msg, csCaseInsensitive))
+    else if(compareStrings(ap[acrStopVideoRecorder], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Stop recording video";
        	TThread::Synchronize(NULL, mMainForm.stopRecordingMovie);
 
     }
 
-    else if(compareStrings(ap[acrTakeSnapShot], msg, csCaseInsensitive))
+    else if(compareStrings(ap[acrTakeSnapShot], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Take snapshot";
         TThread::Synchronize(NULL, mMainForm.takeSnapShot);
     }
 
-    else if(compareStrings(ap[acrEnableBarcodeScanner], msg, csCaseInsensitive))
+	/* Navitar controller */
+    else if(compareStrings(ap[acrSetZoomAndFocus], msgList[0], csCaseInsensitive))
+    {
+
+    	Log(lInfo) << "Setting Navitar zoom and focus";
+
+        struct TLocalArgs
+	    {
+    	    int focus;
+            int zoom;
+	        TMainForm*	MainForm;
+        	void __fastcall setZoomAndFocus()
+	        {
+    	        MainForm->setFocusAndZoom(focus, zoom);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 3)
+        {
+	    	Args.focus = toInt(msgList[1]);
+	        Args.zoom = toInt(msgList[2]);
+        }
+
+        Args.MainForm = &mMainForm;
+
+        TThread::Synchronize(NULL, Args.setZoomAndFocus);
+    }
+
+	/* Barcode Scanner */
+    else if(compareStrings(ap[acrEnableBarcodeScanner], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Enabling barcode scanner";
         if(mMainForm.DecodeSessionBtn->Caption == "Stop Scan")
@@ -103,7 +138,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         }
     }
 
-    else if(compareStrings(ap[acrDisableBarcodeScanner], msg, csCaseInsensitive))
+    else if(compareStrings(ap[acrDisableBarcodeScanner], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Disable Barcode scanner";
         if(mMainForm.DecodeSessionBtn->Caption == "Scan Barcode")
@@ -116,7 +151,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         }
     }
 
-    else if(compareStrings("GET_SERVER_STATUS", msg, csCaseInsensitive))
+    else if(compareStrings("GET_SERVER_STATUS", msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Broadcast status";
 		broadcastStatus();
@@ -124,7 +159,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
 
     else
     {
-    	Log(lError) << "UNHANDLED SERVER MESSAGE: "<<msg;
+    	Log(lError) << "UNHANDLED SERVER MESSAGE: "<<msgList[0];
     }
 
     if(clientMessage.str().size())

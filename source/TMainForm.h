@@ -240,7 +240,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPropertyCheckBox *mAutoCheckConnectionCB;
 	TIntLabel *NrOfArrayCamServerClients;
 	TLabel *Label2;
-	TLabel *Label4;
 	TTabSheet *TabSheet7;
 	TGroupBox *BlockSelectionGB;
 	TPanel *Panel2;
@@ -271,6 +270,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel7;
 	TDBMemo *mRibbonNoteMemo;
 	TDBNavigator *mRibbonNoteNavigator;
+	TArrayBotButton *ArrayBotButton1;
+	TMenuItem *N6;
+	TMenuItem *Hide1;
+	TAction *ToggleControlBar;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -326,6 +329,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 
 	void __fastcall mBlockNoteNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button);
+	void __fastcall ToggleControlBarExecute(TObject *Sender);
+	void __fastcall ToggleControlBarUpdate(TObject *Sender);
 
 
 
@@ -487,16 +492,21 @@ class PACKAGE TMainForm  : public TRegistryForm
  			       __fastcall 					~TMainForm();
 
 												//!Camera stuff is processed in the message loop
-		LRESULT 					  			OnUSBCameraMessage(TMessage msg);
+		LRESULT 					  			onUSBCameraMessage(TMessage msg);
+
         void 		__fastcall		  			takeSnapShot();
 	    void 		__fastcall		  			startStopRecordingMovie();
 	    void 		__fastcall		  			startRecordingMovie();
 	    void 		__fastcall		  			stopRecordingMovie();
+	    void 		__fastcall		  			setFocus(int f);
+	    void 		__fastcall		  			setZoom(int z);
+	    void 		__fastcall		  			setFocusAndZoom(int f, int z);
+
         void		__fastcall					updateTemperature(double t);
         void		__fastcall					updateHumidity(double h);
 
     BEGIN_MESSAGE_MAP
-    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						OnUSBCameraMessage);
+    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);
         MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
 
         MESSAGE_HANDLER(WM_DECODE, 				TMessage, 		                onWMDecode);
