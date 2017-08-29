@@ -12,7 +12,7 @@ extern bool gAppIsClosing;
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 	gAppIsClosing = true;
-	if(//mLogFileReader.isRunning() 				||
+	if(
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
         mLightsArduinoClient.isConnected() 		||
@@ -69,8 +69,8 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 
     if(CheckArduinoServerConnectionTimer->Enabled)
     {
-	    mCheckArduinoServerConnection = false;
 	    CheckArduinoServerConnectionTimer->Enabled = false;
+	    mCheckArduinoServerConnection = false;
     }
 
    	if(mZebra.isConnected())
@@ -93,12 +93,6 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     	atdbDM->SQLConnection1->Connected = false;
 	    atdbDM->SQLConnection1->Close();
     }
-
-//	if(mLogFileReader.isRunning())
-//    {
-//		mLogFileReader.stop();
-//        mLogFileReader.assignOnMessageCallBack(NULL);
-//    }
 
     Close();
 }

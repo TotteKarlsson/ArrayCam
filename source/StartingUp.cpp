@@ -108,7 +108,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     f3->Parent = NavitarPresetGB;
     f3->Align = alTop;
     ReadRegistry();
-
 }
 
 //---------------------------------------------------------------------------

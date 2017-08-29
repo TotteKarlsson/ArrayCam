@@ -55,7 +55,6 @@ void __fastcall TMainForm::ArduinoServerStartStopButtonClick(TObject *Sender)
     }
 }
 
-
 //---------------------------------------------------------------------------
 void TMainForm::enableDisableClientControls(bool enable)
 {

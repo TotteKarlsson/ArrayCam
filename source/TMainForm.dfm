@@ -467,10 +467,6 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BlockSelectionGB: TGroupBox
             Left = 0
             Top = 0
@@ -787,10 +783,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -946,10 +938,6 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1028,10 +1016,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1093,7 +1077,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 28
+                Height = 27
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1343,10 +1327,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1401,10 +1381,6 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1489,18 +1465,18 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 509
+                  Width = 798
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1511,9 +1487,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1543,7 +1516,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1591,6 +1564,9 @@ object MainForm: TMainForm
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
+      DesignSize = (
+        699
+        858)
       object mCamera1BackPanel: TPanel
         Left = 0
         Top = 0
@@ -1646,6 +1622,28 @@ object MainForm: TMainForm
           ParentBiDiMode = False
           PopupMenu = CameraPopup
         end
+      end
+      object TakeSnapShotBtn: TArrayBotButton
+        Left = 19
+        Top = 772
+        Width = 161
+        Height = 61
+        Anchors = [akLeft, akBottom]
+        Caption = 'Take SnapShot'
+        TabOrder = 1
+        OnClick = TakeSnapShotBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
+      object RecordVideoBtn: TArrayBotButton
+        Left = 210
+        Top = 772
+        Width = 247
+        Height = 61
+        Anchors = [akLeft, akBottom]
+        Caption = 'Record Video'
+        TabOrder = 2
+        OnClick = RecordVideoBtnClick
+        SoundID = 'BUTTON_CLICK_4'
       end
     end
   end
@@ -1810,9 +1808,9 @@ object MainForm: TMainForm
       end
     end
     object ToolBar2: TToolBar
-      Left = 1223
+      Left = 1168
       Top = 2
-      Width = 150
+      Width = 346
       Height = 74
       Caption = 'ToolBar2'
       TabOrder = 2
@@ -2037,5 +2035,12 @@ object MainForm: TMainForm
     UseAppManager = True
     Left = 672
     Top = 16
+  end
+  object VideoRecTimer: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = VideoRecTimerTimer
+    Left = 400
+    Top = 864
   end
 end

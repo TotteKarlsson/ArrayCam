@@ -6,6 +6,9 @@
         <Projects Include="P:\libs\atapi\source\core\atCore.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\atapi\source\uc7\atUC7API.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\atapi\source\vcl\atVCLCore.cbproj">
             <Dependencies/>
         </Projects>
@@ -31,6 +34,15 @@
     </Target>
     <Target Name="atCore:Make">
         <MSBuild Projects="P:\libs\atapi\source\core\atCore.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atUC7API">
+        <MSBuild Projects="P:\libs\atapi\source\uc7\atUC7API.cbproj"/>
+    </Target>
+    <Target Name="atUC7API:Clean">
+        <MSBuild Projects="P:\libs\atapi\source\uc7\atUC7API.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atUC7API:Make">
+        <MSBuild Projects="P:\libs\atapi\source\uc7\atUC7API.cbproj" Targets="Make"/>
     </Target>
     <Target Name="atVCLCore">
         <MSBuild Projects="P:\libs\atapi\source\vcl\atVCLCore.cbproj"/>
@@ -60,13 +72,13 @@
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="atCore;atVCLCore;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="atCore;atUC7API;atVCLCore;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="atCore:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="atCore:Clean;atUC7API:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="atCore:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="atCore:Make;atUC7API:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

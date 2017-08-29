@@ -45,7 +45,7 @@ using namespace at;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
-        mCaptureVideo(false),
+//        mCaptureVideo(false),
         mSettingsForm(NULL),
         mAVIID(0),
     	mIniFile(joinPath(gAppDataFolder, "ArrayCam.ini"), true, true),
@@ -423,6 +423,40 @@ void __fastcall TMainForm::ToggleControlBarExecute(TObject *Sender)
 void __fastcall TMainForm::ToggleControlBarUpdate(TObject *Sender)
 {
 	ToggleControlBar->Caption = ControlBar1->Visible ? "Hide ControlBar" : "Show ControlBar";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::TakeSnapShotBtnClick(TObject *Sender)
+{
+	takeSnapShot();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
+{
+	static double recTime(0);
+	if(mCaptureVideoTimer->Enabled)
+    {
+    	RecordVideoBtn->Caption = "Stop Recording (" + FloatToStrF(recTime, ffFixed, 0, 0) + " s)";
+        recTime += .5;
+    }
+    else
+    {
+    	RecordVideoBtn->Caption = "Record Video";
+		VideoRecTimer->Enabled = false;
+        recTime = 0;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
+{
+	startStopRecordingMovie();
+
+	if(mCaptureVideoTimer->Enabled)
+    {
+		VideoRecTimer->Enabled = true;
+    }
 }
 
 

@@ -274,6 +274,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *N6;
 	TMenuItem *Hide1;
 	TAction *ToggleControlBar;
+	TArrayBotButton *TakeSnapShotBtn;
+	TArrayBotButton *RecordVideoBtn;
+	TTimer *VideoRecTimer;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -331,6 +334,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall ToggleControlBarExecute(TObject *Sender);
 	void __fastcall ToggleControlBarUpdate(TObject *Sender);
+	void __fastcall TakeSnapShotBtnClick(TObject *Sender);
+	void __fastcall VideoRecTimerTimer(TObject *Sender);
+	void __fastcall RecordVideoBtnClick(TObject *Sender);
 
 
 
@@ -394,9 +400,9 @@ class PACKAGE TMainForm  : public TRegistryForm
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
 
-        								        //!Boolean to check if we are
-                                                //capturing video to file
-        bool							        mCaptureVideo;
+//        								        //!Boolean to check if we are
+//                                                //capturing video to file
+//        bool							        mCaptureVideo;
 
         								        //!AVI ID is a handle for a
                                                 //underlying avi object

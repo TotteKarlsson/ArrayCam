@@ -410,6 +410,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
             return;
         }
         mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStarted));
+
     }
     else
     {
@@ -476,7 +477,6 @@ void __fastcall TMainForm::startStopRecordingMovie()
 void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
 {
 	//Todo: this should be executed in its own thread and not in a timer..
-    mCaptureVideo = true;
     static int frames(0);
 
     int retVal = isavi_AddFrame(mAVIID, mCamera1.mImageMemory);
@@ -488,6 +488,6 @@ void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
     else
     {
         frames++;
-        Log(lDebug5) << "Added frame: "<<frames;
+        //Log(lDebug5) << "Added frame: "<<frames;
     }
 }
