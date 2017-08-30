@@ -244,7 +244,7 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
-                  object mStartStopBtn: TArrayBotButton
+                  object StartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 47
                     Width = 150
@@ -1469,14 +1469,15 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1487,6 +1488,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1516,7 +1520,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1605,18 +1609,6 @@ object MainForm: TMainForm
               ImageIndex = -1
               Text = 'Reticle'
               Width = 75
-            end
-            item
-              Alignment = taCenter
-              ImageIndex = -1
-              Text = 'Snapshot'
-              Width = 100
-            end
-            item
-              Alignment = taCenter
-              ImageIndex = -1
-              Text = 'Record Movie'
-              Width = 150
             end>
           OnSectionClick = CameraHCSectionClick
           ParentBiDiMode = False
@@ -1637,7 +1629,7 @@ object MainForm: TMainForm
       object RecordVideoBtn: TArrayBotButton
         Left = 210
         Top = 772
-        Width = 247
+        Width = 180
         Height = 61
         Anchors = [akLeft, akBottom]
         Caption = 'Record Video'

@@ -110,7 +110,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *RegisterRibbonBtn;
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
-	TArrayBotButton *mStartStopBtn;
+	TArrayBotButton *StartStopBtn;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
@@ -399,10 +399,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
-
-//        								        //!Boolean to check if we are
-//                                                //capturing video to file
-//        bool							        mCaptureVideo;
 
         								        //!AVI ID is a handle for a
                                                 //underlying avi object

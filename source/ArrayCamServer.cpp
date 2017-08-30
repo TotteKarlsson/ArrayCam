@@ -151,6 +151,32 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         }
     }
 
+    else if(compareStrings(ap[acrStartUC7], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Starting UC7";
+        if(mMainForm.StartStopBtn->Caption == "Stop")
+        {
+        	Log(lError) << "UC7 already running.";
+        }
+        else
+        {
+        	TThread::Synchronize(NULL, mMainForm.StartStopBtn->Click);
+        }
+    }
+
+    else if(compareStrings(ap[acrStopUC7], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Stopping UC7";
+        if(mMainForm.StartStopBtn->Caption == "Start")
+        {
+        	Log(lError) << "UC7 already stopped.";
+        }
+        else
+        {
+        	TThread::Synchronize(NULL, mMainForm.StartStopBtn->Click);
+        }
+    }
+
     else if(compareStrings("GET_SERVER_STATUS", msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Broadcast status";

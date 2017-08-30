@@ -44,8 +44,8 @@ using namespace at;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
-	: TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
-//        mCaptureVideo(false),
+	:
+    	TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
         mSettingsForm(NULL),
         mAVIID(0),
     	mIniFile(joinPath(gAppDataFolder, "ArrayCam.ini"), true, true),

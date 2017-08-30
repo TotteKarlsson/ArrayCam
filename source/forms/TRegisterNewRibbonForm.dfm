@@ -66,7 +66,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Top = 32
         Width = 65
         Height = 17
-        DataField = 'specimen_id'
+        DataField = 'slice_id'
         DataSource = atdbDM.blocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -92,9 +92,9 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
       object Label5: TLabel
         Left = 24
         Top = 30
-        Width = 96
+        Width = 60
         Height = 19
-        Caption = 'Specimen ID:'
+        Caption = 'Slice ID:'
       end
       object Label6: TLabel
         Left = 247
@@ -234,7 +234,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Font.Style = []
         ParentFont = False
       end
-      object DBText1: TDBText
+      object RibbonID: TDBText
         Left = 293
         Top = 25
         Width = 236

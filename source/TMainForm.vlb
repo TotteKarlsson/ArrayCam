@@ -112,9 +112,6 @@ Coordinates=410,1667,113,87
 [CurrentStagePosFrame]
 Coordinates=1523,417,129,33
 
-[mStartStopBtn]
-Coordinates=1314,1401,86,51
-
 [mMoveNorthBtn]
 Coordinates=1133,1175,94,51
 
@@ -366,4 +363,7 @@ Coordinates=125,1184,63,51
 
 [BlockInfoGB]
 Coordinates=964,915,70,51
+
+[StartStopBtn]
+Coordinates=1314,1401,86,51
 

@@ -23,7 +23,7 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TLabel *Label2;
 	TGroupBox *GroupBox5;
-	TDBText *DBText1;
+	TDBText *RibbonID;
 	TDBText *DBText2;
 	TLabel *Label3;
 	TArrayBotButton *mDecrementCuttingOrderBtn;

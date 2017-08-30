@@ -91,12 +91,12 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 if(d == "00")
                 {
                 	Log(lInfo) << "Cutting motor is off";
-                    mStartStopBtn->Caption = "Start";
+                    StartStopBtn->Caption = "Start";
                 }
                 else if(d == "01")
                 {
                 	Log(lInfo) << "Cutting motor is on";
-                    mStartStopBtn->Caption = "Stop";
+                    StartStopBtn->Caption = "Stop";
                 }
                 else if(d == "E0")
                 {
@@ -329,15 +329,17 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
     	return;
     }
 
-	if (btn == mStartStopBtn)
+	if (btn == StartStopBtn)
     {
-    	if(mStartStopBtn->Caption == "Start")
+    	if(StartStopBtn->Caption == "Start")
         {
             mUC7.startCutter();
+            mACServer.broadcast(mACServer.IPCCommand(acrUC7Started));
         }
         else
         {
             mUC7.stopCutter();
+            mACServer.broadcast(mACServer.IPCCommand(acrUC7Stopped));
         }
     }
     else if(btn == mSetZeroCutBtn)
