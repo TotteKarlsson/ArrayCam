@@ -60,10 +60,6 @@ void TMainForm::setupProperties()
 	mSoundProperties.add((BaseProperty*)  &mKnifeAfterCuttingSound.setup( 	           		"KNIFE_AFTER_CUTTING_SOUND",        ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mArmRetractingSound.setup( 	           			"ARM_RETRACTING_SOUND",       		ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mBeforeKnifeBackOffSound.setup( 	           		"BEFORE_KNIFE_BACKOFF_SOUND",       ApplicationSound("SHORT_BEEP_1")));
-
-	mNavitarPreset1.setup("NAVITAR_PRESET_1", mIniFile);
-	mNavitarPreset2.setup("NAVITAR_PRESET_2", mIniFile);
-   	mNavitarPreset3.setup("NAVITAR_PRESET_3", mIniFile);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
@@ -83,7 +79,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	mCamera1BackPanel->Height 	= 1024;
 	mCamera1BackPanel->Top 		= 0;
 	mCamera1BackPanel->Left 	= 0;
-    enableDisableClientControls(false);
+    enableDisableArduinoClientControls(false);
 
 	//Connect to the arduino server..
 	CheckArduinoServerConnectionTimer->Enabled = true;
@@ -95,18 +91,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	TSoundsFrame1->populate();
     TApplicationSoundsFrame1->populate(mSoundProperties);
 
-    //Setup some navitar preset frames
-    TNavitarPresetFrame* f1 = new TNavitarPresetFrame(mNavitarPreset1, this);
-    f1->Parent = NavitarPresetGB;
-    f1->Align = alTop;
-
-    TNavitarPresetFrame* f2 = new TNavitarPresetFrame(mNavitarPreset2, this);
-    f2->Parent = NavitarPresetGB;
-    f2->Align = alTop;
-
-    TNavitarPresetFrame* f3 = new TNavitarPresetFrame(mNavitarPreset3, this);
-    f3->Parent = NavitarPresetGB;
-    f3->Align = alTop;
     ReadRegistry();
 }
 

@@ -124,6 +124,32 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         TThread::Synchronize(NULL, Args.setZoomAndFocus);
     }
 
+	/* LED */
+    else if(compareStrings(ap[acrSetLEDIntensity], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Setting LED intensity";
+        struct TLocalArgs
+	    {
+    	    int intensity;
+	        TMainForm*	MainForm;
+        	void __fastcall cb()
+	        {
+    	        MainForm->setLEDIntensity(intensity);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 2)
+        {
+	    	Args.intensity = toInt(msgList[1]);
+        }
+
+        Args.MainForm = &mMainForm;
+
+        TThread::Synchronize(NULL, Args.cb);
+    }
+
 	/* Barcode Scanner */
     else if(compareStrings(ap[acrEnableBarcodeScanner], msgList[0], csCaseInsensitive))
     {

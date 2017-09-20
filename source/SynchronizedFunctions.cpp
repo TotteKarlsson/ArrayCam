@@ -59,27 +59,18 @@ class TLocalArgs
         //If mouse is down.. do not update certain UI objects
         bool isMouseBtnDown = (bool) GetAsyncKeyState(VK_LBUTTON);
 
-        if(startsWith("FRONT_LED_DRIVE", msg) && isMouseBtnDown == false)
+        if(startsWith("AB_LIGHTS_DATA", msg) && isMouseBtnDown == false)
         {
-            StringList l(msg,'=');
-            if(l.size() == 2 && MainForm->mSettingsForm)
+            StringList l(msg,',');
+            if(l.size() == 3)
             {
-                MainForm->mSettingsForm->mFrontLEDTB->Tag = 1;
-                MainForm->mSettingsForm->mFrontLEDTB->Position = toInt(l[1]);
-                MainForm->mSettingsForm->mFrontLEDTB->Tag = 0;
+            	StringList val(l[1], '=');
+                MainForm->FrontLEDTB->Tag = 1;
+                MainForm->FrontLEDTB->Position = toInt(val[1]);
+                MainForm->FrontLEDTB->Tag = 0;
             }
         }
 
-        else if(startsWith("BACK_LED_DRIVE", msg) && isMouseBtnDown == false)
-        {
-            StringList l(msg,'=');
-            if(l.size() == 2 && MainForm->mSettingsForm)
-            {
-                MainForm->mSettingsForm->mBackLEDTB->Tag = 1;
-                MainForm->mSettingsForm->mBackLEDTB->Position = toInt(l[1]);
-                MainForm->mSettingsForm->mBackLEDTB->Tag = 0;
-            }
-        }
         else if(startsWith("DHT22_DATA", msg))
         {
             //Parse the message

@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Array Cam 0.5'
   ClientHeight = 963
-  ClientWidth = 1553
+  ClientWidth = 1740
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter2: TSplitter
-    Left = 701
+    Left = 888
     Top = 84
     Height = 860
     Align = alRight
@@ -33,7 +33,7 @@ object MainForm: TMainForm
     ExplicitHeight = 814
   end
   object MainContentPanel: TPanel
-    Left = 704
+    Left = 891
     Top = 84
     Width = 818
     Height = 860
@@ -41,6 +41,7 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
+    ExplicitLeft = 704
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -189,6 +190,7 @@ object MainForm: TMainForm
                   ParentFont = False
                   TabOrder = 2
                   Text = '0'
+                  Visible = False
                   OnKeyDown = uc7EditKeyDown
                 end
                 object mPresetFeedRateE: TIntegerLabeledEdit
@@ -1302,15 +1304,6 @@ object MainForm: TMainForm
                 end
               end
             end
-            object NavitarPresetGB: TGroupBox
-              Left = 1
-              Top = 241
-              Width = 491
-              Height = 580
-              Align = alClient
-              Caption = 'Presets'
-              TabOrder = 2
-            end
           end
         end
         object TabSheet1: TTabSheet
@@ -1321,7 +1314,7 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 822
-            ActivePage = TabSheet5
+            ActivePage = TabSheet3
             Align = alClient
             TabOrder = 0
             object TabSheet5: TTabSheet
@@ -1469,7 +1462,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
@@ -1540,6 +1533,46 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet10: TTabSheet
+          Caption = 'Lights'
+          ImageIndex = 7
+          object LightIntensitiesGB: TGroupBox
+            Left = 3
+            Top = 16
+            Width = 350
+            Height = 105
+            Caption = 'Light Intensities'
+            TabOrder = 0
+            object mFrontLEDLbl: TLabel
+              Left = 151
+              Top = 26
+              Width = 28
+              Height = 19
+              Caption = 'LED'
+            end
+            object Panel10: TPanel
+              Left = 2
+              Top = 21
+              Width = 143
+              Height = 82
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+              object FrontLEDTB: TTrackBar
+                Left = 0
+                Top = 0
+                Width = 143
+                Height = 40
+                Align = alTop
+                Max = 255
+                TabOrder = 0
+                ThumbLength = 30
+                TickStyle = tsNone
+                OnChange = FrontLEDTBChange
+              end
+            end
+          end
+        end
       end
       object Button1: TButton
         Left = 783
@@ -1556,25 +1589,24 @@ object MainForm: TMainForm
   object LeftPanel: TPanel
     Left = 0
     Top = 84
-    Width = 701
+    Width = 888
     Height = 860
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 701
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 699
+      Width = 886
       Height = 858
       Align = alClient
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      DesignSize = (
-        699
-        858)
+      ExplicitWidth = 699
       object mCamera1BackPanel: TPanel
         Left = 0
-        Top = 0
-        Width = 393
+        Top = -1
+        Width = 817
         Height = 608
         BorderStyle = bsSingle
         Caption = 'No Camera...'
@@ -1592,7 +1624,7 @@ object MainForm: TMainForm
         object CameraHC: THeaderControl
           Left = 1
           Top = 1
-          Width = 387
+          Width = 811
           Height = 30
           BiDiMode = bdLeftToRight
           Sections = <
@@ -1601,62 +1633,66 @@ object MainForm: TMainForm
               BiDiMode = bdLeftToRight
               ImageIndex = -1
               ParentBiDiMode = False
-              Text = 'Settings'
-              Width = 80
+              Text = 'Camera Settings'
+              Width = 130
             end
             item
               Alignment = taCenter
               ImageIndex = -1
-              Text = 'Reticle'
-              Width = 75
+              Text = 'Reticle Settings'
+              Width = 150
+            end
+            item
+              Alignment = taCenter
+              ImageIndex = -1
+              Text = 'Show Reticle'
+              Width = 110
+            end
+            item
+              Alignment = taCenter
+              ImageIndex = -1
+              Text = 'Reset Reticle'
+              Width = 110
+            end
+            item
+              Alignment = taCenter
+              ImageIndex = -1
+              Text = 'Maximize Camera View'
+              Width = 180
             end>
           OnSectionClick = CameraHCSectionClick
           ParentBiDiMode = False
           PopupMenu = CameraPopup
+          ExplicitWidth = 635
         end
-      end
-      object TakeSnapShotBtn: TArrayBotButton
-        Left = 19
-        Top = 772
-        Width = 161
-        Height = 61
-        Anchors = [akLeft, akBottom]
-        Caption = 'Take SnapShot'
-        TabOrder = 1
-        OnClick = TakeSnapShotBtnClick
-        SoundID = 'BUTTON_CLICK_4'
-      end
-      object RecordVideoBtn: TArrayBotButton
-        Left = 210
-        Top = 772
-        Width = 180
-        Height = 61
-        Anchors = [akLeft, akBottom]
-        Caption = 'Record Video'
-        TabOrder = 2
-        OnClick = RecordVideoBtnClick
-        SoundID = 'BUTTON_CLICK_4'
       end
     end
   end
   object StatusBar1: TStatusBar
     Left = 0
     Top = 944
-    Width = 1553
+    Width = 1740
     Height = 19
     Hint = 'Test'
     Panels = <>
     OnHint = StatusBar1Hint
+    ExplicitWidth = 1553
   end
   object ControlBar1: TControlBar
     Left = 0
     Top = 0
-    Width = 1553
+    Width = 1740
     Height = 84
     Align = alTop
+    AutoDock = False
+    DockSite = False
+    DragMode = dmAutomatic
+    DrawingStyle = dsGradient
     TabOrder = 3
+    OnStartDrag = ControlBar1StartDrag
+    ExplicitWidth = 1553
     object ToolBar1: TToolBar
-      Left = 706
+      Left = 708
       Top = 2
       Width = 383
       Height = 75
@@ -1795,6 +1831,7 @@ object MainForm: TMainForm
         Font.Style = []
         ParentFont = False
         TabOrder = 3
+        Visible = False
         WordWrap = True
         OnClick = mRibbonCreatorActiveCBClick
       end
@@ -1804,12 +1841,35 @@ object MainForm: TMainForm
       Top = 2
       Width = 346
       Height = 74
+      ButtonHeight = 75
       Caption = 'ToolBar2'
       TabOrder = 2
+      object RecordVideoBtn: TArrayBotButton
+        Left = 0
+        Top = 0
+        Width = 180
+        Height = 75
+        Align = alLeft
+        Caption = 'Record Video'
+        TabOrder = 0
+        OnClick = RecordVideoBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
+      object TakeSnapShotBtn: TArrayBotButton
+        Left = 180
+        Top = 0
+        Width = 161
+        Height = 75
+        Align = alLeft
+        Caption = 'Take SnapShot'
+        TabOrder = 1
+        OnClick = TakeSnapShotBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
     end
   end
   object ToggleMainContentBtn: TButton
-    Left = 1522
+    Left = 1709
     Top = 84
     Width = 31
     Height = 860
@@ -1818,6 +1878,7 @@ object MainForm: TMainForm
     Caption = '<'
     TabOrder = 4
     Visible = False
+    ExplicitLeft = 1522
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -1837,12 +1898,12 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 1
     OnTimer = mCaptureVideoTimerTimer
-    Left = 368
-    Top = 80
+    Left = 440
+    Top = 120
   end
   object mMediaPopup: TPopupMenu
-    Left = 360
-    Top = 352
+    Left = 304
+    Top = 264
     object Delete1: TMenuItem
       Caption = 'Delete'
     end
@@ -1865,8 +1926,8 @@ object MainForm: TMainForm
     Top = 216
   end
   object CameraPopup: TPopupMenu
-    Left = 224
-    Top = 288
+    Left = 120
+    Top = 304
     object FittoScreen1: TMenuItem
       Action = FitToScreenA
     end
@@ -1885,10 +1946,17 @@ object MainForm: TMainForm
     object OpenSettings1: TMenuItem
       Action = OpenCameraSettingsA
     end
+    object N7: TMenuItem
+      Caption = '-'
+    end
+    object oggleControlBar1: TMenuItem
+      Action = ToggleControlBar
+      AutoCheck = True
+    end
   end
   object ReticlePopup: TPopupMenu
-    Left = 328
-    Top = 552
+    Left = 256
+    Top = 128
     object Reset1: TMenuItem
       Caption = 'Reset'
     end

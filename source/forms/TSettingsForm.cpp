@@ -211,11 +211,6 @@ void __fastcall TSettingsForm::FormClose(TObject *Sender, TCloseAction &Action)
 	mUIUpdateTimer->Enabled = false;
 }
 
-void __fastcall TSettingsForm::mPairLEDsCBClick(TObject *Sender)
-{
-	mPairLEDsCB->OnClick(Sender);
-}
-
 //---------------------------------------------------------------------------
 void __fastcall TSettingsForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -307,47 +302,6 @@ the driver file (uc480_usb.sys) do not match. ";
         default:
         	Log(lInfo) << "Unknown return value";
         break;
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TSettingsForm::SettingsChange(TObject *Sender)
-{
-	TTrackBar* tb = dynamic_cast<TTrackBar*>(Sender);
-    if(!tb)
-    {
-    	return;
-    }
-
-   	int pos = tb->Position;
-    if(tb == mFrontLEDTB)
-    {
-    	if(mMainForm.mPairLEDs.getValue() == true)
-        {
-        	if(mBackLEDTB->Position != mFrontLEDTB->Position)
-            {
-				mBackLEDTB->Position = mFrontLEDTB->Position;
-            }
-        }
-
-        if(tb->Tag != 1) //Means we are updating UI from thread
-        {
-        	stringstream s;
-	        s<<"SET_FRONT_LED_INTENSITY="<<pos;
-	        mMainForm.mLightsArduinoClient.request(s.str());
-        }
-        mFrontLEDLbl->Caption = "Front LED (" + IntToStr(pos) + ")";
-    }
-    else if(tb == mBackLEDTB)
-    {
-        if(tb->Tag != 1) //Means we are updating UI
-        {
-	        stringstream s;
-	        s<<"SET_BACK_LED_INTENSITY="<<pos;
-    	    mMainForm.mLightsArduinoClient.request(s.str());
-        }
-        mBackLEDLbl->Caption = "Back LED (" + IntToStr(pos) + ")";
-
     }
 }
 
@@ -518,9 +472,6 @@ void __fastcall TSettingsForm::FormCreate(TObject *Sender)
 
     mHorizontalMirrorCB->setReference(mMainForm.mHorizontalMirror.getReference());
 	mHorizontalMirrorCB->Update();
-
-    mPairLEDsCB->setReference(mMainForm.mPairLEDs.getReference());
-    mPairLEDsCB->Update();
 
     mPhotoOutputBaseFolder->setReference(mMainForm.mSnapShotFolder.getReference());
     mMoviesFolderE->setReference(mMainForm.mMoviesFolder.getReference());

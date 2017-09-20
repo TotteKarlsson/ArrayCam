@@ -42,12 +42,35 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
     }
     else if(Section == CameraHC->Sections->Items[2])
     {
-	    takeSnapShot();
+		mReticleVisible = !mReticleVisible;
+        Section->Text = mReticleVisible ? "Hide Reticle" : "Show Reticle";
     }
     else if(Section == CameraHC->Sections->Items[3])
     {
-	    startStopRecordingMovie();
+	    mReticle.setReticleCenter(0,0);
     }
+    else if(Section == CameraHC->Sections->Items[4])
+    {
+	    if(Section->Text == "Maximize Camera View")
+        {
+        	ControlBar1->Visible = false;
+            if(MainContentPanel->Visible)
+            {
+				ToggleMainContentPanelAExecute(NULL);
+            }
+			Section->Text = "Show UI Controls";
+        }
+        else
+        {
+        	ControlBar1->Visible = true;
+            if(!MainContentPanel->Visible)
+            {
+				ToggleMainContentPanelAExecute(NULL);
+            }
+			Section->Text = "Maximize Camera View";
+        }
+    }
+
 }
 
 //---------------------------------------------------------------------------

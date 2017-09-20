@@ -193,7 +193,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TNavitarMotorFrame *TNavitarMotorFrame1;
 	TPanel *Panel8;
 	TNavitarMotorFrame *TNavitarMotorFrame2;
-	TGroupBox *NavitarPresetGB;
 	TStatusBar *StatusBar1;
 	TMainMenu *MainMenu1;
 	TMenuItem *File1;
@@ -277,6 +276,13 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *TakeSnapShotBtn;
 	TArrayBotButton *RecordVideoBtn;
 	TTimer *VideoRecTimer;
+	TMenuItem *oggleControlBar1;
+	TMenuItem *N7;
+	TTabSheet *TabSheet10;
+	TGroupBox *LightIntensitiesGB;
+	TLabel *mFrontLEDLbl;
+	TPanel *Panel10;
+	TTrackBar *FrontLEDTB;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -337,9 +343,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall TakeSnapShotBtnClick(TObject *Sender);
 	void __fastcall VideoRecTimerTimer(TObject *Sender);
 	void __fastcall RecordVideoBtnClick(TObject *Sender);
-
-
-
+	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
+	void __fastcall FrontLEDTBChange(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -444,7 +449,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void 									onSensorsArduinoMessageReceived(const string& msg);
 		void 									onPufferArduinoMessageReceived(const string& msg);
 
-        void									enableDisableClientControls(bool enable);
+        void									enableDisableArduinoClientControls(bool enable);
 		void    								populateUsers();
 		void       __fastcall					afterDBServerConnect(System::TObject* Sender);
 		void       __fastcall					afterDBServerDisconnect(System::TObject* Sender);
@@ -462,10 +467,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 		NavitarMotorController					mNavitarMotorController;
 		void  									onNavitarConnected();
 		void  									onNavitarDisconnected();
-
-        NavitarPreset							mNavitarPreset1;
-        NavitarPreset							mNavitarPreset2;
-        NavitarPreset							mNavitarPreset3;
 
                                                 //INI Parameters...
 		Property<int>	     		           	mZebraCOMPort;
@@ -506,6 +507,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 
         void		__fastcall					updateTemperature(double t);
         void		__fastcall					updateHumidity(double h);
+        void									setLEDIntensity(int intensity);
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);

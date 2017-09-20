@@ -9,8 +9,8 @@ void  TMainForm::onNavitarConnected()
    	SWVerLbl->Caption           = vclstr(mNavitarMotorController.getSoftwareVersion());
     FirmWareDateLbl->Caption   	= vclstr(mNavitarMotorController.getDriverSoftwareBuildDate());
 
-    TNavitarMotorFrame1->populate(mNavitarMotorController.getZoom());
-    TNavitarMotorFrame2->populate(mNavitarMotorController.getFocus());
+    TNavitarMotorFrame1->populate(mNavitarMotorController.getFocus());
+    TNavitarMotorFrame2->populate(mNavitarMotorController.getZoom());
     enableDisableGroupBox(ControllerInfoGB, true);
 }
 

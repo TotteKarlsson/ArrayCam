@@ -14,7 +14,7 @@ void TMainForm::onArduinoClientConnected()
 
     //Send message to update UI
     mLightsArduinoClient.getBoardStatus();
-    enableDisableClientControls(true);
+    enableDisableArduinoClientControls(true);
 
   	TStatusPanel* p = mSBManager.getPanel(sbpArduinoConnection);
     p->Text = "ArduinoServer: Connected";
@@ -29,7 +29,7 @@ void TMainForm::onArduinoClientDisconnected()
     if(gAppIsClosing != true)
     {
 	    ArduinoServerStartStopButton->Caption = "Start";
-    	enableDisableClientControls(false);
+    	enableDisableArduinoClientControls(false);
         if(mCheckArduinoServerConnection)
         {
 			CheckArduinoServerConnectionTimer->Enabled = true;
@@ -56,16 +56,10 @@ void __fastcall TMainForm::ArduinoServerStartStopButtonClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void TMainForm::enableDisableClientControls(bool enable)
+void TMainForm::enableDisableArduinoClientControls(bool enable)
 {
 	mArduinoServerPortE->Enabled = !enable;
-
-
-	//Disable/Enable client related components..
-    if(mSettingsForm)
-    {
-    	enableDisableGroupBox(mSettingsForm->LightIntensitiesGB, enable);
-    }
+    LightIntensitiesGB->Enabled = enable;
 }
 
 //---------------------------------------------------------------------------

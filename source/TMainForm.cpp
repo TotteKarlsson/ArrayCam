@@ -87,9 +87,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 		mBeforeKnifeBackOffSound(ApplicationSound("")),
         mKnifeAfterCuttingSound(ApplicationSound("")),
 		mArmRetractingSound(ApplicationSound("")),
-        mNavitarPreset1(mNavitarMotorController, "NAVITAR_PRESET_1"),
-        mNavitarPreset2(mNavitarMotorController, "NAVITAR_PRESET_2"),
-        mNavitarPreset3(mNavitarMotorController, "NAVITAR_PRESET_3"),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         mSBManager(*StatusBar1),
         mHandWheelPositionForm(NULL),
@@ -117,11 +114,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     setupProperties();
     mGeneralProperties.read();
     mSoundProperties.read();
-
-	//Navitarpresets
-	mNavitarPreset1.read();
-	mNavitarPreset2.read();
-	mNavitarPreset3.read();
 
     //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);
@@ -158,6 +150,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mUC7.setKnifeStageJogStepPreset(mKnifeStageJogStep.getValue());
 
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
+
+	THeaderSection* Section = CameraHC->Sections->Items[2];
+    Section->Text = mReticleVisible ? "Hide Reticle" : "Show Reticle";
 
     //Find out which item in the CB that should be selected
     for(int i = 0; i < mZebraBaudRateCB->Items->Count; i++)
@@ -459,4 +454,42 @@ void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject)
 
+{
+	this->Align = alNone;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::FrontLEDTBChange(TObject *Sender)
+{
+	TTrackBar* tb = dynamic_cast<TTrackBar*>(Sender);
+    if(!tb)
+    {
+    	return;
+    }
+
+   	int pos = tb->Position;
+    if(tb == FrontLEDTB)
+    {
+        if(tb->Tag != 1) //Means we are updating UI from thread
+        {
+	        setLEDIntensity(pos);
+        }
+        mFrontLEDLbl->Caption = "Front LED (" + IntToStr(pos) + ")";
+    }
+}
+
+void TMainForm::setLEDIntensity(int intensity)
+{
+	TTrackBar* tb = FrontLEDTB;
+	//Means we are updating UI from thread
+    if(tb->Tag != 1)
+    {
+        stringstream s;
+        s<<"SET_FRONT_LED_INTENSITY="<<intensity;
+        mLightsArduinoClient.request(s.str());
+	    mACServer.broadcast(mACServer.IPCCommand(acrLEDIntensitySet));
+    }
+}
