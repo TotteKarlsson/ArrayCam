@@ -1,3 +1,12 @@
+Release 0.6.6 (Sept 20)
+=======================
+* Removed code that dealt with paired LEDs
+* Added code to deal with LED intensity requests
+* Added actions to camera header control for controlling the reticle and UI controls
+* Added ability to remotely start/stop UC7
+* Added snapshot and record video buttons
+* Fixed closing down issue regarding threads in the UC7 component
+
 Release 0.6.5 (Aug 11)
 =======================
 * Added functions to deal with arraycam focus, zoom request
