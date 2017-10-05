@@ -17,6 +17,19 @@ object MainForm: TMainForm
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
+  object IntLabel1: TIntLabel
+    Left = 224
+    Top = 280
+    Width = 45
+    Height = 13
+    Caption = 'IntLabel1'
+    Value = -1
+    TheFont.Charset = DEFAULT_CHARSET
+    TheFont.Color = clWindowText
+    TheFont.Height = -11
+    TheFont.Name = 'Tahoma'
+    TheFont.Style = []
+  end
   object InputFileE: TSTDStringLabeledEdit
     Left = 32
     Top = 64
@@ -50,6 +63,7 @@ object MainForm: TMainForm
     Height = 81
     Caption = 'Compress'
     TabOrder = 2
+    OnClick = CompressClick
     SoundID = 'BUTTON_CLICK_4'
   end
   object infoMemo: TMemo
