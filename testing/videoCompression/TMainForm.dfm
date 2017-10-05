@@ -1,7 +1,7 @@
-object Form1: TForm1
+object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Compressor'
   ClientHeight = 652
   ClientWidth = 1208
   Color = clBtnFace
@@ -10,7 +10,11 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object InputFileE: TSTDStringLabeledEdit
@@ -38,13 +42,6 @@ object Form1: TForm1
     TabOrder = 1
     ExplicitLeft = 632
     ExplicitTop = 32
-    inherited GroupBox1: TGroupBox
-      inherited FFMPEGLocationE: TSTDStringLabeledEdit
-        EditLabel.ExplicitLeft = 0
-        EditLabel.ExplicitTop = -16
-        EditLabel.ExplicitWidth = 85
-      end
-    end
   end
   object Compress: TArrayBotButton
     Left = 40
@@ -55,13 +52,16 @@ object Form1: TForm1
     TabOrder = 2
     SoundID = 'BUTTON_CLICK_4'
   end
-  object Memo1: TMemo
+  object infoMemo: TMemo
     Left = 0
     Top = 384
     Width = 1208
     Height = 268
     Align = alBottom
+    ReadOnly = True
+    ScrollBars = ssBoth
     TabOrder = 3
+    WordWrap = False
   end
   object ProgressBar1: TProgressBar
     Left = 40
@@ -69,5 +69,12 @@ object Form1: TForm1
     Width = 393
     Height = 25
     TabOrder = 4
+  end
+  object ShutDownTimer: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = ShutDownTimerTimer
+    Left = 256
+    Top = 136
   end
 end

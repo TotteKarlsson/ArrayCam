@@ -47,9 +47,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
-        <IncludePath>..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
+        <IncludePath>..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
         <Multithreaded>true</Multithreaded>
-        <ILINK_LibraryPath>..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -111,6 +111,10 @@
         <BCC_PCHName_Clang>videoCompressionPCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="..\..\source\classes\atVideoCompressorThread.cpp">
+            <DependentOn>..\..\source\classes\atVideoCompressorThread.h</DependentOn>
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\..\source\frames\TFFMPEGFrame.cpp">
             <Form>FFMPEGFrame</Form>
             <FormType>dfm</FormType>
@@ -118,8 +122,11 @@
             <DependentOn>..\..\source\frames\TFFMPEGFrame.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ShutDownLogic.cpp">
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
         <CppCompile Include="TMainForm.cpp">
-            <Form>Form1</Form>
+            <Form>MainForm</Form>
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
