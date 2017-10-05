@@ -70,7 +70,19 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
 			Section->Text = "Maximize Camera View";
         }
     }
-
+    else if(Section == CameraHC->Sections->Items[5])
+    {
+	    if(Section->Text == "Show Image Center")
+        {
+        	mReticle2.visible(true);
+			Section->Text = "Hide Image Center";
+        }
+        else
+        {
+	       	mReticle2.visible(false);
+			Section->Text = "Show Image Center";
+        }
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -190,10 +202,16 @@ LRESULT TMainForm::onUSBCameraMessage(TMessage msg)
             {
             	mCamera1.RenderBitmap(mCamera1.mMemoryId, mCamera1DisplayHandle, mRenderMode);
 
+        	    HDC hDC = mPB->Canvas->Handle;
+
+            	//Set 0,0 in the middle
+        		MoveWindowOrg(hDC, mPB->Width/2, mPB->Height/2);
+				mReticle2.draw(mPB->Width, mPB->Height);
                 if(mReticleVisible)
                 {
 					mReticle.draw(mPB->Width, mPB->Height);
                 }
+
             }
         break;
     }

@@ -401,6 +401,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Cuc480   						        mCamera1;
         CameraServiceThread						mServiceCamera1;
         TReticle								mReticle;
+        TReticle								mReticle2;
 
         long							        mRenderMode;
         HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
@@ -503,6 +504,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	    void 		__fastcall		  			stopRecordingMovie();
 	    void 		__fastcall		  			setFocus(int f);
 	    void 		__fastcall		  			setZoom(int z);
+	    void 		__fastcall		  			zoomIn(int z);
+	    void 		__fastcall		  			zoomOut(int z);
 	    void 		__fastcall		  			setFocusAndZoom(int f, int z);
 
         void		__fastcall					updateTemperature(double t);

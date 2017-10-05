@@ -62,6 +62,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mMoviesFolder(""),
         mLocalDBName(""),
         mReticle(mPB->Canvas),
+        mReticle2(mPB->Canvas, TReticle::rtCrossHair, clBlue),
         mServiceCamera1(mCamera1, 1, this->Handle),
         mMovingReticle(false),
         mCheckArduinoServerConnection(true),
@@ -174,6 +175,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mSBManager.addPanel(200, sbpNavitarController,	"Navitar Controller: Not Connected");
     mSBManager.addPanel(220, sbpArduinoConnection,	"Arduino Server: Not Connected");
     mSBManager.addPanel(200, sbpBarcodeReader, 		"BarcodeReader: Not Connected");
+
+	mReticle2.visible(false);
 }
 
 __fastcall TMainForm::~TMainForm()

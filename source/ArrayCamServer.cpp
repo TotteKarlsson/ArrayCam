@@ -124,6 +124,62 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         TThread::Synchronize(NULL, Args.setZoomAndFocus);
     }
 
+	/* Navitar controller */
+    else if(compareStrings(ap[acrZoomIn], msgList[0], csCaseInsensitive))
+    {
+
+    	Log(lInfo) << "Zoom in";
+
+        struct TLocalArgs
+	    {
+            int zoom;
+	        TMainForm*	MainForm;
+        	void __fastcall zoomIn()
+	        {
+    	        MainForm->zoomIn(zoom);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 2)
+        {
+	        Args.zoom = toInt(msgList[1]);
+        }
+
+        Args.MainForm = &mMainForm;
+
+        TThread::Synchronize(NULL, Args.zoomIn);
+    }
+
+	/* Navitar controller */
+    else if(compareStrings(ap[acrZoomOut], msgList[0], csCaseInsensitive))
+    {
+
+    	Log(lInfo) << "Zoom out";
+
+        struct TLocalArgs
+	    {
+            int zoom;
+	        TMainForm*	MainForm;
+        	void __fastcall zoomOut()
+	        {
+    	        MainForm->zoomOut(zoom);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 2)
+        {
+	        Args.zoom = toInt(msgList[1]);
+        }
+
+        Args.MainForm = &mMainForm;
+
+        TThread::Synchronize(NULL, Args.zoomOut);
+    }
+
 	/* LED */
     else if(compareStrings(ap[acrSetLEDIntensity], msgList[0], csCaseInsensitive))
     {
