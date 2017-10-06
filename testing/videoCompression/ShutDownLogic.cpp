@@ -14,6 +14,11 @@ void __fastcall TMainForm::ShutDownTimerTimer(TObject *Sender)
 		mLogFileReader.stop();
 	}
 
+    if(mVCThread.isRunning())
+    {
+    	mVCThread.stop();
+    }
+
 	Close();
 }
 
@@ -23,13 +28,11 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 	Log(lInfo) << "Closing down....";
 
 	//Check if we can close.. abort all threads..
-	CanClose = (mLogFileReader.isRunning()) ? false : true;
-
-	//Check if active stuff is going on.. if so call the ShutDown in the
-    //Timer fire    if(
-//   	CanClose = (mFrames.size()
-//                ) ? false : true;
-
+	CanClose = (
+    			mLogFileReader.isRunning() ||
+		    	mVCThread.isRunning()
+        		)
+         ? false : true;
 
 	if(CanClose == false)
 	{

@@ -20,9 +20,9 @@ object MainForm: TMainForm
   object IntLabel1: TIntLabel
     Left = 224
     Top = 280
-    Width = 45
+    Width = 10
     Height = 13
-    Caption = 'IntLabel1'
+    Caption = '-1'
     Value = -1
     TheFont.Charset = DEFAULT_CHARSET
     TheFont.Color = clWindowText
@@ -55,15 +55,21 @@ object MainForm: TMainForm
     TabOrder = 1
     ExplicitLeft = 632
     ExplicitTop = 32
+    inherited GroupBox1: TGroupBox
+      inherited FFMPEGLocationE: TSTDStringLabeledEdit
+        Text = 'ffmpeg.exe'
+        Value = 'ffmpeg.exe'
+      end
+    end
   end
-  object Compress: TArrayBotButton
+  object CompressBtn: TArrayBotButton
     Left = 40
     Top = 152
     Width = 137
     Height = 81
-    Caption = 'Compress'
+    Caption = 'CompressBtn'
     TabOrder = 2
-    OnClick = CompressClick
+    OnClick = CompressBtnClick
     SoundID = 'BUTTON_CLICK_4'
   end
   object infoMemo: TMemo

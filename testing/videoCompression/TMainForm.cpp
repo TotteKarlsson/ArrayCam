@@ -67,29 +67,71 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
     }
 }
 
-void __fastcall TMainForm::CompressClick(TObject *Sender)
+void __fastcall TMainForm::CompressBtnClick(TObject *Sender)
 {
-	mVCThread.start();
+	if(CompressBtn->Caption != "Stop Compressing..")
+    {
+		mVCThread.setFFMPEGLocation(TFFMPEGFrame1->getFFMPEGLocation());
+		mVCThread.setInputFile(InputFileE->getValue());
+		mVCThread.setFFMPEGOutFileArguments(TFFMPEGFrame1->getOutFileArguments());
+		mVCThread.start();
+    }
+    else
+    {
+		mVCThread.stop();
+    }
 }
 
 void TMainForm::onEnter(int i, int j)
 {
-	Log(lInfo) << "Thread was entered..";
+	struct lclS
+    {
+        int i, j;
+        void __fastcall onEnter()
+        {
+            Log(lInfo) << "Thread was entered..";
+            MainForm->CompressBtn->Caption = "Stop Compressing..";
+            MainForm->ProgressBar1->Position = 0;
+        }
+    };
+	lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    TThread::Synchronize(0, &lcl.onEnter);
 }
 
 void TMainForm::onProgress(int i, int j)
 {
-    Log(lInfo) << "Thread is progressing: "<<i;
-
-    //Updating UI controls need to be synchronized
-	//with the main thread
-	IntLabel1->setValue(i);
-    ProgressBar1->Position = i;
+	struct lclS
+    {
+        int i, j;
+        void __fastcall onProgress()
+        {
+            MainForm->IntLabel1->setValue(i);
+            MainForm->ProgressBar1->Position = i;
+        }
+    };
+	lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    TThread::Synchronize(0, &lcl.onProgress);
 }
 
 void TMainForm::onExit(int i, int j)
 {
-	Log(lInfo) << "Thread is exiting..";
+	struct lclS
+    {
+        int i, j;
+        void __fastcall onExit()
+        {
+			Log(lInfo) << "Thread is exiting..";
+			MainForm->CompressBtn->Caption = "Compress";
+        }
+    };
+		lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    TThread::Synchronize(0, &lcl.onExit);
 }
 
 

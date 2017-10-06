@@ -1,6 +1,5 @@
 #ifndef TMainFormH
 #define TMainFormH
-//---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -25,7 +24,7 @@ class TMainForm : public TForm
     __published:	// IDE-managed Components
         TSTDStringLabeledEdit *InputFileE;
         TFFMPEGFrame *TFFMPEGFrame1;
-        TArrayBotButton *Compress;
+	TArrayBotButton *CompressBtn;
 	TMemo *infoMemo;
         TProgressBar *ProgressBar1;
 	TTimer *ShutDownTimer;
@@ -34,7 +33,7 @@ class TMainForm : public TForm
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall CompressClick(TObject *Sender);
+	void __fastcall CompressBtnClick(TObject *Sender);
 
     private:	// User declarations
         LogFileReader                       mLogFileReader;
