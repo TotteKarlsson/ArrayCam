@@ -1,3 +1,13 @@
+Release 0.6.7 (Oct 9)
+=======================
+* Added ability to compress video files in a thread using ffmpeg
+* Added ffmpeg properties to ini File
+* Wrote a compressin UI for testing
+* Getting videocompression thread finished
+* Now takes crf, preset and number of threads as arguments
+* Assigning threads using function and bind concepts
+* Backbone of test application done
+
 Release 0.6.6 (Sept 20)
 =======================
 * Removed code that dealt with paired LEDs

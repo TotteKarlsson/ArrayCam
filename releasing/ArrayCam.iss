@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName       "ArrayCam"
-#define MyAppVersion    "0.6.8b"
+#define MyAppVersion    "0.6.7"
 #define MyAppPublisher  "Smith Lab"
 #define MyAppURL        "http://www.example.com/"
 #define MyAppExeName    "ArrayCam.exe"
