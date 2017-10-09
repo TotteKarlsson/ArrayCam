@@ -11,6 +11,7 @@
 #include "TATDBDataModule.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
+#include "TFFMPEGOutputFrame.h"
 using namespace mtk;
 using namespace at;
 
@@ -483,6 +484,8 @@ void __fastcall TMainForm::startStopRecordingMovie()
     	string fName(lCurrentVideoFileName);
     	Log(lInfo) << "Saving movie to file: "<< fName;
 
+        //Start compression video thread
+        startVideoCompression(fName);
 		try
         {
         	//Add image to database
@@ -514,6 +517,20 @@ void __fastcall TMainForm::startStopRecordingMovie()
   	mACServer.broadcastStatus();
 }
 
+bool TMainForm::startVideoCompression(const string& inputName)
+{
+    Log(lInfo) << "Starting compressing file: " << inputName;
+    TFFMPEGOutputFrame* f = new TFFMPEGOutputFrame(this);
+    f->Parent = MPEGPanel;
+    f->onDone = onCompressionFinished;
+    f->setInputFile(inputName);
+    f->setCompressionOptions(TFFMPEGFrame1->getOutFileArguments(), TFFMPEGFrame1->DeleteSourceFileCB->Checked, TFFMPEGFrame1->RenameSourceFileCB->Checked);
+    f->startCompression();
+    mCompressionFrames.push_back(f);
+    return true;
+}
+
+
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
 {
@@ -522,13 +539,36 @@ void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
 
     int retVal = isavi_AddFrame(mAVIID, mCamera1.mImageMemory);
 
-    if(retVal != IS_AVI_NO_ERR)
-    {
-        //Log(lError) << "There was an AddFrame AVI error: "<<retVal;
-    }
-    else
+    if(retVal == IS_AVI_NO_ERR)
     {
         frames++;
-        //Log(lDebug5) << "Added frame: "<<frames;
     }
 }
+
+void __fastcall TMainForm::onCompressionFinished(TFFMPEGOutputFrame* f)
+{
+	//Start deleteFrameTimer
+	CleanupTimer->Enabled = true;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CleanupTimerTimer(TObject *Sender)
+{
+	CleanupTimer->Enabled = false;
+
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
+    {
+    	if((*i) && (*i) ->isDone())
+        {
+        	delete (*i);
+            i = mCompressionFrames.erase(i);
+        }
+        else
+        {
+        	i++;
+        }
+    }
+}
+

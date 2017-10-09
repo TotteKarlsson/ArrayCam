@@ -9,6 +9,7 @@
 
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("..\..\source\frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
+USEFORM("..\..\source\frames\TFFMPEGOutputFrame.cpp", FFMPEGOutputFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 using namespace mtk;
 using namespace std;

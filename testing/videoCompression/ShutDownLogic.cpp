@@ -1,23 +1,30 @@
 #pragma hdrstop
+#include "VCL.Dialogs.hpp"
 #include "TMainForm.h"
 #include "mtkLogger.h"
+#include "TFFMPEGOutputFrame.h"
 using namespace mtk;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::ShutDownTimerTimer(TObject *Sender)
 {
 	ShutDownTimer->Enabled = false;
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
+    {
+    	if((*i))
+        {
+			MessageDlg("Wait or stop ongoing jobs before closing..", mtWarning, TMsgDlgButtons() << mbOK, 0);
+            return;
+        }
+    }
 
 	if(mLogFileReader.isRunning())
 	{
 		Log(lDebug) << "Shutting down log file reader";
 		mLogFileReader.stop();
 	}
-
-    if(mVCThread.isRunning())
-    {
-    	mVCThread.stop();
-    }
 
 	Close();
 }
@@ -29,10 +36,20 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 
 	//Check if we can close.. abort all threads..
 	CanClose = (
-    			mLogFileReader.isRunning() ||
-		    	mVCThread.isRunning()
+    			mLogFileReader.isRunning()
         		)
          ? false : true;
+
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
+    {
+    	if((*i) && (*i)->isDone() == false )
+        {
+			 CanClose = false;
+             break;
+        }
+    }
 
 	if(CanClose == false)
 	{

@@ -30,6 +30,7 @@
 #pragma link "TNavitarMotorFrame"
 #pragma link "TNavitarPresetFrame"
 #pragma link "TApplicationSoundsFrame"
+#pragma link "TFFMPEGFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -115,6 +116,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     setupProperties();
     mGeneralProperties.read();
     mSoundProperties.read();
+
+    TFFMPEGFrame1->setupProperties(mIniFile);
 
     //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);
@@ -496,3 +499,4 @@ void TMainForm::setLEDIntensity(int intensity)
 	    mACServer.broadcast(mACServer.IPCCommand(acrLEDIntensitySet));
     }
 }
+

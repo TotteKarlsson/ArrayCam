@@ -126,6 +126,13 @@
             <DependentOn>..\..\source\frames\TFFMPEGFrame.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\..\source\frames\TFFMPEGOutputFrame.cpp">
+            <Form>FFMPEGOutputFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>..\..\source\frames\TFFMPEGOutputFrame.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ShutDownLogic.cpp">
             <BuildOrder>5</BuildOrder>
         </CppCompile>
@@ -143,6 +150,7 @@
         </PCHCompile>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="..\..\source\frames\TFFMPEGFrame.dfm"/>
+        <FormResources Include="..\..\source\frames\TFFMPEGOutputFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

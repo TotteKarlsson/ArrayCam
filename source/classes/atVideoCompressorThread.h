@@ -18,12 +18,19 @@ class VideoCompressorThread : public mtk::Thread
         void					setFFMPEGOutFileArguments(const string& args);
 		void					setInputFile(const string& f);
 		void					assignCallBacks(Callback one, Callback two, Callback three);
+        void					deleteSourceFileAfterCompression(bool what);
+        void					renameSourceFileAfterCompression(bool what);
         virtual void            run();
+        string 					getInputFileName();
+
 
     protected:
     	string					mFFMPEGLocation;
         string				    mFFMPEGOutFileArguments;
-        string					mInputFile;
+        string					mInputFileName;
+        bool					mDeleteSourceFile;
+        bool					mRenameSourceFile;
+
 	    Callback 				onEnter;
 	    Callback 				onProgress;
 	    Callback 				onExit;

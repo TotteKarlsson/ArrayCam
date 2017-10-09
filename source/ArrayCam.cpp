@@ -17,13 +17,14 @@ using namespace mtk;
 
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.cpp", csDM); /* TDataModule: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp", ImagesAndMoviesDM); /* TDataModule: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp", atdbDM); /* TDataModule: File Type */
-USEFORM("forms\TActionsForm.cpp", ActionsForm);
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("forms\TActionsForm.cpp", ActionsForm);
+USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -47,6 +48,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
+		Application->CreateForm(__classid(TFFMPEGFrame), &FFMPEGFrame);
 		Application->Run();
 	}
 	catch (Exception &exception)
@@ -93,7 +95,6 @@ void setupLogging()
 #pragma comment(lib, "mtkMath.lib")
 #pragma comment(lib, "mtkIPC.lib")
 
-//#pragma comment(lib, "SQLite-static.lib")
 #pragma comment(lib, "libmysqlB.lib")
 
 #pragma comment(lib, "poco_mysql_connector-static.lib")

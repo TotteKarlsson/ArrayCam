@@ -1,6 +1,5 @@
 #ifndef TFFMPEGFrameH
 #define TFFMPEGFrameH
-//---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -8,26 +7,38 @@
 #include "TSTDStringLabeledEdit.h"
 #include <Vcl.ExtCtrls.hpp>
 #include "TIntegerLabeledEdit.h"
-
+#include "TPropertyCheckBox.h"
+#include "mtkIniFileProperties.h"
 //---------------------------------------------------------------------------
+
+using mtk::IniFileProperties;
+using mtk::IniFile;
+
 class TFFMPEGFrame : public TFrame
 {
 __published:	// IDE-managed Components
-	TSTDStringLabeledEdit *FFMPEGLocationE;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *FFMPEGThreads;
 	TIntegerLabeledEdit *CRFValue;
 	TComboBox *PresetCB;
 	TLabel *Label1;
+	TPropertyCheckBox *DeleteSourceFileCB;
+	TPropertyCheckBox *RenameSourceFileCB;
+	void __fastcall CBClick(TObject *Sender);
 
 
-private:	// User declarations
+	private:
+        IniFileProperties 	 	mFrameProperties;
+        Property<string>		mH264Preset;
 
-	public:		// User declarations
-		__fastcall 		TFFMPEGFrame(TComponent* Owner);
-		string			getFFMPEGLocation();
-        string 			getOutFileArguments();
-        string 			getInFileArguments();
+	public:
+		__fastcall 		        TFFMPEGFrame(TComponent* Owner);
+        string 			        getOutFileArguments();
+        string 			        getInFileArguments();
+		void 					setupProperties(mtk::IniFile& ini);
+        void			        readFromINI();
+        void			        writeToINI();
+
 };
 
 extern PACKAGE TFFMPEGFrame *FFMPEGFrame;

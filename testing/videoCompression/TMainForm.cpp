@@ -4,14 +4,14 @@
 #include "TMemoLogger.h"
 #include "mtkVCLUtils.h"
 #include "mtkLogger.h"
-
-
+#include "TFFMPEGOutputFrame.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma link "TFFMPEGFrame"
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TIntLabel"
+#pragma link "TSTDStringEdit"
 #pragma resource "*.dfm"
 
 TMainForm *MainForm;
@@ -28,16 +28,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppExeName, gLogFileName), &logMsg),
     mIniFile(joinPath(gAppDataFolder, "VideoCompressor.ini"), true, true),
     mLogLevel(lAny)
-
 {
 	TMemoLogger::mMemoIsEnabled = false;
    	mLogFileReader.start(true);
-
-	mVCThread.assignCallBacks(
-    boost::bind(&TMainForm::onEnter, 	this, _1, _1),
-	boost::bind(&TMainForm::onProgress, this, _1, _1),
-	boost::bind(&TMainForm::onExit, 	this, _1, _1)
-    );
+    FileListBox1->Directory = MovieFolder->Text;
 }
 
 //---------------------------------------------------------------------------
@@ -57,7 +51,6 @@ void __fastcall TMainForm::logMsg()
     }
 }
 
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -69,69 +62,86 @@ void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState S
 
 void __fastcall TMainForm::CompressBtnClick(TObject *Sender)
 {
-	if(CompressBtn->Caption != "Stop Compressing..")
+	//Compress all selected files..
+
+	for(int i = 0; i < FileListBox1->Count; i++)
     {
-		mVCThread.setFFMPEGLocation(TFFMPEGFrame1->getFFMPEGLocation());
-		mVCThread.setInputFile(InputFileE->getValue());
-		mVCThread.setFFMPEGOutFileArguments(TFFMPEGFrame1->getOutFileArguments());
-		mVCThread.start();
+	    if(FileListBox1->Selected[i])
+        {
+			string fName = stdstr(FileListBox1->Items->Strings[i]);
+
+            //Make sure this file is not already being compressed
+            if(isThisFileBeingCompressed(fName))
+            {
+            	Log(lWarning) << "This file is already undergoing compression.";
+            }
+			else
+            {
+                Log(lInfo) << "Starting compressing file: " << joinPath(MovieFolder->getValue(), fName);
+                TFFMPEGOutputFrame* f = new TFFMPEGOutputFrame(this);
+                f->Parent = MPEGPanel;
+                f->onDone = onCompressionFinished;
+                f->setInputFile(fName);
+                f->setCompressionOptions(TFFMPEGFrame1->getOutFileArguments(), TFFMPEGFrame1->DeleteSourceFileCB->Checked, TFFMPEGFrame1->RenameSourceFileCB->Checked);
+                f->startCompression();
+                mCompressionFrames.push_back(f);
+            }
+        }
     }
-    else
+}
+
+bool TMainForm::isThisFileBeingCompressed(const string& fName)
+{
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+    string name = getFileNameNoPath(fName);
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
     {
-		mVCThread.stop();
+    	if((*i))
+        {
+        	if((*i)->getInputFileName() == fName)
+            {
+            	return true;
+            }
+            i++;
+        }
+	}
+    return false;
+}
+
+void __fastcall TMainForm::onCompressionFinished(TFFMPEGOutputFrame* f)
+{
+	//Start deleteFrameTimer
+	CleanupTimer->Enabled = true;
+    FileListBox1->Update();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CleanupTimerTimer(TObject *Sender)
+{
+	CleanupTimer->Enabled = false;
+
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
+    {
+    	if((*i) && (*i) ->isDone())
+        {
+        	delete (*i);
+            i = mCompressionFrames.erase(i);
+        }
+        else
+        {
+        	i++;
+        }
     }
 }
 
-void TMainForm::onEnter(int i, int j)
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BrowseForFolder1Accept(TObject *Sender)
 {
-	struct lclS
-    {
-        int i, j;
-        void __fastcall onEnter()
-        {
-            Log(lInfo) << "Thread was entered..";
-            MainForm->CompressBtn->Caption = "Stop Compressing..";
-            MainForm->ProgressBar1->Position = 0;
-        }
-    };
-	lclS lcl;
-    lcl.i = i;
-    lcl.j = j;
-    TThread::Synchronize(0, &lcl.onEnter);
-}
-
-void TMainForm::onProgress(int i, int j)
-{
-	struct lclS
-    {
-        int i, j;
-        void __fastcall onProgress()
-        {
-            MainForm->IntLabel1->setValue(i);
-            MainForm->ProgressBar1->Position = i;
-        }
-    };
-	lclS lcl;
-    lcl.i = i;
-    lcl.j = j;
-    TThread::Synchronize(0, &lcl.onProgress);
-}
-
-void TMainForm::onExit(int i, int j)
-{
-	struct lclS
-    {
-        int i, j;
-        void __fastcall onExit()
-        {
-			Log(lInfo) << "Thread is exiting..";
-			MainForm->CompressBtn->Caption = "Compress";
-        }
-    };
-		lclS lcl;
-    lcl.i = i;
-    lcl.j = j;
-    TThread::Synchronize(0, &lcl.onExit);
+	MovieFolder->setValue(stdstr(BrowseForFolder1->Folder));
+    FileListBox1->Directory = MovieFolder->Text;
 }
 
 

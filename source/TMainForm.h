@@ -60,6 +60,7 @@
 #include <Data.DB.hpp>
 #include <Data.FMTBcd.hpp>
 #include <Data.SqlExpr.hpp>
+#include "TFFMPEGFrame.h"
 
 //---------------------------------------------------------------------------
 using Poco::Timestamp;
@@ -74,6 +75,7 @@ class TReticlePopupForm;
 class THandWheelPositionForm;
 class TLoggerForm;
 class TActionsForm;
+class TFFMPEGOutputFrame;
 using mtk::Property;
 
 //---------------------------------------------------------------------------
@@ -283,6 +285,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *mFrontLEDLbl;
 	TPanel *Panel10;
 	TTrackBar *FrontLEDTB;
+	TFlowPanel *MPEGPanel;
+	TFFMPEGFrame *TFFMPEGFrame1;
+	TTabSheet *TabSheet11;
+	TTimer *CleanupTimer;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -345,6 +351,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall RecordVideoBtnClick(TObject *Sender);
 	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
 	void __fastcall FrontLEDTBChange(TObject *Sender);
+	void __fastcall CleanupTimerTimer(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -489,6 +496,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 
 		TLoggerForm*							LoggerForm;
 		TActionsForm*							ActionsForm;
+
+		bool 									startVideoCompression(const string& inputName);
+	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
+	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
     //=================================================================================================
     public:
 

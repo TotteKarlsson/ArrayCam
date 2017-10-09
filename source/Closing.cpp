@@ -36,6 +36,23 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 {
     mShutDownTimer->Enabled = false;
 
+	//Check for frames to delete
+    list<TFFMPEGOutputFrame*>::iterator i;
+	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
+    {
+    	if((*i))
+        {
+			MessageDlg("Wait or stop ongoing video compressing jobs before closing..", mtWarning, TMsgDlgButtons() << mbOK, 0);
+            return;
+        }
+    }
+
+    if(mCaptureVideoTimer->Enabled)
+    {
+		MessageDlg("Wait or stop ongoing video recording jobs before closing..", mtWarning, TMsgDlgButtons() << mbOK, 0);
+        return;
+    }
+
     if(mCamera1.IsInit())
     {
 	    if(!mServiceCamera1.isRunning())
@@ -116,6 +133,7 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 
 	mGeneralProperties.write();
 	mSoundProperties.write();
+    TFFMPEGFrame1->writeToINI();
 
 	//Write to file
 	mIniFile.save();

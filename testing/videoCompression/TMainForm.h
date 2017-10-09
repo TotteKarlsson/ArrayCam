@@ -15,39 +15,50 @@
 #include "mtkIniFile.h"
 #include "atVideoCompressorThread.h"
 #include "TIntLabel.h"
+#include <Vcl.FileCtrl.hpp>
+#include "TSTDStringEdit.h"
+#include <System.Actions.hpp>
+#include <Vcl.ActnList.hpp>
+#include <Vcl.StdActns.hpp>
+#include <list>
 using mtk::IniFile;
 using mtk::LogLevel;
-
+using std::list;
+class TFFMPEGOutputFrame;
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
     __published:	// IDE-managed Components
-        TSTDStringLabeledEdit *InputFileE;
         TFFMPEGFrame *TFFMPEGFrame1;
 	TArrayBotButton *CompressBtn;
 	TMemo *infoMemo;
-        TProgressBar *ProgressBar1;
 	TTimer *ShutDownTimer;
-	TIntLabel *IntLabel1;
+	TTimer *CleanupTimer;
+	TFileListBox *FileListBox1;
+	TGroupBox *GroupBox1;
+	TSTDStringEdit *MovieFolder;
+	TPanel *TopPanel;
+	TFlowPanel *MPEGPanel;
+	TPanel *Panel1;
+	TButton *Button1;
+	TActionList *ActionList1;
+	TBrowseForFolder *BrowseForFolder1;
 	void __fastcall ShutDownTimerTimer(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall CompressBtnClick(TObject *Sender);
+	void __fastcall CleanupTimerTimer(TObject *Sender);
+	void __fastcall BrowseForFolder1Accept(TObject *Sender);
 
     private:	// User declarations
         LogFileReader                       mLogFileReader;
         LogLevel							mLogLevel;
         void __fastcall                     logMsg();
         IniFile						        mIniFile;
-		VideoCompressorThread				mVCThread;
-
-   	    void 				                onEnter(int i, int j);
-	    void 				                onProgress(int i, int j);
-	    void 				                onExit(int i, int j);
-
-
-
+	    void __fastcall 	                onCompressionFinished(TFFMPEGOutputFrame* f);
+        list<TFFMPEGOutputFrame*>			mCompressionFrames;
+		bool						        isThisFileBeingCompressed(const string& fName);
 
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
