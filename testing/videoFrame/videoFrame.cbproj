@@ -47,11 +47,11 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
-        <IncludePath>..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
+        <IncludePath>P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\datamodules\;..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
         <Multithreaded>true</Multithreaded>
-        <ILINK_LibraryPath>..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\datamodules\;..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
-        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib;vcldb.lib;DbxDevartSQLiteDriver170.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -105,7 +105,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Debugger_DebugSourcePath>P:\libs\atapi\source\resources\;P:\libs\dsl\Common\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;VCLCommon.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DBXMySQLDriver.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;VCLCommon.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DBXMySQLDriver.bpi;vcldb.bpi;DbxDevartSQLiteDriver170.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -130,6 +130,16 @@
         <PCHCompile Include="videoFramePCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp">
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp">
+            <Form>ATDBConnectionFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

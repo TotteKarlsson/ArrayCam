@@ -20,6 +20,9 @@
 #include <System.Actions.hpp>
 #include <Vcl.ActnList.hpp>
 #include <Vcl.StdActns.hpp>
+#include <Vcl.DBCtrls.hpp>
+#include "TATDBConnectionFrame.h"
+#include "TATDBDataModule.h"
 #include <list>
 using mtk::IniFile;
 using mtk::LogLevel;
@@ -35,25 +38,32 @@ class TMainForm : public TForm
 	TGroupBox *GroupBox1;
 	TSTDStringEdit *MovieFolder;
 	TPanel *TopPanel;
-	TFlowPanel *MPEGPanel;
 	TPanel *Panel1;
 	TButton *Button1;
 	TActionList *ActionList1;
 	TBrowseForFolder *BrowseForFolder1;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
+	TGroupBox *Panel2;
+	TDBLookupListBox *DBLookupListBox1;
+	TDBText *DBText1;
 	void __fastcall ShutDownTimerTimer(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolder1Accept(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 
     private:	// User declarations
-        LogFileReader                       mLogFileReader;
-        LogLevel							mLogLevel;
-        void __fastcall                     logMsg();
-        IniFile						        mIniFile;
+        LogFileReader                            mLogFileReader;
+        LogLevel							     mLogLevel;
+        void __fastcall                          logMsg();
+        IniFile						             mIniFile;
 
 	public:		// User declarations
-		__fastcall TMainForm(TComponent* Owner);
+					__fastcall 					TMainForm(TComponent* Owner);
+		void       	__fastcall					afterDBServerConnect(System::TObject* Sender);
+		void       	__fastcall					afterDBServerDisconnect(System::TObject* Sender);
+
 };
 
 extern PACKAGE TMainForm *MainForm;

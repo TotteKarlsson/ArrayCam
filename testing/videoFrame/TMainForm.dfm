@@ -15,8 +15,17 @@ object MainForm: TMainForm
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
+  object DBText1: TDBText
+    Left = 168
+    Top = 192
+    Width = 65
+    Height = 17
+    DataField = 'id'
+    DataSource = atdbDM.blockIDsDataSource
+  end
   object infoMemo: TMemo
     Left = 0
     Top = 705
@@ -32,16 +41,16 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 1503
-    Height = 440
+    Height = 129
     Align = alTop
     TabOrder = 1
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
       Width = 505
-      Height = 438
+      Height = 127
       Align = alLeft
-      Caption = 'File Selection'
+      Caption = 'Data Folder Selection'
       TabOrder = 0
       object Panel1: TPanel
         Left = 2
@@ -69,14 +78,63 @@ object MainForm: TMainForm
         end
       end
     end
+    inline TATDBConnectionFrame1: TATDBConnectionFrame
+      Left = 1029
+      Top = 1
+      Width = 473
+      Height = 127
+      Align = alRight
+      AutoSize = True
+      TabOrder = 1
+      ExplicitLeft = 1029
+      ExplicitTop = 1
+      ExplicitWidth = 473
+      ExplicitHeight = 127
+      inherited GBox1: TGroupBox
+        Width = 473
+        ExplicitWidth = 473
+        inherited mServerIPE: TSTDStringLabeledEdit
+          Text = 'atdb'
+          Value = 'atdb'
+        end
+        inherited mDBUserE: TSTDStringLabeledEdit
+          Text = 'atdb'
+          Value = 'atdb'
+        end
+        inherited mATDBServerBtnConnect: TArrayBotButton
+          Left = 311
+          Top = 46
+          ExplicitLeft = 311
+          ExplicitTop = 46
+        end
+        inherited mDatabaseE: TSTDStringLabeledEdit
+          Text = 'atdb-live'
+          Value = 'atdb-live'
+        end
+      end
+    end
   end
-  object MPEGPanel: TFlowPanel
+  object Panel2: TGroupBox
     Left = 0
-    Top = 440
-    Width = 1503
-    Height = 265
-    Align = alClient
+    Top = 129
+    Width = 113
+    Height = 576
+    Align = alLeft
+    Caption = 'Block IDs'
+    Color = clBtnFace
+    ParentColor = False
     TabOrder = 2
+    object DBLookupListBox1: TDBLookupListBox
+      Left = 2
+      Top = 15
+      Width = 109
+      Height = 550
+      Align = alClient
+      KeyField = 'id'
+      ListField = 'id'
+      ListSource = atdbDM.blockIDsDataSource
+      TabOrder = 0
+    end
   end
   object ShutDownTimer: TTimer
     Enabled = False

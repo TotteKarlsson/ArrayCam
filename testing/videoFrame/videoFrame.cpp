@@ -1,12 +1,11 @@
-//---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
 #include <tchar.h>
 #include <string>
 #include "mtkLogger.h"
 #include "mtkVCLUtils.h"
-
+#include "TATDBDataModule.h"
+USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
 using namespace mtk;
@@ -27,6 +26,8 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TMainForm), &MainForm);
+		Application->CreateForm(__classid(TATDBConnectionFrame), &ATDBConnectionFrame);
+		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->Run();
 	}
 	catch (Exception &exception)
@@ -73,5 +74,8 @@ void setupLogging()
 #pragma comment(lib, "mtkMath.lib")
 #pragma comment(lib, "mtkIPC.lib")
 
+#pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "poco_foundation-static.lib")
+
+#pragma comment(lib, "atVCLCore.bpi")
 #pragma comment(lib, "VCLCommon.bpi")
