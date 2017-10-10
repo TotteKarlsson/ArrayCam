@@ -43,48 +43,18 @@ object MainForm: TMainForm
       Align = alLeft
       Caption = 'File Selection'
       TabOrder = 0
-      object FileListBox1: TFileListBox
-        Left = 2
-        Top = 56
-        Width = 501
-        Height = 299
-        Align = alClient
-        ItemHeight = 13
-        Mask = '*.avi'
-        MultiSelect = True
-        TabOrder = 0
-        ExplicitTop = 36
-        ExplicitHeight = 400
-      end
-      object CompressBtn: TArrayBotButton
-        Left = 2
-        Top = 355
-        Width = 501
-        Height = 81
-        Align = alBottom
-        Caption = 'Compress selected'
-        TabOrder = 1
-        OnClick = CompressBtnClick
-        SoundID = 'BUTTON_CLICK_4'
-        ExplicitLeft = 368
-        ExplicitTop = 327
-        ExplicitWidth = 137
-      end
       object Panel1: TPanel
         Left = 2
         Top = 15
         Width = 501
         Height = 41
         Align = alTop
-        TabOrder = 2
-        ExplicitLeft = 248
-        ExplicitTop = 24
-        ExplicitWidth = 185
+        TabOrder = 0
         object MovieFolder: TSTDStringEdit
           Left = 9
           Top = 11
           Width = 440
-          Height = 24
+          Height = 21
           TabOrder = 0
           Text = 'P:\videoCompressor\Movies'
           Value = 'P:\videoCompressor\Movies'
@@ -98,17 +68,6 @@ object MainForm: TMainForm
           TabOrder = 1
         end
       end
-    end
-    inline TFFMPEGFrame1: TFFMPEGFrame
-      Left = 506
-      Top = 1
-      Width = 996
-      Height = 438
-      Align = alClient
-      AutoSize = True
-      TabOrder = 1
-      ExplicitLeft = 632
-      ExplicitTop = 32
     end
   end
   object MPEGPanel: TFlowPanel
@@ -125,13 +84,6 @@ object MainForm: TMainForm
     OnTimer = ShutDownTimerTimer
     Left = 256
     Top = 136
-  end
-  object CleanupTimer: TTimer
-    Enabled = False
-    Interval = 100
-    OnTimer = CleanupTimerTimer
-    Left = 408
-    Top = 240
   end
   object ActionList1: TActionList
     Left = 360

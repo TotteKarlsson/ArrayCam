@@ -39,11 +39,17 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
-        <IncludePath>..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
+        <IncludePath>..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(IncludePath)</IncludePath>
         <Multithreaded>true</Multithreaded>
-        <ILINK_LibraryPath>..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -104,6 +110,9 @@
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
         <TASM_Debugging>None</TASM_Debugging>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <BCC_PCHName_Clang>videoFramePCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="ShutDownLogic.cpp">
