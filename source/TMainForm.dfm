@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 853
-        ActivePage = TabSheet1
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -1313,11 +1313,9 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 819
-            ActivePage = TabSheet11
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
-            ExplicitTop = 241
-            ExplicitHeight = 578
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
@@ -1414,6 +1412,7 @@ object MainForm: TMainForm
                   State = cbChecked
                   TabOrder = 2
                   OnClick = mAutoCheckConnectionCBClick
+                  Value = True
                 end
               end
             end
@@ -1463,14 +1462,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
                     Width = 247
                     Height = 218
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1531,7 +1530,6 @@ object MainForm: TMainForm
             object TabSheet11: TTabSheet
               Caption = 'Video Compression'
               ImageIndex = 3
-              ExplicitHeight = 544
               inline TFFMPEGFrame1: TFFMPEGFrame
                 Left = 0
                 Top = 0
@@ -1540,10 +1538,11 @@ object MainForm: TMainForm
                 Align = alTop
                 AutoSize = True
                 TabOrder = 0
-                ExplicitWidth = 806
+                ExplicitWidth = 798
                 inherited GroupBox1: TGroupBox
                   Width = 798
                   Align = alTop
+                  ExplicitWidth = 798
                   inherited Label1: TLabel
                     Width = 91
                     Height = 19
@@ -1623,6 +1622,10 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet12: TTabSheet
+          Caption = 'Videos && Images'
+          ImageIndex = 8
+        end
       end
       object Button1: TButton
         Left = 783
@@ -1656,7 +1659,6 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitHeight = 855
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -1747,8 +1749,6 @@ object MainForm: TMainForm
       Align = alBottom
       AutoSize = True
       TabOrder = 1
-      ExplicitLeft = 0
-      ExplicitTop = 755
     end
   end
   object StatusBar1: TStatusBar
@@ -2186,8 +2186,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 500
     OnTimer = VideoRecTimerTimer
-    Left = 400
-    Top = 864
+    Left = 56
+    Top = 856
   end
   object CleanupTimer: TTimer
     Enabled = False

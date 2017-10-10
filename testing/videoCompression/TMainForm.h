@@ -25,16 +25,13 @@ using mtk::IniFile;
 using mtk::LogLevel;
 using std::list;
 class TFFMPEGOutputFrame;
+
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
     __published:	// IDE-managed Components
-        TFFMPEGFrame *TFFMPEGFrame1;
-	TArrayBotButton *CompressBtn;
 	TMemo *infoMemo;
 	TTimer *ShutDownTimer;
-	TTimer *CleanupTimer;
-	TFileListBox *FileListBox1;
 	TGroupBox *GroupBox1;
 	TSTDStringEdit *MovieFolder;
 	TPanel *TopPanel;
@@ -47,8 +44,6 @@ class TMainForm : public TForm
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall CompressBtnClick(TObject *Sender);
-	void __fastcall CleanupTimerTimer(TObject *Sender);
 	void __fastcall BrowseForFolder1Accept(TObject *Sender);
 
     private:	// User declarations
@@ -56,12 +51,9 @@ class TMainForm : public TForm
         LogLevel							mLogLevel;
         void __fastcall                     logMsg();
         IniFile						        mIniFile;
-	    void __fastcall 	                onCompressionFinished(TFFMPEGOutputFrame* f);
-        list<TFFMPEGOutputFrame*>			mCompressionFrames;
-		bool						        isThisFileBeingCompressed(const string& fName);
 
-public:		// User declarations
-	__fastcall TMainForm(TComponent* Owner);
+	public:		// User declarations
+		__fastcall TMainForm(TComponent* Owner);
 };
 
 extern PACKAGE TMainForm *MainForm;
