@@ -130,6 +130,9 @@
         <PCHCompile Include="videoFramePCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.cpp">
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.cpp">
             <BuildOrder>6</BuildOrder>
         </CppCompile>

@@ -7,6 +7,8 @@
 #include "TFFMPEGOutputFrame.h"
 
 #include "database/atDBUtils.h"
+#include "TATDBImagesAndMoviesDataModule.h"
+#include <ShellAnimations.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
@@ -94,13 +96,11 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Succesfully connected to DB Server";
-
 	atdbDM->afterConnect();
 
+	//Enable ImagesAndMoviesDM
 	TATDBConnectionFrame1->afterConnect();
-
-	//Setup UI
-
+    ImagesAndMoviesDM->afterConnect();
 }
 
 //---------------------------------------------------------------------------
@@ -112,5 +112,16 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 	TATDBConnectionFrame1->afterDisconnect();
 }
 
+void __fastcall TMainForm::Button2Click(TObject *Sender)
+{
+	ImagesAndMoviesDM->MoviesByBlockIDCDS->Active = true;
+	ImagesAndMoviesDM->MoviesByBlockIDCDS->Refresh();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::DBLookupListBox1Click(TObject *Sender)
+{
+	ImagesAndMoviesDM->MoviesByBlockIDCDS->Refresh();
+}
 
 

@@ -5,6 +5,7 @@
 #include "mtkLogger.h"
 #include "mtkVCLUtils.h"
 #include "TATDBDataModule.h"
+#include "TATDBImagesAndMoviesDataModule.h"
 USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
@@ -28,6 +29,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TATDBConnectionFrame), &ATDBConnectionFrame);
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
+		Application->CreateForm(__classid(TImagesAndMoviesDM), &ImagesAndMoviesDM);
 		Application->Run();
 	}
 	catch (Exception &exception)
