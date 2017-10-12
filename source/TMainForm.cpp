@@ -31,6 +31,7 @@
 #pragma link "TNavitarPresetFrame"
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TFFMPEGFrame"
+#pragma link "TFFMPEGFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 

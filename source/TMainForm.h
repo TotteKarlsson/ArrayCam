@@ -63,11 +63,6 @@
 #include "TFFMPEGFrame.h"
 
 //---------------------------------------------------------------------------
-using Poco::Timestamp;
-using mtk::IniFileProperties;
-using mtk::IniFile;
-using mtk::Property;
-
 class TSettingsForm;
 class TLocalArgs;
 class TRegisterNewRibbonForm;
@@ -76,6 +71,12 @@ class THandWheelPositionForm;
 class TLoggerForm;
 class TActionsForm;
 class TFFMPEGOutputFrame;
+class TFFMPEGFrame;
+
+using mtk::Property;
+using Poco::Timestamp;
+using mtk::IniFileProperties;
+using mtk::IniFile;
 using mtk::Property;
 
 //---------------------------------------------------------------------------
@@ -289,6 +290,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TFFMPEGFrame *TFFMPEGFrame1;
 	TTabSheet *TabSheet11;
 	TTimer *CleanupTimer;
+	TTabSheet *TabSheet12;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
