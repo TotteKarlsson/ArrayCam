@@ -8,7 +8,7 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ToolWin.hpp>
-#include "TRegistryForm.h"
+#include "forms/TRegistryForm.h"
 #include "mtkLogFileReader.h"
 #include "mtkLogLevel.h"
 

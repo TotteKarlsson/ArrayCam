@@ -58,7 +58,7 @@
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <PackageImports>CSKGenerator;VCLCommon;fs17;frx17;bindcompfmx;DBXSqliteDriver;vcldbx;RaizeComponentsTrialVcl;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;DbxDevartSQLiteDriver170;vclie;HsBarcode1DRun;RaizeComponentsTrialVclDb;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;dsnap;IndyIPServer;IndyCore;vcl;fmxase;IndyIPCommon;CloudService;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;fmxobj;vclx;frxe17;inetdbxpress;webdsnap;fmxdae;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
+        <PackageImports>CSKGenerator;VCLCommon;fs17;frx17;bindcompfmx;DBXSqliteDriver;vcldbx;RaizeComponentsTrialVcl;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;HsBarcode1DRun;RaizeComponentsTrialVclDb;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;dsnap;IndyIPServer;IndyCore;vcl;fmxase;IndyIPCommon;CloudService;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;fmxobj;vclx;frxe17;inetdbxpress;webdsnap;fmxdae;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
@@ -143,9 +143,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="DbxCommonDriver.bpi">
             <BuildOrder>38</BuildOrder>
         </PackageImport>
-        <PackageImport Include="DbxDevartSQLiteDriver170.bpi">
-            <BuildOrder>41</BuildOrder>
-        </PackageImport>
         <PackageImport Include="DBXMySQLDriver.bpi">
             <BuildOrder>42</BuildOrder>
         </PackageImport>
@@ -214,11 +211,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <BuildOrder>19</BuildOrder>
         </PackageImport>
         <FormResources Include="forms\TSelectIntegerForm.dfm"/>
-        <FormResources Include="forms\TReticlePopupForm.dfm"/>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
-        <FormResources Include="forms\THandWheelPositionForm.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <FormResources Include="forms\TAboutForm.dfm"/>
+        <FormResources Include="forms\THandWheelPositionForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

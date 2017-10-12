@@ -4,7 +4,7 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "TArrayBotBtn.h"
+#include "components/TArrayBotBtn.h"
 #include <Vcl.Buttons.hpp>
 #include <System.Actions.hpp>
 #include <Vcl.ActnList.hpp>

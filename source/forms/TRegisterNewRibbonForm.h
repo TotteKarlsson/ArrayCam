@@ -6,7 +6,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "TArrayBotBtn.h"
+#include "components/TArrayBotBtn.h"
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <Vcl.DBCtrls.hpp>

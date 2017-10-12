@@ -10,7 +10,7 @@
 #include <VCLTee.TeEngine.hpp>
 #include <VCLTee.TeeProcs.hpp>
 #include "uc7/atUC7StatusHistory.h"
-#include "TRegistryForm.h"
+#include "forms/TRegistryForm.h"
 
 class PACKAGE THandWheelPositionForm : public TRegistryForm
 {
