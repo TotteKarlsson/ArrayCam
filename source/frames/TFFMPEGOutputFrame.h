@@ -8,6 +8,7 @@
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include "atVideoCompressorThread.h"
+#include "TArrayBotBtn.h"
 
 class TFFMPEGOutputFrame;
 

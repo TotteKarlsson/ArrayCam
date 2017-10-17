@@ -51,7 +51,7 @@
         <Multithreaded>true</Multithreaded>
         <ILINK_LibraryPath>P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\datamodules\;..\videoCompression\;..\videoFrame\;..\..\source\classes\;..\..\source\frames\;P:\ArrayCam\testing\videoCompression\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
-        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib;vcldb.lib;DbxDevartSQLiteDriver170.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DBXMySQLDriver.lib;vcldb.lib;vclimg.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -105,7 +105,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Debugger_DebugSourcePath>P:\libs\atapi\source\resources\;P:\libs\dsl\Common\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;VCLCommon.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DBXMySQLDriver.bpi;vcldb.bpi;DbxDevartSQLiteDriver170.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;VCLCommon.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DBXMySQLDriver.bpi;vcldb.bpi;vclimg.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -115,6 +115,16 @@
         <BCC_PCHName_Clang>videoFramePCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="..\..\source\classes\atCreateThumbNailThread.cpp">
+            <DependentOn>..\..\source\classes\atCreateThumbNailThread.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\source\frames\TFFMPEGFrame.cpp">
+            <Form>FFMPEGFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>..\..\source\frames\TFFMPEGFrame.h</DependentOn>
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ShutDownLogic.cpp">
             <BuildOrder>5</BuildOrder>
         </CppCompile>
@@ -142,7 +152,16 @@
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TMovieItemFrame.cpp">
+            <Form>MovieItemFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TMovieItemFrame.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TMovieItemFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
+        <FormResources Include="..\..\source\frames\TFFMPEGFrame.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -214,6 +233,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

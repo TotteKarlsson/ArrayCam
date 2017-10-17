@@ -308,10 +308,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win64"/>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>

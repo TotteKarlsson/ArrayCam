@@ -6,7 +6,9 @@
 #include "mtkVCLUtils.h"
 #include "TATDBDataModule.h"
 #include "TATDBImagesAndMoviesDataModule.h"
+USEFORM("P:\libs\atapi\source\vcl\frames\TMovieItemFrame.cpp", MovieItemFrame); /* TFrame: File Type */
 USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
+USEFORM("..\..\source\frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
 using namespace mtk;

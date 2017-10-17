@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'AT Movies'
-  ClientHeight = 861
-  ClientWidth = 1503
+  ClientHeight = 964
+  ClientWidth = 1521
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,18 +18,10 @@ object MainForm: TMainForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object DBText1: TDBText
-    Left = 1260
-    Top = 169
-    Width = 65
-    Height = 17
-    DataField = 'id'
-    DataSource = atdbDM.blockIDsDataSource
-  end
   object infoMemo: TMemo
     Left = 0
-    Top = 705
-    Width = 1503
+    Top = 808
+    Width = 1521
     Height = 156
     Align = alBottom
     ReadOnly = True
@@ -40,7 +32,7 @@ object MainForm: TMainForm
   object TopPanel: TPanel
     Left = 0
     Top = 0
-    Width = 1503
+    Width = 1521
     Height = 129
     Align = alTop
     TabOrder = 1
@@ -65,8 +57,8 @@ object MainForm: TMainForm
           Width = 440
           Height = 21
           TabOrder = 0
-          Text = 'P:\videoCompressor\Movies'
-          Value = 'P:\videoCompressor\Movies'
+          Text = 'E:\at_media\movies'
+          Value = 'E:\at_media\movies'
         end
         object Button1: TButton
           Left = 455
@@ -79,14 +71,14 @@ object MainForm: TMainForm
       end
     end
     inline TATDBConnectionFrame1: TATDBConnectionFrame
-      Left = 1029
+      Left = 1047
       Top = 1
       Width = 473
       Height = 127
       Align = alRight
       AutoSize = True
       TabOrder = 1
-      ExplicitLeft = 1029
+      ExplicitLeft = 1047
       ExplicitTop = 1
       ExplicitWidth = 473
       ExplicitHeight = 127
@@ -118,7 +110,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 129
     Width = 113
-    Height = 576
+    Height = 679
     Align = alLeft
     Caption = 'Block IDs'
     Color = clBtnFace
@@ -126,7 +118,7 @@ object MainForm: TMainForm
     TabOrder = 2
     object DBNavigator1: TDBNavigator
       Left = 2
-      Top = 549
+      Top = 652
       Width = 109
       Height = 25
       DataSource = atdbDM.blockIDsDataSource
@@ -138,27 +130,17 @@ object MainForm: TMainForm
       Left = 2
       Top = 15
       Width = 109
-      Height = 524
+      Height = 628
       Align = alClient
       KeyField = 'id'
       ListField = 'id'
       ListSource = atdbDM.blockIDsDataSource
       TabOrder = 1
-      OnClick = DBLookupListBox1Click
+      OnKeyDown = DBLookupListBox1KeyDown
+      OnKeyUp = DBLookupListBox1KeyUp
+      OnMouseDown = DBLookupListBox1MouseDown
+      OnMouseUp = DBLookupListBox1MouseUp
     end
-  end
-  object DBGrid2: TDBGrid
-    Left = 1016
-    Top = 272
-    Width = 457
-    Height = 265
-    DataSource = atdbDM.blocksDataSource
-    TabOrder = 3
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
   end
   object Button2: TButton
     Left = 984
@@ -166,50 +148,74 @@ object MainForm: TMainForm
     Width = 75
     Height = 25
     Caption = 'Button2'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button2Click
   end
   object PageControl1: TPageControl
     Left = 113
     Top = 129
-    Width = 1390
-    Height = 576
+    Width = 1408
+    Height = 679
     ActivePage = TabSheet2
     Align = alClient
-    TabOrder = 5
+    TabOrder = 4
     object TabSheet2: TTabSheet
       Caption = 'Movies'
       ImageIndex = 1
-      object MediaPlayer1: TMediaPlayer
-        Left = 82
-        Top = 280
-        Width = 197
-        Height = 30
-        VisibleButtons = [btPlay, btPause, btStop, btNext, btPrev, btStep, btBack]
-        AutoOpen = True
-        DoubleBuffered = True
-        Display = MoviePanel
-        FileName = 'E:\microtome\117\3560_2963208c-9a4d-11e7-9244-1c666d92d202.avi'
-        ParentDoubleBuffered = False
+      object ScrollBox1: TScrollBox
+        Left = 0
+        Top = 0
+        Width = 1400
+        Height = 596
+        Align = alClient
         TabOrder = 0
+        object FlowPanel1: TFlowPanel
+          Left = 0
+          Top = 0
+          Width = 1396
+          Height = 481
+          Align = alTop
+          AutoSize = True
+          BevelOuter = bvNone
+          TabOrder = 0
+        end
       end
-      object MoviePanel: TPanel
-        Left = 82
-        Top = 119
-        Width = 253
-        Height = 130
+      object Panel3: TPanel
+        Left = 0
+        Top = 596
+        Width = 1400
+        Height = 55
+        Align = alBottom
         TabOrder = 1
+        object Label1: TLabel
+          Left = 32
+          Top = 24
+          Width = 96
+          Height = 13
+          Caption = 'Number of Records:'
+        end
+        object NrOfRecordsLbl: TIntLabel
+          Left = 134
+          Top = 24
+          Width = 10
+          Height = 13
+          Caption = '-1'
+          Value = -1
+          TheFont.Charset = DEFAULT_CHARSET
+          TheFont.Color = clWindowText
+          TheFont.Height = -11
+          TheFont.Name = 'Tahoma'
+          TheFont.Style = []
+        end
       end
     end
     object TabSheet1: TTabSheet
       Caption = 'Table'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
-        Width = 1382
-        Height = 548
+        Width = 1400
+        Height = 651
         Align = alClient
         DataSource = ImagesAndMoviesDM.MoviesDataSource
         TabOrder = 0
@@ -275,5 +281,29 @@ object MainForm: TMainForm
       BrowseOptions = [bifBrowseForComputer, bifEditBox, bifNewDialogStyle]
       OnAccept = BrowseForFolder1Accept
     end
+  end
+  object SQLQuery1: TSQLQuery
+    DataSource = atdbDM.blockIDsDataSource
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptInput
+      end>
+    SQL.Strings = (
+      
+        'SELECT id,created from movies where block_id=:id ORDER by create' +
+        'd DESC')
+    SQLConnection = atdbDM.SQLConnection1
+    Left = 192
+    Top = 296
+  end
+  object RefreshUITimer: TTimer
+    Enabled = False
+    Interval = 250
+    OnTimer = RefreshUITimerTimer
+    Left = 328
+    Top = 248
   end
 end

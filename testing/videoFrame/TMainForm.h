@@ -27,11 +27,18 @@
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <Vcl.MPlayer.hpp>
+#include <Data.FMTBcd.hpp>
+#include <Data.SqlExpr.hpp>
 #include <list>
+#include "mtkStringList.h"
+
+
 using mtk::IniFile;
 using mtk::LogLevel;
 using std::list;
+using mtk::StringList;
 class TFFMPEGOutputFrame;
+class TMovieItemFrame;
 
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
@@ -48,17 +55,20 @@ class TMainForm : public TForm
 	TBrowseForFolder *BrowseForFolder1;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TGroupBox *Panel2;
-	TDBText *DBText1;
 	TDBGrid *DBGrid1;
-	TDBGrid *DBGrid2;
 	TButton *Button2;
 	TDBNavigator *DBNavigator1;
 	TDBLookupListBox *DBLookupListBox1;
 	TPageControl *PageControl1;
 	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
-	TMediaPlayer *MediaPlayer1;
-	TPanel *MoviePanel;
+	TFlowPanel *FlowPanel1;
+	TScrollBox *ScrollBox1;
+	TSQLQuery *SQLQuery1;
+	TTimer *RefreshUITimer;
+	TPanel *Panel3;
+	TLabel *Label1;
+	TIntLabel *NrOfRecordsLbl;
 	void __fastcall ShutDownTimerTimer(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
@@ -66,14 +76,26 @@ class TMainForm : public TForm
 	void __fastcall BrowseForFolder1Accept(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
-	void __fastcall DBLookupListBox1Click(TObject *Sender);
+	void __fastcall RefreshUITimerTimer(TObject *Sender);
+	void __fastcall DBLookupListBox1MouseUp(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
+	void __fastcall DBLookupListBox1MouseDown(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
+	void __fastcall DBLookupListBox1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall DBLookupListBox1KeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
+
+
 
     private:	// User declarations
-        LogFileReader                            mLogFileReader;
-        LogLevel							     mLogLevel;
-        void __fastcall                          logMsg();
-        IniFile						             mIniFile;
+        LogFileReader                    		mLogFileReader;
+        LogLevel							    mLogLevel;
+        void __fastcall                         logMsg();
+        IniFile						            mIniFile;
+		list<TMovieItemFrame*>                  mMovies;
+   		void 									populateMovieFrames(const StringList& l);
+		void 									clearMovieFrames();
 
+		StringList								fetchRecords();
 	public:		// User declarations
 					__fastcall 					TMainForm(TComponent* Owner);
 		void       	__fastcall					afterDBServerConnect(System::TObject* Sender);

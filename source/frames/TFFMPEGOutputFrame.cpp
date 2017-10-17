@@ -9,6 +9,7 @@ using namespace mtk;
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
+#pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 TFFMPEGOutputFrame *FFMPEGOutputFrame;
 static int frameNr = 0;
