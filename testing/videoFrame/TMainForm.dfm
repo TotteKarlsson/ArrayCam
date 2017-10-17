@@ -149,7 +149,6 @@ object MainForm: TMainForm
     Height = 25
     Caption = 'Button2'
     TabOrder = 3
-    OnClick = Button2Click
   end
   object PageControl1: TPageControl
     Left = 113
@@ -209,60 +208,6 @@ object MainForm: TMainForm
         end
       end
     end
-    object TabSheet1: TTabSheet
-      Caption = 'Table'
-      object DBGrid1: TDBGrid
-        Left = 0
-        Top = 0
-        Width = 1400
-        Height = 651
-        Align = alClient
-        DataSource = ImagesAndMoviesDM.MoviesDataSource
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'id'
-            Width = 55
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'created'
-            Width = 150
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'fileextension'
-            Width = 150
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'created_by'
-            Width = 150
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'coverslip_id'
-            Width = 150
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'block_id'
-            Width = 150
-            Visible = True
-          end>
-      end
-    end
   end
   object ShutDownTimer: TTimer
     Enabled = False
@@ -272,8 +217,8 @@ object MainForm: TMainForm
     Top = 136
   end
   object ActionList1: TActionList
-    Left = 360
-    Top = 120
+    Left = 448
+    Top = 232
     object BrowseForFolder1: TBrowseForFolder
       Category = 'File'
       Caption = '...'

@@ -78,6 +78,7 @@ void setupLogging()
 #pragma comment(lib, "mtkMath.lib")
 #pragma comment(lib, "mtkIPC.lib")
 
+#pragma comment(lib, "atCore.lib")
 #pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "poco_foundation-static.lib")
 

@@ -115,10 +115,6 @@
         <BCC_PCHName_Clang>videoFramePCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="..\..\source\classes\atCreateThumbNailThread.cpp">
-            <DependentOn>..\..\source\classes\atCreateThumbNailThread.h</DependentOn>
-            <BuildOrder>9</BuildOrder>
-        </CppCompile>
         <CppCompile Include="..\..\source\frames\TFFMPEGFrame.cpp">
             <Form>FFMPEGFrame</Form>
             <DesignClass>TFrame</DesignClass>

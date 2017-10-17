@@ -109,18 +109,11 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 	TATDBConnectionFrame1->afterDisconnect();
 }
 
-void __fastcall TMainForm::Button2Click(TObject *Sender)
-{
-	ImagesAndMoviesDM->MoviesByBlockIDCDS->Active = true;
-	ImagesAndMoviesDM->MoviesByBlockIDCDS->Refresh();
-}
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DBLookupListBox1MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
 	Log(lInfo) << "Mouse down................................";
-//	ImagesAndMoviesDM->MoviesByBlockIDCDS->Refresh();
 
     //Refresh Movielist
 	SQLQuery1->Open();

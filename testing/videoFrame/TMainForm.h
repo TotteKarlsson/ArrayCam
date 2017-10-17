@@ -55,12 +55,10 @@ class TMainForm : public TForm
 	TBrowseForFolder *BrowseForFolder1;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TGroupBox *Panel2;
-	TDBGrid *DBGrid1;
 	TButton *Button2;
 	TDBNavigator *DBNavigator1;
 	TDBLookupListBox *DBLookupListBox1;
 	TPageControl *PageControl1;
-	TTabSheet *TabSheet1;
 	TTabSheet *TabSheet2;
 	TFlowPanel *FlowPanel1;
 	TScrollBox *ScrollBox1;
@@ -75,7 +73,6 @@ class TMainForm : public TForm
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolder1Accept(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall RefreshUITimerTimer(TObject *Sender);
 	void __fastcall DBLookupListBox1MouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y);
