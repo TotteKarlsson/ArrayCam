@@ -1,3 +1,16 @@
+Release 0.6.8 (Oct 18)
+=======================
+* Added ability to launch movies from the UI (will need VLC media player in predefined path..
+* Finished up the videoframe
+* Added thread to create movie thumbnail
+* Fixed ability to list and play videos
+* Merge branch 'develop' of https://github.com/TotteKarlsson/ArrayCam into develop
+* Listing videos
+* Getting the datamodule working
+* Fixed bad commit
+* Adding frame showing an overview of movies related to a certain block
+* Compiled on windows 10
+
 Release 0.6.7 (Oct 9)
 =======================
 * Added ability to compress video files in a thread using ffmpeg
