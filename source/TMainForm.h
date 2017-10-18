@@ -61,6 +61,8 @@
 #include <Data.FMTBcd.hpp>
 #include <Data.SqlExpr.hpp>
 #include "TFFMPEGFrame.h"
+#include "TArrayBotBtn.h"
+#include "TSTDStringEdit.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -72,7 +74,7 @@ class TLoggerForm;
 class TActionsForm;
 class TFFMPEGOutputFrame;
 class TFFMPEGFrame;
-
+class TMovieItemFrame;
 using mtk::Property;
 using Poco::Timestamp;
 using mtk::IniFileProperties;
@@ -291,6 +293,24 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet11;
 	TTimer *CleanupTimer;
 	TTabSheet *TabSheet12;
+	TPageControl *PageControl3;
+	TTabSheet *TabSheet13;
+	TGroupBox *GroupBox16;
+	TDBNavigator *DBNavigator1;
+	TDBLookupListBox *BlockIDSLLB;
+	TPageControl *PageControl4;
+	TTabSheet *TabSheet14;
+	TScrollBox *ScrollBox2;
+	TFlowPanel *FlowPanel1;
+	TPanel *Panel22;
+	TLabel *Label4;
+	TIntLabel *NrOfRecordsLbl;
+	TGroupBox *GroupBox19;
+	TPanel *Panel23;
+	TSTDStringEdit *MovieFolder;
+	TButton *Button2;
+	TBrowseForFolder *BrowseForFolder1;
+	TSQLQuery *SQLQuery1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -354,6 +374,13 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
 	void __fastcall FrontLEDTBChange(TObject *Sender);
 	void __fastcall CleanupTimerTimer(TObject *Sender);
+	void __fastcall BrowseForFolder1Accept(TObject *Sender);
+	void __fastcall BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
+
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -502,6 +529,13 @@ class PACKAGE TMainForm  : public TRegistryForm
 		bool 									startVideoCompression(const string& inputName);
 	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
+
+		list<TMovieItemFrame*>                  mMovies;
+   		void 									populateMovieFrames(const StringList& l);
+		void 									clearMovieFrames();
+		StringList								fetchRecords();
+
+
     //=================================================================================================
     public:
 

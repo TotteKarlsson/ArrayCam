@@ -12,7 +12,6 @@
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "mtkFloatLabel"
 #pragma link "TIntLabel"
-#pragma link "TATDBConnectionFrame"
 #pragma resource "*.dfm"
 TSettingsForm *SettingsForm;
 
@@ -26,34 +25,11 @@ using namespace mtk;
 __fastcall TSettingsForm::TSettingsForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf)
-{
-
-}
-
-////---------------------------------------------------------------------------
-//void __fastcall TSettingsForm::mASStartBtnClick(TObject *Sender)
-//{
-//	if(mASStartBtn->Caption == "Start")
-//    {
-//    	mMainForm.mLightsArduinoClient.connect(mArduinoServerPortE->getValue());
-//        mASStartBtn->Caption == "Connecting";
-//        mMainForm.mCheckArduinoServerConnection = true;
-//    }
-//    else
-//    {
-//		//User closed connection manually - don't restore automatically
-//		mMainForm.mCheckArduinoServerConnection = false;
-//    	mMainForm.mLightsArduinoClient.disConnect();
-//    }
-//}
+{}
 
 //--------------------------------------------------------------------------
 void __fastcall TSettingsForm::mUIUpdateTimerTimer(TObject *Sender)
 {
-//   	mASStartBtn->Caption 			= mMainForm.mLightsArduinoClient.isConnected()	? "Stop" : "Start";
-//	mArduinoServerPortE->Enabled 	= !mMainForm.mLightsArduinoClient.isConnected();
-//   	enableDisableGroupBox(LightIntensitiesGB, !mArduinoServerPortE->Enabled);
-
     HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
     double dblMin, dblMax, dblInc, dCurrent;
     int nRet = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE_RANGE_MIN, (void*)&dblMin, sizeof(dblMin));
@@ -144,7 +120,6 @@ void __fastcall TSettingsForm::AutoParaCBClick(TObject *Sender)
 	    mAutoBlackLevelCB->OnClick(Sender);
         if(cb->Checked)
         {
-
         	mBlackLevelTB->Enabled = false;
 			int nMode = IS_AUTO_BLACKLEVEL_ON;
 			ret = is_Blacklevel(hCam, IS_BLACKLEVEL_CMD_SET_MODE, (void*)&nMode , sizeof(nMode ));
@@ -259,49 +234,21 @@ void __fastcall TSettingsForm::mGammaSBChange(TObject *Sender)
 
     switch(ret)
     {
-	    case IS_GET_GAMMA:
-        	Log(lInfo) << "Gamma setting succeded";
-        break;
+	    case IS_GET_GAMMA:        					Log(lInfo) << "Gamma setting succeded";        break;
+		case IS_CANT_COMMUNICATE_WITH_DRIVER:       Log(lError) << "Communication with the driver failed because no driver has been loaded.";		break;
+        case IS_CANT_OPEN_DEVICE:        			Log(lError) << "An attempt to initialize or select the camera failed (no camera connected or initialization error).";    	break;
+		case IS_INVALID_CAMERA_HANDLE:        		Log(lError) << "Invalid camera handle";        break;
 
-		case IS_CANT_COMMUNICATE_WITH_DRIVER:
-        	Log(lError) << "Communication with the driver failed because no driver has been loaded.";
-		break;
-
-        case IS_CANT_OPEN_DEVICE:
-        	Log(lError) << "An attempt to initialize or select the camera failed (no camera connected or initialization error).";
-    	break;
-
-		case IS_INVALID_CAMERA_HANDLE:
-        	Log(lError) << "Invalid camera handle";
-        break;
-
-		case IS_INVALID_PARAMETER:
-        	Log(lError) << "One of the submitted parameters is outside the \
+		case IS_INVALID_PARAMETER:                  Log(lError) << "One of the submitted parameters is outside the \
 valid range or is not supported for this sensor or \
-is not available in this mode.";
-		break;
-
-        case IS_IO_REQUEST_FAILED:
-        	Log(lError) << "An IO request from the uc480 driver failed. \
+is not available in this mode.";					break;
+        case IS_IO_REQUEST_FAILED:		        	Log(lError) << "An IO request from the uc480 driver failed. \
 Possibly the versions of the uc480.dll (API) and \
-the driver file (uc480_usb.sys) do not match. ";
-		break;
-
-        case IS_NO_SUCCESS:
-        	Log(lError) << "General error message";
-        break;
-
-        case IS_NOT_SUPPORTED:
-        	Log(lError) <<"The camera model used here does not support this function or setting.";
-		break;
-
-		case IS_SUCCESS:
-        	Log(lInfo) << "Function executed successfully";
-        break;
-
-        default:
-        	Log(lInfo) << "Unknown return value";
-        break;
+the driver file (uc480_usb.sys) do not match. ";	break;
+        case IS_NO_SUCCESS:        	                Log(lError) << "General error message";        break;
+        case IS_NOT_SUPPORTED:     	                Log(lError) <<"The camera model used here does not support this function or setting.";		break;
+		case IS_SUCCESS:        	                Log(lInfo) << "Function executed successfully";     break;
+        default:        			                Log(lInfo) << "Unknown return value";        		break;
     }
 }
 
@@ -327,49 +274,20 @@ void __fastcall TSettingsForm::mGainTBChange(TObject *Sender)
 
     switch(ret)
     {
-	    case IS_GET_GAMMA:
-        	Log(lInfo) << "Gamma setting succeded";
-        break;
-
-		case IS_CANT_COMMUNICATE_WITH_DRIVER:
-        	Log(lError) << "Communication with the driver failed because no driver has been loaded.";
-		break;
-
-        case IS_CANT_OPEN_DEVICE:
-        	Log(lError) << "An attempt to initialize or select the camera failed (no camera connected or initialization error).";
-    	break;
-
-		case IS_INVALID_CAMERA_HANDLE:
-        	Log(lError) << "Invalid camera handle";
-        break;
-
-		case IS_INVALID_PARAMETER:
-        	Log(lError) << "One of the submitted parameters is outside the \
+	    case IS_GET_GAMMA:        				Log(lInfo) << "Gamma setting succeded";        break;
+		case IS_CANT_COMMUNICATE_WITH_DRIVER:   Log(lError) << "Communication with the driver failed because no driver has been loaded.";		break;
+        case IS_CANT_OPEN_DEVICE:        		Log(lError) << "An attempt to initialize or select the camera failed (no camera connected or initialization error).";    	break;
+		case IS_INVALID_CAMERA_HANDLE:        	Log(lError) << "Invalid camera handle";        break;
+		case IS_INVALID_PARAMETER:        		Log(lError) << "One of the submitted parameters is outside the \
 valid range or is not supported for this sensor or \
-is not available in this mode.";
-		break;
-
-        case IS_IO_REQUEST_FAILED:
-        	Log(lError) << "An IO request from the uc480 driver failed. \
+is not available in this mode.";		break;
+        case IS_IO_REQUEST_FAILED:        		Log(lError) << "An IO request from the uc480 driver failed. \
 Possibly the versions of the uc480.dll (API) and \
-the driver file (uc480_usb.sys) do not match. ";
-		break;
-
-        case IS_NO_SUCCESS:
-        	Log(lError) << "General error message";
-        break;
-
-        case IS_NOT_SUPPORTED:
-        	Log(lError) <<"The camera model used here does not support this function or setting.";
-		break;
-
-		case IS_SUCCESS:
-        	Log(lInfo) << "Function executed successfully";
-        break;
-
-        default:
-        	Log(lInfo) << "Unknown return value";
-        break;
+the driver file (uc480_usb.sys) do not match. ";		break;
+        case IS_NO_SUCCESS:        	            Log(lError) << "General error message";        break;
+        case IS_NOT_SUPPORTED:                 	Log(lError) <<"The camera model used here does not support this function or setting.";		break;
+		case IS_SUCCESS:        	            Log(lInfo) << "Function executed successfully";        break;
+        default:        						Log(lInfo) << "Unknown return value";        break;
     }
 }
 
@@ -399,21 +317,11 @@ void __fastcall TSettingsForm::mGainBoostCBClick(TObject *Sender)
 
     switch(ret)
     {
-		case IS_INVALID_CAMERA_HANDLE:
-        	Log(lError) << "Invalid camera handle";
-        break;
-
-        case IS_NO_SUCCESS:     Log(lError) << "General error message";
-        break;
-
-        case IS_NOT_SUPPORTED: 	Log(lError) <<"The camera model used here does not support this function or setting.";
-		break;
-
-		case IS_SUCCESS:      	Log(lInfo) << "Function executed successfully";
-        break;
-
-        default:                Log(lInfo) << "Unknown return value";
-        break;
+		case IS_INVALID_CAMERA_HANDLE:        	Log(lError) << "Invalid camera handle";        								break;
+        case IS_NO_SUCCESS:     Log(lError) << "General error message";        												break;
+        case IS_NOT_SUPPORTED: 	Log(lError) <<"The camera model used here does not support this function or setting.";		break;
+		case IS_SUCCESS:      	Log(lInfo) << "Function executed successfully";                                            	break;
+        default:                Log(lInfo) << "Unknown return value";        		                                       	break;
     }
 }
 
@@ -448,6 +356,7 @@ void __fastcall TSettingsForm::mAutoCheckConnectionCBClick(TObject *Sender)
 //	mMainForm.mCheckSocketConnectionTimer->Enabled = mAutoCheckConnectionCB->Checked;
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TSettingsForm::FormCreate(TObject *Sender)
 {
     //Bind properties
@@ -497,5 +406,5 @@ void __fastcall TSettingsForm::FormCreate(TObject *Sender)
         mExposureTimeTB->Enabled = false;
     }
 }
-//---------------------------------------------------------------------------
+
 

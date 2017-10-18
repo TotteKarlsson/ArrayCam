@@ -17,6 +17,10 @@
 #include "forms/TLoggerForm.h"
 #include "TActionsForm.h"
 #include "TATDBDataModule.h"
+#include "TATDBImagesAndMoviesDataModule.h"
+#include "Poco/Path.h"
+#include "Poco/File.h"
+#include "frames/TMovieItemFrame.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TPropertyCheckBox"
@@ -32,6 +36,8 @@
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TFFMPEGFrame"
 #pragma link "TFFMPEGFrame"
+#pragma link "TArrayBotBtn"
+#pragma link "TSTDStringEdit"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -500,4 +506,126 @@ void TMainForm::setLEDIntensity(int intensity)
 	    mACServer.broadcast(mACServer.IPCCommand(acrLEDIntensitySet));
     }
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BrowseForFolder1Accept(TObject *Sender)
+{
+	MovieFolder->setValue(stdstr(BrowseForFolder1->Folder));
+}
+
+
+void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y)
+{
+	Log(lInfo) << "Mouse up................................";
+	SQLQuery1->Open();
+    StringList movies = fetchRecords();
+	populateMovieFrames(movies);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == vkUp || Key == vkDown|| Key == vkLeft|| Key == vkRight)
+    {
+        //Log(lInfo) << "Key up................................";
+        StringList movies = fetchRecords();
+        populateMovieFrames(movies);
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == vkUp || Key == vkDown || Key == vkLeft|| Key == vkRight)
+    {
+		SQLQuery1->Open();
+    }
+}
+
+StringList TMainForm::fetchRecords()
+{
+	StringList movies;
+    while(!SQLQuery1->Eof)
+    {
+		stringstream rec;
+        rec <<stdstr(SQLQuery1->FieldByName("created")->AsString) <<"," <<stdstr(SQLQuery1->FieldByName("id")->AsString) <<".mp4";
+        movies.append(rec.str());
+        Log(lInfo) << "Got record: "<< stdstr(SQLQuery1->FieldByName("id")->AsString) << " at " << stdstr(SQLQuery1->FieldByName("created")->AsString);
+        SQLQuery1->Next();
+    }
+
+	return movies;
+}
+
+void TMainForm::clearMovieFrames()
+{
+	list<TMovieItemFrame*>::iterator i = mMovies.begin();
+    while(i != mMovies.end())
+    {
+    	delete (*i);
+    	mMovies.erase(i++);
+    }
+}
+
+void TMainForm::populateMovieFrames(const StringList& l)
+{
+	try
+    {
+        clearMovieFrames();
+
+        if(l.count())
+        {
+            ScrollBox1->VertScrollBar->Visible = false;
+        }
+
+        //Current block nr
+		if(BlockIDSLLB->KeyValue.IsNull())
+        {
+        	return;
+        }
+
+        //Create path
+        Poco::Path p(stdstr(MovieFolder->Text));
+
+        int blockID = BlockIDSLLB->KeyValue;
+
+        p.append(mtk::toString(blockID));
+        for(int i = 0; i < l.count(); i++)
+        {
+            StringList item(l[i], ',');
+            if(item.count() == 2)
+            {
+                Poco::File f(Poco::Path(p, item[1]));
+
+                TMovieItemFrame* frame = new TMovieItemFrame(f,this);
+                frame->Visible = false;
+                frame->MovieLbl->Caption = item[0].c_str();
+                mMovies.push_back(frame);
+            }
+            else
+            {
+                Log(lError) << "Bad movie record..";
+            }
+        }
+
+        list<TMovieItemFrame*>::iterator i = mMovies.begin();
+        while(i != mMovies.end())
+        {
+            (*i)->Parent = FlowPanel1;;
+            (*i)->Visible = true;
+            i++;
+        }
+
+        ScrollBox1->VertScrollBar->Visible = true;
+        NrOfRecordsLbl->setValue(l.count());
+    }
+    catch(...)
+    {
+    	Log(lError) << "There was a problem...";
+    }
+}
+
+
+
 

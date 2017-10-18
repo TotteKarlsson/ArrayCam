@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 853
-        ActivePage = Main
+        ActivePage = TabSheet12
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -65,10 +65,6 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -472,10 +468,6 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BlockSelectionGB: TGroupBox
             Left = 0
             Top = 0
@@ -792,10 +784,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -951,10 +939,6 @@ object MainForm: TMainForm
         object TabSheet2: TTabSheet
           Caption = 'ATDB'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object atdbGB: TGroupBox
             Left = 0
             Top = 0
@@ -1028,15 +1012,44 @@ object MainForm: TMainForm
                 end
               end
             end
+            object GroupBox19: TGroupBox
+              Left = 13
+              Top = 248
+              Width = 505
+              Height = 68
+              Caption = 'Data Folder Selection'
+              TabOrder = 1
+              object Panel23: TPanel
+                Left = 2
+                Top = 21
+                Width = 501
+                Height = 41
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 0
+                object MovieFolder: TSTDStringEdit
+                  Left = 9
+                  Top = 11
+                  Width = 440
+                  Height = 27
+                  TabOrder = 0
+                  Text = 'E:\at_media\movies'
+                  Value = 'E:\at_media\movies'
+                end
+                object Button2: TButton
+                  Left = 455
+                  Top = 10
+                  Width = 34
+                  Height = 25
+                  TabOrder = 1
+                end
+              end
+            end
           end
         end
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1328,10 +1341,6 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Miscellaneous'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1343,10 +1352,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1401,10 +1406,6 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1490,11 +1491,12 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 509
+                  Width = 798
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
@@ -1620,10 +1622,6 @@ object MainForm: TMainForm
         object TabSheet10: TTabSheet
           Caption = 'Lights'
           ImageIndex = 7
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object LightIntensitiesGB: TGroupBox
             Left = 3
             Top = 16
@@ -1664,6 +1662,118 @@ object MainForm: TMainForm
         object TabSheet12: TTabSheet
           Caption = 'Videos && Images'
           ImageIndex = 8
+          object PageControl3: TPageControl
+            Left = 0
+            Top = 0
+            Width = 806
+            Height = 819
+            ActivePage = TabSheet13
+            Align = alClient
+            TabOrder = 0
+            object TabSheet13: TTabSheet
+              Caption = 'Movies'
+              object GroupBox16: TGroupBox
+                Left = 0
+                Top = 0
+                Width = 113
+                Height = 785
+                Align = alLeft
+                Caption = 'Block IDs'
+                Color = clBtnFace
+                ParentColor = False
+                TabOrder = 0
+                object DBNavigator1: TDBNavigator
+                  Left = 2
+                  Top = 758
+                  Width = 109
+                  Height = 25
+                  DataSource = atdbDM.blockIDsDataSource
+                  VisibleButtons = [nbPrior, nbNext]
+                  Align = alBottom
+                  TabOrder = 0
+                end
+                object BlockIDSLLB: TDBLookupListBox
+                  Left = 2
+                  Top = 21
+                  Width = 109
+                  Height = 726
+                  Align = alClient
+                  KeyField = 'id'
+                  ListField = 'id'
+                  ListSource = atdbDM.blockIDsDataSource
+                  TabOrder = 1
+                  OnKeyDown = BlockIDSLLBKeyDown
+                  OnKeyUp = BlockIDSLLBKeyUp
+                  OnMouseUp = BlockIDSLLBMouseUp
+                end
+              end
+              object PageControl4: TPageControl
+                Left = 113
+                Top = 0
+                Width = 685
+                Height = 785
+                ActivePage = TabSheet14
+                Align = alClient
+                TabOrder = 1
+                object TabSheet14: TTabSheet
+                  Caption = 'Movies'
+                  ImageIndex = 1
+                  object ScrollBox2: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 677
+                    Height = 696
+                    Align = alClient
+                    TabOrder = 0
+                    object FlowPanel1: TFlowPanel
+                      Left = 0
+                      Top = 0
+                      Width = 673
+                      Height = 481
+                      Align = alTop
+                      AutoSize = True
+                      BevelOuter = bvNone
+                      TabOrder = 0
+                    end
+                  end
+                  object Panel22: TPanel
+                    Left = 0
+                    Top = 696
+                    Width = 677
+                    Height = 55
+                    Align = alBottom
+                    TabOrder = 1
+                    object Label4: TLabel
+                      Left = 32
+                      Top = 24
+                      Width = 143
+                      Height = 19
+                      Caption = 'Number of Records:'
+                    end
+                    object NrOfRecordsLbl: TIntLabel
+                      Left = 181
+                      Top = 29
+                      Width = 10
+                      Height = 13
+                      Caption = '-1'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -11
+                      Font.Name = 'Tahoma'
+                      Font.Style = []
+                      ParentFont = False
+                      Value = -1
+                      TheFont.Charset = DEFAULT_CHARSET
+                      TheFont.Color = clWindowText
+                      TheFont.Height = -11
+                      TheFont.Name = 'Tahoma'
+                      TheFont.Style = []
+                    end
+                  end
+                end
+              end
+            end
+          end
         end
       end
       object Button1: TButton
@@ -2185,6 +2295,13 @@ object MainForm: TMainForm
       OnExecute = ToggleControlBarExecute
       OnUpdate = ToggleControlBarUpdate
     end
+    object BrowseForFolder1: TBrowseForFolder
+      Category = 'File'
+      Caption = 'BrowseForFolder1'
+      DialogCaption = 'BrowseForFolder1'
+      BrowseOptions = [bifEditBox, bifNewDialogStyle, bifUseNewUI]
+      OnAccept = BrowseForFolder1Accept
+    end
   end
   object CameraActions: TActionList
     Left = 56
@@ -2234,5 +2351,22 @@ object MainForm: TMainForm
     OnTimer = CleanupTimerTimer
     Left = 648
     Top = 264
+  end
+  object SQLQuery1: TSQLQuery
+    DataSource = atdbDM.blockIDsDataSource
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'id'
+        ParamType = ptInput
+      end>
+    SQL.Strings = (
+      
+        'SELECT id,created from movies where block_id=:id ORDER by create' +
+        'd DESC')
+    SQLConnection = atdbDM.SQLConnection1
+    Left = 1088
+    Top = 216
   end
 end

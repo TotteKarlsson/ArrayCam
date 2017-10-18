@@ -12,7 +12,6 @@
 #include "mtkLogFileReader.h"
 #include "mtkLogLevel.h"
 
-
 //---------------------------------------------------------------------------
 class PACKAGE TLoggerForm : public TRegistryForm
 {

@@ -4,15 +4,14 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "TIntegerLabeledEdit.h"
 #include <Vcl.ExtCtrls.hpp>
-#include "TMainForm.h"
-#include "TPropertyCheckBox.h"
 #include <Vcl.ComCtrls.hpp>
+#include "TPropertyCheckBox.h"
+#include "TIntegerLabeledEdit.h"
 #include "TSTDStringLabeledEdit.h"
 #include "mtkFloatLabel.h"
 #include "TIntLabel.h"
-#include "TATDBConnectionFrame.h"
+#include "TMainForm.h"
 //---------------------------------------------------------------------------
 
 class PACKAGE TSettingsForm : public TForm
