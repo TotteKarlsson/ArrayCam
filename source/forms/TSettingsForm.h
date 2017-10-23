@@ -24,14 +24,9 @@ class PACKAGE TSettingsForm : public TForm
         TGroupBox *GroupBox3;
         TButton *mCloseButton;
         TPropertyCheckBox *mAutoExposureCB;
-        TSTDStringLabeledEdit *mPhotoOutputBaseFolder;
-        TSTDStringLabeledEdit *mMoviesFolderE;
-        TButton *mBrowseForImagesFolderBtn;
-        TButton *mBrowseForMoviesFolderBtn;
         TPageControl *PageControl1;
         TTabSheet *TabSheet1;
         TPanel *Panel1;
-        TGroupBox *GroupBox6;
         TTabSheet *TabSheet4;
         TGroupBox *GroupBox4;
         TLabel *mGainLbl;
@@ -59,7 +54,6 @@ class PACKAGE TSettingsForm : public TForm
         void __fastcall mCloseButtonClick(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-        void __fastcall BrowseForFolder(TObject *Sender);
         void __fastcall mGammaSBChange(TObject *Sender);
         void __fastcall FormHide(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
@@ -68,8 +62,7 @@ class PACKAGE TSettingsForm : public TForm
         void __fastcall mExposureTimeTBChange(TObject *Sender);
         void __fastcall mBlackLevelTBChange(TObject *Sender);
         void __fastcall mAutoCheckConnectionCBClick(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
-
+		void __fastcall FormCreate(TObject *Sender);
 
     private:
         void  			__fastcall  enableManualExposureTimeSetting();

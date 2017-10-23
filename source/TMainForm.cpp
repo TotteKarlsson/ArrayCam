@@ -38,6 +38,7 @@
 #pragma link "TFFMPEGFrame"
 #pragma link "TArrayBotBtn"
 #pragma link "TSTDStringEdit"
+#pragma link "TSTDStringLabeledEdit"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -66,8 +67,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mVerticalMirror(false),
         mHorizontalMirror(false),
         mPairLEDs(false),
-        mSnapShotFolder(""),
-        mMoviesFolder(""),
+//        mSnapShotFolderE(""),
+//        mMoviesFolderE(""),
         mLocalDBName(""),
         mReticle(mPB->Canvas),
         mReticle2(mPB->Canvas, TReticle::rtCrossHair, clBlue),
@@ -146,7 +147,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     //Update UI controls
     MainContentPanel->Width = mMainContentPanelWidth;
-
 	mCountToE->update();
     mPresetFeedRateE->update();
     mUC7.setFeedRatePreset(mPresetFeedRateE->getValue());
@@ -159,6 +159,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     ResumeDeltaDistanceFrame->setValue(mKnifeStageResumeDelta.getValue());
     mUC7.setKnifeStageResumeDelta(mKnifeStageResumeDelta.getValue());
     mUC7.setKnifeStageJogStepPreset(mKnifeStageJogStep.getValue());
+    MoviesFolderE->update();
+    SnapShotFolderE->update();
 
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
@@ -507,13 +509,6 @@ void TMainForm::setLEDIntensity(int intensity)
     }
 }
 
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BrowseForFolder1Accept(TObject *Sender)
-{
-	MovieFolder->setValue(stdstr(BrowseForFolder1->Folder));
-}
-
-
 void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
@@ -586,7 +581,7 @@ void TMainForm::populateMovieFrames(const StringList& l)
         }
 
         //Create path
-        Poco::Path p(stdstr(MovieFolder->Text));
+        Poco::Path p(stdstr(MoviesFolderE->Text));
 
         int blockID = BlockIDSLLB->KeyValue;
 
@@ -627,5 +622,33 @@ void TMainForm::populateMovieFrames(const StringList& l)
 }
 
 
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BrowseForFolderClick(TObject *Sender)
+{
+	//Open Browse for folder dialog
+	TButton* b = dynamic_cast<TButton*>(Sender);
+    if(b == BrowseForImagesFolderBtn)
+    {
+        string f = browseForFolder(SnapShotFolderE->getValue());
+        if(!f.size())
+        {
+            return;
+        }
+
+    	SnapShotFolderE->setValue(f);
+    }
+    else if(b == BrowseForMoviesFolderBtn)
+    {
+        string f = browseForFolder(MoviesFolderE->getValue());
+        if(!f.size())
+        {
+            return;
+        }
+
+    	MoviesFolderE->setValue(f);
+    }
+}
 
 

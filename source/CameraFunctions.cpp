@@ -296,7 +296,7 @@ void __fastcall TMainForm::takeSnapShot()
     	blockID = 0;
     }
 
-	string base_fldr =  joinPath(mSnapShotFolder, mtk::toString(blockID));
+	string base_fldr =  joinPath(SnapShotFolderE->getValue(), mtk::toString(blockID));
     string fName = joinPath(base_fldr, mtk::toString(csID) + string("_") + uuid + ext);
 
     if(!folderExists(base_fldr))
@@ -406,22 +406,23 @@ void __fastcall TMainForm::startStopRecordingMovie()
             return;
         }
 
-        lCSID = extractCoverSlipID(stdstr(mBCLabel->Caption));
-        if(lCSID == -1)
-        {
-            lCSID = 0; //So we can create fileFolder '0'
-        }
+//        lCSID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+//        if(lCSID == -1)
+//        {
+//            lCSID = 0; //So we can create fileFolder '0'
+//        }
 
         string ext(".avi");
         lUUID = getUUID();
+
         lBlockID = atdbDM->getCurrentBlockID();
         if(lBlockID == -1)
         {
             lBlockID = 0;
         }
 
-        string base_fldr =  joinPath(mMoviesFolder, mtk::toString(lBlockID));
-        string fName = joinPath(base_fldr, mtk::toString(lCSID) + string("_") + lUUID + ext);
+        string base_fldr =  joinPath(MoviesFolderE->getValue(), mtk::toString(lBlockID));
+        string fName = joinPath(base_fldr, lUUID + ext);
 
         if(!folderExists(base_fldr))
         {

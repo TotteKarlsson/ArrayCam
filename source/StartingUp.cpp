@@ -34,9 +34,9 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mSoftwareGamma.setup( 	                        "SOFTWARE_GAMMA",  		            0));
 	mGeneralProperties.add((BaseProperty*)  &mVerticalMirror.setup(	                        "VERTICAL_MIRROR",    	            false));
 	mGeneralProperties.add((BaseProperty*)  &mHorizontalMirror.setup(	                    "HORIZONTAL_MIRROR",                false));
-    mGeneralProperties.add((BaseProperty*)  &mSnapShotFolder.setup(	                        "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
-	mGeneralProperties.add((BaseProperty*)  &mMoviesFolder.setup(		                    "MOVIES_FOLDER",   		            "C:\\Temp"	));
-	mGeneralProperties.add((BaseProperty*)  &mReticleVisible.setup(					        "RETICLE_VISIBILITY",              false));
+    mGeneralProperties.add((BaseProperty*)  &SnapShotFolderE->getProperty()->setup(        "SNAP_SHOT_FOLDER",                 "C:\\Temp"	));
+	mGeneralProperties.add((BaseProperty*)  &MoviesFolderE->getProperty()->setup(           "MOVIES_FOLDER",   		            "C:\\Temp"	));
+	mGeneralProperties.add((BaseProperty*)  &mReticleVisible.setup(					        "RETICLE_VISIBILITY",      	        false));
 
     //UC7
    	mGeneralProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));

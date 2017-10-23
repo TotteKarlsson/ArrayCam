@@ -63,6 +63,7 @@
 #include "TFFMPEGFrame.h"
 #include "TArrayBotBtn.h"
 #include "TSTDStringEdit.h"
+#include "TSTDStringLabeledEdit.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -293,8 +294,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet11;
 	TTimer *CleanupTimer;
 	TTabSheet *TabSheet12;
-	TPageControl *PageControl3;
-	TTabSheet *TabSheet13;
 	TGroupBox *GroupBox16;
 	TDBNavigator *DBNavigator1;
 	TDBLookupListBox *BlockIDSLLB;
@@ -305,12 +304,14 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel22;
 	TLabel *Label4;
 	TIntLabel *NrOfRecordsLbl;
-	TGroupBox *GroupBox19;
-	TPanel *Panel23;
-	TSTDStringEdit *MovieFolder;
-	TButton *Button2;
 	TBrowseForFolder *BrowseForFolder1;
 	TSQLQuery *SQLQuery1;
+	TGroupBox *GroupBox6;
+	TButton *BrowseForImagesFolderBtn;
+	TButton *BrowseForMoviesFolderBtn;
+	TSTDStringLabeledEdit *MoviesFolderE;
+	TSTDStringLabeledEdit *SnapShotFolderE;
+	TTabSheet *TabSheet15;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -374,11 +375,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
 	void __fastcall FrontLEDTBChange(TObject *Sender);
 	void __fastcall CleanupTimerTimer(TObject *Sender);
-	void __fastcall BrowseForFolder1Accept(TObject *Sender);
 	void __fastcall BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall BrowseForFolderClick(TObject *Sender);
 
 
 
@@ -416,8 +417,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 		auto_ptr<TReticlePopupForm>				mReticleForm;
         Property<bool>						    mReticleVisible;
 
-        Property<string>						mSnapShotFolder;
-        Property<string>						mMoviesFolder;
+        //Property<string>						mSnapShotFolder;
+        //Property<string>						mMoviesFolder;
+
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
 

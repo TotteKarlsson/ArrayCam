@@ -2,8 +2,8 @@ object SettingsForm: TSettingsForm
   Left = 0
   Top = 0
   Caption = 'ArrayCam Settings'
-  ClientHeight = 541
-  ClientWidth = 625
+  ClientHeight = 531
+  ClientWidth = 600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,13 +23,17 @@ object SettingsForm: TSettingsForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 625
-    Height = 486
+    Width = 600
+    Height = 476
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 625
+    ExplicitHeight = 486
     object TabSheet1: TTabSheet
       Caption = 'Camera'
+      ExplicitWidth = 617
+      ExplicitHeight = 458
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -108,61 +112,12 @@ object SettingsForm: TSettingsForm
           OnChange = mExposureTimeTBChange
         end
       end
-      object GroupBox6: TGroupBox
-        Left = 9
-        Top = 232
-        Width = 521
-        Height = 86
-        Caption = 'Folders (raw files)'
-        TabOrder = 2
-        object mBrowseForImagesFolderBtn: TButton
-          Left = 228
-          Top = 40
-          Width = 27
-          Height = 25
-          Caption = '...'
-          TabOrder = 0
-          OnClick = BrowseForFolder
-        end
-        object mBrowseForMoviesFolderBtn: TButton
-          Left = 483
-          Top = 40
-          Width = 27
-          Height = 25
-          Caption = '...'
-          TabOrder = 1
-          OnClick = BrowseForFolder
-        end
-        object mMoviesFolderE: TSTDStringLabeledEdit
-          Left = 261
-          Top = 44
-          Width = 219
-          Height = 21
-          EditLabel.Width = 66
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Movies Folder'
-          TabOrder = 2
-        end
-        object mPhotoOutputBaseFolder: TSTDStringLabeledEdit
-          Left = 6
-          Top = 44
-          Width = 219
-          Height = 21
-          EditLabel.AlignWithMargins = True
-          EditLabel.Width = 61
-          EditLabel.Height = 13
-          EditLabel.Caption = 'Photo Folder'
-          TabOrder = 3
-        end
-      end
     end
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 617
+      ExplicitHeight = 458
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -260,7 +215,7 @@ object SettingsForm: TSettingsForm
       end
       object Gamma: TGroupBox
         Left = 19
-        Top = 360
+        Top = 311
         Width = 390
         Height = 81
         Caption = 'Gamma'
@@ -305,7 +260,7 @@ object SettingsForm: TSettingsForm
         Left = 19
         Top = 239
         Width = 390
-        Height = 105
+        Height = 66
         Caption = 'Color Gain'
         TabOrder = 2
         object mAutoWhiteBalanceCB: TPropertyCheckBox
@@ -322,11 +277,13 @@ object SettingsForm: TSettingsForm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 486
-    Width = 625
+    Top = 476
+    Width = 600
     Height = 55
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 486
+    ExplicitWidth = 625
     object mCloseButton: TButton
       Left = 512
       Top = 2

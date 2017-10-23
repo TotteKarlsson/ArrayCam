@@ -7,9 +7,6 @@ Coordinates=100,71,66,33
 [Panel1]
 Coordinates=286,249,47,51
 
-[mPhotoOutputBaseFolder]
-Coordinates=39,160,142,51
-
 [mGainBoostCB]
 Coordinates=316,1,95,51
 
@@ -52,9 +49,6 @@ Coordinates=825,227,81,33
 [mVerticalMirrorCB]
 Coordinates=316,71,105,51
 
-[mBrowseForMoviesFolderBtn]
-Coordinates=825,1,160,51
-
 [mHorizontalMirrorCB]
 Coordinates=459,1,118,51
 
@@ -82,24 +76,15 @@ Coordinates=626,1,108,51
 [GroupBox2]
 Coordinates=340,338,70,51
 
-[GroupBox6]
-Coordinates=169,1,70,51
-
-[mBrowseForImagesFolderBtn]
-Coordinates=626,141,161,51
-
 [GroupBox3]
 Coordinates=528,338,70,51
 
 [Label2]
 Coordinates=47,70,46,51
 
-[mMoviesFolderE]
-Coordinates=626,281,96,51
-
 [GroupBox5]
 Coordinates=148,249,70,51
 
 []
-Coordinates=14,338,66,33
+Coordinates=169,1,70,51
 
