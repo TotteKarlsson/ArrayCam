@@ -781,6 +781,113 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet12: TTabSheet
+          Caption = 'Videos && Images'
+          ImageIndex = 8
+          object GroupBox6: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 806
+            Height = 86
+            Align = alTop
+            BiDiMode = bdLeftToRight
+            Caption = 'Media'
+            ParentBiDiMode = False
+            TabOrder = 0
+            object BrowseForMediaFolderBtn: TButton
+              Left = 339
+              Top = 47
+              Width = 27
+              Height = 25
+              Caption = '...'
+              TabOrder = 0
+              OnClick = BrowseForFolderClick
+            end
+            object MediaFolderE: TSTDStringLabeledEdit
+              Left = 16
+              Top = 46
+              Width = 317
+              Height = 27
+              EditLabel.Width = 128
+              EditLabel.Height = 19
+              EditLabel.Caption = 'Media Root Folder'
+              TabOrder = 1
+            end
+          end
+          object MediaPageControl: TPageControl
+            Left = 113
+            Top = 86
+            Width = 693
+            Height = 733
+            ActivePage = TabSheet13
+            Align = alClient
+            TabOrder = 1
+            object TabSheet13: TTabSheet
+              Caption = 'Movies'
+              ImageIndex = 2
+              inline TMoviesFrame1: TMoviesFrame
+                Left = 0
+                Top = 0
+                Width = 685
+                Height = 699
+                Align = alClient
+                TabOrder = 0
+                ExplicitLeft = 48
+                ExplicitTop = 88
+                inherited Panel22: TPanel
+                  Top = 644
+                  Width = 685
+                  ExplicitWidth = 849
+                  inherited Label4: TLabel
+                    Width = 143
+                    Height = 19
+                    ExplicitWidth = 143
+                    ExplicitHeight = 19
+                  end
+                end
+                inherited ScrollBox2: TScrollBox
+                  Width = 685
+                  Height = 644
+                  ExplicitWidth = 849
+                  ExplicitHeight = 638
+                  inherited FlowPanel1: TFlowPanel
+                    Width = 681
+                  end
+                end
+              end
+            end
+            object TabSheet15: TTabSheet
+              Caption = 'Images'
+              ImageIndex = 1
+            end
+          end
+          object GroupBox16: TGroupBox
+            Left = 0
+            Top = 86
+            Width = 113
+            Height = 733
+            Align = alLeft
+            Caption = 'Block IDs'
+            Color = clBtnFace
+            ParentColor = False
+            TabOrder = 2
+            object BlockIDSLLB: TDBLookupListBox
+              Left = 2
+              Top = 21
+              Width = 109
+              Height = 707
+              Align = alClient
+              KeyField = 'id'
+              ListField = 'id'
+              ListSource = atdbDM.blockIDsDataSource
+              TabOrder = 0
+              OnKeyDown = BlockIDSLLBKeyDown
+              OnKeyUp = BlockIDSLLBKeyUp
+              OnMouseUp = BlockIDSLLBMouseUp
+              ExplicitHeight = 669
+            end
+          end
+        end
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
@@ -1462,15 +1569,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
-                  ExplicitWidth = 509
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1481,9 +1587,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1513,7 +1616,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1623,162 +1726,6 @@ object MainForm: TMainForm
                 TickStyle = tsNone
                 OnChange = FrontLEDTBChange
               end
-            end
-          end
-        end
-        object TabSheet12: TTabSheet
-          Caption = 'Videos && Images'
-          ImageIndex = 8
-          object GroupBox6: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 806
-            Height = 86
-            Align = alTop
-            Caption = 'Folders (raw files)'
-            TabOrder = 0
-            object BrowseForImagesFolderBtn: TButton
-              Left = 532
-              Top = 37
-              Width = 27
-              Height = 25
-              Caption = '...'
-              TabOrder = 0
-              OnClick = BrowseForFolderClick
-            end
-            object BrowseForMoviesFolderBtn: TButton
-              Left = 243
-              Top = 37
-              Width = 27
-              Height = 25
-              Caption = '...'
-              TabOrder = 1
-              OnClick = BrowseForFolderClick
-            end
-            object MoviesFolderE: TSTDStringLabeledEdit
-              Left = 18
-              Top = 36
-              Width = 219
-              Height = 27
-              EditLabel.Width = 97
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Movies Folder'
-              TabOrder = 2
-            end
-            object SnapShotFolderE: TSTDStringLabeledEdit
-              Left = 310
-              Top = 36
-              Width = 219
-              Height = 27
-              EditLabel.AlignWithMargins = True
-              EditLabel.Width = 90
-              EditLabel.Height = 19
-              EditLabel.Caption = 'Photo Folder'
-              TabOrder = 3
-            end
-          end
-          object PageControl4: TPageControl
-            Left = 113
-            Top = 86
-            Width = 693
-            Height = 733
-            ActivePage = TabSheet14
-            Align = alClient
-            TabOrder = 1
-            object TabSheet14: TTabSheet
-              Caption = 'Movies'
-              ImageIndex = 1
-              object ScrollBox2: TScrollBox
-                Left = 0
-                Top = 0
-                Width = 685
-                Height = 644
-                Align = alClient
-                TabOrder = 0
-                object FlowPanel1: TFlowPanel
-                  Left = 0
-                  Top = 0
-                  Width = 681
-                  Height = 481
-                  Align = alTop
-                  AutoSize = True
-                  BevelOuter = bvNone
-                  TabOrder = 0
-                end
-              end
-              object Panel22: TPanel
-                Left = 0
-                Top = 644
-                Width = 685
-                Height = 55
-                Align = alBottom
-                TabOrder = 1
-                object Label4: TLabel
-                  Left = 32
-                  Top = 24
-                  Width = 143
-                  Height = 19
-                  Caption = 'Number of Records:'
-                end
-                object NrOfRecordsLbl: TIntLabel
-                  Left = 181
-                  Top = 29
-                  Width = 10
-                  Height = 13
-                  Caption = '-1'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Value = -1
-                  TheFont.Charset = DEFAULT_CHARSET
-                  TheFont.Color = clWindowText
-                  TheFont.Height = -11
-                  TheFont.Name = 'Tahoma'
-                  TheFont.Style = []
-                end
-              end
-            end
-            object TabSheet15: TTabSheet
-              Caption = 'Images'
-              ImageIndex = 1
-            end
-          end
-          object GroupBox16: TGroupBox
-            Left = 0
-            Top = 86
-            Width = 113
-            Height = 733
-            Align = alLeft
-            Caption = 'Block IDs'
-            Color = clBtnFace
-            ParentColor = False
-            TabOrder = 2
-            object DBNavigator1: TDBNavigator
-              Left = 2
-              Top = 706
-              Width = 109
-              Height = 25
-              DataSource = atdbDM.blockIDsDataSource
-              VisibleButtons = [nbPrior, nbNext]
-              Align = alBottom
-              TabOrder = 0
-            end
-            object BlockIDSLLB: TDBLookupListBox
-              Left = 2
-              Top = 21
-              Width = 109
-              Height = 669
-              Align = alClient
-              KeyField = 'id'
-              ListField = 'id'
-              ListSource = atdbDM.blockIDsDataSource
-              TabOrder = 1
-              OnKeyDown = BlockIDSLLBKeyDown
-              OnKeyUp = BlockIDSLLBKeyUp
-              OnMouseUp = BlockIDSLLBMouseUp
             end
           end
         end
@@ -2357,22 +2304,5 @@ object MainForm: TMainForm
     OnTimer = CleanupTimerTimer
     Left = 648
     Top = 264
-  end
-  object SQLQuery1: TSQLQuery
-    DataSource = atdbDM.blockIDsDataSource
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftUnknown
-        Name = 'id'
-        ParamType = ptInput
-      end>
-    SQL.Strings = (
-      
-        'SELECT id,created from movies where block_id=:id ORDER by create' +
-        'd DESC')
-    SQLConnection = atdbDM.SQLConnection1
-    Left = 1256
-    Top = 248
   end
 end

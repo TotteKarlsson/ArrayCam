@@ -296,7 +296,7 @@ void __fastcall TMainForm::takeSnapShot()
     	blockID = 0;
     }
 
-	string base_fldr =  joinPath(SnapShotFolderE->getValue(), mtk::toString(blockID));
+	string base_fldr =  joinPath(MediaFolderE->getValue(), "Images", mtk::toString(blockID));
     string fName = joinPath(base_fldr, mtk::toString(csID) + string("_") + uuid + ext);
 
     if(!folderExists(base_fldr))
@@ -421,7 +421,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
             lBlockID = 0;
         }
 
-        string base_fldr =  joinPath(MoviesFolderE->getValue(), mtk::toString(lBlockID));
+        string base_fldr =  joinPath(MediaFolderE->getValue(), "Movies", mtk::toString(lBlockID));
         string fName = joinPath(base_fldr, lUUID + ext);
 
         if(!folderExists(base_fldr))

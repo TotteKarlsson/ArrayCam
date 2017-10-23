@@ -64,6 +64,7 @@
 #include "TArrayBotBtn.h"
 #include "TSTDStringEdit.h"
 #include "TSTDStringLabeledEdit.h"
+#include "TMoviesFrame.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -295,23 +296,15 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTimer *CleanupTimer;
 	TTabSheet *TabSheet12;
 	TGroupBox *GroupBox16;
-	TDBNavigator *DBNavigator1;
 	TDBLookupListBox *BlockIDSLLB;
-	TPageControl *PageControl4;
-	TTabSheet *TabSheet14;
-	TScrollBox *ScrollBox2;
-	TFlowPanel *FlowPanel1;
-	TPanel *Panel22;
-	TLabel *Label4;
-	TIntLabel *NrOfRecordsLbl;
+	TPageControl *MediaPageControl;
 	TBrowseForFolder *BrowseForFolder1;
-	TSQLQuery *SQLQuery1;
 	TGroupBox *GroupBox6;
-	TButton *BrowseForImagesFolderBtn;
-	TButton *BrowseForMoviesFolderBtn;
-	TSTDStringLabeledEdit *MoviesFolderE;
-	TSTDStringLabeledEdit *SnapShotFolderE;
+	TButton *BrowseForMediaFolderBtn;
+	TSTDStringLabeledEdit *MediaFolderE;
 	TTabSheet *TabSheet15;
+	TTabSheet *TabSheet13;
+	TMoviesFrame *TMoviesFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -380,8 +373,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
-
-
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -531,11 +522,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 		bool 									startVideoCompression(const string& inputName);
 	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
-
-		list<TMovieItemFrame*>                  mMovies;
-   		void 									populateMovieFrames(const StringList& l);
-		void 									clearMovieFrames();
-		StringList								fetchRecords();
 
 
     //=================================================================================================
