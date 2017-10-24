@@ -52,7 +52,7 @@
             <Dependencies/>
         </Projects>
         <Projects Include="source\ArrayCam.cbproj">
-            <Dependencies/>
+            <Dependencies>P:\libs\atapi\source\core\atCore.cbproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -206,13 +206,13 @@
     <Target Name="ArrayCamPackage:Make">
         <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ArrayCam">
+    <Target Name="ArrayCam" DependsOnTargets="atCore">
         <MSBuild Projects="source\ArrayCam.cbproj"/>
     </Target>
-    <Target Name="ArrayCam:Clean">
+    <Target Name="ArrayCam:Clean" DependsOnTargets="atCore:Clean">
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ArrayCam:Make">
+    <Target Name="ArrayCam:Make" DependsOnTargets="atCore:Make">
         <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

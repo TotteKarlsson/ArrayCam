@@ -297,7 +297,7 @@ void __fastcall TMainForm::takeSnapShot()
     }
 
 	string base_fldr =  joinPath(MediaFolderE->getValue(), "Images", mtk::toString(blockID));
-    string fName = joinPath(base_fldr, mtk::toString(csID) + string("_") + uuid + ext);
+    string fName = joinPath(base_fldr, uuid + ext);
 
     if(!folderExists(base_fldr))
     {
@@ -405,12 +405,6 @@ void __fastcall TMainForm::startStopRecordingMovie()
             Log(lError) << "There was a SetImageQuality AVI error: "<<retVal;
             return;
         }
-
-//        lCSID = extractCoverSlipID(stdstr(mBCLabel->Caption));
-//        if(lCSID == -1)
-//        {
-//            lCSID = 0; //So we can create fileFolder '0'
-//        }
 
         string ext(".avi");
         lUUID = getUUID();

@@ -564,4 +564,10 @@ void __fastcall TMainForm::BrowseForFolderClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
+{
+	populateMedia();
+}
+
 

@@ -815,28 +815,34 @@ object MainForm: TMainForm
             end
           end
           object MediaPageControl: TPageControl
-            Left = 113
+            Left = 65
             Top = 86
-            Width = 693
+            Width = 741
             Height = 733
             ActivePage = TabSheet13
             Align = alClient
             TabOrder = 1
+            OnChange = MediaPageControlChange
+            ExplicitLeft = 113
+            ExplicitWidth = 693
             object TabSheet13: TTabSheet
               Caption = 'Movies'
               ImageIndex = 2
+              ExplicitWidth = 685
               inline TMoviesFrame1: TMoviesFrame
                 Left = 0
                 Top = 0
-                Width = 685
+                Width = 733
                 Height = 699
                 Align = alClient
                 TabOrder = 0
-                ExplicitLeft = 48
-                ExplicitTop = 80
+                ExplicitWidth = 685
+                ExplicitHeight = 699
                 inherited Panel22: TPanel
                   Top = 644
-                  Width = 685
+                  Width = 733
+                  ExplicitTop = 644
+                  ExplicitWidth = 685
                   inherited Label4: TLabel
                     Width = 143
                     Height = 19
@@ -845,10 +851,13 @@ object MainForm: TMainForm
                   end
                 end
                 inherited ScrollBox2: TScrollBox
-                  Width = 685
+                  Width = 733
                   Height = 644
+                  ExplicitWidth = 685
+                  ExplicitHeight = 644
                   inherited FlowPanel1: TFlowPanel
-                    Width = 681
+                    Width = 729
+                    ExplicitWidth = 681
                   end
                 end
               end
@@ -856,18 +865,21 @@ object MainForm: TMainForm
             object TabSheet15: TTabSheet
               Caption = 'Images'
               ImageIndex = 1
+              ExplicitWidth = 685
               inline TImagesFrame1: TImagesFrame
                 Left = 0
                 Top = 0
-                Width = 685
+                Width = 733
                 Height = 699
                 Align = alClient
                 TabOrder = 0
-                ExplicitLeft = 72
-                ExplicitTop = 48
+                ExplicitWidth = 685
+                ExplicitHeight = 699
                 inherited Panel22: TPanel
                   Top = 644
-                  Width = 685
+                  Width = 733
+                  ExplicitTop = 644
+                  ExplicitWidth = 685
                   inherited Label4: TLabel
                     Width = 143
                     Height = 19
@@ -876,10 +888,13 @@ object MainForm: TMainForm
                   end
                 end
                 inherited ScrollBox2: TScrollBox
-                  Width = 685
+                  Width = 733
                   Height = 644
+                  ExplicitWidth = 685
+                  ExplicitHeight = 644
                   inherited FlowPanel1: TFlowPanel
-                    Width = 681
+                    Width = 729
+                    ExplicitWidth = 681
                   end
                 end
               end
@@ -888,7 +903,7 @@ object MainForm: TMainForm
           object GroupBox16: TGroupBox
             Left = 0
             Top = 86
-            Width = 113
+            Width = 65
             Height = 733
             Align = alLeft
             Caption = 'Block IDs'
@@ -898,12 +913,14 @@ object MainForm: TMainForm
             object BlockIDSLLB: TDBLookupListBox
               Left = 2
               Top = 21
-              Width = 109
+              Width = 61
               Height = 707
               Align = alClient
+              BiDiMode = bdRightToLeft
               KeyField = 'id'
               ListField = 'id'
               ListSource = atdbDM.blockIDsDataSource
+              ParentBiDiMode = False
               TabOrder = 0
               OnKeyDown = BlockIDSLLBKeyDown
               OnKeyUp = BlockIDSLLBKeyUp
@@ -1592,7 +1609,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
