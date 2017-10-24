@@ -182,16 +182,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="frames\TFFMPEGOutputFrame.cpp">
             <BuildOrder>26</BuildOrder>
         </CppCompile>
-        <CppCompile Include="frames\TImagesFrame.cpp">
-            <Form>ImagesFrame</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>frames\TImagesFrame.h</DependentOn>
-            <BuildOrder>28</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="frames\TMoviesFrame.cpp">
-            <BuildOrder>29</BuildOrder>
-        </CppCompile>
         <CppCompile Include="frames\TUC7StagePositionFrame.cpp">
             <Form>UC7StagePositionFrame</Form>
             <DesignClass>TFrame</DesignClass>
@@ -242,22 +232,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.h</DependentOn>
             <BuildOrder>19</BuildOrder>
         </CppCompile>
-        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TImageItemFrame.cpp">
-            <BuildOrder>30</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TMovieItemFrame.cpp">
-            <BuildOrder>31</BuildOrder>
-        </CppCompile>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
-        <FormResources Include="frames\TFFMPEGFrame.dfm"/>
-        <FormResources Include="frames\TImagesFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TCoverSlipDataModule.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="forms\TActionsForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBImagesAndMoviesDataModule.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\datamodules\TATDBDataModule.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
+        <FormResources Include="forms\TActionsForm.dfm"/>
+        <FormResources Include="frames\TFFMPEGFrame.dfm"/>
         <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -325,8 +308,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -403,6 +386,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
@@ -416,9 +402,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice">
