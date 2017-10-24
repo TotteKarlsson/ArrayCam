@@ -1,7 +1,6 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "vcl/atVCLUtils.h"
 #include "mtkLogger.h"
 #include "mtkVCLUtils.h"
 #include "mtkWin32Utils.h"
@@ -34,11 +33,11 @@
 #pragma link "TNavitarPresetFrame"
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TFFMPEGFrame"
-#pragma link "TFFMPEGFrame"
 #pragma link "TArrayBotBtn"
 #pragma link "TSTDStringEdit"
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TMoviesFrame"
+#pragma link "TImagesFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -67,8 +66,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mVerticalMirror(false),
         mHorizontalMirror(false),
         mPairLEDs(false),
-//        mSnapShotFolderE(""),
-//        mMoviesFolderE(""),
         mLocalDBName(""),
         mReticle(mPB->Canvas),
         mReticle2(mPB->Canvas, TReticle::rtCrossHair, clBlue),
@@ -511,44 +508,33 @@ void TMainForm::setLEDIntensity(int intensity)
 void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-	Log(lInfo) << "Mouse up................................";
-    //Check what page is open, movies or images
-    if(MediaPageControl->TabIndex == 0)
-    {
-		if(BlockIDSLLB->KeyValue.IsNull())
-        {
-        	return;
-        }
-        else
-        {
-	        Poco::Path p(MediaFolderE->getValue());
-			TMoviesFrame1->populate(BlockIDSLLB->KeyValue, p);
-        }
-    }
-    else
-	{
-
-    }
+	populateMedia();
 }
 
+void TMainForm::populateMedia()
+{
+    if(BlockIDSLLB->KeyValue.IsNull())
+    {
+        return;
+    }
 
+    //Check what page is open, movies or images
+    Poco::Path p(MediaFolderE->getValue());
+    if(MediaPageControl->TabIndex == 0)
+    {
+		TMoviesFrame1->populate(BlockIDSLLB->KeyValue, p);
+    }
+    else //Populate Images
+	{
+		TImagesFrame1->populate(BlockIDSLLB->KeyValue, p);
+    }
+}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 {
 	if(Key == vkUp || Key == vkDown|| Key == vkLeft|| Key == vkRight)
     {
-        //Log(lInfo) << "Key up................................";
-
-        //This should be done in a thread..
-		if(BlockIDSLLB->KeyValue.IsNull())
-        {
-        	return;
-        }
-        else
-        {
-	        Poco::Path p(MediaFolderE->getValue());
-			TMoviesFrame1->populate(BlockIDSLLB->KeyValue, p);
-        }
+        populateMedia();
     }
 }
 
@@ -557,7 +543,7 @@ void __fastcall TMainForm::BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShift
 {
 	if(Key == vkUp || Key == vkDown || Key == vkLeft|| Key == vkRight)
     {
-		//SQLQuery1->Open();
+
     }
 }
 

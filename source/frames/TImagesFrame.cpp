@@ -1,31 +1,31 @@
 #include <vcl.h>
 #pragma hdrstop
-#include "TMoviesFrame.h"
+#include "TImagesFrame.h"
 #include "Poco/File.h"
-#include "frames/TMovieItemFrame.h"
+#include "frames/TImageItemFrame.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntLabel"
 #pragma resource "*.dfm"
-TMoviesFrame *MoviesFrame;
+TImagesFrame *ImagesFrame;
 using namespace mtk;
 
 
 //---------------------------------------------------------------------------
-__fastcall TMoviesFrame::TMoviesFrame(TComponent* Owner)
+__fastcall TImagesFrame::TImagesFrame(TComponent* Owner)
 	: TFrame(Owner),
     mBlockID(0)
 {
 }
 
-void TMoviesFrame::populate(int blockID, Poco::Path& mediaPath)
+void TImagesFrame::populate(int blockID, Poco::Path& mediaPath)
 {
 	try
     {
-		GetMoviesQuery->Open();
+		GetImagesQuery->Open();
 	    StringList l = fetchRecords();
-        clearMovieFrames();
+        clearItemFrames();
         if(l.count())
         {
             ScrollBox2->VertScrollBar->Visible = false;
@@ -33,9 +33,9 @@ void TMoviesFrame::populate(int blockID, Poco::Path& mediaPath)
 
         //Create path
         Poco::Path p(mediaPath);
-        p.append("Movies");
+        p.append("Images");
         p.append(mtk::toString(blockID));
-        Log(lDebug) << "Looking for movies in folder: " << p.toString();
+        Log(lDebug) << "Looking for images in folder: " << p.toString();
 
         for(int i = 0; i < l.count(); i++)
         {
@@ -44,19 +44,19 @@ void TMoviesFrame::populate(int blockID, Poco::Path& mediaPath)
             {
                 Poco::File f(Poco::Path(p, item[1]));
 
-                TMovieItemFrame* frame = new TMovieItemFrame(f,this);
+                TImageItemFrame* frame = new TImageItemFrame(f,this);
                 frame->Visible = false;
                 frame->MovieLbl->Caption = item[0].c_str();
-                mMovies.push_back(frame);
+                mItems.push_back(frame);
             }
             else
             {
-                Log(lError) << "Bad movie record..";
+                Log(lError) << "Bad image item record..";
             }
         }
 
-        list<TMovieItemFrame*>::iterator i = mMovies.begin();
-        while(i != mMovies.end())
+        list<TImageItemFrame*>::iterator i = mItems.begin();
+        while(i != mItems.end())
         {
             (*i)->Parent = FlowPanel1;;
             (*i)->Visible = true;
@@ -72,28 +72,28 @@ void TMoviesFrame::populate(int blockID, Poco::Path& mediaPath)
     }
 }
 
-StringList TMoviesFrame::fetchRecords()
+StringList TImagesFrame::fetchRecords()
 {
 	StringList records;
-    while(!GetMoviesQuery->Eof)
+    while(!GetImagesQuery->Eof)
     {
 		stringstream rec;
-        rec <<stdstr(GetMoviesQuery->FieldByName("created")->AsString) <<"," <<stdstr(GetMoviesQuery->FieldByName("id")->AsString) <<".mp4";
+        rec <<stdstr(GetImagesQuery->FieldByName("created")->AsString) <<"," <<stdstr(GetImagesQuery->FieldByName("id")->AsString);
         records.append(rec.str());
-        Log(lDebug4) << "Got record: "<< stdstr(GetMoviesQuery->FieldByName("id")->AsString) << " at " << stdstr(GetMoviesQuery->FieldByName("created")->AsString);
-        GetMoviesQuery->Next();
+        Log(lDebug4) << "Got record: "<< stdstr(GetImagesQuery->FieldByName("id")->AsString) << " at " << stdstr(GetImagesQuery->FieldByName("created")->AsString);
+        GetImagesQuery->Next();
     }
 
 	return records;
 }
 
-void TMoviesFrame::clearMovieFrames()
+void TImagesFrame::clearItemFrames()
 {
-	list<TMovieItemFrame*>::iterator i = mMovies.begin();
-    while(i != mMovies.end())
+	list<TImageItemFrame*>::iterator i = mItems.begin();
+    while(i != mItems.end())
     {
     	delete (*i);
-    	mMovies.erase(i++);
+    	mItems.erase(i++);
     }
 }
 

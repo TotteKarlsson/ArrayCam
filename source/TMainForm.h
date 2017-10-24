@@ -65,6 +65,7 @@
 #include "TSTDStringEdit.h"
 #include "TSTDStringLabeledEdit.h"
 #include "TMoviesFrame.h"
+#include "TImagesFrame.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -304,6 +305,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TSTDStringLabeledEdit *MediaFolderE;
 	TTabSheet *TabSheet15;
 	TTabSheet *TabSheet13;
+	TImagesFrame *TImagesFrame1;
 	TMoviesFrame *TMoviesFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -522,7 +524,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		bool 									startVideoCompression(const string& inputName);
 	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
-
+		void            						populateMedia();
 
     //=================================================================================================
     public:

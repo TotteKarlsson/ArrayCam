@@ -833,11 +833,10 @@ object MainForm: TMainForm
                 Align = alClient
                 TabOrder = 0
                 ExplicitLeft = 48
-                ExplicitTop = 88
+                ExplicitTop = 80
                 inherited Panel22: TPanel
                   Top = 644
                   Width = 685
-                  ExplicitWidth = 849
                   inherited Label4: TLabel
                     Width = 143
                     Height = 19
@@ -848,8 +847,6 @@ object MainForm: TMainForm
                 inherited ScrollBox2: TScrollBox
                   Width = 685
                   Height = 644
-                  ExplicitWidth = 849
-                  ExplicitHeight = 638
                   inherited FlowPanel1: TFlowPanel
                     Width = 681
                   end
@@ -859,6 +856,33 @@ object MainForm: TMainForm
             object TabSheet15: TTabSheet
               Caption = 'Images'
               ImageIndex = 1
+              inline TImagesFrame1: TImagesFrame
+                Left = 0
+                Top = 0
+                Width = 685
+                Height = 699
+                Align = alClient
+                TabOrder = 0
+                ExplicitLeft = 72
+                ExplicitTop = 48
+                inherited Panel22: TPanel
+                  Top = 644
+                  Width = 685
+                  inherited Label4: TLabel
+                    Width = 143
+                    Height = 19
+                    ExplicitWidth = 143
+                    ExplicitHeight = 19
+                  end
+                end
+                inherited ScrollBox2: TScrollBox
+                  Width = 685
+                  Height = 644
+                  inherited FlowPanel1: TFlowPanel
+                    Width = 681
+                  end
+                end
+              end
             end
           end
           object GroupBox16: TGroupBox
@@ -884,7 +908,6 @@ object MainForm: TMainForm
               OnKeyDown = BlockIDSLLBKeyDown
               OnKeyUp = BlockIDSLLBKeyUp
               OnMouseUp = BlockIDSLLBMouseUp
-              ExplicitHeight = 669
             end
           end
         end
@@ -1569,7 +1592,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
