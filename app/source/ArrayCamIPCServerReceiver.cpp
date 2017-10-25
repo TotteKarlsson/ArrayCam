@@ -5,7 +5,7 @@
 #include "mtkIPCMessageBuilder.h"
 #include "ArrayCamUtils.h"
 //---------------------------------------------------------------------------
-
+#pragma package(smart_init)
 using namespace mtk;
 
 SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* server)

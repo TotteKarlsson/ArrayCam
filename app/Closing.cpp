@@ -1,6 +1,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
+#include "TATDBDataModule.h"
 #include "THandWheelPositionForm.h"
 #include "TLoggerForm.h"
 #include "mtkLogger.h"

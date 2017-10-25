@@ -1,20 +1,17 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
+#include "TATDBDataModule.h"
 #include "mtkLogger.h"
-#include "mtkUtils.h"
 #include "mtkVCLUtils.h"
-#include "mtkWin32Utils.h"
 #include "uc480/uc480_tools.h"
 #include "vcl/atVCLUtils.h"
-#include "database/atDBUtils.h"
-#include "TATDBDataModule.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
 #include "TFFMPEGOutputFrame.h"
+#include "database/atDBUtils.h"
 using namespace mtk;
 using namespace at;
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,

@@ -5,9 +5,9 @@
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma link "TPropertyCheckBox"
+#pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 TReticlePopupForm *ReticlePopupForm;
-//---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
 __fastcall TReticlePopupForm::TReticlePopupForm(TReticle& reticle, TComponent* Owner)
@@ -18,6 +18,7 @@ __fastcall TReticlePopupForm::TReticlePopupForm(TReticle& reticle, TComponent* O
 {
 }
 
+//---------------------------------------------------------------------------
 __fastcall TReticlePopupForm::~TReticlePopupForm()
 {
 }
@@ -58,6 +59,7 @@ void __fastcall TReticlePopupForm::mReticleVisibilityCBClick(TObject *Sender)
 	mReticleVisibilityCB->OnClick(Sender);
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TReticlePopupForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
 	if(Key == VK_ESCAPE)
@@ -66,6 +68,7 @@ void __fastcall TReticlePopupForm::FormKeyDown(TObject *Sender, WORD &Key, TShif
     }
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TReticlePopupForm::ShowTimerTimer(TObject *Sender)
 {
 	ShowTimer->Enabled = false;
@@ -77,5 +80,3 @@ void __fastcall TReticlePopupForm::GroupBox1Click(TObject *Sender)
 {
     this->Hide();
 }
-
-//---------------------------------------------------------------------------

@@ -6,8 +6,8 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
-
 //---------------------------------------------------------------------------
+
 class PACKAGE TAboutForm : public TForm
 {
     __published:	// IDE-managed Components
@@ -18,8 +18,8 @@ class PACKAGE TAboutForm : public TForm
         TLabel *Label1;
         TLabel *logLabel;
         TLabel *versionLabel;
-	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+		void __fastcall FormCreate(TObject *Sender);
+		void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 
     private:
 

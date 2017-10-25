@@ -12,6 +12,7 @@
 #include <Vcl.DBCtrls.hpp>
 #include "TMainForm.h"
 #include <Vcl.Mask.hpp>
+#include "TArrayBotBtn.h"
 //---------------------------------------------------------------------------
 class PACKAGE TRegisterNewRibbonForm : public TForm
 {

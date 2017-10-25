@@ -10,6 +10,7 @@
 #include <Vcl.ComCtrls.hpp>
 #include "atReticle.h"
 #include <Vcl.ExtCtrls.hpp>
+#include "TArrayBotBtn.h"
 //---------------------------------------------------------------------------
 
 class PACKAGE TReticlePopupForm : public TForm
@@ -28,7 +29,6 @@ class PACKAGE TReticlePopupForm : public TForm
 		void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 		void __fastcall ShowTimerTimer(TObject *Sender);
 		void __fastcall GroupBox1Click(TObject *Sender);
-
     private:
 
 		bool									mMovingReticle;
@@ -38,7 +38,6 @@ class PACKAGE TReticlePopupForm : public TForm
 		__fastcall 								TReticlePopupForm(TReticle& reticle, TComponent* Owner);
 		__fastcall 								~TReticlePopupForm();
 };
-
 
 extern PACKAGE TReticlePopupForm *ReticlePopupForm;
 #endif

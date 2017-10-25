@@ -2,42 +2,44 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "mtkLogger.h"
-#include "mtkVCLUtils.h"
-#include "mtkWin32Utils.h"
-#include "mtkUtils.h"
-#include "uc480/uc480_tools.h"
-#include "database/atDBUtils.h"
-#include "Poco/Data/RecordSet.h"
-#include "TSettingsForm.h"
-#include "sound/atSounds.h"
 #include "core/atCore.h"
+#include "ArrayCamMessages.h"
+#include "TATDBDataModule.h"
+#include "mtkVCLUtils.h"
 #include "TSelectIntegerForm.h"
 #include "THandWheelPositionForm.h"
-#include "forms/TLoggerForm.h"
 #include "TActionsForm.h"
-#include "TATDBDataModule.h"
-#include "TATDBImagesAndMoviesDataModule.h"
-#include "Poco/Path.h"
-#include "Poco/File.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "TPropertyCheckBox"
 #pragma link "mtkFloatLabel"
+#pragma link "TApplicationSoundsFrame"
 #pragma link "TArrayBotBtn"
+#pragma link "TATDBConnectionFrame"
+#pragma link "TFFMPEGFrame"
+#pragma link "TImagesFrame"
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TIntLabel"
-#pragma link "TATDBConnectionFrame"
-#pragma link "TUC7StagePositionFrame"
-#pragma link "TSoundsFrame"
+#pragma link "TMoviesFrame"
 #pragma link "TNavitarMotorFrame"
 #pragma link "TNavitarPresetFrame"
-#pragma link "TApplicationSoundsFrame"
-#pragma link "TFFMPEGFrame"
-#pragma link "TArrayBotBtn"
+#pragma link "TPropertyCheckBox"
+#pragma link "TSoundsFrame"
 #pragma link "TSTDStringEdit"
 #pragma link "TSTDStringLabeledEdit"
-#pragma link "TMoviesFrame"
+#pragma link "TUC7StagePositionFrame"
+#pragma link "TApplicationSoundsFrame"
+#pragma link "TArrayBotBtn"
+#pragma link "TATDBConnectionFrame"
+#pragma link "TFFMPEGFrame"
 #pragma link "TImagesFrame"
+#pragma link "TIntegerLabeledEdit"
+#pragma link "TIntLabel"
+#pragma link "TMoviesFrame"
+#pragma link "TNavitarMotorFrame"
+#pragma link "TPropertyCheckBox"
+#pragma link "TSoundsFrame"
+#pragma link "TSTDStringLabeledEdit"
+#pragma link "TUC7StagePositionFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -48,7 +50,7 @@ extern bool   gAppIsStartingUp;
 extern bool   gAppIsClosing;
 
 using namespace mtk;
-using namespace at;
+//using namespace at;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)

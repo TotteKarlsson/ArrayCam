@@ -17,12 +17,11 @@ class PACKAGE THandWheelPositionForm : public TRegistryForm
     __published:
         TChart*						            Chart1;
         TLineSeries*				            Series1;
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
-	void __fastcall FormShow(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-
+        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+        void __fastcall FormShow(TObject *Sender);
+        void __fastcall FormCreate(TObject *Sender);
+        void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 
     private:
 		UC7StatusHistory&			            mUC7StatusHistory;
@@ -34,10 +33,7 @@ class PACKAGE THandWheelPositionForm : public TRegistryForm
 		void						            reset();
         void									plot();
         void									setTimeToClose();
-
-
 };
-
 
 extern PACKAGE THandWheelPositionForm *HandWheelPositionForm;
 #endif

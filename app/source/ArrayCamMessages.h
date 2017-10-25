@@ -3,10 +3,10 @@
 
 //#define UWM_AM_MESSAGE            	(WM_APP + 1)
 
-#define UWM_MESSAGE      			(WM_APP + 5)
+#define UWM_MESSAGE      	  	(WM_APP + 5)
+#define UWM_AM_MESSAGE          (WM_APP + 50)
 
-#define UWM_AM_MESSAGE            (WM_APP + 50)
-//#include "ArrayCamMessages.h"
+
 enum ApplicationMessageEnum
 {
     atUC7SplashWasClosed = 0,

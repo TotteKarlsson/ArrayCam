@@ -17,7 +17,7 @@ typedef void (__closure *OnMessageUpdateCB)(const string& msg);
 //arraybot project. The ArrayCam server is a descendant of the IPC server class that is implementing all
 //network functionality.
 class TMainForm;
-class ArrayCamServer : public IPCServer
+class PACKAGE ArrayCamServer : public IPCServer
 {
     public:
                                             ArrayCamServer(TMainForm& mf, int portNumber = 50000);

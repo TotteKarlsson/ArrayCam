@@ -2,6 +2,10 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TSettingsForm.h"
+#include "mtkLogger.h"
+//---------------------------------------------------------------------------
+using namespace mtk;
+
 extern bool   gAppIsClosing;
 
 //---------------------------------------------------------------------------

@@ -174,7 +174,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 201
         Height = 17
         DataField = 'LStatus'
-        DataSource = csDM.csDSource
       end
       object Label8: TLabel
         Left = 357

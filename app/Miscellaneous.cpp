@@ -5,6 +5,7 @@
 #include "TReticlePopupForm.h"
 #include "mtkLogger.h"
 #include "forms/TAboutForm.h"
+#include "forms/TLoggerForm.h"
 //---------------------------------------------------------------------------
 using namespace mtk;
 extern string gApplicationRegistryRoot;

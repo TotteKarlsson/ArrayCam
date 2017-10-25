@@ -12,10 +12,10 @@
         <Projects Include="P:\libs\atapi\source\vcl\atVCLCore.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="source\ArrayCamPackage.cbproj">
+        <Projects Include="app\ArrayCamPackage.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="source\ArrayCam.cbproj">
+        <Projects Include="app\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -54,22 +54,22 @@
         <MSBuild Projects="P:\libs\atapi\source\vcl\atVCLCore.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCamPackage">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj"/>
     </Target>
     <Target Name="ArrayCamPackage:Clean">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Clean"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="ArrayCamPackage:Make">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Make"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCam">
-        <MSBuild Projects="source\ArrayCam.cbproj"/>
+        <MSBuild Projects="app\ArrayCam.cbproj"/>
     </Target>
     <Target Name="ArrayCam:Clean">
-        <MSBuild Projects="source\ArrayCam.cbproj" Targets="Clean"/>
+        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="ArrayCam:Make">
-        <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
+        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="atCore;atUC7API;atVCLCore;ArrayCamPackage;ArrayCam"/>

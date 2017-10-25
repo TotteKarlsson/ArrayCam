@@ -26,8 +26,6 @@ object AboutForm: TAboutForm
     Align = alClient
     Caption = 'ChangeLog'
     TabOrder = 0
-    ExplicitWidth = 804
-    ExplicitHeight = 462
     object Memo1: TMemo
       Left = 2
       Top = 15
@@ -40,8 +38,6 @@ object AboutForm: TAboutForm
       ScrollBars = ssBoth
       TabOrder = 0
       WordWrap = False
-      ExplicitWidth = 800
-      ExplicitHeight = 445
     end
   end
   object Panel1: TPanel
@@ -51,7 +47,6 @@ object AboutForm: TAboutForm
     Height = 186
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 804
     object Image1: TImage
       Left = 628
       Top = 1

@@ -3,6 +3,7 @@
 #include "mtkUtils.h"
 #include "mtkIPCMessageEnums.h"
 //---------------------------------------------------------------------------
+#pragma package(smart_init)
 using namespace mtk;
 
 //---------------------------------------------------------------------------

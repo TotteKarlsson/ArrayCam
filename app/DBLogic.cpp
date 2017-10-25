@@ -7,6 +7,8 @@
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
 #include "mtkLogger.h"
+#include "TATDBDataModule.h"
+#include "TCoverSlipDataModule.h"
 //---------------------------------------------------------------------------
 using namespace at;
 using namespace mtk;

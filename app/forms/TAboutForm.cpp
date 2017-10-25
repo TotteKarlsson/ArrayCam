@@ -5,9 +5,10 @@
 #include "mtkVersion.h"
 #include "mtkVCLUtils.h"
 #include <sstream>
+//---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-//---------------------------------------------------------------------------
+
 
 using namespace mtk;
 using namespace std;
@@ -18,9 +19,7 @@ TAboutForm *AboutForm;
 //---------------------------------------------------------------------------
 __fastcall TAboutForm::TAboutForm(TComponent* Owner)
 	: TForm(Owner)
-{
-
-}
+{}
 
 //---------------------------------------------------------------------------
 void __fastcall TAboutForm::FormCreate(TObject *Sender)

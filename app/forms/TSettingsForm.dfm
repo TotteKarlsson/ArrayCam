@@ -32,6 +32,8 @@ object SettingsForm: TSettingsForm
     ExplicitHeight = 486
     object TabSheet1: TTabSheet
       Caption = 'Camera'
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 617
       ExplicitHeight = 458
       object GroupBox2: TGroupBox
@@ -116,6 +118,8 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 617
       ExplicitHeight = 458
       object GroupBox4: TGroupBox

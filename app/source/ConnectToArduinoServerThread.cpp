@@ -2,7 +2,7 @@
 #include "ConnectToArduinoServerThread.h"
 #include "mtkLogger.h"
 //---------------------------------------------------------------------------
-
+#pragma package(smart_init)
 using namespace mtk;
 
 ConnectToArduinoServerThread::ConnectToArduinoServerThread(ArduinoClient& c, int p)

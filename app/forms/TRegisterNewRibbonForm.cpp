@@ -3,10 +3,11 @@
 #include "TRegisterNewRibbonForm.h"
 #include "mtkLogger.h"
 #include "TATDBDataModule.h"
-#include "TCoverSlipDataModule.h"
+//#include "TCoverSlipDataModule.h"
 #include "mtkVCLUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "TArrayBotBtn"
 #pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 TRegisterNewRibbonForm *RegisterNewRibbonForm;

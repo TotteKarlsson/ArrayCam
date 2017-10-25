@@ -9,7 +9,7 @@
 typedef boost::function<void(int, int)> Callback;
 
 
-class VideoCompressorThread : public mtk::Thread
+class PACKAGE VideoCompressorThread : public mtk::Thread
 {
     public:
 								VideoCompressorThread();

@@ -1,14 +1,18 @@
 #pragma hdrstop
 #include "atVideoCompressorThread.h"
-#include "mtkLogger.h"
+#include <fstream>
 #include "Poco/Process.h"
 #include "Poco/PipeStream.h"
 #include "Poco/StreamCopier.h"
-#include <fstream>
-#include "mtkFileUtils.h"
-#include "mtkMathUtils.h"
 #include "Poco/Path.h"
 #include "Poco/File.h"
+
+#include "mtkLogger.h"
+#include "mtkFileUtils.h"
+#include "mtkMathUtils.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
 using Poco::Path;
 
 using namespace Poco;

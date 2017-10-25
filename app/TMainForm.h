@@ -17,42 +17,6 @@
 #include <System.Actions.hpp>
 #include <Vcl.ActnList.hpp>
 #include <Vcl.StdActns.hpp>
-
-#include "arduino/atLightsArduinoClient.h"
-#include "ArrayCamServer.h"
-#include "atReticle.h"
-#include "uc7/atUC7StatusHistory.h"
-#include "atVCLUtils.h"
-#include "barcodereader/atDS457.h"
-#include "camera/atCameraServiceThread.h"
-#include "ConnectToArduinoServerThread.h"
-#include "core/atEnvironmentalSensorReader.h"
-#include "mtkFloatLabel.h"
-#include "mtkIniFile.h"
-#include "mtkIniFileProperties.h"
-#include "navitar/atNavitarMotorController.h"
-#include "navitar/atNavitarPreset.h"
-#include "sound/atApplicationSound.h"
-#include "sound/atSoundPlayer.h"
-#include "TApplicationSoundsFrame.h"
-#include "components/TArrayBotBtn.h"
-#include "TATDBConnectionFrame.h"
-#include "TATDBDataModule.h"
-#include "TATDBImagesAndMoviesDataModule.h"
-#include "TCoverSlipDataModule.h"
-#include "TIntegerLabeledEdit.h"
-#include "TIntLabel.h"
-#include "TNavitarMotorFrame.h"
-#include "TNavitarPresetFrame.h"
-#include "TPropertyCheckBox.h"
-#include "forms/TRegistryForm.h"
-#include "TSoundsFrame.h"
-#include "TStatusBarManager.h"
-#include "TUC7StagePositionFrame.h"
-#include "uc480/uc480Class.h"
-#include "uc7/atUC7ApplicationMessages.h"
-#include "uc7/atUC7Component.h"
-#include "ArrayCamMessages.h"
 #include <Data.Bind.Components.hpp>
 #include <Data.Bind.EngExt.hpp>
 #include <Vcl.Bind.DBEngExt.hpp>
@@ -60,12 +24,51 @@
 #include <Data.DB.hpp>
 #include <Data.FMTBcd.hpp>
 #include <Data.SqlExpr.hpp>
-#include "TFFMPEGFrame.h"
+#include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
-#include "TSTDStringEdit.h"
-#include "TSTDStringLabeledEdit.h"
-#include "TMoviesFrame.h"
+#include "TATDBConnectionFrame.h"
+#include "TFFMPEGFrame.h"
 #include "TImagesFrame.h"
+#include "TIntegerLabeledEdit.h"
+#include "TIntLabel.h"
+#include "TMoviesFrame.h"
+#include "TNavitarMotorFrame.h"
+#include "TPropertyCheckBox.h"
+#include "TSoundsFrame.h"
+#include "TSTDStringLabeledEdit.h"
+#include "TUC7StagePositionFrame.h"
+
+#include <memory>
+
+#include "arduino/atLightsArduinoClient.h"
+#include "atReticle.h"
+#include "atVCLUtils.h"
+#include "barcodereader/atDS457.h"
+#include "camera/atCameraServiceThread.h"
+#include "core/atEnvironmentalSensorReader.h"
+#include "forms/TRegistryForm.h"
+#include "mtkIniFile.h"
+#include "mtkIniFileProperties.h"
+#include "navitar/atNavitarMotorController.h"
+#include "source/ArrayCamServer.h"
+#include "source/ConnectToArduinoServerThread.h"
+#include "TApplicationSoundsFrame.h"
+#include "TArrayBotBtn.h"
+#include "TATDBConnectionFrame.h"
+#include "TFFMPEGFrame.h"
+#include "TImagesFrame.h"
+#include "TIntegerLabeledEdit.h"
+#include "TIntLabel.h"
+#include "TMoviesFrame.h"
+#include "TNavitarMotorFrame.h"
+#include "TPropertyCheckBox.h"
+#include "TSoundsFrame.h"
+#include "TStatusBarManager.h"
+#include "TSTDStringLabeledEdit.h"
+#include "TUC7StagePositionFrame.h"
+#include "uc7/atUC7ApplicationMessages.h"
+#include "uc7/atUC7Component.h"
+#include "uc480/uc480Class.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -412,7 +415,7 @@ class PACKAGE TMainForm  : public TRegistryForm
         Property<bool>						    mHorizontalMirror;
 
 												//!Reticle
-		auto_ptr<TReticlePopupForm>				mReticleForm;
+		std::auto_ptr<TReticlePopupForm>				mReticleForm;
         Property<bool>						    mReticleVisible;
 
         //Property<string>						mSnapShotFolder;

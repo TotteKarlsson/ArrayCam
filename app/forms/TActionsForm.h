@@ -8,6 +8,7 @@
 #include <Vcl.Buttons.hpp>
 #include <System.Actions.hpp>
 #include <Vcl.ActnList.hpp>
+#include "TArrayBotBtn.h"
 //---------------------------------------------------------------------------
 
 

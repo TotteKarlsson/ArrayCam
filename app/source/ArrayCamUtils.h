@@ -4,8 +4,8 @@
 //---------------------------------------------------------------------------
 using std::string;
 
-int 	getArrayCamIPCMessageID(const string& msg);
-string  getArrayCamIPCMessageName(int cs);
+int    PACKAGE 	getArrayCamIPCMessageID(const string& msg);
+string PACKAGE	getArrayCamIPCMessageName(int cs);
 
 enum ARRAYCAM_IPC_ID
 {

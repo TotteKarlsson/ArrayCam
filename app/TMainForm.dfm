@@ -511,6 +511,10 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object RibbonsDataGB: TGroupBox
             Left = 0
             Top = 489
@@ -838,55 +842,69 @@ object MainForm: TMainForm
               Align = alRight
               AutoSize = True
               TabOrder = 1
-              ExplicitLeft = 519
-              ExplicitTop = 1
-              ExplicitHeight = 207
-              inherited GBox1: TGroupBox
-                inherited mServerIPE: TSTDStringLabeledEdit
+              object GBox1: TGroupBox
+                Left = 0
+                Top = 0
+                Width = 286
+                Height = 201
+                Caption = 'ATDB Connection'
+                TabOrder = 0
+                object mServerIPE: TSTDStringLabeledEdit
+                  Left = 16
+                  Top = 40
+                  Width = 121
                   Height = 27
                   EditLabel.Width = 65
                   EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 16
-                  EditLabel.ExplicitTop = 18
-                  EditLabel.ExplicitWidth = 65
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
+                  EditLabel.Caption = 'Server IP'
+                  TabOrder = 1
+                  Text = '127.0.0.1'
+                  Value = '127.0.0.1'
                 end
-                inherited mDBUserE: TSTDStringLabeledEdit
+                object mDBUserE: TSTDStringLabeledEdit
+                  Left = 16
+                  Top = 89
+                  Width = 121
                   Height = 27
                   EditLabel.Width = 32
                   EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 16
-                  EditLabel.ExplicitTop = 67
-                  EditLabel.ExplicitWidth = 32
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
+                  EditLabel.Caption = 'User'
+                  TabOrder = 2
+                  Text = 'atdb-client'
+                  Value = 'atdb-client'
                 end
-                inherited mPasswordE: TSTDStringLabeledEdit
+                object mPasswordE: TSTDStringLabeledEdit
+                  Left = 146
+                  Top = 89
+                  Width = 121
                   Height = 27
                   EditLabel.Width = 67
                   EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 146
-                  EditLabel.ExplicitTop = 67
-                  EditLabel.ExplicitWidth = 67
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
+                  EditLabel.Caption = 'Password'
+                  TabOrder = 3
+                  Text = 'atdb123'
+                  Value = 'atdb123'
                 end
-                inherited mATDBServerBtnConnect: TArrayBotButton
+                object mATDBServerBtnConnect: TArrayBotButton
                   Left = 32
+                  Top = 126
                   Width = 217
-                  ExplicitLeft = 32
-                  ExplicitWidth = 217
+                  Height = 64
+                  Caption = 'Connect'
+                  TabOrder = 0
+                  SoundID = 'BUTTON_CLICK_4'
                 end
-                inherited mDatabaseE: TSTDStringLabeledEdit
+                object mDatabaseE: TSTDStringLabeledEdit
+                  Left = 146
+                  Top = 40
+                  Width = 121
                   Height = 27
                   EditLabel.Width = 64
                   EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 146
-                  EditLabel.ExplicitTop = 18
-                  EditLabel.ExplicitWidth = 64
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
+                  EditLabel.Caption = 'Database'
+                  TabOrder = 4
+                  Text = 'atdb'
+                  Value = 'atdb'
                 end
               end
             end
@@ -1037,6 +1055,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -1192,6 +1214,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1253,7 +1279,7 @@ object MainForm: TMainForm
                 Left = 87
                 Top = 0
                 Width = 76
-                Height = 27
+                Height = 28
                 Margins.Left = 10
                 Align = alLeft
                 ItemIndex = 0
@@ -1483,6 +1509,10 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Miscellaneous'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1494,6 +1524,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1548,6 +1582,10 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1633,18 +1671,18 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 798
+                  Width = 509
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1655,6 +1693,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1684,7 +1725,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1760,6 +1801,10 @@ object MainForm: TMainForm
         object TabSheet10: TTabSheet
           Caption = 'Lights'
           ImageIndex = 7
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object LightIntensitiesGB: TGroupBox
             Left = 3
             Top = 16

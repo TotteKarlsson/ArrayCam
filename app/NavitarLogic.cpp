@@ -1,6 +1,13 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
+#include "mtkVCLUtils.h"
+#include "mtkLogger.h"
+//---------------------------------------------------------------------------
+
+using namespace mtk;
+
+//---------------------------------------------------------------------------
 void  TMainForm::onNavitarConnected()
 {
 	NavitarControllerConnectBtn->Caption         = "Disconnect";
@@ -14,6 +21,7 @@ void  TMainForm::onNavitarConnected()
     enableDisableGroupBox(ControllerInfoGB, true);
 }
 
+//---------------------------------------------------------------------------
 void  TMainForm::onNavitarDisconnected()
 {
 	NavitarControllerConnectBtn->Caption = "Connect";

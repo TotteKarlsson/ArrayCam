@@ -7,7 +7,7 @@
 using mtk::Thread;
 
 
-class ConnectToArduinoServerThread : public mtk::Thread
+class PACKAGE ConnectToArduinoServerThread : public mtk::Thread
 {
 	public:
     									ConnectToArduinoServerThread(ArduinoClient& c, int portNr);

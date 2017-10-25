@@ -2,6 +2,12 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "Forms/TRegisterNewRibbonForm.h"
+#include "mtkVCLUtils.h"
+#include "mtkLogger.h"
+#include "TATDBDataModule.h"
+
+using namespace mtk;
+
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 {

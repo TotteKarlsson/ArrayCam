@@ -3,9 +3,9 @@
 #include "TMainForm.h"
 #include "vcl/atVCLUtils.h"
 #include "mtkStringList.h"
-#include "TSettingsForm.h"
+
 using namespace mtk;
-using namespace at;
+//using namespace at;
 
 class TLocalArgs
 {
