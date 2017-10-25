@@ -283,17 +283,19 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
     if(b == SpecimenIDCB)
     {
         mSpecimenID.setValue(b->KeyValue);
-        BlockIDCB->KeyValue = -1;
-        SliceIDCB->KeyValue = -1;
+		atdbDM->blocksCDS->Active = false;
+        atdbDM->blockNotesCDS->Active = false;
     }
     else if(b == SliceIDCB)
     {
         mSliceID.setValue(b->KeyValue);
-        BlockIDCB->KeyValue = -1;
+        atdbDM->blockNotesCDS->Active = false;
+		atdbDM->blocksCDS->Active = true;
     }
     else if(b == BlockIDCB )
     {
         mBlockID.setValue(b->KeyValue);
+        atdbDM->blockNotesCDS->Active = true;
     }
 }
 
@@ -535,15 +537,6 @@ void __fastcall TMainForm::BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftSt
 	if(Key == vkUp || Key == vkDown|| Key == vkLeft|| Key == vkRight)
     {
         populateMedia();
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
-{
-	if(Key == vkUp || Key == vkDown || Key == vkLeft|| Key == vkRight)
-    {
-
     }
 }
 

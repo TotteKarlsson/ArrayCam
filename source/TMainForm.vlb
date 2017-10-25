@@ -40,9 +40,6 @@ Coordinates=173,1667,47,51
 [mRibbonCreatorActiveCB]
 Coordinates=1314,1681,141,51
 
-[TabSheet2]
-Coordinates=1523,1,66,33
-
 [atdbDM.substitutionProtocol]
 Coordinates=805,1506,155,105
 
@@ -183,9 +180,6 @@ Coordinates=598,1667,108,51
 
 [atdbDM.blocksDS]
 Coordinates=167,71,113,285
-
-[atdbGB]
-Coordinates=65,1667,51,51
 
 [atdbDM.ROnCS_CDS]
 Coordinates=1133,71,118,51
@@ -350,7 +344,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=175,1,96,51
+Coordinates=1523,1,66,33
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51

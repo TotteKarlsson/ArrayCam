@@ -99,28 +99,13 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	string dBase(mLocalDBName);
 	try
     {
-
         atdbDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
         atdbDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
-
-//        ImagesAndMoviesDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
-//        ImagesAndMoviesDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
     }
     catch(...)
     {
     	handleMySQLException();
     }
-
-    //UI DB connection
-//    if (ImagesAndMoviesDM->connect("127.0.0.1", "atdb_client", "atdb123", dBase))
-//    {
-//       // Connection successfull
-//        Log(lInfo) << "DataModule connected to the database: "<<dBase;
-//    }
-//    else
-//    {
-//        Log(lInfo) << "Datamodule failed to connect to database: "<<dBase;
-//    }
 
     gAppIsStartingUp = false;
     enableDisableUC7UI(false);

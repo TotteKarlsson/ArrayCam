@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 853
-        ActivePage = TabSheet12
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -230,9 +230,9 @@ object MainForm: TMainForm
               end
               object UC7OperationGB: TGroupBox
                 Left = 1
-                Top = 225
+                Top = 266
                 Width = 800
-                Height = 312
+                Height = 271
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
@@ -241,7 +241,7 @@ object MainForm: TMainForm
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 289
+                  Height = 248
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
@@ -269,7 +269,7 @@ object MainForm: TMainForm
                   Left = 195
                   Top = 24
                   Width = 600
-                  Height = 283
+                  Height = 242
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
@@ -462,123 +462,68 @@ object MainForm: TMainForm
                   DataSource = atdbDM.specimenDataSource
                 end
               end
+              object CutterStatusPanel: TPanel
+                Left = 1
+                Top = 225
+                Width = 800
+                Height = 41
+                Align = alTop
+                TabOrder = 5
+                object UC7Shape: TShape
+                  Left = 432
+                  Top = 24
+                  Width = 93
+                  Height = 11
+                  Brush.Color = clLime
+                end
+                object Label4: TLabel
+                  Left = 32
+                  Top = 6
+                  Width = 101
+                  Height = 19
+                  Caption = 'Before Cutting'
+                end
+                object Label16: TLabel
+                  Left = 264
+                  Top = 6
+                  Width = 51
+                  Height = 19
+                  Caption = 'Cutting'
+                end
+                object Label17: TLabel
+                  Left = 432
+                  Top = 6
+                  Width = 91
+                  Height = 19
+                  Caption = 'After Cutting'
+                end
+                object Label18: TLabel
+                  Left = 624
+                  Top = 6
+                  Width = 71
+                  Height = 19
+                  Caption = 'Retracting'
+                end
+              end
             end
           end
         end
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
-          object BlockSelectionGB: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 806
-            Height = 193
-            Align = alTop
-            Caption = 'DB/Block Selection'
-            TabOrder = 0
-            object Panel2: TPanel
-              Left = 2
-              Top = 21
-              Width = 802
-              Height = 575
-              Align = alTop
-              BevelOuter = bvNone
-              TabOrder = 0
-              object Label1: TLabel
-                Left = 13
-                Top = 94
-                Width = 60
-                Height = 19
-                Caption = 'Slice ID:'
-              end
-              object Label3: TLabel
-                Left = 13
-                Top = 128
-                Width = 65
-                Height = 19
-                Caption = 'Block ID:'
-              end
-              object Label5: TLabel
-                Left = 13
-                Top = 61
-                Width = 96
-                Height = 19
-                Caption = 'Specimen ID:'
-              end
-              object Label10: TLabel
-                Left = 290
-                Top = 59
-                Width = 78
-                Height = 19
-                Caption = 'Animal ID:'
-              end
-              object DBText2: TDBText
-                Left = 374
-                Top = 59
-                Width = 65
-                Height = 17
-                DataField = 'animal_id'
-                DataSource = atdbDM.specimenDataSource
-              end
-              object BlockIDCB: TDBLookupComboBox
-                Left = 136
-                Top = 120
-                Width = 135
-                Height = 27
-                KeyField = 'id'
-                ListField = 'id'
-                ListSource = atdbDM.blocksDataSource
-                TabOrder = 0
-                OnCloseUp = DB_CBCloseUp
-              end
-              object mUsersCB: TDBLookupComboBox
-                Left = 12
-                Top = 13
-                Width = 109
-                Height = 27
-                KeyField = 'id'
-                ListField = 'user_name'
-                ListSource = atdbDM.usersDataSource
-                TabOrder = 1
-                OnCloseUp = mUsersCBCloseUp
-              end
-              object SliceIDCB: TDBLookupComboBox
-                Left = 136
-                Top = 86
-                Width = 135
-                Height = 27
-                KeyField = 'id'
-                ListField = 'id'
-                ListSource = atdbDM.slicesDataSource
-                TabOrder = 2
-                OnCloseUp = DB_CBCloseUp
-              end
-              object SpecimenIDCB: TDBLookupComboBox
-                Left = 136
-                Top = 53
-                Width = 135
-                Height = 27
-                KeyField = 'id'
-                ListField = 'id'
-                ListSource = atdbDM.specimenDataSource
-                TabOrder = 3
-                OnCloseUp = DB_CBCloseUp
-              end
-            end
-          end
           object RibbonsDataGB: TGroupBox
             Left = 0
-            Top = 473
+            Top = 489
             Width = 806
-            Height = 346
+            Height = 330
             Align = alClient
             Caption = 'Ribbons'
-            TabOrder = 1
+            TabOrder = 0
             object DBGrid1: TDBGrid
               Left = 2
               Top = 21
               Width = 802
-              Height = 157
+              Height = 141
               Align = alClient
               DataSource = atdbDM.mRibbonDSource
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -616,7 +561,7 @@ object MainForm: TMainForm
             end
             object GroupBox3: TGroupBox
               Left = 2
-              Top = 178
+              Top = 162
               Width = 802
               Height = 166
               Align = alBottom
@@ -697,7 +642,7 @@ object MainForm: TMainForm
           end
           object BlockNotesGB: TGroupBox
             Left = 0
-            Top = 193
+            Top = 209
             Width = 806
             Height = 280
             Align = alTop
@@ -706,7 +651,7 @@ object MainForm: TMainForm
             Padding.Top = 5
             Padding.Right = 5
             Padding.Bottom = 5
-            TabOrder = 2
+            TabOrder = 1
             object Panel4: TPanel
               Left = 206
               Top = 26
@@ -780,6 +725,172 @@ object MainForm: TMainForm
               end
             end
           end
+          object Panel11: TPanel
+            Left = 0
+            Top = 0
+            Width = 806
+            Height = 209
+            Align = alTop
+            TabOrder = 2
+            object BlockSelectionGB: TGroupBox
+              Left = 1
+              Top = 1
+              Width = 518
+              Height = 207
+              Align = alClient
+              Caption = 'DB/Block Selection'
+              TabOrder = 0
+              object Panel2: TPanel
+                Left = 2
+                Top = 21
+                Width = 575
+                Height = 184
+                Align = alLeft
+                BevelOuter = bvNone
+                TabOrder = 0
+                object Label1: TLabel
+                  Left = 13
+                  Top = 94
+                  Width = 60
+                  Height = 19
+                  Caption = 'Slice ID:'
+                end
+                object Label3: TLabel
+                  Left = 13
+                  Top = 128
+                  Width = 65
+                  Height = 19
+                  Caption = 'Block ID:'
+                end
+                object Label5: TLabel
+                  Left = 13
+                  Top = 61
+                  Width = 96
+                  Height = 19
+                  Caption = 'Specimen ID:'
+                end
+                object Label10: TLabel
+                  Left = 290
+                  Top = 59
+                  Width = 78
+                  Height = 19
+                  Caption = 'Animal ID:'
+                end
+                object DBText2: TDBText
+                  Left = 374
+                  Top = 59
+                  Width = 65
+                  Height = 17
+                  DataField = 'animal_id'
+                  DataSource = atdbDM.specimenDataSource
+                end
+                object BlockIDCB: TDBLookupComboBox
+                  Left = 136
+                  Top = 120
+                  Width = 135
+                  Height = 27
+                  KeyField = 'id'
+                  ListField = 'id'
+                  ListSource = atdbDM.blocksDataSource
+                  TabOrder = 0
+                  OnCloseUp = DB_CBCloseUp
+                end
+                object mUsersCB: TDBLookupComboBox
+                  Left = 12
+                  Top = 13
+                  Width = 109
+                  Height = 27
+                  KeyField = 'id'
+                  ListField = 'user_name'
+                  ListSource = atdbDM.usersDataSource
+                  TabOrder = 1
+                  OnCloseUp = mUsersCBCloseUp
+                end
+                object SliceIDCB: TDBLookupComboBox
+                  Left = 136
+                  Top = 86
+                  Width = 135
+                  Height = 27
+                  KeyField = 'id'
+                  ListField = 'id'
+                  ListSource = atdbDM.slicesDataSource
+                  TabOrder = 2
+                  OnCloseUp = DB_CBCloseUp
+                end
+                object SpecimenIDCB: TDBLookupComboBox
+                  Left = 136
+                  Top = 53
+                  Width = 135
+                  Height = 27
+                  KeyField = 'id'
+                  ListField = 'id'
+                  ListSource = atdbDM.specimenDataSource
+                  TabOrder = 3
+                  OnCloseUp = DB_CBCloseUp
+                end
+              end
+            end
+            inline TATDBConnectionFrame1: TATDBConnectionFrame
+              Left = 519
+              Top = 1
+              Width = 286
+              Height = 207
+              Align = alRight
+              AutoSize = True
+              TabOrder = 1
+              ExplicitLeft = 519
+              ExplicitTop = 1
+              ExplicitHeight = 207
+              inherited GBox1: TGroupBox
+                inherited mServerIPE: TSTDStringLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 65
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 16
+                  EditLabel.ExplicitTop = 18
+                  EditLabel.ExplicitWidth = 65
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
+                end
+                inherited mDBUserE: TSTDStringLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 32
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 16
+                  EditLabel.ExplicitTop = 67
+                  EditLabel.ExplicitWidth = 32
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
+                end
+                inherited mPasswordE: TSTDStringLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 67
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 146
+                  EditLabel.ExplicitTop = 67
+                  EditLabel.ExplicitWidth = 67
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
+                end
+                inherited mATDBServerBtnConnect: TArrayBotButton
+                  Left = 32
+                  Width = 217
+                  ExplicitLeft = 32
+                  ExplicitWidth = 217
+                end
+                inherited mDatabaseE: TSTDStringLabeledEdit
+                  Height = 27
+                  EditLabel.Width = 64
+                  EditLabel.Height = 19
+                  EditLabel.ExplicitLeft = 146
+                  EditLabel.ExplicitTop = 18
+                  EditLabel.ExplicitWidth = 64
+                  EditLabel.ExplicitHeight = 19
+                  ExplicitHeight = 27
+                end
+              end
+            end
+          end
         end
         object TabSheet12: TTabSheet
           Caption = 'Videos && Images'
@@ -823,12 +934,9 @@ object MainForm: TMainForm
             Align = alClient
             TabOrder = 1
             OnChange = MediaPageControlChange
-            ExplicitLeft = 113
-            ExplicitWidth = 693
             object TabSheet13: TTabSheet
               Caption = 'Movies'
               ImageIndex = 2
-              ExplicitWidth = 685
               inline TMoviesFrame1: TMoviesFrame
                 Left = 0
                 Top = 0
@@ -836,13 +944,13 @@ object MainForm: TMainForm
                 Height = 699
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 685
+                ExplicitWidth = 733
                 ExplicitHeight = 699
                 inherited Panel22: TPanel
                   Top = 644
                   Width = 733
                   ExplicitTop = 644
-                  ExplicitWidth = 685
+                  ExplicitWidth = 733
                   inherited Label4: TLabel
                     Width = 143
                     Height = 19
@@ -853,11 +961,11 @@ object MainForm: TMainForm
                 inherited ScrollBox2: TScrollBox
                   Width = 733
                   Height = 644
-                  ExplicitWidth = 685
+                  ExplicitWidth = 733
                   ExplicitHeight = 644
                   inherited FlowPanel1: TFlowPanel
                     Width = 729
-                    ExplicitWidth = 681
+                    ExplicitWidth = 729
                   end
                 end
               end
@@ -865,7 +973,6 @@ object MainForm: TMainForm
             object TabSheet15: TTabSheet
               Caption = 'Images'
               ImageIndex = 1
-              ExplicitWidth = 685
               inline TImagesFrame1: TImagesFrame
                 Left = 0
                 Top = 0
@@ -873,13 +980,13 @@ object MainForm: TMainForm
                 Height = 699
                 Align = alClient
                 TabOrder = 0
-                ExplicitWidth = 685
+                ExplicitWidth = 733
                 ExplicitHeight = 699
                 inherited Panel22: TPanel
                   Top = 644
                   Width = 733
                   ExplicitTop = 644
-                  ExplicitWidth = 685
+                  ExplicitWidth = 733
                   inherited Label4: TLabel
                     Width = 143
                     Height = 19
@@ -890,11 +997,11 @@ object MainForm: TMainForm
                 inherited ScrollBox2: TScrollBox
                   Width = 733
                   Height = 644
-                  ExplicitWidth = 685
+                  ExplicitWidth = 733
                   ExplicitHeight = 644
                   inherited FlowPanel1: TFlowPanel
                     Width = 729
-                    ExplicitWidth = 681
+                    ExplicitWidth = 729
                   end
                 end
               end
@@ -922,7 +1029,6 @@ object MainForm: TMainForm
               ListSource = atdbDM.blockIDsDataSource
               ParentBiDiMode = False
               TabOrder = 0
-              OnKeyDown = BlockIDSLLBKeyDown
               OnKeyUp = BlockIDSLLBKeyUp
               OnMouseUp = BlockIDSLLBMouseUp
             end
@@ -1078,84 +1184,6 @@ object MainForm: TMainForm
                     Text = '0'
                     Value = 0
                   end
-                end
-              end
-            end
-          end
-        end
-        object TabSheet2: TTabSheet
-          Caption = 'ATDB'
-          ImageIndex = 6
-          object atdbGB: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 806
-            Height = 819
-            Align = alClient
-            Caption = 'ATDB'
-            TabOrder = 0
-            inline TATDBConnectionFrame1: TATDBConnectionFrame
-              Left = 2
-              Top = 21
-              Width = 802
-              Height = 201
-              Align = alTop
-              AutoSize = True
-              TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = 21
-              ExplicitWidth = 802
-              inherited GBox1: TGroupBox
-                Left = 13
-                Caption = 'Connection'
-                ExplicitLeft = 13
-                inherited mServerIPE: TSTDStringLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 65
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 16
-                  EditLabel.ExplicitTop = 18
-                  EditLabel.ExplicitWidth = 65
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
-                end
-                inherited mDBUserE: TSTDStringLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 32
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 16
-                  EditLabel.ExplicitTop = 67
-                  EditLabel.ExplicitWidth = 32
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
-                end
-                inherited mPasswordE: TSTDStringLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 67
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 146
-                  EditLabel.ExplicitTop = 67
-                  EditLabel.ExplicitWidth = 67
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
-                end
-                inherited mATDBServerBtnConnect: TArrayBotButton
-                  Left = 16
-                  Top = 122
-                  Width = 249
-                  ExplicitLeft = 16
-                  ExplicitTop = 122
-                  ExplicitWidth = 249
-                end
-                inherited mDatabaseE: TSTDStringLabeledEdit
-                  Height = 27
-                  EditLabel.Width = 64
-                  EditLabel.Height = 19
-                  EditLabel.ExplicitLeft = 146
-                  EditLabel.ExplicitTop = 18
-                  EditLabel.ExplicitWidth = 64
-                  EditLabel.ExplicitHeight = 19
-                  ExplicitHeight = 27
                 end
               end
             end

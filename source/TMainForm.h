@@ -165,9 +165,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TComboBox *mUC7ComportCB;
 	TButton *mConnectUC7Btn;
 	TArrayBotButton *mSynchUIBtn;
-	TTabSheet *TabSheet2;
-	TGroupBox *atdbGB;
-	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TArrayBotButton *mSetZeroCutBtn;
 	TIntegerLabeledEdit *mFeedRateE;
 	TUC7StagePositionFrame *CurrentStagePosFrame;
@@ -307,6 +304,14 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet13;
 	TImagesFrame *TImagesFrame1;
 	TMoviesFrame *TMoviesFrame1;
+	TPanel *CutterStatusPanel;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
+	TPanel *Panel11;
+	TShape *UC7Shape;
+	TLabel *Label4;
+	TLabel *Label16;
+	TLabel *Label17;
+	TLabel *Label18;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -373,7 +378,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall BlockIDSLLBKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
 
