@@ -37,9 +37,6 @@ Coordinates=157,1792,40,33
 [Panel1]
 Coordinates=173,1667,47,51
 
-[mRibbonCreatorActiveCB]
-Coordinates=1314,1681,141,51
-
 [atdbDM.substitutionProtocol]
 Coordinates=805,1506,155,105
 
@@ -87,9 +84,6 @@ Coordinates=1314,1261,112,51
 
 [UC7GB]
 Coordinates=550,835,50,51
-
-[TATDBConnectionFrame1]
-Coordinates=1523,209,142,33
 
 [mResetCounterBtn]
 Coordinates=468,1506,108,51
@@ -344,7 +338,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1523,1,66,33
+Coordinates=1523,209,142,33
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51

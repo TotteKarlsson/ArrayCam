@@ -20,7 +20,7 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 
 	atdbDM->afterConnect();
     csDM->afterConnect();
-	TATDBConnectionFrame1->afterConnect();
+    TATDBConnectionFrame1->afterConnect();
     RegisterRibbonBtn->Enabled = true;
 
 	//Setup UI

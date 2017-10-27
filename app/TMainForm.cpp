@@ -14,23 +14,8 @@
 #pragma link "mtkFloatLabel"
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TArrayBotBtn"
-#pragma link "TATDBConnectionFrame"
 #pragma link "TFFMPEGFrame"
-#pragma link "TImagesFrame"
-#pragma link "TIntegerLabeledEdit"
-#pragma link "TIntLabel"
-#pragma link "TMoviesFrame"
-#pragma link "TNavitarMotorFrame"
-#pragma link "TNavitarPresetFrame"
-#pragma link "TPropertyCheckBox"
-#pragma link "TSoundsFrame"
-#pragma link "TSTDStringEdit"
-#pragma link "TSTDStringLabeledEdit"
-#pragma link "TUC7StagePositionFrame"
-#pragma link "TApplicationSoundsFrame"
-#pragma link "TArrayBotBtn"
-#pragma link "TATDBConnectionFrame"
-#pragma link "TFFMPEGFrame"
+#pragma link "TFloatLabeledEdit"
 #pragma link "TImagesFrame"
 #pragma link "TIntegerLabeledEdit"
 #pragma link "TIntLabel"
@@ -40,6 +25,7 @@
 #pragma link "TSoundsFrame"
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
+#pragma link "TATDBConnectionFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -116,8 +102,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mSectionCounterLabel->update();
     mRibbonOrderCountLabel->update();
     mZeroCutsE->update();
-
-	mRibbonCreatorActiveCB->setReference(mUC7.getRibbonCreatorActiveReference());
 
     //Properties are retrieved and saved to an ini file
     setupProperties();
@@ -204,7 +188,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 	mStartupTimer->Enabled = false;
 
    	TATDBConnectionFrame1->init(&(mIniFile));
-    TATDBConnectionFrame1->mATDBServerBtnConnect->Click();
+    TATDBConnectionFrame1->ConnectA->Execute();
 
     //Auto connect to the barcode reader
 	mConnectZebraBtnClick(Sender);
@@ -212,6 +196,8 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
     //Connect to the UC7
     mConnectUC7Btn->Click();
 
+    //Connect navitar motors
+    NavitarControllerConnectBtn->Click();
     updateTemperature(-1);
 	updateHumidity(-1);
 }
@@ -253,7 +239,7 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
             case atMiscMessage:
             {
             	int* m = (int*) msg.lparam;
-                Log(lDebug) << "Handling Misc message: \"" << *m;//m->getMessageNameAsString()<<"\" with data: "<<m->getData();
+                Log(lDebug) << "Handling Misc message: \"" << *m;
             }
             break;
             default:
@@ -264,12 +250,6 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 	{
 		Log(lError) << "An exception was thrown in AppInBox.";
 	}
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mRibbonCreatorActiveCBClick(TObject *Sender)
-{
-	mRibbonCreatorActiveCB->OnClick(Sender);
 }
 
 //---------------------------------------------------------------------------
@@ -284,20 +264,29 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
 	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
     if(b == SpecimenIDCB)
     {
-        mSpecimenID.setValue(b->KeyValue);
-		atdbDM->blocksCDS->Active = false;
-        atdbDM->blockNotesCDS->Active = false;
+       	if(!b->KeyValue.IsNull())
+		{
+            mSpecimenID.setValue(b->KeyValue);
+            atdbDM->blocksCDS->Active = false;
+            atdbDM->blockNotesCDS->Active = false;
+        }
     }
     else if(b == SliceIDCB)
     {
-        mSliceID.setValue(b->KeyValue);
-        atdbDM->blockNotesCDS->Active = false;
-		atdbDM->blocksCDS->Active = true;
+    	if(!b->KeyValue.IsNull())
+		{
+            mSliceID.setValue(b->KeyValue);
+            atdbDM->blockNotesCDS->Active = false;
+            atdbDM->blocksCDS->Active = true;
+        }
     }
     else if(b == BlockIDCB )
     {
-        mBlockID.setValue(b->KeyValue);
-        atdbDM->blockNotesCDS->Active = true;
+    	if(!b->KeyValue.IsNull())
+		{
+        	mBlockID.setValue(b->KeyValue);
+        	atdbDM->blockNotesCDS->Active = true;
+        }
     }
 }
 
@@ -564,5 +553,9 @@ void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
 {
 	populateMedia();
 }
+
+
+
+
 
 

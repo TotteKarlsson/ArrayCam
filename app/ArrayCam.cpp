@@ -20,9 +20,10 @@ using namespace mtk;
 
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
+USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -42,9 +43,11 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
 		TStyleManager::TrySetStyle("Obsidian");
-		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TatdbDM), &atdbDM);
 		Application->CreateForm(__classid(TcsDM), &csDM);
+		Application->CreateForm(__classid(TATDBConnectionFrame), &ATDBConnectionFrame);
+		Application->CreateForm(__classid(TMainForm), &MainForm);
+
 		Application->Run();
 	}
 	catch (Exception &exception)

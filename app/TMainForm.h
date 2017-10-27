@@ -26,8 +26,8 @@
 #include <Data.SqlExpr.hpp>
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
-#include "TATDBConnectionFrame.h"
 #include "TFFMPEGFrame.h"
+#include "TFloatLabeledEdit.h"
 #include "TImagesFrame.h"
 #include "TIntegerLabeledEdit.h"
 #include "TIntLabel.h"
@@ -37,9 +37,8 @@
 #include "TSoundsFrame.h"
 #include "TSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
-
+#include "TATDBConnectionFrame.h"
 #include <memory>
-
 #include "arduino/atLightsArduinoClient.h"
 #include "atReticle.h"
 #include "atVCLUtils.h"
@@ -54,7 +53,6 @@
 #include "source/ConnectToArduinoServerThread.h"
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
-#include "TATDBConnectionFrame.h"
 #include "TFFMPEGFrame.h"
 #include "TImagesFrame.h"
 #include "TIntegerLabeledEdit.h"
@@ -66,6 +64,7 @@
 #include "TStatusBarManager.h"
 #include "TSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
+#include "TFloatLabeledEdit.h"
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
 #include "uc480/uc480Class.h"
@@ -134,7 +133,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPageControl *PageControl2;
 	TTabSheet *TabSheet5;
 	TGroupBox *BlockInfoGB;
-	TPropertyCheckBox *mRibbonCreatorActiveCB;
 	TGroupBox *CuttingGB;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
 	TGroupBox *UC7OperationGB;
@@ -308,13 +306,20 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TImagesFrame *TImagesFrame1;
 	TMoviesFrame *TMoviesFrame1;
 	TPanel *CutterStatusPanel;
-	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TPanel *Panel11;
 	TShape *UC7Shape;
 	TLabel *Label4;
 	TLabel *Label16;
 	TLabel *Label17;
 	TLabel *Label18;
+	TPropertyCheckBox *StopOnTopCB;
+	TGroupBox *GroupBox5;
+	TFloatLabeledEdit *BlockFaceHeight;
+	TFloatLabeledEdit *RibbonLength;
+	TATDBConnectionFrame *TATDBConnectionFrame1;
+	TPageControl *BlocksAndRibbonsPC;
+	TTabSheet *TabSheet2;
+	TTabSheet *TabSheet14;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -337,7 +342,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mSynchUIBtnClick(TObject *Sender);
 	void __fastcall CreateUC7Message(TObject *Sender);
 	void __fastcall mResetCounterBtnClick(TObject *Sender);
-	void __fastcall mRibbonCreatorActiveCBClick(TObject *Sender);
 	void __fastcall uc7EditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall RegisterRibbonBtnClick(TObject *Sender);
 	void __fastcall mConnectZebraBtnClick(TObject *Sender);
@@ -367,7 +371,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall OpenLoggerForm1Click(TObject *Sender);
 	void __fastcall OpenCloseShortcutFormExecute(TObject *Sender);
 	void __fastcall OpenCloseShortcutFormUpdate(TObject *Sender);
-
 	void __fastcall mBlockNoteNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall mRibbonNotesNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall ToggleControlBarExecute(TObject *Sender);
@@ -383,6 +386,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
+
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -415,11 +419,8 @@ class PACKAGE TMainForm  : public TRegistryForm
         Property<bool>						    mHorizontalMirror;
 
 												//!Reticle
-		std::auto_ptr<TReticlePopupForm>				mReticleForm;
+		std::auto_ptr<TReticlePopupForm>   		mReticleForm;
         Property<bool>						    mReticleVisible;
-
-        //Property<string>						mSnapShotFolder;
-        //Property<string>						mMoviesFolder;
 
         Property<string>						mLocalDBName;
         Property<bool>						    mPairLEDs;
@@ -537,12 +538,11 @@ class PACKAGE TMainForm  : public TRegistryForm
     //=================================================================================================
     public:
 
- 			       __fastcall 					TMainForm(TComponent* Owner);
- 			       __fastcall 					~TMainForm();
+ 			        __fastcall 					TMainForm(TComponent* Owner);
+ 			        __fastcall 					~TMainForm();
 
 												//!Camera stuff is processed in the message loop
 		LRESULT 					  			onUSBCameraMessage(TMessage msg);
-
         void 		__fastcall		  			takeSnapShot();
 	    void 		__fastcall		  			startStopRecordingMovie();
 	    void 		__fastcall		  			startRecordingMovie();
@@ -552,7 +552,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	    void 		__fastcall		  			zoomIn(int z);
 	    void 		__fastcall		  			zoomOut(int z);
 	    void 		__fastcall		  			setFocusAndZoom(int f, int z);
-
         void		__fastcall					updateTemperature(double t);
         void		__fastcall					updateHumidity(double h);
         void									setLEDIntensity(int intensity);
@@ -560,7 +559,6 @@ class PACKAGE TMainForm  : public TRegistryForm
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);
         MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
-
         MESSAGE_HANDLER(WM_DECODE, 				TMessage, 		                onWMDecode);
         MESSAGE_HANDLER(WM_CAPABILITIES, 		TMessage, 	                    onSSICapabilities)
 		MESSAGE_HANDLER(WM_IMAGE,               TMessage, 		                onSSIImage)

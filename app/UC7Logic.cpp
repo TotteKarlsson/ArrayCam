@@ -8,31 +8,32 @@
 using namespace mtk;
 
 //---------------------------------------------------------------------------
-bool TMainForm::handleUC7Message(const UC7Message& m)
+bool TMainForm::handleUC7Message(const UC7Message& msg)
 {
 	//Find out controller address from sender parameter
-    int contr_address = toInt(m.getSender());
-	switch(contr_address)
+    int controller_address = toInt(msg.getSender());
+    string cmd = msg.getCommand();
+	switch(controller_address)
     {
-        case gStepperControllerAddress:
+        case gStepperControllerAddress: //(4)
         {
-        	if(m.getCommand() == "20")
+        	if(cmd == gFeedRateMotorControl)
             {
-				if(m.getData().size() == 8)
+				if(msg.getData().size() == 8)
                 {
                 	//This is the absolute, current position of feed controller (the arm)
-                	Log(lDebug) << "Handling Feedrate Motor Control Message: "<<m.getData();
+                	Log(lDebug) << "Handling Feedrate Motor Control Message: "<<msg.getData();
                 }
             }
-            else if(m.getCommand() == "21")
+            else if(cmd == gSendPositionAtMotionFeedRate)
             {
-            	Log(lDebug) << "Autosend position at motion:" <<m.getData();
+            	Log(lDebug) << "Autosend position at motion:" <<msg.getData();
             }
-            else if(m.getCommand() == "23") //Feed rate
+            else if(cmd == gFeed) //Feed rate
             {
-            	if(m.getData().size() == 6)
+            	if(msg.getData().size() == 6)
                 {
-	                string feedIn_nm  = m.getData().substr(2);
+	                string feedIn_nm  = msg.getData().substr(2);
                     int rate = hexToDec(feedIn_nm);
 
                     //Transfer hardware data to UC7 'soft' data
@@ -53,41 +54,41 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                     }
                 }
             }
-            else if(m.getCommand() == "30")
+            else if(cmd == gNorthSouthMotorMovement)
             {
 	            //This is info about absolute North_south stage position
-            	if(m.getXX() == "FF")
+            	if(msg.getXX() == "FF")
                 {
-	               string absPos  = m.getData().substr(2);
+	               string absPos  = msg.getData().substr(2);
                    CurrentStagePosFrame->setValue(hexToDec(absPos));
                    mUC7.setNorthSouthStageAbsolutePosition(CurrentStagePosFrame->getValue(), false);
 
                 }
             }
-            else if(m.getCommand() == "31")
+            else if(cmd == gSendPositionAtMotionNorthSouth)
             {
-            	Log(lDebug) << "Send position at movement (North/South)" <<m.getData();
+            	Log(lDebug) << "Send position at movement (North/South)" <<msg.getData();
             }
-            else if(m.getCommand() == "40")
+            else if(cmd == gEastWestMovement)
             {
-            	Log(lDebug) << "East/West Motor control" <<m.getData();
+            	Log(lDebug) << "East/West Motor control" <<msg.getData();
             }
-            else if(m.getCommand() == "41")
+            else if(cmd == gSendPositionAtMotionEastWest)
             {
-            	Log(lDebug) << "Autosend position at motion (East/West):" <<m.getData();
+            	Log(lDebug) << "Autosend position at motion (East/West):" <<msg.getData();
             }
 			else
             {
-            	Log(lError) << "Unhandled message:" <<m.getFullMessage();
+            	Log(lError) << "Unhandled message:" <<msg.getFullMessage();
             }
         }
         break;
 
-		case gMotorControllerAddress:
+		case gMotorControllerAddress: //5
         {
-        	if(m.getCommand() == "20")
+        	if(cmd == gCuttingMotorControl)
             {
-            	string d = m.getData().substr(2,2);
+            	string d = msg.getData().substr(2,2);
                 if(d == "00")
                 {
                 	Log(lInfo) << "Cutting motor is off";
@@ -103,19 +104,19 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
                 	Log(lError) << "Invalid calibration";
                 }
             }
-        	else if(m.getCommand() == "30")
+        	else if(cmd == gCuttingSpeed)
             {
                	Log(lInfo) << "Cutting speed.. unhandled message";
             }
-        	else if(m.getCommand() == "31")
+        	else if(cmd == gReturnSpeed)
             {
                	Log(lInfo) << "Return speed.. unhandled message";
             }
-        	else if(m.getCommand() == "40")
+        	else if(cmd == gHandWheelPosition)
             {
             	TStatusPanel* p = mSBManager.getPanel(sbpHandWheelPosition);
                 p->Text = "Wheel Position: ";
-            	string d = m.getData().substr(2,2);
+            	string d = msg.getData().substr(2,2);
                 if(d == "00")  //Retract
                 {
                 	Log(lDebug3) << "Retracting";
@@ -163,25 +164,23 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
 			    {
 					mHandWheelPositionForm->plot();
                 }
-
             }
             else
             {
-            	Log(lError) << "Unhandled message:" <<m.getFullMessage();
+            	Log(lError) << "Unhandled message:" <<msg.getFullMessage();
             }
         }
         break;
 
         case gSystemCommands:
         {
-        	string cmd = m.getCommand();
         	if(cmd == "F0")
             {
                	Log(lInfo) << "Software Reset!";
             }
             else if(cmd == "F1")
             {
-               	Log(lInfo) << "Getting part ID data: "<<m.getData();
+               	Log(lInfo) << "Getting part ID data: "<<msg.getData();
             }
             else if(cmd == "F2")
             {
@@ -189,11 +188,11 @@ bool TMainForm::handleUC7Message(const UC7Message& m)
             }
             else if(cmd == "F3")
             {
-            	Log(lError) << "There was a Command/Transmission Error. Data: "<<m.getData();
+            	Log(lError) << "There was a Command/Transmission Error. Data: "<<msg.getData();
             }
             else if(cmd == "F5")
             {
-               	Log(lInfo) << "Getting version data: "<<m.getData();
+               	Log(lInfo) << "Getting version data: "<<msg.getData();
             }
         }
 		break;
@@ -304,14 +303,6 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 void TMainForm::onUC7Count()
 {
 	mSectionCounterLabel->update();
-    if(mRibbonCreatorActiveCB->Checked)
-    {
-    	//Check if we are close to ribbon separation
-        if(mSectionCounterLabel->getValue() >= (mCountToE->getValue() - 3))
-        {
-            mBeforeKnifeBackOffSound.getReference().play();
-        }
-    }
 }
 
 //---------------------------------------------------------------------------
@@ -322,7 +313,6 @@ void TMainForm::onUC7CountedTo()
 	    mUC7.getSectionCounter().reset();
 		Log(lInfo) << "Creating new ribbon";
 	    mUC7.prepareToCutRibbon(true);
-        //mRibbonStartBtn->Enabled = false;
     }
 }
 
@@ -346,7 +336,8 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
         }
         else
         {
-            mUC7.stopCutter();
+        	//Fix this..
+            mUC7.stopCutter(StopOnTopCB->Checked);
             mACServer.broadcast(mACServer.IPCCommand(acrUC7Stopped));
         }
     }
@@ -386,10 +377,6 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
 		mUC7.setFeedRate(0);
     	mUC7.jogKnifeStageNorth(BackOffStepFrame->getValue(), true);
     }
-//    else if(btn == StopKnifeStageMotionBtn)
-//    {
-//    	mUC7.stopKnifeStageNSMotion();
-//    }
 
     string msg = mUC7.getLastSentMessage().getMessage();
 	Log(lDebug3) << "Sent message: "<<msg;

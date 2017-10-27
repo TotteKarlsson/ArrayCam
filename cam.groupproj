@@ -48,11 +48,11 @@
         <Projects Include="P:\libs\atapi\source\vcl\atVCLCore.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="source\ArrayCamPackage.cbproj">
+        <Projects Include="app\ArrayCamPackage.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="source\ArrayCam.cbproj">
-            <Dependencies>P:\libs\atapi\source\core\atCore.cbproj</Dependencies>
+        <Projects Include="app\ArrayCam.cbproj">
+            <Dependencies/>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -198,22 +198,22 @@
         <MSBuild Projects="P:\libs\atapi\source\vcl\atVCLCore.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCamPackage">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj"/>
     </Target>
     <Target Name="ArrayCamPackage:Clean">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Clean"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="ArrayCamPackage:Make">
-        <MSBuild Projects="source\ArrayCamPackage.cbproj" Targets="Make"/>
+        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ArrayCam" DependsOnTargets="atCore">
-        <MSBuild Projects="source\ArrayCam.cbproj"/>
+    <Target Name="ArrayCam">
+        <MSBuild Projects="app\ArrayCam.cbproj"/>
     </Target>
-    <Target Name="ArrayCam:Clean" DependsOnTargets="atCore:Clean">
-        <MSBuild Projects="source\ArrayCam.cbproj" Targets="Clean"/>
+    <Target Name="ArrayCam:Clean">
+        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ArrayCam:Make" DependsOnTargets="atCore:Make">
-        <MSBuild Projects="source\ArrayCam.cbproj" Targets="Make"/>
+    <Target Name="ArrayCam:Make">
+        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="mtkCommon;mtkIPC;mtkMath;mtkDataBase;VCLCommon;DuneComponents;DuneForms;atCore;atSerialAPI;atSSI;atUC7API;atDatabase;atBarcodeReader;atArduino;atVCLCore;ArrayCamPackage;ArrayCam"/>
