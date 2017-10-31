@@ -38,6 +38,8 @@
 #include "TSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
 #include "TATDBConnectionFrame.h"
+#include "TSyncMySQLToPostgresFrame.h"
+#include "mtkFloatLabel.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "atReticle.h"
@@ -312,14 +314,18 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label16;
 	TLabel *Label17;
 	TLabel *Label18;
-	TPropertyCheckBox *StopOnTopCB;
 	TGroupBox *GroupBox5;
 	TFloatLabeledEdit *BlockFaceHeight;
-	TFloatLabeledEdit *RibbonLength;
 	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TPageControl *BlocksAndRibbonsPC;
 	TTabSheet *TabSheet2;
 	TTabSheet *TabSheet14;
+	TSyncMySQLToPostgresFrame *TSyncMySQLToPostgresFrame1;
+	TTabSheet *TabSheet16;
+	TATDBConnectionFrame *PGConnectionFrame;
+	TRadioGroup *StopOptionsRG;
+	mtkFloatLabel *RibbonLengthLbl;
+	TLabel *Label19;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -386,6 +392,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
+
 
 
     protected:

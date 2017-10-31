@@ -26,6 +26,8 @@
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TATDBConnectionFrame"
+#pragma link "TSyncMySQLToPostgresFrame"
+#pragma link "mtkFloatLabel"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -187,9 +189,10 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
 
-   	TATDBConnectionFrame1->init(&(mIniFile));
+   	TATDBConnectionFrame1->init(&mIniFile, "ATDB_CONNECTION");
     TATDBConnectionFrame1->ConnectA->Execute();
 
+   	PGConnectionFrame->init(&mIniFile, "POSTGRESDB_CONNECTION");
     //Auto connect to the barcode reader
 	mConnectZebraBtnClick(Sender);
 
@@ -433,17 +436,32 @@ void __fastcall TMainForm::TakeSnapShotBtnClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
 {
-	static double recTime(0);
+	static int recTime(0);   //(milliseconds)
 	if(mCaptureVideoTimer->Enabled)
     {
-    	RecordVideoBtn->Caption = "Stop Recording (" + FloatToStrF(recTime, ffFixed, 0, 0) + " s)";
-        recTime += .5;
+    	time_t seconds(recTime / 1000.0);
+        tm *p = gmtime(&seconds);
+        stringstream time;
+        time << "Stop Recording \r";
+        if(p)
+        {
+        	time <<"(" << p->tm_min <<":"<<p->tm_sec <<")";
+        }
+    	RecordVideoBtn->Caption = vclstr(time.str());
+        recTime += VideoRecTimer->Interval;
     }
     else
     {
     	RecordVideoBtn->Caption = "Record Video";
 		VideoRecTimer->Enabled = false;
         recTime = 0;
+    }
+
+    int maxRecTime = 30 * (60 * 1000); //Minutes
+    if(recTime > maxRecTime)
+    {
+    	Log(lInfo) << "Stoppped movie at: " << recTime;
+		stopRecordingMovie();
     }
 }
 
@@ -460,7 +478,6 @@ void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject)
-
 {
 	this->Align = alNone;
 }
@@ -554,8 +571,4 @@ void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
 	populateMedia();
 }
 
-
-
-
-
-
+//---------------------------------------------------------------------------

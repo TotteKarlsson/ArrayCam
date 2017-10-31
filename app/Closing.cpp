@@ -120,7 +120,8 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mMainContentPanelWidth = MainContentPanel->Width;
 
-	TATDBConnectionFrame1->purge();
+	TATDBConnectionFrame1->writeParameters();
+	PGConnectionFrame->writeParameters();
 
 	Log(lInfo) << "In FormClose";
 	mUC7COMPort = mUC7ComportCB->ItemIndex + 1;

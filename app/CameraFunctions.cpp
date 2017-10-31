@@ -265,7 +265,6 @@ void __fastcall TMainForm::FitToScreenAExecute(TObject *Sender)
     }
 }
 
-
 void __fastcall TMainForm::OpenCameraSettingsAExecute(TObject *Sender)
 {
 	//Open settings form
@@ -357,7 +356,6 @@ void __fastcall TMainForm::startRecordingMovie()
     {
     	Log(lWarning) << "Can't start recording as recording is already enabled";
     }
-
 }
 
 void __fastcall TMainForm::stopRecordingMovie()
@@ -505,7 +503,6 @@ void __fastcall TMainForm::startStopRecordingMovie()
         	handleMySQLException();
         }
     }
-
   	mACServer.broadcastStatus();
 }
 
@@ -521,7 +518,6 @@ bool TMainForm::startVideoCompression(const string& inputName)
     mCompressionFrames.push_back(f);
     return true;
 }
-
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)

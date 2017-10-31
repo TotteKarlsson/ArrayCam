@@ -154,6 +154,8 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     p->Text += "After Cutting";
                     UC7Shape->Left = 432;
                     UC7Shape->Width = 93;
+                    RibbonLengthLbl->SetValue(BlockFaceHeight->getValue() * mSectionCounterLabel->getValue());
+                    RibbonLengthLbl->UpdateFromValue();
                 }
                 else if(d == "E0")
                 {
@@ -337,7 +339,7 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
         else
         {
         	//Fix this..
-            mUC7.stopCutter(StopOnTopCB->Checked);
+            mUC7.stopCutter(StopOptionsRG->ItemIndex);
             mACServer.broadcast(mACServer.IPCCommand(acrUC7Stopped));
         }
     }

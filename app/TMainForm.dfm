@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 853
-        ActivePage = Main
+        ActivePage = TabSheet7
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -271,7 +271,7 @@ object MainForm: TMainForm
                   TabOrder = 0
                   object StartStopBtn: TArrayBotButton
                     Left = 16
-                    Top = 47
+                    Top = 31
                     Width = 150
                     Height = 90
                     Caption = 'Start'
@@ -287,12 +287,19 @@ object MainForm: TMainForm
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
                   end
-                  object StopOnTopCB: TPropertyCheckBox
-                    Left = 24
-                    Top = 160
-                    Width = 145
-                    Height = 25
-                    Caption = 'Stop On Top'
+                  object StopOptionsRG: TRadioGroup
+                    Left = 2
+                    Top = 143
+                    Width = 179
+                    Height = 103
+                    Align = alBottom
+                    Caption = 'Stop options'
+                    ItemIndex = 0
+                    Items.Strings = (
+                      'Immediately'
+                      'Before Cutting'
+                      'After Cutting'
+                      'Before Retracting')
                     TabOrder = 1
                   end
                 end
@@ -331,8 +338,8 @@ object MainForm: TMainForm
                     SoundID = 'BUTTON_CLICK_4'
                   end
                   object mRibbonStartBtn: TArrayBotButton
-                    Left = 6
-                    Top = 44
+                    Left = 14
+                    Top = 28
                     Width = 267
                     Height = 90
                     Caption = 'Resume Cutting'
@@ -352,7 +359,7 @@ object MainForm: TMainForm
               end
               object KnifeStageGB: TGroupBox
                 Left = 1
-                Top = 113
+                Top = 154
                 Width = 800
                 Height = 112
                 Align = alTop
@@ -496,7 +503,7 @@ object MainForm: TMainForm
               end
               object CutterStatusPanel: TPanel
                 Left = 1
-                Top = 225
+                Top = 113
                 Width = 800
                 Height = 41
                 Align = alTop
@@ -548,13 +555,11 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 819
-            ActivePage = TabSheet2
+            ActivePage = TabSheet14
             Align = alClient
             TabOrder = 0
             object TabSheet2: TTabSheet
               Caption = 'Select Block'
-              ExplicitWidth = 281
-              ExplicitHeight = 159
               object BlockNotesGB: TGroupBox
                 Left = 0
                 Top = 209
@@ -574,8 +579,6 @@ object MainForm: TMainForm
                   Height = 183
                   Align = alClient
                   TabOrder = 0
-                  ExplicitWidth = 593
-                  ExplicitHeight = 247
                   object mBlockNoteMemo: TDBMemo
                     Left = 1
                     Top = 1
@@ -585,8 +588,6 @@ object MainForm: TMainForm
                     DataField = 'note'
                     DataSource = atdbDM.blockNotesDSource
                     TabOrder = 0
-                    ExplicitWidth = 591
-                    ExplicitHeight = 220
                   end
                   object DBNavigator2: TDBNavigator
                     Left = 1
@@ -597,8 +598,6 @@ object MainForm: TMainForm
                     VisibleButtons = [nbPost, nbCancel]
                     Align = alBottom
                     TabOrder = 1
-                    ExplicitTop = 221
-                    ExplicitWidth = 591
                   end
                 end
                 object Panel5: TPanel
@@ -609,7 +608,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   BevelOuter = bvNone
                   TabOrder = 1
-                  ExplicitHeight = 247
                   object mBlockNoteNavigator: TDBNavigator
                     Left = 0
                     Top = 158
@@ -621,7 +619,6 @@ object MainForm: TMainForm
                     ConfirmDelete = False
                     TabOrder = 0
                     OnClick = mBlockNoteNavigatorClick
-                    ExplicitTop = 222
                   end
                   object mBlockNotesGrid: TDBGrid
                     Left = 0
@@ -655,16 +652,14 @@ object MainForm: TMainForm
                 Height = 209
                 Align = alTop
                 TabOrder = 1
-                ExplicitWidth = 806
                 object BlockSelectionGB: TGroupBox
                   Left = 1
                   Top = 1
-                  Width = 510
+                  Width = 796
                   Height = 207
                   Align = alClient
                   Caption = 'DB/Block Selection'
                   TabOrder = 0
-                  ExplicitWidth = 518
                   object Panel2: TPanel
                     Left = 2
                     Top = 21
@@ -755,60 +750,6 @@ object MainForm: TMainForm
                     end
                   end
                 end
-                inline TATDBConnectionFrame1: TATDBConnectionFrame
-                  Left = 511
-                  Top = 1
-                  Width = 286
-                  Height = 207
-                  Align = alRight
-                  AutoSize = True
-                  TabOrder = 1
-                  ExplicitLeft = 519
-                  ExplicitTop = 1
-                  ExplicitHeight = 207
-                  inherited GBox1: TGroupBox
-                    inherited mServerIPE: TSTDStringLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 65
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 16
-                      EditLabel.ExplicitTop = 18
-                      EditLabel.ExplicitWidth = 65
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited mDBUserE: TSTDStringLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 32
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 16
-                      EditLabel.ExplicitTop = 67
-                      EditLabel.ExplicitWidth = 32
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited mPasswordE: TSTDStringLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 67
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 146
-                      EditLabel.ExplicitTop = 67
-                      EditLabel.ExplicitWidth = 67
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                    inherited mDatabaseE: TSTDStringLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 64
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 146
-                      EditLabel.ExplicitTop = 18
-                      EditLabel.ExplicitWidth = 64
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
-                  end
-                end
               end
               object RibbonsDataGB: TGroupBox
                 Left = 0
@@ -818,9 +759,6 @@ object MainForm: TMainForm
                 Align = alClient
                 Caption = 'Ribbons'
                 TabOrder = 2
-                ExplicitTop = 0
-                ExplicitWidth = 806
-                ExplicitHeight = 819
                 object DBGrid1: TDBGrid
                   Left = 2
                   Top = 21
@@ -869,8 +807,6 @@ object MainForm: TMainForm
                   Align = alBottom
                   Caption = 'Ribbon Notes'
                   TabOrder = 1
-                  ExplicitTop = 651
-                  ExplicitWidth = 802
                   object Panel6: TPanel
                     Left = 2
                     Top = 21
@@ -921,7 +857,6 @@ object MainForm: TMainForm
                     Height = 143
                     Align = alClient
                     TabOrder = 1
-                    ExplicitWidth = 613
                     object mRibbonNoteMemo: TDBMemo
                       Left = 1
                       Top = 1
@@ -931,7 +866,6 @@ object MainForm: TMainForm
                       DataField = 'note'
                       DataSource = atdbDM.ribbonNotesDSource
                       TabOrder = 0
-                      ExplicitWidth = 611
                     end
                     object mRibbonNoteNavigator: TDBNavigator
                       Left = 1
@@ -942,17 +876,195 @@ object MainForm: TMainForm
                       VisibleButtons = [nbPost, nbCancel]
                       Align = alBottom
                       TabOrder = 1
-                      ExplicitWidth = 611
                     end
                   end
                 end
               end
             end
             object TabSheet14: TTabSheet
-              Caption = 'Sync. with Amazon'
+              Caption = 'Upload Data'
               ImageIndex = 1
-              ExplicitWidth = 281
-              ExplicitHeight = 159
+              inline TSyncMySQLToPostgresFrame1: TSyncMySQLToPostgresFrame
+                Left = 0
+                Top = 0
+                Width = 798
+                Height = 448
+                Align = alTop
+                TabOrder = 0
+                ExplicitWidth = 798
+                inherited Panel1: TPanel
+                  Width = 798
+                  ExplicitWidth = 798
+                  inherited GroupBox2: TGroupBox
+                    Width = 796
+                    ExplicitWidth = 796
+                    inherited SyncLogMemo: TMemo
+                      Top = 21
+                      Width = 792
+                      Height = 255
+                      ExplicitTop = 21
+                      ExplicitWidth = 792
+                      ExplicitHeight = 291
+                    end
+                  end
+                  inherited GroupBox1: TGroupBox
+                    Width = 796
+                    ExplicitWidth = 796
+                    inherited SyncButton: TButton
+                      Width = 792
+                      ExplicitWidth = 792
+                    end
+                  end
+                end
+              end
+            end
+            object TabSheet16: TTabSheet
+              Caption = 'DB Connections'
+              ImageIndex = 2
+              inline TATDBConnectionFrame1: TATDBConnectionFrame
+                Left = 0
+                Top = 0
+                Width = 798
+                Height = 201
+                Align = alTop
+                AutoSize = True
+                TabOrder = 0
+                ExplicitWidth = 798
+                inherited GBox1: TGroupBox
+                  Left = 3
+                  Width = 758
+                  ExplicitLeft = 3
+                  ExplicitWidth = 758
+                  inherited mServerIPE: TSTDStringLabeledEdit
+                    Top = 52
+                    Height = 27
+                    EditLabel.Width = 107
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 30
+                    EditLabel.ExplicitWidth = 107
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitTop = 52
+                    ExplicitHeight = 27
+                  end
+                  inherited mDBUserE: TSTDStringLabeledEdit
+                    Top = 101
+                    Height = 27
+                    EditLabel.Width = 32
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 79
+                    EditLabel.ExplicitWidth = 32
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitTop = 101
+                    ExplicitHeight = 27
+                  end
+                  inherited mPasswordE: TSTDStringLabeledEdit
+                    Top = 101
+                    Height = 27
+                    EditLabel.Width = 67
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 146
+                    EditLabel.ExplicitTop = 79
+                    EditLabel.ExplicitWidth = 67
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitTop = 101
+                    ExplicitHeight = 27
+                  end
+                  inherited mDatabaseE: TSTDStringLabeledEdit
+                    Top = 52
+                    Height = 27
+                    EditLabel.Width = 64
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 146
+                    EditLabel.ExplicitTop = 30
+                    EditLabel.ExplicitWidth = 64
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitTop = 52
+                    ExplicitHeight = 27
+                  end
+                  inherited ArrayBotButton1: TArrayBotButton
+                    Top = 140
+                    ExplicitTop = 140
+                  end
+                end
+              end
+              inline PGConnectionFrame: TATDBConnectionFrame
+                Left = 0
+                Top = 224
+                Width = 766
+                Height = 201
+                AutoSize = True
+                TabOrder = 1
+                ExplicitTop = 224
+                ExplicitWidth = 766
+                inherited GBox1: TGroupBox
+                  Width = 766
+                  Caption = 'Postgres DB'
+                  ExplicitWidth = 766
+                  inherited mServerIPE: TSTDStringLabeledEdit
+                    Top = 51
+                    Width = 689
+                    Height = 27
+                    EditLabel.Width = 107
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 29
+                    EditLabel.ExplicitWidth = 107
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitTop = 51
+                    ExplicitWidth = 689
+                    ExplicitHeight = 27
+                  end
+                  inherited mDBUserE: TSTDStringLabeledEdit
+                    Left = 145
+                    Top = 108
+                    Height = 27
+                    EditLabel.Width = 32
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 145
+                    EditLabel.ExplicitTop = 86
+                    EditLabel.ExplicitWidth = 32
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitLeft = 145
+                    ExplicitTop = 108
+                    ExplicitHeight = 27
+                  end
+                  inherited mPasswordE: TSTDStringLabeledEdit
+                    Left = 272
+                    Top = 108
+                    Height = 27
+                    EditLabel.Width = 67
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 272
+                    EditLabel.ExplicitTop = 86
+                    EditLabel.ExplicitWidth = 67
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitLeft = 272
+                    ExplicitTop = 108
+                    ExplicitHeight = 27
+                  end
+                  inherited mDatabaseE: TSTDStringLabeledEdit
+                    Left = 18
+                    Top = 108
+                    Height = 27
+                    EditLabel.Width = 64
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 18
+                    EditLabel.ExplicitTop = 86
+                    EditLabel.ExplicitWidth = 64
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitLeft = 18
+                    ExplicitTop = 108
+                    ExplicitHeight = 27
+                  end
+                  inherited ArrayBotButton1: TArrayBotButton
+                    Top = 139
+                    Visible = False
+                    ExplicitTop = 139
+                  end
+                end
+              end
             end
           end
         end
@@ -1702,13 +1814,14 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1719,6 +1832,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1748,7 +1864,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -2099,6 +2215,27 @@ object MainForm: TMainForm
         Height = 19
         Caption = 'Ribbon Order'
       end
+      object RibbonLengthLbl: mtkFloatLabel
+        Left = 448
+        Top = 39
+        Width = 38
+        Height = 19
+        Caption = '-1.00'
+        ValueString = '-1.00'
+        Value = -1.000000000000000000
+        TheFont.Charset = DEFAULT_CHARSET
+        TheFont.Color = clWindowText
+        TheFont.Height = -16
+        TheFont.Name = 'Tahoma'
+        TheFont.Style = []
+      end
+      object Label19: TLabel
+        Left = 448
+        Top = 14
+        Width = 148
+        Height = 19
+        Caption = 'Ribbon Length (mm)'
+      end
       object mCountToE: TIntegerLabeledEdit
         Left = 14
         Top = 37
@@ -2139,25 +2276,6 @@ object MainForm: TMainForm
         TabOrder = 2
         OnClick = mResetCounterBtnClick
         SoundID = 'BUTTON_CLICK_4'
-      end
-      object RibbonLength: TFloatLabeledEdit
-        Left = 420
-        Top = 36
-        Width = 149
-        Height = 31
-        Alignment = taRightJustify
-        EditLabel.Width = 148
-        EditLabel.Height = 19
-        EditLabel.Caption = 'Ribbon Length (mm)'
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-        Text = '0.00'
       end
     end
     object ToolBar2: TToolBar
@@ -2221,8 +2339,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 1
     OnTimer = mCaptureVideoTimerTimer
-    Left = 440
-    Top = 120
+    Left = 672
+    Top = 432
   end
   object mMediaPopup: TPopupMenu
     Left = 304
@@ -2429,8 +2547,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 500
     OnTimer = VideoRecTimerTimer
-    Left = 56
-    Top = 856
+    Left = 664
+    Top = 504
   end
   object CleanupTimer: TTimer
     Enabled = False
