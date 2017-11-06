@@ -120,6 +120,7 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mMainContentPanelWidth = MainContentPanel->Width;
 
+	TSyncMySQLToPostgresFrame1->writeParameters();
 	TATDBConnectionFrame1->writeParameters();
 	PGConnectionFrame->writeParameters();
 

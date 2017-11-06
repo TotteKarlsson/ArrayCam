@@ -188,6 +188,8 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
+   	TSyncMySQLToPostgresFrame1->init(&mIniFile, "MYSQL_2_PG_SYNC");
+
 
    	TATDBConnectionFrame1->init(&mIniFile, "ATDB_CONNECTION");
     TATDBConnectionFrame1->ConnectA->Execute();

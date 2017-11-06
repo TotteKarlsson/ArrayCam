@@ -93,14 +93,15 @@
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
-        <PostBuildEvent><![CDATA[xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y
-xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y
-xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
-xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y
-xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y
-xcopy p:\build\debug\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
+        <PostBuildEvent><![CDATA[xcopy *.s2p $(OUTPUTDIR) /y
+xcopy *.s2p $(APP_RELEASES)\ArrayCam /y
 copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y
 xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)..\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y
+xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
+xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.6.8.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
         <LinkPackageStatics>atVCLCore.lib;ArrayCamPackage.lib;DuneForms.lib</LinkPackageStatics>
@@ -202,13 +203,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TSyncMySQLToPostgresFrame.h</DependentOn>
             <BuildOrder>20</BuildOrder>
         </CppCompile>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.dfm"/>
-        <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
-        <FormResources Include="frames\TFFMPEGFrame.dfm"/>
-        <FormResources Include="forms\TLoggerForm.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TSyncMySQLToPostgresFrame.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
+        <FormResources Include="frames\TFFMPEGFrame.dfm"/>
+        <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
+        <FormResources Include="forms\TLoggerForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -270,13 +271,14 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\ArrayCamPackage.bpl">ArrayCam VCL Core package</Excluded_Packages>
                     <Excluded_Packages Name="p:\build\debug\BPL\ArrayBotPackage.bpl">File p:\build\debug\BPL\ArrayBotPackage.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
@@ -351,22 +353,22 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>ArrayCam.tds</RemoteName>
                     </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32"/>
                 </DeployFile>
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win64"/>
@@ -594,7 +596,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\build\debug\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
+        <PostBuildEvent>xcopy *.s2p $(OUTPUTDIR) /y&amp;&amp;xcopy *.s2p $(APP_RELEASES)\ArrayCam /y&amp;&amp;copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)..\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

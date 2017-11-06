@@ -904,15 +904,26 @@ object MainForm: TMainForm
                       Height = 255
                       ExplicitTop = 21
                       ExplicitWidth = 792
-                      ExplicitHeight = 291
+                      ExplicitHeight = 255
                     end
                   end
                   inherited GroupBox1: TGroupBox
                     Width = 796
                     ExplicitWidth = 796
                     inherited SyncButton: TButton
-                      Width = 792
-                      ExplicitWidth = 792
+                      Left = 16
+                      Top = 102
+                      ExplicitLeft = 16
+                      ExplicitTop = 102
+                    end
+                    inherited SyncScriptFile: TSTDStringLabeledEdit
+                      Height = 27
+                      EditLabel.Width = 107
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitTop = 36
+                      EditLabel.ExplicitWidth = 107
+                      EditLabel.ExplicitHeight = 19
+                      ExplicitHeight = 27
                     end
                   end
                 end
@@ -1813,15 +1824,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
-                  ExplicitWidth = 509
+                  TabOrder = 0
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1832,9 +1842,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1864,7 +1871,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end

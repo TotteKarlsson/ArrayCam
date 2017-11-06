@@ -3,7 +3,7 @@
 [Generic settings]
 src=atdb-live
 dest=tkdb
-logfile=atdb_2_amazon.log
+logfile=
 skip indexes=0
 only definitions=0
 mode=3
