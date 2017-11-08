@@ -7,8 +7,8 @@
 #include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
 #include "mtkLogger.h"
-#include "TATDBDataModule.h"
-#include "TCoverSlipDataModule.h"
+#include "TPGDataModule.h"
+#include "TPGCoverSlipDataModule.h"
 //---------------------------------------------------------------------------
 using namespace at;
 using namespace mtk;
@@ -18,9 +18,11 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Succesfully connected to DB Server";
 
-	atdbDM->afterConnect();
-    csDM->afterConnect();
-    TATDBConnectionFrame1->afterConnect();
+	pgDM->afterConnect();
+    csPGDM->afterConnect();
+
+//    TATDBConnectionFrame1->afterConnect();
+    TPGConnectionFrame1->afterConnect();
     RegisterRibbonBtn->Enabled = true;
 
 	//Setup UI
@@ -45,9 +47,10 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 {
 	Log(lInfo) << "Disconnected from the DB Server";
-	atdbDM->afterDisConnect();
+	pgDM->afterDisConnect();
 
-	TATDBConnectionFrame1->afterDisconnect();
+//	TATDBConnectionFrame1->afterDisconnect();
+	TPGConnectionFrame1->afterDisconnect();
 	RegisterRibbonBtn->Enabled = false;
 
     enableDisableGroupBox(RibbonRegistrationGB, false);

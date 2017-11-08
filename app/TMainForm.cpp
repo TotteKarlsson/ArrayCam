@@ -4,7 +4,7 @@
 #include "mtkLogger.h"
 #include "core/atCore.h"
 #include "ArrayCamMessages.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 #include "mtkVCLUtils.h"
 #include "TSelectIntegerForm.h"
 #include "THandWheelPositionForm.h"
@@ -28,6 +28,7 @@
 #pragma link "TATDBConnectionFrame"
 #pragma link "TSyncMySQLToPostgresFrame"
 #pragma link "mtkFloatLabel"
+#pragma link "TPGConnectionFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -190,11 +191,11 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 	mStartupTimer->Enabled = false;
    	TSyncMySQLToPostgresFrame1->init(&mIniFile, "MYSQL_2_PG_SYNC");
 
-
-   	TATDBConnectionFrame1->init(&mIniFile, "ATDB_CONNECTION");
-    TATDBConnectionFrame1->ConnectA->Execute();
+//   	TATDBConnectionFrame1->init(&mIniFile, "ATDB_CONNECTION");
+//    TATDBConnectionFrame1->ConnectA->Execute();
 
    	PGConnectionFrame->init(&mIniFile, "POSTGRESDB_CONNECTION");
+//    PGConnectionFrame->ConnectA->Execute();
     //Auto connect to the barcode reader
 	mConnectZebraBtnClick(Sender);
 
@@ -260,7 +261,10 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 {
-    mDBUserID.setValue(mUsersCB->KeyValue);
+	if(!mUsersCB->KeyValue.IsNull())
+    {
+    	mDBUserID.setValue(mUsersCB->KeyValue);
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -272,8 +276,8 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
        	if(!b->KeyValue.IsNull())
 		{
             mSpecimenID.setValue(b->KeyValue);
-            atdbDM->blocksCDS->Active = false;
-            atdbDM->blockNotesCDS->Active = false;
+            pgDM->blocksCDS->Active = false;
+            pgDM->blockNotesCDS->Active = false;
         }
     }
     else if(b == SliceIDCB)
@@ -281,8 +285,8 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
     	if(!b->KeyValue.IsNull())
 		{
             mSliceID.setValue(b->KeyValue);
-            atdbDM->blockNotesCDS->Active = false;
-            atdbDM->blocksCDS->Active = true;
+            pgDM->blockNotesCDS->Active = false;
+            pgDM->blocksCDS->Active = true;
         }
     }
     else if(b == BlockIDCB )
@@ -290,7 +294,7 @@ void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
     	if(!b->KeyValue.IsNull())
 		{
         	mBlockID.setValue(b->KeyValue);
-        	atdbDM->blockNotesCDS->Active = true;
+        	pgDM->blockNotesCDS->Active = true;
         }
     }
 }
@@ -390,10 +394,10 @@ void __fastcall TMainForm::mBlockNoteNavigatorClick(TObject *Sender, TNavigateBt
     {
     	case TNavigateBtn::nbInsert:
 			{
-                int uID = atdbDM->usersCDS->FieldByName("id")->AsInteger;
-                int blockID = atdbDM->blocksCDSid->Value;
+                int uID = pgDM->usersCDS->FieldByName("id")->AsInteger;
+                int blockID = pgDM->blocksCDSid->Value;
                 string note("Block Note..");
-            	atdbDM->insertBlockNote(uID, blockID, note);
+            	pgDM->insertBlockNote(uID, blockID, note);
             }
         break;
     }
@@ -407,9 +411,9 @@ void __fastcall TMainForm::mRibbonNotesNavigatorClick(TObject *Sender, TNavigate
     	case TNavigateBtn::nbInsert:
         {
             int uID = getCurrentUserID();
-            String rID = atdbDM->mRibbonCDSid->Value;
+            String rID = pgDM->mRibbonCDSid->Value;
             string note("Ribbon Note..");
-           	atdbDM->insertRibbonNote(uID, stdstr(rID), note);
+           	pgDM->insertRibbonNote(uID, stdstr(rID), note);
         }
         break;
 
@@ -573,4 +577,5 @@ void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
 	populateMedia();
 }
 
-//---------------------------------------------------------------------------
+
+

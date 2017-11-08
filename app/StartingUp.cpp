@@ -5,7 +5,7 @@
 #include "mtkVCLUtils.h"
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 #include "TNavitarPresetFrame.h"
 using namespace mtk;
 using namespace at;
@@ -99,8 +99,8 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	string dBase(mLocalDBName);
 	try
     {
-        atdbDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
-        atdbDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
+        pgDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
+        pgDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
     }
     catch(...)
     {

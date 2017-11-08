@@ -4,7 +4,7 @@
 #include "Forms/TRegisterNewRibbonForm.h"
 #include "mtkVCLUtils.h"
 #include "mtkLogger.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 
 using namespace mtk;
 
@@ -13,7 +13,7 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 {
 	//Check that we have a valid barcode for the coverslip
     //Block Label
-    System::Variant lbl = atdbDM->blocksCDS->FieldByName("label")->Value;
+    System::Variant lbl = pgDM->blocksCDS->FieldByName("label")->Value;
     if(mBCLabel->Caption == "" || lbl.IsNull())
     {
     	MessageDlg("A valid coverslip barcode and a valid block is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
@@ -22,7 +22,7 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
     {
 		//Make sure the barcode exists in the database..
         TSQLQuery* tq = new TSQLQuery(NULL);
-        tq->SQLConnection = atdbDM->SQLConnection1;
+        tq->SQLConnection = pgDM->SQLConnection1;
         tq->SQLConnection->AutoClone = false;
         stringstream q;
         q <<"SELECT * FROM coverslips where id = "<<extractCoverSlipID(stdstr(mBCLabel->Caption));

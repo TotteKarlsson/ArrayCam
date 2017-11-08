@@ -1,7 +1,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 #include "THandWheelPositionForm.h"
 #include "TLoggerForm.h"
 #include "mtkLogger.h"
@@ -18,7 +18,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         mServiceCamera1.isRunning()				||
         mLightsArduinoClient.isConnected() 		||
         CheckArduinoServerConnectionTimer->Enabled 	||
-        atdbDM->SQLConnection1->Connected 		||
+        pgDM->SQLConnection1->Connected 		||
         mZebra.isConnected()                    ||
         mHandWheelPositionForm                  ||
         LoggerForm
@@ -106,10 +106,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 	    mUC7.disConnect();
     }
 
-    if(atdbDM->SQLConnection1->Connected)
+    if(pgDM->SQLConnection1->Connected)
     {
-    	atdbDM->SQLConnection1->Connected = false;
-	    atdbDM->SQLConnection1->Close();
+    	pgDM->SQLConnection1->Connected = false;
+	    pgDM->SQLConnection1->Close();
     }
 
     Close();
@@ -121,7 +121,7 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 	mMainContentPanelWidth = MainContentPanel->Width;
 
 	TSyncMySQLToPostgresFrame1->writeParameters();
-	TATDBConnectionFrame1->writeParameters();
+//	TATDBConnectionFrame1->writeParameters();
 	PGConnectionFrame->writeParameters();
 
 	Log(lInfo) << "In FormClose";

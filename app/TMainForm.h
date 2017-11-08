@@ -40,6 +40,7 @@
 #include "TATDBConnectionFrame.h"
 #include "TSyncMySQLToPostgresFrame.h"
 #include "mtkFloatLabel.h"
+#include "TPGConnectionFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "atReticle.h"
@@ -316,16 +317,15 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label18;
 	TGroupBox *GroupBox5;
 	TFloatLabeledEdit *BlockFaceHeight;
-	TATDBConnectionFrame *TATDBConnectionFrame1;
 	TPageControl *BlocksAndRibbonsPC;
 	TTabSheet *TabSheet2;
 	TTabSheet *TabSheet14;
 	TSyncMySQLToPostgresFrame *TSyncMySQLToPostgresFrame1;
 	TTabSheet *TabSheet16;
-	TATDBConnectionFrame *PGConnectionFrame;
 	TRadioGroup *StopOptionsRG;
 	mtkFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
+	TPGConnectionFrame *TPGConnectionFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

@@ -67,7 +67,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 65
         Height = 17
         DataField = 'slice_id'
-        DataSource = atdbDM.blocksDataSource
+        DataSource = pgDM.blocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -81,7 +81,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 17
         DataField = 'label'
-        DataSource = atdbDM.blocksDataSource
+        DataSource = pgDM.blocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -116,7 +116,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 97
         Height = 17
         DataField = 'serial'
-        DataSource = atdbDM.blocksDataSource
+        DataSource = pgDM.blocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -139,7 +139,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 65
         Height = 17
         DataField = 'user_name'
-        DataSource = atdbDM.usersDataSource
+        DataSource = pgDM.usersDataSource
       end
       object Label1: TLabel
         Left = 24
@@ -211,7 +211,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'nr_of_sections'
-        DataSource = atdbDM.mRibbonDSource
+        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -225,7 +225,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'cutting_order'
-        DataSource = atdbDM.mRibbonDSource
+        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -239,7 +239,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 236
         Height = 17
         DataField = 'id'
-        DataSource = atdbDM.mRibbonDSource
+        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

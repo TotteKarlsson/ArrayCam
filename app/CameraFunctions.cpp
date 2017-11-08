@@ -1,7 +1,7 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 #include "mtkLogger.h"
 #include "mtkVCLUtils.h"
 #include "uc480/uc480_tools.h"
@@ -286,7 +286,7 @@ void __fastcall TMainForm::takeSnapShot()
     	csID = 0; //So we can create fileFolder '0'
     }
 
-    int blockID = atdbDM->getCurrentBlockID();
+    int blockID = pgDM->getCurrentBlockID();
     if(blockID == -1)
     {
     	blockID = 0;
@@ -311,7 +311,7 @@ void __fastcall TMainForm::takeSnapShot()
         mACServer.broadcast(mACServer.IPCCommand(acrSnapShotTaken));
 		try
         {
-			if(atdbDM->SQLConnection1->Connected == false)
+			if(pgDM->SQLConnection1->Connected == false)
             {
             	MessageDlg("Not connected to the database!\nThis image is not registered!", mtError, TMsgDlgButtons() << mbOK, 0);
                 return;
@@ -320,7 +320,7 @@ void __fastcall TMainForm::takeSnapShot()
         	//Add image to database
             //Make sure the barcode exists in the database..
             TSQLQuery* tq = new TSQLQuery(NULL);
-            tq->SQLConnection = atdbDM->SQLConnection1;
+            tq->SQLConnection = pgDM->SQLConnection1;
             tq->SQLConnection->AutoClone = false;
             stringstream q;
             q <<"INSERT INTO images (id, fileextension, created_by, coverslip_id, block_id) VALUES ('"
@@ -404,7 +404,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
         string ext(".avi");
         lUUID = getUUID();
 
-        lBlockID = atdbDM->getCurrentBlockID();
+        lBlockID = pgDM->getCurrentBlockID();
         if(lBlockID == -1)
         {
             lBlockID = 0;
@@ -481,7 +481,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
         	//Add image to database
             //Make sure the barcode exists in the database..
             TSQLQuery* tq = new TSQLQuery(NULL);
-            tq->SQLConnection = atdbDM->SQLConnection1;
+            tq->SQLConnection = pgDM->SQLConnection1;
             tq->SQLConnection->AutoClone = false;
             stringstream q;
             q <<"INSERT INTO movies (id, fileextension, created_by, coverslip_id, block_id) VALUES ('"

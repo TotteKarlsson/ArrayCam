@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Array Cam 0.5'
   ClientHeight = 963
-  ClientWidth = 1740
+  ClientWidth = 1817
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter2: TSplitter
-    Left = 888
+    Left = 965
     Top = 84
     Height = 857
     Align = alRight
@@ -33,7 +33,7 @@ object MainForm: TMainForm
     ExplicitHeight = 814
   end
   object MainContentPanel: TPanel
-    Left = 891
+    Left = 968
     Top = 84
     Width = 818
     Height = 857
@@ -446,7 +446,7 @@ object MainForm: TMainForm
                   Width = 170
                   Height = 17
                   DataField = 'id'
-                  DataSource = atdbDM.specimenDataSource
+                  DataSource = pgDM.specimenDataSource
                 end
                 object DBText5: TDBText
                   Left = 87
@@ -454,7 +454,7 @@ object MainForm: TMainForm
                   Width = 73
                   Height = 17
                   DataField = 'id'
-                  DataSource = atdbDM.slicesDataSource
+                  DataSource = pgDM.slicesDataSource
                 end
                 object DBText7: TDBText
                   Left = 87
@@ -462,7 +462,7 @@ object MainForm: TMainForm
                   Width = 73
                   Height = 17
                   DataField = 'id'
-                  DataSource = atdbDM.blocksDataSource
+                  DataSource = pgDM.blocksDataSource
                 end
                 object Label11: TLabel
                   Left = 13
@@ -498,7 +498,7 @@ object MainForm: TMainForm
                   Width = 170
                   Height = 17
                   DataField = 'animal_id'
-                  DataSource = atdbDM.specimenDataSource
+                  DataSource = pgDM.specimenDataSource
                 end
               end
               object CutterStatusPanel: TPanel
@@ -555,7 +555,7 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 819
-            ActivePage = TabSheet14
+            ActivePage = TabSheet16
             Align = alClient
             TabOrder = 0
             object TabSheet2: TTabSheet
@@ -586,7 +586,7 @@ object MainForm: TMainForm
                     Height = 156
                     Align = alClient
                     DataField = 'note'
-                    DataSource = atdbDM.blockNotesDSource
+                    DataSource = pgDM.blockNotesDSource
                     TabOrder = 0
                   end
                   object DBNavigator2: TDBNavigator
@@ -594,7 +594,7 @@ object MainForm: TMainForm
                     Top = 157
                     Width = 583
                     Height = 25
-                    DataSource = atdbDM.blockNotesDSource
+                    DataSource = pgDM.blockNotesDSource
                     VisibleButtons = [nbPost, nbCancel]
                     Align = alBottom
                     TabOrder = 1
@@ -613,7 +613,7 @@ object MainForm: TMainForm
                     Top = 158
                     Width = 199
                     Height = 25
-                    DataSource = atdbDM.blockNotesDSource
+                    DataSource = pgDM.blockNotesDSource
                     VisibleButtons = [nbInsert, nbDelete, nbRefresh, nbApplyUpdates]
                     Align = alBottom
                     ConfirmDelete = False
@@ -626,7 +626,7 @@ object MainForm: TMainForm
                     Width = 199
                     Height = 158
                     Align = alClient
-                    DataSource = atdbDM.blockNotesDSource
+                    DataSource = pgDM.blockNotesDSource
                     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                     TabOrder = 1
                     TitleFont.Charset = DEFAULT_CHARSET
@@ -702,7 +702,7 @@ object MainForm: TMainForm
                       Width = 65
                       Height = 17
                       DataField = 'animal_id'
-                      DataSource = atdbDM.specimenDataSource
+                      DataSource = pgDM.specimenDataSource
                     end
                     object BlockIDCB: TDBLookupComboBox
                       Left = 136
@@ -711,7 +711,7 @@ object MainForm: TMainForm
                       Height = 27
                       KeyField = 'id'
                       ListField = 'id'
-                      ListSource = atdbDM.blocksDataSource
+                      ListSource = pgDM.blocksDataSource
                       TabOrder = 0
                       OnCloseUp = DB_CBCloseUp
                     end
@@ -722,7 +722,7 @@ object MainForm: TMainForm
                       Height = 27
                       KeyField = 'id'
                       ListField = 'user_name'
-                      ListSource = atdbDM.usersDataSource
+                      ListSource = pgDM.usersDataSource
                       TabOrder = 1
                       OnCloseUp = mUsersCBCloseUp
                     end
@@ -733,7 +733,7 @@ object MainForm: TMainForm
                       Height = 27
                       KeyField = 'id'
                       ListField = 'id'
-                      ListSource = atdbDM.slicesDataSource
+                      ListSource = pgDM.slicesDataSource
                       TabOrder = 2
                       OnCloseUp = DB_CBCloseUp
                     end
@@ -744,7 +744,7 @@ object MainForm: TMainForm
                       Height = 27
                       KeyField = 'id'
                       ListField = 'id'
-                      ListSource = atdbDM.specimenDataSource
+                      ListSource = pgDM.specimenDataSource
                       TabOrder = 3
                       OnCloseUp = DB_CBCloseUp
                     end
@@ -765,7 +765,7 @@ object MainForm: TMainForm
                   Width = 794
                   Height = 171
                   Align = alClient
-                  DataSource = atdbDM.mRibbonDSource
+                  DataSource = pgDM.mRibbonDSource
                   Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                   TabOrder = 0
                   TitleFont.Charset = DEFAULT_CHARSET
@@ -820,7 +820,7 @@ object MainForm: TMainForm
                       Width = 183
                       Height = 116
                       Align = alClient
-                      DataSource = atdbDM.ribbonNotesDSource
+                      DataSource = pgDM.ribbonNotesDSource
                       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                       TabOrder = 0
                       TitleFont.Charset = DEFAULT_CHARSET
@@ -842,7 +842,7 @@ object MainForm: TMainForm
                       Top = 117
                       Width = 183
                       Height = 25
-                      DataSource = atdbDM.ribbonNotesDSource
+                      DataSource = pgDM.ribbonNotesDSource
                       VisibleButtons = [nbInsert, nbDelete, nbRefresh, nbApplyUpdates]
                       Align = alBottom
                       ConfirmDelete = False
@@ -864,7 +864,7 @@ object MainForm: TMainForm
                       Height = 116
                       Align = alClient
                       DataField = 'note'
-                      DataSource = atdbDM.ribbonNotesDSource
+                      DataSource = pgDM.ribbonNotesDSource
                       TabOrder = 0
                     end
                     object mRibbonNoteNavigator: TDBNavigator
@@ -872,7 +872,7 @@ object MainForm: TMainForm
                       Top = 117
                       Width = 603
                       Height = 25
-                      DataSource = atdbDM.ribbonNotesDSource
+                      DataSource = pgDM.ribbonNotesDSource
                       VisibleButtons = [nbPost, nbCancel]
                       Align = alBottom
                       TabOrder = 1
@@ -884,6 +884,10 @@ object MainForm: TMainForm
             object TabSheet14: TTabSheet
               Caption = 'Upload Data'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               inline TSyncMySQLToPostgresFrame1: TSyncMySQLToPostgresFrame
                 Left = 0
                 Top = 0
@@ -920,6 +924,7 @@ object MainForm: TMainForm
                       Height = 27
                       EditLabel.Width = 107
                       EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 16
                       EditLabel.ExplicitTop = 36
                       EditLabel.ExplicitWidth = 107
                       EditLabel.ExplicitHeight = 19
@@ -932,7 +937,7 @@ object MainForm: TMainForm
             object TabSheet16: TTabSheet
               Caption = 'DB Connections'
               ImageIndex = 2
-              inline TATDBConnectionFrame1: TATDBConnectionFrame
+              inline TPGConnectionFrame1: TPGConnectionFrame
                 Left = 0
                 Top = 0
                 Width = 798
@@ -942,137 +947,45 @@ object MainForm: TMainForm
                 TabOrder = 0
                 ExplicitWidth = 798
                 inherited GBox1: TGroupBox
-                  Left = 3
-                  Width = 758
-                  ExplicitLeft = 3
-                  ExplicitWidth = 758
                   inherited mServerIPE: TSTDStringLabeledEdit
-                    Top = 52
                     Height = 27
                     EditLabel.Width = 107
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 30
+                    EditLabel.ExplicitTop = 18
                     EditLabel.ExplicitWidth = 107
                     EditLabel.ExplicitHeight = 19
-                    ExplicitTop = 52
                     ExplicitHeight = 27
                   end
                   inherited mDBUserE: TSTDStringLabeledEdit
-                    Top = 101
                     Height = 27
                     EditLabel.Width = 32
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 79
+                    EditLabel.ExplicitTop = 67
                     EditLabel.ExplicitWidth = 32
                     EditLabel.ExplicitHeight = 19
-                    ExplicitTop = 101
                     ExplicitHeight = 27
                   end
                   inherited mPasswordE: TSTDStringLabeledEdit
-                    Top = 101
                     Height = 27
                     EditLabel.Width = 67
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 146
-                    EditLabel.ExplicitTop = 79
+                    EditLabel.ExplicitTop = 67
                     EditLabel.ExplicitWidth = 67
                     EditLabel.ExplicitHeight = 19
-                    ExplicitTop = 101
                     ExplicitHeight = 27
                   end
                   inherited mDatabaseE: TSTDStringLabeledEdit
-                    Top = 52
                     Height = 27
                     EditLabel.Width = 64
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 146
-                    EditLabel.ExplicitTop = 30
+                    EditLabel.ExplicitTop = 18
                     EditLabel.ExplicitWidth = 64
                     EditLabel.ExplicitHeight = 19
-                    ExplicitTop = 52
                     ExplicitHeight = 27
-                  end
-                  inherited ArrayBotButton1: TArrayBotButton
-                    Top = 140
-                    ExplicitTop = 140
-                  end
-                end
-              end
-              inline PGConnectionFrame: TATDBConnectionFrame
-                Left = 0
-                Top = 224
-                Width = 766
-                Height = 201
-                AutoSize = True
-                TabOrder = 1
-                ExplicitTop = 224
-                ExplicitWidth = 766
-                inherited GBox1: TGroupBox
-                  Width = 766
-                  Caption = 'Postgres DB'
-                  ExplicitWidth = 766
-                  inherited mServerIPE: TSTDStringLabeledEdit
-                    Top = 51
-                    Width = 689
-                    Height = 27
-                    EditLabel.Width = 107
-                    EditLabel.Height = 19
-                    EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 29
-                    EditLabel.ExplicitWidth = 107
-                    EditLabel.ExplicitHeight = 19
-                    ExplicitTop = 51
-                    ExplicitWidth = 689
-                    ExplicitHeight = 27
-                  end
-                  inherited mDBUserE: TSTDStringLabeledEdit
-                    Left = 145
-                    Top = 108
-                    Height = 27
-                    EditLabel.Width = 32
-                    EditLabel.Height = 19
-                    EditLabel.ExplicitLeft = 145
-                    EditLabel.ExplicitTop = 86
-                    EditLabel.ExplicitWidth = 32
-                    EditLabel.ExplicitHeight = 19
-                    ExplicitLeft = 145
-                    ExplicitTop = 108
-                    ExplicitHeight = 27
-                  end
-                  inherited mPasswordE: TSTDStringLabeledEdit
-                    Left = 272
-                    Top = 108
-                    Height = 27
-                    EditLabel.Width = 67
-                    EditLabel.Height = 19
-                    EditLabel.ExplicitLeft = 272
-                    EditLabel.ExplicitTop = 86
-                    EditLabel.ExplicitWidth = 67
-                    EditLabel.ExplicitHeight = 19
-                    ExplicitLeft = 272
-                    ExplicitTop = 108
-                    ExplicitHeight = 27
-                  end
-                  inherited mDatabaseE: TSTDStringLabeledEdit
-                    Left = 18
-                    Top = 108
-                    Height = 27
-                    EditLabel.Width = 64
-                    EditLabel.Height = 19
-                    EditLabel.ExplicitLeft = 18
-                    EditLabel.ExplicitTop = 86
-                    EditLabel.ExplicitWidth = 64
-                    EditLabel.ExplicitHeight = 19
-                    ExplicitLeft = 18
-                    ExplicitTop = 108
-                    ExplicitHeight = 27
-                  end
-                  inherited ArrayBotButton1: TArrayBotButton
-                    Top = 139
-                    Visible = False
-                    ExplicitTop = 139
                   end
                 end
               end
@@ -1213,7 +1126,7 @@ object MainForm: TMainForm
               BiDiMode = bdRightToLeft
               KeyField = 'id'
               ListField = 'id'
-              ListSource = atdbDM.blockIDsDataSource
+              ListSource = pgDM.blockIDsDataSource
               ParentBiDiMode = False
               TabOrder = 0
               OnKeyUp = BlockIDSLLBKeyUp
@@ -1824,14 +1737,15 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1842,6 +1756,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1871,7 +1788,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -2000,7 +1917,7 @@ object MainForm: TMainForm
   object LeftPanel: TPanel
     Left = 0
     Top = 84
-    Width = 888
+    Width = 965
     Height = 857
     Align = alClient
     BevelEdges = []
@@ -2008,7 +1925,7 @@ object MainForm: TMainForm
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 886
+      Width = 963
       Height = 755
       Margins.Left = 0
       Margins.Right = 0
@@ -2102,7 +2019,7 @@ object MainForm: TMainForm
     object MPEGPanel: TFlowPanel
       Left = 1
       Top = 756
-      Width = 886
+      Width = 963
       Height = 100
       Align = alBottom
       AutoSize = True
@@ -2112,7 +2029,7 @@ object MainForm: TMainForm
   object StatusBar1: TStatusBar
     Left = 0
     Top = 941
-    Width = 1740
+    Width = 1817
     Height = 22
     Hint = 'Test'
     Font.Charset = DEFAULT_CHARSET
@@ -2127,7 +2044,7 @@ object MainForm: TMainForm
   object ControlBar1: TControlBar
     Left = 0
     Top = 0
-    Width = 1740
+    Width = 1817
     Height = 84
     Align = alTop
     AutoDock = False
@@ -2318,7 +2235,7 @@ object MainForm: TMainForm
     end
   end
   object ToggleMainContentBtn: TButton
-    Left = 1709
+    Left = 1786
     Top = 84
     Width = 31
     Height = 857

@@ -2,7 +2,7 @@
 #pragma hdrstop
 #include "TRegisterNewRibbonForm.h"
 #include "mtkLogger.h"
-#include "TATDBDataModule.h"
+#include "TPGDataModule.h"
 //#include "TCoverSlipDataModule.h"
 #include "mtkVCLUtils.h"
 //---------------------------------------------------------------------------
@@ -58,7 +58,7 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
 	if(b == mCancelBtn)
     {
-		atdbDM->mRibbonCDS->Cancel();
+		pgDM->mRibbonCDS->Cancel();
 	}
     else if (b == mRegisterBtn)
     {
@@ -69,7 +69,7 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
         }
 
         //Post data
-		atdbDM->mRibbonCDS->Post();
+		pgDM->mRibbonCDS->Post();
     	if(mRibbonNoteMemo->Lines->Count)
         {
         	Log(lDebug) << "Creating ribbon note";
@@ -81,7 +81,7 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 bool TRegisterNewRibbonForm::updateCoverSlipStatus()
 {
     TSQLQuery* tq = new TSQLQuery(NULL);
-    tq->SQLConnection = atdbDM->SQLConnection1;
+    tq->SQLConnection = pgDM->SQLConnection1;
     tq->SQLConnection->AutoClone = false;
     stringstream q;
     q <<"UPDATE coverslips SET status = 6 WHERE id = "<<extractCoverSlipID(mBarCode);
@@ -104,13 +104,13 @@ void __fastcall TRegisterNewRibbonForm::FormClose(TObject *Sender, TCloseAction 
 bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
 {
     int uID = mMainForm.getCurrentUserID();
-    String rID = atdbDM->mRibbonCDS->FieldByName("id")->Value;
+    String rID = pgDM->mRibbonCDS->FieldByName("id")->Value;
 
     //First insert a new note
     //Then use last insert id for this note to populate the ribbon_note table
     //Finally, select the note
     TSQLQuery* tq = new TSQLQuery(NULL);
-    tq->SQLConnection = atdbDM->SQLConnection1;
+    tq->SQLConnection = pgDM->SQLConnection1;
     tq->SQLConnection->AutoClone = false;
     stringstream q;
     vector<string> lines(stdlines(mRibbonNoteMemo->Lines));
@@ -145,28 +145,28 @@ void __fastcall TRegisterNewRibbonForm::miscBtnClick(TObject *Sender)
 	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
     if(b == mIncrementSectionBtn)
     {
-    	int nr = atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
-        atdbDM->mRibbonCDS->Edit();
-        atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr + 1);
+    	int nr = pgDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
+        pgDM->mRibbonCDS->Edit();
+        pgDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr + 1);
     }
     else if(b == mDecrementSectionBtn)
     {
-    	int nr = atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
-        atdbDM->mRibbonCDS->Edit();
-        atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr - 1);
+    	int nr = pgDM->mRibbonCDS->FieldByName("nr_of_sections")->Value;
+        pgDM->mRibbonCDS->Edit();
+        pgDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = (nr - 1);
     }
     else if(b == mIncrementCuttingOrderBtn)
     {
-    	int nr = atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value;
-        atdbDM->mRibbonCDS->Edit();
-        atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr + 1);
+    	int nr = pgDM->mRibbonCDS->FieldByName("cutting_order")->Value;
+        pgDM->mRibbonCDS->Edit();
+        pgDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr + 1);
 
     }
     else if(b == mDecrementCuttingOrderBtn)
     {
-    	int nr = atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value;
-        atdbDM->mRibbonCDS->Edit();
-        atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr - 1);
+    	int nr = pgDM->mRibbonCDS->FieldByName("cutting_order")->Value;
+        pgDM->mRibbonCDS->Edit();
+        pgDM->mRibbonCDS->FieldByName("cutting_order")->Value = (nr - 1);
     }
 }
 
@@ -177,15 +177,15 @@ void __fastcall TRegisterNewRibbonForm::FormCreate(TObject *Sender)
 
 void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
 {
-    atdbDM->mRibbonCDS->First();
-    atdbDM->mRibbonCDS->Insert();
-    atdbDM->mRibbonCDS->Edit();
-    atdbDM->mRibbonCDS->FieldByName("created_by")->Value 	= atdbDM->usersCDS->FieldByName("id")->Value;
-    atdbDM->mRibbonCDS->FieldByName("id")->Value 			= getUUID().c_str();
-    atdbDM->mRibbonCDS->FieldByName("block_id")->Value 		= atdbDM->blocksCDS->FieldByName("id")->Value;
-    atdbDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = mMainForm.mUC7.getLastNumberOfSections();
-    atdbDM->mRibbonCDS->FieldByName("cutting_order")->Value  = mMainForm.mRibbonOrderCountLabel->Caption.ToInt();
-    atdbDM->mRibbonCDS->FieldByName("coverslip_id")->Value   = extractCoverSlipID(mBarCode);
+    pgDM->mRibbonCDS->First();
+    pgDM->mRibbonCDS->Insert();
+    pgDM->mRibbonCDS->Edit();
+    pgDM->mRibbonCDS->FieldByName("created_by")->Value 	= pgDM->usersCDS->FieldByName("id")->Value;
+    pgDM->mRibbonCDS->FieldByName("id")->Value 			= getUUID().c_str();
+    pgDM->mRibbonCDS->FieldByName("block_id")->Value 		= pgDM->blocksCDS->FieldByName("id")->Value;
+    pgDM->mRibbonCDS->FieldByName("nr_of_sections")->Value = mMainForm.mUC7.getLastNumberOfSections();
+    pgDM->mRibbonCDS->FieldByName("cutting_order")->Value  = mMainForm.mRibbonOrderCountLabel->Caption.ToInt();
+    pgDM->mRibbonCDS->FieldByName("coverslip_id")->Value   = extractCoverSlipID(mBarCode);
 }
 
 

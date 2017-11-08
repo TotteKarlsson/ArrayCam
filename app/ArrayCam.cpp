@@ -8,23 +8,25 @@
 #include "mtkLogger.h"
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
-#include "TCoverSlipDataModule.h"
+#include "TPGCoverSlipDataModule.h"
 #include "TMainForm.h"
-#include "TATDBDataModule.h"
-#include "TATDBImagesAndMoviesDataModule.h"
+#include "TPGDataModule.h"
+//#include "TATDBImagesAndMoviesDataModule.h"
 #include "TRegisterNewRibbonForm.h"
 #include "TLoggerForm.h"
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;
 
-USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TPGConnectionFrame.cpp", PGConnectionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TSyncMySQLToPostgresFrame.cpp", SyncMySQLToPostgresFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\datamodules\TPGDataModule.cpp", pgDM); /* TDataModule: File Type */
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
-USEFORM("forms\TLoggerForm.cpp", LoggerForm);
-USEFORM("P:\libs\atapi\source\vcl\frames\TSyncMySQLToPostgresFrame.cpp", SyncMySQLToPostgresFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -44,9 +46,9 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
 		TStyleManager::TrySetStyle("Obsidian");
-		Application->CreateForm(__classid(TatdbDM), &atdbDM);
-		Application->CreateForm(__classid(TcsDM), &csDM);
-		Application->CreateForm(__classid(TATDBConnectionFrame), &ATDBConnectionFrame);
+		Application->CreateForm(__classid(TpgDM), &pgDM);
+		Application->CreateForm(__classid(TcsPGDM), &csPGDM);
+		Application->CreateForm(__classid(TPGConnectionFrame), &PGConnectionFrame);
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->Run();
 	}
