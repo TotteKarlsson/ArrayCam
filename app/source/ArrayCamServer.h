@@ -6,8 +6,10 @@
 #include "mtkTimer.h"
 #include "arraycam/atArrayCamProtocol.h"
 #include "mtkIPCMessage.h"
+#include "mtkConstants.h"
 //---------------------------------------------------------------------------
 using mtk::IPCServer;
+using mtk::gEmptyString;
 mtk::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* parent);
 
 typedef void (__closure *OnMessageUpdateCB)(const string& msg);
@@ -28,11 +30,10 @@ class PACKAGE ArrayCamServer : public IPCServer
                                             //!ProcessRequest implements the ArrayCam server specific processing.
     	bool 					            processRequest(mtk::IPCMessage& msg);
         bool            		            shutDown();
-
         void								assignOnUpdateCallBack(OnMessageUpdateCB cb);
 		void								onUpdateClientsTimer();
         void								broadcastStatus();
-        string								IPCCommand(ACMessageID id);
+        void								broadcast(ACMessageID id, const string& arg1  = gEmptyString, const string& arg2 = gEmptyString, const string& arg3 = gEmptyString);
 
     protected:
         OnMessageUpdateCB					onMessageUpdateCB;

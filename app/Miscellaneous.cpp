@@ -9,6 +9,7 @@
 //---------------------------------------------------------------------------
 using namespace mtk;
 extern string gApplicationRegistryRoot;
+static HWND gOtherAppWindow = NULL;
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
@@ -100,6 +101,31 @@ void __fastcall TMainForm::About1Click(TObject *Sender)
 	TAboutForm* f = new TAboutForm(this);
     f->ShowModal();
     delete f;
+}
+
+int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam)
+{
+	int length = ::GetWindowTextLength(hwnd);
+	if(!length)
+    {
+	    return TRUE;
+    }
+
+	vector<TCHAR> buffer(length + 1);
+	GetWindowText(hwnd, &buffer[0], length + 1);
+
+    string s(stdstr(buffer));
+	if(startsWith("ArrayCam", s))
+	{
+		// do something with hwnd here
+		gOtherAppWindow = hwnd;
+        SetFocus(hwnd);
+
+        //Stop enumerating..
+		return false;
+	}
+
+	return true;
 }
 
 

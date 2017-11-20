@@ -43,13 +43,10 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                    	//mRibbonStartBtn->Enabled = (rate != 0) ? false : true;
                     if(rate)
                     {
-                    	mRibbonStartBtn->Caption = "Back off Knife";
-                        //mRibbonStartBtn->Enabled = true;
                         mSetZeroCutBtn->Enabled  = true;
                     }
                     else //Feed rate == zero
                     {
-                    	mRibbonStartBtn->Caption = "Resume Knife";
                         mSetZeroCutBtn->Enabled  = false;
                     }
                 }
@@ -125,6 +122,7 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     p->Text += "Retracting";
                     UC7Shape->Left = 624;
                     UC7Shape->Width = 73;
+                    mACServer.broadcast(acmRetracting);
                 }
                 else if(d == "01")  //Before cutting
                 {
@@ -134,6 +132,7 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     p->Text += "Before Cutting";
                     UC7Shape->Left = 32;
                     UC7Shape->Width = 100;
+                    mACServer.broadcast(acmBeforeCutting);
                 }
                 else if(d == "03") //Cutting
                 {
@@ -144,6 +143,7 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     p->Text += "Cutting";
                     UC7Shape->Left = 264;
                     UC7Shape->Width = 52;
+                    mACServer.broadcast(acmCutting);
                 }
                 else if(d == "02") //After cutting
                 {
@@ -156,6 +156,12 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     UC7Shape->Width = 93;
                     RibbonLengthLbl->SetValue(BlockFaceHeight->getValue() * mSectionCounterLabel->getValue());
                     RibbonLengthLbl->UpdateFromValue();
+                    mACServer.broadcast(acmAfterCutting);
+
+                    //If sync with whisker is checked, send message to the arraybot server to move the whisker forward
+                    //Right now there is no arraybot server. Use arraycam server to send to client instead for now.
+                    mACServer.broadcast(abrMoveWhiskerForward);
+
                 }
                 else if(d == "E0")
                 {
@@ -295,7 +301,6 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 
     //group boxes
 	enableDisableGroupBox(CounterGB, 		enableDisable);
-//    enableDisableGroupBox(NorthSouthGB,		enableDisable);
     enableDisableGroupBox(UC7OperationGB, 	enableDisable);
     enableDisableGroupBox(CuttingGB, 		enableDisable);
     enableDisableGroupBox(KnifeStageGB,		enableDisable);
@@ -334,13 +339,13 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
     	if(StartStopBtn->Caption == "Start")
         {
             mUC7.startCutter();
-            mACServer.broadcast(mACServer.IPCCommand(acrUC7Started));
+            mACServer.broadcast(acrUC7Started);
         }
         else
         {
         	//Fix this..
             mUC7.stopCutter(StopOptionsRG->ItemIndex);
-            mACServer.broadcast(mACServer.IPCCommand(acrUC7Stopped));
+            mACServer.broadcast(acrUC7Stopped);
         }
     }
     else if(btn == mSetZeroCutBtn)
@@ -352,23 +357,23 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
 		mUC7.setFeedRate(mPresetFeedRateE->getValue());
     }
 
-    else if(btn == mRibbonStartBtn)
-    {
-    	if(btn->Caption == "Back off")
-        {
-			mUC7.prepareToCutRibbon(true);
-            btn->Caption = "Preparing for IDLE";
-
-            //check if this screws up things
-			mUC7.setFeedRate(0);
-        }
-        else
-        {
-            mUC7.prepareForNewRibbon(true);
-            btn->Caption = "Preparing start of Ribbon";
-            //btn->Enabled = false;
-        }
-    }
+//    else if(btn == mRibbonStartBtn)
+//    {
+//    	if(btn->Caption == "Back off")
+//        {
+//			mUC7.prepareToCutRibbon(true);
+//            btn->Caption = "Preparing for IDLE";
+//
+//            //check if this screws up things
+//			mUC7.setFeedRate(0);
+//        }
+//        else
+//        {
+//            mUC7.prepareForNewRibbon(true);
+//            btn->Caption = "Preparing start of Ribbon";
+//            //btn->Enabled = false;
+//        }
+//    }
     else if(btn == mMoveSouthBtn)
     {
    		mUC7.setFeedRate(0);
@@ -378,6 +383,18 @@ void __fastcall TMainForm::CreateUC7Message(TObject *Sender)
     {
 		mUC7.setFeedRate(0);
     	mUC7.jogKnifeStageNorth(BackOffStepFrame->getValue(), true);
+    }
+    else if(btn == PresetReturnSpeedBtn)
+    {
+    	mUC7.setReturnSpeed(PresetReturnSpeedE->getValue());
+    }
+    else if(btn == SlowReturnSpeedBtn)
+    {
+    	mUC7.setReturnSpeed(SlowReturnSpeedE->getValue());
+    }
+    else if(btn == UltraSlowReturnSpeedBtn)
+    {
+    	mUC7.setReturnSpeed(UltraSlowReturnSpeedE->getValue());
     }
 
     string msg = mUC7.getLastSentMessage().getMessage();

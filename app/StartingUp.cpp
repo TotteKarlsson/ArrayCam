@@ -47,6 +47,9 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageResumeDelta.setup(	    			"KNIFE_STAGE_RESUME_DELTA",        	0));
 	mGeneralProperties.add((BaseProperty*)  &mArrayCamServerPortE->getProperty()->setup(	"ARRAYCAM_SERVER_PORT",          	50001));
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageMaxPos.setup(						"KNIFE_STAGE_MAX_POSITION",        	0));
+	mGeneralProperties.add((BaseProperty*)  &PresetReturnSpeedE->getProperty()->setup(	    "PRESET_RETURN_SPEED",             	10));
+	mGeneralProperties.add((BaseProperty*)  &SlowReturnSpeedE->getProperty()->setup(	    "SLOW_RETURN_SPEED",             	10));
+	mGeneralProperties.add((BaseProperty*)  &UltraSlowReturnSpeedE->getProperty()->setup(   "ULTRA_SLOW_RETURN_SPEED",             	10));
 
     //Zebra
 	mGeneralProperties.add((BaseProperty*)  &mZebraCOMPort.setup( 	                    	"ZEBRA_COM_PORT",                   0));

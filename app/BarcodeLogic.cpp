@@ -177,12 +177,12 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
         //Stop session
         sleep(50);
 		mZebra.scanDisable();
-        mACServer.broadcast(mACServer.IPCCommand(acrBarcodeScanSucceded));
+        mACServer.broadcast(acrBarcodeScanSucceded);
     }
     else
     {
     	Log(lError) << "Bad barcode reader memory buffer";
-        mACServer.broadcast(mACServer.IPCCommand(acrBarcodeScanFailed));
+        mACServer.broadcast(acrBarcodeScanFailed);
     }
 }
 

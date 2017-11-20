@@ -211,7 +211,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'nr_of_sections'
-        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -225,7 +224,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'cutting_order'
-        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -239,7 +237,6 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 236
         Height = 17
         DataField = 'id'
-        DataSource = pgDM.mRibbonDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

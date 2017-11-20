@@ -16,9 +16,6 @@ Coordinates=1314,1541,140,51
 [SetPresetFeedBtn]
 Coordinates=1133,841,103,51
 
-[Label9]
-Coordinates=1314,981,46,51
-
 [atdbDM.documentsDS]
 Coordinates=964,71,124,123
 
@@ -39,9 +36,6 @@ Coordinates=173,1667,47,51
 
 [atdbDM.substitutionProtocol]
 Coordinates=805,1506,155,105
-
-[DBText5]
-Coordinates=577,1506,56,51
 
 [mCamera1BackPanel]
 Coordinates=796,1667,119,51
@@ -193,9 +187,6 @@ Coordinates=353,499,117,429
 [CuttingGB]
 Coordinates=529,1667,65,51
 
-[DBText4]
-Coordinates=19,1345,56,51
-
 [MainContentPanel]
 Coordinates=1314,1471,104,51
 
@@ -253,9 +244,6 @@ Coordinates=1314,701,56,51
 [TabSheet5]
 Coordinates=1523,1405,66,33
 
-[Label8]
-Coordinates=751,1341,46,51
-
 [PageControl2]
 Coordinates=1523,1509,81,33
 
@@ -291,9 +279,6 @@ Coordinates=1133,1665,99,51
 
 [mConnectUC7Btn]
 Coordinates=1133,1385,102,51
-
-[mRibbonStartBtn]
-Coordinates=1314,1121,99,51
 
 [atdbDM.noteDS]
 Coordinates=1133,701,91,51
@@ -338,7 +323,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1523,209,142,33
+Coordinates=1314,1121,99,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
@@ -360,9 +345,6 @@ Coordinates=423,71,95,51
 
 [StatusBar1]
 Coordinates=793,281,68,51
-
-[DBText1]
-Coordinates=626,141,56,51
 
 [ControlBar1]
 Coordinates=904,590,73,33
@@ -561,9 +543,6 @@ Coordinates=55,373,97,51
 
 [GroupBox2]
 Coordinates=309,71,70,51
-
-[Label7]
-Coordinates=311,373,46,51
 
 [Label12]
 Coordinates=379,462,52,51

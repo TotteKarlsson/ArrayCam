@@ -25,10 +25,8 @@
 #pragma link "TSoundsFrame"
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
-#pragma link "TATDBConnectionFrame"
 #pragma link "TSyncMySQLToPostgresFrame"
-#pragma link "mtkFloatLabel"
-#pragma link "TPGConnectionFrame"
+
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -39,7 +37,6 @@ extern bool   gAppIsStartingUp;
 extern bool   gAppIsClosing;
 
 using namespace mtk;
-//using namespace at;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -136,6 +133,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mCountToE->update();
     mPresetFeedRateE->update();
     mUC7.setFeedRatePreset(mPresetFeedRateE->getValue());
+
+    PresetReturnSpeedE->update();
+    SlowReturnSpeedE->update();
+    UltraSlowReturnSpeedE->update();
+
     mStageMoveDelayE->update();
 	mZeroCutsE->update();
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
@@ -189,14 +191,10 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
-   	TSyncMySQLToPostgresFrame1->init(&mIniFile, "MYSQL_2_PG_SYNC");
 
-//   	TATDBConnectionFrame1->init(&mIniFile, "ATDB_CONNECTION");
-//    TATDBConnectionFrame1->ConnectA->Execute();
+   	TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION");
+    TPGConnectionFrame1->ConnectA->Execute();
 
-   	PGConnectionFrame->init(&mIniFile, "POSTGRESDB_CONNECTION");
-//    PGConnectionFrame->ConnectA->Execute();
-    //Auto connect to the barcode reader
 	mConnectZebraBtnClick(Sender);
 
     //Connect to the UC7
@@ -210,9 +208,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormResize(TObject *Sender)
-{
-;
-}
+{;}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
@@ -411,7 +407,7 @@ void __fastcall TMainForm::mRibbonNotesNavigatorClick(TObject *Sender, TNavigate
     	case TNavigateBtn::nbInsert:
         {
             int uID = getCurrentUserID();
-            String rID = pgDM->mRibbonCDSid->Value;
+            String rID = pgDM->ribbonsCDSid->Value;
             string note("Ribbon Note..");
            	pgDM->insertRibbonNote(uID, stdstr(rID), note);
         }
@@ -517,7 +513,7 @@ void TMainForm::setLEDIntensity(int intensity)
         stringstream s;
         s<<"SET_FRONT_LED_INTENSITY="<<intensity;
         mLightsArduinoClient.request(s.str());
-	    mACServer.broadcast(mACServer.IPCCommand(acrLEDIntensitySet));
+	    mACServer.broadcast(acrLEDIntensitySet);
     }
 }
 
@@ -576,6 +572,7 @@ void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
 {
 	populateMedia();
 }
+
 
 
 

@@ -38,11 +38,11 @@ extern "C" int _libmain(unsigned long reason)
 #pragma comment(lib, "DuneComponents.bpi")
 #pragma comment(lib, "atVCLCore.bpi")
 
-#pragma comment(lib, "DbxMySQlDriver.bpi")
 #pragma comment(lib, "BindEngine.bpi")
 #pragma comment(lib, "BindComp.bpi")
 #pragma comment(lib, "BindCompVCL.bpi")
 
 #pragma comment(lib, "uc480_B.lib")
 #pragma comment(lib, "uc480_tools_B.lib")
+#pragma comment(lib, "DBXDevartPostgreSQLDriver170.bpi")
 

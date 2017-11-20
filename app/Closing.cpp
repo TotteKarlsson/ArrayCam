@@ -120,9 +120,7 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mMainContentPanelWidth = MainContentPanel->Width;
 
-	TSyncMySQLToPostgresFrame1->writeParameters();
-//	TATDBConnectionFrame1->writeParameters();
-	PGConnectionFrame->writeParameters();
+	TPGConnectionFrame1->writeParameters();
 
 	Log(lInfo) << "In FormClose";
 	mUC7COMPort = mUC7ComportCB->ItemIndex + 1;

@@ -29,6 +29,41 @@ bool ArrayCamServer::shutDown()
     return true;
 }
 
+//string ArrayCamServer::IPCCommand(ACMessageID id)
+//{
+//	return mProtocol[id];
+//}
+
+void ArrayCamServer::broadcast(ACMessageID id, const string& arg1, const string& arg2, const string& arg3)
+{
+    stringstream msg;
+    msg << mProtocol[id];
+
+    if(arg1.size())
+    {
+    	msg << "," << arg1;
+    }
+
+    if(arg2.size())
+    {
+    	msg << "," << arg2;
+    }
+
+    if(arg3.size())
+    {
+    	msg << "," << arg3;
+    }
+
+    notifyClients(msg.str());
+}
+
+void ArrayCamServer::broadcastStatus()
+{
+    stringstream msg;
+    msg << "IS_RECORDING="<<mtk::toString(mMainForm.mCaptureVideoTimer->Enabled);
+   	notifyClients(msg.str());
+}
+
 void ArrayCamServer::notifyClients(const string& msg)
 {
 	if(!msg.size())
@@ -42,19 +77,7 @@ void ArrayCamServer::notifyClients(const string& msg)
         onMessageUpdateCB(msg);
     }
 
-    broadcast(msg);
-}
-
-string ArrayCamServer::IPCCommand(ACMessageID id)
-{
-	return mProtocol[id];
-}
-
-void ArrayCamServer::broadcastStatus()
-{
-    stringstream msg;
-    msg << "IS_RECORDING="<<mtk::toString(mMainForm.mCaptureVideoTimer->Enabled);
-   	notifyClients(msg.str());
+    IPCServer::broadcast(msg);
 }
 
 //Handle incoming client requests over the socket

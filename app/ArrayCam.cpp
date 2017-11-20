@@ -8,47 +8,83 @@
 #include "mtkLogger.h"
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
-#include "TPGCoverSlipDataModule.h"
 #include "TMainForm.h"
-#include "TPGDataModule.h"
-//#include "TATDBImagesAndMoviesDataModule.h"
 #include "TRegisterNewRibbonForm.h"
 #include "TLoggerForm.h"
+#include "TPGDataModule.h"
+#include "TPGCoverSlipDataModule.h"
+#include "TPGImagesAndMoviesDataModule.h"
+#include "mtkRestartApplicationUtils.h"
 //---------------------------------------------------------------------------
 using std::string;
 using namespace mtk;
 
-USEFORM("TMainForm.cpp", MainForm);
-USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TPGConnectionFrame.cpp", PGConnectionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TSyncMySQLToPostgresFrame.cpp", SyncMySQLToPostgresFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\datamodules\TPGDataModule.cpp", pgDM); /* TDataModule: File Type */
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
-USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
+USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
 string     	gLogFileName                = gAppName + ".log";
 string 	   	gApplicationRegistryRoot  	= "\\Software\\Allen Institute\\array_cam\\0.5.0";
 string 	   	gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
+string      gRestartMutexName           = gAppName + "RestartMutex";
+HWND                gOtherAppWindow             = NULL;
 bool       	gAppIsStartingUp            = true;
 bool       	gAppIsClosing	            = false;
 
 void 		setupLogging();
+int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
 
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
+    //The app mutex is used to check for already running instances
+    HANDLE appMutex;
+
 	try
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
 		TStyleManager::TrySetStyle("Obsidian");
-		Application->CreateForm(__classid(TpgDM), &pgDM);
-		Application->CreateForm(__classid(TcsPGDM), &csPGDM);
-		Application->CreateForm(__classid(TPGConnectionFrame), &PGConnectionFrame);
+
+
+   		// Initialize restart code
+		// Check if this instance is restarted and
+		// wait while previos instance finish
+		if (mtk::checkForCommandLineFlag("--Restart"))
+		{
+            //TODO: Fix this.. not working properly..
+            //            MessageDlg("Wait...", mtWarning, TMsgDlgButtons() << mbOK, 0);
+			mtk::WaitForPreviousProcessToFinish(gRestartMutexName);
+            Sleep(1000);
+		}
+
+        //Look at this later... does not work yet
+        const char appMutexName [] = "arrayCamMutex";
+        appMutex = ::CreateMutexA(NULL, FALSE, appMutexName);
+        if( ERROR_ALREADY_EXISTS == GetLastError() )
+        {
+             Log(lInfo) << "Arraycam is already running!";
+            // Program already running somewhere
+            ::EnumWindows(FindOtherWindow, NULL);
+
+            if(gOtherAppWindow != NULL)
+            {
+                //Send a custom message to restore window here..
+                Log(lInfo) << "Arraycam is already running!";
+            }
+            MessageDlg("Arraycam is already running.\nClose or kill it before starting new instance.", mtWarning, TMsgDlgButtons() << mbOK, 0);
+
+            return(1); // Exit program
+        }
+
+        pgDM 	                = new TpgDM(NULL);
+        csPGDM                  = new TcsPGDM(NULL);
+        PGImagesAndMoviesDM     = new TPGImagesAndMoviesDM(NULL);
+
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->Run();
 	}

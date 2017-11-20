@@ -21,7 +21,6 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 	pgDM->afterConnect();
     csPGDM->afterConnect();
 
-//    TATDBConnectionFrame1->afterConnect();
     TPGConnectionFrame1->afterConnect();
     RegisterRibbonBtn->Enabled = true;
 
@@ -49,7 +48,6 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 	Log(lInfo) << "Disconnected from the DB Server";
 	pgDM->afterDisConnect();
 
-//	TATDBConnectionFrame1->afterDisconnect();
 	TPGConnectionFrame1->afterDisconnect();
 	RegisterRibbonBtn->Enabled = false;
 

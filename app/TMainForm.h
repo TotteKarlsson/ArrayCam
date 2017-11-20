@@ -37,8 +37,6 @@
 #include "TSoundsFrame.h"
 #include "TSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
-#include "TATDBConnectionFrame.h"
-#include "TSyncMySQLToPostgresFrame.h"
 #include "mtkFloatLabel.h"
 #include "TPGConnectionFrame.h"
 #include <memory>
@@ -127,10 +125,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *mArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
-	TLabel *Label8;
-	TLabel *Label9;
-	TDBText *DBText4;
-	TDBText *DBText5;
 	TLabel *Label11;
 	TDBText *DBText7;
 	TPageControl *PageControl2;
@@ -183,7 +177,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TGroupBox *GroupBox11;
 	TGroupBox *GroupBox12;
 	TArrayBotButton *SetPresetFeedBtn;
-	TArrayBotButton *mRibbonStartBtn;
 	TTabSheet *TabSheet4;
 	TSoundsFrame *TSoundsFrame1;
 	TApplicationSoundsFrame *TApplicationSoundsFrame1;
@@ -268,8 +261,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel5;
 	TDBNavigator *mBlockNoteNavigator;
 	TDBGrid *mBlockNotesGrid;
-	TLabel *Label7;
-	TDBText *DBText1;
 	TDBText *DBText2;
 	TGroupBox *GroupBox3;
 	TPanel *Panel6;
@@ -319,13 +310,21 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TFloatLabeledEdit *BlockFaceHeight;
 	TPageControl *BlocksAndRibbonsPC;
 	TTabSheet *TabSheet2;
-	TTabSheet *TabSheet14;
-	TSyncMySQLToPostgresFrame *TSyncMySQLToPostgresFrame1;
 	TTabSheet *TabSheet16;
 	TRadioGroup *StopOptionsRG;
 	mtkFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
 	TPGConnectionFrame *TPGConnectionFrame1;
+	TGroupBox *GroupBox7;
+	TPropertyCheckBox *SyncWhiskerCB;
+	TGroupBox *GroupBox8;
+	TFloatLabeledEdit *PresetReturnSpeedE;
+	TFloatLabeledEdit *SlowReturnSpeedE;
+	TFloatLabeledEdit *UltraSlowReturnSpeedE;
+	TArrayBotButton *PresetReturnSpeedBtn;
+	TArrayBotButton *SlowReturnSpeedBtn;
+	TGroupBox *GroupBox9;
+	TArrayBotButton *UltraSlowReturnSpeedBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -392,8 +391,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
-
-
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,

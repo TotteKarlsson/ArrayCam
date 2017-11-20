@@ -308,7 +308,7 @@ void __fastcall TMainForm::takeSnapShot()
     else
     {
     	Log(lInfo) << "Saved snapshot to file: "<< fName;
-        mACServer.broadcast(mACServer.IPCCommand(acrSnapShotTaken));
+        mACServer.broadcast(acrSnapShotTaken);
 		try
         {
 			if(pgDM->SQLConnection1->Connected == false)
@@ -441,7 +441,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
             Log(lError) << "There was a StartAVI error: "<<retVal;
             return;
         }
-        mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStarted));
+        mACServer.broadcast(acrVideoRecorderStarted);
 
     }
     else
@@ -469,7 +469,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
             return;
         }
 
-        mACServer.broadcast(mACServer.IPCCommand(acrVideoRecorderStopped));
+        mACServer.broadcast(acrVideoRecorderStopped);
         //Register in the database
     	string fName(lCurrentVideoFileName);
     	Log(lInfo) << "Saving movie to file: "<< fName;
