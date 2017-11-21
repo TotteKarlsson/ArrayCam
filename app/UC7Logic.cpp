@@ -160,8 +160,10 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
 
                     //If sync with whisker is checked, send message to the arraybot server to move the whisker forward
                     //Right now there is no arraybot server. Use arraycam server to send to client instead for now.
-                    mACServer.broadcast(abrMoveWhiskerForward);
-
+                    if(SyncWhiskerCB->Checked)
+                    {
+                    	mACServer.broadcast(abrMoveWhiskerForward, mtk::toString(BlockFaceHeight->getValue()));
+                    }
                 }
                 else if(d == "E0")
                 {
