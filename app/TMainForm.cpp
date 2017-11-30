@@ -659,4 +659,6 @@ void __fastcall	TMainForm::fireRibbonSeparator()
 {
 	Log(lInfo) << "Firing the ribbon separator";
     clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
+
+   	mACServer.broadcast(acrRibbonSeparatorTriggered);
 }
