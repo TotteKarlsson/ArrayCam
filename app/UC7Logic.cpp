@@ -149,12 +149,12 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                 {
                    	Log(lDebug3) << "After Cutting";
                    	mUC7.setStrokeState(ssAfterCutting);
-					mRibbonOrderCountLabel->update();
+					RibbonOrderCountLabel->update();
 	                mKnifeAfterCuttingSound.getReference().play();
                     p->Text += "After Cutting";
                     UC7Shape->Left = 432;
                     UC7Shape->Width = 93;
-                    RibbonLengthLbl->SetValue(BlockFaceHeight->getValue() * mSectionCounterLabel->getValue());
+                    RibbonLengthLbl->SetValue(BlockFaceHeight->getValue() * SectionCounterLabel->getValue());
                     RibbonLengthLbl->UpdateFromValue();
                     mACServer.broadcast(acmAfterCutting);
 
@@ -226,12 +226,12 @@ void __fastcall TMainForm::mResetCounterBtnClick(TObject *Sender)
     if(btn == mResetCounterBtn)
     {
     	mUC7.getSectionCounter().reset();
-        mSectionCounterLabel->update();
+        SectionCounterLabel->update();
     }
     else if(btn == mResetRibbonOrderBtn)
     {
 		mUC7.getRibbonOrderCounter().reset();
-        mRibbonOrderCountLabel->update();
+        RibbonOrderCountLabel->update();
     }
 }
 
@@ -311,7 +311,7 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
 //---------------------------------------------------------------------------
 void TMainForm::onUC7Count()
 {
-	mSectionCounterLabel->update();
+	SectionCounterLabel->update();
 }
 
 //---------------------------------------------------------------------------

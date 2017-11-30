@@ -130,9 +130,6 @@ Coordinates=751,1199,137,123
 [Main]
 Coordinates=1523,729,40,33
 
-[mSectionCounterLabel]
-Coordinates=1133,1035,127,51
-
 [mSynchUIBtn]
 Coordinates=1133,561,81,51
 
@@ -195,9 +192,6 @@ Coordinates=751,1059,72,51
 
 [atdbDM.blockNotesDS]
 Coordinates=550,905,124,123
-
-[mRibbonOrderCountLabel]
-Coordinates=1133,351,143,51
 
 [mTopPanel]
 Coordinates=325,1345,69,51
@@ -588,4 +582,10 @@ Coordinates=793,849,105,51
 
 [FrontLEDTB]
 Coordinates=290,462,84,33
+
+[RibbonOrderCountLabel]
+Coordinates=1133,351,143,51
+
+[SectionCounterLabel]
+Coordinates=1133,1035,127,51
 

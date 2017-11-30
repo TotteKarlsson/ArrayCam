@@ -148,11 +148,62 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     }
 
 	/* Navitar controller */
-    else if(compareStrings(ap[acrZoomIn], msgList[0], csCaseInsensitive))
+    else if(compareStrings(ap[acrFocusIn], msgList[0], csCaseInsensitive))
     {
 
-    	Log(lInfo) << "Zoom in";
+    	Log(lInfo) << "Focus in";
 
+        struct TLocalArgs
+	    {
+            int f;
+	        TMainForm*	MainForm;
+        	void __fastcall focusIn()
+	        {
+    	        MainForm->focusIn(f);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 2)
+        {
+	        Args.f = toInt(msgList[1]);
+        }
+
+        Args.MainForm = &mMainForm;
+        TThread::Synchronize(NULL, Args.focusIn);
+    }
+
+	/* Navitar controller */
+    else if(compareStrings(ap[acrFocusOut], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Focus out";
+        struct TLocalArgs
+	    {
+            int f;
+	        TMainForm*	MainForm;
+        	void __fastcall focusOut()
+	        {
+    	        MainForm->focusOut(f);
+        	}
+    	};
+
+    	TLocalArgs Args;
+
+        if(msgList.count() == 2)
+        {
+	        Args.f = toInt(msgList[1]);
+        }
+
+        Args.MainForm = &mMainForm;
+
+        TThread::Synchronize(NULL, Args.focusOut);
+    }
+
+	/* Navitar controller */
+    else if(compareStrings(ap[acrZoomIn], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Zoom in";
         struct TLocalArgs
 	    {
             int zoom;
@@ -171,7 +222,6 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         }
 
         Args.MainForm = &mMainForm;
-
         TThread::Synchronize(NULL, Args.zoomIn);
     }
 
@@ -202,6 +252,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
 
         TThread::Synchronize(NULL, Args.zoomOut);
     }
+
 
 	/* LED */
     else if(compareStrings(ap[acrSetLEDIntensity], msgList[0], csCaseInsensitive))
@@ -280,6 +331,19 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         {
         	TThread::Synchronize(NULL, mMainForm.StartStopBtn->Click);
         }
+    }
+
+    /* Enable/disable whisker sync logic */
+    else if(compareStrings(ap[acrSetMoveWhiskerForwardOn], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Setting Move Whisker forward CB ON";
+        TThread::Synchronize(NULL, mMainForm.checkSyncWhiskerCB);
+    }
+
+    else if(compareStrings(ap[acrSetMoveWhiskerForwardOff], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Setting Move Whisker forward CB";
+        TThread::Synchronize(NULL, mMainForm.unCheckSyncWhiskerCB);
     }
 
     else if(compareStrings("GET_SERVER_STATUS", msgList[0], csCaseInsensitive))

@@ -70,6 +70,24 @@ void __fastcall	TMainForm::setFocus(int f)
     mNavitarMotorController.setFocus(f);
 }
 
+void __fastcall	TMainForm::focusIn(int z)
+{
+	if(!mNavitarMotorController.isConnected())
+    {
+    	Log(lError) <<"Can't set focus. Navitar controller is not connected";
+    }
+    mNavitarMotorController.focusIn(z);
+}
+
+void __fastcall	TMainForm::focusOut(int z)
+{
+	if(!mNavitarMotorController.isConnected())
+    {
+    	Log(lError) <<"Can't set focus. Navitar controller is not connected";
+    }
+    mNavitarMotorController.focusOut(z);
+}
+
 void __fastcall	TMainForm::setZoom(int z)
 {
 	if(!mNavitarMotorController.isConnected())

@@ -66,6 +66,10 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -362,6 +366,7 @@ object MainForm: TMainForm
                     ParentBiDiMode = False
                     TabOrder = 0
                     WordWrap = True
+                    OnClick = SyncWhiskerCBClick
                   end
                 end
                 object GroupBox9: TGroupBox
@@ -555,6 +560,10 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BlocksAndRibbonsPC: TPageControl
             Left = 0
             Top = 0
@@ -565,6 +574,10 @@ object MainForm: TMainForm
             TabOrder = 0
             object TabSheet2: TTabSheet
               Caption = 'Select Block'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object BlockNotesGB: TGroupBox
                 Left = 0
                 Top = 209
@@ -976,6 +989,10 @@ object MainForm: TMainForm
         object TabSheet12: TTabSheet
           Caption = 'Videos && Images'
           ImageIndex = 8
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox6: TGroupBox
             Left = 0
             Top = 0
@@ -1118,6 +1135,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -1315,6 +1336,10 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1606,6 +1631,10 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Miscellaneous'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl2: TPageControl
             Left = 0
             Top = 0
@@ -1617,6 +1646,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1671,6 +1704,10 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1756,12 +1793,11 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 798
+                  Width = 509
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
-                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 15
@@ -1887,6 +1923,10 @@ object MainForm: TMainForm
         object TabSheet10: TTabSheet
           Caption = 'Lights'
           ImageIndex = 7
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object LightIntensitiesGB: TGroupBox
             Left = 3
             Top = 16
@@ -2113,7 +2153,7 @@ object MainForm: TMainForm
       Height = 74
       Align = alTop
       TabOrder = 1
-      object mSectionCounterLabel: TIntLabel
+      object SectionCounterLabel: TIntLabel
         Left = 91
         Top = 33
         Width = 16
@@ -2125,6 +2165,7 @@ object MainForm: TMainForm
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        OnClick = CountLabelClick
         Value = 1
         TheFont.Charset = DEFAULT_CHARSET
         TheFont.Color = clWindowText
@@ -2132,7 +2173,7 @@ object MainForm: TMainForm
         TheFont.Name = 'Tahoma'
         TheFont.Style = []
       end
-      object mRibbonOrderCountLabel: TIntLabel
+      object RibbonOrderCountLabel: TIntLabel
         Left = 261
         Top = 33
         Width = 16
@@ -2144,7 +2185,7 @@ object MainForm: TMainForm
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = mRibbonOrderCountLabelClick
+        OnClick = CountLabelClick
         Value = 1
         TheFont.Charset = DEFAULT_CHARSET
         TheFont.Color = clWindowText

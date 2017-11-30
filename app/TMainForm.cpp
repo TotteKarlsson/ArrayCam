@@ -94,13 +94,13 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	//Setup references
   	//The following causes the editbox, and its property to reference the counters CountTo value
    	mCountToE->setReference(mUC7.getSectionCounter().getCountToReference());
-   	mSectionCounterLabel->setReference(mUC7.getSectionCounter().getCountReference());
-    mRibbonOrderCountLabel->setReference(mUC7.getRibbonOrderCounter().getCountReference());
+   	SectionCounterLabel->setReference(mUC7.getSectionCounter().getCountReference());
+    RibbonOrderCountLabel->setReference(mUC7.getRibbonOrderCounter().getCountReference());
     mZeroCutsE->setReference(mUC7.getNumberOfZeroStrokesReference());
 
     mCountToE->update();
-    mSectionCounterLabel->update();
-    mRibbonOrderCountLabel->update();
+    SectionCounterLabel->update();
+    RibbonOrderCountLabel->update();
     mZeroCutsE->update();
 
     //Properties are retrieved and saved to an ini file
@@ -302,14 +302,16 @@ void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::mRibbonOrderCountLabelClick(TObject *Sender)
+void __fastcall TMainForm::CountLabelClick(TObject *Sender)
 {
+	TIntLabel* lbl = dynamic_cast<TIntLabel*>(Sender);
+
     TSelectIntegerForm* f = new TSelectIntegerForm(this);
-    f->setCurrentNumber(mRibbonOrderCountLabel->getValue());
+    f->setCurrentNumber(lbl->getValue());
     int res = f->ShowModal();
     if(res == mrOk)
     {
-    	mRibbonOrderCountLabel->setValue(f->mTheNumberLbl->getValue());
+    	lbl->setValue(f->mTheNumberLbl->getValue());
     }
 
     delete f;
@@ -517,8 +519,7 @@ void TMainForm::setLEDIntensity(int intensity)
     }
 }
 
-void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button,
-          TShiftState Shift, int X, int Y)
+void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 	populateMedia();
 }
@@ -573,6 +574,29 @@ void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
 	populateMedia();
 }
 
+void __fastcall TMainForm::checkSyncWhiskerCB()
+{
+	SyncWhiskerCB->Checked = true;
+    mACServer.broadcast(acrMoveWhiskerForwardOnSet);
+}
 
+void __fastcall TMainForm::unCheckSyncWhiskerCB()
+{
+	SyncWhiskerCB->Checked = false;
+    mACServer.broadcast(acrMoveWhiskerForwardOffSet);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SyncWhiskerCBClick(TObject *Sender)
+{
+	if(SyncWhiskerCB->Checked)
+    {
+    	mACServer.broadcast(acrMoveWhiskerForwardOnSet);
+    }
+    else
+    {
+       	mACServer.broadcast(acrMoveWhiskerForwardOffSet);
+    }
+}
 
 

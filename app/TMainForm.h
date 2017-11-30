@@ -108,10 +108,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPaintBox *mPB;
 	TTimer *CheckArduinoServerConnectionTimer;
 	TGroupBox *CounterGB;
-	TIntLabel *mSectionCounterLabel;
+	TIntLabel *SectionCounterLabel;
 	TIntegerLabeledEdit *mCountToE;
 	TArrayBotButton *mResetCounterBtn;
-	TIntLabel *mRibbonOrderCountLabel;
+	TIntLabel *RibbonOrderCountLabel;
 	TArrayBotButton *mResetRibbonOrderBtn;
 	TPanel *MainContentPanel;
 	TPanel *Panel1;
@@ -355,7 +355,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mUsersCBCloseUp(TObject *Sender);
 	void __fastcall DB_CBCloseUp(TObject *Sender);
 	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
-	void __fastcall mRibbonOrderCountLabelClick(TObject *Sender);
+	void __fastcall CountLabelClick(TObject *Sender);
 	void __fastcall PopulateMaxNorthPosBtnClick(TObject *Sender);
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
 	void __fastcall KnifePosChange(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -391,6 +391,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
+	void __fastcall SyncWhiskerCBClick(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -552,6 +553,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	    void 		__fastcall		  			startRecordingMovie();
 	    void 		__fastcall		  			stopRecordingMovie();
 	    void 		__fastcall		  			setFocus(int f);
+	    void 		__fastcall		  			focusIn(int z);
+	    void 		__fastcall		  			focusOut(int z);
 	    void 		__fastcall		  			setZoom(int z);
 	    void 		__fastcall		  			zoomIn(int z);
 	    void 		__fastcall		  			zoomOut(int z);
@@ -559,6 +562,8 @@ class PACKAGE TMainForm  : public TRegistryForm
         void		__fastcall					updateTemperature(double t);
         void		__fastcall					updateHumidity(double h);
         void									setLEDIntensity(int intensity);
+        void		__fastcall 					checkSyncWhiskerCB();
+        void		__fastcall 					unCheckSyncWhiskerCB();
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);
