@@ -9,6 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include "TIntegerLabeledEdit.h"
+#include "TSTDStringLabeledEdit.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -21,6 +22,7 @@ __published:	// IDE-managed Components
 	TIntegerLabeledEdit *ClickX;
 	TIntegerLabeledEdit *ClickY;
 	TGroupBox *GroupBox1;
+	TSTDStringLabeledEdit *WinCaption;
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);

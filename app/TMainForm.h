@@ -123,11 +123,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet1;
 	TArrayBotButton *StartStopBtn;
 	TGroupBox *GroupBox1;
-	TIntegerLabeledEdit *mArrayCamServerPortE;
+	TIntegerLabeledEdit *ArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
 	TLabel *Label11;
 	TDBText *DBText7;
-	TPageControl *PageControl2;
+	TPageControl *MiscPageControl;
 	TTabSheet *TabSheet5;
 	TGroupBox *BlockInfoGB;
 	TGroupBox *CuttingGB;
@@ -325,6 +325,17 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *SlowReturnSpeedBtn;
 	TGroupBox *GroupBox9;
 	TArrayBotButton *UltraSlowReturnSpeedBtn;
+	TTimer *MouseClickTimer;
+	TTabSheet *RibbonSeparatorSheet;
+	TGroupBox *GroupBox10;
+	TLabel *winXLbl;
+	TLabel *winYLbl;
+	TIntegerLabeledEdit *ClickXE;
+	TIntegerLabeledEdit *ClickYE;
+	TButton *TestClickWindowBtn;
+	TPanel *Panel12;
+	TSTDStringLabeledEdit *WinCaptionE;
+	TLabel *WindowCheckLbl;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -335,7 +346,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall PageControl1Change(TObject *Sender);
+	void __fastcall PageControlChange(TObject *Sender);
 	void __fastcall mStartupTimerTimer(TObject *Sender);
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
@@ -392,6 +403,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall MediaPageControlChange(TObject *Sender);
 	void __fastcall SyncWhiskerCBClick(TObject *Sender);
+	void __fastcall TestClickWindowBtnClick(TObject *Sender);
+	void __fastcall PageControlExit(TObject *Sender);
+	void __fastcall MouseClickTimerTimer(TObject *Sender);
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -540,6 +554,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
 		void            						populateMedia();
 
+
     //=================================================================================================
     public:
 
@@ -564,6 +579,7 @@ class PACKAGE TMainForm  : public TRegistryForm
         void									setLEDIntensity(int intensity);
         void		__fastcall 					checkSyncWhiskerCB();
         void		__fastcall 					unCheckSyncWhiskerCB();
+        void __fastcall							fireRibbonSeparator();
 
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);

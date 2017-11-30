@@ -128,7 +128,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mServiceCamera1.onCameraOpen 			= onCameraOpen;
     mServiceCamera1.onCameraClose 			= onCameraClose;
 
-    //Update UI controls
+    /******** Update UI controls *************/
+    //Todo, put these in a container and call update in a loop
+
     MainContentPanel->Width = mMainContentPanelWidth;
 	mCountToE->update();
     mPresetFeedRateE->update();
@@ -141,13 +143,16 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mStageMoveDelayE->update();
 	mZeroCutsE->update();
 	mUC7ComportCB->ItemIndex = mUC7COMPort - 1;
-	mArrayCamServerPortE->update();
+	ArrayCamServerPortE->update();
     MaxStagePosFrame->setValue(mKnifeStageMaxPos.getValue());
     BackOffStepFrame->setValue(mKnifeStageJogStep.getValue());
     ResumeDeltaDistanceFrame->setValue(mKnifeStageResumeDelta.getValue());
     mUC7.setKnifeStageResumeDelta(mKnifeStageResumeDelta.getValue());
     mUC7.setKnifeStageJogStepPreset(mKnifeStageJogStep.getValue());
     MediaFolderE->update();
+	WinCaptionE->update();
+    ClickXE->update();
+    ClickYE->update();
 
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
@@ -180,12 +185,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 __fastcall TMainForm::~TMainForm()
 {}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::PageControl1Change(TObject *Sender)
-{
-	//Check if we need any processing as a tab changes
-}
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
@@ -599,4 +598,65 @@ void __fastcall TMainForm::SyncWhiskerCBClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::TestClickWindowBtnClick(TObject *Sender)
+{
+    clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PageControlChange(TObject *Sender)
+{
+	//Check if we need any processing as a tab changes
+	TPageControl* pc = dynamic_cast<TPageControl*>(Sender);
+
+    if(pc == MiscPageControl)
+    {
+    	MouseClickTimer->Enabled = (pc->TabIndex == 4) ? true : false;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PageControlExit(TObject *Sender)
+{
+	//Check if we need any processing as a tab changes
+	TPageControl* pc = dynamic_cast<TPageControl*>(Sender);
+
+    if(pc == MiscPageControl)
+    {
+       	MouseClickTimer->Enabled = false;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::MouseClickTimerTimer(TObject *Sender)
+{
+    HWND hwnd = FindWindow(0, WinCaptionE->getValue().c_str() );
+    if(hwnd)
+    {
+    	WindowCheckLbl->Caption = "Found window";
+    	enableDisableGroupBox(GroupBox10, true);
+	    POINT p;
+		if (GetCursorPos(&p))
+        {
+        	if (::ScreenToClient(hwnd, &p))
+			{
+			    //p.x and p.y are now relative to hwnd's client area
+		        winXLbl->Caption = "X = " + IntToStr((int) p.x);
+		        winYLbl->Caption = "Y = " + IntToStr((int) p.y);
+			}
+        }
+    }
+    else
+    {
+    	enableDisableGroupBox(GroupBox10, false);
+    	WindowCheckLbl->Caption = "No such Window";
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall	TMainForm::fireRibbonSeparator()
+{
+	Log(lInfo) << "Firing the ribbon separator";
+    clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
+}

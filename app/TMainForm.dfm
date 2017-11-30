@@ -62,14 +62,10 @@ object MainForm: TMainForm
         Align = alClient
         MultiLine = True
         TabOrder = 0
-        OnChange = PageControl1Change
+        OnChange = PageControlChange
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -560,10 +556,6 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Blocks and Ribbons'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BlocksAndRibbonsPC: TPageControl
             Left = 0
             Top = 0
@@ -989,10 +981,6 @@ object MainForm: TMainForm
         object TabSheet12: TTabSheet
           Caption = 'Videos && Images'
           ImageIndex = 8
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox6: TGroupBox
             Left = 0
             Top = 0
@@ -1135,10 +1123,6 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -1336,10 +1320,6 @@ object MainForm: TMainForm
         object TabSheet6: TTabSheet
           Caption = 'Barcode Reader'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BarCodeGB: TGroupBox
             Left = 0
             Top = 0
@@ -1631,11 +1611,7 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Miscellaneous'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
-          object PageControl2: TPageControl
+          object MiscPageControl: TPageControl
             Left = 0
             Top = 0
             Width = 806
@@ -1643,13 +1619,11 @@ object MainForm: TMainForm
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
+            OnChange = PageControlChange
+            OnExit = PageControlExit
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1678,7 +1652,7 @@ object MainForm: TMainForm
                   Height = 19
                   Caption = 'Number of Clients:'
                 end
-                object mArrayCamServerPortE: TIntegerLabeledEdit
+                object ArrayCamServerPortE: TIntegerLabeledEdit
                   Left = 16
                   Top = 56
                   Width = 153
@@ -1793,18 +1767,18 @@ object MainForm: TMainForm
                 object GBS: TGroupBox
                   Left = 0
                   Top = 0
-                  Width = 509
+                  Width = 798
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1815,9 +1789,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1847,7 +1818,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1915,6 +1886,96 @@ object MainForm: TMainForm
                     Width = 192
                     ExplicitWidth = 192
                   end
+                end
+              end
+            end
+            object RibbonSeparatorSheet: TTabSheet
+              Caption = 'Ribbon Separator'
+              ImageIndex = 4
+              ExplicitLeft = 8
+              ExplicitTop = 34
+              ExplicitWidth = 0
+              ExplicitHeight = 0
+              object GroupBox10: TGroupBox
+                Left = 0
+                Top = 73
+                Width = 798
+                Height = 128
+                Align = alTop
+                Caption = 'Window Mouse Clicker'
+                TabOrder = 0
+                object winXLbl: TLabel
+                  Left = 40
+                  Top = 40
+                  Width = 20
+                  Height = 19
+                  Caption = 'X: '
+                end
+                object winYLbl: TLabel
+                  Left = 40
+                  Top = 79
+                  Width = 21
+                  Height = 19
+                  Caption = 'Y: '
+                end
+                object ClickXE: TIntegerLabeledEdit
+                  Left = 168
+                  Top = 56
+                  Width = 121
+                  Height = 27
+                  EditLabel.Width = 47
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'Click X'
+                  TabOrder = 0
+                  Text = '0'
+                end
+                object ClickYE: TIntegerLabeledEdit
+                  Left = 328
+                  Top = 56
+                  Width = 121
+                  Height = 27
+                  EditLabel.Width = 48
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'Click Y'
+                  TabOrder = 1
+                  Text = '0'
+                end
+                object TestClickWindowBtn: TButton
+                  Left = 496
+                  Top = 38
+                  Width = 105
+                  Height = 64
+                  Caption = 'Click'
+                  TabOrder = 2
+                  OnClick = TestClickWindowBtnClick
+                end
+              end
+              object Panel12: TPanel
+                Left = 0
+                Top = 0
+                Width = 798
+                Height = 73
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 1
+                object WindowCheckLbl: TLabel
+                  Left = 304
+                  Top = 32
+                  Width = 120
+                  Height = 19
+                  Caption = 'WindowCheckLbl'
+                end
+                object WinCaptionE: TSTDStringLabeledEdit
+                  Left = 8
+                  Top = 36
+                  Width = 241
+                  Height = 27
+                  EditLabel.Width = 116
+                  EditLabel.Height = 19
+                  EditLabel.Caption = 'Window Caption'
+                  TabOrder = 0
+                  Text = 'ELLO'
+                  Value = 'ELLO'
                 end
               end
             end
@@ -2541,5 +2602,12 @@ object MainForm: TMainForm
     OnTimer = CleanupTimerTimer
     Left = 648
     Top = 264
+  end
+  object MouseClickTimer: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = MouseClickTimerTimer
+    Left = 1056
+    Top = 568
   end
 end

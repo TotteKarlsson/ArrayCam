@@ -1,18 +1,26 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "Unit1.h"
+#include "mtkVCLUtils.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TIntegerLabeledEdit"
+#pragma link "TSTDStringLabeledEdit"
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
+
+using namespace mtk;
+
+
+
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 
-void MouseClick(int x, int y);
 
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -23,66 +31,19 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shif
     }
 }
 
-
-
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-	HWND phwnd = GetForegroundWindow();
-
-    HWND ButtonHandle;
-    HWND hwnd;
-    if( (hwnd = FindWindow(0, L"ELLO")) )
-    {
-        ShowWindow(hwnd, SW_RESTORE);
-        RECT rect;
-        GetWindowRect(hwnd, &rect);
-        SetForegroundWindow(hwnd);
-        MouseClick(rect.left + ClickX->getValue(), rect.top + ClickY->getValue() + 30);
-        ShowWindow(hwnd, SW_SHOWMINIMIZED);
-
-    }
-	SetForegroundWindow(phwnd); // To activate previous window
-}
-
-
-void MouseClick(int x, int y)
-{
-    const double XSCALEFACTOR = 65535 / (GetSystemMetrics(SM_CXSCREEN) - 1);
-    const double YSCALEFACTOR = 65535 / (GetSystemMetrics(SM_CYSCREEN) - 1);
-
-    POINT cursorPos;
-    GetCursorPos(&cursorPos);
-
-    double cx = cursorPos.x * XSCALEFACTOR;
-    double cy = cursorPos.y * YSCALEFACTOR;
-
-    double nx = x * XSCALEFACTOR;
-    double ny = y * YSCALEFACTOR;
-
-    INPUT Input={0};
-    Input.type = INPUT_MOUSE;
-
-    Input.mi.dx = (LONG)nx;
-    Input.mi.dy = (LONG)ny;
-
-    Input.mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP;
-    SendInput(1,&Input,sizeof(INPUT));
-
-    Input.mi.dx = (LONG)cx;
-    Input.mi.dy = (LONG)cy;
-
-    Input.mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE;
-	Sleep(100);
-    SendInput(1,&Input,sizeof(INPUT));
+    clickOnWindow(WinCaption->getValue(), ClickX->getValue(), ClickY->getValue());
 }
 
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-    HWND hwnd;
-    if( (hwnd = FindWindow(0, L"ELLO")) )
+    HWND hwnd = FindWindow(0, wstr(WinCaption->getValue()).c_str() );
+    if(hwnd)
     {
+    	enableDisableGroupBox(GroupBox1, true);
 	    POINT p;
 		if (GetCursorPos(&p))
         {
@@ -94,12 +55,17 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 			}
         }
     }
+    else
+    {
+    	enableDisableGroupBox(GroupBox1, false);
+    }
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 void __fastcall TForm1::FormShow(TObject *Sender)
 {
 	Timer1->Enabled = true;
 }
-//---------------------------------------------------------------------------
+
+
 

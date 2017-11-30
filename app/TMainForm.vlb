@@ -238,12 +238,6 @@ Coordinates=1314,701,56,51
 [TabSheet5]
 Coordinates=1523,1405,66,33
 
-[PageControl2]
-Coordinates=1523,1509,81,33
-
-[mArrayCamServerPortE]
-Coordinates=194,1184,132,51
-
 [atdbDM.ribbonsOnCoverSlipsDS]
 Coordinates=751,639,175,51
 
@@ -588,4 +582,10 @@ Coordinates=1133,351,143,51
 
 [SectionCounterLabel]
 Coordinates=1133,1035,127,51
+
+[MiscPageControl]
+Coordinates=1523,1509,81,33
+
+[ArrayCamServerPortE]
+Coordinates=194,1184,132,51
 

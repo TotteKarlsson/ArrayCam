@@ -306,7 +306,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
         	TThread::Synchronize(NULL, mMainForm.DecodeSessionBtn->Click);
         }
     }
-
+    /*******    UC7 REQUESTS  *******/
     else if(compareStrings(ap[acrStartUC7], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Starting UC7";
@@ -344,6 +344,13 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     {
     	Log(lInfo) << "Setting Move Whisker forward CB";
         TThread::Synchronize(NULL, mMainForm.unCheckSyncWhiskerCB);
+    }
+
+    /* Set off ribbon separator */
+    else if(compareStrings(ap[acrTriggerRibbonSeparator], msgList[0], csCaseInsensitive))
+    {
+    	Log(lInfo) << "Setting off ribbon separator";
+        TThread::Synchronize(NULL, mMainForm.fireRibbonSeparator);
     }
 
     else if(compareStrings("GET_SERVER_STATUS", msgList[0], csCaseInsensitive))

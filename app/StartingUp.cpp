@@ -45,7 +45,7 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	    "PRESET_FEED_RATE",               	100));
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageJogStep.setup(	    				"KNIFE_STAGE_JOG_SIZE",          	100));
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageResumeDelta.setup(	    			"KNIFE_STAGE_RESUME_DELTA",        	0));
-	mGeneralProperties.add((BaseProperty*)  &mArrayCamServerPortE->getProperty()->setup(	"ARRAYCAM_SERVER_PORT",          	50001));
+	mGeneralProperties.add((BaseProperty*)  &ArrayCamServerPortE->getProperty()->setup(		"ARRAYCAM_SERVER_PORT",          	50001));
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageMaxPos.setup(						"KNIFE_STAGE_MAX_POSITION",        	0));
 	mGeneralProperties.add((BaseProperty*)  &PresetReturnSpeedE->getProperty()->setup(	    "PRESET_RETURN_SPEED",             	10));
 	mGeneralProperties.add((BaseProperty*)  &SlowReturnSpeedE->getProperty()->setup(	    "SLOW_RETURN_SPEED",             	10));
@@ -62,6 +62,12 @@ void TMainForm::setupProperties()
 	mSoundProperties.add((BaseProperty*)  &mKnifeAfterCuttingSound.setup( 	           		"KNIFE_AFTER_CUTTING_SOUND",        ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mArmRetractingSound.setup( 	           			"ARM_RETRACTING_SOUND",       		ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mBeforeKnifeBackOffSound.setup( 	           		"BEFORE_KNIFE_BACKOFF_SOUND",       ApplicationSound("SHORT_BEEP_1")));
+
+    //MISC
+    mGeneralProperties.add((BaseProperty*)  &WinCaptionE->getProperty()->setup(   			"CLICK_WINDOW_CAPTION",            	""));
+    mGeneralProperties.add((BaseProperty*)  &ClickXE->getProperty()->setup(   				"CLICK_WINDOW_X",            		0));
+    mGeneralProperties.add((BaseProperty*)  &ClickYE->getProperty()->setup(   				"CLICK_WINDOW_Y",           	 	0));
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
@@ -87,7 +93,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	CheckArduinoServerConnectionTimer->Enabled = true;
 
     //Setup the server
-    mACServer.start(mArrayCamServerPortE->getValue());
+    mACServer.start(ArrayCamServerPortE->getValue());
 
     //Populate misc frames
 	TSoundsFrame1->populate();
