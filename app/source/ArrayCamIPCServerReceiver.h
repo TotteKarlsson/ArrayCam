@@ -1,5 +1,5 @@
-#ifndef abArduinoIPCServerReceiverH
-#define abArduinoIPCServerReceiverH
+#ifndef atArduinoIPCServerReceiverH
+#define atArduinoIPCServerReceiverH
 #include "mtkIPCReceiver.h"
 #include "mtkIPCServer.h"
 //---------------------------------------------------------------------------
