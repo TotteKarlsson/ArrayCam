@@ -63,17 +63,24 @@ object MainForm: TMainForm
         Left = 1
         Top = 1
         Width = 238
-        Height = 321
+        Height = 285
         Align = alTop
         AutoSize = True
         TabOrder = 0
-        ExplicitLeft = 168
-        ExplicitTop = 216
-        inherited GroupBox1: TGroupBox
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 238
+        inherited SettingsGB: TGroupBox
           Width = 238
-          inherited StartStreamerBtn: TArrayBotButton
-            Caption = 'Start Streamer'
-          end
+          ExplicitWidth = 238
+        end
+        inherited StartStreamerBtn: TArrayBotButton
+          Width = 238
+          ExplicitWidth = 238
+        end
+        inherited StartRecordingBtn: TArrayBotButton
+          Width = 238
+          ExplicitWidth = 238
         end
       end
     end

@@ -7,6 +7,7 @@
 #pragma package(smart_init)
 #pragma link "AXVLC_OCX"
 #pragma link "THDMIStreamerFrame"
+#pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 
 using namespace mtk;
@@ -119,5 +120,6 @@ void __fastcall TMainForm::ShutDownTimerTimer(TObject *Sender)
 
     Close();
 }
+
 
 

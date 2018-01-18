@@ -118,8 +118,8 @@
             <DependentOn>P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.dfm"/>
+        <FormResources Include="TMainForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -13,6 +13,7 @@
 #include "mtkLogFileReader.h"
 #include "mtkLogLevel.h"
 #include "THDMIStreamerFrame.h"
+#include "TArrayBotBtn.h"
 
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
@@ -35,7 +36,6 @@ __published:	// IDE-managed Components
 	void __fastcall VLCPlugin21MediaPlayerTimeChanged(TObject *Sender, long cache);
 	void __fastcall ShutDownTimerTimer(TObject *Sender);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
-
 
 private:	// User declarations
     LogFileReader                           mLogFileReader;
