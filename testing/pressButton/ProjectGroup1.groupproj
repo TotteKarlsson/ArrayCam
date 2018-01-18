@@ -3,9 +3,6 @@
         <ProjectGuid>{A793611D-5233-4261-803C-E86B832119CA}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="P:\libs\dsl\Common\mtkCommon.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Project1.cbproj">
             <Dependencies/>
         </Projects>
@@ -17,15 +14,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="mtkCommon">
-        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj"/>
-    </Target>
-    <Target Name="mtkCommon:Clean">
-        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="mtkCommon:Make">
-        <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Project1">
         <MSBuild Projects="Project1.cbproj"/>
     </Target>
@@ -36,13 +24,13 @@
         <MSBuild Projects="Project1.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkCommon;Project1"/>
+        <CallTarget Targets="Project1"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkCommon:Clean;Project1:Clean"/>
+        <CallTarget Targets="Project1:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkCommon:Make;Project1:Make"/>
+        <CallTarget Targets="Project1:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

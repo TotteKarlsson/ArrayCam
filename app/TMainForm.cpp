@@ -662,3 +662,4 @@ void __fastcall	TMainForm::fireRibbonSeparator()
 
    	mACServer.broadcast(acrRibbonSeparatorTriggered);
 }
+

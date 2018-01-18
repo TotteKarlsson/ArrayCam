@@ -107,7 +107,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <LinkPackageStatics>atVCLCore.lib;ArrayCamPackage.lib;DuneForms.lib;DbxDevartPostgreSQLDriver170.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
-        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dsl\Common\;P:\libs\dsl\VCL\Components\;P:\libs\dsl\Common\Math\;P:\libs\dsl\Common\IPC\;P:\libs\dsl\VCL\Forms\;P:\libs\dsl\VCL\Common\;P:\libs\atapi\source\barcodereader\;P:\libs\atapi\source\;P:\libs\atapi\source\serial\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\resources\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dsl\Common\;P:\libs\dsl\VCL\Components\;P:\libs\dsl\Common\Math\;P:\libs\dsl\Common\IPC\;P:\libs\dsl\VCL\Forms\;P:\libs\dsl\VCL\Common\;P:\libs\atapi\source\barcodereader\;P:\libs\atapi\source\;P:\libs\atapi\source\serial\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\resources\;P:\libs\atapi\source\database\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
         <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(AT_ROOT)\source\vcl\frames;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -259,8 +259,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -334,6 +334,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
@@ -345,14 +348,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteName>ArrayCam.tds</RemoteName>
                     </Platform>
                 </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice">

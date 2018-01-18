@@ -31,7 +31,7 @@ string     	gLogFileName                = gAppName + ".log";
 string 	   	gApplicationRegistryRoot  	= "\\Software\\Allen Institute\\array_cam\\0.5.0";
 string 	   	gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
 string      gRestartMutexName           = gAppName + "RestartMutex";
-HWND                gOtherAppWindow             = NULL;
+HWND        gOtherAppWindow             = NULL;
 bool       	gAppIsStartingUp            = true;
 bool       	gAppIsClosing	            = false;
 
@@ -49,7 +49,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		setupLogging();
 		TStyleManager::TrySetStyle("Obsidian");
-
 
    		// Initialize restart code
 		// Check if this instance is restarted and

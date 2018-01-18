@@ -18,14 +18,12 @@ using namespace mtk;
 __fastcall TFFMPEGFrame::TFFMPEGFrame(TComponent* Owner)
 	: TFrame(Owner),
     mH264Preset("medium")
-{
-}
+{}
 
 //---------------------------------------------------------------------------
 string TFFMPEGFrame::getOutFileArguments()
 {
 	stringstream s;
-//    s << "-vcodec libx265";
     s << "-vcodec libx264";
     s << " -crf " <<CRFValue->getValue();
 	s << " -threads " << FFMPEGThreads->getValue();

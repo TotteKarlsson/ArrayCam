@@ -189,10 +189,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>source\ArrayCamUtils.h</DependentOn>
             <BuildOrder>29</BuildOrder>
         </CppCompile>
-        <CppCompile Include="source\atVideoCompressorThread.cpp">
-            <DependentOn>source\atVideoCompressorThread.h</DependentOn>
-            <BuildOrder>30</BuildOrder>
-        </CppCompile>
         <CppCompile Include="source\ConnectToArduinoServerThread.cpp">
             <DependentOn>source\ConnectToArduinoServerThread.h</DependentOn>
             <BuildOrder>27</BuildOrder>
