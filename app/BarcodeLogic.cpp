@@ -13,7 +13,7 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 {
 	//Check that we have a valid barcode for the coverslip
     //Block Label
-    System::Variant lbl = pgDM->blocksCDS->FieldByName("label")->Value;
+    System::Variant lbl = pgDM->allBlocksCDS->FieldByName("label")->Value;
     if(mBCLabel->Caption == "" || lbl.IsNull())
     {
     	MessageDlg("A valid coverslip barcode and a valid block is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);

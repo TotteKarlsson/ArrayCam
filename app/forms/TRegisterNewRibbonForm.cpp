@@ -115,18 +115,14 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
     vector<string> lines(stdlines(mRibbonNoteMemo->Lines));
 
     StringList m(lines);
-    q <<"INSERT INTO notes (created_by, note) VALUES ("<<uID<<", '"<<m.asString('\n')<<"')";
+    q <<"INSERT INTO notes (created_by, note) VALUES (:userID, :theNote) RETURNING id";
     tq->SQL->Add(q.str().c_str());
+	tq->Params->ParamByName("userID")->AsInteger = uID;
+    tq->Params->ParamByName("theNote")->AsString = m.asString('\n').c_str();
 
-    tq->ExecSQL();
-    tq->Close();
-    tq->SQL->Clear();
-    q.str("");
 
-    q << "SELECT LAST_INSERT_ID() AS li";
-    tq->SQL->Add(q.str().c_str());
     tq->Open();
-    int noteID = tq->FieldByName("li")->AsInteger;
+    int noteID = tq->FieldByName("id")->AsInteger;
     tq->Close();
     tq->SQL->Clear();
 
@@ -179,12 +175,15 @@ void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
     pgDM->ribbonsCDS->First();
     pgDM->ribbonsCDS->Insert();
     pgDM->ribbonsCDS->Edit();
-    pgDM->ribbonsCDS->FieldByName("created_by")->Value 		= pgDM->usersCDS->FieldByName("id")->Value;
     pgDM->ribbonsCDS->FieldByName("id")->Value 				= getUUID().c_str();
-    pgDM->ribbonsCDS->FieldByName("block_id")->Value 		= pgDM->blocksCDS->FieldByName("id")->Value;
-    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value 	= mMainForm.mUC7.getLastNumberOfSections();
+    pgDM->ribbonsCDS->FieldByName("status")->Value   		= 1;
+    pgDM->ribbonsCDS->FieldByName("block_id")->Value 		= pgDM->allBlocksCDS->FieldByName("id")->Value;
     pgDM->ribbonsCDS->FieldByName("cutting_order")->Value  	= mMainForm.RibbonOrderCountLabel->Caption.ToInt();
+    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value 	= mMainForm.mUC7.getLastNumberOfSections();
+
+    pgDM->ribbonsCDS->FieldByName("created_by")->Value 		= pgDM->usersCDS->FieldByName("id")->Value;
     pgDM->ribbonsCDS->FieldByName("coverslip_id")->Value   	= extractCoverSlipID(mBarCode);
+    pgDM->ribbonsCDS->FieldByName("knife_id")->Value   		= -1;
 }
 
 

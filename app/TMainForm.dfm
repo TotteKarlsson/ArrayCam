@@ -568,7 +568,7 @@ object MainForm: TMainForm
               Caption = 'Select Block'
               object BlockNotesGB: TGroupBox
                 Left = 0
-                Top = 209
+                Top = 121
                 Width = 798
                 Height = 216
                 Align = alTop
@@ -578,6 +578,7 @@ object MainForm: TMainForm
                 Padding.Right = 5
                 Padding.Bottom = 5
                 TabOrder = 0
+                ExplicitTop = 209
                 object Panel4: TPanel
                   Left = 206
                   Top = 26
@@ -655,69 +656,44 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 0
                 Width = 798
-                Height = 209
+                Height = 121
                 Align = alTop
                 TabOrder = 1
                 object BlockSelectionGB: TGroupBox
                   Left = 1
                   Top = 1
                   Width = 796
-                  Height = 207
+                  Height = 119
                   Align = alClient
                   Caption = 'DB/Block Selection'
                   TabOrder = 0
+                  ExplicitHeight = 207
                   object Panel2: TPanel
                     Left = 2
                     Top = 21
                     Width = 575
-                    Height = 184
+                    Height = 96
                     Align = alLeft
                     BevelOuter = bvNone
                     TabOrder = 0
-                    object Label1: TLabel
-                      Left = 13
-                      Top = 94
-                      Width = 60
-                      Height = 19
-                      Caption = 'Slice ID:'
-                    end
+                    ExplicitLeft = 3
+                    ExplicitTop = 18
+                    ExplicitHeight = 184
                     object Label3: TLabel
-                      Left = 13
-                      Top = 128
+                      Left = 141
+                      Top = 16
                       Width = 65
                       Height = 19
                       Caption = 'Block ID:'
                     end
-                    object Label5: TLabel
-                      Left = 13
-                      Top = 61
-                      Width = 96
-                      Height = 19
-                      Caption = 'Specimen ID:'
-                    end
-                    object Label10: TLabel
-                      Left = 290
-                      Top = 59
-                      Width = 78
-                      Height = 19
-                      Caption = 'Animal ID:'
-                    end
-                    object DBText2: TDBText
-                      Left = 374
-                      Top = 59
-                      Width = 65
-                      Height = 17
-                      DataField = 'animal_id'
-                      DataSource = pgDM.specimenDataSource
-                    end
                     object BlockIDCB: TDBLookupComboBox
-                      Left = 136
-                      Top = 120
+                      Left = 212
+                      Top = 16
                       Width = 135
                       Height = 27
                       KeyField = 'id'
                       ListField = 'id'
-                      ListSource = pgDM.blocksDataSource
+                      ListSource = pgDM.allBlocksDataSource
                       TabOrder = 0
                       OnCloseUp = DB_CBCloseUp
                     end
@@ -732,44 +708,24 @@ object MainForm: TMainForm
                       TabOrder = 1
                       OnCloseUp = mUsersCBCloseUp
                     end
-                    object SliceIDCB: TDBLookupComboBox
-                      Left = 136
-                      Top = 86
-                      Width = 135
-                      Height = 27
-                      KeyField = 'id'
-                      ListField = 'id'
-                      ListSource = pgDM.slicesDataSource
-                      TabOrder = 2
-                      OnCloseUp = DB_CBCloseUp
-                    end
-                    object SpecimenIDCB: TDBLookupComboBox
-                      Left = 136
-                      Top = 53
-                      Width = 135
-                      Height = 27
-                      KeyField = 'id'
-                      ListField = 'id'
-                      ListSource = pgDM.specimenDataSource
-                      TabOrder = 3
-                      OnCloseUp = DB_CBCloseUp
-                    end
                   end
                 end
               end
               object RibbonsDataGB: TGroupBox
                 Left = 0
-                Top = 425
+                Top = 337
                 Width = 798
-                Height = 360
+                Height = 448
                 Align = alClient
                 Caption = 'Ribbons'
                 TabOrder = 2
+                ExplicitTop = 425
+                ExplicitHeight = 360
                 object DBGrid1: TDBGrid
                   Left = 2
                   Top = 21
                   Width = 794
-                  Height = 171
+                  Height = 259
                   Align = alClient
                   DataSource = pgDM.ribbonsDSource
                   Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -807,12 +763,13 @@ object MainForm: TMainForm
                 end
                 object GroupBox3: TGroupBox
                   Left = 2
-                  Top = 192
+                  Top = 280
                   Width = 794
                   Height = 166
                   Align = alBottom
                   Caption = 'Ribbon Notes'
                   TabOrder = 1
+                  ExplicitTop = 192
                   object Panel6: TPanel
                     Left = 2
                     Top = 21
@@ -1770,7 +1727,7 @@ object MainForm: TMainForm
                     Width = 247
                     Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -2042,7 +1999,6 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitHeight = 755
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -2129,8 +2085,6 @@ object MainForm: TMainForm
         Align = alTop
         AutoSize = True
         TabOrder = 1
-        ExplicitLeft = 1
-        ExplicitTop = 1
       end
     end
   end

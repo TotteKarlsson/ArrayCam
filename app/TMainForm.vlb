@@ -311,7 +311,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1314,1121,99,51
+Coordinates=309,141,56,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
@@ -337,17 +337,11 @@ Coordinates=793,281,68,51
 [ControlBar1]
 Coordinates=904,590,73,33
 
-[DBText2]
-Coordinates=309,141,56,51
-
 [BackOffStepFrame]
 Coordinates=795,590,107,33
 
 [Panel2]
 Coordinates=126,195,47,51
-
-[Label1]
-Coordinates=203,373,46,51
 
 [TabSheet3]
 Coordinates=677,590,66,33
@@ -396,9 +390,6 @@ Coordinates=309,1,76,51
 
 [SoundPropsGB]
 Coordinates=793,71,91,51
-
-[SpecimenIDCB]
-Coordinates=1161,525,88,33
 
 [BlockIDCB]
 Coordinates=1161,631,67,33
@@ -463,14 +454,8 @@ Coordinates=1314,1,151,33
 [NavitarControllerConnectBtn]
 Coordinates=0,0,156,51
 
-[Label5]
-Coordinates=744,462,46,51
-
 [BlockNotesGB]
 Coordinates=137,284,86,51
-
-[SliceIDCB]
-Coordinates=1344,211,63,33
 
 [Panel5]
 Coordinates=154,373,47,51
@@ -489,9 +474,6 @@ Coordinates=793,1,152,51
 
 [RibbonsDataGB]
 Coordinates=793,351,93,51
-
-[Label10]
-Coordinates=252,373,52,51
 
 [Label2]
 Coordinates=360,373,46,51

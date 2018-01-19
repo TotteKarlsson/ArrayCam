@@ -265,33 +265,33 @@ void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
 {
-	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
-    if(b == SpecimenIDCB)
-    {
-       	if(!b->KeyValue.IsNull())
-		{
-            mSpecimenID.setValue(b->KeyValue);
-            pgDM->blocksCDS->Active = false;
-            pgDM->blockNotesCDS->Active = false;
-        }
-    }
-    else if(b == SliceIDCB)
-    {
-    	if(!b->KeyValue.IsNull())
-		{
-            mSliceID.setValue(b->KeyValue);
-            pgDM->blockNotesCDS->Active = false;
-            pgDM->blocksCDS->Active = true;
-        }
-    }
-    else if(b == BlockIDCB )
-    {
-    	if(!b->KeyValue.IsNull())
-		{
-        	mBlockID.setValue(b->KeyValue);
-        	pgDM->blockNotesCDS->Active = true;
-        }
-    }
+//	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
+//    if(b == SpecimenIDCB)
+//    {
+//       	if(!b->KeyValue.IsNull())
+//		{
+//            mSpecimenID.setValue(b->KeyValue);
+//            pgDM->blocksCDS->Active = false;
+//            pgDM->blockNotesCDS->Active = false;
+//        }
+//    }
+//    else if(b == SliceIDCB)
+//    {
+//    	if(!b->KeyValue.IsNull())
+//		{
+//            mSliceID.setValue(b->KeyValue);
+//            pgDM->blockNotesCDS->Active = false;
+//            pgDM->blocksCDS->Active = true;
+//        }
+//    }
+//    else if(b == BlockIDCB )
+//    {
+//    	if(!b->KeyValue.IsNull())
+//		{
+//        	mBlockID.setValue(b->KeyValue);
+//        	pgDM->blockNotesCDS->Active = true;
+//        }
+//    }
 }
 
 //---------------------------------------------------------------------------
@@ -662,4 +662,5 @@ void __fastcall	TMainForm::fireRibbonSeparator()
 
    	mACServer.broadcast(acrRibbonSeparatorTriggered);
 }
+
 

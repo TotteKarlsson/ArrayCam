@@ -244,14 +244,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *TabSheet7;
 	TGroupBox *BlockSelectionGB;
 	TPanel *Panel2;
-	TLabel *Label1;
 	TLabel *Label3;
-	TLabel *Label5;
-	TLabel *Label10;
 	TDBLookupComboBox *BlockIDCB;
 	TDBLookupComboBox *mUsersCB;
-	TDBLookupComboBox *SliceIDCB;
-	TDBLookupComboBox *SpecimenIDCB;
 	TGroupBox *RibbonsDataGB;
 	TDBGrid *DBGrid1;
 	TGroupBox *BlockNotesGB;
@@ -261,7 +256,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel5;
 	TDBNavigator *mBlockNoteNavigator;
 	TDBGrid *mBlockNotesGrid;
-	TDBText *DBText2;
 	TGroupBox *GroupBox3;
 	TPanel *Panel6;
 	TDBGrid *mRibbonNotesGrid;
