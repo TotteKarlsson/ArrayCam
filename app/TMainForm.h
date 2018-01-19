@@ -118,18 +118,14 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TTabSheet *Main;
 	TGroupBox *RibbonRegistrationGB;
 	TButton *DecodeSessionBtn;
-	TArrayBotButton *RegisterRibbonBtn;
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
 	TArrayBotButton *StartStopBtn;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *ArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
-	TLabel *Label11;
-	TDBText *DBText7;
 	TPageControl *MiscPageControl;
 	TTabSheet *TabSheet5;
-	TGroupBox *BlockInfoGB;
 	TGroupBox *CuttingGB;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
 	TGroupBox *UC7OperationGB;
@@ -195,7 +191,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TNavitarMotorFrame *TNavitarMotorFrame1;
 	TPanel *Panel8;
 	TNavitarMotorFrame *TNavitarMotorFrame2;
-	TStatusBar *StatusBar1;
 	TMainMenu *MainMenu1;
 	TMenuItem *File1;
 	TMenuItem *Misc1;
@@ -227,7 +222,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *OpenLoggerForm1;
 	TAction *OpenCloseShortcutForm;
 	TMenuItem *Actions1;
-	TArrayBotButton *ArrayBotButton2;
 	TToolBar *ToolBar1;
 	TBindingsList *BindingsList2;
 	TButton *Button1;
@@ -243,19 +237,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label2;
 	TTabSheet *TabSheet7;
 	TGroupBox *BlockSelectionGB;
-	TPanel *Panel2;
 	TLabel *Label3;
 	TDBLookupComboBox *BlockIDCB;
 	TDBLookupComboBox *mUsersCB;
 	TGroupBox *RibbonsDataGB;
 	TDBGrid *DBGrid1;
-	TGroupBox *BlockNotesGB;
-	TPanel *Panel4;
-	TDBMemo *mBlockNoteMemo;
-	TDBNavigator *DBNavigator2;
-	TPanel *Panel5;
-	TDBNavigator *mBlockNoteNavigator;
-	TDBGrid *mBlockNotesGrid;
 	TGroupBox *GroupBox3;
 	TPanel *Panel6;
 	TDBGrid *mRibbonNotesGrid;
@@ -263,7 +249,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel7;
 	TDBMemo *mRibbonNoteMemo;
 	TDBNavigator *mRibbonNoteNavigator;
-	TArrayBotButton *ArrayBotButton1;
 	TMenuItem *N6;
 	TMenuItem *Hide1;
 	TAction *ToggleControlBar;
@@ -300,8 +285,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label16;
 	TLabel *Label17;
 	TLabel *Label18;
-	TGroupBox *GroupBox5;
-	TFloatLabeledEdit *BlockFaceHeight;
 	TPageControl *BlocksAndRibbonsPC;
 	TTabSheet *TabSheet2;
 	TTabSheet *TabSheet16;
@@ -330,6 +313,16 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel12;
 	TSTDStringLabeledEdit *WinCaptionE;
 	TLabel *WindowCheckLbl;
+	TDBLookupComboBox *DBLookupComboBox1;
+	TLabel *Label1;
+	TLabel *Label5;
+	TButton *Button2;
+	TButton *Button3;
+	TArrayBotButton *RegisterRibbonBtn;
+	TGroupBox *GroupBox5;
+	TFloatLabeledEdit *BlockFaceHeight;
+	TDBText *DBText7;
+	TLabel *Label11;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -537,7 +530,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void __fastcall                         onSSITimeout(TMessage& Msg);
 		void __fastcall                         onSSICapabilities(TMessage& Msg);
 
-		TStatusBarManager						mSBManager;
         THandWheelPositionForm* 				mHandWheelPositionForm;
 
 		TLoggerForm*							LoggerForm;

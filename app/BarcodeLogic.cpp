@@ -86,9 +86,6 @@ void __fastcall TMainForm::onConnectedToZebra()
     enableDisableGroupBox(mImagerSettingsGB, true);
 	Log(lInfo) << "Connected to a Zebra barcode scanner";
     mZebra.scanDisable();
-   	TStatusPanel* p = mSBManager.getPanel(sbpBarcodeReader);
-    p->Text = "BarcodeScanner: Connected";
-
 }
 
 //---------------------------------------------------------------------------
@@ -97,9 +94,6 @@ void __fastcall TMainForm::onDisConnectedToZebra()
     mConnectZebraBtn->Caption = "Open";
     enableDisableGroupBox(mImagerSettingsGB, false);
 	Log(lInfo) << "DisConnected from a Zebra barcode scanner";
-   	TStatusPanel* p = mSBManager.getPanel(sbpBarcodeReader);
-    p->Text = "BarcodeScanner: Not Connected";
-
 }
 
 //---------------------------------------------------------------------------

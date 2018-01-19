@@ -19,9 +19,6 @@ void TMainForm::onArduinoClientConnected()
     //Send message to update UI
     mLightsArduinoClient.getBoardStatus();
     enableDisableArduinoClientControls(true);
-
-  	TStatusPanel* p = mSBManager.getPanel(sbpArduinoConnection);
-    p->Text = "ArduinoServer: Connected";
 }
 
 //---------------------------------------------------------------------------
@@ -38,8 +35,6 @@ void TMainForm::onArduinoClientDisconnected()
         {
 			CheckArduinoServerConnectionTimer->Enabled = true;
         }
-  		TStatusPanel* p = mSBManager.getPanel(sbpArduinoConnection);
-	    p->Text = "ArduinoServer: Not Connected";
     }
 }
 

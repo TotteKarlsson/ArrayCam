@@ -145,9 +145,6 @@ Coordinates=531,1184,111,87
 [mUC7ComportCB]
 Coordinates=642,1345,101,87
 
-[Label11]
-Coordinates=964,985,52,51
-
 [TabSheet8]
 Coordinates=1523,833,66,33
 
@@ -232,9 +229,6 @@ Coordinates=222,1667,65,51
 [ScrollBox1]
 Coordinates=1523,1353,68,33
 
-[DBText7]
-Coordinates=1314,701,56,51
-
 [TabSheet5]
 Coordinates=1523,1405,66,33
 
@@ -311,19 +305,13 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=309,141,56,51
+Coordinates=645,462,97,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
 
-[RegisterRibbonBtn]
-Coordinates=964,1195,108,51
-
 [RibbonRegistrationGB]
 Coordinates=125,1184,125,51
-
-[BlockInfoGB]
-Coordinates=964,915,76,51
 
 [StartStopBtn]
 Coordinates=1314,1401,77,51
@@ -331,17 +319,11 @@ Coordinates=1314,1401,77,51
 [RepeatCB]
 Coordinates=423,71,95,51
 
-[StatusBar1]
-Coordinates=793,281,68,51
-
 [ControlBar1]
 Coordinates=904,590,73,33
 
 [BackOffStepFrame]
 Coordinates=795,590,107,33
-
-[Panel2]
-Coordinates=126,195,47,51
 
 [TabSheet3]
 Coordinates=677,590,66,33
@@ -354,9 +336,6 @@ Coordinates=626,71,129,51
 
 [Panel7]
 Coordinates=423,265,47,51
-
-[mBlockNoteNavigator]
-Coordinates=983,1,121,51
 
 [mUsersCB]
 Coordinates=173,590,66,33
@@ -400,9 +379,6 @@ Coordinates=1102,661,58,33
 [mAutoCheckConnectionCB]
 Coordinates=404,195,149,51
 
-[mBlockNoteMemo]
-Coordinates=697,661,104,33
-
 [GroupBox3]
 Coordinates=226,284,70,51
 
@@ -415,26 +391,14 @@ Coordinates=18,70,46,51
 [BlockSelectionGB]
 Coordinates=793,421,103,51
 
-[Panel4]
-Coordinates=596,462,47,51
-
 [ArduinoServerStartStopButton]
 Coordinates=423,1,165,51
 
 [Label15]
 Coordinates=364,284,52,51
 
-[DBNavigator2]
-Coordinates=537,373,82,51
-
-[ArrayBotButton2]
-Coordinates=626,281,97,51
-
 [TakeSnapShotBtn]
 Coordinates=626,211,103,51
-
-[ArrayBotButton1]
-Coordinates=645,462,97,51
 
 [VolumeTB]
 Coordinates=134,661,65,33
@@ -453,12 +417,6 @@ Coordinates=1314,1,151,33
 
 [NavitarControllerConnectBtn]
 Coordinates=0,0,156,51
-
-[BlockNotesGB]
-Coordinates=137,284,86,51
-
-[Panel5]
-Coordinates=154,373,47,51
 
 [PlayBtn]
 Coordinates=305,284,52,51
@@ -489,9 +447,6 @@ Coordinates=1503,157,153,33
 
 [DBGrid1]
 Coordinates=1048,732,56,33
-
-[mBlockNotesGrid]
-Coordinates=939,732,101,33
 
 [ToggleMainContentBtn]
 Coordinates=626,1,127,51

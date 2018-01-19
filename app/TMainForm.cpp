@@ -83,7 +83,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mKnifeAfterCuttingSound(ApplicationSound("")),
 		mArmRetractingSound(ApplicationSound("")),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
-        mSBManager(*StatusBar1),
         mHandWheelPositionForm(NULL),
         LoggerForm(NULL),
         ActionsForm(NULL)
@@ -168,17 +167,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
             break;
         }
     }
-
-    //Create statusbar panels
-    mSBManager.addPanel(120, sbpTemperature);
-    mSBManager.addPanel(120, sbpHumidity);
-    mSBManager.addPanel(120, sbpUC7Connection, 		"UC7: Not Connected");
-    mSBManager.addPanel(300, sbpHandWheelPosition, 	"Wheel Position: N/A");
-    mSBManager.addPanel(180, sbpArrayBotConnection,	"ArrayBot: Not Connected");
-    mSBManager.addPanel(150, sbpDBConnection, 		"MySQL Server: Not Connected");
-    mSBManager.addPanel(200, sbpNavitarController,	"Navitar Controller: Not Connected");
-    mSBManager.addPanel(220, sbpArduinoConnection,	"Arduino Server: Not Connected");
-    mSBManager.addPanel(200, sbpBarcodeReader, 		"BarcodeReader: Not Connected");
 
 	mReticle2.visible(false);
 }

@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  ActiveControl = BlocksAndRibbonsPC
+  ActiveControl = DecodeSessionBtn
   Caption = 'Array Cam 0.5'
   ClientHeight = 963
   ClientWidth = 1817
@@ -27,7 +27,7 @@ object MainForm: TMainForm
   object Splitter2: TSplitter
     Left = 965
     Top = 84
-    Height = 857
+    Height = 879
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
@@ -37,7 +37,7 @@ object MainForm: TMainForm
     Left = 968
     Top = 84
     Width = 818
-    Height = 857
+    Height = 879
     Align = alRight
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
@@ -46,19 +46,19 @@ object MainForm: TMainForm
       Left = 1
       Top = 1
       Width = 816
-      Height = 855
+      Height = 877
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 0
       DesignSize = (
         816
-        855)
+        877)
       object PageControl1: TPageControl
         Left = 1
         Top = 1
         Width = 814
-        Height = 853
-        ActivePage = TabSheet7
+        Height = 875
+        ActivePage = Main
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -70,24 +70,25 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 819
+            Height = 841
             Align = alClient
             TabOrder = 0
             object Panel9: TPanel
               Left = 0
               Top = 0
               Width = 802
-              Height = 815
+              Height = 837
               Align = alClient
               TabOrder = 0
               object RibbonRegistrationGB: TGroupBox
                 Left = 1
-                Top = 606
+                Top = 698
                 Width = 800
                 Height = 138
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
+                ExplicitTop = 628
                 DesignSize = (
                   800
                   138)
@@ -116,37 +117,6 @@ object MainForm: TMainForm
                   Caption = 'Scan Barcode'
                   TabOrder = 0
                   OnClick = DecodeBarcodeClick
-                end
-                object RegisterRibbonBtn: TArrayBotButton
-                  Left = 201
-                  Top = 39
-                  Width = 143
-                  Height = 85
-                  Caption = 'Register Ribbon'
-                  ParentDoubleBuffered = True
-                  TabOrder = 1
-                  OnClick = RegisterRibbonBtnClick
-                  SoundID = 'BUTTON_CLICK_4'
-                end
-                object GroupBox5: TGroupBox
-                  Left = 368
-                  Top = 16
-                  Width = 225
-                  Height = 105
-                  Caption = 'Block Face'
-                  TabOrder = 2
-                  object BlockFaceHeight: TFloatLabeledEdit
-                    Left = 16
-                    Top = 56
-                    Width = 81
-                    Height = 27
-                    EditLabel.Width = 169
-                    EditLabel.Height = 19
-                    EditLabel.Caption = 'Block Face Height (mm)'
-                    TabOrder = 0
-                    Text = '1.0000'
-                    Value = 1.000000000000000000
-                  end
                 end
               end
               object CuttingGB: TGroupBox
@@ -257,19 +227,21 @@ object MainForm: TMainForm
                 Left = 1
                 Top = 266
                 Width = 800
-                Height = 340
+                Height = 432
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
+                ExplicitHeight = 362
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 317
+                  Height = 409
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
+                  ExplicitHeight = 339
                   object StartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 31
@@ -290,7 +262,7 @@ object MainForm: TMainForm
                   end
                   object StopOptionsRG: TRadioGroup
                     Left = 2
-                    Top = 176
+                    Top = 268
                     Width = 179
                     Height = 139
                     Align = alBottom
@@ -302,6 +274,7 @@ object MainForm: TMainForm
                       'After Cutting'
                       'Before Retracting')
                     TabOrder = 1
+                    ExplicitTop = 198
                   end
                 end
                 object GroupBox12: TGroupBox
@@ -309,14 +282,15 @@ object MainForm: TMainForm
                   Left = 565
                   Top = 24
                   Width = 230
-                  Height = 311
+                  Height = 403
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
+                  ExplicitHeight = 333
                   DesignSize = (
                     230
-                    311)
+                    403)
                   object mMoveNorthBtn: TArrayBotButton
                     Left = 97
                     Top = 24
@@ -348,10 +322,11 @@ object MainForm: TMainForm
                   Left = 185
                   Top = 21
                   Width = 185
-                  Height = 317
+                  Height = 409
                   Align = alLeft
                   Caption = 'Options'
                   TabOrder = 2
+                  ExplicitHeight = 339
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 16
                     Top = 40
@@ -369,10 +344,11 @@ object MainForm: TMainForm
                   Left = 370
                   Top = 21
                   Width = 185
-                  Height = 317
+                  Height = 409
                   Align = alLeft
                   Caption = 'Return Speed'
                   TabOrder = 3
+                  ExplicitHeight = 339
                   object PresetReturnSpeedBtn: TArrayBotButton
                     Left = 22
                     Top = 40
@@ -483,37 +459,13 @@ object MainForm: TMainForm
                   end
                 end
               end
-              object BlockInfoGB: TGroupBox
-                Left = 1
-                Top = 744
-                Width = 800
-                Height = 70
-                Align = alBottom
-                Caption = 'Current Block Info (Change block on the Blocks and Ribbons tab)'
-                TabOrder = 4
-                object DBText7: TDBText
-                  Left = 87
-                  Top = 38
-                  Width = 73
-                  Height = 17
-                  DataField = 'id'
-                  DataSource = pgDM.blocksDataSource
-                end
-                object Label11: TLabel
-                  Left = 13
-                  Top = 37
-                  Width = 65
-                  Height = 19
-                  Caption = 'Block ID:'
-                end
-              end
               object CutterStatusPanel: TPanel
                 Left = 1
                 Top = 113
                 Width = 800
                 Height = 41
                 Align = alTop
-                TabOrder = 5
+                TabOrder = 4
                 object UC7Shape: TShape
                   Left = 432
                   Top = 24
@@ -560,105 +512,19 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 819
+            Height = 841
             ActivePage = TabSheet2
             Align = alClient
             TabOrder = 0
             object TabSheet2: TTabSheet
               Caption = 'Select Block'
-              object BlockNotesGB: TGroupBox
-                Left = 0
-                Top = 121
-                Width = 798
-                Height = 216
-                Align = alTop
-                Caption = 'Block Notes'
-                Padding.Left = 5
-                Padding.Top = 5
-                Padding.Right = 5
-                Padding.Bottom = 5
-                TabOrder = 0
-                ExplicitTop = 209
-                object Panel4: TPanel
-                  Left = 206
-                  Top = 26
-                  Width = 585
-                  Height = 183
-                  Align = alClient
-                  TabOrder = 0
-                  object mBlockNoteMemo: TDBMemo
-                    Left = 1
-                    Top = 1
-                    Width = 583
-                    Height = 156
-                    Align = alClient
-                    DataField = 'note'
-                    DataSource = pgDM.blockNotesDSource
-                    TabOrder = 0
-                  end
-                  object DBNavigator2: TDBNavigator
-                    Left = 1
-                    Top = 157
-                    Width = 583
-                    Height = 25
-                    DataSource = pgDM.blockNotesDSource
-                    VisibleButtons = [nbPost, nbCancel]
-                    Align = alBottom
-                    TabOrder = 1
-                  end
-                end
-                object Panel5: TPanel
-                  Left = 7
-                  Top = 26
-                  Width = 199
-                  Height = 183
-                  Align = alLeft
-                  BevelOuter = bvNone
-                  TabOrder = 1
-                  object mBlockNoteNavigator: TDBNavigator
-                    Left = 0
-                    Top = 158
-                    Width = 199
-                    Height = 25
-                    DataSource = pgDM.blockNotesDSource
-                    VisibleButtons = [nbInsert, nbDelete, nbRefresh, nbApplyUpdates]
-                    Align = alBottom
-                    ConfirmDelete = False
-                    TabOrder = 0
-                    OnClick = mBlockNoteNavigatorClick
-                  end
-                  object mBlockNotesGrid: TDBGrid
-                    Left = 0
-                    Top = 0
-                    Width = 199
-                    Height = 158
-                    Align = alClient
-                    DataSource = pgDM.blockNotesDSource
-                    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-                    TabOrder = 1
-                    TitleFont.Charset = DEFAULT_CHARSET
-                    TitleFont.Color = clWindowText
-                    TitleFont.Height = -16
-                    TitleFont.Name = 'Tahoma'
-                    TitleFont.Style = []
-                    Columns = <
-                      item
-                        Expanded = False
-                        FieldName = 'created_on'
-                        Title.Caption = 'Date'
-                        Width = 161
-                        Visible = True
-                      end>
-                  end
-                end
-              end
               object Panel11: TPanel
                 Left = 0
                 Top = 0
                 Width = 798
                 Height = 121
                 Align = alTop
-                TabOrder = 1
+                TabOrder = 0
                 object BlockSelectionGB: TGroupBox
                   Left = 1
                   Top = 1
@@ -667,65 +533,111 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'DB/Block Selection'
                   TabOrder = 0
-                  ExplicitHeight = 207
-                  object Panel2: TPanel
-                    Left = 2
-                    Top = 21
-                    Width = 575
-                    Height = 96
-                    Align = alLeft
-                    BevelOuter = bvNone
+                  object Label1: TLabel
+                    Left = 317
+                    Top = 32
+                    Width = 57
+                    Height = 19
+                    Caption = 'Knife ID'
+                  end
+                  object Label3: TLabel
+                    Left = 141
+                    Top = 32
+                    Width = 59
+                    Height = 19
+                    Caption = 'Block ID'
+                  end
+                  object Label5: TLabel
+                    Left = 13
+                    Top = 32
+                    Width = 32
+                    Height = 19
+                    Caption = 'User'
+                  end
+                  object BlockIDCB: TDBLookupComboBox
+                    Left = 140
+                    Top = 57
+                    Width = 135
+                    Height = 27
+                    KeyField = 'id'
+                    ListField = 'id'
+                    ListSource = pgDM.allBlocksDataSource
                     TabOrder = 0
-                    ExplicitLeft = 3
-                    ExplicitTop = 18
-                    ExplicitHeight = 184
-                    object Label3: TLabel
-                      Left = 141
-                      Top = 16
-                      Width = 65
-                      Height = 19
-                      Caption = 'Block ID:'
-                    end
-                    object BlockIDCB: TDBLookupComboBox
-                      Left = 212
-                      Top = 16
-                      Width = 135
+                    OnCloseUp = DB_CBCloseUp
+                  end
+                  object Button2: TButton
+                    Left = 281
+                    Top = 59
+                    Width = 25
+                    Height = 25
+                    Caption = '...'
+                    TabOrder = 1
+                  end
+                  object Button3: TButton
+                    Left = 457
+                    Top = 59
+                    Width = 25
+                    Height = 25
+                    Caption = '...'
+                    TabOrder = 2
+                  end
+                  object DBLookupComboBox1: TDBLookupComboBox
+                    Left = 316
+                    Top = 57
+                    Width = 135
+                    Height = 27
+                    KeyField = 'id'
+                    ListField = 'id'
+                    ListSource = pgDM.knifesDSource
+                    TabOrder = 3
+                    OnCloseUp = DB_CBCloseUp
+                  end
+                  object GroupBox5: TGroupBox
+                    Left = 518
+                    Top = 15
+                    Width = 225
+                    Height = 90
+                    Caption = 'Block Face'
+                    TabOrder = 4
+                    object BlockFaceHeight: TFloatLabeledEdit
+                      Left = 16
+                      Top = 56
+                      Width = 81
                       Height = 27
-                      KeyField = 'id'
-                      ListField = 'id'
-                      ListSource = pgDM.allBlocksDataSource
+                      EditLabel.Width = 169
+                      EditLabel.Height = 19
+                      EditLabel.Caption = 'Block Face Height (mm)'
                       TabOrder = 0
-                      OnCloseUp = DB_CBCloseUp
+                      Text = '1.0000'
+                      Value = 1.000000000000000000
                     end
-                    object mUsersCB: TDBLookupComboBox
-                      Left = 12
-                      Top = 13
-                      Width = 109
-                      Height = 27
-                      KeyField = 'id'
-                      ListField = 'user_name'
-                      ListSource = pgDM.usersDataSource
-                      TabOrder = 1
-                      OnCloseUp = mUsersCBCloseUp
-                    end
+                  end
+                  object mUsersCB: TDBLookupComboBox
+                    Left = 12
+                    Top = 57
+                    Width = 109
+                    Height = 27
+                    KeyField = 'id'
+                    ListField = 'user_name'
+                    ListSource = pgDM.usersDataSource
+                    TabOrder = 5
+                    OnCloseUp = mUsersCBCloseUp
                   end
                 end
               end
               object RibbonsDataGB: TGroupBox
                 Left = 0
-                Top = 337
+                Top = 121
                 Width = 798
-                Height = 448
+                Height = 686
                 Align = alClient
                 Caption = 'Ribbons'
-                TabOrder = 2
-                ExplicitTop = 425
-                ExplicitHeight = 360
+                TabOrder = 1
                 object DBGrid1: TDBGrid
                   Left = 2
                   Top = 21
                   Width = 794
-                  Height = 259
+                  Height = 497
                   Align = alClient
                   DataSource = pgDM.ribbonsDSource
                   Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -763,13 +675,12 @@ object MainForm: TMainForm
                 end
                 object GroupBox3: TGroupBox
                   Left = 2
-                  Top = 280
+                  Top = 518
                   Width = 794
                   Height = 166
                   Align = alBottom
                   Caption = 'Ribbon Notes'
                   TabOrder = 1
-                  ExplicitTop = 192
                   object Panel6: TPanel
                     Left = 2
                     Top = 21
@@ -968,7 +879,7 @@ object MainForm: TMainForm
             Left = 65
             Top = 86
             Width = 741
-            Height = 733
+            Height = 755
             ActivePage = TabSheet13
             Align = alClient
             TabOrder = 1
@@ -980,15 +891,15 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 0
                 Width = 733
-                Height = 699
+                Height = 721
                 Align = alClient
                 TabOrder = 0
                 ExplicitWidth = 733
-                ExplicitHeight = 699
+                ExplicitHeight = 721
                 inherited Panel22: TPanel
-                  Top = 644
+                  Top = 666
                   Width = 733
-                  ExplicitTop = 644
+                  ExplicitTop = 666
                   ExplicitWidth = 733
                   inherited Label4: TLabel
                     Width = 143
@@ -999,9 +910,9 @@ object MainForm: TMainForm
                 end
                 inherited ScrollBox2: TScrollBox
                   Width = 733
-                  Height = 644
+                  Height = 666
                   ExplicitWidth = 733
-                  ExplicitHeight = 644
+                  ExplicitHeight = 666
                   inherited FlowPanel1: TFlowPanel
                     Width = 729
                     ExplicitWidth = 729
@@ -1016,15 +927,15 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 0
                 Width = 733
-                Height = 699
+                Height = 721
                 Align = alClient
                 TabOrder = 0
                 ExplicitWidth = 733
-                ExplicitHeight = 699
+                ExplicitHeight = 721
                 inherited Panel22: TPanel
-                  Top = 644
+                  Top = 666
                   Width = 733
-                  ExplicitTop = 644
+                  ExplicitTop = 666
                   ExplicitWidth = 733
                   inherited Label4: TLabel
                     Width = 143
@@ -1035,9 +946,9 @@ object MainForm: TMainForm
                 end
                 inherited ScrollBox2: TScrollBox
                   Width = 733
-                  Height = 644
+                  Height = 666
                   ExplicitWidth = 733
-                  ExplicitHeight = 644
+                  ExplicitHeight = 666
                   inherited FlowPanel1: TFlowPanel
                     Width = 729
                     ExplicitWidth = 729
@@ -1050,7 +961,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 86
             Width = 65
-            Height = 733
+            Height = 755
             Align = alLeft
             Caption = 'Block IDs'
             Color = clBtnFace
@@ -1060,7 +971,7 @@ object MainForm: TMainForm
               Left = 2
               Top = 21
               Width = 61
-              Height = 707
+              Height = 726
               Align = alClient
               BiDiMode = bdRightToLeft
               KeyField = 'id'
@@ -1080,7 +991,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 819
+            Height = 841
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
@@ -1405,7 +1316,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 313
-            Height = 819
+            Height = 841
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
@@ -1422,7 +1333,7 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 702
+              Top = 724
               Width = 309
               Height = 115
               Align = alBottom
@@ -1498,7 +1409,7 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 819
+            Height = 841
             Align = alClient
             TabOrder = 1
             inline TNavitarMotorFrame1: TNavitarMotorFrame
@@ -1568,7 +1479,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 819
+            Height = 841
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
@@ -1681,27 +1592,27 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 482
                 Width = 798
-                Height = 303
+                Height = 325
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
                 ExplicitTop = 482
                 ExplicitWidth = 798
-                ExplicitHeight = 303
+                ExplicitHeight = 325
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 303
+                  Height = 325
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 303
+                  ExplicitHeight = 325
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 280
+                    Height = 302
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 280
+                    ExplicitHeight = 302
                   end
                 end
               end
@@ -1720,14 +1631,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
                     Width = 247
                     Height = 218
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1983,7 +1894,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 84
     Width = 965
-    Height = 857
+    Height = 879
     Align = alClient
     BevelEdges = []
     TabOrder = 1
@@ -1991,7 +1902,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 1
       Width = 963
-      Height = 855
+      Height = 877
       Margins.Left = 0
       Margins.Right = 0
       Align = alClient
@@ -2086,22 +1997,39 @@ object MainForm: TMainForm
         AutoSize = True
         TabOrder = 1
       end
+      object ToolBar2: TToolBar
+        Left = 0
+        Top = 777
+        Width = 963
+        Height = 100
+        Align = alBottom
+        ButtonHeight = 75
+        Caption = 'ToolBar2'
+        TabOrder = 2
+        object RecordVideoBtn: TArrayBotButton
+          Left = 0
+          Top = 0
+          Width = 180
+          Height = 75
+          Align = alLeft
+          Caption = 'Record Video'
+          TabOrder = 0
+          OnClick = RecordVideoBtnClick
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object TakeSnapShotBtn: TArrayBotButton
+          Left = 180
+          Top = 0
+          Width = 161
+          Height = 75
+          Align = alLeft
+          Caption = 'Take SnapShot'
+          TabOrder = 1
+          OnClick = TakeSnapShotBtnClick
+          SoundID = 'BUTTON_CLICK_4'
+        end
+      end
     end
-  end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 941
-    Width = 1817
-    Height = 22
-    Hint = 'Test'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBtnText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    Panels = <>
-    UseSystemFont = False
-    OnHint = StatusBar1Hint
   end
   object ControlBar1: TControlBar
     Left = 0
@@ -2113,45 +2041,24 @@ object MainForm: TMainForm
     DockSite = False
     DragMode = dmAutomatic
     DrawingStyle = dsGradient
-    TabOrder = 3
+    TabOrder = 2
     OnStartDrag = ControlBar1StartDrag
+    ExplicitLeft = 264
+    ExplicitTop = 8
     object ToolBar1: TToolBar
-      Left = 1330
+      Left = 1483
       Top = 2
       Width = 327
-      Height = 75
+      Height = 100
       AutoSize = True
       ButtonHeight = 75
       Caption = 'ToolBar1'
       TabOrder = 0
-      object ArrayBotButton1: TArrayBotButton
-        Left = 0
-        Top = 0
-        Width = 145
-        Height = 75
-        Action = OpenHandWheelPositionFormA
-        Caption = 'Open Handwheel Position Form'
-        TabOrder = 1
-        WordWrap = True
-        SoundID = 'BUTTON_CLICK_4'
-      end
-      object ArrayBotButton2: TArrayBotButton
-        Left = 145
-        Top = 0
-        Width = 168
-        Height = 75
-        Hint = 'Open Handwheel position Form'
-        Caption = 'Open Logger Form'
-        TabOrder = 0
-        WordWrap = True
-        OnClick = OpenLoggerForm1Click
-        SoundID = 'BUTTON_CLICK_4'
-      end
     end
     object CounterGB: TGroupBox
       Left = 11
       Top = 2
-      Width = 614
+      Width = 1254
       Height = 74
       Align = alTop
       TabOrder = 1
@@ -2223,6 +2130,21 @@ object MainForm: TMainForm
         Height = 19
         Caption = 'Ribbon Length (mm)'
       end
+      object DBText7: TDBText
+        Left = 698
+        Top = 14
+        Width = 73
+        Height = 17
+        DataField = 'id'
+        DataSource = pgDM.allBlocksDataSource
+      end
+      object Label11: TLabel
+        Left = 624
+        Top = 13
+        Width = 65
+        Height = 19
+        Caption = 'Block ID:'
+      end
       object mCountToE: TIntegerLabeledEdit
         Left = 14
         Top = 37
@@ -2264,35 +2186,15 @@ object MainForm: TMainForm
         OnClick = mResetCounterBtnClick
         SoundID = 'BUTTON_CLICK_4'
       end
-    end
-    object ToolBar2: TToolBar
-      Left = 805
-      Top = 2
-      Width = 363
-      Height = 100
-      ButtonHeight = 75
-      Caption = 'ToolBar2'
-      TabOrder = 2
-      object RecordVideoBtn: TArrayBotButton
-        Left = 0
-        Top = 0
-        Width = 180
-        Height = 75
-        Align = alLeft
-        Caption = 'Record Video'
-        TabOrder = 0
-        OnClick = RecordVideoBtnClick
-        SoundID = 'BUTTON_CLICK_4'
-      end
-      object TakeSnapShotBtn: TArrayBotButton
-        Left = 180
-        Top = 0
-        Width = 161
-        Height = 75
-        Align = alLeft
-        Caption = 'Take SnapShot'
-        TabOrder = 1
-        OnClick = TakeSnapShotBtnClick
+      object RegisterRibbonBtn: TArrayBotButton
+        Left = 1091
+        Top = 13
+        Width = 143
+        Height = 50
+        Caption = 'Register Ribbon'
+        ParentDoubleBuffered = True
+        TabOrder = 3
+        OnClick = RegisterRibbonBtnClick
         SoundID = 'BUTTON_CLICK_4'
       end
     end
@@ -2301,11 +2203,11 @@ object MainForm: TMainForm
     Left = 1786
     Top = 84
     Width = 31
-    Height = 857
+    Height = 879
     Action = ToggleMainContentPanelA
     Align = alRight
     Caption = '<'
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
   end
   object BindingsList1: TBindingsList
@@ -2527,8 +2429,8 @@ object MainForm: TMainForm
     Methods = <>
     OutputConverters = <>
     UseAppManager = True
-    Left = 672
-    Top = 16
+    Left = 416
+    Top = 24
   end
   object VideoRecTimer: TTimer
     Enabled = False
@@ -2548,7 +2450,7 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 50
     OnTimer = MouseClickTimerTimer
-    Left = 1056
-    Top = 568
+    Left = 1184
+    Top = 544
   end
 end

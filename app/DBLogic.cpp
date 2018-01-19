@@ -33,13 +33,7 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
     BlockIDCB->KeyValue = mBlockID.getValue();
     enableDisableGroupBox(BlockSelectionGB, true);
     enableDisableGroupBox(RibbonRegistrationGB, true);
-    enableDisableGroupBox(BlockInfoGB, true);
-    enableDisableGroupBox(BlockNotesGB, true);
-
     enableDisableGroupBox(RibbonsDataGB, true);
-
-  	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
-    p->Text = "ATDB: Connected";
 }
 
 //---------------------------------------------------------------------------
@@ -54,11 +48,6 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
     enableDisableGroupBox(RibbonRegistrationGB, false);
     enableDisableGroupBox(BlockSelectionGB, false);
     enableDisableGroupBox(RibbonsDataGB, false);
-    enableDisableGroupBox(BlockInfoGB, 	false);
-    enableDisableGroupBox(BlockNotesGB, true);
-
-  	TStatusPanel* p = mSBManager.getPanel(sbpDBConnection);
-    p->Text = "ATDB: Not Connected";
 }
 
 //---------------------------------------------------------------------------

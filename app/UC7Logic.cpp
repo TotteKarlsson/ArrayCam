@@ -111,15 +111,12 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
             }
         	else if(cmd == gHandWheelPosition)
             {
-            	TStatusPanel* p = mSBManager.getPanel(sbpHandWheelPosition);
-                p->Text = "Wheel Position: ";
             	string d = msg.getData().substr(2,2);
                 if(d == "00")  //Retract
                 {
                 	Log(lDebug3) << "Retracting";
                 	mUC7.setStrokeState(ssRetracting);
 					mArmRetractingSound.getReference().play();
-                    p->Text += "Retracting";
                     UC7Shape->Left = 624;
                     UC7Shape->Width = 73;
                     mACServer.broadcast(acmRetracting);
@@ -129,7 +126,6 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                    	Log(lDebug3) << "Before Cutting";
                    	mUC7.setStrokeState(ssBeforeCutting);
 	                mKnifeBeforeCuttingSound.getReference().play();
-                    p->Text += "Before Cutting";
                     UC7Shape->Left = 32;
                     UC7Shape->Width = 100;
                     mACServer.broadcast(acmBeforeCutting);
@@ -140,7 +136,6 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                    	mUC7.getSectionCounter().increase();
                    	mUC7.setStrokeState(ssCutting);
                     mKnifeCuttingSound.getReference().play();
-                    p->Text += "Cutting";
                     UC7Shape->Left = 264;
                     UC7Shape->Width = 52;
                     mACServer.broadcast(acmCutting);
@@ -151,7 +146,6 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                    	mUC7.setStrokeState(ssAfterCutting);
 					RibbonOrderCountLabel->update();
 	                mKnifeAfterCuttingSound.getReference().play();
-                    p->Text += "After Cutting";
                     UC7Shape->Left = 432;
                     UC7Shape->Width = 93;
                     RibbonLengthLbl->SetValue(BlockFaceHeight->getValue() * SectionCounterLabel->getValue());
@@ -281,17 +275,12 @@ void __fastcall TMainForm::onConnectedToUC7()
 
 	enableDisableUC7UI(true);
 	mSynchUIBtnClick(NULL);
-
-  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
-    p->Text = "UC7: Connected";
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::onDisConnectedToUC7()
 {
 	enableDisableUC7UI(false);
-  	TStatusPanel* p = mSBManager.getPanel(sbpUC7Connection);
-    p->Text = "UC7: Not Connected";
 }
 
 //---------------------------------------------------------------------------
