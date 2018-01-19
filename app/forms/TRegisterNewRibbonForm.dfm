@@ -173,7 +173,8 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Top = 59
         Width = 201
         Height = 17
-        DataField = 'LStatus'
+        DataField = 'statusL'
+        DataSource = csPGDM.ROnCoverSlipsSource
       end
       object Label8: TLabel
         Left = 357
@@ -211,6 +212,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'nr_of_sections'
+        DataSource = pgDM.ribbonsDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -224,6 +226,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 36
         DataField = 'cutting_order'
+        DataSource = pgDM.ribbonsDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -237,6 +240,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 236
         Height = 17
         DataField = 'id'
+        DataSource = pgDM.ribbonsDSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11

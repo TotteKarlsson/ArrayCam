@@ -2,6 +2,7 @@
 #pragma hdrstop
 #include "TRegisterNewRibbonForm.h"
 #include "mtkLogger.h"
+#include "TPGCoverSlipDataModule.h"
 #include "TPGDataModule.h"
 #include "mtkVCLUtils.h"
 //---------------------------------------------------------------------------
@@ -178,12 +179,12 @@ void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
     pgDM->ribbonsCDS->First();
     pgDM->ribbonsCDS->Insert();
     pgDM->ribbonsCDS->Edit();
-    pgDM->ribbonsCDS->FieldByName("created_by")->Value 	= pgDM->usersCDS->FieldByName("id")->Value;
-    pgDM->ribbonsCDS->FieldByName("id")->Value 			= getUUID().c_str();
+    pgDM->ribbonsCDS->FieldByName("created_by")->Value 		= pgDM->usersCDS->FieldByName("id")->Value;
+    pgDM->ribbonsCDS->FieldByName("id")->Value 				= getUUID().c_str();
     pgDM->ribbonsCDS->FieldByName("block_id")->Value 		= pgDM->blocksCDS->FieldByName("id")->Value;
-    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value = mMainForm.mUC7.getLastNumberOfSections();
-    pgDM->ribbonsCDS->FieldByName("cutting_order")->Value  = mMainForm.RibbonOrderCountLabel->Caption.ToInt();
-    pgDM->ribbonsCDS->FieldByName("coverslip_id")->Value   = extractCoverSlipID(mBarCode);
+    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value 	= mMainForm.mUC7.getLastNumberOfSections();
+    pgDM->ribbonsCDS->FieldByName("cutting_order")->Value  	= mMainForm.RibbonOrderCountLabel->Caption.ToInt();
+    pgDM->ribbonsCDS->FieldByName("coverslip_id")->Value   	= extractCoverSlipID(mBarCode);
 }
 
 

@@ -63,7 +63,7 @@ object MainForm: TMainForm
         Left = 1
         Top = 1
         Width = 238
-        Height = 285
+        Height = 247
         Align = alTop
         AutoSize = True
         TabOrder = 0
@@ -71,10 +71,6 @@ object MainForm: TMainForm
         ExplicitTop = 1
         ExplicitWidth = 238
         inherited SettingsGB: TGroupBox
-          Width = 238
-          ExplicitWidth = 238
-        end
-        inherited StartStreamerBtn: TArrayBotButton
           Width = 238
           ExplicitWidth = 238
         end
