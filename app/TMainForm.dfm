@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  ActiveControl = DecodeSessionBtn
+  ActiveControl = BlocksAndRibbonsPC
   Caption = 'Array Cam 0.5'
   ClientHeight = 963
   ClientWidth = 1817
@@ -58,7 +58,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 875
-        ActivePage = Main
+        ActivePage = TabSheet7
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -88,26 +88,57 @@ object MainForm: TMainForm
                 Align = alBottom
                 Caption = 'Ribbon  Registration'
                 TabOrder = 0
-                ExplicitTop = 628
                 DesignSize = (
                   800
                   138)
-                object mBCLabel: TLabel
+                object BarcodeLbl: TLabel
                   AlignWithMargins = True
-                  Left = 654
-                  Top = 56
-                  Width = 131
-                  Height = 39
+                  Left = 597
+                  Top = 39
+                  Width = 85
+                  Height = 25
                   Alignment = taRightJustify
                   Anchors = [akTop, akRight]
                   Caption = 'Barcode'
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clRed
-                  Font.Height = -32
+                  Font.Height = -21
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
                   Layout = tlCenter
+                end
+                object RibbonIDLbl: TLabel
+                  AlignWithMargins = True
+                  Left = 630
+                  Top = 89
+                  Width = 52
+                  Height = 13
+                  Alignment = taRightJustify
+                  Anchors = [akTop, akRight]
+                  Caption = 'RibbonID'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = clLime
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Layout = tlCenter
+                end
+                object Label7: TLabel
+                  Left = 189
+                  Top = 40
+                  Width = 70
+                  Height = 19
+                  Caption = 'Block ID: '
+                end
+                object DBText1: TDBText
+                  Left = 265
+                  Top = 40
+                  Width = 65
+                  Height = 17
+                  DataField = 'id'
+                  DataSource = pgDM.allBlocksDataSource
                 end
                 object DecodeSessionBtn: TButton
                   Left = 25
@@ -117,6 +148,28 @@ object MainForm: TMainForm
                   Caption = 'Scan Barcode'
                   TabOrder = 0
                   OnClick = DecodeBarcodeClick
+                end
+                object ClearBarcodeBtn: TArrayBotButton
+                  Left = 688
+                  Top = 30
+                  Width = 99
+                  Height = 41
+                  Anchors = [akTop, akRight]
+                  Caption = 'Clear'
+                  TabOrder = 1
+                  OnClick = ClearBarcodeBtnClick
+                  SoundID = 'BUTTON_CLICK_4'
+                end
+                object ClearRibbonIDBtn: TArrayBotButton
+                  Left = 688
+                  Top = 78
+                  Width = 99
+                  Height = 41
+                  Anchors = [akTop, akRight]
+                  Caption = 'Clear'
+                  TabOrder = 2
+                  OnClick = ClearRibbonIDBtnClick
+                  SoundID = 'BUTTON_CLICK_4'
                 end
               end
               object CuttingGB: TGroupBox
@@ -232,7 +285,6 @@ object MainForm: TMainForm
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
-                ExplicitHeight = 362
                 object GroupBox11: TGroupBox
                   Left = 2
                   Top = 21
@@ -241,7 +293,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
-                  ExplicitHeight = 339
                   object StartStopBtn: TArrayBotButton
                     Left = 16
                     Top = 31
@@ -274,7 +325,6 @@ object MainForm: TMainForm
                       'After Cutting'
                       'Before Retracting')
                     TabOrder = 1
-                    ExplicitTop = 198
                   end
                 end
                 object GroupBox12: TGroupBox
@@ -287,7 +337,6 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
-                  ExplicitHeight = 333
                   DesignSize = (
                     230
                     403)
@@ -326,7 +375,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Options'
                   TabOrder = 2
-                  ExplicitHeight = 339
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 16
                     Top = 40
@@ -348,7 +396,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Return Speed'
                   TabOrder = 3
-                  ExplicitHeight = 339
                   object PresetReturnSpeedBtn: TArrayBotButton
                     Left = 22
                     Top = 40
@@ -534,7 +581,7 @@ object MainForm: TMainForm
                   Caption = 'DB/Block Selection'
                   TabOrder = 0
                   object Label1: TLabel
-                    Left = 317
+                    Left = 293
                     Top = 32
                     Width = 57
                     Height = 19
@@ -565,31 +612,15 @@ object MainForm: TMainForm
                     TabOrder = 0
                     OnCloseUp = DB_CBCloseUp
                   end
-                  object Button2: TButton
-                    Left = 281
-                    Top = 59
-                    Width = 25
-                    Height = 25
-                    Caption = '...'
-                    TabOrder = 1
-                  end
-                  object Button3: TButton
-                    Left = 457
-                    Top = 59
-                    Width = 25
-                    Height = 25
-                    Caption = '...'
-                    TabOrder = 2
-                  end
-                  object DBLookupComboBox1: TDBLookupComboBox
-                    Left = 316
+                  object KnifeIDCB: TDBLookupComboBox
+                    Left = 292
                     Top = 57
                     Width = 135
                     Height = 27
                     KeyField = 'id'
                     ListField = 'id'
                     ListSource = pgDM.knifesDSource
-                    TabOrder = 3
+                    TabOrder = 1
                     OnCloseUp = DB_CBCloseUp
                   end
                   object GroupBox5: TGroupBox
@@ -598,7 +629,7 @@ object MainForm: TMainForm
                     Width = 225
                     Height = 90
                     Caption = 'Block Face'
-                    TabOrder = 4
+                    TabOrder = 2
                     object BlockFaceHeight: TFloatLabeledEdit
                       Left = 16
                       Top = 56
@@ -620,7 +651,7 @@ object MainForm: TMainForm
                     KeyField = 'id'
                     ListField = 'user_name'
                     ListSource = pgDM.usersDataSource
-                    TabOrder = 5
+                    TabOrder = 3
                     OnCloseUp = mUsersCBCloseUp
                   end
                 end
@@ -670,6 +701,11 @@ object MainForm: TMainForm
                       Expanded = False
                       FieldName = 'coverslip_id'
                       Width = 120
+                      Visible = True
+                    end
+                    item
+                      Expanded = False
+                      FieldName = 'created_on'
                       Visible = True
                     end>
                 end
@@ -843,7 +879,7 @@ object MainForm: TMainForm
           end
         end
         object TabSheet12: TTabSheet
-          Caption = 'Videos && Images'
+          Caption = 'Media'
           ImageIndex = 8
           object GroupBox6: TGroupBox
             Left = 0
@@ -873,6 +909,7 @@ object MainForm: TMainForm
               EditLabel.Height = 19
               EditLabel.Caption = 'Media Root Folder'
               TabOrder = 1
+              OnKeyDown = MediaFolderEKeyDown
             end
           end
           object MediaPageControl: TPageControl
@@ -918,6 +955,9 @@ object MainForm: TMainForm
                     ExplicitWidth = 729
                   end
                 end
+                inherited GetMoviesQuery: TSQLQuery
+                  DataSource = pgDM.allBlocksDataSource
+                end
               end
             end
             object TabSheet15: TTabSheet
@@ -953,6 +993,10 @@ object MainForm: TMainForm
                     Width = 729
                     ExplicitWidth = 729
                   end
+                end
+                inherited GetImagesQuery: TSQLQuery
+                  DataSource = nil
+                  SQLConnection = nil
                 end
               end
             end
@@ -1473,14 +1517,14 @@ object MainForm: TMainForm
           end
         end
         object TabSheet1: TTabSheet
-          Caption = 'Miscellaneous'
+          Caption = 'Settings'
           ImageIndex = 6
           object MiscPageControl: TPageControl
             Left = 0
             Top = 0
             Width = 806
             Height = 841
-            ActivePage = TabSheet5
+            ActivePage = TabSheet11
             Align = alClient
             TabOrder = 0
             OnChange = PageControlChange
@@ -1638,7 +1682,7 @@ object MainForm: TMainForm
                     Width = 247
                     Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1697,7 +1741,7 @@ object MainForm: TMainForm
               end
             end
             object TabSheet11: TTabSheet
-              Caption = 'Video Compression'
+              Caption = 'Video'
               ImageIndex = 3
               inline TFFMPEGFrame1: TFFMPEGFrame
                 Left = 0
@@ -1746,6 +1790,59 @@ object MainForm: TMainForm
                     Width = 192
                     ExplicitWidth = 192
                   end
+                end
+              end
+              inline THDMIStreamerFrame1: THDMIStreamerFrame
+                Left = 0
+                Top = 241
+                Width = 798
+                Height = 247
+                Align = alTop
+                AutoSize = True
+                TabOrder = 1
+                ExplicitTop = 241
+                ExplicitWidth = 798
+                inherited SettingsGB: TGroupBox
+                  Width = 798
+                  ExplicitWidth = 798
+                  inherited BitrateE: TIntegerLabeledEdit
+                    Height = 27
+                    EditLabel.Width = 92
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitHeight = 27
+                  end
+                  inherited OutputFileNameE: TSTDStringLabeledEdit [1]
+                    Width = 473
+                    Height = 27
+                    EditLabel.Width = 124
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 125
+                    EditLabel.ExplicitWidth = 124
+                    EditLabel.ExplicitHeight = 19
+                    ExplicitWidth = 473
+                    ExplicitHeight = 27
+                  end
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
+                    Height = 27
+                    EditLabel.Width = 127
+                    EditLabel.Height = 19
+                    EditLabel.ExplicitLeft = 16
+                    EditLabel.ExplicitTop = 74
+                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitHeight = 27
+                  end
+                end
+                inherited StartRecordingBtn: TArrayBotButton
+                  Width = 798
+                  Visible = False
+                  ExplicitWidth = 798
                 end
               end
             end
@@ -2043,17 +2140,25 @@ object MainForm: TMainForm
     DrawingStyle = dsGradient
     TabOrder = 2
     OnStartDrag = ControlBar1StartDrag
-    ExplicitLeft = 264
-    ExplicitTop = 8
     object ToolBar1: TToolBar
-      Left = 1483
+      Left = 1384
       Top = 2
-      Width = 327
-      Height = 100
+      Width = 426
+      Height = 75
       AutoSize = True
       ButtonHeight = 75
       Caption = 'ToolBar1'
       TabOrder = 0
+      object KniveMovieBtn: TArrayBotButton
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 75
+        Caption = 'Start Recording'
+        TabOrder = 0
+        OnClick = KniveMovieBtnClick
+        SoundID = 'BUTTON_CLICK_4'
+      end
     end
     object CounterGB: TGroupBox
       Left = 11
@@ -2063,8 +2168,8 @@ object MainForm: TMainForm
       Align = alTop
       TabOrder = 1
       object SectionCounterLabel: TIntLabel
-        Left = 91
-        Top = 33
+        Left = 19
+        Top = 27
         Width = 16
         Height = 35
         Caption = '1'
@@ -2084,7 +2189,7 @@ object MainForm: TMainForm
       end
       object RibbonOrderCountLabel: TIntLabel
         Left = 261
-        Top = 33
+        Top = 27
         Width = 16
         Height = 35
         Caption = '1'
@@ -2146,8 +2251,8 @@ object MainForm: TMainForm
         Caption = 'Block ID:'
       end
       object mCountToE: TIntegerLabeledEdit
-        Left = 14
-        Top = 37
+        Left = 142
+        Top = 31
         Width = 65
         Height = 31
         EditLabel.Width = 66
@@ -2163,8 +2268,8 @@ object MainForm: TMainForm
         Text = '0'
       end
       object mResetCounterBtn: TArrayBotButton
-        Left = 165
-        Top = 32
+        Left = 61
+        Top = 26
         Width = 68
         Height = 36
         Caption = 'Reset'
@@ -2176,7 +2281,7 @@ object MainForm: TMainForm
       end
       object mResetRibbonOrderBtn: TArrayBotButton
         Left = 308
-        Top = 32
+        Top = 26
         Width = 68
         Height = 36
         Caption = 'Reset'
@@ -2187,11 +2292,11 @@ object MainForm: TMainForm
         SoundID = 'BUTTON_CLICK_4'
       end
       object RegisterRibbonBtn: TArrayBotButton
-        Left = 1091
+        Left = 1026
         Top = 13
-        Width = 143
+        Width = 208
         Height = 50
-        Caption = 'Register Ribbon'
+        Caption = 'Register Floating Ribbon'
         ParentDoubleBuffered = True
         TabOrder = 3
         OnClick = RegisterRibbonBtnClick
@@ -2452,5 +2557,12 @@ object MainForm: TMainForm
     OnTimer = MouseClickTimerTimer
     Left = 1184
     Top = 544
+  end
+  object MiscTimer: TTimer
+    Enabled = False
+    Interval = 250
+    OnTimer = MiscTimerTimer
+    Left = 80
+    Top = 528
   end
 end

@@ -5,7 +5,7 @@
 #include "mtkVCLUtils.h"
 #include "mtkLogger.h"
 #include "TPGDataModule.h"
-
+#include "ArrayCamUtils.h"
 using namespace mtk;
 
 //---------------------------------------------------------------------------
@@ -14,7 +14,7 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 	//Check that we have a valid barcode for the coverslip
     //Block Label
     System::Variant lbl = pgDM->allBlocksCDS->FieldByName("label")->Value;
-    if(mBCLabel->Caption == "" || lbl.IsNull())
+    if(BarcodeLbl->Caption == "" || lbl.IsNull())
     {
     	MessageDlg("A valid coverslip barcode and a valid block is necesarry for ribbon registration!", mtInformation, TMsgDlgButtons() << mbOK, 0);
     }
@@ -25,22 +25,25 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
         tq->SQLConnection = pgDM->SQLConnection1;
         tq->SQLConnection->AutoClone = false;
         stringstream q;
-        q <<"SELECT * FROM coverslips where id = "<<extractCoverSlipID(stdstr(mBCLabel->Caption));
+        q <<"SELECT * FROM coverslips where id = "<<extractCoverSlipID(stdstr(BarcodeLbl->Caption));
         tq->SQL->Add(q.str().c_str());
         int affected = tq->ExecSQL();
 
         if(tq->RecordCount < 1)
         {
-        	MessageDlg("This barcode could not be found in the database.. can't continue registration.\nChange or register barcode!", mtWarning, TMsgDlgButtons() << mbOK, 0);
+        	MessageDlg("This barcode could not be found in the database.. can't continue registration.\nChange or register a proper barcode!", mtWarning, TMsgDlgButtons() << mbOK, 0);
         }
         else
         {
             TRegisterNewRibbonForm* rrf = new TRegisterNewRibbonForm(*this);
-            rrf->setCoverSlipBarcode(stdstr(mBCLabel->Caption));
+            rrf->setCoverSlipBarcode(stdstr(BarcodeLbl->Caption));
 
             if(rrf->ShowModal() == mrOk)
             {
-            	mBCLabel->Caption = "";
+                Log(lInfo) << "Ribbon "<<rrf->getRibbonID() << " was registered";
+                RibbonIDLbl->Caption = rrf->getRibbonID().c_str();
+                mUC7.getSectionCounter().reset();
+
             }
             delete rrf;
         }
@@ -110,7 +113,7 @@ void __fastcall TMainForm::DecodeBarcodeClick(TObject *Sender)
     	if(b->Caption == "Scan Barcode")
         {
         	//Start session
-            mBCLabel->Caption = "";
+            BarcodeLbl->Caption = "";
             mZebra.scanEnable();
             sleep(150);
 			status = mZebra.startDecodeSession();
@@ -165,7 +168,8 @@ void __fastcall TMainForm::onWMDecode(TMessage& Msg)
         data = trimWS(data);
     	Log(lInfo) << "A Datamatrix barcode was encoded: "<<data;
         Log(lInfo) << decodeBuffer;
-        mBCLabel->Caption = vclstr(data);
+        BarcodeLbl->Caption = vclstr(data);
+        ClearBarcodeBtn->Visible = true;
         DecodeSessionBtn->Caption = "Scan Barcode";
 
         //Stop session

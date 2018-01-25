@@ -67,7 +67,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 65
         Height = 17
         DataField = 'slice_id'
-        DataSource = pgDM.blocksDataSource
+        DataSource = pgDM.allBlocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -81,7 +81,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 152
         Height = 17
         DataField = 'label'
-        DataSource = pgDM.blocksDataSource
+        DataSource = pgDM.allBlocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -116,7 +116,7 @@ object RegisterNewRibbonForm: TRegisterNewRibbonForm
         Width = 97
         Height = 17
         DataField = 'serial'
-        DataSource = pgDM.blocksDataSource
+        DataSource = pgDM.allBlocksDataSource
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16

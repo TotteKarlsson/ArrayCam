@@ -39,6 +39,7 @@
 #include "TUC7StagePositionFrame.h"
 #include "mtkFloatLabel.h"
 #include "TPGConnectionFrame.h"
+#include "THDMIStreamerFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "atReticle.h"
@@ -140,7 +141,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *Reset1;
 	TMenuItem *OpenSettings1;
 	TPanel *LeftPanel;
-	TLabel *mBCLabel;
+	TLabel *BarcodeLbl;
 	TTabSheet *TabSheet6;
 	TGroupBox *BarCodeGB;
 	TPanel *Panel3;
@@ -313,16 +314,22 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel12;
 	TSTDStringLabeledEdit *WinCaptionE;
 	TLabel *WindowCheckLbl;
-	TDBLookupComboBox *DBLookupComboBox1;
+	TDBLookupComboBox *KnifeIDCB;
 	TLabel *Label1;
 	TLabel *Label5;
-	TButton *Button2;
-	TButton *Button3;
 	TArrayBotButton *RegisterRibbonBtn;
 	TGroupBox *GroupBox5;
 	TFloatLabeledEdit *BlockFaceHeight;
 	TDBText *DBText7;
 	TLabel *Label11;
+	THDMIStreamerFrame *THDMIStreamerFrame1;
+	TArrayBotButton *KniveMovieBtn;
+	TLabel *RibbonIDLbl;
+	TArrayBotButton *ClearBarcodeBtn;
+	TArrayBotButton *ClearRibbonIDBtn;
+	TLabel *Label7;
+	TDBText *DBText1;
+	TTimer *MiscTimer;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -393,6 +400,12 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall TestClickWindowBtnClick(TObject *Sender);
 	void __fastcall PageControlExit(TObject *Sender);
 	void __fastcall MouseClickTimerTimer(TObject *Sender);
+	void __fastcall KniveMovieBtnClick(TObject *Sender);
+	void __fastcall ClearBarcodeBtnClick(TObject *Sender);
+	void __fastcall ClearRibbonIDBtnClick(TObject *Sender);
+	void __fastcall MiscTimerTimer(TObject *Sender);
+	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -470,13 +483,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 
         										//Database stuff
 		Property<int>	                    	mDBUserID;
-        Property<int>							mSpecimenID;
-        Property<int>							mSliceID;
         Property<int>							mBlockID;
-		int 									getCurrentUserID();
-		string 									getCurrentUserName();
+        Property<int>							mKnifeID;
+
 		void 									populateUsersCB();
-		int 									extractCoverSlipID(const string& bc);
 
         										//Callbacks
         void									onArduinoClientConnected();
@@ -540,6 +550,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
 		void            						populateMedia();
 
+  	    void 				            		onKnifeMovieEnter(int i, int j);
+	    void 				            		onKnifeMovieProgress(int i, int j);
+	    void 				            		onKnifeMovieExit(int i, int j);
+
 
     //=================================================================================================
     public:
@@ -567,6 +581,13 @@ class PACKAGE TMainForm  : public TRegistryForm
         void		__fastcall 					unCheckSyncWhiskerCB();
         void __fastcall							fireRibbonSeparator();
 
+        int 									getCurrentUserID();
+	    int 									getCurrentCoverSlipID();
+	    int 									getCurrentBlockID();
+	    string 									getCurrentRibbonID();
+	    int 									getCurrentKnifeID();
+		string 									getCurrentUserName();
+
     BEGIN_MESSAGE_MAP
     	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);
         MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
@@ -578,6 +599,9 @@ class PACKAGE TMainForm  : public TRegistryForm
         MESSAGE_HANDLER(WM_EVENT, 	            TMessage, 		                onSSIEvent)
     END_MESSAGE_MAP(TForm)
 };
+
+bool registerVideoInDB(const string& lUUID, const string& videoExtension, int userID, int coverslipID, int blockID , const string& ribbonID = "-1");
+
 
 extern PACKAGE TMainForm *MainForm;
 #endif

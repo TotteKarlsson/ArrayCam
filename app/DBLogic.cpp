@@ -9,6 +9,8 @@
 #include "mtkLogger.h"
 #include "TPGDataModule.h"
 #include "TPGCoverSlipDataModule.h"
+#include "ArrayCamUtils.h"
+
 //---------------------------------------------------------------------------
 using namespace at;
 using namespace mtk;
@@ -29,8 +31,7 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 //    SpecimenIDCB->KeyValue 	= mSpecimenID.getValue();
 //    SliceIDCB->KeyValue 	= mSliceID.getValue();
     BlockIDCB->KeyValue 	= mBlockID.getValue();
-
-    BlockIDCB->KeyValue = mBlockID.getValue();
+    KnifeIDCB->KeyValue 	= mKnifeID.getValue();
     enableDisableGroupBox(BlockSelectionGB, true);
     enableDisableGroupBox(RibbonRegistrationGB, true);
     enableDisableGroupBox(RibbonsDataGB, true);
@@ -54,4 +55,53 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 int TMainForm::getCurrentUserID()
 {
 	return  mUsersCB->KeyValue;
+}
+
+int TMainForm::getCurrentCoverSlipID()
+{
+	return extractCoverSlipID(stdstr(BarcodeLbl->Caption));
+}
+
+int TMainForm::getCurrentBlockID()
+{
+	return pgDM->getCurrentBlockIDFromAllBlocks();
+}
+
+int TMainForm::getCurrentKnifeID()
+{
+	return -1;
+}
+
+bool registerVideoInDB(const string& lUUID, const string& videoExtension, int userID, int coverslipID, int blockID, const string& ribbonID)
+{
+    try
+    {
+        //Add image to database
+        std::auto_ptr <TSQLQuery> tq(new TSQLQuery(NULL));
+        tq->SQLConnection = pgDM->SQLConnection1;
+        tq->SQLConnection->AutoClone = false;
+        stringstream q;
+        q <<"INSERT INTO movies (id, fileextension, created_by, coverslip_id, block_id, ribbon_id) VALUES ('"
+                    <<lUUID<<"', '"
+                    <<videoExtension<<"', '"
+                    <<userID<<"', '"
+                    <<coverslipID<<"', '"
+                    <<blockID<<"', '"
+                    <<ribbonID
+                    <<"')";
+
+        string s(q.str());
+        Log(lDebug) <<"Image Insertion Query: "<<s;
+        tq->SQL->Add(q.str().c_str());
+        tq->ExecSQL();
+        tq->Close();
+    }
+    catch(const Exception& e)
+    {
+        Log(lError)<<"Failed registering video in database";
+        Log(lError)<<"Exception: "<<stdstr(e.Message);
+        return false;
+    }
+
+    return true;
 }

@@ -61,9 +61,6 @@ Coordinates=1523,53,81,33
 [atdbDM.blockNotesCDS]
 Coordinates=167,571,132,123
 
-[mBCLabel]
-Coordinates=1133,281,65,51
-
 [atdbDM.ribbonsDS]
 Coordinates=550,195,107,213
 
@@ -525,4 +522,7 @@ Coordinates=1523,1509,81,33
 
 [ArrayCamServerPortE]
 Coordinates=194,1184,132,51
+
+[BarcodeLbl]
+Coordinates=1133,281,65,51
 

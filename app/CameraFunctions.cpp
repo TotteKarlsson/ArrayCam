@@ -10,6 +10,7 @@
 #include "TReticlePopupForm.h"
 #include "TFFMPEGOutputFrame.h"
 #include "database/atDBUtils.h"
+#include "ArrayCamUtils.h"
 using namespace mtk;
 using namespace at;
 
@@ -280,7 +281,7 @@ void __fastcall TMainForm::takeSnapShot()
 {
     string ext(".jpg");
 	string uuid = getUUID();
-	int csID = extractCoverSlipID(stdstr(mBCLabel->Caption));
+	int csID = extractCoverSlipID(stdstr(BarcodeLbl->Caption));
     if(csID == -1)
     {
     	csID = 0; //So we can create fileFolder '0'
@@ -372,9 +373,9 @@ void __fastcall TMainForm::stopRecordingMovie()
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::startStopRecordingMovie()
 {
+	//These are static so we can easily retrieve their values set during start, when stopping.
 	static string 	lCurrentVideoFileName;
-    static string 	lUUID;
-    static int 		lCSID;
+    static string 	sMovieID;
     static int 		lBlockID;
 
 	if(mCaptureVideoTimer->Enabled == false)
@@ -402,21 +403,26 @@ void __fastcall TMainForm::startStopRecordingMovie()
         }
 
         string ext(".avi");
-        lUUID = getUUID();
+        sMovieID = getUUID();
 
-        lBlockID = pgDM->getCurrentBlockID();
+        lBlockID = pgDM->getCurrentBlockIDFromAllBlocks();
         if(lBlockID == -1)
         {
             lBlockID = 0;
         }
 
-        string base_fldr =  joinPath(MediaFolderE->getValue(), "Movies", mtk::toString(lBlockID));
-        string fName = joinPath(base_fldr, lUUID + ext);
+        string base_fldr =  joinPath(MediaFolderE->getValue(), mtk::toString(lBlockID));
+        string fName = joinPath(base_fldr, sMovieID + ext);
 
         if(!folderExists(base_fldr))
         {
             Log(lInfo) << "Creating folder: "<<base_fldr;
-            createFolder(base_fldr);
+            if(!createFolder(base_fldr))
+            {
+	        	Log(lError) << "Failed creating folder: " <<base_fldr;
+	    	    Log(lError) << "Failed starting video recording";
+    	    	return;
+	        }
         }
 
 		lCurrentVideoFileName = fName;
@@ -442,7 +448,6 @@ void __fastcall TMainForm::startStopRecordingMovie()
             return;
         }
         mACServer.broadcast(acrVideoRecorderStarted);
-
     }
     else
     {
@@ -471,37 +476,14 @@ void __fastcall TMainForm::startStopRecordingMovie()
 
         mACServer.broadcast(acrVideoRecorderStopped);
         //Register in the database
-    	string fName(lCurrentVideoFileName);
-    	Log(lInfo) << "Saving movie to file: "<< fName;
+    	Log(lInfo) << "Saving movie to file: "<< lCurrentVideoFileName;
 
         //Start compression video thread
-        startVideoCompression(fName);
-		try
-        {
-        	//Add image to database
-            //Make sure the barcode exists in the database..
-            TSQLQuery* tq = new TSQLQuery(NULL);
-            tq->SQLConnection = pgDM->SQLConnection1;
-            tq->SQLConnection->AutoClone = false;
-            stringstream q;
-            q <<"INSERT INTO movies (id, fileextension, created_by, coverslip_id, block_id) VALUES ('"
-            			<<lUUID<<"', '"
-                        <<getFileExtension(fName)<<"', '"
-                        <<getCurrentUserID()<<"', '"
-                        <<lCSID<<"', '"
-	                    <<lBlockID<<"')";
+        startVideoCompression(lCurrentVideoFileName);
+        int csID = extractCoverSlipID(stdstr(BarcodeLbl->Caption));
 
-            string s(q.str());
-			Log(lDebug) <<"Image Insertion Query: "<<s;
-            tq->SQL->Add(q.str().c_str());
-            tq->ExecSQL();
-            tq->Close();
-            delete tq;
-        }
-        catch(...)
-        {
-        	handleMySQLException();
-        }
+        //We rely on that the compression process finishes! avi -> mp4
+        registerVideoInDB(sMovieID, "mp4", getCurrentUserID(), csID, lBlockID, stdstr(RibbonIDLbl->Caption));
     }
   	mACServer.broadcastStatus();
 }

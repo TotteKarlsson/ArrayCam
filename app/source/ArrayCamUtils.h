@@ -14,4 +14,5 @@ enum ARRAYCAM_IPC_ID
         cTakeSnapShot		 	= 102
 };
 
+int  PACKAGE extractCoverSlipID(const string& bc);
 #endif

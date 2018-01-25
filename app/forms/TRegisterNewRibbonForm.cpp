@@ -17,7 +17,8 @@ using std::vector;
 __fastcall TRegisterNewRibbonForm::TRegisterNewRibbonForm(TMainForm& mf)
 	: TForm(&mf),
     mMainForm(mf),
-    mBarCode("")
+    mBarCode(""),
+    mRibbonID("")
 {}
 
 //---------------------------------------------------------------------------
@@ -27,6 +28,28 @@ void __fastcall TRegisterNewRibbonForm::FormKeyDown(TObject *Sender, WORD &Key, 
     {
     	Close();
     }
+}
+
+string TRegisterNewRibbonForm::getRibbonID()
+{
+	return mRibbonID;
+}
+
+void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
+{
+    pgDM->ribbonsCDS->First();
+    pgDM->ribbonsCDS->Insert();
+    pgDM->ribbonsCDS->Edit();
+    mRibbonID = getUUID();
+    pgDM->ribbonsCDS->FieldByName("id")->Value 				= mRibbonID.c_str();
+    pgDM->ribbonsCDS->FieldByName("status")->Value   		= 1;
+    pgDM->ribbonsCDS->FieldByName("block_id")->Value 		= pgDM->allBlocksCDS->FieldByName("id")->Value;
+    pgDM->ribbonsCDS->FieldByName("cutting_order")->Value  	= mMainForm.RibbonOrderCountLabel->Caption.ToInt();
+    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value 	= mMainForm.mUC7.getCurrentSectionCount();
+
+    pgDM->ribbonsCDS->FieldByName("created_by")->Value 		= pgDM->usersCDS->FieldByName("id")->Value;
+    pgDM->ribbonsCDS->FieldByName("coverslip_id")->Value   	= extractCoverSlipID(mBarCode);
+    pgDM->ribbonsCDS->FieldByName("knife_id")->Value   		= -1;
 }
 
 void TRegisterNewRibbonForm::setCoverSlipBarcode(const string& barcode)
@@ -61,19 +84,32 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 	}
     else if (b == mRegisterBtn)
     {
-    	//Update coverslip status to post sectioning
-		if(!updateCoverSlipStatus())
-        {
-        	Log(lError) << "There was a problem updating status for current coverslip (" <<mBarCode<<")";
-        }
+//    	//Update coverslip status to post sectioning.. do this after lifting instead!
+//		if(!updateCoverSlipStatus())
+//        {
+//        	Log(lError) << "There was a problem updating status for current coverslip (" <<mBarCode<<")";
+//        }
 
         //Post data
+        //Update movie and images table, using current coverslip ID
 		pgDM->ribbonsCDS->Post();
+   		pgDM->ribbonsCDS->First();
     	if(mRibbonNoteMemo->Lines->Count)
         {
         	Log(lDebug) << "Creating ribbon note";
-            createNoteForCurrentRibbon();
+            createNoteForCurrentRibbon(mRibbonID);
         }
+
+        int csID = extractCoverSlipID(mBarCode);
+        if(pgDM->updateMovieTableWithRibbonID(mRibbonID, csID) == 0)
+        {
+			Log(lWarning) << "No current movie for ribbonID: "<<mRibbonID;
+        }
+
+//        if(pgDM->updateImagesTableWithRibbonID(stdstr(rID), csID) == 0)
+//        {
+//			Log(lWarning) << "No movies for ribbonID: "<<rID;
+//        }
     }
 }
 
@@ -83,6 +119,8 @@ bool TRegisterNewRibbonForm::updateCoverSlipStatus()
     tq->SQLConnection = pgDM->SQLConnection1;
     tq->SQLConnection->AutoClone = false;
     stringstream q;
+
+    //Status 6 is post sectioning
     q <<"UPDATE coverslips SET status = 6 WHERE id = "<<extractCoverSlipID(mBarCode);
     tq->SQL->Add(q.str().c_str());
     int rAffected = tq->ExecSQL();
@@ -100,10 +138,9 @@ void __fastcall TRegisterNewRibbonForm::FormClose(TObject *Sender, TCloseAction 
 }
 
 //---------------------------------------------------------------------------
-bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
+bool TRegisterNewRibbonForm::createNoteForCurrentRibbon(const string& rID)
 {
     int uID = mMainForm.getCurrentUserID();
-    String rID = pgDM->ribbonsCDS->FieldByName("id")->Value;
 
     //First insert a new note
     //Then use last insert id for this note to populate the ribbon_note table
@@ -127,7 +164,7 @@ bool TRegisterNewRibbonForm::createNoteForCurrentRibbon()
     tq->SQL->Clear();
 
     q.str("");
-    q << "INSERT INTO ribbon_note (ribbon_id, note_id) VALUES ('"<<stdstr(rID)<<"', "<<noteID<<")";
+    q << "INSERT INTO ribbon_note (ribbon_id, note_id) VALUES ('"<<rID<<"', "<<noteID<<")";
     tq->SQL->Add(q.str().c_str());
     tq->ExecSQL();
     tq->Close();
@@ -169,22 +206,4 @@ void __fastcall TRegisterNewRibbonForm::FormCreate(TObject *Sender)
 {
 	//Make any necessary queries..
 }
-
-void __fastcall TRegisterNewRibbonForm::FormShow(TObject *Sender)
-{
-    pgDM->ribbonsCDS->First();
-    pgDM->ribbonsCDS->Insert();
-    pgDM->ribbonsCDS->Edit();
-    pgDM->ribbonsCDS->FieldByName("id")->Value 				= getUUID().c_str();
-    pgDM->ribbonsCDS->FieldByName("status")->Value   		= 1;
-    pgDM->ribbonsCDS->FieldByName("block_id")->Value 		= pgDM->allBlocksCDS->FieldByName("id")->Value;
-    pgDM->ribbonsCDS->FieldByName("cutting_order")->Value  	= mMainForm.RibbonOrderCountLabel->Caption.ToInt();
-    pgDM->ribbonsCDS->FieldByName("nr_of_sections")->Value 	= mMainForm.mUC7.getLastNumberOfSections();
-
-    pgDM->ribbonsCDS->FieldByName("created_by")->Value 		= pgDM->usersCDS->FieldByName("id")->Value;
-    pgDM->ribbonsCDS->FieldByName("coverslip_id")->Value   	= extractCoverSlipID(mBarCode);
-    pgDM->ribbonsCDS->FieldByName("knife_id")->Value   		= -1;
-}
-
-
 

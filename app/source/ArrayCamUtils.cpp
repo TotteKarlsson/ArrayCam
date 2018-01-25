@@ -2,6 +2,9 @@
 #include "ArrayCamUtils.h"
 #include "mtkUtils.h"
 #include "mtkIPCMessageEnums.h"
+#include "mtkLogger.h"
+
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 using namespace mtk;
@@ -24,4 +27,21 @@ string getArrayCamIPCMessageName(int cs)
         default: return getIPCMessageName(cs);
     }
 }
+
+int extractCoverSlipID(const string& bc)
+{
+	string temp(bc);
+    //Make sure first char is a 'C'
+    if(!bc.size() || bc[0] != 'C')
+    {
+    	Log(lError) << bc << " is not a valid barcode!";
+        return -1;
+    }
+
+	temp.erase(0,1);
+    int id = toInt(temp);
+    Log(lDebug3) << "Extracted id "<<id<<" from "<<bc;
+    return id;
+}
+
 

@@ -21,9 +21,9 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mMainContentPanelWidth.setup( 	                "MAIN_CONTENT_PANEL_WIDTH",   		700));
 	mGeneralProperties.add((BaseProperty*)  &mPairLEDs.setup(			                    "PAIR_LEDS",    		            true));
 	mGeneralProperties.add((BaseProperty*)  &mDBUserID.setup( 	                    	    "ATDB_USER_ID",                    	0));
-	mGeneralProperties.add((BaseProperty*)  &mSpecimenID.setup( 	               	        "SPECIMEN_ID",      	            0));
-	mGeneralProperties.add((BaseProperty*)  &mSliceID.setup( 	              	 	        "SLICE_ID",      		            0));
+
 	mGeneralProperties.add((BaseProperty*)  &mBlockID.setup( 	                   		    "BLOCK_ID",                  		0));
+	mGeneralProperties.add((BaseProperty*)  &mKnifeID.setup( 	                   		    "KNIFE_ID",                  		0));
 	mGeneralProperties.add((BaseProperty*)  &mLocalDBName.setup(		                    "LOCAL_DB",   			            "umlocal.db"));
 
     //Camera Settings
@@ -100,6 +100,8 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
     TApplicationSoundsFrame1->populate(mSoundProperties);
 
     ReadRegistry();
+    MiscTimer->Enabled = true;
+    THDMIStreamerFrame1->OutputFileFolderE->setValue(MediaFolderE->getValue());
 }
 
 //---------------------------------------------------------------------------
@@ -108,18 +110,22 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	string dBase(mLocalDBName);
 	try
     {
-        pgDM->SQLConnection1->AfterConnect 	= afterDBServerConnect;
-        pgDM->SQLConnection1->AfterDisconnect = afterDBServerDisconnect;
+        pgDM->SQLConnection1->AfterConnect 		= afterDBServerConnect;
+        pgDM->SQLConnection1->AfterDisconnect 	= afterDBServerDisconnect;
     }
     catch(...)
     {
     	handleMySQLException();
     }
 
+
+	BarcodeLbl->Caption = "";
+	RibbonIDLbl->Caption = "";
+
     gAppIsStartingUp = false;
     enableDisableUC7UI(false);
     enableDisableGroupBox(mImagerSettingsGB, false);
-    mBCLabel->Caption = "";
+    BarcodeLbl->Caption = "";
 	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
 	FitToScreenAExecute(Sender);

@@ -29,7 +29,6 @@ __published:	// IDE-managed Components
 	THDMIStreamerFrame *THDMIStreamerFrame1;
 	void __fastcall BitBtn1Click(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
-
 	void __fastcall VLCPlugin21MediaPlayerEncounteredError(TObject *Sender);
 	void __fastcall VLCPlugin21MediaPlayerPlaying(TObject *Sender);
 	void __fastcall VLCPlugin21MediaPlayerLengthChanged(TObject *Sender, long cache);

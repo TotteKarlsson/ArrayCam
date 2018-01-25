@@ -121,5 +121,3 @@ void __fastcall TMainForm::ShutDownTimerTimer(TObject *Sender)
     Close();
 }
 
-
-

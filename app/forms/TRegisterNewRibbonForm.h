@@ -57,14 +57,17 @@ __published:	// IDE-managed Components
 
     private:
 		string						mBarCode;
+        string						mRibbonID;
         TMainForm&					mMainForm;
 		int 						extractCoverSlipID(const string& bc);
-        bool            			createNoteForCurrentRibbon();
+        bool            			createNoteForCurrentRibbon(const string& ribbonID);
         bool						updateCoverSlipStatus();
+
 
     public:
                         __fastcall	TRegisterNewRibbonForm(TMainForm& mf);
 		void						setCoverSlipBarcode(const string& barcode);
+		string 						getRibbonID();
 };
 
 extern PACKAGE TRegisterNewRibbonForm *RegisterNewRibbonForm;

@@ -20,6 +20,7 @@ using std::string;
 using namespace mtk;
 
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", HDMIStreamerFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */

@@ -27,6 +27,7 @@
 #pragma link "TUC7StagePositionFrame"
 #pragma link "TSyncMySQLToPostgresFrame"
 
+#pragma link "THDMIStreamerFrame"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
@@ -65,9 +66,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mUC7(Handle),
         mCountTo(0),
 	    mDBUserID(0),
-	    mSpecimenID(0),
-	    mSliceID(0),
+
 	    mBlockID(0),
+	    mKnifeID(0),
 	    mZebraCOMPort(17),
     	mZebraBaudRate(9600),
 	    mZebra(),
@@ -169,6 +170,15 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     }
 
 	mReticle2.visible(false);
+
+
+	THDMIStreamerFrame1->getStreamer().assignCallBacks2(
+    boost::bind(&TMainForm::onKnifeMovieEnter, 	 	this, _1, _1),
+	boost::bind(&TMainForm::onKnifeMovieProgress, 	this, _1, _1),
+	boost::bind(&TMainForm::onKnifeMovieExit, 	 	this, _1, _1)
+    );
+
+
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -253,33 +263,22 @@ void __fastcall TMainForm::mUsersCBCloseUp(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DB_CBCloseUp(TObject *Sender)
 {
-//	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
-//    if(b == SpecimenIDCB)
-//    {
-//       	if(!b->KeyValue.IsNull())
-//		{
-//            mSpecimenID.setValue(b->KeyValue);
-//            pgDM->blocksCDS->Active = false;
-//            pgDM->blockNotesCDS->Active = false;
-//        }
-//    }
-//    else if(b == SliceIDCB)
-//    {
-//    	if(!b->KeyValue.IsNull())
-//		{
-//            mSliceID.setValue(b->KeyValue);
-//            pgDM->blockNotesCDS->Active = false;
-//            pgDM->blocksCDS->Active = true;
-//        }
-//    }
-//    else if(b == BlockIDCB )
-//    {
-//    	if(!b->KeyValue.IsNull())
-//		{
-//        	mBlockID.setValue(b->KeyValue);
-//        	pgDM->blockNotesCDS->Active = true;
-//        }
-//    }
+	TDBLookupComboBox* b = dynamic_cast<TDBLookupComboBox*>(Sender);
+	if(b == BlockIDCB )
+    {
+    	if(!b->KeyValue.IsNull())
+		{
+        	mBlockID.setValue(b->KeyValue);
+        	pgDM->blockNotesCDS->Active = true;
+        }
+    }
+    else if(b == KnifeIDCB)
+    {
+    	if(!b->KeyValue.IsNull())
+		{
+        	mKnifeID.setValue(b->KeyValue);
+        }
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -642,6 +641,16 @@ void __fastcall TMainForm::MouseClickTimerTimer(TObject *Sender)
     }
 }
 
+string TMainForm::getCurrentRibbonID()
+{
+	if(RibbonIDLbl->Caption.Length() < 2)
+    {
+    	return string("-1");
+    }
+    return stdstr(RibbonIDLbl->Caption);
+}
+
+
 //---------------------------------------------------------------------------
 void __fastcall	TMainForm::fireRibbonSeparator()
 {
@@ -649,6 +658,114 @@ void __fastcall	TMainForm::fireRibbonSeparator()
     clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
 
    	mACServer.broadcast(acrRibbonSeparatorTriggered);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::KniveMovieBtnClick(TObject *Sender)
+{
+	if(THDMIStreamerFrame1)
+    {
+		if(THDMIStreamerFrame1->getStreamer().isRunning() == false)
+        {
+        	//Create new file
+       		string uuid = getUUID();
+	        THDMIStreamerFrame1->OutputFileNameE->setValue(uuid + ".ts");
+	        //Set path, include block id
+			THDMIStreamerFrame1->setPathPostFix(mtk::toString(pgDM->getCurrentBlockIDFromAllBlocks()));
+        }
+
+	    THDMIStreamerFrame1->StartStreamerBtnClick(THDMIStreamerFrame1->StartRecordingBtn);
+    }
+}
+
+
+void TMainForm::onKnifeMovieEnter(int i, int j)
+{
+	struct lclS
+    {
+        int i, j;
+        TMainForm* f;
+        void __fastcall fn()
+        {
+			f->KniveMovieBtn->Caption = "Stop Recording";
+        }
+    };
+	lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    lcl.f = this;
+    TThread::Synchronize(0, &lcl.fn);
+}
+
+void TMainForm::onKnifeMovieProgress(int i, int j)
+{
+	struct lclS
+    {
+        int i, j;
+        TMainForm* f;
+        void __fastcall fn()
+        {
+        	//Check current file size
+        	f->KniveMovieBtn->Caption = "Stop Recording\n" + vclstr(getHumanReadableFileSize(i));
+        }
+    };
+	lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    lcl.f = this;
+    TThread::Synchronize(0, &lcl.fn);
+}
+
+void TMainForm::onKnifeMovieExit(int i, int j)
+{
+	struct lclS
+    {
+        int i, j;
+        TMainForm* f;
+        void __fastcall fn()
+        {
+			f->KniveMovieBtn->Caption = "Start Recording";
+
+            string videoID = getFileNameNoExtension(stdstr(f->THDMIStreamerFrame1->OutputFileNameE->Text));
+            string ext     = getFileExtension(stdstr(f->THDMIStreamerFrame1->OutputFileNameE->Text));
+            //Register movie here
+	        registerVideoInDB(videoID, ext, f->getCurrentUserID(), f->getCurrentCoverSlipID(), f->getCurrentBlockID(), f->getCurrentRibbonID());
+        }
+    };
+	lclS lcl;
+    lcl.i = i;
+    lcl.j = j;
+    lcl.f = this;
+    TThread::Synchronize(0, &lcl.fn);
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ClearBarcodeBtnClick(TObject *Sender)
+{
+	//Clear the Barcode
+    BarcodeLbl->Caption = "";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ClearRibbonIDBtnClick(TObject *Sender)
+{
+	RibbonIDLbl->Caption = "";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::MiscTimerTimer(TObject *Sender)
+{
+	ClearBarcodeBtn->Visible  = (BarcodeLbl->Caption.Length() > 0) 	? true : false;
+   	ClearRibbonIDBtn->Visible = (RibbonIDLbl->Caption.Length() > 0) ? true : false;
+}
+
+
+void __fastcall TMainForm::MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+    	THDMIStreamerFrame1->OutputFileFolderE->setValue(MediaFolderE->getValue());
+    }
 }
 
 
