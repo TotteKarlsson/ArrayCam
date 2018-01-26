@@ -1,3 +1,45 @@
+Release 0.6.9 (Jan 26)
+=======================
+* Bunch of UI simplifications regarding the Blocks and Ribbons page
+* Added HDMI streamer frame to main UI
+* Added handling of Knife ID
+* Added code to register hdmi movies in the database
+* Changes to ribbon registration process
+* Simplifying UI
+* Removed the status bar
+* Removed open logger & wheel position opening buttons
+* Moved record/take snapshot buttons
+* Fixing registration of ribbons for PostGres
+* Re-sourcing DB aware controls when registering a ribbon
+* Finishing up hdmi streamer
+* Added test project for testing external blackmagic client and also embedded VLC player
+
+=================================== 2018 ======================================================
+* Added response when triggering the ribbon separator
+* Added code for clicking button on another application
+* Added fireRibbonSeparator to the arraycam protocol
+* Added functions to check/uncheck sync with the whisker
+* Various refactoring
+* Added code to auto click on ELLO run button
+* Added message broadcast to move whisker as section is cutting
+* Fixed so that only one instance of arraycam be running at any one time
+* Added new server commands, move whisker forward
+* Added ability to change return speed on UC7
+* DB switched to Postgres
+* Arraycam running against postgres
+* Added sync to Postgres frame
+* Rename
+* Getting sync form and thread working
+* Some cleanups
+* Refactoring -> moved stuff to arraycam package
+* Moved some frames to atapi vcl package
+* Moved frames to atapi
+* Got images frame implemented
+* Adding support for viewing images
+* Moved Movie fetching logic to a Movies frame
+* Added usage of a mediafolder, being root of Images and Movies folders
+* Changed so there is only one setting for Movies and Images folder
+
 Release 0.6.8 (Oct 18)
 =======================
 * Added ability to launch movies from the UI (will need VLC media player in predefined path..

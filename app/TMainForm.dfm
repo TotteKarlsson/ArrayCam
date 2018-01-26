@@ -637,13 +637,17 @@ object MainForm: TMainForm
               Align = alBottom
               TabOrder = 2
               ExplicitWidth = 794
-              object DBText2: TDBText
-                Left = 56
-                Top = 6
-                Width = 65
-                Height = 17
+              object RibbonID: TDBText
+                Left = 1
+                Top = 1
+                Width = 441
+                Height = 39
+                Align = alLeft
                 DataField = 'id'
                 DataSource = pgDM.ribbonsDSource
+                ExplicitLeft = 56
+                ExplicitTop = 6
+                ExplicitHeight = 17
               end
             end
           end

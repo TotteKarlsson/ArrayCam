@@ -756,7 +756,7 @@ void __fastcall TMainForm::RibbonsGridCellClick(TColumn *Column)
 
     Poco::Path p(MediaFolderE->getValue());
 
-	TMoviesFrame1->populate(BlockIDCB->KeyValue, p);
+	TMoviesFrame1->populate(BlockIDCB->KeyValue, stdstr(RibbonID->Caption), p);
 }
 
 

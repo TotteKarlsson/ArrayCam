@@ -322,7 +322,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMoviesFrame *TMoviesFrame1;
 	TGroupBox *GroupBox14;
 	TPanel *Panel2;
-	TDBText *DBText2;
+	TDBText *RibbonID;
 	TTabSheet *TabSheet12;
 	TPGConnectionFrame *TPGConnectionFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);

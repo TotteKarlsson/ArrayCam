@@ -28,8 +28,6 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
 
 	//Setup UI
     mUsersCB->KeyValue  	= mDBUserID.getValue();
-//    SpecimenIDCB->KeyValue 	= mSpecimenID.getValue();
-//    SliceIDCB->KeyValue 	= mSliceID.getValue();
     BlockIDCB->KeyValue 	= mBlockID.getValue();
     KnifeIDCB->KeyValue 	= mKnifeID.getValue();
     enableDisableGroupBox(BlockSelectionGB, true);
