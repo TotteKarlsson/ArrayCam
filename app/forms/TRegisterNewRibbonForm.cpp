@@ -84,12 +84,6 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
 	}
     else if (b == mRegisterBtn)
     {
-//    	//Update coverslip status to post sectioning.. do this after lifting instead!
-//		if(!updateCoverSlipStatus())
-//        {
-//        	Log(lError) << "There was a problem updating status for current coverslip (" <<mBarCode<<")";
-//        }
-
         //Post data
         //Update movie and images table, using current coverslip ID
 		pgDM->ribbonsCDS->Post();
@@ -105,11 +99,6 @@ void __fastcall TRegisterNewRibbonForm::mOkCancelBtnClick(TObject *Sender)
         {
 			Log(lWarning) << "No current movie for ribbonID: "<<mRibbonID;
         }
-
-//        if(pgDM->updateImagesTableWithRibbonID(stdstr(rID), csID) == 0)
-//        {
-//			Log(lWarning) << "No movies for ribbonID: "<<rID;
-//        }
     }
 }
 
@@ -120,7 +109,7 @@ bool TRegisterNewRibbonForm::updateCoverSlipStatus()
     tq->SQLConnection->AutoClone = false;
     stringstream q;
 
-    //Status 6 is post sectioning
+    //Status 6 <=> post sectioning
     q <<"UPDATE coverslips SET status = 6 WHERE id = "<<extractCoverSlipID(mBarCode);
     tq->SQL->Add(q.str().c_str());
     int rAffected = tq->ExecSQL();

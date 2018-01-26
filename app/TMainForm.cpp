@@ -86,7 +86,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         mHandWheelPositionForm(NULL),
         LoggerForm(NULL),
-        ActionsForm(NULL)
+        ActionsForm(NULL),
+        mAutoStartKnifeCamera(false)
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
@@ -505,38 +506,6 @@ void TMainForm::setLEDIntensity(int intensity)
     }
 }
 
-void __fastcall TMainForm::BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
-{
-	populateMedia();
-}
-
-void TMainForm::populateMedia()
-{
-    if(BlockIDSLLB->KeyValue.IsNull())
-    {
-        return;
-    }
-
-    //Check what page is open, movies or images
-    Poco::Path p(MediaFolderE->getValue());
-    if(MediaPageControl->TabIndex == 0)
-    {
-		TMoviesFrame1->populate(BlockIDSLLB->KeyValue, p);
-    }
-    else //Populate Images
-	{
-		TImagesFrame1->populate(BlockIDSLLB->KeyValue, p);
-    }
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
-{
-	if(Key == vkUp || Key == vkDown|| Key == vkLeft|| Key == vkRight)
-    {
-        populateMedia();
-    }
-}
-
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::BrowseForFolderClick(TObject *Sender)
 {
@@ -552,12 +521,6 @@ void __fastcall TMainForm::BrowseForFolderClick(TObject *Sender)
 
     	MediaFolderE->setValue(f);
     }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::MediaPageControlChange(TObject *Sender)
-{
-	populateMedia();
 }
 
 void __fastcall TMainForm::checkSyncWhiskerCB()
@@ -601,6 +564,15 @@ void __fastcall TMainForm::PageControlChange(TObject *Sender)
     {
     	MouseClickTimer->Enabled = (pc->TabIndex == 4) ? true : false;
     }
+
+    if(pc == MainPC)
+    {
+    	if(pc->TabIndex == 2)//Media tab
+        {
+
+        }
+    }
+
 }
 
 //---------------------------------------------------------------------------
@@ -663,19 +635,15 @@ void __fastcall	TMainForm::fireRibbonSeparator()
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::KniveMovieBtnClick(TObject *Sender)
 {
-	if(THDMIStreamerFrame1)
+    if(KniveMovieBtn->Caption == "Start Recording" && THDMIStreamerFrame1)
     {
-		if(THDMIStreamerFrame1->getStreamer().isRunning() == false)
-        {
-        	//Create new file
-       		string uuid = getUUID();
-	        THDMIStreamerFrame1->OutputFileNameE->setValue(uuid + ".ts");
-	        //Set path, include block id
-			THDMIStreamerFrame1->setPathPostFix(mtk::toString(pgDM->getCurrentBlockIDFromAllBlocks()));
-        }
-
-	    THDMIStreamerFrame1->StartStreamerBtnClick(THDMIStreamerFrame1->StartRecordingBtn);
+        //Create new file
+        string uuid = getUUID();
+        THDMIStreamerFrame1->OutputFileNameE->setValue(uuid + ".ts");
+        //Set path, include block id
+        THDMIStreamerFrame1->setPathPostFix(mtk::toString(pgDM->getCurrentBlockIDFromAllBlocks()));
     }
+    THDMIStreamerFrame1->StartStreamerBtnClick(THDMIStreamerFrame1->StartRecordingBtn);
 }
 
 
@@ -757,6 +725,16 @@ void __fastcall TMainForm::MiscTimerTimer(TObject *Sender)
 {
 	ClearBarcodeBtn->Visible  = (BarcodeLbl->Caption.Length() > 0) 	? true : false;
    	ClearRibbonIDBtn->Visible = (RibbonIDLbl->Caption.Length() > 0) ? true : false;
+
+    if(mAutoStartKnifeCamera)
+    {
+    	if(THDMIStreamerFrame1->getStreamer().isFinished() == true && THDMIStreamerFrame1->StartRecordingBtn->Caption == "Start Recording")
+        {
+        	Sleep(1000);
+			KniveMovieBtn->Click();
+            mAutoStartKnifeCamera = false;
+        }
+    }
 }
 
 
@@ -766,6 +744,19 @@ void __fastcall TMainForm::MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShif
     {
     	THDMIStreamerFrame1->OutputFileFolderE->setValue(MediaFolderE->getValue());
     }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::RibbonsGridCellClick(TColumn *Column)
+{
+    if(BlockIDCB->KeyValue.IsNull())
+    {
+        return;
+    }
+
+    Poco::Path p(MediaFolderE->getValue());
+
+	TMoviesFrame1->populate(BlockIDCB->KeyValue, p);
 }
 
 

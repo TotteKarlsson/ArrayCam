@@ -34,7 +34,7 @@ void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)
     KnifeIDCB->KeyValue 	= mKnifeID.getValue();
     enableDisableGroupBox(BlockSelectionGB, true);
     enableDisableGroupBox(RibbonRegistrationGB, true);
-    enableDisableGroupBox(RibbonsDataGB, true);
+//    enableDisableGroupBox(RibbonsDataGB, true);
 }
 
 //---------------------------------------------------------------------------
@@ -48,7 +48,7 @@ void __fastcall	TMainForm::afterDBServerDisconnect(System::TObject* Sender)
 
     enableDisableGroupBox(RibbonRegistrationGB, false);
     enableDisableGroupBox(BlockSelectionGB, false);
-    enableDisableGroupBox(RibbonsDataGB, false);
+//    enableDisableGroupBox(RibbonsDataGB, false);
 }
 
 //---------------------------------------------------------------------------

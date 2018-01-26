@@ -104,7 +104,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
-	TPageControl *PageControl1;
+	TPageControl *MainPC;
 	TTimer *mStartupTimer;
 	TPaintBox *mPB;
 	TTimer *CheckArduinoServerConnectionTimer;
@@ -241,8 +241,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label3;
 	TDBLookupComboBox *BlockIDCB;
 	TDBLookupComboBox *mUsersCB;
-	TGroupBox *RibbonsDataGB;
-	TDBGrid *DBGrid1;
+	TDBGrid *RibbonsGrid;
 	TGroupBox *GroupBox3;
 	TPanel *Panel6;
 	TDBGrid *mRibbonNotesGrid;
@@ -267,18 +266,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TFFMPEGFrame *TFFMPEGFrame1;
 	TTabSheet *TabSheet11;
 	TTimer *CleanupTimer;
-	TTabSheet *TabSheet12;
-	TGroupBox *GroupBox16;
-	TDBLookupListBox *BlockIDSLLB;
-	TPageControl *MediaPageControl;
 	TBrowseForFolder *BrowseForFolder1;
-	TGroupBox *GroupBox6;
-	TButton *BrowseForMediaFolderBtn;
-	TSTDStringLabeledEdit *MediaFolderE;
-	TTabSheet *TabSheet15;
-	TTabSheet *TabSheet13;
-	TImagesFrame *TImagesFrame1;
-	TMoviesFrame *TMoviesFrame1;
 	TPanel *CutterStatusPanel;
 	TPanel *Panel11;
 	TShape *UC7Shape;
@@ -287,12 +275,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label17;
 	TLabel *Label18;
 	TPageControl *BlocksAndRibbonsPC;
-	TTabSheet *TabSheet2;
-	TTabSheet *TabSheet16;
 	TRadioGroup *StopOptionsRG;
 	mtkFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
-	TPGConnectionFrame *TPGConnectionFrame1;
 	TGroupBox *GroupBox7;
 	TPropertyCheckBox *SyncWhiskerCB;
 	TGroupBox *GroupBox8;
@@ -330,6 +315,16 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label7;
 	TDBText *DBText1;
 	TTimer *MiscTimer;
+	TGroupBox *GroupBox6;
+	TButton *BrowseForMediaFolderBtn;
+	TSTDStringLabeledEdit *MediaFolderE;
+	TDBNavigator *DBNavigator1;
+	TMoviesFrame *TMoviesFrame1;
+	TGroupBox *GroupBox14;
+	TPanel *Panel2;
+	TDBText *DBText2;
+	TTabSheet *TabSheet12;
+	TPGConnectionFrame *TPGConnectionFrame1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -391,11 +386,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
 	void __fastcall FrontLEDTBChange(TObject *Sender);
 	void __fastcall CleanupTimerTimer(TObject *Sender);
-	void __fastcall BlockIDSLLBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
-	void __fastcall BlockIDSLLBKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
-	void __fastcall MediaPageControlChange(TObject *Sender);
 	void __fastcall SyncWhiskerCBClick(TObject *Sender);
 	void __fastcall TestClickWindowBtnClick(TObject *Sender);
 	void __fastcall PageControlExit(TObject *Sender);
@@ -405,7 +396,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall ClearRibbonIDBtnClick(TObject *Sender);
 	void __fastcall MiscTimerTimer(TObject *Sender);
 	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-
+	void __fastcall RibbonsGridCellClick(TColumn *Column);
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
@@ -548,11 +539,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 		bool 									startVideoCompression(const string& inputName);
 	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
 	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
-		void            						populateMedia();
 
   	    void 				            		onKnifeMovieEnter(int i, int j);
 	    void 				            		onKnifeMovieProgress(int i, int j);
 	    void 				            		onKnifeMovieExit(int i, int j);
+		bool									mAutoStartKnifeCamera;
 
 
     //=================================================================================================

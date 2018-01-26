@@ -193,12 +193,19 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.h</DependentOn>
             <BuildOrder>18</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp">
+            <Form>MoviesFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\atapi\source\vcl\frames\TMoviesFrame.h</DependentOn>
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
         <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
         <FormResources Include="frames\TFFMPEGFrame.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
+        <FormResources Include="P:\libs\atapi\source\vcl\frames\TMoviesFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -265,8 +272,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -337,6 +344,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32120.dll" Class="DependencyModule">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
@@ -349,16 +359,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32"/>
                 </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
+                </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>ArrayCam.tds</RemoteName>
                     </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice">

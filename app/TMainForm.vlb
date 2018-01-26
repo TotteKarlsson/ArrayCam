@@ -55,9 +55,6 @@ Coordinates=964,493,60,51
 [mMainPhotoPanel]
 Coordinates=964,423,103,51
 
-[PageControl1]
-Coordinates=1523,53,81,33
-
 [atdbDM.blockNotesCDS]
 Coordinates=167,571,132,123
 
@@ -302,7 +299,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=645,462,97,51
+Coordinates=793,351,93,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
@@ -427,9 +424,6 @@ Coordinates=423,141,135,51
 [NrOfArrayCamServerClients]
 Coordinates=793,1,152,51
 
-[RibbonsDataGB]
-Coordinates=793,351,93,51
-
 [Label2]
 Coordinates=360,373,46,51
 
@@ -441,9 +435,6 @@ Coordinates=1503,105,120,33
 
 [ResumeDeltaDistanceFrame]
 Coordinates=1503,157,153,33
-
-[DBGrid1]
-Coordinates=1048,732,56,33
 
 [ToggleMainContentBtn]
 Coordinates=626,1,127,51
@@ -525,4 +516,10 @@ Coordinates=194,1184,132,51
 
 [BarcodeLbl]
 Coordinates=1133,281,65,51
+
+[MainPC]
+Coordinates=1523,53,81,33
+
+[RibbonsGrid]
+Coordinates=1048,732,56,33
 

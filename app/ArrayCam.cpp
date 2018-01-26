@@ -25,6 +25,7 @@ USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", MoviesFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 string		gLogFileLocation            = "";
 string	   	gAppName					= "ArrayCam";
@@ -86,6 +87,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
         PGImagesAndMoviesDM     = new TPGImagesAndMoviesDM(NULL);
 
 		Application->CreateForm(__classid(TMainForm), &MainForm);
+		Application->CreateForm(__classid(TMoviesFrame), &MoviesFrame);
 		Application->Run();
 	}
 	catch (Exception &exception)
