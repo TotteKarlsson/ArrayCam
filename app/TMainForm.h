@@ -318,7 +318,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TGroupBox *GroupBox6;
 	TButton *BrowseForMediaFolderBtn;
 	TSTDStringLabeledEdit *MediaFolderE;
-	TDBNavigator *DBNavigator1;
+	TDBNavigator *RibbonsNavigator;
 	TMoviesFrame *TMoviesFrame1;
 	TGroupBox *GroupBox14;
 	TPanel *Panel2;
@@ -397,6 +397,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall MiscTimerTimer(TObject *Sender);
 	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall RibbonsGridCellClick(TColumn *Column);
+	void __fastcall RibbonsNavigatorClick(TObject *Sender, TNavigateBtn Button);
+
 
     protected:
     	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,

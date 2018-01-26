@@ -755,7 +755,18 @@ void __fastcall TMainForm::RibbonsGridCellClick(TColumn *Column)
     }
 
     Poco::Path p(MediaFolderE->getValue());
+	TMoviesFrame1->populate(BlockIDCB->KeyValue, stdstr(RibbonID->Caption), p);
+}
 
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::RibbonsNavigatorClick(TObject *Sender, TNavigateBtn Button)
+{
+    if(BlockIDCB->KeyValue.IsNull())
+    {
+        return;
+    }
+
+    Poco::Path p(MediaFolderE->getValue());
 	TMoviesFrame1->populate(BlockIDCB->KeyValue, stdstr(RibbonID->Caption), p);
 }
 

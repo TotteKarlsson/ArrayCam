@@ -79,8 +79,6 @@ object MainForm: TMainForm
               Height = 837
               Align = alClient
               TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = -1
               object RibbonRegistrationGB: TGroupBox
                 Left = 1
                 Top = 698
@@ -572,12 +570,11 @@ object MainForm: TMainForm
             Align = alTop
             Caption = 'Ribbons'
             TabOrder = 1
-            ExplicitWidth = 798
             object RibbonsGrid: TDBGrid
               Left = 2
               Top = 21
               Width = 802
-              Height = 219
+              Height = 179
               Align = alClient
               DataSource = pgDM.ribbonsDSource
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -619,15 +616,16 @@ object MainForm: TMainForm
                   Visible = True
                 end>
             end
-            object DBNavigator1: TDBNavigator
+            object RibbonsNavigator: TDBNavigator
               Left = 2
-              Top = 240
+              Top = 200
               Width = 802
-              Height = 25
+              Height = 65
+              DataSource = pgDM.ribbonsDSource
               VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
               Align = alBottom
               TabOrder = 1
-              ExplicitWidth = 794
+              OnClick = RibbonsNavigatorClick
             end
             object Panel2: TPanel
               Left = 2
@@ -636,7 +634,6 @@ object MainForm: TMainForm
               Height = 41
               Align = alBottom
               TabOrder = 2
-              ExplicitWidth = 794
               object RibbonID: TDBText
                 Left = 1
                 Top = 1
@@ -658,7 +655,6 @@ object MainForm: TMainForm
             Height = 121
             Align = alTop
             TabOrder = 2
-            ExplicitWidth = 798
             object BlockSelectionGB: TGroupBox
               Left = 1
               Top = 1
@@ -667,7 +663,6 @@ object MainForm: TMainForm
               Align = alClient
               Caption = 'DB/Block Selection'
               TabOrder = 0
-              ExplicitWidth = 796
               object Label1: TLabel
                 Left = 293
                 Top = 32
@@ -752,8 +747,6 @@ object MainForm: TMainForm
             Align = alTop
             Caption = 'Ribbon Notes'
             TabOrder = 3
-            ExplicitLeft = 24
-            ExplicitTop = 638
             object Panel6: TPanel
               Left = 2
               Top = 21
@@ -804,7 +797,6 @@ object MainForm: TMainForm
               Height = 143
               Align = alClient
               TabOrder = 1
-              ExplicitWidth = 609
               object mRibbonNoteMemo: TDBMemo
                 Left = 1
                 Top = 1
@@ -814,7 +806,6 @@ object MainForm: TMainForm
                 DataField = 'note'
                 DataSource = pgDM.ribbonNotesDSource
                 TabOrder = 0
-                ExplicitWidth = 607
               end
               object mRibbonNoteNavigator: TDBNavigator
                 Left = 1
@@ -825,7 +816,6 @@ object MainForm: TMainForm
                 VisibleButtons = [nbPost, nbCancel]
                 Align = alBottom
                 TabOrder = 1
-                ExplicitWidth = 607
               end
             end
           end
@@ -836,13 +826,14 @@ object MainForm: TMainForm
             Height = 246
             Align = alClient
             TabOrder = 4
-            ExplicitWidth = 798
-            ExplicitHeight = 212
+            ExplicitTop = 595
+            ExplicitWidth = 806
+            ExplicitHeight = 246
             inherited Panel22: TPanel
               Top = 191
               Width = 806
-              ExplicitTop = 157
-              ExplicitWidth = 798
+              ExplicitTop = 191
+              ExplicitWidth = 806
               inherited Label4: TLabel
                 Width = 143
                 Height = 19
@@ -853,11 +844,11 @@ object MainForm: TMainForm
             inherited ScrollBox2: TScrollBox
               Width = 806
               Height = 191
-              ExplicitWidth = 798
-              ExplicitHeight = 157
+              ExplicitWidth = 806
+              ExplicitHeight = 191
               inherited FlowPanel1: TFlowPanel
                 Width = 785
-                ExplicitWidth = 777
+                ExplicitWidth = 785
               end
             end
             inherited GetMoviesQuery: TSQLQuery
@@ -1661,9 +1652,9 @@ object MainForm: TMainForm
                 Align = alClient
                 AutoSize = True
                 TabOrder = 1
-                ExplicitTop = 327
+                ExplicitTop = 322
                 ExplicitWidth = 798
-                ExplicitHeight = 263
+                ExplicitHeight = 485
                 inherited SettingsGB: TGroupBox
                   Width = 798
                   Height = 225
@@ -1711,6 +1702,7 @@ object MainForm: TMainForm
                   Top = 225
                   Width = 798
                   Visible = False
+                  ExplicitTop = 225
                   ExplicitWidth = 798
                 end
               end
@@ -1843,7 +1835,6 @@ object MainForm: TMainForm
                 Align = alTop
                 AutoSize = True
                 TabOrder = 0
-                ExplicitTop = 8
                 ExplicitWidth = 798
                 inherited GBox1: TGroupBox
                   Width = 798
