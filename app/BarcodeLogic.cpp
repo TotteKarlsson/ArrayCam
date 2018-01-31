@@ -43,7 +43,8 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
                 Log(lInfo) << "Ribbon "<<rrf->getRibbonID() << " was registered";
                 RibbonIDLbl->Caption = rrf->getRibbonID().c_str();
                 mUC7.getSectionCounter().reset();
-
+                mUC7.getRibbonOrderCounter().increase(1);
+				RibbonOrderCountLabel->update();
                 //If the knife move is streaming, turn off and let it register with this ribbon
                 if(THDMIStreamerFrame1->getStreamer().isRunning())
                 {
@@ -51,7 +52,6 @@ void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 
                     //Check in misc timer and click start button when ready
                     mAutoStartKnifeCamera = true;
-
                 }
             }
             delete rrf;

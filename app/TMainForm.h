@@ -95,7 +95,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	friend TRegisterNewRibbonForm;
 	friend TLocalArgs;
 
-	__published:	// IDE-managed Components
+	__published:
 	TTimer *mShutDownTimer;
 	TSplitter *Splitter2;
 	TPanel *mMainPhotoPanel;
@@ -128,7 +128,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPageControl *MiscPageControl;
 	TTabSheet *TabSheet5;
 	TGroupBox *CuttingGB;
-	TArrayBotButton *PopulateMaxNorthPosBtn;
 	TGroupBox *UC7OperationGB;
 	THeaderControl *CameraHC;
 	TPopupMenu *CameraPopup;
@@ -142,16 +141,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *OpenSettings1;
 	TPanel *LeftPanel;
 	TLabel *BarcodeLbl;
-	TTabSheet *TabSheet6;
-	TGroupBox *BarCodeGB;
-	TPanel *Panel3;
-	TComboBox *mZebraCOMPortCB;
-	TButton *mConnectZebraBtn;
-	TComboBox *mZebraBaudRateCB;
-	TGroupBox *mImagerSettingsGB;
-	TRadioGroup *mScannerAimRG;
-	TRadioGroup *mScannerEnabledRG;
-	TButton *mBeepBtn;
 	TTabSheet *TabSheet8;
 	TGroupBox *UC7GB;
 	TGroupBox *GroupBox4;
@@ -162,11 +151,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *mSynchUIBtn;
 	TArrayBotButton *mSetZeroCutBtn;
 	TIntegerLabeledEdit *mFeedRateE;
-	TUC7StagePositionFrame *CurrentStagePosFrame;
 	TArrayBotButton *mMoveNorthBtn;
 	TArrayBotButton *mMoveSouthBtn;
-	TUC7StagePositionFrame *MaxStagePosFrame;
-	TGroupBox *KnifeStageGB;
 	TIntegerLabeledEdit *mZeroCutsE;
 	TIntegerLabeledEdit *mPresetFeedRateE;
 	TLabel *Label6;
@@ -275,7 +261,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label17;
 	TLabel *Label18;
 	TPageControl *BlocksAndRibbonsPC;
-	TRadioGroup *StopOptionsRG;
 	mtkFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
 	TGroupBox *GroupBox7;
@@ -325,6 +310,25 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TDBText *RibbonID;
 	TTabSheet *TabSheet12;
 	TPGConnectionFrame *TPGConnectionFrame1;
+	TArrayBotButton *BroadCastStatusBtn;
+	TPanel *Bpanel;
+	TToolBar *ToolBar3;
+	TTimer *BroadcastStatusTimer;
+	TGroupBox *KnifeStageGB;
+	TUC7StagePositionFrame *MaxStagePosFrame;
+	TArrayBotButton *PopulateMaxNorthPosBtn;
+	TUC7StagePositionFrame *CurrentStagePosFrame;
+	TRadioGroup *StopOptionsRG;
+	TTabSheet *TabSheet2;
+	TGroupBox *BarCodeGB;
+	TPanel *Panel3;
+	TComboBox *mZebraCOMPortCB;
+	TButton *mConnectZebraBtn;
+	TComboBox *mZebraBaudRateCB;
+	TGroupBox *mImagerSettingsGB;
+	TRadioGroup *mScannerAimRG;
+	TRadioGroup *mScannerEnabledRG;
+	TButton *mBeepBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -398,199 +402,201 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall RibbonsGridCellClick(TColumn *Column);
 	void __fastcall RibbonsNavigatorClick(TObject *Sender, TNavigateBtn Button);
+	void __fastcall BroadCastStatusBtnClick(TObject *Sender);
+	void __fastcall BroadcastStatusTimerTimer(TObject *Sender);
 
+	protected:
+		enum StatusBarPanels{	sbpTemperature = 0,		sbpHumidity,
+								sbpArrayBotConnection,	sbpHandWheelPosition,
+								sbpDBConnection,		sbpArduinoConnection,
+								sbpUC7Connection,		sbpBarcodeReader,
+								sbpNavitarController};
 
-    protected:
-    	enum StatusBarPanels{ 	sbpTemperature = 0, 	sbpHumidity,
-        						sbpArrayBotConnection, 	sbpHandWheelPosition,
-                                sbpDBConnection, 		sbpArduinoConnection,
-                                sbpUC7Connection, 		sbpBarcodeReader,
-                                sbpNavitarController};
+		UC7										mUC7;
+		int										getCOMPortNumber();
 
-		UC7						 				mUC7;
-        int						 				getCOMPortNumber();
-
-		void 									loadCurrentImage();
+		void									loadCurrentImage();
 		bool									mMovingReticle;
-    	EnvironmentaSensorReader				mEnvReader;
-		TSettingsForm* 							mSettingsForm;
+		EnvironmentaSensorReader				mEnvReader;
+		TSettingsForm*							mSettingsForm;
 
-		void							        setupProperties();
-        IniFile						            mIniFile;
-        IniFileProperties  			            mGeneralProperties;
-		Property<mtk::LogLevel>            		mLogLevel;
-        Property<int>                     		mMainContentPanelWidth;
+		void									setupProperties();
+		IniFile									mIniFile;
+		IniFileProperties						mGeneralProperties;
+		Property<mtk::LogLevel>					mLogLevel;
+		Property<int>							mMainContentPanelWidth;
 
-        										//Camera Settings
-        Property<bool>						    mAutoGain;
-        Property<bool>						    mAutoExposure;
-        Property<bool>						    mAutoBlackLevel;
-        Property<bool>						    mAutoWhiteBalance;
-        Property<double>   					    mSoftwareGamma;
-        Property<bool>						    mVerticalMirror;
-        Property<bool>						    mHorizontalMirror;
+												//Camera Settings
+		Property<bool>							mAutoGain;
+		Property<bool>							mAutoExposure;
+		Property<bool>							mAutoBlackLevel;
+		Property<bool>							mAutoWhiteBalance;
+		Property<double> 						mSoftwareGamma;
+		Property<bool>							mVerticalMirror;
+		Property<bool>							mHorizontalMirror;
 
 												//!Reticle
-		std::auto_ptr<TReticlePopupForm>   		mReticleForm;
-        Property<bool>						    mReticleVisible;
+		std::auto_ptr<TReticlePopupForm> 		mReticleForm;
+		Property<bool>							mReticleVisible;
 
-        Property<string>						mLocalDBName;
-        Property<bool>						    mPairLEDs;
+		Property<string>						mLocalDBName;
+		Property<bool>							mPairLEDs;
 
-		Property<int>	              			mUC7COMPort;
-        Property<int>                     		mCountTo;
+		Property<int>							mUC7COMPort;
+		Property<int>							mCountTo;
+		Property<int>							mStopCutterMode;
 
-        										//Sound properties
-        IniFileProperties  			            mSoundProperties;
-        Property<ApplicationSound>				mBeforeKnifeBackOffSound;
-        Property<ApplicationSound>				mKnifeBeforeCuttingSound;
-        Property<ApplicationSound>				mKnifeCuttingSound;
-        Property<ApplicationSound>				mKnifeAfterCuttingSound;
-        Property<ApplicationSound>				mArmRetractingSound;
+												//Sound properties
+		IniFileProperties						mSoundProperties;
+		Property<ApplicationSound>				mBeforeKnifeBackOffSound;
+		Property<ApplicationSound>				mKnifeBeforeCuttingSound;
+		Property<ApplicationSound>				mKnifeCuttingSound;
+		Property<ApplicationSound>				mKnifeAfterCuttingSound;
+		Property<ApplicationSound>				mArmRetractingSound;
 
-        										// Camera variables
-        								        //!The camera class
-		Cuc480   						        mCamera1;
-        CameraServiceThread						mServiceCamera1;
-        TReticle								mReticle;
-        TReticle								mReticle2;
+												//Camera variables
+												//!The camera class
+		Cuc480 									mCamera1;
+		CameraServiceThread						mServiceCamera1;
+		TReticle								mReticle;
+		TReticle								mReticle2;
 
-        long							        mRenderMode;
-        HWND	                		        mCamera1DisplayHandle;	// handle to diplay window
+		long									mRenderMode;
+		HWND									mCamera1DisplayHandle;	// handle to diplay window
 
-        								        //!AVI ID is a handle for a
-                                                //underlying avi object
-		int 							        mAVIID;
+												//!AVI ID is a handle for a
+												//underlying avi object
+		int										mAVIID;
 
-        										//!The arduino client connects to
-                                                //an arduino server. The client processes
-                                                //incoming messages over a socket, in
-                                                //onArduinoMessageReceived
-		LightsArduinoClient    			        mLightsArduinoClient;
-        ConnectToArduinoServerThread			mConnectToArduinoServerThread;
-        bool									mCheckArduinoServerConnection;
+												//!The arduino client connects to
+												//an arduino server. The client processes
+												//incoming messages over a socket, in
+												//onArduinoMessageReceived
+		LightsArduinoClient						mLightsArduinoClient;
+		ConnectToArduinoServerThread			mConnectToArduinoServerThread;
+		bool									mCheckArduinoServerConnection;
 
-        Property<int>	                    	mKnifeStageMaxPos;
-        Property<int>	                    	mKnifeStageJogStep;
-        Property<int>	                    	mKnifeStageResumeDelta;
+		Property<int>							mKnifeStageMaxPos;
+		Property<int>							mKnifeStageJogStep;
+		Property<int>							mKnifeStageResumeDelta;
 
-        										//Database stuff
-		Property<int>	                    	mDBUserID;
-        Property<int>							mBlockID;
-        Property<int>							mKnifeID;
+												//Database stuff
+		Property<int>							mDBUserID;
+		Property<int>							mBlockID;
+		Property<int>							mKnifeID;
 
-		void 									populateUsersCB();
+		void									populateUsersCB();
 
-        										//Callbacks
-        void									onArduinoClientConnected();
-        void									onArduinoClientDisconnected();
+												//Callbacks
+		void									onArduinoClientConnected();
+		void									onArduinoClientDisconnected();
 
-		void __fastcall 						onConnectedToUC7();
-        void __fastcall 						onDisConnectedToUC7();
+		void __fastcall							onConnectedToUC7();
+		void __fastcall							onDisConnectedToUC7();
 
-        bool									handleUC7Message(const UC7Message& m);
-		void __fastcall 						enableDisableUC7UI(bool enableDisable);
-        void 									onUC7Count();
-        void 									onUC7CountedTo();
-		void __fastcall                         AppInBox(ATWindowStructMessage& Msg);
+		bool									handleUC7Message(const UC7Message& m);
+		void __fastcall							enableDisableUC7UI(bool enableDisable);
+		void									onUC7Count();
+		void									onUC7CountedTo();
+		void __fastcall							AppInBox(ATWindowStructMessage& Msg);
 
-        										//Callbacks
-		void 									onLightsArduinoMessageReceived(const string& msg);
-		void 									onSensorsArduinoMessageReceived(const string& msg);
-		void 									onPufferArduinoMessageReceived(const string& msg);
+												//Callbacks
+		void									onLightsArduinoMessageReceived(const string& msg);
+		void									onSensorsArduinoMessageReceived(const string& msg);
+		void									onPufferArduinoMessageReceived(const string& msg);
 
-        void									enableDisableArduinoClientControls(bool enable);
-		void    								populateUsers();
-		void       __fastcall					afterDBServerConnect(System::TObject* Sender);
-		void       __fastcall					afterDBServerDisconnect(System::TObject* Sender);
+		void									enableDisableArduinoClientControls(bool enable);
+		void									populateUsers();
+		void	__fastcall						afterDBServerConnect(System::TObject* Sender);
+		void	__fastcall						afterDBServerDisconnect(System::TObject* Sender);
 
-   		void       __fastcall					onCameraOpen( System::TObject* Sender);
-		void       __fastcall					onCameraClose(System::TObject* Sender);
+ 		void __fastcall							onCameraOpen( System::TObject* Sender);
+		void __fastcall							onCameraClose(System::TObject* Sender);
 
-        										//Server functions
-        ArrayCamServer							mACServer;
+												//Server functions
+		ArrayCamServer							mACServer;
 
-        										//!The barcode reader
-        DS457									mZebra;
+												//!The barcode reader
+		DS457									mZebra;
 
 												//!Navitar motor controller stuff
 		NavitarMotorController					mNavitarMotorController;
-		void  									onNavitarConnected();
-		void  									onNavitarDisconnected();
+		void									onNavitarConnected();
+		void									onNavitarDisconnected();
 
-                                                //INI Parameters...
-		Property<int>	     		           	mZebraCOMPort;
-		Property<int>	                		mZebraBaudRate;
-        int										getZebraCOMPortNumber();
-		void __fastcall 						onConnectedToZebra();
-        void __fastcall 						onDisConnectedToZebra();
+												//INI Parameters...
+		Property<int>							mZebraCOMPort;
+		Property<int>							mZebraBaudRate;
+		int										getZebraCOMPortNumber();
+		void __fastcall							onConnectedToZebra();
+		void __fastcall							onDisConnectedToZebra();
 
 												//Decoder events
-		void __fastcall                         onWMDecode(TMessage& Msg);
-		void __fastcall                         onSSIEvent(TMessage& Msg);
-		void __fastcall                         onSSIImage(TMessage& Msg);
-		void __fastcall                         onSSIError(TMessage& Msg);
-		void __fastcall                         onSSITimeout(TMessage& Msg);
-		void __fastcall                         onSSICapabilities(TMessage& Msg);
+		void __fastcall							onWMDecode(TMessage& Msg);
+		void __fastcall							onSSIEvent(TMessage& Msg);
+		void __fastcall							onSSIImage(TMessage& Msg);
+		void __fastcall							onSSIError(TMessage& Msg);
+		void __fastcall							onSSITimeout(TMessage& Msg);
+		void __fastcall							onSSICapabilities(TMessage& Msg);
 
-        THandWheelPositionForm* 				mHandWheelPositionForm;
+		THandWheelPositionForm*					mHandWheelPositionForm;
 
 		TLoggerForm*							LoggerForm;
 		TActionsForm*							ActionsForm;
 
-		bool 									startVideoCompression(const string& inputName);
-	    void __fastcall 	                	onCompressionFinished(TFFMPEGOutputFrame* f);
-	    list<TFFMPEGOutputFrame*>				mCompressionFrames;
+		bool									startVideoCompression(const string& inputName);
+		void __fastcall							onCompressionFinished(TFFMPEGOutputFrame* f);
+		list<TFFMPEGOutputFrame*>				mCompressionFrames;
 
-  	    void 				            		onKnifeMovieEnter(int i, int j);
-	    void 				            		onKnifeMovieProgress(int i, int j);
-	    void 				            		onKnifeMovieExit(int i, int j);
+		void									onKnifeMovieEnter(int i, int j);
+		void									onKnifeMovieProgress(int i, int j);
+		void									onKnifeMovieExit(int i, int j);
 		bool									mAutoStartKnifeCamera;
 
 
-    //=================================================================================================
-    public:
+	//=================================================================================================
+	public:
 
- 			        __fastcall 					TMainForm(TComponent* Owner);
- 			        __fastcall 					~TMainForm();
+					__fastcall					TMainForm(TComponent* Owner);
+					__fastcall					~TMainForm();
 
 												//!Camera stuff is processed in the message loop
-		LRESULT 					  			onUSBCameraMessage(TMessage msg);
-        void 		__fastcall		  			takeSnapShot();
-	    void 		__fastcall		  			startStopRecordingMovie();
-	    void 		__fastcall		  			startRecordingMovie();
-	    void 		__fastcall		  			stopRecordingMovie();
-	    void 		__fastcall		  			setFocus(int f);
-	    void 		__fastcall		  			focusIn(int z);
-	    void 		__fastcall		  			focusOut(int z);
-	    void 		__fastcall		  			setZoom(int z);
-	    void 		__fastcall		  			zoomIn(int z);
-	    void 		__fastcall		  			zoomOut(int z);
-	    void 		__fastcall		  			setFocusAndZoom(int f, int z);
-        void		__fastcall					updateTemperature(double t);
-        void		__fastcall					updateHumidity(double h);
-        void									setLEDIntensity(int intensity);
-        void		__fastcall 					checkSyncWhiskerCB();
-        void		__fastcall 					unCheckSyncWhiskerCB();
-        void __fastcall							fireRibbonSeparator();
+		LRESULT									onUSBCameraMessage(TMessage msg);
+		void		__fastcall					takeSnapShot();
+		void		__fastcall					startStopRecordingMovie();
+		void		__fastcall					startRecordingMovie();
+		void		__fastcall					stopRecordingMovie();
+		void		__fastcall					setFocus(int f);
+		void		__fastcall					focusIn(int z);
+		void		__fastcall					focusOut(int z);
+		void		__fastcall					setZoom(int z);
+		void		__fastcall					zoomIn(int z);
+		void		__fastcall					zoomOut(int z);
+		void		__fastcall					setFocusAndZoom(int f, int z);
+		void		__fastcall					updateTemperature(double t);
+		void		__fastcall					updateHumidity(double h);
+		void									setLEDIntensity(int intensity);
+		void		__fastcall					checkSyncWhiskerCB();
+		void		__fastcall					unCheckSyncWhiskerCB();
+		void		__fastcall					fireRibbonSeparator();
 
-        int 									getCurrentUserID();
-	    int 									getCurrentCoverSlipID();
-	    int 									getCurrentBlockID();
-	    string 									getCurrentRibbonID();
-	    int 									getCurrentKnifeID();
-		string 									getCurrentUserName();
+		int										getCurrentUserID();
+		int										getCurrentCoverSlipID();
+		int										getCurrentBlockID();
+		string									getCurrentRibbonID();
+		int										getCurrentKnifeID();
+		string									getCurrentUserName();
 
-    BEGIN_MESSAGE_MAP
-    	MESSAGE_HANDLER(IS_UC480_MESSAGE, 		TMessage, 						onUSBCameraMessage);
-        MESSAGE_HANDLER(UWM_UC7_MESSAGE,      	ATWindowStructMessage,         	AppInBox);
-        MESSAGE_HANDLER(WM_DECODE, 				TMessage, 		                onWMDecode);
-        MESSAGE_HANDLER(WM_CAPABILITIES, 		TMessage, 	                    onSSICapabilities)
-		MESSAGE_HANDLER(WM_IMAGE,               TMessage, 		                onSSIImage)
-        MESSAGE_HANDLER(WM_ERROR,               TMessage, 		                onSSIError)
-        MESSAGE_HANDLER(WM_TIMEOUT,             TMessage, 		                onSSITimeout)
-        MESSAGE_HANDLER(WM_EVENT, 	            TMessage, 		                onSSIEvent)
-    END_MESSAGE_MAP(TForm)
+	BEGIN_MESSAGE_MAP
+	MESSAGE_HANDLER(IS_UC480_MESSAGE,			TMessage,						onUSBCameraMessage);
+		MESSAGE_HANDLER(UWM_UC7_MESSAGE,		ATWindowStructMessage,			AppInBox);
+		MESSAGE_HANDLER(WM_DECODE,				TMessage,						onWMDecode);
+		MESSAGE_HANDLER(WM_CAPABILITIES,		TMessage,						onSSICapabilities)
+		MESSAGE_HANDLER(WM_IMAGE,				TMessage,						onSSIImage)
+		MESSAGE_HANDLER(WM_ERROR,				TMessage,						onSSIError)
+		MESSAGE_HANDLER(WM_TIMEOUT,				TMessage,						onSSITimeout)
+		MESSAGE_HANDLER(WM_EVENT,				TMessage,						onSSIEvent)
+	END_MESSAGE_MAP(TForm)
 };
 
 bool registerVideoInDB(const string& lUUID, const string& videoExtension, int userID, int coverslipID, int blockID , const string& ribbonID = "-1");

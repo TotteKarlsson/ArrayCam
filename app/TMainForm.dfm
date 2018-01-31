@@ -57,10 +57,11 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 875
-        ActivePage = TabSheet7
+        ActivePage = Main
         Align = alClient
-        MultiLine = True
+        TabHeight = 80
         TabOrder = 0
+        TabWidth = 100
         OnChange = PageControlChange
         object Main: TTabSheet
           Caption = 'Main'
@@ -69,19 +70,19 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 841
+            Height = 785
             Align = alClient
             TabOrder = 0
             object Panel9: TPanel
               Left = 0
               Top = 0
               Width = 802
-              Height = 837
+              Height = 781
               Align = alClient
               TabOrder = 0
               object RibbonRegistrationGB: TGroupBox
                 Left = 1
-                Top = 698
+                Top = 642
                 Width = 800
                 Height = 138
                 Align = alBottom
@@ -277,9 +278,9 @@ object MainForm: TMainForm
               end
               object UC7OperationGB: TGroupBox
                 Left = 1
-                Top = 266
+                Top = 154
                 Width = 800
-                Height = 432
+                Height = 488
                 Align = alClient
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
@@ -288,15 +289,15 @@ object MainForm: TMainForm
                   Left = 2
                   Top = 21
                   Width = 183
-                  Height = 409
+                  Height = 465
                   Align = alLeft
                   Caption = 'Cutter'
                   TabOrder = 0
                   object StartStopBtn: TArrayBotButton
                     Left = 16
-                    Top = 31
+                    Top = 80
                     Width = 150
-                    Height = 90
+                    Height = 161
                     Caption = 'Start'
                     Enabled = False
                     Font.Charset = DEFAULT_CHARSET
@@ -310,40 +311,25 @@ object MainForm: TMainForm
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
                   end
-                  object StopOptionsRG: TRadioGroup
-                    Left = 2
-                    Top = 268
-                    Width = 179
-                    Height = 139
-                    Align = alBottom
-                    Caption = 'Stop options'
-                    ItemIndex = 0
-                    Items.Strings = (
-                      'Immediately'
-                      'Before Cutting'
-                      'After Cutting'
-                      'Before Retracting')
-                    TabOrder = 1
-                  end
                 end
                 object GroupBox12: TGroupBox
                   AlignWithMargins = True
-                  Left = 565
+                  Left = 611
                   Top = 24
-                  Width = 230
-                  Height = 403
+                  Width = 184
+                  Height = 459
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 1
                   DesignSize = (
-                    230
-                    403)
+                    184
+                    459)
                   object mMoveNorthBtn: TArrayBotButton
-                    Left = 97
-                    Top = 24
-                    Width = 130
-                    Height = 60
+                    Left = 11
+                    Top = 35
+                    Width = 160
+                    Height = 86
                     Anchors = [akTop, akRight]
                     Caption = 'Knife Forward'
                     Enabled = False
@@ -353,10 +339,10 @@ object MainForm: TMainForm
                     SoundID = 'BUTTON_CLICK_4'
                   end
                   object mMoveSouthBtn: TArrayBotButton
-                    Left = 97
-                    Top = 90
-                    Width = 130
-                    Height = 60
+                    Left = 11
+                    Top = 162
+                    Width = 160
+                    Height = 86
                     Anchors = [akTop, akRight]
                     Caption = 'Knife Reverse'
                     Enabled = False
@@ -370,13 +356,13 @@ object MainForm: TMainForm
                   Left = 185
                   Top = 21
                   Width = 185
-                  Height = 409
+                  Height = 465
                   Align = alLeft
                   Caption = 'Options'
                   TabOrder = 2
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 16
-                    Top = 40
+                    Top = 183
                     Width = 145
                     Height = 49
                     BiDiMode = bdLeftToRight
@@ -386,12 +372,27 @@ object MainForm: TMainForm
                     WordWrap = True
                     OnClick = SyncWhiskerCBClick
                   end
+                  object StopOptionsRG: TRadioGroup
+                    Left = 2
+                    Top = 21
+                    Width = 181
+                    Height = 139
+                    Align = alTop
+                    Caption = 'Stop options'
+                    ItemIndex = 0
+                    Items.Strings = (
+                      'Immediately'
+                      'Before Cutting'
+                      'After Cutting'
+                      'Before Retracting')
+                    TabOrder = 1
+                  end
                 end
                 object GroupBox9: TGroupBox
                   Left = 370
                   Top = 21
-                  Width = 185
-                  Height = 409
+                  Width = 231
+                  Height = 465
                   Align = alLeft
                   Caption = 'Return Speed'
                   TabOrder = 3
@@ -408,7 +409,7 @@ object MainForm: TMainForm
                   end
                   object SlowReturnSpeedBtn: TArrayBotButton
                     Left = 22
-                    Top = 127
+                    Top = 167
                     Width = 133
                     Height = 81
                     Caption = 'Slow'
@@ -419,7 +420,7 @@ object MainForm: TMainForm
                   end
                   object UltraSlowReturnSpeedBtn: TArrayBotButton
                     Left = 22
-                    Top = 214
+                    Top = 294
                     Width = 133
                     Height = 81
                     Caption = 'Ultra Slow'
@@ -430,88 +431,13 @@ object MainForm: TMainForm
                   end
                 end
               end
-              object KnifeStageGB: TGroupBox
-                Left = 1
-                Top = 154
-                Width = 800
-                Height = 112
-                Align = alTop
-                Caption = 'Knife Stage'
-                TabOrder = 3
-                inline MaxStagePosFrame: TUC7StagePositionFrame
-                  Left = 339
-                  Top = 24
-                  Width = 257
-                  Height = 81
-                  AutoSize = True
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 0
-                  ExplicitLeft = 339
-                  ExplicitTop = 24
-                  inherited GroupBox1: TGroupBox
-                    Caption = 'Max Knife Position'
-                    inherited ValueMM: TIntegerEdit
-                      OnKeyDown = MaxKnifePosKeyDown
-                    end
-                    inherited Valuenm: TIntegerEdit
-                      OnKeyDown = MaxKnifePosKeyDown
-                    end
-                    inherited Valueum: TIntegerEdit
-                      OnKeyDown = MaxKnifePosKeyDown
-                    end
-                  end
-                end
-                object PopulateMaxNorthPosBtn: TArrayBotButton
-                  Left = 275
-                  Top = 51
-                  Width = 58
-                  Height = 28
-                  Caption = '->'
-                  TabOrder = 1
-                  OnClick = PopulateMaxNorthPosBtnClick
-                  SoundID = 'BUTTON_CLICK_4'
-                end
-                inline CurrentStagePosFrame: TUC7StagePositionFrame
-                  Left = 13
-                  Top = 24
-                  Width = 257
-                  Height = 81
-                  AutoSize = True
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  TabOrder = 2
-                  ExplicitLeft = 13
-                  ExplicitTop = 24
-                  inherited GroupBox1: TGroupBox
-                    Caption = 'Current Knife Position'
-                    inherited ValueMM: TIntegerEdit
-                      OnKeyDown = KnifePosChange
-                    end
-                    inherited Valuenm: TIntegerEdit
-                      OnKeyDown = KnifePosChange
-                    end
-                    inherited Valueum: TIntegerEdit
-                      OnKeyDown = KnifePosChange
-                    end
-                  end
-                end
-              end
               object CutterStatusPanel: TPanel
                 Left = 1
                 Top = 113
                 Width = 800
                 Height = 41
                 Align = alTop
-                TabOrder = 4
+                TabOrder = 3
                 object UC7Shape: TShape
                   Left = 432
                   Top = 24
@@ -552,13 +478,13 @@ object MainForm: TMainForm
           end
         end
         object TabSheet7: TTabSheet
-          Caption = 'Blocks and Ribbons'
+          Caption = 'Ribbons'
           ImageIndex = 6
           object BlocksAndRibbonsPC: TPageControl
             Left = 0
             Top = 595
             Width = 806
-            Height = 246
+            Height = 190
             Align = alClient
             TabOrder = 0
           end
@@ -823,16 +749,16 @@ object MainForm: TMainForm
             Left = 0
             Top = 595
             Width = 806
-            Height = 246
+            Height = 190
             Align = alClient
             TabOrder = 4
             ExplicitTop = 595
             ExplicitWidth = 806
-            ExplicitHeight = 246
+            ExplicitHeight = 190
             inherited Panel22: TPanel
-              Top = 191
+              Top = 135
               Width = 806
-              ExplicitTop = 191
+              ExplicitTop = 135
               ExplicitWidth = 806
               inherited Label4: TLabel
                 Width = 143
@@ -843,9 +769,9 @@ object MainForm: TMainForm
             end
             inherited ScrollBox2: TScrollBox
               Width = 806
-              Height = 191
+              Height = 135
               ExplicitWidth = 806
-              ExplicitHeight = 191
+              ExplicitHeight = 135
               inherited FlowPanel1: TFlowPanel
                 Width = 785
                 ExplicitWidth = 785
@@ -863,7 +789,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 841
+            Height = 785
             Align = alClient
             Caption = 'UC7'
             TabOrder = 0
@@ -956,7 +882,7 @@ object MainForm: TMainForm
             end
             object KnifeGB: TGroupBox
               Left = 2
-              Top = 156
+              Top = 505
               Width = 802
               Height = 120
               Align = alTop
@@ -1011,7 +937,7 @@ object MainForm: TMainForm
             end
             object GroupBox8: TGroupBox
               Left = 2
-              Top = 276
+              Top = 156
               Width = 802
               Height = 237
               Align = alTop
@@ -1051,132 +977,61 @@ object MainForm: TMainForm
                 Text = '0.00'
               end
             end
-          end
-        end
-        object TabSheet6: TTabSheet
-          Caption = 'Barcode Reader'
-          ImageIndex = 4
-          object BarCodeGB: TGroupBox
-            Left = 0
-            Top = 0
-            Width = 806
-            Height = 209
-            Align = alTop
-            Caption = 'Zebra'
-            TabOrder = 0
-            object Panel3: TPanel
+            object KnifeStageGB: TGroupBox
               Left = 2
-              Top = 21
+              Top = 393
               Width = 802
-              Height = 28
+              Height = 112
               Align = alTop
-              BevelOuter = bvNone
-              TabOrder = 0
-              object mZebraCOMPortCB: TComboBox
-                Left = 0
-                Top = 0
-                Width = 87
-                Height = 27
-                Margins.Left = 10
-                Align = alLeft
+              Caption = 'Knife Stage'
+              TabOrder = 4
+              inline MaxStagePosFrame: TUC7StagePositionFrame
+                Left = 339
+                Top = 24
+                Width = 257
+                Height = 81
+                AutoSize = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
                 TabOrder = 0
-                Text = 'COM1'
-                Items.Strings = (
-                  'COM1'
-                  'COM2'
-                  'COM3'
-                  'COM4'
-                  'COM5'
-                  'COM6'
-                  'COM7'
-                  'COM8'
-                  'COM9'
-                  'COM10'
-                  'COM11'
-                  'COM12'
-                  'COM13'
-                  'COM14'
-                  'COM15'
-                  'COM16'
-                  'COM17'
-                  'COM18'
-                  'COM19'
-                  'COM20')
+                ExplicitLeft = 339
+                ExplicitTop = 24
+                inherited GroupBox1: TGroupBox
+                  Caption = 'Max Knife Position'
+                end
               end
-              object mConnectZebraBtn: TButton
-                Left = 163
-                Top = 0
-                Width = 77
+              object PopulateMaxNorthPosBtn: TArrayBotButton
+                Left = 275
+                Top = 51
+                Width = 58
                 Height = 28
-                Align = alLeft
-                Caption = 'Open'
+                Caption = '->'
                 TabOrder = 1
-                OnClick = mConnectZebraBtnClick
+                OnClick = PopulateMaxNorthPosBtnClick
+                SoundID = 'BUTTON_CLICK_4'
               end
-              object mZebraBaudRateCB: TComboBox
-                Left = 87
-                Top = 0
-                Width = 76
-                Height = 27
-                Margins.Left = 10
-                Align = alLeft
-                ItemIndex = 0
+              inline CurrentStagePosFrame: TUC7StagePositionFrame
+                Left = 13
+                Top = 24
+                Width = 257
+                Height = 81
+                AutoSize = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
                 TabOrder = 2
-                Text = '9600'
-                Items.Strings = (
-                  '9600'
-                  '14400'
-                  '19200'
-                  '38400'
-                  '57600'
-                  '115200'
-                  '128000'
-                  '256000')
-              end
-            end
-            object mImagerSettingsGB: TGroupBox
-              Left = 13
-              Top = 76
-              Width = 518
-              Height = 107
-              Caption = 'Check'
-              TabOrder = 1
-              object mScannerAimRG: TRadioGroup
-                Left = 179
-                Top = 22
-                Width = 145
-                Height = 49
-                Caption = 'Aim'
-                Columns = 2
-                ItemIndex = 1
-                Items.Strings = (
-                  'On'
-                  'Off')
-                TabOrder = 0
-                OnClick = scannerSettingsClick
-              end
-              object mScannerEnabledRG: TRadioGroup
-                Left = 9
-                Top = 23
-                Width = 145
-                Height = 49
-                Caption = 'Enabled'
-                Columns = 2
-                ItemIndex = 0
-                Items.Strings = (
-                  'On'
-                  'Off')
-                TabOrder = 1
-                OnClick = scannerSettingsClick
-              end
-              object mBeepBtn: TButton
-                Left = 342
-                Top = 31
-                Width = 89
-                Height = 37
-                Caption = 'Beep'
-                TabOrder = 2
-                OnClick = DecodeBarcodeClick
+                ExplicitLeft = 13
+                ExplicitTop = 24
+                inherited GroupBox1: TGroupBox
+                  Caption = 'Current Knife Position'
+                end
               end
             end
           end
@@ -1188,7 +1043,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 313
-            Height = 841
+            Height = 785
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
@@ -1205,7 +1060,7 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 724
+              Top = 668
               Width = 309
               Height = 115
               Align = alBottom
@@ -1281,7 +1136,7 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 841
+            Height = 785
             Align = alClient
             TabOrder = 1
             inline TNavitarMotorFrame1: TNavitarMotorFrame
@@ -1344,6 +1199,46 @@ object MainForm: TMainForm
             end
           end
         end
+        object TabSheet10: TTabSheet
+          Caption = 'Lights'
+          ImageIndex = 7
+          object LightIntensitiesGB: TGroupBox
+            Left = 3
+            Top = 16
+            Width = 350
+            Height = 105
+            Caption = 'Light Intensities'
+            TabOrder = 0
+            object mFrontLEDLbl: TLabel
+              Left = 151
+              Top = 26
+              Width = 28
+              Height = 19
+              Caption = 'LED'
+            end
+            object Panel10: TPanel
+              Left = 2
+              Top = 21
+              Width = 143
+              Height = 82
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+              object FrontLEDTB: TTrackBar
+                Left = 0
+                Top = 0
+                Width = 143
+                Height = 40
+                Align = alTop
+                Max = 255
+                TabOrder = 0
+                ThumbLength = 30
+                TickStyle = tsNone
+                OnChange = FrontLEDTBChange
+              end
+            end
+          end
+        end
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
@@ -1351,8 +1246,8 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 841
-            ActivePage = TabSheet12
+            Height = 785
+            ActivePage = TabSheet2
             Align = alClient
             TabOrder = 0
             OnChange = PageControlChange
@@ -1464,27 +1359,27 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 482
                 Width = 798
-                Height = 325
+                Height = 269
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
                 ExplicitTop = 482
                 ExplicitWidth = 798
-                ExplicitHeight = 325
+                ExplicitHeight = 269
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 325
+                  Height = 269
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 325
+                  ExplicitHeight = 269
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 302
+                    Height = 246
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 302
+                    ExplicitHeight = 246
                   end
                 end
               end
@@ -1503,7 +1398,7 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
                     Top = 21
@@ -1648,26 +1543,29 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 322
                 Width = 798
-                Height = 485
+                Height = 429
                 Align = alClient
                 AutoSize = True
                 TabOrder = 1
                 ExplicitTop = 322
                 ExplicitWidth = 798
-                ExplicitHeight = 485
+                ExplicitHeight = 429
                 inherited SettingsGB: TGroupBox
                   Width = 798
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited BitrateE: TIntegerLabeledEdit
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1684,17 +1582,14 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit [2]
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1909,44 +1804,134 @@ object MainForm: TMainForm
                 end
               end
             end
-          end
-        end
-        object TabSheet10: TTabSheet
-          Caption = 'Lights'
-          ImageIndex = 7
-          object LightIntensitiesGB: TGroupBox
-            Left = 3
-            Top = 16
-            Width = 350
-            Height = 105
-            Caption = 'Light Intensities'
-            TabOrder = 0
-            object mFrontLEDLbl: TLabel
-              Left = 151
-              Top = 26
-              Width = 28
-              Height = 19
-              Caption = 'LED'
-            end
-            object Panel10: TPanel
-              Left = 2
-              Top = 21
-              Width = 143
-              Height = 82
-              Align = alLeft
-              BevelOuter = bvNone
-              TabOrder = 0
-              object FrontLEDTB: TTrackBar
+            object TabSheet2: TTabSheet
+              Caption = 'Barcode Reader'
+              ImageIndex = 6
+              object BarCodeGB: TGroupBox
                 Left = 0
                 Top = 0
-                Width = 143
-                Height = 40
+                Width = 798
+                Height = 209
                 Align = alTop
-                Max = 255
+                Caption = 'Zebra'
                 TabOrder = 0
-                ThumbLength = 30
-                TickStyle = tsNone
-                OnChange = FrontLEDTBChange
+                ExplicitTop = 8
+                object Panel3: TPanel
+                  Left = 2
+                  Top = 21
+                  Width = 794
+                  Height = 28
+                  Align = alTop
+                  BevelOuter = bvNone
+                  TabOrder = 0
+                  ExplicitWidth = 802
+                  object mZebraCOMPortCB: TComboBox
+                    Left = 0
+                    Top = 0
+                    Width = 87
+                    Height = 27
+                    Margins.Left = 10
+                    Align = alLeft
+                    TabOrder = 0
+                    Text = 'COM1'
+                    Items.Strings = (
+                      'COM1'
+                      'COM2'
+                      'COM3'
+                      'COM4'
+                      'COM5'
+                      'COM6'
+                      'COM7'
+                      'COM8'
+                      'COM9'
+                      'COM10'
+                      'COM11'
+                      'COM12'
+                      'COM13'
+                      'COM14'
+                      'COM15'
+                      'COM16'
+                      'COM17'
+                      'COM18'
+                      'COM19'
+                      'COM20')
+                  end
+                  object mConnectZebraBtn: TButton
+                    Left = 163
+                    Top = 0
+                    Width = 77
+                    Height = 28
+                    Align = alLeft
+                    Caption = 'Open'
+                    TabOrder = 1
+                    OnClick = mConnectZebraBtnClick
+                  end
+                  object mZebraBaudRateCB: TComboBox
+                    Left = 87
+                    Top = 0
+                    Width = 76
+                    Height = 27
+                    Margins.Left = 10
+                    Align = alLeft
+                    ItemIndex = 0
+                    TabOrder = 2
+                    Text = '9600'
+                    Items.Strings = (
+                      '9600'
+                      '14400'
+                      '19200'
+                      '38400'
+                      '57600'
+                      '115200'
+                      '128000'
+                      '256000')
+                  end
+                end
+                object mImagerSettingsGB: TGroupBox
+                  Left = 13
+                  Top = 76
+                  Width = 518
+                  Height = 107
+                  Caption = 'Check'
+                  TabOrder = 1
+                  object mScannerAimRG: TRadioGroup
+                    Left = 179
+                    Top = 22
+                    Width = 145
+                    Height = 49
+                    Caption = 'Aim'
+                    Columns = 2
+                    ItemIndex = 1
+                    Items.Strings = (
+                      'On'
+                      'Off')
+                    TabOrder = 0
+                    OnClick = scannerSettingsClick
+                  end
+                  object mScannerEnabledRG: TRadioGroup
+                    Left = 9
+                    Top = 23
+                    Width = 145
+                    Height = 49
+                    Caption = 'Enabled'
+                    Columns = 2
+                    ItemIndex = 0
+                    Items.Strings = (
+                      'On'
+                      'Off')
+                    TabOrder = 1
+                    OnClick = scannerSettingsClick
+                  end
+                  object mBeepBtn: TButton
+                    Left = 342
+                    Top = 31
+                    Width = 89
+                    Height = 37
+                    Caption = 'Beep'
+                    TabOrder = 2
+                    OnClick = DecodeBarcodeClick
+                  end
+                end
               end
             end
           end
@@ -2071,36 +2056,72 @@ object MainForm: TMainForm
         AutoSize = True
         TabOrder = 1
       end
-      object ToolBar2: TToolBar
+      object Bpanel: TPanel
         Left = 0
-        Top = 777
+        Top = 798
         Width = 963
-        Height = 100
+        Height = 79
         Align = alBottom
-        ButtonHeight = 75
-        Caption = 'ToolBar2'
+        AutoSize = True
         TabOrder = 2
-        object RecordVideoBtn: TArrayBotButton
-          Left = 0
-          Top = 0
-          Width = 180
-          Height = 75
+        object ToolBar2: TToolBar
+          Left = 1
+          Top = 1
+          Width = 448
+          Height = 77
           Align = alLeft
-          Caption = 'Record Video'
+          ButtonHeight = 75
+          Caption = 'ToolBar2'
           TabOrder = 0
-          OnClick = RecordVideoBtnClick
-          SoundID = 'BUTTON_CLICK_4'
+          object RecordVideoBtn: TArrayBotButton
+            Left = 0
+            Top = 0
+            Width = 161
+            Height = 75
+            Align = alLeft
+            Caption = 'Record Video'
+            TabOrder = 0
+            OnClick = RecordVideoBtnClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
+          object TakeSnapShotBtn: TArrayBotButton
+            Left = 161
+            Top = 0
+            Width = 161
+            Height = 75
+            Align = alLeft
+            Caption = 'Take SnapShot'
+            TabOrder = 1
+            OnClick = TakeSnapShotBtnClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
         end
-        object TakeSnapShotBtn: TArrayBotButton
-          Left = 180
-          Top = 0
-          Width = 161
-          Height = 75
-          Align = alLeft
-          Caption = 'Take SnapShot'
+        object ToolBar3: TToolBar
+          Left = 824
+          Top = 1
+          Width = 138
+          Height = 77
+          Align = alRight
+          ButtonHeight = 75
+          Caption = 'ToolBar3'
+          Flat = False
+          List = True
+          AllowTextButtons = True
           TabOrder = 1
-          OnClick = TakeSnapShotBtnClick
-          SoundID = 'BUTTON_CLICK_4'
+          Wrapable = False
+          object BroadCastStatusBtn: TArrayBotButton
+            Left = 0
+            Top = 0
+            Width = 84
+            Height = 75
+            Align = alRight
+            BiDiMode = bdLeftToRight
+            Caption = '*'
+            ParentBiDiMode = False
+            TabOrder = 0
+            OnClick = BroadCastStatusBtnClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
         end
       end
     end
@@ -2269,10 +2290,10 @@ object MainForm: TMainForm
         SoundID = 'BUTTON_CLICK_4'
       end
       object RegisterRibbonBtn: TArrayBotButton
-        Left = 1026
-        Top = 13
+        Left = 1027
+        Top = 3
         Width = 208
-        Height = 50
+        Height = 68
         Caption = 'Register Floating Ribbon'
         ParentDoubleBuffered = True
         TabOrder = 3
@@ -2532,8 +2553,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 50
     OnTimer = MouseClickTimerTimer
-    Left = 1640
-    Top = 472
+    Left = 1504
+    Top = 528
   end
   object MiscTimer: TTimer
     Enabled = False
@@ -2541,5 +2562,11 @@ object MainForm: TMainForm
     OnTimer = MiscTimerTimer
     Left = 80
     Top = 528
+  end
+  object BroadcastStatusTimer: TTimer
+    Enabled = False
+    OnTimer = BroadcastStatusTimerTimer
+    Left = 656
+    Top = 600
   end
 end

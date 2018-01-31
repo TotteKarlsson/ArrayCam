@@ -484,7 +484,15 @@ void __fastcall TMainForm::startStopRecordingMovie()
 
         //We rely on that the compression process finishes! avi -> mp4
         registerVideoInDB(sMovieID, "mp4", getCurrentUserID(), csID, lBlockID, stdstr(RibbonIDLbl->Caption));
+        mACServer.broadcast(acrVideoRecorderStopped);
     }
+
+   	if(mCaptureVideoTimer->Enabled)
+    {
+    	//Enabnle visual indication on the Video Button
+		VideoRecTimer->Enabled = true;
+    }
+
   	mACServer.broadcastStatus();
 }
 

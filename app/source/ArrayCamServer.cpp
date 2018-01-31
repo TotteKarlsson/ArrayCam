@@ -13,6 +13,8 @@ ArrayCamServer::ArrayCamServer(TMainForm& mf, int portNumber)
 IPCServer(portNumber, "ARRAYCAM_SERVER", createArrayCamIPCReceiver),
 mMainForm(mf)
 {
+
+
 }
 
 ArrayCamServer::~ArrayCamServer()
@@ -108,7 +110,6 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     {
     	Log(lInfo) << "Stop recording video";
        	TThread::Synchronize(NULL, mMainForm.stopRecordingMovie);
-
     }
 
     else if(compareStrings(ap[acrTakeSnapShot], msgList[0], csCaseInsensitive))

@@ -21,6 +21,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
         pgDM->SQLConnection1->Connected 		||
         mZebra.isConnected()                    ||
         mHandWheelPositionForm                  ||
+        BroadcastStatusTimer->Enabled  			||
         LoggerForm
         )
     {
@@ -79,6 +80,10 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
         mHandWheelPositionForm = NULL;
     }
 
+    if(BroadcastStatusTimer->Enabled)
+    {
+		BroadcastStatusTimer->Enabled = false;
+    }
 	if(LoggerForm)
     {
         LoggerForm->Close();
@@ -131,6 +136,8 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
     mKnifeStageMaxPos.setValue(MaxStagePosFrame->getValue());
     mKnifeStageJogStep.setValue(BackOffStepFrame->getValue());
     mKnifeStageResumeDelta.setValue(ResumeDeltaDistanceFrame->getValue());
+
+    mStopCutterMode = StopOptionsRG->ItemIndex;
 
 	mGeneralProperties.write();
 	mSoundProperties.write();

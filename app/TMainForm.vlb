@@ -1,9 +1,6 @@
 ﻿[atdbDM.cryoprotectionDS]
 Coordinates=1133,1455,141,51
 
-[KnifeStageGB]
-Coordinates=751,919,83,51
-
 [Panel9]
 Coordinates=333,1184,47,51
 
@@ -46,9 +43,6 @@ Coordinates=1314,1051,96,51
 [atdbDM.blockstatusDS]
 Coordinates=1314,561,126,51
 
-[mScannerAimRG]
-Coordinates=751,779,99,51
-
 [LeftPanel]
 Coordinates=964,493,60,51
 
@@ -82,20 +76,11 @@ Coordinates=1314,841,88,51
 [SendServerStatusMessageBtn]
 Coordinates=550,1,163,51
 
-[mZebraBaudRateCB]
-Coordinates=167,465,114,87
-
 [atdbDM.settingsDS]
 Coordinates=410,1667,113,87
 
-[CurrentStagePosFrame]
-Coordinates=1523,417,129,33
-
 [mMoveNorthBtn]
 Coordinates=1133,1175,94,51
-
-[mConnectZebraBtn]
-Coordinates=291,1667,109,51
 
 [Splitter2]
 Coordinates=1523,469,55,33
@@ -108,9 +93,6 @@ Coordinates=1523,573,66,33
 
 [Label6]
 Coordinates=124,1667,46,51
-
-[mScannerEnabledRG]
-Coordinates=1314,141,119,51
 
 [mZeroCutsE]
 Coordinates=1314,71,75,51
@@ -130,23 +112,11 @@ Coordinates=1133,561,81,51
 [GroupBox4]
 Coordinates=1133,1245,70,51
 
-[mImagerSettingsGB]
-Coordinates=1314,1751,113,51
-
-[mZebraCOMPortCB]
-Coordinates=531,1184,111,87
-
 [mUC7ComportCB]
 Coordinates=642,1345,101,87
 
 [TabSheet8]
 Coordinates=1523,833,66,33
-
-[Panel3]
-Coordinates=1133,211,47,51
-
-[BarCodeGB]
-Coordinates=1133,1525,72,51
 
 [atdbDM.settingsCDS]
 Coordinates=751,1,116,87
@@ -159,9 +129,6 @@ Coordinates=167,71,113,285
 
 [atdbDM.ROnCS_CDS]
 Coordinates=1133,71,118,51
-
-[TabSheet6]
-Coordinates=1523,937,66,33
 
 [atdbDM.speciesDS]
 Coordinates=964,283,107,51
@@ -186,9 +153,6 @@ Coordinates=550,905,124,123
 
 [mTopPanel]
 Coordinates=325,1345,69,51
-
-[MaxStagePosFrame]
-Coordinates=1523,1301,112,33
 
 [atdbDM.ribbonNotesDS]
 Coordinates=165,933,129,123
@@ -217,9 +181,6 @@ Coordinates=16,1184,104,123
 [mFeedRateE]
 Coordinates=389,1506,76,51
 
-[mBeepBtn]
-Coordinates=222,1667,65,51
-
 [ScrollBox1]
 Coordinates=1523,1353,68,33
 
@@ -228,9 +189,6 @@ Coordinates=1523,1405,66,33
 
 [atdbDM.ribbonsOnCoverSlipsDS]
 Coordinates=751,639,175,51
-
-[PopulateMaxNorthPosBtn]
-Coordinates=977,1792,141,51
 
 [atdbDM.infiltrationProtocolDS]
 Coordinates=1314,631,161,51
@@ -299,7 +257,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=793,351,93,51
+Coordinates=1523,937,66,33
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51

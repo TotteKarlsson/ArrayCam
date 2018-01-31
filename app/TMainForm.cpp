@@ -66,7 +66,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mUC7(Handle),
         mCountTo(0),
 	    mDBUserID(0),
-
+        mStopCutterMode(0),
 	    mBlockID(0),
 	    mKnifeID(0),
 	    mZebraCOMPort(17),
@@ -443,8 +443,8 @@ void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
     }
     else
     {
-    	RecordVideoBtn->Caption = "Record Video";
 		VideoRecTimer->Enabled = false;
+    	RecordVideoBtn->Caption = "Record Video";
         recTime = 0;
     }
 
@@ -460,11 +460,6 @@ void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
 void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
 {
 	startStopRecordingMovie();
-
-	if(mCaptureVideoTimer->Enabled)
-    {
-		VideoRecTimer->Enabled = true;
-    }
 }
 
 //---------------------------------------------------------------------------
@@ -768,6 +763,19 @@ void __fastcall TMainForm::RibbonsNavigatorClick(TObject *Sender, TNavigateBtn B
 
     Poco::Path p(MediaFolderE->getValue());
 	TMoviesFrame1->populate(BlockIDCB->KeyValue, stdstr(RibbonID->Caption), p);
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BroadCastStatusBtnClick(TObject *Sender)
+{
+	mACServer.broadcastStatus();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BroadcastStatusTimerTimer(TObject *Sender)
+{
+	mACServer.broadcastStatus();
 }
 
 

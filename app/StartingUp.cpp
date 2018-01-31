@@ -41,6 +41,8 @@ void TMainForm::setupProperties()
    	mGeneralProperties.add((BaseProperty*)  &mUC7COMPort.setup( 	                        "UC7_COM_PORT",    	   				0));
 	mGeneralProperties.add((BaseProperty*)  &mCountToE->getProperty()->setup(       	    "COUNT_TO",                     	5));
 	mGeneralProperties.add((BaseProperty*)  &mZeroCutsE->getProperty()->setup(      	    "NUMBER_OF_ZERO_CUTS",           	2));
+	mGeneralProperties.add((BaseProperty*)  &mStopCutterMode.setup(    					    "STOP_CUTTER_MODE",					1));
+
 	mGeneralProperties.add((BaseProperty*)  &mStageMoveDelayE->getProperty()->setup(	    "KNIFE_STAGE_MOVE_DELAY",          	10));
 	mGeneralProperties.add((BaseProperty*)  &mPresetFeedRateE->getProperty()->setup(	    "PRESET_FEED_RATE",               	100));
 	mGeneralProperties.add((BaseProperty*)  &mKnifeStageJogStep.setup(	    				"KNIFE_STAGE_JOG_SIZE",          	100));
@@ -129,5 +131,10 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
 	FitToScreenAExecute(Sender);
+
+    BroadcastStatusTimer->Enabled = true;
+
+    //Set UC7 stop mode
+    StopOptionsRG->ItemIndex = mStopCutterMode;
 }
 
