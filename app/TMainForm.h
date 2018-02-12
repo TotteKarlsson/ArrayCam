@@ -260,7 +260,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label16;
 	TLabel *Label17;
 	TLabel *Label18;
-	TPageControl *BlocksAndRibbonsPC;
 	mtkFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
 	TGroupBox *GroupBox7;

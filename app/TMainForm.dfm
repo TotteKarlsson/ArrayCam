@@ -480,14 +480,6 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Ribbons'
           ImageIndex = 6
-          object BlocksAndRibbonsPC: TPageControl
-            Left = 0
-            Top = 595
-            Width = 806
-            Height = 190
-            Align = alClient
-            TabOrder = 0
-          end
           object GroupBox14: TGroupBox
             Left = 0
             Top = 121
@@ -495,7 +487,7 @@ object MainForm: TMainForm
             Height = 308
             Align = alTop
             Caption = 'Ribbons'
-            TabOrder = 1
+            TabOrder = 0
             object RibbonsGrid: TDBGrid
               Left = 2
               Top = 21
@@ -580,7 +572,7 @@ object MainForm: TMainForm
             Width = 806
             Height = 121
             Align = alTop
-            TabOrder = 2
+            TabOrder = 1
             object BlockSelectionGB: TGroupBox
               Left = 1
               Top = 1
@@ -672,7 +664,7 @@ object MainForm: TMainForm
             Height = 166
             Align = alTop
             Caption = 'Ribbon Notes'
-            TabOrder = 3
+            TabOrder = 2
             object Panel6: TPanel
               Left = 2
               Top = 21
@@ -751,7 +743,7 @@ object MainForm: TMainForm
             Width = 806
             Height = 190
             Align = alClient
-            TabOrder = 4
+            TabOrder = 3
             ExplicitTop = 595
             ExplicitWidth = 806
             ExplicitHeight = 190
@@ -1398,14 +1390,15 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
+                  TabOrder = 0
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1416,6 +1409,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1445,7 +1441,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1555,17 +1551,14 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1582,14 +1575,17 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited BitrateE: TIntegerLabeledEdit [2]
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1815,7 +1811,6 @@ object MainForm: TMainForm
                 Align = alTop
                 Caption = 'Zebra'
                 TabOrder = 0
-                ExplicitTop = 8
                 object Panel3: TPanel
                   Left = 2
                   Top = 21
@@ -1824,7 +1819,6 @@ object MainForm: TMainForm
                   Align = alTop
                   BevelOuter = bvNone
                   TabOrder = 0
-                  ExplicitWidth = 802
                   object mZebraCOMPortCB: TComboBox
                     Left = 0
                     Top = 0

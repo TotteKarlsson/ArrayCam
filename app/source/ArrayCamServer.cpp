@@ -31,11 +31,6 @@ bool ArrayCamServer::shutDown()
     return true;
 }
 
-//string ArrayCamServer::IPCCommand(ACMessageID id)
-//{
-//	return mProtocol[id];
-//}
-
 void ArrayCamServer::broadcast(ACMessageID id, const string& arg1, const string& arg2, const string& arg3)
 {
     stringstream msg;
