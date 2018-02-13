@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 875
-        ActivePage = Main
+        ActivePage = TabSheet1
         Align = alClient
         TabHeight = 80
         TabOrder = 0
@@ -297,7 +297,7 @@ object MainForm: TMainForm
                     Left = 16
                     Top = 80
                     Width = 150
-                    Height = 161
+                    Height = 289
                     Caption = 'Start'
                     Enabled = False
                     Font.Charset = DEFAULT_CHARSET
@@ -361,8 +361,8 @@ object MainForm: TMainForm
                   Caption = 'Options'
                   TabOrder = 2
                   object SyncWhiskerCB: TPropertyCheckBox
-                    Left = 16
-                    Top = 183
+                    Left = 24
+                    Top = 375
                     Width = 145
                     Height = 49
                     BiDiMode = bdLeftToRight
@@ -376,7 +376,7 @@ object MainForm: TMainForm
                     Left = 2
                     Top = 21
                     Width = 181
-                    Height = 139
+                    Height = 252
                     Align = alTop
                     Caption = 'Stop options'
                     ItemIndex = 0
@@ -399,7 +399,7 @@ object MainForm: TMainForm
                   object PresetReturnSpeedBtn: TArrayBotButton
                     Left = 22
                     Top = 40
-                    Width = 133
+                    Width = 195
                     Height = 81
                     Caption = 'Preset'
                     TabOrder = 0
@@ -410,7 +410,7 @@ object MainForm: TMainForm
                   object SlowReturnSpeedBtn: TArrayBotButton
                     Left = 22
                     Top = 167
-                    Width = 133
+                    Width = 195
                     Height = 81
                     Caption = 'Slow'
                     TabOrder = 1
@@ -421,7 +421,7 @@ object MainForm: TMainForm
                   object UltraSlowReturnSpeedBtn: TArrayBotButton
                     Left = 22
                     Top = 294
-                    Width = 133
+                    Width = 195
                     Height = 81
                     Caption = 'Ultra Slow'
                     TabOrder = 2
@@ -1239,7 +1239,7 @@ object MainForm: TMainForm
             Top = 0
             Width = 806
             Height = 785
-            ActivePage = TabSheet2
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             OnChange = PageControlChange
@@ -1390,15 +1390,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
-                  ExplicitWidth = 509
+                  TabOrder = 1
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1409,9 +1408,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1441,7 +1437,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1551,14 +1547,17 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited BitrateE: TIntegerLabeledEdit
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1575,17 +1574,14 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit [2]
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end

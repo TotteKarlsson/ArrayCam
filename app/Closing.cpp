@@ -5,14 +5,14 @@
 #include "THandWheelPositionForm.h"
 #include "TLoggerForm.h"
 #include "mtkLogger.h"
+#include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
+extern ArrayCamUtilities acu;
 using namespace mtk;
 
-
-extern bool gAppIsClosing;
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
-	gAppIsClosing = true;
+	acu.AppIsClosing = true;
 	if(
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||

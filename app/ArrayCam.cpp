@@ -1,11 +1,6 @@
 #include <vcl.h>
 #pragma hdrstop
 #include <tchar.h>
-#include <string>
-#include "mtkUtils.h"
-#include "mtkVCLUtils.h"
-#include "mtkWin32Utils.h"
-#include "mtkLogger.h"
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
 #include "TMainForm.h"
@@ -14,73 +9,33 @@
 #include "TPGDataModule.h"
 #include "TPGCoverSlipDataModule.h"
 #include "TPGImagesAndMoviesDataModule.h"
-#include "mtkRestartApplicationUtils.h"
+#include "ArrayCamUtilities.h"
+#include "ATExceptions.h"
 //---------------------------------------------------------------------------
-using std::string;
-using namespace mtk;
-
-USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", HDMIStreamerFrame); /* TFrame: File Type */
-USEFORM("TMainForm.cpp", MainForm);
-USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
-USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
-USEFORM("forms\TLoggerForm.cpp", LoggerForm);
-USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", MoviesFrame); /* TFrame: File Type */
+USEFORM("frames\TUC7StagePositionFrame.cpp", 						UC7StagePositionFrame);
+USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", 	HDMIStreamerFrame);
+USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", 		MoviesFrame);
+USEFORM("TMainForm.cpp", 											MainForm);
+USEFORM("forms\TRegisterNewRibbonForm.cpp", 						RegisterNewRibbonForm);
+USEFORM("frames\TFFMPEGFrame.cpp", 	                                FFMPEGFrame);
+USEFORM("forms\TLoggerForm.cpp", 	                                LoggerForm);
 //---------------------------------------------------------------------------
-string		gLogFileLocation            = "";
-string	   	gAppName					= "ArrayCam";
-string     	gLogFileName                = gAppName + ".log";
-string 	   	gApplicationRegistryRoot  	= "\\Software\\Allen Institute\\array_cam\\0.5.0";
-string 	   	gAppDataFolder 				= joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
-string      gRestartMutexName           = gAppName + "RestartMutex";
-HWND        gOtherAppWindow             = NULL;
-bool       	gAppIsStartingUp            = true;
-bool       	gAppIsClosing	            = false;
 
-void 		setupLogging();
-int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
+
+//Make ArrayCamUtilites a global
+ArrayCamUtilities acu;
 
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
-    //The app mutex is used to check for already running instances
-    HANDLE appMutex;
-
 	try
 	{
+    	//Setup application mutex, logging etc..
+	    acu.init();
+
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		setupLogging();
+
 		TStyleManager::TrySetStyle("Obsidian");
-
-   		// Initialize restart code
-		// Check if this instance is restarted and
-		// wait while previos instance finish
-		if (mtk::checkForCommandLineFlag("--Restart"))
-		{
-            //TODO: Fix this.. not working properly..
-            //            MessageDlg("Wait...", mtWarning, TMsgDlgButtons() << mbOK, 0);
-			mtk::WaitForPreviousProcessToFinish(gRestartMutexName);
-            Sleep(1000);
-		}
-
-        //Look at this later... does not work yet
-        const char appMutexName [] = "arrayCamMutex";
-        appMutex = ::CreateMutexA(NULL, FALSE, appMutexName);
-        if( ERROR_ALREADY_EXISTS == GetLastError() )
-        {
-             Log(lInfo) << "Arraycam is already running!";
-            // Program already running somewhere
-            ::EnumWindows(FindOtherWindow, NULL);
-
-            if(gOtherAppWindow != NULL)
-            {
-                //Send a custom message to restore window here..
-                Log(lInfo) << "Arraycam is already running!";
-            }
-            MessageDlg("Arraycam is already running.\nClose or kill it before starting new instance.", mtWarning, TMsgDlgButtons() << mbOK, 0);
-
-            return(1); // Exit program
-        }
 
         pgDM 	                = new TpgDM(NULL);
         csPGDM                  = new TcsPGDM(NULL);
@@ -94,40 +49,17 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->ShowException(&exception);
 	}
+    catch (const ATException& ae)
+    {
+    	MessageDlg(ae.Message().c_str(), mtError, TMsgDlgButtons() << mbOK, 0);
+    }
 	catch (...)
 	{
-		try
-		{
-			throw Exception("");
-		}
-		catch (Exception &exception)
-		{
-			Application->ShowException(&exception);
-		}
+    	MessageDlg("Uncaught exception occured!", mtError, TMsgDlgButtons() << mbOK, 0);
 	}
 	return 0;
 }
 
-void setupLogging()
-{
-	//Get Application folder
-	string fldr =  joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName);
-	if(!folderExists(fldr))
-	{
-		createFolder(fldr);
-	}
-
-	gLogFileLocation = fldr;
-
-	string fullLogFileName(joinPath(gLogFileLocation, gLogFileName));
-	clearFile(fullLogFileName);
-	mtk::gLogger.logToFile(fullLogFileName);
-    mtk::gLogger.setLogLevel(lDebug5);
-	LogOutput::mShowLogLevel = true;
-	LogOutput::mShowLogTime = true;
-	LogOutput::mUseLogTabs 	= true;
-	Log(lInfo) << "Logger was setup";
-}
 
 //---------------------------------------------------------------------------
 #pragma comment(lib, "mtkCommon.lib")

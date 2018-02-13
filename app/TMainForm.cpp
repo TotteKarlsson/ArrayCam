@@ -9,6 +9,7 @@
 #include "TSelectIntegerForm.h"
 #include "THandWheelPositionForm.h"
 #include "TActionsForm.h"
+#include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "mtkFloatLabel"
@@ -31,21 +32,16 @@
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 
-extern string gApplicationRegistryRoot;
-extern string gLogFileName;
-extern string gAppDataFolder;
-extern bool   gAppIsStartingUp;
-extern bool   gAppIsClosing;
-
+extern ArrayCamUtilities acu;
 using namespace mtk;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	:
-    	TRegistryForm(gApplicationRegistryRoot, "MainForm", Owner),
+    	TRegistryForm(acu.AppRegistryRoot, "MainForm", Owner),
         mSettingsForm(NULL),
         mAVIID(0),
-    	mIniFile(joinPath(gAppDataFolder, "ArrayCam.ini"), true, true),
+    	mIniFile(joinPath(acu.AppDataFolder, "ArrayCam.ini"), true, true),
     	mLogLevel(lAny),
         mAutoGain(false),
         mAutoExposure(false),
@@ -315,7 +311,7 @@ void __fastcall TMainForm::OpenHandWheelPositionFormAExecute(TObject *Sender)
 {
 	if(!mHandWheelPositionForm)
     {
-    	mHandWheelPositionForm = new THandWheelPositionForm(mUC7.getStatusHistoryRef(), gApplicationRegistryRoot, this);
+    	mHandWheelPositionForm = new THandWheelPositionForm(mUC7.getStatusHistoryRef(), acu.AppRegistryRoot, this);
     }
 
     if(!mHandWheelPositionForm->Visible)

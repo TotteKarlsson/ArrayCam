@@ -7,9 +7,11 @@
 #include "vcl/atVCLUtils.h"
 #include "TPGDataModule.h"
 #include "TNavitarPresetFrame.h"
+#include "ArrayCamUtilities.h"
 using namespace mtk;
 using namespace at;
-extern bool   gAppIsStartingUp;
+
+extern ArrayCamUtilities acu;
 
 void TMainForm::setupProperties()
 {
@@ -124,7 +126,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	BarcodeLbl->Caption = "";
 	RibbonIDLbl->Caption = "";
 
-    gAppIsStartingUp = false;
+    acu.AppIsStartingUp = false;
     enableDisableUC7UI(false);
     enableDisableGroupBox(mImagerSettingsGB, false);
     BarcodeLbl->Caption = "";

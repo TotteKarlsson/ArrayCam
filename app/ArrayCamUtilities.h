@@ -1,0 +1,39 @@
+#ifndef ArrayCamUtilitiesH
+#define ArrayCamUtilitiesH
+#include <string>
+//---------------------------------------------------------------------------
+
+using std::string;
+
+class ApplicationUtilities
+{
+	public:
+    			                            ApplicationUtilities(const string& appName, const string& regRoot, const string& appVersion);
+    HANDLE 		                            AppMutex;
+	string	   	                            AppName;
+	string	   	                            AppRegistryRoot;
+    string		                            AppVersion;
+    string		                            AppDataFolder;
+    string 		                            LogFileName;
+  	string		                            LogFileLocation;
+
+    string                                  RestartMutexName;
+    HWND                                    OtherAppWindow;
+    bool       	                            AppIsStartingUp;
+    bool       	                            AppIsClosing;
+
+    void		                            init();
+	bool		                            setupLogging();
+	bool	                                otherInstanceIsRunning();
+};
+
+class ArrayCamUtilities : public ApplicationUtilities
+{
+    public:
+											ArrayCamUtilities();
+    protected:
+
+    private:
+
+};
+#endif

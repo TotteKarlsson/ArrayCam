@@ -4,6 +4,7 @@
 #include "mtkUtils.h"
 #include "mtkVCLUtils.h"
 #include "mtkLogger.h"
+#include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -11,17 +12,13 @@
 TLoggerForm *LoggerForm;
 using namespace mtk;
 
-extern string gLogFileName;
-extern string gAppName;
-extern string gApplicationRegistryRoot;
-extern string gLogFileLocation;
-extern string gLogFileName;
+extern ArrayCamUtilities acu;
 
 //---------------------------------------------------------------------------
 __fastcall TLoggerForm::TLoggerForm(const string& regRoot, TComponent* Owner)
 	:
 TRegistryForm(regRoot, "LoggerForm", Owner),
-mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), gAppName, gLogFileName), &logMsg)
+mLogFileReader(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), acu.AppName, acu.LogFileName), &logMsg)
 {
 	Log(lInfo) << "Starting logfile reader";
    	mLogFileReader.start(true);

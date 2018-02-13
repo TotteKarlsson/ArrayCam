@@ -3,11 +3,11 @@
 #include "TMainForm.h"
 #include "TSettingsForm.h"
 #include "mtkLogger.h"
+#include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 using namespace mtk;
 
-extern bool   gAppIsClosing;
-
+extern ArrayCamUtilities acu;
 //---------------------------------------------------------------------------
 //Callback from socket client class
 void TMainForm::onArduinoClientConnected()
@@ -27,7 +27,7 @@ void TMainForm::onArduinoClientDisconnected()
     Log(lDebug) << "Arduino Client was disconnected..";
 
 	//Don't worry if we are closing down..
-    if(gAppIsClosing != true)
+    if(acu.AppIsClosing != true)
     {
 	    ArduinoServerStartStopButton->Caption = "Start";
     	enableDisableArduinoClientControls(false);
