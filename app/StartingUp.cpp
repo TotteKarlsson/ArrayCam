@@ -111,17 +111,9 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormShow(TObject *Sender)
 {
-	string dBase(mLocalDBName);
-	try
-    {
-        pgDM->SQLConnection1->AfterConnect 		= afterDBServerConnect;
-        pgDM->SQLConnection1->AfterDisconnect 	= afterDBServerDisconnect;
-    }
-    catch(...)
-    {
-    	handleMySQLException();
-    }
-
+	//Setup callbacks
+    pgDM->SQLConnection1->AfterConnect 		= afterDBServerConnect;
+    pgDM->SQLConnection1->AfterDisconnect 	= afterDBServerDisconnect;
 
 	BarcodeLbl->Caption = "";
 	RibbonIDLbl->Caption = "";

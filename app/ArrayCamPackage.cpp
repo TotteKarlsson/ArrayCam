@@ -26,10 +26,6 @@ extern "C" int _libmain(unsigned long reason)
 #pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "atResources.lib")
 
-#pragma comment(lib, "libmysqlB.lib")
-#pragma comment(lib, "poco_mysql_connector-static.lib")
-#pragma comment(lib, "poco_data-static.lib")
-
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "tinyxml2-static.lib")
 

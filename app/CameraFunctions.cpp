@@ -9,10 +9,8 @@
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
 #include "TFFMPEGOutputFrame.h"
-#include "database/atDBUtils.h"
 #include "ArrayCamUtils.h"
 using namespace mtk;
-using namespace at;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
@@ -338,11 +336,10 @@ void __fastcall TMainForm::takeSnapShot()
             tq->Close();
             tq->SQL->Clear();
             q.str("");
-
         }
         catch(...)
         {
-        	handleMySQLException();
+        	MessageDlg("There was a problem registering the snapchot in the database", mtError, TMsgDlgButtons() << mbOK, 0);
         }
     }
 }

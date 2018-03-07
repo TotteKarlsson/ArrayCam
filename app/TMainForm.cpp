@@ -26,7 +26,6 @@
 #pragma link "TSoundsFrame"
 #pragma link "TSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
-#pragma link "TSyncMySQLToPostgresFrame"
 
 #pragma link "THDMIStreamerFrame"
 #pragma resource "*.dfm"

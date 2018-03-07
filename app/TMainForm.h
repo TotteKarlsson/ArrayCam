@@ -328,6 +328,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TRadioGroup *mScannerAimRG;
 	TRadioGroup *mScannerEnabledRG;
 	TButton *mBeepBtn;
+	TPanel *LeftMostPanel;
+	TArrayBotButton *ArrayBotButton1;
+	TArrayBotButton *ArrayBotButton2;
+	TArrayBotButton *ArrayBotButton3;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

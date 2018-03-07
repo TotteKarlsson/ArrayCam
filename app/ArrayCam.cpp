@@ -66,12 +66,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 #pragma comment(lib, "mtkMath.lib")
 #pragma comment(lib, "mtkIPC.lib")
 
-#pragma comment(lib, "libmysqlB.lib")
-
-#pragma comment(lib, "poco_mysql_connector-static.lib")
-#pragma comment(lib, "poco_sqlite_connector-static.lib")
-#pragma comment(lib, "poco_data-static.lib")
-
 #pragma comment(lib, "atCore.lib")
 #pragma comment(lib, "atDataBase.lib")
 #pragma comment(lib, "atBarcodeReader.lib")
