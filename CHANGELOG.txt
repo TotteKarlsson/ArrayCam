@@ -1,3 +1,18 @@
+Release 0.7.0 (Mar 7)
+=======================
+* Added an EllUIClient to control the knife wiper with
+* Removed obsolete "click on window" code
+* Removed references to obsolete db code
+* Added leftmost panel with commonly used button functions
+* Added application utilities class
+* Simplified application related trivialities
+* Simplified UI more
+* Added saving of UC7 stop mode
+* Fixed so remote triggering of camera starts video size visual on stop button
+* Added increase of ribbon order value when registering a Ribbon
+* Added a heartbeat status update for clients
+* Enabled ribbons navigator
+
 Release 0.6.9 (Jan 26)
 =======================
 * Bunch of UI simplifications regarding the Blocks and Ribbons page
