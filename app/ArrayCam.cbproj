@@ -42,9 +42,9 @@
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Obsidian|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Obsidian.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
         <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib;bindengine.lib;bindcomp.lib;bindcompvcl.lib;ArrayCamPackage.lib;Tee.lib;DuneForms.lib;DbxDevartPostgreSQLDriver170.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
-        <IncludePath>P:\libs\atapi\source\core\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\navitar\;P:\libs\atapi\source\;P:\libs\atapi\source\resources\;frames\;forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
+        <IncludePath>P:\libs\atapi\source\ello\;P:\libs\atapi\source\core\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\navitar\;P:\libs\atapi\source\;P:\libs\atapi\source\resources\;frames\;forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <ILINK_LibraryPath>P:\libs\atapi\source\core\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\navitar\;P:\libs\atapi\source\;P:\libs\atapi\source\resources\;frames\;forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>P:\libs\atapi\source\ello\;P:\libs\atapi\source\core\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\navitar\;P:\libs\atapi\source\;P:\libs\atapi\source\resources\;frames\;forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -88,9 +88,8 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <VerInfo_Release>9</VerInfo_Release>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
-        <VerInfo_MinorVer>6</VerInfo_MinorVer>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <PostBuildEvent><![CDATA[xcopy *.s2p $(OUTPUTDIR) /y
@@ -103,7 +102,7 @@ xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y
 xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
 xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
-        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.6.9.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.7.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
         <LinkPackageStatics>atVCLCore.lib;ArrayCamPackage.lib;DuneForms.lib;DbxDevartPostgreSQLDriver170.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
@@ -177,6 +176,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="source\ArrayCamServer.cpp">
             <BuildOrder>18</BuildOrder>
         </CppCompile>
+        <CppCompile Include="source\ConnectToArduinoServerThread.cpp">
+            <DependentOn>source\ConnectToArduinoServerThread.h</DependentOn>
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="source\ConnectToElloUIThread.cpp">
+            <BuildOrder>23</BuildOrder>
+        </CppCompile>
         <CppCompile Include="StartingUp.cpp">
             <BuildOrder>9</BuildOrder>
         </CppCompile>
@@ -191,6 +197,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="UC7Logic.cpp">
             <BuildOrder>14</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\ello\atElloUIClient.cpp">
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="P:\libs\atapi\source\ello\atElloUIMessageProcessor.cpp">
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
         <CppCompile Include="P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp">
             <Form>HDMIStreamerFrame</Form>
             <DesignClass>TFrame</DesignClass>
@@ -203,13 +215,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\atapi\source\vcl\frames\TMoviesFrame.h</DependentOn>
             <BuildOrder>19</BuildOrder>
         </CppCompile>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.dfm"/>
         <FormResources Include="P:\libs\atapi\source\vcl\frames\TMoviesFrame.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
-        <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
         <FormResources Include="frames\TFFMPEGFrame.dfm"/>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
+        <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -271,13 +283,16 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\vlcComponent.bpl">File p:\build\debug\BPL\vlcComponent.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\ArrayBotPackage.bpl">File p:\build\debug\BPL\ArrayBotPackage.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\ArrayCamPackage.bpl">ArrayCam VCL Core package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
@@ -351,6 +366,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
+                    <Platform Name="Win32"/>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
                     <Platform Name="Win32"/>
                 </DeployFile>
@@ -367,9 +385,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
                 </DeployFile>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice">

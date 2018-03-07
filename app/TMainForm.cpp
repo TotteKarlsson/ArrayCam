@@ -57,6 +57,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mMovingReticle(false),
         mCheckArduinoServerConnection(true),
         mConnectToArduinoServerThread(mLightsArduinoClient, 50000),
+	    mConnectToElloUIThread(mElloUIClient, 50002),
         mUC7COMPort(0),
         mUC7(Handle),
         mCountTo(0),
@@ -124,6 +125,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mServiceCamera1.onCameraOpen 			= onCameraOpen;
     mServiceCamera1.onCameraClose 			= onCameraClose;
 
+    mElloUIClient.onConnected 		= onElloUIClientConnected;
+	mElloUIClient.onDisconnected 	= onElloUIClientDisconnected;
+
     /******** Update UI controls *************/
     //Todo, put these in a container and call update in a loop
 
@@ -146,9 +150,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     mUC7.setKnifeStageResumeDelta(mKnifeStageResumeDelta.getValue());
     mUC7.setKnifeStageJogStepPreset(mKnifeStageJogStep.getValue());
     MediaFolderE->update();
-	WinCaptionE->update();
-    ClickXE->update();
-    ClickYE->update();
 
 	mZebraCOMPortCB->ItemIndex = mZebraCOMPort - 1;
 
@@ -167,14 +168,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	mReticle2.visible(false);
 
-
 	THDMIStreamerFrame1->getStreamer().assignCallBacks2(
     boost::bind(&TMainForm::onKnifeMovieEnter, 	 	this, _1, _1),
 	boost::bind(&TMainForm::onKnifeMovieProgress, 	this, _1, _1),
 	boost::bind(&TMainForm::onKnifeMovieExit, 	 	this, _1, _1)
     );
-
-
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -539,9 +537,9 @@ void __fastcall TMainForm::SyncWhiskerCBClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::TestClickWindowBtnClick(TObject *Sender)
+void __fastcall TMainForm::RunWiperBtnClick(TObject *Sender)
 {
-    clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
+    fireRibbonSeparator();
 }
 
 //---------------------------------------------------------------------------
@@ -552,17 +550,16 @@ void __fastcall TMainForm::PageControlChange(TObject *Sender)
 
     if(pc == MiscPageControl)
     {
-    	MouseClickTimer->Enabled = (pc->TabIndex == 4) ? true : false;
+
     }
 
-    if(pc == MainPC)
+    else if(pc == MainPC)
     {
     	if(pc->TabIndex == 2)//Media tab
         {
 
         }
     }
-
 }
 
 //---------------------------------------------------------------------------
@@ -573,33 +570,6 @@ void __fastcall TMainForm::PageControlExit(TObject *Sender)
 
     if(pc == MiscPageControl)
     {
-       	MouseClickTimer->Enabled = false;
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::MouseClickTimerTimer(TObject *Sender)
-{
-    HWND hwnd = FindWindow(0, WinCaptionE->getValue().c_str() );
-    if(hwnd)
-    {
-    	WindowCheckLbl->Caption = "Found window";
-    	enableDisableGroupBox(GroupBox10, true);
-	    POINT p;
-		if (GetCursorPos(&p))
-        {
-        	if (::ScreenToClient(hwnd, &p))
-			{
-			    //p.x and p.y are now relative to hwnd's client area
-		        winXLbl->Caption = "X = " + IntToStr((int) p.x);
-		        winYLbl->Caption = "Y = " + IntToStr((int) p.y);
-			}
-        }
-    }
-    else
-    {
-    	enableDisableGroupBox(GroupBox10, false);
-    	WindowCheckLbl->Caption = "No such Window";
     }
 }
 
@@ -612,13 +582,10 @@ string TMainForm::getCurrentRibbonID()
     return stdstr(RibbonIDLbl->Caption);
 }
 
-
-//---------------------------------------------------------------------------
 void __fastcall	TMainForm::fireRibbonSeparator()
 {
 	Log(lInfo) << "Firing the ribbon separator";
-    clickOnWindow(WinCaptionE->getValue(), ClickXE->getValue(), ClickYE->getValue());
-
+    mElloUIClient.run();
    	mACServer.broadcast(acrRibbonSeparatorTriggered);
 }
 
@@ -635,7 +602,6 @@ void __fastcall TMainForm::KniveMovieBtnClick(TObject *Sender)
     }
     THDMIStreamerFrame1->StartStreamerBtnClick(THDMIStreamerFrame1->StartRecordingBtn);
 }
-
 
 void TMainForm::onKnifeMovieEnter(int i, int j)
 {
@@ -771,6 +737,41 @@ void __fastcall TMainForm::BroadCastStatusBtnClick(TObject *Sender)
 void __fastcall TMainForm::BroadcastStatusTimerTimer(TObject *Sender)
 {
 	mACServer.broadcastStatus();
+}
+
+
+void __fastcall TMainForm::ConnectWipterClientBtnClick(TObject *Sender)
+{
+	//Connect
+    if(ConnectWipterClientBtn->Caption == "Connect")
+    {
+		mConnectToElloUIThread.start();
+    }
+    else
+    {
+    	mElloUIClient.disConnect();
+    }
+}
+
+//Callback from socket client class
+void TMainForm::onElloUIClientConnected()
+{
+    Log(lDebug) << "Ello UI Client was connected..";
+    ConnectWipterClientBtn->Caption = "Disconnect";
+	RunWiperBtn->Enabled = true;
+}
+
+//---------------------------------------------------------------------------
+void TMainForm::onElloUIClientDisconnected()
+{
+    Log(lDebug) << "Ello UI Client was disconnected..";
+
+	//Don't worry if we are closing down..
+    if(acu.AppIsClosing != true)
+    {
+	    ConnectWipterClientBtn->Caption = "Connect";
+		RunWiperBtn->Enabled = false;
+    }
 }
 
 

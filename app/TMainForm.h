@@ -42,6 +42,7 @@
 #include "THDMIStreamerFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
+#include "ello/atElloUIClient.h"
 #include "atReticle.h"
 #include "atVCLUtils.h"
 #include "barcodereader/atDS457.h"
@@ -53,6 +54,7 @@
 #include "navitar/atNavitarMotorController.h"
 #include "source/ArrayCamServer.h"
 #include "source/ConnectToArduinoServerThread.h"
+#include "source/ConnectToElloUIThread.h"
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
 #include "TFFMPEGFrame.h"
@@ -272,17 +274,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *SlowReturnSpeedBtn;
 	TGroupBox *GroupBox9;
 	TArrayBotButton *UltraSlowReturnSpeedBtn;
-	TTimer *MouseClickTimer;
 	TTabSheet *RibbonSeparatorSheet;
 	TGroupBox *GroupBox10;
-	TLabel *winXLbl;
-	TLabel *winYLbl;
-	TIntegerLabeledEdit *ClickXE;
-	TIntegerLabeledEdit *ClickYE;
-	TButton *TestClickWindowBtn;
-	TPanel *Panel12;
-	TSTDStringLabeledEdit *WinCaptionE;
-	TLabel *WindowCheckLbl;
+	TButton *RunWiperBtn;
 	TDBLookupComboBox *KnifeIDCB;
 	TLabel *Label1;
 	TLabel *Label5;
@@ -332,6 +326,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *ArrayBotButton1;
 	TArrayBotButton *ArrayBotButton2;
 	TArrayBotButton *ArrayBotButton3;
+	TButton *ConnectWipterClientBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -395,9 +390,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall CleanupTimerTimer(TObject *Sender);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall SyncWhiskerCBClick(TObject *Sender);
-	void __fastcall TestClickWindowBtnClick(TObject *Sender);
+	void __fastcall RunWiperBtnClick(TObject *Sender);
 	void __fastcall PageControlExit(TObject *Sender);
-	void __fastcall MouseClickTimerTimer(TObject *Sender);
 	void __fastcall KniveMovieBtnClick(TObject *Sender);
 	void __fastcall ClearBarcodeBtnClick(TObject *Sender);
 	void __fastcall ClearRibbonIDBtnClick(TObject *Sender);
@@ -407,6 +401,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall RibbonsNavigatorClick(TObject *Sender, TNavigateBtn Button);
 	void __fastcall BroadCastStatusBtnClick(TObject *Sender);
 	void __fastcall BroadcastStatusTimerTimer(TObject *Sender);
+	void __fastcall ConnectWipterClientBtnClick(TObject *Sender);
 
 	protected:
 		enum StatusBarPanels{	sbpTemperature = 0,		sbpHumidity,
@@ -477,6 +472,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 												//onArduinoMessageReceived
 		LightsArduinoClient						mLightsArduinoClient;
 		ConnectToArduinoServerThread			mConnectToArduinoServerThread;
+
 		bool									mCheckArduinoServerConnection;
 
 		Property<int>							mKnifeStageMaxPos;
@@ -519,6 +515,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 												//Server functions
 		ArrayCamServer							mACServer;
 
+        										//Motor that wipes the ribbons off the knife
+        ElloUIClient							mElloUIClient;
+		ConnectToElloUIThread					mConnectToElloUIThread;
 												//!The barcode reader
 		DS457									mZebra;
 
@@ -581,7 +580,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void									setLEDIntensity(int intensity);
 		void		__fastcall					checkSyncWhiskerCB();
 		void		__fastcall					unCheckSyncWhiskerCB();
+
 		void		__fastcall					fireRibbonSeparator();
+		void 									onElloUIClientConnected();
+		void 									onElloUIClientDisconnected();
 
 		int										getCurrentUserID();
 		int										getCurrentCoverSlipID();

@@ -189,8 +189,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>source\ArrayCamUtils.h</DependentOn>
             <BuildOrder>29</BuildOrder>
         </CppCompile>
-        <CppCompile Include="source\ConnectToArduinoServerThread.cpp">
-            <DependentOn>source\ConnectToArduinoServerThread.h</DependentOn>
+        <CppCompile Include="source\ConnectToElloUIThread.cpp">
+            <DependentOn>source\ConnectToElloUIThread.h</DependentOn>
             <BuildOrder>27</BuildOrder>
         </CppCompile>
         <PackageImport Include="Tee.bpi">

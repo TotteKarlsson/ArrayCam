@@ -1,11 +1,11 @@
 #include <System.hpp>
 #pragma hdrstop
-USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
-USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
 USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("forms\TReticlePopupForm.cpp", ReticlePopupForm);
+USEFORM("forms\TSelectIntegerForm.cpp", SelectIntegerForm);
 USEFORM("forms\TSettingsForm.cpp", SettingsForm);
-USEFORM("forms\TAboutForm.cpp", AboutForm);
 USEFORM("forms\THandWheelPositionForm.cpp", HandWheelPositionForm);
+USEFORM("forms\TAboutForm.cpp", AboutForm);
 USEFORM("forms\TActionsForm.cpp", ActionsForm);
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

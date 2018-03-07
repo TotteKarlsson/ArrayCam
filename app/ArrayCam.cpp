@@ -12,17 +12,14 @@
 #include "ArrayCamUtilities.h"
 #include "ATExceptions.h"
 //---------------------------------------------------------------------------
-USEFORM("frames\TUC7StagePositionFrame.cpp", 						UC7StagePositionFrame);
-USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", 	HDMIStreamerFrame);
-USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", 		MoviesFrame);
-USEFORM("TMainForm.cpp", 											MainForm);
-USEFORM("forms\TRegisterNewRibbonForm.cpp", 						RegisterNewRibbonForm);
-USEFORM("frames\TFFMPEGFrame.cpp", 	                                FFMPEGFrame);
-USEFORM("forms\TLoggerForm.cpp", 	                                LoggerForm);
+USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", HDMIStreamerFrame); /* TFrame: File Type */
+USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", MoviesFrame); /* TFrame: File Type */
+USEFORM("TMainForm.cpp", MainForm);
+USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
+USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
+USEFORM("forms\TLoggerForm.cpp", LoggerForm);
+USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 //---------------------------------------------------------------------------
-
-
-//Make ArrayCamUtilites a global
 ArrayCamUtilities acu;
 
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)

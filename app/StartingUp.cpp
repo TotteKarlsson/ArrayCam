@@ -66,12 +66,6 @@ void TMainForm::setupProperties()
 	mSoundProperties.add((BaseProperty*)  &mKnifeAfterCuttingSound.setup( 	           		"KNIFE_AFTER_CUTTING_SOUND",        ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mArmRetractingSound.setup( 	           			"ARM_RETRACTING_SOUND",       		ApplicationSound("BUTTON_CLICK_1")));
 	mSoundProperties.add((BaseProperty*)  &mBeforeKnifeBackOffSound.setup( 	           		"BEFORE_KNIFE_BACKOFF_SOUND",       ApplicationSound("SHORT_BEEP_1")));
-
-    //MISC
-    mGeneralProperties.add((BaseProperty*)  &WinCaptionE->getProperty()->setup(   			"CLICK_WINDOW_CAPTION",            	""));
-    mGeneralProperties.add((BaseProperty*)  &ClickXE->getProperty()->setup(   				"CLICK_WINDOW_X",            		0));
-    mGeneralProperties.add((BaseProperty*)  &ClickYE->getProperty()->setup(   				"CLICK_WINDOW_Y",           	 	0));
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)

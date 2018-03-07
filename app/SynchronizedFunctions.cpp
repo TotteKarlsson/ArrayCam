@@ -5,7 +5,6 @@
 #include "mtkStringList.h"
 
 using namespace mtk;
-//using namespace at;
 
 class TLocalArgs
 {
@@ -28,32 +27,8 @@ class TLocalArgs
                 MainForm->FrontLEDTB->Tag = 0;
             }
         }
-
-        else if(startsWith("DHT22_DATA", msg))
-        {
-            //Parse the message
-            StringList l(msg,',');
-            if(l.size() == 4)
-            {
-                //Fourth parameter is sensor number
-                int sensorNum = toInt(l[3]);
-
-                MainForm->mEnvReader.addReading(toDouble(l[1]), toDouble(l[2]), toInt(l[3]));
-
-                //Get average when it makes sense
-                if(MainForm->mEnvReader.getNumberOfReadings() == MainForm->mEnvReader.getNumberOfSensors())
-                {
-                    MainForm->updateTemperature(MainForm->mEnvReader.getAverageTemperature());
-					MainForm->updateHumidity(MainForm->mEnvReader.getAverageHumidity());
-
-                    //Purge reader
-                    MainForm->mEnvReader.purge();
-                }
-            }
-        }
     }
 };
-
 
 void TMainForm::onLightsArduinoMessageReceived(const string& msg)
 {
