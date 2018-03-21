@@ -75,7 +75,7 @@ void THandWheelPositionForm::setTimeToClose()
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
 {
-	ReadRegistry();
+	readRegistry();
     Chart1->Axes->Left->Items->Clear();
     Chart1->Axes->Left->Items->Add(ssBeforeCutting, toText(ssBeforeCutting).c_str());
     Chart1->Axes->Left->Items->Add(ssCutting, 		toText(ssCutting).c_str());
@@ -86,7 +86,7 @@ void __fastcall THandWheelPositionForm::FormShow(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall THandWheelPositionForm::FormCreate(TObject *Sender)
 {
-	ReadRegistry();
+	readRegistry();
 }
 
 //---------------------------------------------------------------------------

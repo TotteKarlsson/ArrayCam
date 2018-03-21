@@ -6,22 +6,19 @@
         <Projects Include="P:\libs\dsl\Common\mtkCommon.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\Common\IPC\mtkIPC.cbproj">
+        <Projects Include="P:\libs\dsl\Math\mtkMath.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\Common\Math\mtkMath.cbproj">
+        <Projects Include="P:\libs\dsl\IPC\mtkIPC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\Common\DataBase\mtkDataBase.cbproj">
-            <Dependencies/>
+        <Projects Include="P:\MXPTiny\CLI\bm.cbproj">
+            <Dependencies>P:\libs\dsl\Common\mtkCommon.cbproj</Dependencies>
         </Projects>
         <Projects Include="P:\libs\dsl\VCL\Common\VCLCommon.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="P:\libs\dsl\VCL\Components\DuneComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\VCL\Forms\DuneForms.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="P:\libs\atapi\source\core\atCore.cbproj">
@@ -71,32 +68,32 @@
     <Target Name="mtkCommon:Make">
         <MSBuild Projects="P:\libs\dsl\Common\mtkCommon.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="mtkIPC">
-        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj"/>
-    </Target>
-    <Target Name="mtkIPC:Clean">
-        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="mtkIPC:Make">
-        <MSBuild Projects="P:\libs\dsl\Common\IPC\mtkIPC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="mtkMath">
-        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj"/>
+        <MSBuild Projects="P:\libs\dsl\Math\mtkMath.cbproj"/>
     </Target>
     <Target Name="mtkMath:Clean">
-        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj" Targets="Clean"/>
+        <MSBuild Projects="P:\libs\dsl\Math\mtkMath.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="mtkMath:Make">
-        <MSBuild Projects="P:\libs\dsl\Common\Math\mtkMath.cbproj" Targets="Make"/>
+        <MSBuild Projects="P:\libs\dsl\Math\mtkMath.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="mtkDataBase">
-        <MSBuild Projects="P:\libs\dsl\Common\DataBase\mtkDataBase.cbproj"/>
+    <Target Name="mtkIPC">
+        <MSBuild Projects="P:\libs\dsl\IPC\mtkIPC.cbproj"/>
     </Target>
-    <Target Name="mtkDataBase:Clean">
-        <MSBuild Projects="P:\libs\dsl\Common\DataBase\mtkDataBase.cbproj" Targets="Clean"/>
+    <Target Name="mtkIPC:Clean">
+        <MSBuild Projects="P:\libs\dsl\IPC\mtkIPC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="mtkDataBase:Make">
-        <MSBuild Projects="P:\libs\dsl\Common\DataBase\mtkDataBase.cbproj" Targets="Make"/>
+    <Target Name="mtkIPC:Make">
+        <MSBuild Projects="P:\libs\dsl\IPC\mtkIPC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="bm" DependsOnTargets="mtkCommon">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj"/>
+    </Target>
+    <Target Name="bm:Clean" DependsOnTargets="mtkCommon:Clean">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="bm:Make" DependsOnTargets="mtkCommon:Make">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj" Targets="Make"/>
     </Target>
     <Target Name="VCLCommon">
         <MSBuild Projects="P:\libs\dsl\VCL\Common\VCLCommon.cbproj"/>
@@ -115,15 +112,6 @@
     </Target>
     <Target Name="DuneComponents:Make">
         <MSBuild Projects="P:\libs\dsl\VCL\Components\DuneComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="DuneForms">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj"/>
-    </Target>
-    <Target Name="DuneForms:Clean">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="DuneForms:Make">
-        <MSBuild Projects="P:\libs\dsl\VCL\Forms\DuneForms.cbproj" Targets="Make"/>
     </Target>
     <Target Name="atCore">
         <MSBuild Projects="P:\libs\atapi\source\core\atCore.cbproj"/>
@@ -216,13 +204,13 @@
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="mtkCommon;mtkIPC;mtkMath;mtkDataBase;VCLCommon;DuneComponents;DuneForms;atCore;atSerialAPI;atSSI;atUC7API;atDatabase;atBarcodeReader;atArduino;atVCLCore;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="mtkCommon;mtkMath;mtkIPC;bm;VCLCommon;DuneComponents;atCore;atSerialAPI;atSSI;atUC7API;atDatabase;atBarcodeReader;atArduino;atVCLCore;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="mtkCommon:Clean;mtkIPC:Clean;mtkMath:Clean;mtkDataBase:Clean;VCLCommon:Clean;DuneComponents:Clean;DuneForms:Clean;atCore:Clean;atSerialAPI:Clean;atSSI:Clean;atUC7API:Clean;atDatabase:Clean;atBarcodeReader:Clean;atArduino:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="mtkCommon:Clean;mtkMath:Clean;mtkIPC:Clean;bm:Clean;VCLCommon:Clean;DuneComponents:Clean;atCore:Clean;atSerialAPI:Clean;atSSI:Clean;atUC7API:Clean;atDatabase:Clean;atBarcodeReader:Clean;atArduino:Clean;atVCLCore:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="mtkCommon:Make;mtkIPC:Make;mtkMath:Make;mtkDataBase:Make;VCLCommon:Make;DuneComponents:Make;DuneForms:Make;atCore:Make;atSerialAPI:Make;atSSI:Make;atUC7API:Make;atDatabase:Make;atBarcodeReader:Make;atArduino:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="mtkCommon:Make;mtkMath:Make;mtkIPC:Make;bm:Make;VCLCommon:Make;DuneComponents:Make;atCore:Make;atSerialAPI:Make;atSSI:Make;atUC7API:Make;atDatabase:Make;atBarcodeReader:Make;atArduino:Make;atVCLCore:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

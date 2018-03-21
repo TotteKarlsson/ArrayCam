@@ -4,7 +4,7 @@
 #include "mtkVCLUtils.h"
 #include "database/atDBUtils.h"
 #include "vcl/atVCLUtils.h"
-#include "Poco/Data/RecordSet.h"
+//#include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
 #include "mtkLogger.h"
 #include "TPGDataModule.h"

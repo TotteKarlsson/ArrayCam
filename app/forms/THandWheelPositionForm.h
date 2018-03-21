@@ -11,6 +11,7 @@
 #include <VCLTee.TeeProcs.hpp>
 #include "uc7/atUC7StatusHistory.h"
 #include "forms/TRegistryForm.h"
+#include <VclTee.TeeGDIPlus.hpp>
 
 class PACKAGE THandWheelPositionForm : public TRegistryForm
 {

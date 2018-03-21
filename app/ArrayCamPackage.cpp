@@ -40,5 +40,6 @@ extern "C" int _libmain(unsigned long reason)
 
 #pragma comment(lib, "uc480_B.lib")
 #pragma comment(lib, "uc480_tools_B.lib")
-#pragma comment(lib, "DBXDevartPostgreSQLDriver170.bpi")
+#pragma comment(lib, "DBXDevartPostgreSQLDriver250.bpi")
+#pragma comment(lib, "DBXMySQLDriver.bpi")
 

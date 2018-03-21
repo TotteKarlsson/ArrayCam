@@ -43,7 +43,7 @@ void __fastcall TLoggerForm::FormShow(TObject *Sender)
 {
    	mLogFileReader.start(true);
     mLogFileReader.assignOnMessageCallBack(&logMsg);
-	ReadRegistry();
+	readRegistry();
 }
 
 //---------------------------------------------------------------------------

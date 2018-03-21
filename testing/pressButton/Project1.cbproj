@@ -38,7 +38,7 @@
         <IncludePath>P:\ArrayCam\testing\pressButton\;$(IncludePath)</IncludePath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <ILINK_LibraryPath>P:\ArrayCam\testing\pressButton\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;VCLCommon.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;DuneComponents.lib;vclactnband.lib;vclx.lib;.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -60,7 +60,7 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <PackageImports>VCLCommon;ArrayBotPackage;fs17;frx17;ArrayCamPackage;atVCLCore;bindcompfmx;DBXSqliteDriver;vcldbx;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;sbridge170;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;indy10sbridge170;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;DbxDevartPostgreSQLDriver170;dsnap;IndyIPServer;IndyCore;vcl;IndyIPCommon;CloudService;DuneForms;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;vclx;frxe17;inetdbxpress;webdsnap;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
+        <PackageImports>;ArrayBotPackage;fs17;frx17;ArrayCamPackage;atVCLCore;bindcompfmx;DBXSqliteDriver;vcldbx;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;sbridge170;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;indy10sbridge170;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;DbxDevartPostgreSQLDriver170;dsnap;IndyIPServer;IndyCore;vcl;IndyIPCommon;CloudService;DuneForms;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;vclx;frxe17;inetdbxpress;webdsnap;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -85,7 +85,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;VCLCommon.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;DuneComponents.bpi;vclactnband.bpi;vclx.bpi;.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>

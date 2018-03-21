@@ -34,8 +34,8 @@ object HandWheelPositionForm: THandWheelPositionForm
     BottomAxis.Automatic = False
     BottomAxis.AutomaticMaximum = False
     BottomAxis.AutomaticMinimum = False
-    BottomAxis.LabelsFont.Height = -19
-    BottomAxis.LabelsFont.Style = [fsBold]
+    BottomAxis.LabelsFormat.Font.Height = -19
+    BottomAxis.LabelsFormat.Font.Style = [fsBold]
     BottomAxis.Maximum = 5.000000000000000000
     BottomAxis.Minimum = -1.000000000000000000
     BottomAxis.Title.Caption = 'Time'
@@ -47,8 +47,8 @@ object HandWheelPositionForm: THandWheelPositionForm
     LeftAxis.AutomaticMinimum = False
     LeftAxis.ExactDateTime = False
     LeftAxis.Increment = 1.000000000000000000
-    LeftAxis.LabelsFont.Height = -16
-    LeftAxis.LabelsFont.Style = [fsBold]
+    LeftAxis.LabelsFormat.Font.Height = -16
+    LeftAxis.LabelsFormat.Font.Style = [fsBold]
     LeftAxis.Maximum = 4.000000000000000000
     LeftAxis.MaximumOffset = 4
     LeftAxis.Minimum = -1.000000000000000000
@@ -62,12 +62,9 @@ object HandWheelPositionForm: THandWheelPositionForm
     Align = alClient
     BevelInner = bvRaised
     TabOrder = 0
+    DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
     object Series1: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.Visible = False
       Brush.BackColor = clDefault
       LinePen.Width = 3
       Pointer.Brush.Gradient.EndColor = 10708548

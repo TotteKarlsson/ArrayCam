@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{C4461888-407D-4FAC-BB60-70F63FB77854}</ProjectGuid>
-        <ProjectVersion>14.4</ProjectVersion>
+        <ProjectVersion>18.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <AppType>Application</AppType>
         <MainSource>ArrayCam.cpp</MainSource>
@@ -40,7 +40,7 @@
         <Defines>POCO_STATIC;$(Defines)</Defines>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VCL_Custom_Styles>&quot;Amakrits|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Amakrits.vsf&quot;;&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\IcebergClassico.vsf&quot;;&quot;Obsidian|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\Obsidian.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\10.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
-        <AllPackageLibs>rtl.lib;vcl.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib;bindengine.lib;bindcomp.lib;bindcompvcl.lib;ArrayCamPackage.lib;Tee.lib;DuneForms.lib;DbxDevartPostgreSQLDriver170.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclactnband.lib;vclx.lib;vcldb.lib;dbrtl.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;vclimg.lib;DBXMySQLDriver.lib;atVCLCore.lib;bcbsmp.lib;bindengine.lib;bindcomp.lib;bindcompvcl.lib;Tee.lib;DuneComponents.lib;.lib;DbxDevartPostgreSQLDriver250.lib;VCLCommon.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <IncludePath>P:\libs\atapi\source\ello\;P:\libs\atapi\source\core\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\navitar\;P:\libs\atapi\source\;P:\libs\atapi\source\resources\;frames\;forms\;source\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;P:\libs\atapi\source\camera\;P:\libs\atapi\source\vcl\datamodules\;$(IncludePath)</IncludePath>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
@@ -57,13 +57,18 @@
         <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
         <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+        <SanitizedProjectName>ArrayCam</SanitizedProjectName>
+        <Custom_Styles>Amakrits|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Amakrits.vsf;Glossy|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glossy.vsf;Glow|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glow.vsf;&quot;Iceberg Classico|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\IcebergClassico.vsf&quot;;Luna|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Luna.vsf;Obsidian|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Obsidian.vsf;&quot;Sapphire Kamri|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\SapphireKamri.vsf&quot;;Sky|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Sky.vsf</Custom_Styles>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
-        <PackageImports>CSKGenerator;VCLCommon;fs17;frx17;bindcompfmx;DBXSqliteDriver;vcldbx;RaizeComponentsTrialVcl;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;HsBarcode1DRun;RaizeComponentsTrialVclDb;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;dsnap;IndyIPServer;IndyCore;vcl;fmxase;IndyIPCommon;CloudService;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;fmxobj;vclx;frxe17;inetdbxpress;webdsnap;fmxdae;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
+        <PackageImports>CSKGenerator;fs17;frx17;bindcompfmx;vcldbx;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;MetropolisUILiveTile;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;HsBarcode1DRun;RaizeComponentsTrialVclDb;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;dsnap;IndyIPServer;IndyCore;vcl;fmxase;IndyIPCommon;CloudService;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;fmxobj;vclx;frxe17;inetdbxpress;webdsnap;fmxdae;bdertl;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -102,18 +107,20 @@ xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y
 xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y
 xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y
 $(PostBuildEvent)]]></PostBuildEvent>
-        <VerInfo_Keys>CompanyName=Allen Institute;FileDescription=;FileVersion=0.7.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=0.5;Comments=</VerInfo_Keys>
-        <LinkPackageStatics>atVCLCore.lib;ArrayCamPackage.lib;DuneForms.lib;DbxDevartPostgreSQLDriver170.lib</LinkPackageStatics>
+        <VerInfo_Keys>CompanyName=Allen Institute;FileVersion=0.7.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=0.5;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <LinkPackageStatics>DBXMySQLDriver.lib;atVCLCore.lib;DuneComponents.lib;.lib;DbxDevartPostgreSQLDriver250.lib;VCLCommon.lib</LinkPackageStatics>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_whid>false</BCC_whid>
         <Debugger_DebugSourcePath>P:\ArrayBot\resources\;P:\libs\dsl\Common\;P:\libs\dsl\VCL\Components\;P:\libs\dsl\Common\Math\;P:\libs\dsl\Common\IPC\;P:\libs\dsl\VCL\Forms\;P:\libs\dsl\VCL\Common\;P:\libs\atapi\source\barcodereader\;P:\libs\atapi\source\;P:\libs\atapi\source\serial\;P:\libs\atapi\source\uc7\;P:\libs\atapi\source\resources\;P:\libs\atapi\source\database\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
-        <FinalOutputDir>$(DEBUG_BUILD)\bin</FinalOutputDir>
-        <ILINK_LibraryPath>$(DEBUG_BUILD)\lib;$(AT_ROOT)\source\vcl\frames;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <IncludePath>$(DEBUG_BUILD)\include;$(AT_ROOT)\source;$(AT_ROOT)\source\vcl\frames;$(IncludePath)</IncludePath>
+        <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
+        <ILINK_LibraryPath>$(DEBUG_BCC32)\lib;$(AT_ROOT)\source\vcl\frames;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>$(DEBUG_BCC32)\include;$(AT_ROOT)\source;$(AT_ROOT)\source\vcl\frames;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;vclimg.bpi;DBXMySQLDriver.bpi;bcbsmp.bpi;bindengine.bpi;bindcomp.bpi;bindcompvcl.bpi;Tee.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclactnband.bpi;vclx.bpi;vcldb.bpi;dbrtl.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;vclimg.bpi;bcbsmp.bpi;bindengine.bpi;bindcomp.bpi;bindcompvcl.bpi;Tee.bpi</LinkPackageImports>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -129,6 +136,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <CppCompile Include="ArrayCamUtilities.cpp">
             <DependentOn>ArrayCamUtilities.h</DependentOn>
             <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="auto_link.cpp">
+            <BuildOrder>25</BuildOrder>
         </CppCompile>
         <CppCompile Include="BarcodeLogic.cpp">
             <BuildOrder>22</BuildOrder>
@@ -281,273 +291,225 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
                     <ProjectProperties Name="ManagePaths">True</ProjectProperties>
                     <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\vlcComponent.bpl">File p:\build\debug\BPL\vlcComponent.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\ArrayBotPackage.bpl">File p:\build\debug\BPL\ArrayBotPackage.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\ArrayCamPackage.bpl">ArrayCam VCL Core package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k170.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp170.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
-            <Deployment>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dbexpress170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\DuneComponentsDD.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64120mt.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vcl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vclimg170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vclx170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\bcbsmp170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dsnap170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\bindengine170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\rtl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32120mt.dll" Class="DependencyModule">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\VCLCommonDD.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vcldb170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dbxcds170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\DuneFormsDD.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DBXMySQLDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\bindcomp170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64120.dll" Class="DependencyModule">
-                    <Platform Name="Win64"/>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32120.dll" Class="DependencyModule">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
-                </DeployFile>
-                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
+            <Deployment Version="3">
+                <DeployFile LocalName="p:\build\tokyo\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>ArrayCam.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage">
-                    <Platform Name="Win32"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbrtl170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vcl170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbxcds170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64120mt.dll" Class="DependencyModule"/>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.tds" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vclx170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="p:\build\tokyo\bin\ArrayCam.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>ArrayCam.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\bindcompvcl170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vclactnband170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="p:\build\debug\bin\ArrayCam.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32"/>
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
                 </DeployFile>
-                <DeployClass Required="true" Name="DependencyPackage">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
                     </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dbexpress170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.bpl</Extensions>
+                        <Overwrite>true</Overwrite>
                     </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
+                        <Overwrite>true</Overwrite>
                     </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
+                </DeployFile>
+                <DeployFile LocalName="$(BDSCOMMONDIR)\BPL\atVCLCore.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DBXMySQLDriver170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64120.dll" Class="DependencyModule"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vcldb170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\DbxCommonDriver170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
                     </Platform>
-                </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\rtl170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32120.dll" Class="DependencyModule"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\bindengine170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\bindcomp170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32120mt.dll" Class="DependencyModule"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
+                        <Overwrite>true</Overwrite>
                     </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\vclimg170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile LocalName="$(BDS)\bin\bcbsmp170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
                     </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\Win32\dsnap170.bpl" Configuration="Debug" Class="DependencyPackage"/>
+                <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="iPad_Launch2048">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXInfoPList">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceInfoPList">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="iPad_Launch1024">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSResource">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSSimulatorInfoPList">
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXEntitlements">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="iPhone_Launch640">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXResource">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\Resources</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="iPhone_Launch320">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="iPad_Launch768">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Required="true" Name="ProjectOutput">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
-                    <Platform Name="iOSDevice">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="File">
-                    <Platform Name="iOSDevice">
-                        <Operation>0</Operation>
-                    </Platform>
                     <Platform Name="Win32">
-                        <Operation>0</Operation>
-                    </Platform>
-                    <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>0</Operation>
+                </DeployClass>
+                <DeployClass Name="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="DebugSymbols">
-                    <Platform Name="iOSDevice">
+                    <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="DependencyFramework">
@@ -560,40 +522,284 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSEntitlements">
-                    <Platform Name="iOSDevice">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPad_Launch1536">
-                    <Platform Name="iOSDevice">
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1024">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AdditionalDebugSymbols">
-                    <Platform Name="iOSDevice">
+                <DeployClass Name="iPad_Launch1536">
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Win32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>0</Operation>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch320">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="iOSSimulator">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSDevice" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <DeployClass Name="UWP_CppLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
@@ -609,7 +815,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>xcopy *.s2p $(OUTPUTDIR) /y&amp;&amp;xcopy *.s2p $(APP_RELEASES)\ArrayCam /y&amp;&amp;copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)..\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
+        <PostBuildEvent>xcopy *.s2p $(OUTPUTDIR) /y&amp;&amp;xcopy *.s2p $(APP_RELEASES)\ArrayCam /y&amp;&amp;copy p:\redist\navitar\navusbAPI.dll_2 $(APP_RELEASES)\ArrayCam\navusbAPI.dll /y&amp;&amp;xcopy ..\*.txt $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)..\bpl\*.bpl $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.dll $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)*.ini $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy $(OUTPUTDIR)$(OUTPUTFILENAME) $(APP_RELEASES)\ArrayCam /y&amp;&amp;xcopy p:\redist\ArrayCam\* $(APP_RELEASES)\ArrayCam /y</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

@@ -97,7 +97,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	TSoundsFrame1->populate();
     TApplicationSoundsFrame1->populate(mSoundProperties);
 
-    ReadRegistry();
+    readRegistry();
     MiscTimer->Enabled = true;
     THDMIStreamerFrame1->OutputFileFolderE->setValue(MediaFolderE->getValue());
 }

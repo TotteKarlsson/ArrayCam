@@ -38,7 +38,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <IncludePath>P:\libs\atapi\source\core\;P:\libs\atapi\source\vcl\frames\;C:\Users\matsk\Documents\RAD Studio\10.0\Imports\;P:\ArrayCam\testing\embeddedVLC\;$(IncludePath)</IncludePath>
-        <AllPackageLibs>rtl.lib;vcl.lib;vlcComponent.lib;VCLCommon.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DbxDevartPostgreSQLDriver170.lib;DBXMySQLDriver.lib;vclimg.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vlcComponent.lib;.lib;vclactnband.lib;vclx.lib;DuneComponents.lib;atVCLCore.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;dbxcds.lib;dsnap.lib;DbxDevartPostgreSQLDriver170.lib;DBXMySQLDriver.lib;vclimg.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <ILINK_LibraryPath>P:\libs\atapi\source\core\;P:\libs\atapi\source\vcl\frames\;C:\Users\matsk\Documents\RAD Studio\10.0\Imports\;P:\ArrayCam\testing\embeddedVLC\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Multithreaded>true</Multithreaded>
@@ -59,7 +59,7 @@
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <PackageImports>VCLCommon;fs17;frx17;ArrayCamPackage;atVCLCore;bindcompfmx;DBXSqliteDriver;vcldbx;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;sbridge170;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;indy10sbridge170;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;DbxDevartPostgreSQLDriver170;dsnap;IndyIPServer;IndyCore;vcl;IndyIPCommon;CloudService;DuneForms;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;vclx;frxe17;inetdbxpress;webdsnap;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
+        <PackageImports>;fs17;frx17;ArrayCamPackage;atVCLCore;bindcompfmx;DBXSqliteDriver;vcldbx;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;TeeDB;bindcomp;inetdb;vclib;inetdbbde;DBXInterBaseDriver;Tee;DataSnapCommon;sbridge170;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;MetropolisUILiveTile;indy10sbridge170;soaprtl;vclactnband;bindengine;vcldb;bindcompdbx;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;vcltouch;bcbsmp;websnap;CustomIPTransport;vclribbon;DbxDevartPostgreSQLDriver170;dsnap;IndyIPServer;IndyCore;vcl;IndyIPCommon;CloudService;DuneForms;dsnapcon;FmxTeeUI;frxDB17;inet;fsDB17;vclx;frxe17;inetdbxpress;webdsnap;bdertl;DuneComponents;dbexpress;adortl;bcbie;IndyIPClient;$(PackageImports)</PackageImports>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -90,7 +90,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Defines>POCO_STATIC;$(Defines)</Defines>
         <LinkPackageStatics>vlcComponent.lib</LinkPackageStatics>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;VCLCommon.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DbxDevartPostgreSQLDriver170.bpi;DBXMySQLDriver.bpi;vclimg.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;.bpi;vclactnband.bpi;vclx.bpi;DuneComponents.bpi;atVCLCore.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;dbxcds.bpi;dsnap.bpi;DbxDevartPostgreSQLDriver170.bpi;DBXMySQLDriver.bpi;vclimg.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>

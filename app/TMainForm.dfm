@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 875
-        ActivePage = TabSheet1
+        ActivePage = Main
         Align = alClient
         TabHeight = 80
         TabOrder = 0
@@ -1391,13 +1391,14 @@ object MainForm: TMainForm
                   Align = alTop
                   Caption = 'Application Sounds'
                   TabOrder = 1
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1408,6 +1409,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1437,7 +1441,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1642,6 +1646,7 @@ object MainForm: TMainForm
                   Width = 105
                   Height = 64
                   Caption = 'Run'
+                  Enabled = False
                   TabOrder = 0
                   OnClick = RunWiperBtnClick
                 end
