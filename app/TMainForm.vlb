@@ -133,9 +133,6 @@ Coordinates=1133,71,118,51
 [atdbDM.speciesDS]
 Coordinates=964,283,107,51
 
-[GroupBox11]
-Coordinates=1133,141,76,51
-
 [atdbDM.blocksCDS]
 Coordinates=353,499,117,429
 
@@ -257,16 +254,13 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1523,937,66,33
+Coordinates=1133,141,76,51
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
 
 [RibbonRegistrationGB]
 Coordinates=125,1184,125,51
-
-[StartStopBtn]
-Coordinates=1314,1401,77,51
 
 [RepeatCB]
 Coordinates=423,71,95,51

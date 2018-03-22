@@ -123,7 +123,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TButton *DecodeSessionBtn;
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
-	TArrayBotButton *StartStopBtn;
 	TGroupBox *GroupBox1;
 	TIntegerLabeledEdit *ArrayCamServerPortE;
 	TArrayBotButton *SendServerStatusMessageBtn;
@@ -159,7 +158,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TIntegerLabeledEdit *mPresetFeedRateE;
 	TLabel *Label6;
 	TScrollBox *ScrollBox1;
-	TGroupBox *GroupBox11;
 	TGroupBox *GroupBox12;
 	TArrayBotButton *SetPresetFeedBtn;
 	TTabSheet *TabSheet4;
@@ -270,10 +268,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TFloatLabeledEdit *PresetReturnSpeedE;
 	TFloatLabeledEdit *SlowReturnSpeedE;
 	TFloatLabeledEdit *UltraSlowReturnSpeedE;
-	TArrayBotButton *PresetReturnSpeedBtn;
-	TArrayBotButton *SlowReturnSpeedBtn;
-	TGroupBox *GroupBox9;
-	TArrayBotButton *UltraSlowReturnSpeedBtn;
 	TTabSheet *RibbonSeparatorSheet;
 	TGroupBox *GroupBox10;
 	TButton *RunWiperBtn;
@@ -323,10 +317,13 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TRadioGroup *mScannerEnabledRG;
 	TButton *mBeepBtn;
 	TPanel *LeftMostPanel;
-	TArrayBotButton *ArrayBotButton1;
-	TArrayBotButton *ArrayBotButton2;
-	TArrayBotButton *ArrayBotButton3;
 	TButton *ConnectWipterClientBtn;
+	TGroupBox *GroupBox9;
+	TArrayBotButton *PresetReturnSpeedBtn;
+	TArrayBotButton *SlowReturnSpeedBtn;
+	TArrayBotButton *UltraSlowReturnSpeedBtn;
+	TGroupBox *CutterGB;
+	TArrayBotButton *StartStopBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

@@ -133,6 +133,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <ILINK_LibraryPath>$(DEBUG_BCC32)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ILINK_Description>ArrayCam VCL Core package</ILINK_Description>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DllSuffix>BCC32D</DllSuffix>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -306,7 +307,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\tokyo\bpl\DuneFormsBCC32D.bpl">Dune Scientific Forms</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>

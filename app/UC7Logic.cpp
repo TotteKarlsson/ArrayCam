@@ -293,6 +293,7 @@ void __fastcall TMainForm::enableDisableUC7UI(bool enableDisable)
     //group boxes
 	enableDisableGroupBox(CounterGB, 		enableDisable);
     enableDisableGroupBox(UC7OperationGB, 	enableDisable);
+    enableDisableGroupBox(CutterGB, 	enableDisable);
     enableDisableGroupBox(CuttingGB, 		enableDisable);
     enableDisableGroupBox(KnifeStageGB,		enableDisable);
 }

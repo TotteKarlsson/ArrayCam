@@ -437,7 +437,7 @@ void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
     else
     {
 		VideoRecTimer->Enabled = false;
-    	RecordVideoBtn->Caption = "Record Video";
+    	RecordVideoBtn->Caption = "Record Whisker Video";
         recTime = 0;
     }
 
@@ -592,7 +592,7 @@ void __fastcall	TMainForm::fireRibbonSeparator()
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::KniveMovieBtnClick(TObject *Sender)
 {
-    if(KniveMovieBtn->Caption == "Start Recording" && THDMIStreamerFrame1)
+    if(KniveMovieBtn->Caption == "Record Knife Video" && THDMIStreamerFrame1)
     {
         //Create new file
         string uuid = getUUID();
@@ -648,7 +648,7 @@ void TMainForm::onKnifeMovieExit(int i, int j)
         TMainForm* f;
         void __fastcall fn()
         {
-			f->KniveMovieBtn->Caption = "Start Recording";
+			f->KniveMovieBtn->Caption = "Record Knife Video";
 
             string videoID = getFileNameNoExtension(stdstr(f->THDMIStreamerFrame1->OutputFileNameE->Text));
             string ext     = getFileExtension(stdstr(f->THDMIStreamerFrame1->OutputFileNameE->Text));

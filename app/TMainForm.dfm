@@ -285,48 +285,23 @@ object MainForm: TMainForm
                 Caption = 'Operation'
                 Constraints.MinHeight = 101
                 TabOrder = 2
-                object GroupBox11: TGroupBox
-                  Left = 2
-                  Top = 21
-                  Width = 183
-                  Height = 465
-                  Align = alLeft
-                  Caption = 'Cutter'
-                  TabOrder = 0
-                  object StartStopBtn: TArrayBotButton
-                    Left = 16
-                    Top = 80
-                    Width = 150
-                    Height = 289
-                    Caption = 'Start'
-                    Enabled = False
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -21
-                    Font.Name = 'Tahoma'
-                    Font.Style = []
-                    ParentDoubleBuffered = True
-                    ParentFont = False
-                    TabOrder = 0
-                    OnClick = CreateUC7Message
-                    SoundID = 'BUTTON_CLICK_4'
-                  end
-                end
                 object GroupBox12: TGroupBox
                   AlignWithMargins = True
-                  Left = 611
+                  Left = 197
                   Top = 24
-                  Width = 184
+                  Width = 598
                   Height = 459
                   Margins.Left = 10
                   Align = alClient
                   Caption = 'Knife Stage'
-                  TabOrder = 1
+                  TabOrder = 0
+                  ExplicitLeft = 198
+                  ExplicitTop = 23
                   DesignSize = (
-                    184
+                    598
                     459)
                   object mMoveNorthBtn: TArrayBotButton
-                    Left = 11
+                    Left = 425
                     Top = 35
                     Width = 160
                     Height = 86
@@ -335,11 +310,13 @@ object MainForm: TMainForm
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 0
+                    Visible = False
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
+                    ExplicitLeft = 11
                   end
                   object mMoveSouthBtn: TArrayBotButton
-                    Left = 11
+                    Left = 425
                     Top = 162
                     Width = 160
                     Height = 86
@@ -348,18 +325,21 @@ object MainForm: TMainForm
                     Enabled = False
                     ParentDoubleBuffered = True
                     TabOrder = 1
+                    Visible = False
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
+                    ExplicitLeft = 11
                   end
                 end
                 object GroupBox7: TGroupBox
-                  Left = 185
+                  Left = 2
                   Top = 21
                   Width = 185
                   Height = 465
                   Align = alLeft
                   Caption = 'Options'
-                  TabOrder = 2
+                  TabOrder = 1
+                  ExplicitLeft = 185
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 24
                     Top = 375
@@ -386,48 +366,6 @@ object MainForm: TMainForm
                       'After Cutting'
                       'Before Retracting')
                     TabOrder = 1
-                  end
-                end
-                object GroupBox9: TGroupBox
-                  Left = 370
-                  Top = 21
-                  Width = 231
-                  Height = 465
-                  Align = alLeft
-                  Caption = 'Return Speed'
-                  TabOrder = 3
-                  object PresetReturnSpeedBtn: TArrayBotButton
-                    Left = 22
-                    Top = 40
-                    Width = 195
-                    Height = 81
-                    Caption = 'Preset'
-                    TabOrder = 0
-                    WordWrap = True
-                    OnClick = CreateUC7Message
-                    SoundID = 'BUTTON_CLICK_4'
-                  end
-                  object SlowReturnSpeedBtn: TArrayBotButton
-                    Left = 22
-                    Top = 167
-                    Width = 195
-                    Height = 81
-                    Caption = 'Slow'
-                    TabOrder = 1
-                    WordWrap = True
-                    OnClick = CreateUC7Message
-                    SoundID = 'BUTTON_CLICK_4'
-                  end
-                  object UltraSlowReturnSpeedBtn: TArrayBotButton
-                    Left = 22
-                    Top = 294
-                    Width = 195
-                    Height = 81
-                    Caption = 'Ultra Slow'
-                    TabOrder = 2
-                    WordWrap = True
-                    OnClick = CreateUC7Message
-                    SoundID = 'BUTTON_CLICK_4'
                   end
                 end
               end
@@ -1390,15 +1328,14 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 1
-                  ExplicitWidth = 509
+                  TabOrder = 0
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 15
+                    Top = 21
                     Width = 247
-                    Height = 224
+                    Height = 218
                     Align = alLeft
-                    ItemHeight = 13
+                    ItemHeight = 19
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1409,9 +1346,6 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1441,7 +1375,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 21
+                      Height = 27
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1551,17 +1485,14 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1578,14 +1509,17 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited BitrateE: TIntegerLabeledEdit [2]
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1890,17 +1824,19 @@ object MainForm: TMainForm
     end
   end
   object LeftPanel: TPanel
-    Left = 185
+    Left = 233
     Top = 84
-    Width = 780
+    Width = 732
     Height = 879
     Align = alClient
     BevelEdges = []
     TabOrder = 1
+    ExplicitLeft = 185
+    ExplicitWidth = 780
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 778
+      Width = 730
       Height = 877
       Margins.Left = 0
       Margins.Right = 0
@@ -1909,6 +1845,7 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
+      ExplicitWidth = 778
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -1990,20 +1927,22 @@ object MainForm: TMainForm
       object MPEGPanel: TFlowPanel
         Left = 0
         Top = 0
-        Width = 778
+        Width = 730
         Height = 43
         Align = alTop
         AutoSize = True
         TabOrder = 1
+        ExplicitWidth = 778
       end
       object Bpanel: TPanel
         Left = 0
         Top = 798
-        Width = 778
+        Width = 730
         Height = 79
         Align = alBottom
         AutoSize = True
         TabOrder = 2
+        ExplicitWidth = 778
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
@@ -2016,16 +1955,16 @@ object MainForm: TMainForm
           object RecordVideoBtn: TArrayBotButton
             Left = 0
             Top = 0
-            Width = 161
+            Width = 217
             Height = 75
             Align = alLeft
-            Caption = 'Record Video'
+            Caption = 'Record Whisker Video'
             TabOrder = 0
             OnClick = RecordVideoBtnClick
             SoundID = 'BUTTON_CLICK_4'
           end
           object TakeSnapShotBtn: TArrayBotButton
-            Left = 161
+            Left = 217
             Top = 0
             Width = 161
             Height = 75
@@ -2037,7 +1976,7 @@ object MainForm: TMainForm
           end
         end
         object ToolBar3: TToolBar
-          Left = 639
+          Left = 591
           Top = 1
           Width = 138
           Height = 77
@@ -2049,6 +1988,7 @@ object MainForm: TMainForm
           AllowTextButtons = True
           TabOrder = 1
           Wrapable = False
+          ExplicitLeft = 639
           object BroadCastStatusBtn: TArrayBotButton
             Left = 0
             Top = 0
@@ -2090,9 +2030,9 @@ object MainForm: TMainForm
       object KniveMovieBtn: TArrayBotButton
         Left = 0
         Top = 0
-        Width = 177
+        Width = 185
         Height = 75
-        Caption = 'Start Recording'
+        Caption = 'Record Knife Video'
         TabOrder = 0
         OnClick = KniveMovieBtnClick
         SoundID = 'BUTTON_CLICK_4'
@@ -2256,48 +2196,95 @@ object MainForm: TMainForm
   object LeftMostPanel: TPanel
     Left = 0
     Top = 84
-    Width = 185
+    Width = 233
     Height = 879
     Align = alLeft
     TabOrder = 4
-    object ArrayBotButton1: TArrayBotButton
-      Left = 0
-      Top = 360
-      Width = 180
-      Height = 226
-      Caption = 'Slow'
+    object CutterGB: TGroupBox
+      Left = 1
+      Top = 1
+      Width = 231
+      Height = 877
+      Align = alClient
+      Caption = 'Cutter'
       TabOrder = 0
-      WordWrap = True
-      OnClick = CreateUC7Message
-      SoundID = 'BUTTON_CLICK_4'
-    end
-    object ArrayBotButton2: TArrayBotButton
-      Left = 0
-      Top = 640
-      Width = 180
-      Height = 217
-      Caption = 'Ultra Slow'
-      TabOrder = 1
-      WordWrap = True
-      OnClick = CreateUC7Message
-      SoundID = 'BUTTON_CLICK_4'
-    end
-    object ArrayBotButton3: TArrayBotButton
-      Left = 0
-      Top = 40
-      Width = 180
-      Height = 233
-      Caption = 'Preset'
-      TabOrder = 2
-      WordWrap = True
-      OnClick = CreateUC7Message
-      SoundID = 'BUTTON_CLICK_4'
+      ExplicitLeft = 2
+      ExplicitTop = 21
+      ExplicitWidth = 183
+      ExplicitHeight = 465
+      object StartStopBtn: TArrayBotButton
+        Left = 2
+        Top = 429
+        Width = 227
+        Height = 446
+        Align = alClient
+        Caption = 'Start'
+        Enabled = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentDoubleBuffered = True
+        ParentFont = False
+        TabOrder = 0
+        OnClick = CreateUC7Message
+        SoundID = 'BUTTON_CLICK_4'
+        ExplicitLeft = 16
+        ExplicitTop = 80
+        ExplicitWidth = 150
+        ExplicitHeight = 289
+      end
+      object GroupBox9: TGroupBox
+        Left = 2
+        Top = 21
+        Width = 227
+        Height = 408
+        Align = alTop
+        Caption = 'Return Speed'
+        TabOrder = 1
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 231
+        object PresetReturnSpeedBtn: TArrayBotButton
+          Left = 22
+          Top = 40
+          Width = 195
+          Height = 81
+          Caption = 'Preset'
+          TabOrder = 0
+          WordWrap = True
+          OnClick = CreateUC7Message
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object SlowReturnSpeedBtn: TArrayBotButton
+          Left = 22
+          Top = 167
+          Width = 195
+          Height = 81
+          Caption = 'Slow'
+          TabOrder = 1
+          WordWrap = True
+          OnClick = CreateUC7Message
+          SoundID = 'BUTTON_CLICK_4'
+        end
+        object UltraSlowReturnSpeedBtn: TArrayBotButton
+          Left = 22
+          Top = 294
+          Width = 195
+          Height = 81
+          Caption = 'Ultra Slow'
+          TabOrder = 2
+          WordWrap = True
+          OnClick = CreateUC7Message
+          SoundID = 'BUTTON_CLICK_4'
+        end
+      end
     end
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    UseAppManager = True
     Left = 148
     Top = 165
   end
@@ -2479,6 +2466,7 @@ object MainForm: TMainForm
       Caption = '...'
       DialogCaption = 'BrowseForFolder1'
       BrowseOptions = [bifEditBox, bifNewDialogStyle, bifUseNewUI]
+      BrowseOptionsEx = []
     end
   end
   object CameraActions: TActionList
@@ -2512,7 +2500,6 @@ object MainForm: TMainForm
   object BindingsList2: TBindingsList
     Methods = <>
     OutputConverters = <>
-    UseAppManager = True
     Left = 416
     Top = 24
   end
