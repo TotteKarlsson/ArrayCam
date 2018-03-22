@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName       "ArrayCam"
-#define MyAppVersion    "0.7.0"
+#define MyAppVersion    "0.7.1"
 #define MyAppPublisher  "Smith Lab"
 #define MyAppURL        "http://www.example.com/"
 #define MyAppExeName    "ArrayCam.exe"
@@ -35,7 +35,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "P:\AppReleases\ArrayCam\ArrayCam.exe"; DestDir: "{app}";                       Flags: ignoreversion
 Source: "P:\AppReleases\ArrayCam\*";            DestDir: "{app}";                       Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "P:\AppReleases\ArrayCam\*.ell";        DestDir: "{localappdata}\{#MyAppName}";  Flags: ignoreversion createallsubdirs recursesubdirs comparetimestamp
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
