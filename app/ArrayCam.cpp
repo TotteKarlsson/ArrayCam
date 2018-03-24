@@ -10,15 +10,10 @@
 #include "TPGCoverSlipDataModule.h"
 #include "TPGImagesAndMoviesDataModule.h"
 #include "ArrayCamUtilities.h"
-#include "ATExceptions.h"
+#include "TMoviesFrame.h"
+#include "core/ATExceptions.h"
 //---------------------------------------------------------------------------
-USEFORM("P:\libs\atapi\source\vcl\frames\THDMIStreamerFrame.cpp", HDMIStreamerFrame); /* TFrame: File Type */
-USEFORM("P:\libs\atapi\source\vcl\frames\TMoviesFrame.cpp", MoviesFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
-USEFORM("frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
-USEFORM("frames\TUC7StagePositionFrame.cpp", UC7StagePositionFrame); /* TFrame: File Type */
-USEFORM("forms\TLoggerForm.cpp", LoggerForm);
-USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 //---------------------------------------------------------------------------
 ArrayCamUtilities acu;
 
@@ -26,6 +21,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try
 	{
+
     	//Setup application mutex, logging etc..
 	    acu.init();
 

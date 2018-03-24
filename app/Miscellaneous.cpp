@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------
 using namespace dsl;
 extern ArrayCamUtilities acu;
+
 static HWND gOtherAppWindow = NULL;
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)

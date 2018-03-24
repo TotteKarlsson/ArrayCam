@@ -15,7 +15,7 @@
 using dsl::IniFileProperties;
 using dsl::IniFile;
 
-class TFFMPEGFrame : public TFrame
+class PACKAGE TFFMPEGFrame : public TFrame
 {
 __published:	// IDE-managed Components
 	TGroupBox *GroupBox1;

@@ -1,5 +1,6 @@
 #ifndef ArrayCamUtilitiesH
 #define ArrayCamUtilitiesH
+#include <windows.h>
 #include <string>
 //---------------------------------------------------------------------------
 
@@ -9,6 +10,7 @@ class ApplicationUtilities
 {
 	public:
     			                            ApplicationUtilities(const string& appName, const string& regRoot, const string& appVersion);
+    virtual 	                            ~ApplicationUtilities();
     HANDLE 		                            AppMutex;
 	string	   	                            AppName;
 	string	   	                            AppRegistryRoot;
@@ -24,6 +26,7 @@ class ApplicationUtilities
 
     void		                            init();
 	bool		                            setupLogging();
+	bool		                            closeLogFile();
 	bool	                                otherInstanceIsRunning();
 };
 
@@ -31,6 +34,7 @@ class ArrayCamUtilities : public ApplicationUtilities
 {
     public:
 											ArrayCamUtilities();
+											~ArrayCamUtilities();
     protected:
 
     private:

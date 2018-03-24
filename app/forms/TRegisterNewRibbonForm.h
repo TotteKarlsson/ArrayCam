@@ -6,13 +6,16 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "components/TArrayBotBtn.h"
+#include "TArrayBotBtn.h"
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <Vcl.DBCtrls.hpp>
 #include "TMainForm.h"
 #include <Vcl.Mask.hpp>
 #include "TArrayBotBtn.h"
+#include <string>
+
+using std::string;
 //---------------------------------------------------------------------------
 class PACKAGE TRegisterNewRibbonForm : public TForm
 {

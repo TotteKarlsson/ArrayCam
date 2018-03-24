@@ -4,11 +4,11 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "components/TArrayBotBtn.h"
+#include "TArrayBotBtn.h"
 #include "dslTPropertyCheckBox.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ComCtrls.hpp>
-#include "Common/atReticle.h"
+#include "atReticle.h"
 #include <Vcl.ExtCtrls.hpp>
 #include "TArrayBotBtn.h"
 //---------------------------------------------------------------------------

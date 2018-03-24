@@ -43,8 +43,8 @@
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "ello/atElloUIClient.h"
-#include "Common/atReticle.h"
-#include "Common/atVCLUtils.h"
+#include "atReticle.h"
+#include "atVCLUtils.h"
 #include "barcodereader/atDS457.h"
 #include "camera/atCameraServiceThread.h"
 #include "core/atEnvironmentalSensorReader.h"
@@ -65,7 +65,6 @@
 #include "TNavitarMotorFrame.h"
 #include "dslTPropertyCheckBox.h"
 #include "TSoundsFrame.h"
-//#include "dslTStatusBarManager.h"
 #include "dslTSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
 #include "dslTFloatLabeledEdit.h"

@@ -76,7 +76,7 @@ object SettingsForm: TSettingsForm
           Height = 13
           Caption = 'Exposure Time (ms)'
         end
-        object mExposureTimeLbl: mtkFloatLabel
+        object mExposureTimeLbl: TFloatLabel
           Left = 248
           Top = 64
           Width = 26
@@ -231,7 +231,7 @@ object SettingsForm: TSettingsForm
           Height = 13
           Caption = 'Software Gamma'
         end
-        object mSoftwareGammaLbl: mtkFloatLabel
+        object mSoftwareGammaLbl: TFloatLabel
           Left = 18
           Top = 47
           Width = 22

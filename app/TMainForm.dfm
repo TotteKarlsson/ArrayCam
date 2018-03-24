@@ -1282,29 +1282,29 @@ object MainForm: TMainForm
               ImageIndex = 1
               inline TSoundsFrame1: TSoundsFrame
                 Left = 0
-                Top = 482
+                Top = 241
                 Width = 798
-                Height = 269
+                Height = 510
                 Align = alClient
                 AutoSize = True
                 TabOrder = 0
-                ExplicitTop = 482
+                ExplicitTop = 241
                 ExplicitWidth = 798
-                ExplicitHeight = 269
+                ExplicitHeight = 510
                 inherited GroupBox1: TGroupBox
                   Width = 798
-                  Height = 269
+                  Height = 510
                   Align = alClient
                   ExplicitWidth = 798
-                  ExplicitHeight = 269
+                  ExplicitHeight = 510
                   inherited SoundsLB: TListBox
                     Top = 21
                     Width = 215
-                    Height = 246
+                    Height = 487
                     ItemHeight = 19
                     ExplicitTop = 21
                     ExplicitWidth = 215
-                    ExplicitHeight = 246
+                    ExplicitHeight = 487
                   end
                 end
               end
@@ -1312,81 +1312,39 @@ object MainForm: TMainForm
                 Left = 0
                 Top = 0
                 Width = 798
-                Height = 482
+                Height = 241
                 Align = alTop
                 AutoSize = True
                 TabOrder = 1
-                object GBS: TGroupBox
-                  Left = 0
-                  Top = 0
+                ExplicitWidth = 798
+                inherited GBS: TGroupBox
                   Width = 798
-                  Height = 241
-                  Align = alTop
-                  Caption = 'Application Sounds'
-                  TabOrder = 1
-                  ExplicitWidth = 509
-                  object ApplicationSoundsLB: TListBox
-                    Left = 2
-                    Top = 15
-                    Width = 247
-                    Height = 224
-                    Align = alLeft
-                    ItemHeight = 13
-                    TabOrder = 0
+                  ExplicitWidth = 798
+                  inherited ApplicationSoundsLB: TListBox
+                    Top = 21
+                    Height = 218
+                    ItemHeight = 19
+                    ExplicitTop = 21
+                    ExplicitHeight = 218
                   end
-                  object SoundPropsGB: TGroupBox
-                    Left = 249
+                  inherited SoundPropsGB: TGroupBox
                     Top = 21
                     Width = 547
                     Height = 218
-                    Align = alClient
-                    Caption = 'Sound Properties'
-                    TabOrder = 1
-                    ExplicitTop = 15
-                    ExplicitWidth = 258
-                    ExplicitHeight = 224
-                    object EnabledCB: TCheckBox
-                      Left = 24
-                      Top = 143
-                      Width = 97
-                      Height = 17
-                      Caption = 'Enabled'
-                      TabOrder = 0
+                    ExplicitTop = 21
+                    ExplicitWidth = 547
+                    ExplicitHeight = 218
+                    inherited SoundCB: TComboBox
+                      Height = 27
+                      ExplicitHeight = 27
                     end
-                    object PlayBtn: TButton
-                      Left = 144
-                      Top = 105
-                      Width = 105
-                      Height = 32
-                      Caption = 'Play'
-                      TabOrder = 1
-                    end
-                    object RepeatCB: TCheckBox
-                      Left = 24
-                      Top = 120
-                      Width = 97
-                      Height = 17
-                      Caption = 'Repeat'
-                      TabOrder = 2
-                      Visible = False
-                    end
-                    object SoundCB: TComboBox
-                      Left = 24
-                      Top = 32
-                      Width = 233
-                      Height = 21
-                      TabOrder = 3
-                      Text = 'SoundCB'
-                    end
-                    object VolumeTB: TTrackBar
-                      Left = 24
-                      Top = 73
-                      Width = 233
-                      Height = 26
-                      Max = 0
-                      Min = -10000
-                      TabOrder = 4
-                      TickStyle = tsNone
+                    inherited FloatLabeledEdit1: TFloatLabeledEdit
+                      EditLabel.Width = 124
+                      EditLabel.Height = 19
+                      EditLabel.ExplicitLeft = 56
+                      EditLabel.ExplicitTop = 162
+                      EditLabel.ExplicitWidth = 124
+                      EditLabel.ExplicitHeight = 19
                     end
                   end
                 end
@@ -2085,7 +2043,7 @@ object MainForm: TMainForm
         Height = 19
         Caption = 'Ribbon Order'
       end
-      object RibbonLengthLbl: mtkFloatLabel
+      object RibbonLengthLbl: TFloatLabel
         Left = 448
         Top = 39
         Width = 38

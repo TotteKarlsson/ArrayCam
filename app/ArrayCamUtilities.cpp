@@ -1,4 +1,5 @@
 #pragma hdrstop
+#include <Shlobj.h>
 #include "ArrayCamUtilities.h"
 #include "dslUtils.h"
 #include "dslLogger.h"
@@ -9,6 +10,7 @@ using namespace dsl;
 int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
 
 extern ArrayCamUtilities acu;
+
 //---------------------------------------------------------------------------
 ApplicationUtilities::ApplicationUtilities(const string& appName, const string& regRoot, const string& appVersion)
 :
@@ -24,6 +26,11 @@ OtherAppWindow(NULL),
 AppIsStartingUp(true),
 AppIsClosing(false)
 {
+}
+
+ApplicationUtilities::~ApplicationUtilities()
+{
+    closeLogFile();
 }
 
 void ApplicationUtilities::init()
@@ -56,12 +63,23 @@ bool ApplicationUtilities::setupLogging()
     return true;
 }
 
+bool ApplicationUtilities::closeLogFile()
+{
+    dsl::gLogger.closeLogFile();
+    return true;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ArrayCamUtilities::ArrayCamUtilities()
 :
 ApplicationUtilities("ArrayCam", "\\Software\\Allen Institute\\array_cam", "0.5.0")
 {
+}
+
+ArrayCamUtilities::~ArrayCamUtilities()
+{
+    Log(lInfo) << "In Arraycam utilities destructor..";
 }
 
 ///////////////////////////////////////////////////////////////////////////////

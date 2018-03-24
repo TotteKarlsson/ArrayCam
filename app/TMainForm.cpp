@@ -183,18 +183,29 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 {
 	mStartupTimer->Enabled = false;
 
-   	TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION");
-    TPGConnectionFrame1->ConnectA->Execute();
+    try
+    {
+        TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION");
+        TPGConnectionFrame1->ConnectA->Execute();
 
-	mConnectZebraBtnClick(Sender);
+        mConnectZebraBtnClick(Sender);
 
-    //Connect to the UC7
-    mConnectUC7Btn->Click();
+        //Connect to the UC7
+        mConnectUC7Btn->Click();
 
-    //Connect navitar motors
-    NavitarControllerConnectBtn->Click();
-    updateTemperature(-1);
-	updateHumidity(-1);
+        //Connect navitar motors
+        NavitarControllerConnectBtn->Click();
+        updateTemperature(-1);
+        updateHumidity(-1);
+    }
+//    catch(const SocketException& e)
+//    {
+//
+//    }
+    catch(const TDBXError& e)
+    {
+        Log(lError) << "There was an exception: "<<stdstr(e.Message);
+    }
 }
 
 //---------------------------------------------------------------------------
