@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
-#pragma link "TIntLabel"
+#pragma link "dslTIntLabel"
 #pragma resource "*.dfm"
 TSelectIntegerForm *SelectIntegerForm;
 //---------------------------------------------------------------------------

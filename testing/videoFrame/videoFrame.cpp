@@ -2,8 +2,8 @@
 #pragma hdrstop
 #include <tchar.h>
 #include <string>
-#include "mtkLogger.h"
-#include "mtkVCLUtils.h"
+#include "dslLogger.h"
+#include "dslVCLUtils.h"
 #include "TATDBDataModule.h"
 #include "TATDBImagesAndMoviesDataModule.h"
 USEFORM("P:\libs\atapi\source\vcl\frames\TMovieItemFrame.cpp", MovieItemFrame); /* TFrame: File Type */
@@ -11,7 +11,7 @@ USEFORM("P:\libs\atapi\source\vcl\frames\TATDBConnectionFrame.cpp", ATDBConnecti
 USEFORM("..\..\source\frames\TFFMPEGFrame.cpp", FFMPEGFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
-using namespace mtk;
+using namespace dsl;
 using namespace std;
 
 extern string       gLogFileLocation            = "";
@@ -65,8 +65,8 @@ void setupLogging()
 
 	string fullLogFileName(joinPath(gLogFileLocation, gLogFileName));
 	clearFile(fullLogFileName);
-	mtk::gLogger.logToFile(fullLogFileName);
-    mtk::gLogger.setLogLevel(lDebug5);
+	dsl::gLogger.logToFile(fullLogFileName);
+    dsl::gLogger.setLogLevel(lDebug5);
 	LogOutput::mShowLogLevel = true;
 	LogOutput::mShowLogTime = true;
 	LogOutput::mUseLogTabs 	= true;
@@ -74,9 +74,9 @@ void setupLogging()
 }
 
 
-#pragma comment(lib, "mtkCommon.lib")
-#pragma comment(lib, "mtkMath.lib")
-#pragma comment(lib, "mtkIPC.lib")
+#pragma comment(lib, "dslCommon.lib")
+#pragma comment(lib, "dslMath.lib")
+#pragma comment(lib, "dslIPC.lib")
 
 #pragma comment(lib, "atCore.lib")
 #pragma comment(lib, "atDataBase.lib")

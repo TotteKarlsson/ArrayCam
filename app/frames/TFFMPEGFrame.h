@@ -4,15 +4,16 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "TSTDStringLabeledEdit.h"
+#include "dslTSTDStringLabeledEdit.h"
 #include <Vcl.ExtCtrls.hpp>
-#include "TIntegerLabeledEdit.h"
-#include "TPropertyCheckBox.h"
-#include "mtkIniFileProperties.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTPropertyCheckBox.h"
+#include "dslIniFileProperties.h"
+#include "dslTPropertyCheckBox.h"
 //---------------------------------------------------------------------------
 
-using mtk::IniFileProperties;
-using mtk::IniFile;
+using dsl::IniFileProperties;
+using dsl::IniFile;
 
 class TFFMPEGFrame : public TFrame
 {
@@ -35,7 +36,7 @@ __published:	// IDE-managed Components
 		__fastcall 		        TFFMPEGFrame(TComponent* Owner);
         string 			        getOutFileArguments();
         string 			        getInFileArguments();
-		void 					setupProperties(mtk::IniFile& ini);
+		void 					setupProperties(dsl::IniFile& ini);
         void			        readFromINI();
         void			        writeToINI();
 

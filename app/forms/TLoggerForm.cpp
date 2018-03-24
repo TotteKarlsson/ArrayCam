@@ -1,16 +1,17 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TLoggerForm.h"
-#include "mtkUtils.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslUtils.h"
+#include "dslVCLUtils.h"
+#include "dslWin32Utils.h"
+#include "dslLogger.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 TLoggerForm *LoggerForm;
-using namespace mtk;
+using namespace dsl;
 
 extern ArrayCamUtilities acu;
 
@@ -91,7 +92,7 @@ void __fastcall TLoggerForm::mClearLogMemoBtnClick(TObject *Sender)
 void __fastcall TLoggerForm::FormCreate(TObject *Sender)
 {
     //Setup LogLevel CB
-    string lvl = mtk::toString(gLogger.getLogLevel());
+    string lvl = dsl::toString(gLogger.getLogLevel());
     mLogLevel = toLogLevel(lvl);
     //Find item in CB with this loglevel
     int index = LogLevelCB->Items->IndexOf(vclstr(lvl));

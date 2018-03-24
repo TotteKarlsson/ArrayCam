@@ -1,9 +1,9 @@
 #pragma hdrstop
 #include "ConnectToElloUIThread.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-using namespace mtk;
+using namespace dsl;
 
 ConnectToElloUIThread::ConnectToElloUIThread(ElloUIClient& c, int p)
 :

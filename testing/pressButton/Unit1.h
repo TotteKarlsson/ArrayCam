@@ -8,8 +8,8 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "TIntegerLabeledEdit.h"
-#include "TSTDStringLabeledEdit.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTSTDStringLabeledEdit.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

@@ -1,16 +1,16 @@
 #ifndef ArrayCamServerH
 #define ArrayCamServerH
-#include "mtkIPCServer.h"
-#include "mtkSocketWorker.h"
+#include "dslIPCServer.h"
+#include "dslSocketWorker.h"
 #include <vector>
-#include "mtkTimer.h"
+#include "dslTimer.h"
 #include "arraycam/atArrayCamProtocol.h"
-#include "mtkIPCMessage.h"
-#include "mtkConstants.h"
+#include "dslIPCMessage.h"
+#include "dslConstants.h"
 //---------------------------------------------------------------------------
-using mtk::IPCServer;
-using mtk::gEmptyString;
-mtk::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* parent);
+using dsl::IPCServer;
+using dsl::gEmptyString;
+dsl::SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* parent);
 
 typedef void (__closure *OnMessageUpdateCB)(const string& msg);
 
@@ -28,7 +28,7 @@ class PACKAGE ArrayCamServer : public IPCServer
 											//!Requests are sent to the server from a client.
                                             //!The process request is an overide from the IPCServer base class.
                                             //!ProcessRequest implements the ArrayCam server specific processing.
-    	bool 					            processRequest(mtk::IPCMessage& msg);
+    	bool 					            processRequest(dsl::IPCMessage& msg);
         bool            		            shutDown();
         void								assignOnUpdateCallBack(OnMessageUpdateCB cb);
 		void								onUpdateClientsTimer();

@@ -1,10 +1,10 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "vcl/atVCLUtils.h"
-#include "mtkStringList.h"
+#include "atVCLUtils.h"
+#include "dslStringList.h"
 
-using namespace mtk;
+using namespace dsl;
 
 class TLocalArgs
 {

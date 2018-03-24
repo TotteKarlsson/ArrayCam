@@ -5,10 +5,10 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "components/TArrayBotBtn.h"
-#include "TPropertyCheckBox.h"
+#include "dslTPropertyCheckBox.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ComCtrls.hpp>
-#include "atReticle.h"
+#include "Common/atReticle.h"
 #include <Vcl.ExtCtrls.hpp>
 #include "TArrayBotBtn.h"
 //---------------------------------------------------------------------------

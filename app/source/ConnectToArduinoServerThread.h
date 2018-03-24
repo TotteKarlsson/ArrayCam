@@ -1,13 +1,13 @@
 #ifndef ConnectToArduinoServerThreadH
 #define ConnectToArduinoServerThreadH
-#include "mtkThread.h"
+#include "dslThread.h"
 #include "arduino/atArduinoClient.h"
 //---------------------------------------------------------------------------
 
-using mtk::Thread;
+using dsl::Thread;
 
 
-class PACKAGE ConnectToArduinoServerThread : public mtk::Thread
+class PACKAGE ConnectToArduinoServerThread : public dsl::Thread
 {
 	public:
     									ConnectToArduinoServerThread(ArduinoClient& c, int portNr);

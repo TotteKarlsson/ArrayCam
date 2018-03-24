@@ -1,12 +1,12 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "ArrayCamServer.h"
-#include "mtkLogger.h"
-#include "mtkSocketWorker.h"
-#include "mtkStringUtils.h"
+#include "dslLogger.h"
+#include "dslSocketWorker.h"
+#include "dslStringUtils.h"
 #include "arraycam/atArrayCamProtocol.h"
 //---------------------------------------------------------------------------
-using namespace mtk;
+using namespace dsl;
 
 ArrayCamServer::ArrayCamServer(TMainForm& mf, int portNumber)
 :
@@ -57,7 +57,7 @@ void ArrayCamServer::broadcast(ACMessageID id, const string& arg1, const string&
 void ArrayCamServer::broadcastStatus()
 {
     stringstream msg;
-    msg << "IS_RECORDING="<<mtk::toString(mMainForm.mCaptureVideoTimer->Enabled);
+    msg << "IS_RECORDING="<<dsl::toString(mMainForm.mCaptureVideoTimer->Enabled);
    	notifyClients(msg.str());
 }
 

@@ -1,8 +1,8 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkLogger.h"
-#include "mtkVCLUtils.h"
+#include "dslLogger.h"
+#include "dslVCLUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "AXVLC_OCX"
@@ -10,7 +10,7 @@
 #pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 
-using namespace mtk;
+using namespace dsl;
 
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
@@ -75,10 +75,10 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
    	mLogFileReader.start(true);
     mLogFileReader.assignOnMessageCallBack(&logMsg);
     gLogger.setLogLevel(LogLevel::lDebug5);
-	mtk::gLogger.logToFile(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "Temp", "Test.log"));
+	dsl::gLogger.logToFile(joinPath(getSpecialFolder(CSIDL_LOCAL_APPDATA), "Temp", "Test.log"));
 	Log(lInfo) << "Logger was setup";
 
-    mtk::gLogger.setLogLevel(lDebug5);
+    dsl::gLogger.setLogLevel(lDebug5);
 	LogOutput::mShowLogLevel = true;
 	LogOutput::mShowLogTime = true;
 	LogOutput::mUseLogTabs 	= true;

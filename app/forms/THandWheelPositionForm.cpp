@@ -2,12 +2,12 @@
 #pragma hdrstop
 #include "THandWheelPositionForm.h"
 #include "Poco/TimeSpan.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 
-using namespace mtk;
+using namespace dsl;
 THandWheelPositionForm *HandWheelPositionForm;
 
 //---------------------------------------------------------------------------

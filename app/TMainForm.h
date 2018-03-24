@@ -27,30 +27,30 @@
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
 #include "TFFMPEGFrame.h"
-#include "TFloatLabeledEdit.h"
+#include "dslTFloatLabeledEdit.h"
 #include "TImagesFrame.h"
-#include "TIntegerLabeledEdit.h"
-#include "TIntLabel.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTIntLabel.h"
 #include "TMoviesFrame.h"
 #include "TNavitarMotorFrame.h"
-#include "TPropertyCheckBox.h"
+#include "dslTPropertyCheckBox.h"
 #include "TSoundsFrame.h"
-#include "TSTDStringLabeledEdit.h"
+#include "dslTSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
-#include "mtkFloatLabel.h"
+#include "dslTFloatLabel.h"
 #include "TPGConnectionFrame.h"
 #include "THDMIStreamerFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "ello/atElloUIClient.h"
-#include "atReticle.h"
-#include "atVCLUtils.h"
+#include "Common/atReticle.h"
+#include "Common/atVCLUtils.h"
 #include "barcodereader/atDS457.h"
 #include "camera/atCameraServiceThread.h"
 #include "core/atEnvironmentalSensorReader.h"
-#include "forms/TRegistryForm.h"
-#include "mtkIniFile.h"
-#include "mtkIniFileProperties.h"
+#include "forms/dslTRegistryForm.h"
+#include "dslIniFile.h"
+#include "dslIniFileProperties.h"
 #include "navitar/atNavitarMotorController.h"
 #include "source/ArrayCamServer.h"
 #include "source/ConnectToArduinoServerThread.h"
@@ -59,19 +59,19 @@
 #include "TArrayBotBtn.h"
 #include "TFFMPEGFrame.h"
 #include "TImagesFrame.h"
-#include "TIntegerLabeledEdit.h"
-#include "TIntLabel.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTIntLabel.h"
 #include "TMoviesFrame.h"
 #include "TNavitarMotorFrame.h"
-#include "TPropertyCheckBox.h"
+#include "dslTPropertyCheckBox.h"
 #include "TSoundsFrame.h"
-#include "TStatusBarManager.h"
-#include "TSTDStringLabeledEdit.h"
+//#include "dslTStatusBarManager.h"
+#include "dslTSTDStringLabeledEdit.h"
 #include "TUC7StagePositionFrame.h"
-#include "TFloatLabeledEdit.h"
+#include "dslTFloatLabeledEdit.h"
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
-#include "uc480/uc480Class.h"
+#include "thirdparty/uc480/uc480Class.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -84,11 +84,11 @@ class TActionsForm;
 class TFFMPEGOutputFrame;
 class TFFMPEGFrame;
 class TMovieItemFrame;
-using mtk::Property;
+using dsl::Property;
 using Poco::Timestamp;
-using mtk::IniFileProperties;
-using mtk::IniFile;
-using mtk::Property;
+using dsl::IniFileProperties;
+using dsl::IniFile;
+using dsl::Property;
 
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
@@ -260,7 +260,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label16;
 	TLabel *Label17;
 	TLabel *Label18;
-	mtkFloatLabel *RibbonLengthLbl;
+	TFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
 	TGroupBox *GroupBox7;
 	TPropertyCheckBox *SyncWhiskerCB;
@@ -418,7 +418,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void									setupProperties();
 		IniFile									mIniFile;
 		IniFileProperties						mGeneralProperties;
-		Property<mtk::LogLevel>					mLogLevel;
+		Property<dsl::LogLevel>					mLogLevel;
 		Property<int>							mMainContentPanelWidth;
 
 												//Camera Settings

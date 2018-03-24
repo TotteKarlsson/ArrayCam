@@ -4,11 +4,11 @@
 #include "TPGDataModule.h"
 #include "THandWheelPositionForm.h"
 #include "TLoggerForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 extern ArrayCamUtilities acu;
-using namespace mtk;
+using namespace dsl;
 
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {

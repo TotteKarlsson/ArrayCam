@@ -3,8 +3,9 @@
 #include "TUC7StagePositionFrame.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "TIntegerEdit"
-#pragma link "TIntLabel"
+#pragma link "dslTIntegerEdit"
+#pragma link "dslTIntLabel"
+#pragma link "dslTIntLabel"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 

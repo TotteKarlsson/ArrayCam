@@ -2,15 +2,15 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TPGDataModule.h"
-#include "mtkLogger.h"
-#include "mtkVCLUtils.h"
+#include "dslLogger.h"
+#include "dslVCLUtils.h"
 #include "uc480/uc480_tools.h"
-#include "vcl/atVCLUtils.h"
+#include "atVCLUtils.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
 #include "TFFMPEGOutputFrame.h"
 #include "ArrayCamUtils.h"
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
@@ -291,7 +291,7 @@ void __fastcall TMainForm::takeSnapShot()
     	blockID = 0;
     }
 
-	string base_fldr =  joinPath(MediaFolderE->getValue(), "Images", mtk::toString(blockID));
+	string base_fldr =  joinPath(MediaFolderE->getValue(), "Images", dsl::toString(blockID));
     string fName = joinPath(base_fldr, uuid + ext);
 
     if(!folderExists(base_fldr))
@@ -408,7 +408,7 @@ void __fastcall TMainForm::startStopRecordingMovie()
             lBlockID = 0;
         }
 
-        string base_fldr =  joinPath(MediaFolderE->getValue(), mtk::toString(lBlockID));
+        string base_fldr =  joinPath(MediaFolderE->getValue(), dsl::toString(lBlockID));
         string fName = joinPath(base_fldr, sMovieID + ext);
 
         if(!folderExists(base_fldr))

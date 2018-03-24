@@ -10,8 +10,8 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.OleCtrls.hpp>
 #include "AXVLC_OCX.h"
-#include "mtkLogFileReader.h"
-#include "mtkLogLevel.h"
+#include "dslLogFileReader.h"
+#include "dslLogLevel.h"
 #include "THDMIStreamerFrame.h"
 #include "TArrayBotBtn.h"
 
@@ -38,7 +38,7 @@ __published:	// IDE-managed Components
 
 private:	// User declarations
     LogFileReader                           mLogFileReader;
-    mtk::LogLevel		            		mLogLevel;
+    dsl::LogLevel		            		mLogLevel;
     void __fastcall                         logMsg();
 
 

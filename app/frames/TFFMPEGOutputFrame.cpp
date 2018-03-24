@@ -1,10 +1,10 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TFFMPEGOutputFrame.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslLogger.h"
 
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

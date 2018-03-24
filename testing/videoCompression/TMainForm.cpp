@@ -2,16 +2,16 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TMemoLogger.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslLogger.h"
 #include "TFFMPEGOutputFrame.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma link "TFFMPEGFrame"
-#pragma link "TSTDStringLabeledEdit"
-#pragma link "TIntLabel"
-#pragma link "TSTDStringEdit"
+#pragma link "dslTSTDStringLabeledEdit"
+#pragma link "dslTIntLabel"
+#pragma link "dslTSTDStringEdit"
 #pragma resource "*.dfm"
 
 TMainForm *MainForm;
@@ -21,7 +21,7 @@ extern string           gAppDataFolder;
 extern string 			gApplicationRegistryRoot;
 extern string			gAppExeName;
 extern bool             gAppIsStartingUp;
-using namespace mtk;
+using namespace dsl;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 	: TForm(Owner),

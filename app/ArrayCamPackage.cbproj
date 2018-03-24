@@ -60,11 +60,11 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <ProjectType>CppPackage</ProjectType>
-        <ILINK_LibraryPath>source\;C:\pDisk\ArrayCam\app\source\;P:\libs\atapi\source\vcl\datamodules\;P:\libs\atapi\source\vcl\components\;P:\libs\atapi\source\vcl\forms\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;frames\;forms\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>p:\libs\dsl\VCL\Components\;source\;C:\pDisk\ArrayCam\app\source\;P:\libs\atapi\source\vcl\datamodules\;P:\libs\atapi\source\vcl\components\;P:\libs\atapi\source\vcl\forms\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;frames\;forms\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Multithreaded>true</Multithreaded>
         <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <IncludePath>source\;P:\libs\atapi\source\vcl\datamodules\;P:\libs\atapi\source\vcl\components\;P:\libs\atapi\source\vcl\forms\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;frames\;forms\;$(AT_ROOT)\source;$(AT_ROOT)\source\vcl\;$(IncludePath)</IncludePath>
+        <IncludePath>p:\libs\dsl\VCL\Components\;source\;P:\libs\atapi\source\vcl\datamodules\;P:\libs\atapi\source\vcl\components\;P:\libs\atapi\source\vcl\forms\;P:\libs\atapi\source\vcl\frames\;P:\libs\atapi\source\vcl\;frames\;forms\;$(AT_ROOT)\source;$(AT_ROOT)\source\vcl\;$(AT_ROOT)\thirdparty;$(AT_ROOT)\source\vcl\Common;$(AT_ROOT)\source\vcl\Components;$(IncludePath)</IncludePath>
         <_TCHARMapping>char</_TCHARMapping>
         <ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -306,10 +306,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">

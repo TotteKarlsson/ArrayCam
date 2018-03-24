@@ -18,28 +18,25 @@ extern "C" int _libmain(unsigned long reason)
 	return 1;
 }
 
-#pragma comment(lib, "mtkCommon.lib")
-#pragma comment(lib, "mtkMath.lib")
-#pragma comment(lib, "mtkIPC.lib")
-#pragma comment(lib, "atCore.lib")
-#pragma comment(lib, "atUC7API.lib")
-#pragma comment(lib, "atDataBase.lib")
-#pragma comment(lib, "atResources.lib")
+#pragma comment(lib, "dslFoundation.lib")
+
+#pragma comment(lib, "dslVCLCommon.lib")
+#pragma comment(lib, "dslVCLComponents.bpi")
+#pragma comment(lib, "dslVisuals.bpi")
+
+#pragma comment(lib, "atVCLCommon.lib")
+#pragma comment(lib, "atFoundation.lib")
+#pragma comment(lib, "atComponents.bpi")
 
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "tinyxml2-static.lib")
-
-#pragma comment(lib, "VCLCommon.bpi")
-#pragma comment(lib, "DuneForms.bpi")
-#pragma comment(lib, "DuneComponents.bpi")
-#pragma comment(lib, "atVCLCore.bpi")
-
-#pragma comment(lib, "BindEngine.bpi")
-#pragma comment(lib, "BindComp.bpi")
-#pragma comment(lib, "BindCompVCL.bpi")
-
-#pragma comment(lib, "uc480_B.lib")
-#pragma comment(lib, "uc480_tools_B.lib")
-#pragma comment(lib, "DBXDevartPostgreSQLDriver250.bpi")
-#pragma comment(lib, "DBXMySQLDriver.bpi")
+//
+//#pragma comment(lib, "BindEngine.bpi")
+//#pragma comment(lib, "BindComp.bpi")
+//#pragma comment(lib, "BindCompVCL.bpi")
+//
+//#pragma comment(lib, "uc480_B.lib")
+//#pragma comment(lib, "uc480_tools_B.lib")
+//#pragma comment(lib, "DBXDevartPostgreSQLDriver250.bpi")
+//#pragma comment(lib, "DBXMySQLDriver.bpi")
 

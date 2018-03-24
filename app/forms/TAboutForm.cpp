@@ -1,16 +1,16 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TAboutForm.h"
-#include "mtkApplicationInfo.h"
-#include "mtkVersion.h"
-#include "mtkVCLUtils.h"
+#include "dslApplicationInfo.h"
+#include "dslVersion.h"
+#include "dslVCLUtils.h"
 #include <sstream>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
 
-using namespace mtk;
+using namespace dsl;
 using namespace std;
 
 TAboutForm *AboutForm;
@@ -26,7 +26,7 @@ void __fastcall TAboutForm::FormCreate(TObject *Sender)
 {
 	//Populate MEMO
     stringstream ss;
-    mtkApplicationInfo appInfo(Application);
+    dslApplicationInfo appInfo(Application);
 
     //Current Version Info
     Version version(stdstr(appInfo.mVersion));

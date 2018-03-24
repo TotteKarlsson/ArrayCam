@@ -2,8 +2,8 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TMemoLogger.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslLogger.h"
 #include "TFFMPEGOutputFrame.h"
 #include "database/atDBUtils.h"
 #include "TATDBImagesAndMoviesDataModule.h"
@@ -13,9 +13,9 @@
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma link "TFFMPEGFrame"
-#pragma link "TSTDStringLabeledEdit"
-#pragma link "TIntLabel"
-#pragma link "TSTDStringEdit"
+#pragma link "dslTSTDStringLabeledEdit"
+#pragma link "dslTIntLabel"
+#pragma link "dslTSTDStringEdit"
 #pragma link "TATDBConnectionFrame"
 #pragma resource "*.dfm"
 
@@ -26,7 +26,7 @@ extern string           gAppDataFolder;
 extern string 			gApplicationRegistryRoot;
 extern string			gAppExeName;
 extern bool             gAppIsStartingUp;
-using namespace mtk;
+using namespace dsl;
 using namespace at;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -190,7 +190,7 @@ void TMainForm::populateMovieFrames(const StringList& l)
     //Current block nr
     int blockID = DBLookupListBox1->KeyValue;
 
-    p.append(mtk::toString(blockID));
+    p.append(dsl::toString(blockID));
 	for(int i = 0; i < l.count(); i++)
     {
         StringList item(l[i], ',');

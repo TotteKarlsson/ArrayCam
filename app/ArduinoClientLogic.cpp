@@ -2,10 +2,10 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TSettingsForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
-using namespace mtk;
+using namespace dsl;
 
 extern ArrayCamUtilities acu;
 //---------------------------------------------------------------------------

@@ -2,11 +2,11 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "Forms/TRegisterNewRibbonForm.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslLogger.h"
 #include "TPGDataModule.h"
 #include "ArrayCamUtils.h"
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)

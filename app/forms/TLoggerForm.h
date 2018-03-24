@@ -8,9 +8,9 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ToolWin.hpp>
-#include "forms/TRegistryForm.h"
-#include "mtkLogFileReader.h"
-#include "mtkLogLevel.h"
+#include "forms/dslTRegistryForm.h"
+#include "dslLogFileReader.h"
+#include "dslLogLevel.h"
 
 //---------------------------------------------------------------------------
 class PACKAGE TLoggerForm : public TRegistryForm
@@ -36,7 +36,7 @@ class PACKAGE TLoggerForm : public TRegistryForm
 
     protected:
         LogFileReader                           mLogFileReader;
-		mtk::LogLevel		            		mLogLevel;
+		dsl::LogLevel		            		mLogLevel;
         void __fastcall                         logMsg();
 		void __fastcall 						LogLevelCBChange(TObject *Sender);
 

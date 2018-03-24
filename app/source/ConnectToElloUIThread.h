@@ -1,11 +1,11 @@
 #ifndef ConnectToElloUIThreadH
 #define ConnectToElloUIThreadH
-#include "mtkThread.h"
+#include "dslThread.h"
 #include "ello/atElloUIClient.h"
 //---------------------------------------------------------------------------
 
-using mtk::Thread;
-class PACKAGE ConnectToElloUIThread : public mtk::Thread
+using dsl::Thread;
+class PACKAGE ConnectToElloUIThread : public dsl::Thread
 {
 	public:
     									ConnectToElloUIThread(ElloUIClient& c, int portNr);

@@ -2,13 +2,13 @@
 #pragma hdrstop
 #include "TActionsForm.h"
 #include "ArrayCamMessages.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 TActionsForm *ActionsForm;
-using namespace mtk;
+using namespace dsl;
 
 
 //---------------------------------------------------------------------------

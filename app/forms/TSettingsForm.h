@@ -6,11 +6,11 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
-#include "TPropertyCheckBox.h"
-#include "TIntegerLabeledEdit.h"
-#include "TSTDStringLabeledEdit.h"
-#include "mtkFloatLabel.h"
-#include "TIntLabel.h"
+#include "dslTPropertyCheckBox.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTSTDStringLabeledEdit.h"
+#include "dslTFloatLabel.h"
+#include "dslTIntLabel.h"
 #include "TMainForm.h"
 //---------------------------------------------------------------------------
 
@@ -42,11 +42,11 @@ class PACKAGE TSettingsForm : public TForm
         TLabel *Label4;
         TTrackBar *mExposureTimeTB;
         TLabel *Label1;
-        mtkFloatLabel *mExposureTimeLbl;
+        TFloatLabel *mExposureTimeLbl;
         TIntLabel *mBlackLevelLbl;
         TGroupBox *GroupBox5;
         TPropertyCheckBox *mAutoWhiteBalanceCB;
-        mtkFloatLabel *mSoftwareGammaLbl;
+        TFloatLabel *mSoftwareGammaLbl;
         void __fastcall mUIUpdateTimerTimer(TObject *Sender);
         void __fastcall mVerticalMirrorCBClick(TObject *Sender);
         void __fastcall mHorizontalMirrorCBClick(TObject *Sender);

@@ -1,11 +1,11 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 #include "atVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "THandWheelPositionForm.h"
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 bool TMainForm::handleUC7Message(const UC7Message& msg)
@@ -156,7 +156,7 @@ bool TMainForm::handleUC7Message(const UC7Message& msg)
                     //Right now there is no arraybot server. Use arraycam server to send to client instead for now.
                     if(SyncWhiskerCB->Checked)
                     {
-                    	mACServer.broadcast(abrMoveWhiskerForward, mtk::toString(BlockFaceHeight->getValue()));
+                    	mACServer.broadcast(abrMoveWhiskerForward, dsl::toString(BlockFaceHeight->getValue()));
                     }
                 }
                 else if(d == "E0")

@@ -1,17 +1,17 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TRegisterNewRibbonForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "TPGCoverSlipDataModule.h"
 #include "TPGDataModule.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 TRegisterNewRibbonForm *RegisterNewRibbonForm;
 
-using namespace mtk;
+using namespace dsl;
 using std::vector;
 //---------------------------------------------------------------------------
 __fastcall TRegisterNewRibbonForm::TRegisterNewRibbonForm(TMainForm& mf)

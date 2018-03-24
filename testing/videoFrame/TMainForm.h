@@ -6,15 +6,15 @@
 #include <Vcl.Forms.hpp>
 #include "TArrayBotBtn.h"
 #include "TFFMPEGFrame.h"
-#include "TSTDStringLabeledEdit.h"
+#include "dslTSTDStringLabeledEdit.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ComCtrls.hpp>
-#include "mtkLogFileReader.h"
+#include "dslLogFileReader.h"
 #include <Vcl.ExtCtrls.hpp>
-#include "mtkLogLevel.h"
-#include "mtkIniFile.h"
+#include "dslLogLevel.h"
+#include "dslIniFile.h"
 #include "atVideoCompressorThread.h"
-#include "TIntLabel.h"
+#include "dslTIntLabel.h"
 #include <Vcl.FileCtrl.hpp>
 #include "TSTDStringEdit.h"
 #include <System.Actions.hpp>
@@ -30,13 +30,13 @@
 #include <Data.FMTBcd.hpp>
 #include <Data.SqlExpr.hpp>
 #include <list>
-#include "mtkStringList.h"
+#include "dslStringList.h"
 
 
-using mtk::IniFile;
-using mtk::LogLevel;
+using dsl::IniFile;
+using dsl::LogLevel;
 using std::list;
-using mtk::StringList;
+using dsl::StringList;
 class TFFMPEGOutputFrame;
 class TMovieItemFrame;
 

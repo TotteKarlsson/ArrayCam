@@ -8,7 +8,7 @@
 #include "components/TArrayBotBtn.h"
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "TIntLabel.h"
+#include "dslTIntLabel.h"
 //---------------------------------------------------------------------------
 class PACKAGE TSelectIntegerForm : public TForm
 {

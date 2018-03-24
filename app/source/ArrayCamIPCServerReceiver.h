@@ -1,16 +1,16 @@
 #ifndef atArduinoIPCServerReceiverH
 #define atArduinoIPCServerReceiverH
-#include "mtkIPCReceiver.h"
-#include "mtkIPCServer.h"
+#include "dslIPCReceiver.h"
+#include "dslIPCServer.h"
 //---------------------------------------------------------------------------
 
-using mtk::SocketWorker;
+using dsl::SocketWorker;
 SocketWorker* PACKAGE createArrayCamIPCReceiver(int portNr, int socketHandle, void* server);
 
-class PACKAGE ArrayCamIPCReceiver : public mtk::IPCReceiver
+class PACKAGE ArrayCamIPCReceiver : public dsl::IPCReceiver
 {
     public:
-						        		ArrayCamIPCReceiver(int portNr = -1, int socket_handle = -1, mtk::IPCServer* server = NULL);
+						        		ArrayCamIPCReceiver(int portNr = -1, int socket_handle = -1, dsl::IPCServer* server = NULL);
 						        		~ArrayCamIPCReceiver();
 		virtual void                    Worker();
 

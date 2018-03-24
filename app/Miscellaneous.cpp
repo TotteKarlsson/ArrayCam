@@ -1,14 +1,14 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 #include "TReticlePopupForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "forms/TAboutForm.h"
 #include "forms/TLoggerForm.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
-using namespace mtk;
+using namespace dsl;
 extern ArrayCamUtilities acu;
 static HWND gOtherAppWindow = NULL;
 //---------------------------------------------------------------------------

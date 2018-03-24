@@ -1,9 +1,9 @@
 #pragma hdrstop
 #include "ConnectToArduinoServerThread.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-using namespace mtk;
+using namespace dsl;
 
 ConnectToArduinoServerThread::ConnectToArduinoServerThread(ArduinoClient& c, int p)
 :

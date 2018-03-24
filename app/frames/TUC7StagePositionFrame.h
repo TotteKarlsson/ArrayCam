@@ -4,8 +4,9 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "TIntegerEdit.h"
-#include "TIntLabel.h"
+#include "dslTIntegerEdit.h"
+#include "dslTIntLabel.h"
+#include "dslTIntLabel.h"
 //---------------------------------------------------------------------------
 
 class PACKAGE TUC7StagePositionFrame : public TFrame

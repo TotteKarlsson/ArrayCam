@@ -1,11 +1,11 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkVCLUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslLogger.h"
 //---------------------------------------------------------------------------
 
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 void  TMainForm::onNavitarConnected()

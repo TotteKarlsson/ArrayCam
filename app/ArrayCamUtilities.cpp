@@ -1,9 +1,10 @@
 #pragma hdrstop
 #include "ArrayCamUtilities.h"
-#include "mtkUtils.h"
-#include "mtkLogger.h"
+#include "dslUtils.h"
+#include "dslLogger.h"
 #include "atExceptions.h"
-using namespace mtk;
+#include "dslWin32Utils.h"
+using namespace dsl;
 
 int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
 
@@ -46,8 +47,8 @@ bool ApplicationUtilities::setupLogging()
 
 	string fullLogFileName(joinPath(LogFileLocation, LogFileName));
 	clearFile(fullLogFileName);
-	mtk::gLogger.logToFile(fullLogFileName);
-    mtk::gLogger.setLogLevel(lDebug5);
+	dsl::gLogger.logToFile(fullLogFileName);
+    dsl::gLogger.setLogLevel(lDebug5);
 	LogOutput::mShowLogLevel = true;
 	LogOutput::mShowLogTime = true;
 	LogOutput::mUseLogTabs 	= true;

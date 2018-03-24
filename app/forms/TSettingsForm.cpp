@@ -2,21 +2,21 @@
 #pragma hdrstop
 #include "TSettingsForm.h"
 #include <sstream>
-#include "mtkVCLUtils.h"
-#include "mtkMathUtils.h"
-#include "mtkLogger.h"
+#include "dslVCLUtils.h"
+#include "dslMathUtils.h"
+#include "dslLogger.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "TIntegerLabeledEdit"
-#pragma link "TPropertyCheckBox"
-#pragma link "TSTDStringLabeledEdit"
-#pragma link "mtkFloatLabel"
-#pragma link "TIntLabel"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTPropertyCheckBox"
+#pragma link "dslTSTDStringLabeledEdit"
+#pragma link "dslTFloatLabel"
+#pragma link "dslTIntLabel"
 #pragma resource "*.dfm"
 TSettingsForm *SettingsForm;
 
 using namespace std;
-using namespace mtk;
+using namespace dsl;
 
 //!There might be a problem with this form, as checkboxes click functions are called
 //in the onCreate function, when references are assigned.
@@ -239,7 +239,7 @@ void __fastcall TSettingsForm::FormShow(TObject *Sender)
 void __fastcall TSettingsForm::mGainTBChange(TObject *Sender)
 {
 	int pos = mGainTB->Position/1;
-    mGainLbl->Caption = mtk::toString(pos).c_str();
+    mGainLbl->Caption = dsl::toString(pos).c_str();
 
     HCAM hCam = mMainForm.mCamera1.GetCameraHandle();
 	int ret = is_SetHardwareGain(hCam, pos, pos, pos ,pos);

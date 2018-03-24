@@ -26,29 +26,29 @@
 //#include <functional>
 
 
-#include "Poco/Process.h"
-#include "Poco/PipeStream.h"
-#include "Poco/StreamCopier.h"
-#include "Poco/Path.h"
-#include "Poco/File.h"
-#include "Poco/Timespan.h"
-
-#include "mtkWin32Utils.h"
-#include "mtkLogFileReader.h"
-#include "mtkLogger.h"
-#include "mtkUtils.h"
-#include "atVCLUtils.h"
-#include "mtkFloatLabel.h"
-#include "mtkIniFile.h"
-#include "mtkIniFileProperties.h"
-#include "mtkFileUtils.h"
-#include "mtkMathUtils.h"
-
-//#include "mtkThread.h"
-
-#include "TIntLabel.h"
-#include "TIntegerLabeledEdit.h"
-#include "TPropertyCheckBox.h"
-#include "TRegistryForm.h"
-#include "TSTDStringLabeledEdit.h"
+//#include "Poco/Process.h"
+//#include "Poco/PipeStream.h"
+//#include "Poco/StreamCopier.h"
+//#include "Poco/Path.h"
+//#include "Poco/File.h"
+//#include "Poco/Timespan.h"
+//
+//#include "dslWin32Utils.h"
+//#include "dslLogFileReader.h"
+//#include "dslLogger.h"
+//#include "dslUtils.h"
+//#include "atVCLUtils.h"
+//#include "dslTFloatLabel.h"
+//#include "dslIniFile.h"
+//#include "dslIniFileProperties.h"
+//#include "dslFileUtils.h"
+//#include "dslMathUtils.h"
+//
+////#include "dslThread.h"
+//
+//#include "dslTIntLabel.h"
+//#include "dslTIntegerLabeledEdit.h"
+//#include "dslTPropertyCheckBox.h"
+//#include "dslTRegistryForm.h"
+//#include "dslTSTDStringLabeledEdit.h"
 

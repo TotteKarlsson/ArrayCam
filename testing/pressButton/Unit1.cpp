@@ -1,17 +1,17 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "Unit1.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "TIntegerLabeledEdit"
-#pragma link "TSTDStringLabeledEdit"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTSTDStringLabeledEdit"
 #pragma resource "*.dfm"
 
 TForm1 *Form1;
 
-using namespace mtk;
+using namespace dsl;
 
 
 

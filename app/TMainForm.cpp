@@ -1,30 +1,30 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "core/atCore.h"
 #include "ArrayCamMessages.h"
 #include "TPGDataModule.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 #include "TSelectIntegerForm.h"
 #include "THandWheelPositionForm.h"
 #include "TActionsForm.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "mtkFloatLabel"
+#pragma link "dslTFloatLabel"
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TArrayBotBtn"
 #pragma link "TFFMPEGFrame"
-#pragma link "TFloatLabeledEdit"
+#pragma link "dslTFloatLabeledEdit"
 #pragma link "TImagesFrame"
-#pragma link "TIntegerLabeledEdit"
-#pragma link "TIntLabel"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTIntLabel"
 #pragma link "TMoviesFrame"
 #pragma link "TNavitarMotorFrame"
-#pragma link "TPropertyCheckBox"
+#pragma link "dslTPropertyCheckBox"
 #pragma link "TSoundsFrame"
-#pragma link "TSTDStringLabeledEdit"
+#pragma link "dslTSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
 
 #pragma link "THDMIStreamerFrame"
@@ -32,7 +32,7 @@
 TMainForm *MainForm;
 
 extern ArrayCamUtilities acu;
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -598,7 +598,7 @@ void __fastcall TMainForm::KniveMovieBtnClick(TObject *Sender)
         string uuid = getUUID();
         THDMIStreamerFrame1->OutputFileNameE->setValue(uuid + ".ts");
         //Set path, include block id
-        THDMIStreamerFrame1->setPathPostFix(mtk::toString(pgDM->getCurrentBlockIDFromAllBlocks()));
+        THDMIStreamerFrame1->setPathPostFix(dsl::toString(pgDM->getCurrentBlockIDFromAllBlocks()));
     }
     THDMIStreamerFrame1->StartStreamerBtnClick(THDMIStreamerFrame1->StartRecordingBtn);
 }

@@ -2,17 +2,18 @@
 #pragma hdrstop
 #include "TFFMPEGFrame.h"
 #include <sstream>
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 
 #pragma package(smart_init)
-#pragma link "TSTDStringLabeledEdit"
-#pragma link "TIntegerLabeledEdit"
-#pragma link "TPropertyCheckBox"
+#pragma link "dslTSTDStringLabeledEdit"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTPropertyCheckBox"
+#pragma link "dslTPropertyCheckBox"
 #pragma resource "*.dfm"
 TFFMPEGFrame *FFMPEGFrame;
 
 using namespace std;
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 __fastcall TFFMPEGFrame::TFFMPEGFrame(TComponent* Owner)
@@ -30,7 +31,7 @@ string TFFMPEGFrame::getOutFileArguments()
     s << " -preset " <<stdstr(PresetCB->Text);
 	return  s.str();
 }
-void TFFMPEGFrame::setupProperties(mtk::IniFile& ini)
+void TFFMPEGFrame::setupProperties(dsl::IniFile& ini)
 {
     mFrameProperties.setSection("FFMPEG_COMPRESSION");
 	mFrameProperties.setIniFile(&ini);

@@ -1,19 +1,19 @@
 #include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
-#include "mtkVCLUtils.h"
+#include "dslVCLUtils.h"
 #include "database/atDBUtils.h"
-#include "vcl/atVCLUtils.h"
+#include "atVCLUtils.h"
 //#include "Poco/Data/RecordSet.h"
 #include "TSettingsForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "TPGDataModule.h"
 #include "TPGCoverSlipDataModule.h"
 #include "ArrayCamUtils.h"
 
 //---------------------------------------------------------------------------
 using namespace at;
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 void __fastcall	TMainForm::afterDBServerConnect(System::TObject* Sender)

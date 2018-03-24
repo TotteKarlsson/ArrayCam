@@ -1,9 +1,9 @@
 #pragma hdrstop
 #include "VCL.Dialogs.hpp"
 #include "TMainForm.h"
-#include "mtkLogger.h"
+#include "dslLogger.h"
 #include "TFFMPEGOutputFrame.h"
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::ShutDownTimerTimer(TObject *Sender)

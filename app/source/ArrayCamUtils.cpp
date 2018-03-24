@@ -1,13 +1,13 @@
 #pragma hdrstop
 #include "ArrayCamUtils.h"
-#include "mtkUtils.h"
-#include "mtkIPCMessageEnums.h"
-#include "mtkLogger.h"
+#include "dslUtils.h"
+#include "dslIPCMessageEnums.h"
+#include "dslLogger.h"
 
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-using namespace mtk;
+using namespace dsl;
 
 //---------------------------------------------------------------------------
 int getArrayCamIPCMessageID(const string& cs)

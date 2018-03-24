@@ -1,12 +1,12 @@
 #pragma hdrstop
 #include "ArrayCamIPCServerReceiver.h"
-#include "mtkIPCServer.h"
-#include "mtkLogger.h"
-#include "mtkIPCMessageBuilder.h"
+#include "dslIPCServer.h"
+#include "dslLogger.h"
+#include "dslIPCMessageBuilder.h"
 #include "ArrayCamUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-using namespace mtk;
+using namespace dsl;
 
 SocketWorker* createArrayCamIPCReceiver(int portNr, int socketHandle, void* server)
 {

@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TArrayBotBtn"
-#pragma link "TPropertyCheckBox"
+#pragma link "dslTPropertyCheckBox"
 #pragma link "TArrayBotBtn"
 #pragma resource "*.dfm"
 TReticlePopupForm *ReticlePopupForm;
