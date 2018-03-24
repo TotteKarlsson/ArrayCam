@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 875
-        ActivePage = Main
+        ActivePage = TabSheet9
         Align = alClient
         TabHeight = 80
         TabOrder = 0
@@ -295,8 +295,6 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 0
-                  ExplicitLeft = 198
-                  ExplicitTop = 23
                   DesignSize = (
                     598
                     459)
@@ -313,7 +311,6 @@ object MainForm: TMainForm
                     Visible = False
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
-                    ExplicitLeft = 11
                   end
                   object mMoveSouthBtn: TArrayBotButton
                     Left = 425
@@ -328,7 +325,6 @@ object MainForm: TMainForm
                     Visible = False
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
-                    ExplicitLeft = 11
                   end
                 end
                 object GroupBox7: TGroupBox
@@ -339,7 +335,6 @@ object MainForm: TMainForm
                   Align = alLeft
                   Caption = 'Options'
                   TabOrder = 1
-                  ExplicitLeft = 185
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 24
                     Top = 375
@@ -1328,14 +1323,15 @@ object MainForm: TMainForm
                   Height = 241
                   Align = alTop
                   Caption = 'Application Sounds'
-                  TabOrder = 0
+                  TabOrder = 1
+                  ExplicitWidth = 509
                   object ApplicationSoundsLB: TListBox
                     Left = 2
-                    Top = 21
+                    Top = 15
                     Width = 247
-                    Height = 218
+                    Height = 224
                     Align = alLeft
-                    ItemHeight = 19
+                    ItemHeight = 13
                     TabOrder = 0
                   end
                   object SoundPropsGB: TGroupBox
@@ -1346,6 +1342,9 @@ object MainForm: TMainForm
                     Align = alClient
                     Caption = 'Sound Properties'
                     TabOrder = 1
+                    ExplicitTop = 15
+                    ExplicitWidth = 258
+                    ExplicitHeight = 224
                     object EnabledCB: TCheckBox
                       Left = 24
                       Top = 143
@@ -1375,7 +1374,7 @@ object MainForm: TMainForm
                       Left = 24
                       Top = 32
                       Width = 233
-                      Height = 27
+                      Height = 21
                       TabOrder = 3
                       Text = 'SoundCB'
                     end
@@ -1485,14 +1484,17 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited BitrateE: TIntegerLabeledEdit
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1509,17 +1511,14 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit [2]
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1831,8 +1830,6 @@ object MainForm: TMainForm
     Align = alClient
     BevelEdges = []
     TabOrder = 1
-    ExplicitLeft = 185
-    ExplicitWidth = 780
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
@@ -1845,7 +1842,6 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitWidth = 778
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -1932,7 +1928,6 @@ object MainForm: TMainForm
         Align = alTop
         AutoSize = True
         TabOrder = 1
-        ExplicitWidth = 778
       end
       object Bpanel: TPanel
         Left = 0
@@ -1942,7 +1937,6 @@ object MainForm: TMainForm
         Align = alBottom
         AutoSize = True
         TabOrder = 2
-        ExplicitWidth = 778
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
@@ -1988,7 +1982,6 @@ object MainForm: TMainForm
           AllowTextButtons = True
           TabOrder = 1
           Wrapable = False
-          ExplicitLeft = 639
           object BroadCastStatusBtn: TArrayBotButton
             Left = 0
             Top = 0
@@ -2208,10 +2201,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Cutter'
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 21
-      ExplicitWidth = 183
-      ExplicitHeight = 465
       object StartStopBtn: TArrayBotButton
         Left = 2
         Top = 429
@@ -2230,10 +2219,6 @@ object MainForm: TMainForm
         TabOrder = 0
         OnClick = CreateUC7Message
         SoundID = 'BUTTON_CLICK_4'
-        ExplicitLeft = 16
-        ExplicitTop = 80
-        ExplicitWidth = 150
-        ExplicitHeight = 289
       end
       object GroupBox9: TGroupBox
         Left = 2
@@ -2243,9 +2228,6 @@ object MainForm: TMainForm
         Align = alTop
         Caption = 'Return Speed'
         TabOrder = 1
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 231
         object PresetReturnSpeedBtn: TArrayBotButton
           Left = 22
           Top = 40
