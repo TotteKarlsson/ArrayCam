@@ -251,15 +251,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="vclx.bpi">
             <BuildOrder>19</BuildOrder>
         </PackageImport>
+        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
         <FormResources Include="frames\TFFMPEGFrame.dfm"/>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
-        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
-        <FormResources Include="forms\TActionsForm.dfm"/>
+        <FormResources Include="frames\TFFMPEGOutputFrame.dfm"/>
         <FormResources Include="forms\THandWheelPositionForm.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
+        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
+        <FormResources Include="forms\TActionsForm.dfm"/>
         <FormResources Include="forms\TAboutForm.dfm"/>
-        <FormResources Include="frames\TFFMPEGOutputFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
