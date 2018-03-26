@@ -36,6 +36,9 @@
         <Projects Include="app\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\ArrayBot\source\ArrayBot.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -143,14 +146,23 @@
     <Target Name="ArrayCam:Make">
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="ArrayBot">
+        <MSBuild Projects="P:\ArrayBot\source\ArrayBot.cbproj"/>
+    </Target>
+    <Target Name="ArrayBot:Clean">
+        <MSBuild Projects="P:\ArrayBot\source\ArrayBot.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArrayBot:Make">
+        <MSBuild Projects="P:\ArrayBot\source\ArrayBot.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;dslVisuals;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;dslVisuals;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam;ArrayBot"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVisuals:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVisuals:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean;ArrayBot:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVisuals:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVisuals:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make;ArrayBot:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
