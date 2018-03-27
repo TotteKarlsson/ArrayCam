@@ -208,7 +208,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *OpenLoggerForm1;
 	TAction *OpenCloseShortcutForm;
 	TMenuItem *Actions1;
-	TToolBar *ToolBar1;
 	TBindingsList *BindingsList2;
 	TButton *Button1;
 	TMenuItem *ShowHideMainContentPanel1;
@@ -273,13 +272,11 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TDBLookupComboBox *KnifeIDCB;
 	TLabel *Label1;
 	TLabel *Label5;
-	TArrayBotButton *RegisterRibbonBtn;
 	TGroupBox *GroupBox5;
 	TFloatLabeledEdit *BlockFaceHeight;
 	TDBText *DBText7;
 	TLabel *Label11;
 	THDMIStreamerFrame *THDMIStreamerFrame1;
-	TArrayBotButton *KniveMovieBtn;
 	TLabel *RibbonIDLbl;
 	TArrayBotButton *ClearBarcodeBtn;
 	TArrayBotButton *ClearRibbonIDBtn;
@@ -296,7 +293,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TDBText *RibbonID;
 	TTabSheet *TabSheet12;
 	TPGConnectionFrame *TPGConnectionFrame1;
-	TArrayBotButton *BroadCastStatusBtn;
 	TPanel *Bpanel;
 	TToolBar *ToolBar3;
 	TTimer *BroadcastStatusTimer;
@@ -323,6 +319,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *UltraSlowReturnSpeedBtn;
 	TGroupBox *CutterGB;
 	TArrayBotButton *StartStopBtn;
+	TArrayBotButton *KniveMovieBtn;
+	TArrayBotButton *RegisterRibbonBtn;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

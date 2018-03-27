@@ -254,7 +254,7 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=1133,141,76,51
+Coordinates=1102,661,58,33
 
 [DecodeSessionBtn]
 Coordinates=1133,1,108,51
@@ -318,9 +318,6 @@ Coordinates=793,71,91,51
 
 [BlockIDCB]
 Coordinates=1161,631,67,33
-
-[ToolBar1]
-Coordinates=1102,661,58,33
 
 [mAutoCheckConnectionCB]
 Coordinates=404,195,149,51
