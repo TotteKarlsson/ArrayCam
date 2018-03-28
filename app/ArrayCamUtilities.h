@@ -18,6 +18,7 @@ class ApplicationUtilities
     string		                            AppDataFolder;
     string 		                            LogFileName;
   	string		                            LogFileLocation;
+  	string		                            Style;
 
     string                                  RestartMutexName;
     HWND                                    OtherAppWindow;

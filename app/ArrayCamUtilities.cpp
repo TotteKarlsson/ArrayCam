@@ -5,6 +5,7 @@
 #include "dslLogger.h"
 #include "atExceptions.h"
 #include "dslWin32Utils.h"
+#include "dslVCLUtils.h"
 using namespace dsl;
 
 int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
@@ -24,7 +25,8 @@ LogFileLocation(AppDataFolder),
 RestartMutexName(AppName + "RestartMutex"),
 OtherAppWindow(NULL),
 AppIsStartingUp(true),
-AppIsClosing(false)
+AppIsClosing(false),
+Style("Glow")
 {
 }
 
@@ -43,6 +45,17 @@ void ApplicationUtilities::init()
     }
 
     setupLogging();
+
+     try
+     {
+        Style = readStringFromRegistry(AppRegistryRoot, "", "Theme",  Style);
+    	TStyleManager::TrySetStyle(Style.c_str());
+   	   	TStyleManager::SetStyle(Style.c_str());
+     }
+     catch(...)
+     {
+     }
+
 }
 
 bool ApplicationUtilities::setupLogging()
@@ -73,7 +86,7 @@ bool ApplicationUtilities::closeLogFile()
 
 ArrayCamUtilities::ArrayCamUtilities()
 :
-ApplicationUtilities("ArrayCam", "\\Software\\Allen Institute\\array_cam", "0.5.0")
+ApplicationUtilities("ArrayCam", "\\Software\\Allen Institute\\ArrayCam", "0.5.0")
 {
 }
 

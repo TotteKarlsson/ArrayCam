@@ -321,6 +321,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *StartStopBtn;
 	TArrayBotButton *KniveMovieBtn;
 	TArrayBotButton *RegisterRibbonBtn;
+	TMenuItem *ThemesMenu;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -396,6 +397,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall BroadCastStatusBtnClick(TObject *Sender);
 	void __fastcall BroadcastStatusTimerTimer(TObject *Sender);
 	void __fastcall ConnectWipterClientBtnClick(TObject *Sender);
+	void __fastcall ThemesMenuClick(TObject *Sender);
 
 	protected:
 		enum StatusBarPanels{	sbpTemperature = 0,		sbpHumidity,

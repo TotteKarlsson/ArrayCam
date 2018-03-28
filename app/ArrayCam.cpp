@@ -21,14 +21,10 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try
 	{
-
     	//Setup application mutex, logging etc..
 	    acu.init();
-
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-
-		TStyleManager::TrySetStyle("Glow");
 		pgDM 	                = new TpgDM(NULL);
         csPGDM                  = new TcsPGDM(NULL);
         PGImagesAndMoviesDM     = new TPGImagesAndMoviesDM(NULL);

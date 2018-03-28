@@ -124,5 +124,7 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
     //Set UC7 stop mode
     StopOptionsRG->ItemIndex = mStopCutterMode;
+
+    populateStyleMenu(ThemesMenu, ThemesMenuClick);
 }
 

@@ -1,4 +1,4 @@
-Release 0.7.0 (Mar 22)
+Release 0.7.1 (Mar 22)
 =======================
 * Renamed captions on start video buttons
 * Moved UC7 control buttons to left side of UI

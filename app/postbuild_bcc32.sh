@@ -36,6 +36,7 @@ cp $OUTPUTDIR/atFoundation.dll                  $dest
 cp $OUTPUTDIR/atResources.dll                   $dest
 cp $OUTPUTDIR/atVCLCommon.dll                   $dest
 cp $OUTPUTDIR/atSSI.dll                         $dest
+cp $OUTPUTDIR/bm.exe                            $dest
 
  cp $BDSCOMMONDIR/BPL/dslVCLComponents.bpl      $dest
  cp $BDSCOMMONDIR/BPL/dslVisuals.bpl            $dest
@@ -70,12 +71,12 @@ cp $CG_REDIST/Tee9$suffix                       $dest
 
 miscRedist="/cygdrive/p/redist"
 cp $miscRedist/dbexppgsql40.dll                 $dest
-#cp $miscRedist/tsclib.dll                      $dest
 cp $miscRedist/navusbapi.dll                    $dest
 cp $miscRedist/uc480.dll                        $dest
 cp $miscRedist/uc480_tools.dll                  $dest
 
 #for local bin folder
-#cp $miscRedist/navusbapi.dll                   $OUTPUTDIR
+cp $miscRedist/dbexppgsql40.dll                 $OUTPUTDIR
+cp $miscRedist/navusbapi.dll                    $OUTPUTDIR
 cp $miscRedist/uc480.dll                        $OUTPUTDIR
 cp $miscRedist/uc480_tools.dll                  $OUTPUTDIR

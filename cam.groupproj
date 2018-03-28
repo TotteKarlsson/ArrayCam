@@ -3,6 +3,9 @@
         <ProjectGuid>{AA3803DA-9A9D-4AA8-B269-11D034F376AE}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="P:\MXPTiny\CLI\bm.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
             <Dependencies/>
         </Projects>
@@ -24,6 +27,9 @@
         <Projects Include="app\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\atDB\source\atDB.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -32,6 +38,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="bm">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj"/>
+    </Target>
+    <Target Name="bm:Clean">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="bm:Make">
+        <MSBuild Projects="P:\MXPTiny\CLI\bm.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="atSSI">
         <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj"/>
     </Target>
@@ -95,14 +110,23 @@
     <Target Name="ArrayCam:Make">
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="atDB">
+        <MSBuild Projects="P:\atDB\source\atDB.cbproj"/>
+    </Target>
+    <Target Name="atDB:Clean">
+        <MSBuild Projects="P:\atDB\source\atDB.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atDB:Make">
+        <MSBuild Projects="P:\atDB\source\atDB.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="bm;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam;atDB"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="bm:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean;atDB:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="bm:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make;atDB:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
