@@ -71,6 +71,7 @@ cp $CG_REDIST/Tee9$suffix                       $dest
 
 miscRedist="/cygdrive/p/redist"
 cp $miscRedist/dbexppgsql40.dll                 $dest
+cp $miscRedist/wiping.ell                       $dest
 cp $miscRedist/navusbapi.dll                    $dest
 cp $miscRedist/uc480.dll                        $dest
 cp $miscRedist/uc480_tools.dll                  $dest

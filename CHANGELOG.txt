@@ -1,3 +1,15 @@
+Release 0.7.2 (Mar 29)
+=======================
+* Added elliptec stuff to distribution
+* Added ability to change UI Theme
+* Fixed navitar bug (atapi)
+* Updated cam group project
+* Compiled using dsl
+* Fixed initialization of static std map (Arraycam protocol)
+* Fixed logfile bug
+* Refactored all mtk -> dsl
+* Fixed pragma links
+
 Release 0.7.1 (Mar 22)
 =======================
 * Renamed captions on start video buttons

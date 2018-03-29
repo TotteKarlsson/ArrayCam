@@ -57,7 +57,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 814
         Height = 877
-        ActivePage = TabSheet9
+        ActivePage = Main
         Align = alClient
         TabHeight = 80
         TabOrder = 0
@@ -710,6 +710,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -1127,6 +1131,10 @@ object MainForm: TMainForm
         object TabSheet10: TTabSheet
           Caption = 'Lights'
           ImageIndex = 7
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object LightIntensitiesGB: TGroupBox
             Left = 3
             Top = 16
@@ -1180,6 +1188,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1234,6 +1246,10 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1444,17 +1460,14 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1471,14 +1484,17 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited BitrateE: TIntegerLabeledEdit [2]
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1525,6 +1541,10 @@ object MainForm: TMainForm
             object RibbonSeparatorSheet: TTabSheet
               Caption = 'Ribbon Separator'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 0
@@ -1642,6 +1662,10 @@ object MainForm: TMainForm
             object TabSheet2: TTabSheet
               Caption = 'Barcode Reader'
               ImageIndex = 6
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object BarCodeGB: TGroupBox
                 Left = 0
                 Top = 0
@@ -1703,7 +1727,7 @@ object MainForm: TMainForm
                     Left = 87
                     Top = 0
                     Width = 76
-                    Height = 27
+                    Height = 28
                     Margins.Left = 10
                     Align = alLeft
                     ItemIndex = 0
