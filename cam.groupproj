@@ -27,9 +27,6 @@
         <Projects Include="app\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\atDB\source\atDB.cbproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -110,23 +107,14 @@
     <Target Name="ArrayCam:Make">
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="atDB">
-        <MSBuild Projects="P:\atDB\source\atDB.cbproj"/>
-    </Target>
-    <Target Name="atDB:Clean">
-        <MSBuild Projects="P:\atDB\source\atDB.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atDB:Make">
-        <MSBuild Projects="P:\atDB\source\atDB.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="bm;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam;atDB"/>
+        <CallTarget Targets="bm;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="bm:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean;atDB:Clean"/>
+        <CallTarget Targets="bm:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="bm:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make;atDB:Make"/>
+        <CallTarget Targets="bm:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

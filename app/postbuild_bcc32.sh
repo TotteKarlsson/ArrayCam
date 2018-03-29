@@ -29,7 +29,7 @@ cp $OUTPUTDIR/$OUTPUTFILENAME $dest
 
 #DS Binaries
 cp $OUTPUTDIR/dslFoundation.dll                 $dest
-cp $OUTPUTDIR/dslVCCommon.dll                   $dest
+cp $OUTPUTDIR/dslVCLCommon.dll                   $dest
 
 
 cp $OUTPUTDIR/atFoundation.dll                  $dest
@@ -75,8 +75,15 @@ cp $miscRedist/navusbapi.dll                    $dest
 cp $miscRedist/uc480.dll                        $dest
 cp $miscRedist/uc480_tools.dll                  $dest
 
-#for local bin folder
+#ELLiptec motor stage
+elliptec="/cygdrive/p/libs/elliptec/Source Code/ELLO/bin/Release"
+cp "$elliptec"/Thorlabs.Elliptec.ELLO.exe         $dest
+cp "$elliptec"/*.dll                              $dest
+cp "$elliptec"/*.chm                              $dest
+
+#for LOCAL bin folder
 cp $miscRedist/dbexppgsql40.dll                 $OUTPUTDIR
 cp $miscRedist/navusbapi.dll                    $OUTPUTDIR
 cp $miscRedist/uc480.dll                        $OUTPUTDIR
 cp $miscRedist/uc480_tools.dll                  $OUTPUTDIR
+

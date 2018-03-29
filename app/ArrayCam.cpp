@@ -13,7 +13,9 @@
 #include "TMoviesFrame.h"
 #include "core/ATExceptions.h"
 //---------------------------------------------------------------------------
+USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 //---------------------------------------------------------------------------
 ArrayCamUtilities acu;
 
@@ -30,7 +32,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
         PGImagesAndMoviesDM     = new TPGImagesAndMoviesDM(NULL);
 
 		Application->CreateForm(__classid(TMainForm), &MainForm);
-		Application->CreateForm(__classid(TMoviesFrame), &MoviesFrame);
 		Application->Run();
 	}
 	catch (Exception &exception)
