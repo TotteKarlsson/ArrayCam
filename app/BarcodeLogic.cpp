@@ -111,7 +111,7 @@ void __fastcall TMainForm::onDisConnectedToZebra()
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DecodeBarcodeClick(TObject *Sender)
 {
-	TButton* b = dynamic_cast<TButton*>(Sender);
+	TArrayBotButton* b = dynamic_cast<TArrayBotButton*>(Sender);
     int status(-1);
     if(b == mBeepBtn)
     {

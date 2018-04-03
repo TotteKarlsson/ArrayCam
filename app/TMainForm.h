@@ -119,7 +119,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TPanel *Panel1;
 	TTabSheet *Main;
 	TGroupBox *RibbonRegistrationGB;
-	TButton *DecodeSessionBtn;
 	TPanel *Panel9;
 	TTabSheet *TabSheet1;
 	TGroupBox *GroupBox1;
@@ -260,8 +259,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TLabel *Label18;
 	TFloatLabel *RibbonLengthLbl;
 	TLabel *Label19;
-	TGroupBox *GroupBox7;
-	TPropertyCheckBox *SyncWhiskerCB;
 	TGroupBox *GroupBox8;
 	TFloatLabeledEdit *PresetReturnSpeedE;
 	TFloatLabeledEdit *SlowReturnSpeedE;
@@ -300,7 +297,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TUC7StagePositionFrame *MaxStagePosFrame;
 	TArrayBotButton *PopulateMaxNorthPosBtn;
 	TUC7StagePositionFrame *CurrentStagePosFrame;
-	TRadioGroup *StopOptionsRG;
 	TTabSheet *TabSheet2;
 	TGroupBox *BarCodeGB;
 	TPanel *Panel3;
@@ -322,6 +318,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TArrayBotButton *KniveMovieBtn;
 	TArrayBotButton *RegisterRibbonBtn;
 	TMenuItem *ThemesMenu;
+	TArrayBotButton *DecodeSessionBtn;
+	TPanel *GroupBox7;
+	TPropertyCheckBox *SyncWhiskerCB;
+	TRadioGroup *StopOptionsRG;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

@@ -29,20 +29,19 @@ cp $OUTPUTDIR/$OUTPUTFILENAME $dest
 
 #DS Binaries
 cp $OUTPUTDIR/dslFoundation.dll                 $dest
-cp $OUTPUTDIR/dslVCLCommon.dll                   $dest
-
+cp $OUTPUTDIR/dslVCLCommon.dll                  $dest
 
 cp $OUTPUTDIR/atFoundation.dll                  $dest
-cp $OUTPUTDIR/atResources.dll                   $dest
+#cp $OUTPUTDIR/atResources.dll                   $dest
 cp $OUTPUTDIR/atVCLCommon.dll                   $dest
 cp $OUTPUTDIR/atSSI.dll                         $dest
 cp $OUTPUTDIR/bm.exe                            $dest
 
- cp $BDSCOMMONDIR/BPL/dslVCLComponents.bpl      $dest
- cp $BDSCOMMONDIR/BPL/dslVisuals.bpl            $dest
- 
- cp $BDSCOMMONDIR/BPL/atComponents.bpl          $dest    
- cp $BDSCOMMONDIR/BPL/ArrayCamPackage.bpl       $dest
+cp $BDSCOMMONDIR/BPL/dslVCLComponents.bpl       $dest
+cp $BDSCOMMONDIR/BPL/dslVCLVisualComponents.bpl $dest
+
+cp $BDSCOMMONDIR/BPL/atComponents.bpl           $dest    
+cp $BDSCOMMONDIR/BPL/ArrayCamPackage.bpl        $dest
 
 #Borland Packages and dll's
 CG_REDIST="/cygdrive/c/CodeGear/Tokyo/bin"
@@ -81,6 +80,7 @@ elliptec="/cygdrive/p/libs/elliptec/Source Code/ELLO/bin/Release"
 cp "$elliptec"/Thorlabs.Elliptec.ELLO.exe         $dest
 cp "$elliptec"/*.dll                              $dest
 cp "$elliptec"/*.chm                              $dest
+cp "$elliptec"/*.config                           $dest
 
 #for LOCAL bin folder
 cp $miscRedist/dbexppgsql40.dll                 $OUTPUTDIR

@@ -123,7 +123,7 @@
         <PreLinkEvent><![CDATA[copy $(AT_ROOT)\thirdparty\uc480\uc480_B.lib.template  $(DEBUG_BCC32)\lib\uc480_B.lib
 copy $(AT_ROOT)\thirdparty\uc480\uc480_tools_B.lib.template  $(DEBUG_BCC32)\lib\uc480_tools_B.lib
 $(PreLinkEvent)]]></PreLinkEvent>
-        <PostBuildEvent><![CDATA[copy $(BDSCOMMONDIR)\dcp\ArrayCamPackage.bpi  $(BDSCOMMONDIR)\dcp\ArrayCamPackage.lib
+        <PostBuildEvent><![CDATA[copy $(DEBUG_BCC32)\DCP\$(OUTPUTNAME).bpi $(DEBUG_BCC32)\DCP\$(OUTPUTNAME).lib
 $(PostBuildEvent)]]></PostBuildEvent>
         <BCC_whid>false</BCC_whid>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
@@ -321,7 +321,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\tokyo\BPL\atVisualComponents.bpl">File p:\build\tokyo\BPL\atVisualComponents.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="P:\build\bcc32\debug\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="ProjectOutput">
@@ -760,7 +764,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent>copy $(AT_ROOT)\thirdparty\uc480\uc480_B.lib.template  $(DEBUG_BCC32)\lib\uc480_B.lib&amp;&amp;copy $(AT_ROOT)\thirdparty\uc480\uc480_tools_B.lib.template  $(DEBUG_BCC32)\lib\uc480_tools_B.lib</PreLinkEvent>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(BDSCOMMONDIR)\dcp\ArrayCamPackage.bpi  $(BDSCOMMONDIR)\dcp\ArrayCamPackage.lib</PostBuildEvent>
+        <PostBuildEvent>copy $(DEBUG_BCC32)\DCP\$(OUTPUTNAME).bpi $(DEBUG_BCC32)\DCP\$(OUTPUTNAME).lib</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

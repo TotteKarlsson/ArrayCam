@@ -3,8 +3,8 @@ object LoggerForm: TLoggerForm
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Logs'
-  ClientHeight = 425
-  ClientWidth = 740
+  ClientHeight = 356
+  ClientWidth = 735
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,19 +24,22 @@ object LoggerForm: TLoggerForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 740
-    Height = 425
+    Width = 735
+    Height = 356
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 0
+    ExplicitWidth = 740
+    ExplicitHeight = 425
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
-      Width = 738
+      Width = 733
       Height = 50
       Align = alTop
       Caption = 'Logs'
       TabOrder = 0
+      ExplicitWidth = 738
       object ToolBar1: TToolBar
         Left = 2
         Top = 15
@@ -93,8 +96,8 @@ object LoggerForm: TLoggerForm
     object infoMemo: TMemo
       Left = 1
       Top = 51
-      Width = 738
-      Height = 373
+      Width = 733
+      Height = 304
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -106,6 +109,8 @@ object LoggerForm: TLoggerForm
       ScrollBars = ssBoth
       TabOrder = 1
       WordWrap = False
+      ExplicitWidth = 738
+      ExplicitHeight = 373
     end
   end
   object ShutDownTimer: TTimer
