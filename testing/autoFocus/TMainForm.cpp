@@ -1,0 +1,357 @@
+#include <vcl.h>
+#pragma hdrstop
+#include "TMainForm.h"
+#include "dslLogger.h"
+#include "core/atCore.h"
+#include "ArrayCamMessages.h"
+#include "TPGDataModule.h"
+#include "dslVCLUtils.h"
+#include "TSelectIntegerForm.h"
+#include "THandWheelPositionForm.h"
+#include "TActionsForm.h"
+#include "ArrayCamUtilities.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "dslTFloatLabel"
+#pragma link "TApplicationSoundsFrame"
+#pragma link "TArrayBotBtn"
+#pragma link "TFFMPEGFrame"
+#pragma link "dslTFloatLabeledEdit"
+#pragma link "TImagesFrame"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTIntLabel"
+#pragma link "TMoviesFrame"
+#pragma link "TNavitarMotorFrame"
+#pragma link "dslTPropertyCheckBox"
+#pragma link "TSoundsFrame"
+#pragma link "dslTSTDStringLabeledEdit"
+#pragma link "TUC7StagePositionFrame"
+
+#pragma link "THDMIStreamerFrame"
+#pragma resource "*.dfm"
+TMainForm *MainForm;
+
+extern ArrayCamUtilities acu;
+using namespace dsl;
+
+//---------------------------------------------------------------------------
+__fastcall TMainForm::TMainForm(TComponent* Owner)
+	:
+    	TRegistryForm(acu.AppRegistryRoot, "MainForm", Owner),
+        mSettingsForm(NULL),
+        mAVIID(0),
+    	mIniFile(joinPath(acu.AppDataFolder, "ArrayCam.ini"), true, true),
+    	mLogLevel(lAny),
+        mAutoGain(false),
+        mAutoExposure(false),
+        mAutoBlackLevel(false),
+        mAutoWhiteBalance(false),
+        mSoftwareGamma(0.0),
+        mVerticalMirror(false),
+        mHorizontalMirror(false),
+        mReticle(mPB->Canvas),
+        mReticle2(mPB->Canvas, TReticle::rtCrossHair, clBlue),
+        mServiceCamera1(mCamera1, 1, this->Handle),
+        mMovingReticle(false),
+        mMainContentPanelWidth(700),
+        mACServer(*this, -1),
+        mReticleVisible(false),
+	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
+        LoggerForm(NULL),
+        ActionsForm(NULL)
+{
+    //Init the DLL -> give intra messages their ID's
+	initABCoreLib();
+
+    //Properties are retrieved and saved to an ini file
+    setupProperties();
+    mGeneralProperties.read();
+
+    //The loglevel is read from ini file
+	gLogger.setLogLevel(mLogLevel);
+
+
+    mServiceCamera1.onCameraOpen 			= onCameraOpen;
+    mServiceCamera1.onCameraClose 			= onCameraClose;
+
+
+    /******** Update UI controls *************/
+    //Todo, put these in a container and call update in a loop
+
+    MainContentPanel->Width = mMainContentPanelWidth;
+
+	ArrayCamServerPortE->update();
+    MediaFolderE->update();
+
+	THeaderSection* Section = CameraHC->Sections->Items[2];
+    Section->Text = mReticleVisible ? "Hide Reticle" : "Show Reticle";
+
+	mReticle2.visible(false);
+}
+
+__fastcall TMainForm::~TMainForm()
+{}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
+{
+	mStartupTimer->Enabled = false;
+
+    try
+    {
+        //Connect navitar motors
+        NavitarControllerConnectBtn->Click();
+
+    }
+    catch(const TDBXError& e)
+    {
+        Log(lError) << "There was an exception: "<<stdstr(e.Message);
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::FormResize(TObject *Sender)
+{;}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
+{
+    if(msg.lparam == NULL)
+    {
+        return;
+    }
+
+    try
+    {
+        ApplicationMessageEnum aMsg = (ApplicationMessageEnum) msg.wparam;
+
+        switch(aMsg)
+        {
+
+            case atMiscMessage:
+            {
+            	int* m = (int*) msg.lparam;
+                Log(lDebug) << "Handling Misc message: \"" << *m;
+            }
+            break;
+            default:
+            break ;
+        }
+	}
+	catch(...)
+	{
+		Log(lError) << "An exception was thrown in AppInBox.";
+	}
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
+{
+	mACServer.broadcastStatus();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::StatusBar1Hint(TObject *Sender)
+{
+	;
+}
+
+void __fastcall TMainForm::ToggleMainContentPanelAExecute(TObject *Sender)
+{
+	MainContentPanel->Visible 		= !MainContentPanel->Visible;
+	ToggleMainContentBtn->Visible 	= !MainContentPanel->Visible;
+    Splitter2->Visible 				= MainContentPanel->Visible;
+
+    if(MainContentPanel->Visible)
+    {
+		Splitter2->Left = MainContentPanel->Left - 1;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenCloseShortcutFormExecute(TObject *Sender)
+{
+	if(!ActionsForm)
+    {
+    	ActionsForm = new TActionsForm(Handle, this);
+    }
+
+    if(!ActionsForm->Visible)
+    {
+    	ActionsForm->Show();
+    }
+    else
+    {
+    	ActionsForm->Hide();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OpenCloseShortcutFormUpdate(TObject *Sender)
+{
+	if(ActionsForm && ActionsForm->Visible)
+    {
+		OpenCloseShortcutForm->Caption = "Close Shortcuts";
+    }
+    else
+    {
+		OpenCloseShortcutForm->Caption = "Open ShortCuts";
+    }
+}
+
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::TakeSnapShotBtnClick(TObject *Sender)
+{
+	takeSnapShot();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
+{
+	static int recTime(0);   //(milliseconds)
+	if(mCaptureVideoTimer->Enabled)
+    {
+    	time_t seconds(recTime / 1000.0);
+        tm *p = gmtime(&seconds);
+        stringstream time;
+        time << "Stop Recording \r";
+        if(p)
+        {
+        	time <<"(" << p->tm_min <<":"<<p->tm_sec <<")";
+        }
+    	RecordVideoBtn->Caption = vclstr(time.str());
+        recTime += VideoRecTimer->Interval;
+    }
+    else
+    {
+		VideoRecTimer->Enabled = false;
+    	RecordVideoBtn->Caption = "Record Whisker Video";
+        recTime = 0;
+    }
+
+    int maxRecTime = 30 * (60 * 1000); //Minutes
+    if(recTime > maxRecTime)
+    {
+    	Log(lInfo) << "Stoppped movie at: " << recTime;
+		stopRecordingMovie();
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
+{
+	startStopRecordingMovie();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject)
+{
+	this->Align = alNone;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BrowseForFolderClick(TObject *Sender)
+{
+	//Open Browse for folder dialog
+	TButton* b = dynamic_cast<TButton*>(Sender);
+    if(b == BrowseForMediaFolderBtn)
+    {
+        string f = browseForFolder(MediaFolderE->getValue());
+        if(!f.size())
+        {
+            return;
+        }
+
+    	MediaFolderE->setValue(f);
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PageControlChange(TObject *Sender)
+{
+	//Check if we need any processing as a tab changes
+	TPageControl* pc = dynamic_cast<TPageControl*>(Sender);
+
+    if(pc == MiscPageControl)
+    {
+
+    }
+
+    else if(pc == MainPC)
+    {
+    	if(pc->TabIndex == 2)//Media tab
+        {
+
+        }
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PageControlExit(TObject *Sender)
+{
+	//Check if we need any processing as a tab changes
+	TPageControl* pc = dynamic_cast<TPageControl*>(Sender);
+
+    if(pc == MiscPageControl)
+    {
+    }
+}
+
+
+
+void __fastcall TMainForm::MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == VK_RETURN)
+    {
+
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BroadCastStatusBtnClick(TObject *Sender)
+{
+	mACServer.broadcastStatus();
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::BroadcastStatusTimerTimer(TObject *Sender)
+{
+	mACServer.broadcastStatus();
+}
+
+
+void __fastcall TMainForm::ThemesMenuClick(TObject *Sender)
+{
+    TMenuItem* menuItem = dynamic_cast<TMenuItem*>(Sender);
+    if(!menuItem)
+    {
+        return;
+    }
+
+	//Uncheck any checked items
+	for(int i = 0; i < ThemesMenu->Count; i++)
+	{
+		TMenuItem* menuItem = ThemesMenu->Items[i];
+		if(menuItem && menuItem->Checked)
+		{
+			menuItem->Checked = false;
+		}
+	}
+
+	TRegistryForm::writeToRegistry();
+
+	TReplaceFlags rFlags(rfIgnoreCase|rfReplaceAll);
+	String styleName = StringReplace(menuItem->Caption, "&", "", rFlags);
+	TStyleManager::SetStyle(styleName);
+
+	//Check the menu item
+	menuItem->Checked = (TStyleManager::ActiveStyle->Name == styleName) ? true : false;
+
+	//Write to registry
+	acu.Style = stdstr(styleName);
+	writeStringToRegistry(acu.AppRegistryRoot, "", "Theme", acu.Style);
+
+}
+
+
