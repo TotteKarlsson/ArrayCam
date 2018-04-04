@@ -4,7 +4,6 @@
 #include "dslVCLUtils.h"
 #include "TReticlePopupForm.h"
 #include "dslLogger.h"
-#include "forms/TAboutForm.h"
 #include "forms/TLoggerForm.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
@@ -40,14 +39,6 @@ void __fastcall TMainForm::OpenLoggerForm1Click(TObject *Sender)
 void __fastcall TMainForm::mMainPhotoPanelResize(TObject *Sender)
 {
 	FitToScreenAExecute(Sender);
-
-	if(mReticleForm.get() && mReticleForm->Visible)
-    {
-        mReticleForm->mReticleCenterXTB->Min = -mPB->Width/2;
-        mReticleForm->mReticleCenterXTB->Max = mPB->Width/2;
-        mReticleForm->mReticleCenterYTB->Min = -mPB->Height/2;
-        mReticleForm->mReticleCenterYTB->Max = mPB->Height/2;
-    }
 }
 
 //---------------------------------------------------------------------------
@@ -62,10 +53,4 @@ void __fastcall TMainForm::mCameraStreamPanelDblClick(TObject *Sender)
 }
 
 
-void __fastcall TMainForm::About1Click(TObject *Sender)
-{
-	TAboutForm* f = new TAboutForm(this);
-    f->ShowModal();
-    delete f;
-}
 

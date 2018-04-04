@@ -26,20 +26,15 @@
 #include <Data.SqlExpr.hpp>
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
-#include "TFFMPEGFrame.h"
 #include "dslTFloatLabeledEdit.h"
 #include "TImagesFrame.h"
 #include "dslTIntegerLabeledEdit.h"
 #include "dslTIntLabel.h"
-#include "TMoviesFrame.h"
 #include "TNavitarMotorFrame.h"
 #include "dslTPropertyCheckBox.h"
 #include "TSoundsFrame.h"
 #include "dslTSTDStringLabeledEdit.h"
-#include "TUC7StagePositionFrame.h"
 #include "dslTFloatLabel.h"
-#include "TPGConnectionFrame.h"
-#include "THDMIStreamerFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "ello/atElloUIClient.h"
@@ -53,12 +48,8 @@
 #include "dslIniFileProperties.h"
 #include "navitar/atNavitarMotorController.h"
 #include "source/ArrayCamServer.h"
-#include "source/ConnectToArduinoServerThread.h"
-#include "source/ConnectToElloUIThread.h"
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
-#include "TFFMPEGFrame.h"
-#include "TImagesFrame.h"
 #include "dslTIntegerLabeledEdit.h"
 #include "dslTIntLabel.h"
 #include "TMoviesFrame.h"
@@ -66,10 +57,7 @@
 #include "dslTPropertyCheckBox.h"
 #include "TSoundsFrame.h"
 #include "dslTSTDStringLabeledEdit.h"
-#include "TUC7StagePositionFrame.h"
 #include "dslTFloatLabeledEdit.h"
-#include "uc7/atUC7ApplicationMessages.h"
-#include "uc7/atUC7Component.h"
 #include "thirdparty/uc480/uc480Class.h"
 
 //---------------------------------------------------------------------------
@@ -77,12 +65,9 @@ class TSettingsForm;
 class TLocalArgs;
 class TRegisterNewRibbonForm;
 class TReticlePopupForm;
-class THandWheelPositionForm;
+
 class TLoggerForm;
 class TActionsForm;
-class TFFMPEGOutputFrame;
-class TFFMPEGFrame;
-class TMovieItemFrame;
 using dsl::Property;
 using Poco::Timestamp;
 using dsl::IniFileProperties;
@@ -101,7 +86,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TSplitter *Splitter2;
 	TPanel *mMainPhotoPanel;
 	TPanel *mCamera1BackPanel;
-	TTimer *mCaptureVideoTimer;
 	TPopupMenu *mMediaPopup;
 	TMenuItem *Delete1;
 	TMenuItem *DeleteAll1;
@@ -129,7 +113,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *OpenSettings1;
 	TPanel *LeftPanel;
 	TScrollBox *ScrollBox1;
-	TTabSheet *TabSheet4;
 	TTabSheet *TabSheet9;
 	TGroupBox *GroupBox13;
 	TButton *NavitarControllerConnectBtn;
@@ -146,7 +129,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMainMenu *MainMenu1;
 	TMenuItem *File1;
 	TMenuItem *Misc1;
-	TMenuItem *UC7StatusChart1;
 	TActionList *MenuActions;
 	TFileExit *FileExit1;
 	TMenuItem *Exit1;
@@ -165,57 +147,30 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *N4;
 	TAction *ToggleMainContentPanelA;
 	TMenuItem *Help1;
-	TMenuItem *About1;
 	TMenuItem *N5;
 	TMenuItem *OpenLoggerForm1;
-	TAction *OpenCloseShortcutForm;
+
 	TMenuItem *Actions1;
 	TBindingsList *BindingsList2;
 	TButton *Button1;
 	TMenuItem *ShowHideMainContentPanel1;
 	TButton *ToggleMainContentBtn;
 	TToolBar *ToolBar2;
-	TTabSheet *TabSheet3;
-	TGroupBox *GroupBox2;
-	TIntegerLabeledEdit *mArduinoServerPortE;
-	TButton *ArduinoServerStartStopButton;
-	TPropertyCheckBox *mAutoCheckConnectionCB;
 	TIntLabel *NrOfArrayCamServerClients;
 	TLabel *Label2;
 	TMenuItem *N6;
-	TMenuItem *Hide1;
 	TAction *ToggleControlBar;
 	TArrayBotButton *TakeSnapShotBtn;
-	TArrayBotButton *RecordVideoBtn;
-	TTimer *VideoRecTimer;
 	TMenuItem *oggleControlBar1;
 	TMenuItem *N7;
 	TFlowPanel *MPEGPanel;
 	TTabSheet *TabSheet11;
-	TTimer *CleanupTimer;
 	TBrowseForFolder *BrowseForFolder1;
-	TTabSheet *RibbonSeparatorSheet;
-	TGroupBox *GroupBox10;
-	TButton *RunWiperBtn;
 	TGroupBox *GroupBox6;
 	TButton *BrowseForMediaFolderBtn;
 	TSTDStringLabeledEdit *MediaFolderE;
-	TTabSheet *TabSheet12;
 	TPanel *Bpanel;
 	TToolBar *ToolBar3;
-	TTimer *BroadcastStatusTimer;
-	TTabSheet *TabSheet2;
-	TGroupBox *BarCodeGB;
-	TPanel *Panel3;
-	TComboBox *mZebraCOMPortCB;
-	TButton *mConnectZebraBtn;
-	TComboBox *mZebraBaudRateCB;
-	TGroupBox *mImagerSettingsGB;
-	TRadioGroup *mScannerAimRG;
-	TRadioGroup *mScannerEnabledRG;
-	TButton *mBeepBtn;
-	TButton *ConnectWipterClientBtn;
-	TArrayBotButton *KniveMovieBtn;
 	TMenuItem *ThemesMenu;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -224,7 +179,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mShutDownTimerTimer(TObject *Sender);
 	void __fastcall mMainPhotoPanelResize(TObject *Sender);
 	void __fastcall mToggleLogPanelClick(TObject *Sender);
-	void __fastcall mCaptureVideoTimerTimer(TObject *Sender);
 	void __fastcall mCameraStreamPanelDblClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall PageControlChange(TObject *Sender);
@@ -243,20 +197,13 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall Zoom1To2AExecute(TObject *Sender);
 	void __fastcall OpenCameraSettingsAExecute(TObject *Sender);
 	void __fastcall ToggleMainContentPanelAExecute(TObject *Sender);
-	void __fastcall About1Click(TObject *Sender);
 	void __fastcall OpenLoggerForm1Click(TObject *Sender);
-	void __fastcall OpenCloseShortcutFormExecute(TObject *Sender);
-	void __fastcall OpenCloseShortcutFormUpdate(TObject *Sender);
+
 	void __fastcall TakeSnapShotBtnClick(TObject *Sender);
-	void __fastcall VideoRecTimerTimer(TObject *Sender);
-	void __fastcall RecordVideoBtnClick(TObject *Sender);
 	void __fastcall ControlBar1StartDrag(TObject *Sender, TDragObject *&DragObject);
-	void __fastcall CleanupTimerTimer(TObject *Sender);
 	void __fastcall BrowseForFolderClick(TObject *Sender);
 	void __fastcall PageControlExit(TObject *Sender);
 	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall BroadCastStatusBtnClick(TObject *Sender);
-	void __fastcall BroadcastStatusTimerTimer(TObject *Sender);
 	void __fastcall ThemesMenuClick(TObject *Sender);
 
 	protected:
@@ -285,7 +232,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Property<bool>							mHorizontalMirror;
 
 												//!Reticle
-		std::auto_ptr<TReticlePopupForm> 		mReticleForm;
 		Property<bool>							mReticleVisible;
 
 												//Camera variables
@@ -317,12 +263,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 
 		TLoggerForm*							LoggerForm;
 		TActionsForm*							ActionsForm;
-
-		bool									startVideoCompression(const string& inputName);
-		void __fastcall							onCompressionFinished(TFFMPEGOutputFrame* f);
-		list<TFFMPEGOutputFrame*>				mCompressionFrames;
-
-
 	//=================================================================================================
 	public:
 
@@ -332,9 +272,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 												//!Camera stuff is processed in the message loop
 		LRESULT									onUSBCameraMessage(TMessage msg);
 		void		__fastcall					takeSnapShot();
-		void		__fastcall					startStopRecordingMovie();
-		void		__fastcall					startRecordingMovie();
-		void		__fastcall					stopRecordingMovie();
 		void		__fastcall					setFocus(int f);
 		void		__fastcall					focusIn(int z);
 		void		__fastcall					focusOut(int z);
@@ -344,13 +281,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void		__fastcall					setFocusAndZoom(int f, int z);
 
 	BEGIN_MESSAGE_MAP
-	MESSAGE_HANDLER(IS_UC480_MESSAGE,			TMessage,						onUSBCameraMessage);
-
+		MESSAGE_HANDLER(IS_UC480_MESSAGE,			TMessage,						onUSBCameraMessage);
 	END_MESSAGE_MAP(TForm)
 };
-
-bool registerVideoInDB(const string& lUUID, const string& videoExtension, int userID, int coverslipID, int blockID , const string& ribbonID = "-1");
-
 
 extern PACKAGE TMainForm *MainForm;
 #endif

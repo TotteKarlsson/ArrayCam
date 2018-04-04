@@ -7,7 +7,6 @@
 #include "atVCLUtils.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
-#include "TFFMPEGOutputFrame.h"
 #include "ArrayCamUtils.h"
 using namespace dsl;
 
@@ -25,16 +24,6 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
     }
     else if(Section == CameraHC->Sections->Items[1])
     {
-		if(mReticleForm.get() == NULL)
-        {
-        	mReticleForm = auto_ptr<TReticlePopupForm>(new TReticlePopupForm(mReticle, this));
-            mReticleForm->mReticleVisibilityCB->setReference(mReticleVisible.getReference());
-			mReticleForm->mReticleVisibilityCB->update();
-        }
-
-        mReticleForm->Top = p.y;// + mReticleForm->Height;
-        mReticleForm->Left = p.x;
-        mReticleForm->Show();
     }
     else if(Section == CameraHC->Sections->Items[2])
     {
@@ -103,11 +92,6 @@ void __fastcall TMainForm::mPBMouseMove(TObject *Sender, TShiftState Shift, int 
     	int x = X - mPB->Width/2;
         int y = Y - mPB->Height/2;
     	mReticle.setReticleCenter(x, y);
-		if(mReticleForm.get() && mReticleForm->Visible)
-    	{
-        	mReticleForm->mReticleCenterXTB->Position = x;
-        	mReticleForm->mReticleCenterYTB->Position = y;
-        }
     }
 }
 
@@ -283,7 +267,7 @@ void __fastcall TMainForm::takeSnapShot()
     	csID = 0; //So we can create fileFolder '0'
     }
 
-    int blockID = pgDM->getCurrentBlockID();
+    int blockID = -1;//pgDM->getCurrentBlockID();
     if(blockID == -1)
     {
     	blockID = 0;
@@ -309,195 +293,4 @@ void __fastcall TMainForm::takeSnapShot()
     }
 }
 
-void __fastcall TMainForm::startRecordingMovie()
-{
-	if(mCaptureVideoTimer->Enabled == false)
-    {
-		startStopRecordingMovie();
-    }
-    else
-    {
-    	Log(lWarning) << "Can't start recording as recording is already enabled";
-    }
-}
-
-void __fastcall TMainForm::stopRecordingMovie()
-{
-	if(mCaptureVideoTimer->Enabled == true)
-    {
-		startStopRecordingMovie();
-    }
-    else
-    {
-    	Log(lWarning) << "Can't stop rectording movie as recording is already disabled";
-    }
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::startStopRecordingMovie()
-{
-	//These are static so we can easily retrieve their values set during start, when stopping.
-	static string 	lCurrentVideoFileName;
-    static string 	sMovieID;
-    static int 		lBlockID;
-
-	if(mCaptureVideoTimer->Enabled == false)
-    {
-        mCaptureVideoTimer->Enabled = true;
-        isavi_InitAVI(&mAVIID, mCamera1.GetCameraHandle());
-
-        Log(lInfo) << "Starting recording movie";
-
-        int w = mCamera1.mSizeX;
-        int h = mCamera1.mSizeY;
-        int retVal = isavi_SetImageSize(mAVIID, mCamera1.mColorMode, w, h, 0, 0, 0);
-
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a SetImageSize AVI error: "<<retVal;
-            return;
-        }
-
-        retVal = isavi_SetImageQuality(mAVIID, 100);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a SetImageQuality AVI error: "<<retVal;
-            return;
-        }
-
-        string ext(".avi");
-        sMovieID = getUUID();
-
-        lBlockID = pgDM->getCurrentBlockIDFromAllBlocks();
-        if(lBlockID == -1)
-        {
-            lBlockID = 0;
-        }
-
-        string base_fldr =  joinPath(MediaFolderE->getValue(), dsl::toString(lBlockID));
-        string fName = joinPath(base_fldr, sMovieID + ext);
-
-        if(!folderExists(base_fldr))
-        {
-            Log(lInfo) << "Creating folder: "<<base_fldr;
-            if(!createFolder(base_fldr))
-            {
-	        	Log(lError) << "Failed creating folder: " <<base_fldr;
-	    	    Log(lError) << "Failed starting video recording";
-    	    	return;
-	        }
-        }
-
-		lCurrentVideoFileName = fName;
-
-        retVal = isavi_OpenAVI(mAVIID, fName.c_str());
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a OpenAVI error: "<<retVal;
-            return;
-        }
-
-        retVal = isavi_SetFrameRate(mAVIID, 25);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a SetFrameRate AVI error: "<<retVal;
-            return;
-        }
-
-        retVal = isavi_StartAVI(mAVIID);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a StartAVI error: "<<retVal;
-            return;
-        }
-        mACServer.broadcast(acrVideoRecorderStarted);
-    }
-    else
-    {
-        Log(lInfo) << "Stopping Video Recording";
-        mCaptureVideoTimer->Enabled = false;
-        int retVal = isavi_StopAVI(mAVIID);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a StopAVI error: "<<retVal;
-            return;
-        }
-
-        retVal = isavi_CloseAVI(mAVIID);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a CloseAVI error: "<<retVal;
-            return;
-        }
-
-        retVal = isavi_ExitAVI(mAVIID);
-        if(retVal != IS_AVI_NO_ERR)
-        {
-            Log(lError) << "There was a ExitAVI error: "<<retVal;
-            return;
-        }
-
-        mACServer.broadcast(acrVideoRecorderStopped);
-        //Register in the database
-    	Log(lInfo) << "Saving movie to file: "<< lCurrentVideoFileName;
-
-        //Start compression video thread
-        startVideoCompression(lCurrentVideoFileName);
-        mACServer.broadcast(acrVideoRecorderStopped);
-    }
-
-   	if(mCaptureVideoTimer->Enabled)
-    {
-    	//Enabnle visual indication on the Video Button
-		VideoRecTimer->Enabled = true;
-    }
-
-  	mACServer.broadcastStatus();
-}
-
-bool TMainForm::startVideoCompression(const string& inputName)
-{
-    Log(lInfo) << "Starting compressing file: " << inputName;
-    return true;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::mCaptureVideoTimerTimer(TObject *Sender)
-{
-	//Todo: this should be executed in its own thread and not in a timer..
-    static int frames(0);
-
-    int retVal = isavi_AddFrame(mAVIID, mCamera1.mImageMemory);
-
-    if(retVal == IS_AVI_NO_ERR)
-    {
-        frames++;
-    }
-}
-
-void __fastcall TMainForm::onCompressionFinished(TFFMPEGOutputFrame* f)
-{
-	//Start deleteFrameTimer
-	CleanupTimer->Enabled = true;
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::CleanupTimerTimer(TObject *Sender)
-{
-	CleanupTimer->Enabled = false;
-
-	//Check for frames to delete
-    list<TFFMPEGOutputFrame*>::iterator i;
-	for(i = mCompressionFrames.begin(); i != mCompressionFrames.end();)
-    {
-    	if((*i) && (*i) ->isDone())
-        {
-        	delete (*i);
-            i = mCompressionFrames.erase(i);
-        }
-        else
-        {
-        	i++;
-        }
-    }
-}
 

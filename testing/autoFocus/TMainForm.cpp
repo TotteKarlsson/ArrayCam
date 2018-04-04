@@ -4,31 +4,21 @@
 #include "dslLogger.h"
 #include "core/atCore.h"
 #include "ArrayCamMessages.h"
-#include "TPGDataModule.h"
 #include "dslVCLUtils.h"
 #include "TSelectIntegerForm.h"
-#include "THandWheelPositionForm.h"
-#include "TActionsForm.h"
 #include "ArrayCamUtilities.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "dslTFloatLabel"
-#pragma link "TApplicationSoundsFrame"
-#pragma link "TArrayBotBtn"
-#pragma link "TFFMPEGFrame"
 #pragma link "dslTFloatLabeledEdit"
-#pragma link "TImagesFrame"
 #pragma link "dslTIntegerLabeledEdit"
 #pragma link "dslTIntLabel"
-#pragma link "TMoviesFrame"
-#pragma link "TNavitarMotorFrame"
 #pragma link "dslTPropertyCheckBox"
-#pragma link "TSoundsFrame"
 #pragma link "dslTSTDStringLabeledEdit"
-#pragma link "TUC7StagePositionFrame"
-
-#pragma link "THDMIStreamerFrame"
+#pragma link "TArrayBotBtn"
+#pragma link "TNavitarMotorFrame"
 #pragma resource "*.dfm"
+
 TMainForm *MainForm;
 
 extern ArrayCamUtilities acu;
@@ -169,79 +159,9 @@ void __fastcall TMainForm::ToggleMainContentPanelAExecute(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::OpenCloseShortcutFormExecute(TObject *Sender)
-{
-	if(!ActionsForm)
-    {
-    	ActionsForm = new TActionsForm(Handle, this);
-    }
-
-    if(!ActionsForm->Visible)
-    {
-    	ActionsForm->Show();
-    }
-    else
-    {
-    	ActionsForm->Hide();
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::OpenCloseShortcutFormUpdate(TObject *Sender)
-{
-	if(ActionsForm && ActionsForm->Visible)
-    {
-		OpenCloseShortcutForm->Caption = "Close Shortcuts";
-    }
-    else
-    {
-		OpenCloseShortcutForm->Caption = "Open ShortCuts";
-    }
-}
-
-
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::TakeSnapShotBtnClick(TObject *Sender)
 {
 	takeSnapShot();
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::VideoRecTimerTimer(TObject *Sender)
-{
-	static int recTime(0);   //(milliseconds)
-	if(mCaptureVideoTimer->Enabled)
-    {
-    	time_t seconds(recTime / 1000.0);
-        tm *p = gmtime(&seconds);
-        stringstream time;
-        time << "Stop Recording \r";
-        if(p)
-        {
-        	time <<"(" << p->tm_min <<":"<<p->tm_sec <<")";
-        }
-    	RecordVideoBtn->Caption = vclstr(time.str());
-        recTime += VideoRecTimer->Interval;
-    }
-    else
-    {
-		VideoRecTimer->Enabled = false;
-    	RecordVideoBtn->Caption = "Record Whisker Video";
-        recTime = 0;
-    }
-
-    int maxRecTime = 30 * (60 * 1000); //Minutes
-    if(recTime > maxRecTime)
-    {
-    	Log(lInfo) << "Stoppped movie at: " << recTime;
-		stopRecordingMovie();
-    }
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::RecordVideoBtnClick(TObject *Sender)
-{
-	startStopRecordingMovie();
 }
 
 //---------------------------------------------------------------------------
@@ -307,19 +227,6 @@ void __fastcall TMainForm::MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShif
 
     }
 }
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BroadCastStatusBtnClick(TObject *Sender)
-{
-	mACServer.broadcastStatus();
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BroadcastStatusTimerTimer(TObject *Sender)
-{
-	mACServer.broadcastStatus();
-}
-
 
 void __fastcall TMainForm::ThemesMenuClick(TObject *Sender)
 {

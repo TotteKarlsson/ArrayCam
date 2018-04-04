@@ -63,12 +63,10 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 {
     acu.AppIsStartingUp = false;
 
-    enableDisableGroupBox(mImagerSettingsGB, false);
+//    enableDisableGroupBox(mImagerSettingsGB, false);
 	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("TestAutoFocus", Application));
 	FitToScreenAExecute(Sender);
-    BroadcastStatusTimer->Enabled = true;
-
     populateStyleMenu(ThemesMenu, ThemesMenuClick);
 }
 

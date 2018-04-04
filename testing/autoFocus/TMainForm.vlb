@@ -55,9 +55,6 @@ Coordinates=410,1667,113,87
 [Splitter2]
 Coordinates=1523,469,55,33
 
-[TabSheet4]
-Coordinates=1523,521,66,33
-
 [CameraHC]
 Coordinates=1523,573,66,33
 
@@ -182,16 +179,13 @@ Coordinates=1733,247,179,51
 Coordinates=1714,317,174,33
 
 []
-Coordinates=318,211,72,33
+Coordinates=497,462,95,51
 
 [RepeatCB]
 Coordinates=423,71,95,51
 
 [BackOffStepFrame]
 Coordinates=795,590,107,33
-
-[TabSheet3]
-Coordinates=677,590,66,33
 
 [SWVerLbl]
 Coordinates=793,141,62,51
@@ -201,9 +195,6 @@ Coordinates=58,462,99,51
 
 [GBS]
 Coordinates=88,284,41,51
-
-[RecordVideoBtn]
-Coordinates=497,462,95,51
 
 [ApplicationSoundsLB]
 Coordinates=175,140,121,87
@@ -220,14 +211,8 @@ Coordinates=309,1,76,51
 [SoundPropsGB]
 Coordinates=793,71,91,51
 
-[mAutoCheckConnectionCB]
-Coordinates=404,195,149,51
-
 [HWVerLbl]
 Coordinates=57,195,63,51
-
-[ArduinoServerStartStopButton]
-Coordinates=423,1,165,51
 
 [Label15]
 Coordinates=364,284,52,51
@@ -280,14 +265,8 @@ Coordinates=1503,313,120,33
 [ProdIdLbl]
 Coordinates=468,373,62,51
 
-[mArduinoServerPortE]
-Coordinates=497,284,122,51
-
 [ControllerInfoGB]
 Coordinates=55,373,97,51
-
-[GroupBox2]
-Coordinates=309,71,70,51
 
 [Label12]
 Coordinates=379,462,52,51

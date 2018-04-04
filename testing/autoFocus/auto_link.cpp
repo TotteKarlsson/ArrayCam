@@ -13,7 +13,7 @@
 #pragma comment(lib, "uc480_B.lib")
 #pragma comment(lib, "uc480_tools_B.lib")
 
-#pragma comment(lib, "ArrayCamPackage.bpi")
+//#pragma comment(lib, "ArrayCamPackage.bpi")
 
 
 #pragma comment(lib, "DBXDevartPostgreSQLDriver250.bpi")

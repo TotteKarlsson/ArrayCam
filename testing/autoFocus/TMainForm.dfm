@@ -41,8 +41,6 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
-    ExplicitTop = 82
-    ExplicitHeight = 881
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -51,7 +49,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 0
-      ExplicitHeight = 879
       DesignSize = (
         816
         961)
@@ -72,7 +69,7 @@ object MainForm: TMainForm
           ExplicitLeft = 0
           ExplicitTop = 0
           ExplicitWidth = 0
-          ExplicitHeight = 787
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -80,7 +77,6 @@ object MainForm: TMainForm
             Height = 869
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 787
           end
         end
         object TabSheet9: TTabSheet
@@ -89,7 +85,7 @@ object MainForm: TMainForm
           ExplicitLeft = 0
           ExplicitTop = 0
           ExplicitWidth = 0
-          ExplicitHeight = 787
+          ExplicitHeight = 0
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
@@ -100,7 +96,6 @@ object MainForm: TMainForm
             Color = clBtnFace
             ParentColor = False
             TabOrder = 0
-            ExplicitHeight = 787
             object NavitarControllerConnectBtn: TButton
               Left = 20
               Top = 24
@@ -118,7 +113,6 @@ object MainForm: TMainForm
               Align = alBottom
               Caption = 'Controller Info'
               TabOrder = 1
-              ExplicitTop = 670
               object Label12: TLabel
                 Left = 16
                 Top = 24
@@ -192,7 +186,6 @@ object MainForm: TMainForm
             Height = 869
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 787
           end
         end
         object TabSheet1: TTabSheet
@@ -201,25 +194,24 @@ object MainForm: TMainForm
           ExplicitLeft = 0
           ExplicitTop = 0
           ExplicitWidth = 0
-          ExplicitHeight = 787
+          ExplicitHeight = 0
           object MiscPageControl: TPageControl
             Left = 0
             Top = 0
             Width = 806
             Height = 869
-            ActivePage = RibbonSeparatorSheet
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             OnChange = PageControlChange
             OnExit = PageControlExit
-            ExplicitHeight = 787
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
               ExplicitLeft = 0
               ExplicitTop = 0
               ExplicitWidth = 0
-              ExplicitHeight = 753
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -271,69 +263,13 @@ object MainForm: TMainForm
                 end
               end
             end
-            object TabSheet3: TTabSheet
-              Caption = 'Arduino Client'
-              ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 753
-              object GroupBox2: TGroupBox
-                Left = 0
-                Top = 0
-                Width = 798
-                Height = 169
-                Align = alTop
-                Caption = 'Arduino Client'
-                TabOrder = 0
-                object mArduinoServerPortE: TIntegerLabeledEdit
-                  Left = 16
-                  Top = 56
-                  Width = 121
-                  Height = 27
-                  EditLabel.Width = 93
-                  EditLabel.Height = 19
-                  EditLabel.Caption = 'Network Port'
-                  TabOrder = 0
-                  Text = '50000'
-                  Value = 50000
-                end
-                object ArduinoServerStartStopButton: TButton
-                  Left = 143
-                  Top = 25
-                  Width = 104
-                  Height = 97
-                  Caption = 'Connect'
-                  TabOrder = 1
-                end
-                object mAutoCheckConnectionCB: TPropertyCheckBox
-                  Left = 16
-                  Top = 128
-                  Width = 217
-                  Height = 17
-                  Caption = 'Reconnect Automatically'
-                  Checked = True
-                  State = cbChecked
-                  TabOrder = 2
-                  Value = True
-                end
-              end
-            end
-            object TabSheet4: TTabSheet
-              Caption = 'Sounds'
-              ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 753
-            end
             object TabSheet11: TTabSheet
               Caption = 'Media'
               ImageIndex = 3
               ExplicitLeft = 0
               ExplicitTop = 0
               ExplicitWidth = 0
-              ExplicitHeight = 753
+              ExplicitHeight = 0
               object GroupBox6: TGroupBox
                 Left = 0
                 Top = 0
@@ -366,176 +302,6 @@ object MainForm: TMainForm
                 end
               end
             end
-            object RibbonSeparatorSheet: TTabSheet
-              Caption = 'Ribbon Separator'
-              ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 753
-              object GroupBox10: TGroupBox
-                Left = 0
-                Top = 0
-                Width = 798
-                Height = 128
-                Align = alTop
-                Caption = 'Run Wiper Action'
-                TabOrder = 0
-                object RunWiperBtn: TButton
-                  Left = 24
-                  Top = 37
-                  Width = 105
-                  Height = 64
-                  Caption = 'Run'
-                  Enabled = False
-                  TabOrder = 0
-                end
-                object ConnectWipterClientBtn: TButton
-                  Left = 656
-                  Top = 45
-                  Width = 105
-                  Height = 64
-                  Caption = 'Connect'
-                  TabOrder = 1
-                end
-              end
-            end
-            object TabSheet12: TTabSheet
-              Caption = 'DB Connection'
-              ImageIndex = 5
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 753
-            end
-            object TabSheet2: TTabSheet
-              Caption = 'Barcode Reader'
-              ImageIndex = 6
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 753
-              object BarCodeGB: TGroupBox
-                Left = 0
-                Top = 0
-                Width = 798
-                Height = 209
-                Align = alTop
-                Caption = 'Zebra'
-                TabOrder = 0
-                object Panel3: TPanel
-                  Left = 2
-                  Top = 21
-                  Width = 794
-                  Height = 28
-                  Align = alTop
-                  BevelOuter = bvNone
-                  TabOrder = 0
-                  object mZebraCOMPortCB: TComboBox
-                    Left = 0
-                    Top = 0
-                    Width = 87
-                    Height = 27
-                    Margins.Left = 10
-                    Align = alLeft
-                    TabOrder = 0
-                    Text = 'COM1'
-                    Items.Strings = (
-                      'COM1'
-                      'COM2'
-                      'COM3'
-                      'COM4'
-                      'COM5'
-                      'COM6'
-                      'COM7'
-                      'COM8'
-                      'COM9'
-                      'COM10'
-                      'COM11'
-                      'COM12'
-                      'COM13'
-                      'COM14'
-                      'COM15'
-                      'COM16'
-                      'COM17'
-                      'COM18'
-                      'COM19'
-                      'COM20')
-                  end
-                  object mConnectZebraBtn: TButton
-                    Left = 163
-                    Top = 0
-                    Width = 77
-                    Height = 28
-                    Align = alLeft
-                    Caption = 'Open'
-                    TabOrder = 1
-                  end
-                  object mZebraBaudRateCB: TComboBox
-                    Left = 87
-                    Top = 0
-                    Width = 76
-                    Height = 27
-                    Margins.Left = 10
-                    Align = alLeft
-                    ItemIndex = 0
-                    TabOrder = 2
-                    Text = '9600'
-                    Items.Strings = (
-                      '9600'
-                      '14400'
-                      '19200'
-                      '38400'
-                      '57600'
-                      '115200'
-                      '128000'
-                      '256000')
-                  end
-                end
-                object mImagerSettingsGB: TGroupBox
-                  Left = 13
-                  Top = 76
-                  Width = 518
-                  Height = 107
-                  Caption = 'Check'
-                  TabOrder = 1
-                  object mScannerAimRG: TRadioGroup
-                    Left = 179
-                    Top = 22
-                    Width = 145
-                    Height = 49
-                    Caption = 'Aim'
-                    Columns = 2
-                    ItemIndex = 1
-                    Items.Strings = (
-                      'On'
-                      'Off')
-                    TabOrder = 0
-                  end
-                  object mScannerEnabledRG: TRadioGroup
-                    Left = 9
-                    Top = 23
-                    Width = 145
-                    Height = 49
-                    Caption = 'Enabled'
-                    Columns = 2
-                    ItemIndex = 0
-                    Items.Strings = (
-                      'On'
-                      'Off')
-                    TabOrder = 1
-                  end
-                  object mBeepBtn: TButton
-                    Left = 342
-                    Top = 31
-                    Width = 89
-                    Height = 37
-                    Caption = 'Beep'
-                    TabOrder = 2
-                  end
-                end
-              end
-            end
           end
         end
       end
@@ -559,10 +325,6 @@ object MainForm: TMainForm
     Align = alClient
     BevelEdges = []
     TabOrder = 1
-    ExplicitLeft = 233
-    ExplicitTop = 82
-    ExplicitWidth = 750
-    ExplicitHeight = 881
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
@@ -575,8 +337,6 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitLeft = 17
-      ExplicitTop = 9
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -663,7 +423,6 @@ object MainForm: TMainForm
         Align = alTop
         AutoSize = True
         TabOrder = 1
-        ExplicitWidth = 748
       end
       object Bpanel: TPanel
         Left = 0
@@ -673,46 +432,24 @@ object MainForm: TMainForm
         Align = alBottom
         AutoSize = True
         TabOrder = 2
-        ExplicitTop = 799
-        ExplicitWidth = 748
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
-          Width = 563
+          Width = 161
           Height = 78
           Align = alLeft
           AutoSize = True
           ButtonHeight = 75
           Caption = 'ToolBar2'
           TabOrder = 0
-          object KniveMovieBtn: TArrayBotButton
-            Left = 0
-            Top = 0
-            Width = 185
-            Height = 75
-            Caption = 'Record Knife Video'
-            TabOrder = 2
-            SoundID = 'BUTTON_CLICK_4'
-          end
-          object RecordVideoBtn: TArrayBotButton
-            Left = 185
-            Top = 0
-            Width = 217
-            Height = 75
-            Align = alLeft
-            Caption = 'Record Whisker Video'
-            TabOrder = 0
-            OnClick = RecordVideoBtnClick
-            SoundID = 'BUTTON_CLICK_4'
-          end
           object TakeSnapShotBtn: TArrayBotButton
-            Left = 402
+            Left = 0
             Top = 0
             Width = 161
             Height = 75
             Align = alLeft
             Caption = 'Take SnapShot'
-            TabOrder = 1
+            TabOrder = 0
             OnClick = TakeSnapShotBtnClick
             SoundID = 'BUTTON_CLICK_4'
           end
@@ -731,7 +468,6 @@ object MainForm: TMainForm
           AllowTextButtons = True
           TabOrder = 1
           Wrapable = False
-          ExplicitLeft = 539
         end
       end
     end
@@ -746,8 +482,6 @@ object MainForm: TMainForm
     Caption = '<'
     TabOrder = 2
     Visible = False
-    ExplicitTop = 82
-    ExplicitHeight = 881
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -759,15 +493,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 10
     OnTimer = mShutDownTimerTimer
-    Left = 368
-    Top = 152
-  end
-  object mCaptureVideoTimer: TTimer
-    Enabled = False
-    Interval = 1
-    OnTimer = mCaptureVideoTimerTimer
-    Left = 672
-    Top = 432
+    Left = 424
+    Top = 424
   end
   object mMediaPopup: TPopupMenu
     Left = 304
@@ -783,8 +510,8 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 250
     OnTimer = mStartupTimerTimer
-    Left = 368
-    Top = 280
+    Left = 336
+    Top = 432
   end
   object CameraPopup: TPopupMenu
     Left = 120
@@ -861,9 +588,6 @@ object MainForm: TMainForm
       object N5: TMenuItem
         Caption = '-'
       end
-      object UC7StatusChart1: TMenuItem
-        Action = OpenHandWheelPositionFormA
-      end
       object OpenLoggerForm1: TMenuItem
         Caption = 'Open Logger Form'
         OnClick = OpenLoggerForm1Click
@@ -877,16 +601,11 @@ object MainForm: TMainForm
       object ThemesMenu: TMenuItem
         Caption = 'Theme'
       end
-      object Hide1: TMenuItem
-        Action = ToggleControlBar
-        AutoCheck = True
-      end
     end
     object Help1: TMenuItem
       Caption = 'Help'
       object About1: TMenuItem
         Caption = 'About'
-        OnClick = About1Click
       end
     end
   end
@@ -913,8 +632,6 @@ object MainForm: TMainForm
     object OpenCloseShortcutForm: TAction
       Category = 'File'
       Caption = 'Open Actions'
-      OnExecute = OpenCloseShortcutFormExecute
-      OnUpdate = OpenCloseShortcutFormUpdate
     end
     object ToggleControlBar: TAction
       Category = 'Misc'
@@ -962,25 +679,5 @@ object MainForm: TMainForm
     OutputConverters = <>
     Left = 416
     Top = 24
-  end
-  object VideoRecTimer: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = VideoRecTimerTimer
-    Left = 664
-    Top = 504
-  end
-  object CleanupTimer: TTimer
-    Enabled = False
-    Interval = 300
-    OnTimer = CleanupTimerTimer
-    Left = 648
-    Top = 264
-  end
-  object BroadcastStatusTimer: TTimer
-    Enabled = False
-    OnTimer = BroadcastStatusTimerTimer
-    Left = 656
-    Top = 600
   end
 end

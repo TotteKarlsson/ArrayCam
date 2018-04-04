@@ -28,14 +28,8 @@ object SettingsForm: TSettingsForm
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 625
-    ExplicitHeight = 486
     object TabSheet1: TTabSheet
       Caption = 'Camera'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 458
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -118,10 +112,6 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 458
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
@@ -286,10 +276,8 @@ object SettingsForm: TSettingsForm
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 486
-    ExplicitWidth = 625
     object mCloseButton: TButton
-      Left = 512
+      Left = 488
       Top = 2
       Width = 99
       Height = 45

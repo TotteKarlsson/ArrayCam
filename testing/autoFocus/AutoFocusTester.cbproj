@@ -58,7 +58,7 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;ArrayCamPackage.lib;Tee.lib;dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;Tee.lib;dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -112,17 +112,14 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageStatics>ArrayCamPackage.lib;dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</LinkPackageStatics>
+        <LinkPackageStatics>dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</LinkPackageStatics>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
-        <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_MinorVer>7</VerInfo_MinorVer>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=0.7.2.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_Debug>true</VerInfo_Debug>
-        <UWP_CppLogo44>arraycam.ico</UWP_CppLogo44>
-        <UWP_CppLogo150>arraycam.ico</UWP_CppLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -133,9 +130,6 @@
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="ArduinoClientLogic.cpp">
-            <BuildOrder>13</BuildOrder>
-        </CppCompile>
         <CppCompile Include="ArrayCamUtilities.cpp">
             <DependentOn>ArrayCamUtilities.h</DependentOn>
             <BuildOrder>4</BuildOrder>
@@ -146,17 +140,11 @@
         <CppCompile Include="auto_link.cpp">
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <CppCompile Include="BarcodeLogic.cpp">
-            <BuildOrder>9</BuildOrder>
-        </CppCompile>
         <CppCompile Include="CameraFunctions.cpp">
             <BuildOrder>8</BuildOrder>
         </CppCompile>
         <CppCompile Include="Closing.cpp">
             <BuildOrder>18</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="DBLogic.cpp">
-            <BuildOrder>5</BuildOrder>
         </CppCompile>
         <CppCompile Include="forms\TLoggerForm.cpp">
             <Form>LoggerForm</Form>
@@ -164,34 +152,34 @@
             <DependentOn>forms\TLoggerForm.h</DependentOn>
             <BuildOrder>17</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TSettingsForm.cpp">
+            <FormType>dfm</FormType>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
         <CppCompile Include="Miscellaneous.cpp">
             <BuildOrder>7</BuildOrder>
         </CppCompile>
         <CppCompile Include="NavitarLogic.cpp">
             <BuildOrder>6</BuildOrder>
         </CppCompile>
+        <CppCompile Include="source\ArrayCamIPCServerReceiver.cpp">
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
         <CppCompile Include="source\ArrayCamServer.cpp">
             <DependentOn>source\ArrayCamServer.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
-        <CppCompile Include="source\ConnectToArduinoServerThread.cpp">
-            <DependentOn>source\ConnectToArduinoServerThread.h</DependentOn>
-            <BuildOrder>16</BuildOrder>
+        <CppCompile Include="source\ArrayCamUtils.cpp">
+            <BuildOrder>13</BuildOrder>
         </CppCompile>
         <CppCompile Include="StartingUp.cpp">
             <BuildOrder>10</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="SynchronizedFunctions.cpp">
-            <BuildOrder>11</BuildOrder>
         </CppCompile>
         <CppCompile Include="TMainForm.cpp">
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="UC7Logic.cpp">
-            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
@@ -237,12 +225,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>AutoFocusTester.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -263,6 +245,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>AutoFocusTester.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -273,9 +261,16 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png" Configuration="Debug" Class="UWP_CppLogo44">
                     <Platform Name="Win32">
-                        <RemoteName>AutoFocusTester.tds</RemoteName>
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>AutoFocusTester.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -284,10 +279,10 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="arraycam.ico" Configuration="Debug" Class="UWP_CppLogo44">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png" Configuration="Debug" Class="UWP_CppLogo150">
                     <Platform Name="Win32">
                         <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo44x44.png</RemoteName>
+                        <RemoteName>Logo150x150.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

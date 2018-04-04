@@ -56,9 +56,9 @@ void ArrayCamServer::broadcast(ACMessageID id, const string& arg1, const string&
 
 void ArrayCamServer::broadcastStatus()
 {
-    stringstream msg;
-    msg << "IS_RECORDING="<<dsl::toString(mMainForm.mCaptureVideoTimer->Enabled);
-   	notifyClients(msg.str());
+//    stringstream msg;
+////    msg << "IS_RECORDING="<<dsl::toString(mMainForm.mCaptureVideoTimer->Enabled);
+//   	notifyClients(msg.str());
 }
 
 void ArrayCamServer::notifyClients(const string& msg)
@@ -95,19 +95,7 @@ bool ArrayCamServer::processRequest(IPCMessage& msg)
     StringList msgList(msg, ',');
 
     /* CAMERA */
-    if(compareStrings(ap[acrStartVideoRecorder], msgList[0], csCaseInsensitive))
-    {
-    	Log(lInfo) << "Starting recording video";
-        TThread::Synchronize(NULL, mMainForm.startRecordingMovie);
-
-    }
-    else if(compareStrings(ap[acrStopVideoRecorder], msgList[0], csCaseInsensitive))
-    {
-    	Log(lInfo) << "Stop recording video";
-       	TThread::Synchronize(NULL, mMainForm.stopRecordingMovie);
-    }
-
-    else if(compareStrings(ap[acrTakeSnapShot], msgList[0], csCaseInsensitive))
+    if(compareStrings(ap[acrTakeSnapShot], msgList[0], csCaseInsensitive))
     {
     	Log(lInfo) << "Take snapshot";
         TThread::Synchronize(NULL, mMainForm.takeSnapShot);
