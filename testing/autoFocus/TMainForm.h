@@ -35,6 +35,8 @@
 #include "TSoundsFrame.h"
 #include "dslTSTDStringLabeledEdit.h"
 #include "dslTFloatLabel.h"
+#include "dslTLogFileReader.h"
+#include "dslTLogMemoFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "ello/atElloUIClient.h"
@@ -170,8 +172,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TButton *BrowseForMediaFolderBtn;
 	TSTDStringLabeledEdit *MediaFolderE;
 	TPanel *Bpanel;
-	TToolBar *ToolBar3;
 	TMenuItem *ThemesMenu;
+	TLogMemoFrame *TLogMemoFrame1;
+	TSplitter *Splitter1;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);

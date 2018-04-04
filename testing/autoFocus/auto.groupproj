@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F137324C-DA28-4767-846D-7C4724AB8DD3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AutoFocusTester.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="dslVCLComponents">
+        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj"/>
+    </Target>
+    <Target Name="dslVCLComponents:Clean">
+        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dslVCLComponents:Make">
+        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="AutoFocusTester">
+        <MSBuild Projects="AutoFocusTester.cbproj"/>
+    </Target>
+    <Target Name="AutoFocusTester:Clean">
+        <MSBuild Projects="AutoFocusTester.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AutoFocusTester:Make">
+        <MSBuild Projects="AutoFocusTester.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="dslVCLComponents;AutoFocusTester"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="dslVCLComponents:Clean;AutoFocusTester:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="dslVCLComponents:Make;AutoFocusTester:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

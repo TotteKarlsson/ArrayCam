@@ -62,6 +62,7 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	mMainContentPanelWidth = MainContentPanel->Width;
+    mLogLevel = gLogger.getLogLevel();
 	mGeneralProperties.write();
 	//Write to file
 	mIniFile.save();

@@ -17,6 +17,8 @@
 #pragma link "dslTSTDStringLabeledEdit"
 #pragma link "TArrayBotBtn"
 #pragma link "TNavitarMotorFrame"
+#pragma link "dslTLogFileReader"
+#pragma link "dslTLogMemoFrame"
 #pragma resource "*.dfm"
 
 TMainForm *MainForm;
@@ -59,7 +61,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     //The loglevel is read from ini file
 	gLogger.setLogLevel(mLogLevel);
-
+	TLogMemoFrame1->init();
 
     mServiceCamera1.onCameraOpen 			= onCameraOpen;
     mServiceCamera1.onCameraClose 			= onCameraClose;

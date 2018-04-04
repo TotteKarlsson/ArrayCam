@@ -64,8 +64,8 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>source\;forms\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>source\;forms\;P:\AllenInstitute\ArrayCam\app\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>P:\libs\dsl\VCL\Frames\;source\;forms\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>P:\libs\dsl\VCL\Frames\;source\;forms\;P:\AllenInstitute\ArrayCam\app\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>AutoFocusTester</SanitizedProjectName>
         <Custom_Styles>Carbon|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Carbon.vsf;&quot;Charcoal Dark Slate|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\CharcoalDarkSlate.vsf&quot;;Glossy|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glossy.vsf;Glow|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glow.vsf;&quot;Iceberg Classico|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\IcebergClassico.vsf&quot;;Luna|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Luna.vsf;Sky|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Sky.vsf</Custom_Styles>
     </PropertyGroup>
@@ -181,8 +181,16 @@
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.cpp">
+            <Form>LogMemoFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.h</DependentOn>
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
         <FormResources Include="TMainForm.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
+        <FormResources Include="P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
