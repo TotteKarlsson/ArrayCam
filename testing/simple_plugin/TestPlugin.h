@@ -3,14 +3,16 @@
 #include "dslPluginWithEvents.h"
 #include "dslProperty.h"
 #include "TestPluginWorker.h"
-#include "PluginExporter.h"
 //---------------------------------------------------------------------------
+
 using dsl::PluginWithEvents;
 using dsl::PluginManager;
 using dsl::DSLObject;
 using dsl::Property;
 using dsl::Plugin;
 
+//This simple plugin has one simple property, "mAnInteger".
+//The plugin worker simply multiply this value (initially '1'), with two;
 class TestPlugin : public PluginWithEvents
 {
     friend class TestPluginWorker;
@@ -18,21 +20,16 @@ class TestPlugin : public PluginWithEvents
                                         TestPlugin(PluginManager* manager);
                                         ~TestPlugin();
 
+                                        //!The first argument allow the client to set
+                                        //the initial value of the property, anInt
         bool                            execute(DSLObject* obj, bool inThread);
-        virtual void                    setPropertyValue(const string& nameOf, const void* value);
-        int                             TestConnection();
-        int                             TestConnectionByToken(string& theToken);
 
     private:
-        Property<int>                   mUpdateDelay;
+        Property<int>                   mAnInteger;
+
+                                        //!The worker is doing the work..
         TestPluginWorker      			mWorker;
 };
-
-extern "C"
-{
-    PLUGIN_DS Plugin*   createPlugin(void* manager);
-    PLUGIN_DS bool      destroyPlugin(Plugin* p);
-}
 
 
 #endif

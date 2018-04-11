@@ -45,16 +45,14 @@ void TestPluginWorker::run()
         mTheHost.mWorkStartedEvent(mTheHost.mWorkStartedData1, NULL);
     }
 
-    int msg = 0;
     try
     {
-        msg = mTheHost.TestConnection();
+        mTheHost.mAnInteger = mTheHost.mAnInteger * 2;
 
         if(mTheHost.mWorkProgressEvent)
         {
             mTheHost.mWorkProgressEvent(mTheHost.mWorkProgressData1, NULL);
 	    }
-
     }
     catch(...)
     {
@@ -63,7 +61,7 @@ void TestPluginWorker::run()
 
     if(mTheHost.mWorkFinishedEvent)
     {
-        mTheHost.mWorkFinishedEvent(mTheHost.mWorkFinishedData1, &msg);
+        mTheHost.mWorkFinishedEvent(mTheHost.mWorkFinishedData1, &(mTheHost.mAnInteger));
     }
 
     mTheHost.mIsWorking = false;

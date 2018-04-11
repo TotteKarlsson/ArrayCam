@@ -184,5 +184,11 @@ void onPluginRunning(void* a, void* b)
 void onPluginExit(void* a, void* b)
 {
     Log(lInfo) << "Plugin worker exited";
+
+    if(b)
+    {
+	    Property<int>* p = (Property<int>*) b;
+	    Log(lInfo) << "The plugins property: " << p->getLabel() << " value is " << p->getValue();
+    }
 }
 
