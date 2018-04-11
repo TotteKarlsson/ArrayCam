@@ -3,10 +3,22 @@
         <ProjectGuid>{F137324C-DA28-4767-846D-7C4724AB8DD3}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\atapi\builds\atComponents\atComponents.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="AutoFocusTester.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\libs\dsl\temp\dirChanges.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,6 +29,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="dslFoundation">
+        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj"/>
+    </Target>
+    <Target Name="dslFoundation:Clean">
+        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dslFoundation:Make">
+        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="dslVCLComponents">
         <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj"/>
     </Target>
@@ -25,6 +46,24 @@
     </Target>
     <Target Name="dslVCLComponents:Make">
         <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atComponents">
+        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj"/>
+    </Target>
+    <Target Name="atComponents:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atComponents:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atVisualComponents">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj"/>
+    </Target>
+    <Target Name="atVisualComponents:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atVisualComponents:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj" Targets="Make"/>
     </Target>
     <Target Name="AutoFocusTester">
         <MSBuild Projects="AutoFocusTester.cbproj"/>
@@ -35,14 +74,23 @@
     <Target Name="AutoFocusTester:Make">
         <MSBuild Projects="AutoFocusTester.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="dirChanges">
+        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj"/>
+    </Target>
+    <Target Name="dirChanges:Clean">
+        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dirChanges:Make">
+        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslVCLComponents;AutoFocusTester"/>
+        <CallTarget Targets="dslFoundation;dslVCLComponents;atComponents;atVisualComponents;AutoFocusTester;dirChanges"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslVCLComponents:Clean;AutoFocusTester:Clean"/>
+        <CallTarget Targets="dslFoundation:Clean;dslVCLComponents:Clean;atComponents:Clean;atVisualComponents:Clean;AutoFocusTester:Clean;dirChanges:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslVCLComponents:Make;AutoFocusTester:Make"/>
+        <CallTarget Targets="dslFoundation:Make;dslVCLComponents:Make;atComponents:Make;atVisualComponents:Make;AutoFocusTester:Make;dirChanges:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

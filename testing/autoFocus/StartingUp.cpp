@@ -6,6 +6,8 @@
 #include "atVCLUtils.h"
 #include "TNavitarPresetFrame.h"
 #include "ArrayCamUtilities.h"
+#include "arraybot/apt/atAPTMotor.h"
+#include "arraybot/apt/atDeviceManager.h"
 using namespace dsl;
 
 
@@ -32,6 +34,23 @@ void TMainForm::setupProperties()
 	mGeneralProperties.add((BaseProperty*)  &mReticleVisible.setup(					        "RETICLE_VISIBILITY",      	        false));
 
 }
+
+bool TMainForm::createMotorFrame(APTMotor* mtr)
+{
+	if(!mtr)
+    {
+    	return false;
+    }
+
+    TMotorFrame *f = new TMotorFrame(mtr->getName(), ScrollBox1);
+   	f->assignMotor(mtr);
+    f->Parent = ScrollBox1;
+    f->Align = alTop;
+
+	f->MotorStatusTimer->Enabled = true;
+    return true;
+}
+
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
@@ -51,9 +70,24 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	mCamera1BackPanel->Top 		= 0;
 	mCamera1BackPanel->Left 	= 0;
 
-
     //Setup the server
     mACServer.start(ArrayCamServerPortE->getValue());
+
+    //Setup motor frame
+    mDeviceManager.connectAllDevices();
+
+    APTDevice* dev = mDeviceManager.getFirst();
+    if(dev)
+    {
+    	dev->setName("test");
+    }
+
+	createMotorFrame(dynamic_cast<APTMotor*> (dev));
+    while(mDeviceManager.getNext())
+    {
+		createMotorFrame(dynamic_cast<APTMotor*> (mDeviceManager.getCurrent()));
+    }
+
 
     readRegistry();
 }

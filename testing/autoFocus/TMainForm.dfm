@@ -26,7 +26,7 @@ object MainForm: TMainForm
   object Splitter2: TSplitter
     Left = 983
     Top = 0
-    Height = 484
+    Height = 760
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
@@ -34,7 +34,7 @@ object MainForm: TMainForm
   end
   object Splitter1: TSplitter
     Left = 0
-    Top = 484
+    Top = 760
     Width = 1835
     Height = 3
     Cursor = crVSplit
@@ -46,7 +46,7 @@ object MainForm: TMainForm
     Left = 986
     Top = 0
     Width = 818
-    Height = 484
+    Height = 760
     Align = alRight
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
@@ -55,18 +55,18 @@ object MainForm: TMainForm
       Left = 1
       Top = 1
       Width = 816
-      Height = 482
+      Height = 758
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 0
       DesignSize = (
         816
-        482)
+        758)
       object MainPC: TPageControl
         Left = 1
         Top = 1
         Width = 814
-        Height = 480
+        Height = 756
         ActivePage = Main
         Align = alClient
         TabHeight = 80
@@ -76,11 +76,15 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 390
+            Height = 666
             Align = alClient
             TabOrder = 0
           end
@@ -88,11 +92,15 @@ object MainForm: TMainForm
         object TabSheet9: TTabSheet
           Caption = 'Navitar'
           ImageIndex = 7
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
             Width = 313
-            Height = 390
+            Height = 666
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
@@ -109,7 +117,7 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 273
+              Top = 549
               Width = 309
               Height = 115
               Align = alBottom
@@ -185,7 +193,7 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 390
+            Height = 666
             Align = alClient
             TabOrder = 1
           end
@@ -193,11 +201,15 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object MiscPageControl: TPageControl
             Left = 0
             Top = 0
             Width = 806
-            Height = 390
+            Height = 666
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
@@ -206,6 +218,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -260,6 +276,10 @@ object MainForm: TMainForm
             object TabSheet11: TTabSheet
               Caption = 'Media'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox6: TGroupBox
                 Left = 0
                 Top = 0
@@ -311,7 +331,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 983
-    Height = 484
+    Height = 760
     Align = alClient
     BevelEdges = []
     TabOrder = 1
@@ -319,7 +339,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 1
       Width = 981
-      Height = 482
+      Height = 758
       Margins.Left = 0
       Margins.Right = 0
       Align = alClient
@@ -416,7 +436,7 @@ object MainForm: TMainForm
       end
       object Bpanel: TPanel
         Left = 0
-        Top = 400
+        Top = 676
         Width = 981
         Height = 82
         Align = alBottom
@@ -426,15 +446,25 @@ object MainForm: TMainForm
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
-          Width = 161
+          Width = 512
           Height = 80
           Align = alLeft
           ButtonHeight = 75
           Caption = 'ToolBar2'
           TabOrder = 0
-          ExplicitHeight = 160
-          object TakeSnapShotBtn: TArrayBotButton
+          object startAF: TArrayBotButton
             Left = 0
+            Top = 0
+            Width = 161
+            Height = 75
+            Align = alLeft
+            Caption = 'Start AutoFocus'
+            TabOrder = 1
+            OnClick = startAFClick
+            SoundID = 'BUTTON_CLICK_4'
+          end
+          object TakeSnapShotBtn: TArrayBotButton
+            Left = 161
             Top = 0
             Width = 161
             Height = 75
@@ -452,7 +482,7 @@ object MainForm: TMainForm
     Left = 1804
     Top = 0
     Width = 31
-    Height = 484
+    Height = 760
     Action = ToggleMainContentPanelA
     Align = alRight
     Caption = '<'
@@ -461,16 +491,19 @@ object MainForm: TMainForm
   end
   inline TLogMemoFrame1: TLogMemoFrame
     Left = 0
-    Top = 487
+    Top = 763
     Width = 1835
-    Height = 476
+    Height = 200
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 487
+    ExplicitTop = 763
     ExplicitWidth = 1835
+    ExplicitHeight = 200
     inherited Panel1: TPanel
       Width = 1835
+      Height = 200
       ExplicitWidth = 1835
+      ExplicitHeight = 200
       inherited GroupBox1: TGroupBox
         Width = 1833
         ExplicitWidth = 1833
@@ -483,7 +516,9 @@ object MainForm: TMainForm
       end
       inherited infoMemo: TMemo
         Width = 1833
+        Height = 148
         ExplicitWidth = 1833
+        ExplicitHeight = 148
       end
     end
   end
@@ -596,20 +631,11 @@ object MainForm: TMainForm
         Caption = 'Open Logger Form'
         OnClick = OpenLoggerForm1Click
       end
-      object Actions1: TMenuItem
-        Action = OpenCloseShortcutForm
-      end
       object N6: TMenuItem
         Caption = '-'
       end
       object ThemesMenu: TMenuItem
         Caption = 'Theme'
-      end
-    end
-    object Help1: TMenuItem
-      Caption = 'Help'
-      object About1: TMenuItem
-        Caption = 'About'
       end
     end
   end
@@ -683,5 +709,12 @@ object MainForm: TMainForm
     OutputConverters = <>
     Left = 416
     Top = 24
+  end
+  object AutoFocusTimer: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = AutoFocusTimerTimer
+    Left = 578
+    Top = 425
   end
 end

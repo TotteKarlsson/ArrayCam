@@ -7,6 +7,8 @@
 #include "dslVCLUtils.h"
 #include "TSelectIntegerForm.h"
 #include "ArrayCamUtilities.h"
+#include <bitset>
+#include "arraybot/apt/atAPTMotor.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "dslTFloatLabel"
@@ -19,12 +21,14 @@
 #pragma link "TNavitarMotorFrame"
 #pragma link "dslTLogFileReader"
 #pragma link "dslTLogMemoFrame"
+#pragma link "TMotorFrame"
 #pragma resource "*.dfm"
 
 TMainForm *MainForm;
 
 extern ArrayCamUtilities acu;
 using namespace dsl;
+using namespace std;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -50,10 +54,12 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mReticleVisible(false),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         LoggerForm(NULL),
-        ActionsForm(NULL)
+        mFocusScoreWatcher("d:\\AC\\live")
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
+
+    std::bitset<23> s;
 
     //Properties are retrieved and saved to an ini file
     setupProperties();
@@ -79,6 +85,83 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
     Section->Text = mReticleVisible ? "Hide Reticle" : "Show Reticle";
 
 	mReticle2.visible(false);
+
+    //Setup the focusController
+	mFocusScoreWatcher.assignCallback(onFocusScore);
+}
+
+double getScore(const string& fName)
+{
+    ifstream in(fName.c_str());
+	double val(-1);
+    if(in)
+    {
+        in >> val;
+    }
+    return val;
+}
+
+void TMainForm::onFocusScore(int* notifier)
+{
+    enum direction {fwd, rev};
+    static double lastScore = 0;
+    static direction directionWas  = fwd;
+    string sharpnessFile("sharpness.txt");
+	DirectoryNotifier* n = (DirectoryNotifier*) notifier;
+    if (n->checkOverflow() || !n)
+    {
+        Log(lInfo) << "Queue overflowed, or notifier is NULL."<<endl;
+    }
+    else
+    {
+        DirectoryChangeNotification notification;
+        n->pop(notification);
+		//        Log(lInfo) << actionToStr(notification.first) << " " << notification.second << endl;
+        if(notification.second == sharpnessFile)
+        {
+
+            double newScore = getScore(joinPath("d:\\AC\\live", sharpnessFile));
+			Log(lInfo) << "Got new sharpness value"<<newScore;
+            APTMotor* m = dynamic_cast<APTMotor*>(this->mDeviceManager.getFirst());
+            double scoreDifference = fabs(newScore) - fabs(lastScore);
+            double moveStep(0.1);
+            if(newScore != -1 && m != NULL && (fabs(scoreDifference) > 0.001))
+            {
+                if(!m->isActive())
+                {
+                    if(newScore > lastScore)
+                    {
+                        if(directionWas == fwd)
+                        {
+                        	m->moveRelative(moveStep);
+                        	Log(lInfo) << "Moving forward";
+	                    }
+                        else
+                        {
+                            m->moveRelative(-1.*moveStep);
+                            directionWas = rev;
+                            Log(lInfo) << "Moving reverse";
+                        }
+                    }
+                    else//Move oppposite direction
+                    {
+                        if(directionWas == fwd)
+                        {
+                            m->moveRelative(-1.*moveStep);
+                            directionWas = rev;
+                        	Log(lInfo) << "Moving reverse";
+	                    }
+                        else
+                        {
+                        	m->moveRelative(moveStep);
+                            Log(lInfo) << "Moving forward";
+                        }
+                    }
+					lastScore = newScore;
+            	}
+            }
+        }
+    }
 }
 
 __fastcall TMainForm::~TMainForm()
@@ -92,7 +175,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
     try
     {
         //Connect navitar motors
-        NavitarControllerConnectBtn->Click();
+//        NavitarControllerConnectBtn->Click();
 
     }
     catch(const TDBXError& e)
@@ -261,6 +344,27 @@ void __fastcall TMainForm::ThemesMenuClick(TObject *Sender)
 	acu.Style = stdstr(styleName);
 	writeStringToRegistry(acu.AppRegistryRoot, "", "Theme", acu.Style);
 
+}
+
+
+void __fastcall TMainForm::AutoFocusTimerTimer(TObject *Sender)
+{
+    //Take a snapshot
+	if(mCamera1.SaveImage(mFocusController.getSnapShotFileName().c_str()))
+    {
+    	Log(lError) << "Failed saving focus shot.";
+    }
+    else
+    {
+    	Log(lDebug5) << "Saved focus shot.";
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::startAFClick(TObject *Sender)
+{
+    AutoFocusTimer->Enabled = !AutoFocusTimer->Enabled;
+	startAF->Caption = AutoFocusTimer->Enabled ? "Stop AF" : "Start AF";
 }
 
 

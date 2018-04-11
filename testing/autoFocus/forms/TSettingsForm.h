@@ -6,12 +6,13 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
+#include "TMainForm.h"
 #include "dslTPropertyCheckBox.h"
 #include "dslTIntegerLabeledEdit.h"
 #include "dslTSTDStringLabeledEdit.h"
 #include "dslTFloatLabel.h"
 #include "dslTIntLabel.h"
-#include "TMainForm.h"
+
 //---------------------------------------------------------------------------
 
 class PACKAGE TSettingsForm : public TForm

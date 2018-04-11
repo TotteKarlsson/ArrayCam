@@ -1,5 +1,6 @@
 #ifndef TMainFormH
 #define TMainFormH
+#include "dslDirectoryNotifier.h"
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -37,6 +38,7 @@
 #include "dslTFloatLabel.h"
 #include "dslTLogFileReader.h"
 #include "dslTLogMemoFrame.h"
+#include "TMotorFrame.h"
 #include <memory>
 #include "arduino/atLightsArduinoClient.h"
 #include "ello/atElloUIClient.h"
@@ -61,6 +63,8 @@
 #include "dslTSTDStringLabeledEdit.h"
 #include "dslTFloatLabeledEdit.h"
 #include "thirdparty/uc480/uc480Class.h"
+#include "arraybot/apt/atDeviceManager.h"
+#include "atFocusController.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -69,7 +73,6 @@ class TRegisterNewRibbonForm;
 class TReticlePopupForm;
 
 class TLoggerForm;
-class TActionsForm;
 using dsl::Property;
 using Poco::Timestamp;
 using dsl::IniFileProperties;
@@ -148,11 +151,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *N3;
 	TMenuItem *N4;
 	TAction *ToggleMainContentPanelA;
-	TMenuItem *Help1;
 	TMenuItem *N5;
 	TMenuItem *OpenLoggerForm1;
-
-	TMenuItem *Actions1;
 	TBindingsList *BindingsList2;
 	TButton *Button1;
 	TMenuItem *ShowHideMainContentPanel1;
@@ -175,6 +175,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	TMenuItem *ThemesMenu;
 	TLogMemoFrame *TLogMemoFrame1;
 	TSplitter *Splitter1;
+	TTimer *AutoFocusTimer;
+	TArrayBotButton *startAF;
 	void __fastcall mCameraStartLiveBtnClick(TObject *Sender);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormCreate(TObject *Sender);
@@ -208,6 +210,8 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall PageControlExit(TObject *Sender);
 	void __fastcall MediaFolderEKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall ThemesMenuClick(TObject *Sender);
+	void __fastcall AutoFocusTimerTimer(TObject *Sender);
+	void __fastcall startAFClick(TObject *Sender);
 
 	protected:
 		enum StatusBarPanels{	sbpTemperature = 0,		sbpHumidity,
@@ -237,6 +241,10 @@ class PACKAGE TMainForm  : public TRegistryForm
 												//!Reticle
 		Property<bool>							mReticleVisible;
 
+		FocusController                         mFocusController;
+      	DirectoryNotifier                       mFocusScoreWatcher;
+        void                                    onFocusScore(int* notifier);
+
 												//Camera variables
 												//!The camera class
 		Cuc480 									mCamera1;
@@ -265,7 +273,9 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void									onNavitarDisconnected();
 
 		TLoggerForm*							LoggerForm;
-		TActionsForm*							ActionsForm;
+	    DeviceManager 							mDeviceManager;
+		bool 						        	createMotorFrame(APTMotor* mtr);
+
 	//=================================================================================================
 	public:
 

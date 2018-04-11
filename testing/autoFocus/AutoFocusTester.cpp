@@ -9,9 +9,9 @@
 
 #include "core/ATExceptions.h"
 //---------------------------------------------------------------------------
+USEFORM("P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.cpp", LogMemoFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
-USEFORM("P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.cpp", LogMemoFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 ArrayCamUtilities acu;
 

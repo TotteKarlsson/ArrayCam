@@ -30,6 +30,10 @@ object SettingsForm: TSettingsForm
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Camera'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = 9
         Top = 152
@@ -112,6 +116,10 @@ object SettingsForm: TSettingsForm
     object TabSheet4: TTabSheet
       Caption = 'Image'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox4: TGroupBox
         Left = 19
         Top = 19
