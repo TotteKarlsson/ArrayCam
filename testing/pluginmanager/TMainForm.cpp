@@ -19,40 +19,78 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 {
 }
 
+__fastcall TMainForm::~TMainForm()
+{
+	mPythonPM.unloadAll();
+}
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoadPluginsBtnClick(TObject *Sender)
 {
     TButton* b = dynamic_cast<TButton*>(Sender);
 
+    if(b == LoadPluginsBtn)
+    {
+//		loadPlugins();
+        loadPythonPlugins();
+    }
+    else if(b == GetPluginsInfoBtn)
+    {
+        //Get information about the plugin manager
+        Log(lInfo) << PluginManager1->mPM.getInfo();
+    }
+}
+
+void TMainForm::loadPlugins()
+{
 	try
 	{
-        if(b == LoadPluginsBtn)
+        int j = PluginManager1->loadPlugins();
+        if(j == 0)
         {
-    		int j = PluginManager1->loadPlugins();
-            if(j == 0)
-            {
-                Log(lInfo) << "No plugins were loaded.";
-            }
-            else
-            {
-                Log(lInfo) << "Loaded "<<j<<" plugins.";
-			    Log(lInfo) << PluginManager1->mPM.getInfo();
+            Log(lInfo) << "No plugins were loaded.";
+        }
+        else
+        {
+            Log(lInfo) << "Loaded " << j << " plugins.";
+            Log(lInfo) << PluginManager1->mPM.getInfo();
+            PluginsLB->Clear();
 
-                PluginsLB->Clear();
-                StringList pl = PluginManager1->getLoadedPluginsNames();
-                for(int i = 0; i < pl.count(); i++)
-                {
-                    Plugin* p = PluginManager1->Plugins[i];
-                	PluginsLB->AddItem(pl[i].c_str(), (TObject*) p);
-                }
+            StringList pl = PluginManager1->getLoadedPluginsNames();
+            for(int i = 0; i < pl.count(); i++)
+            {
+                Plugin* p = PluginManager1->Plugins[i];
+                PluginsLB->AddItem(pl[i].c_str(), (TObject*) p);
             }
         }
-        else if(b == GetPluginsInfoBtn)
-        {
-		    //Get information about the plugin manager
-		    Log(lInfo) << PluginManager1->mPM.getInfo();
-        }
+    }
+	catch(const DSLException& e)
+	{
+		Log(lError) << "Exception: "<<e.what();
 	}
+}
+void TMainForm::loadPythonPlugins()
+{
+	try
+	{
+        int j = mPythonPM.loadPlugins();
+        if(j == 0)
+        {
+            Log(lInfo) << "No plugins were loaded.";
+        }
+        else
+        {
+            Log(lInfo) << "Loaded " << j << " plugins.";
+            Log(lInfo) << mPythonPM.getInfo();
+            PythonPluginsLB->Clear();
+
+            StringList pl = mPythonPM.getPluginNames();
+            for(int i = 0; i < pl.count(); i++)
+            {
+                Plugin* p = mPythonPM.getPlugin(i);
+                PythonPluginsLB->AddItem(pl[i].c_str(), (TObject*) p);
+            }
+        }
+    }
 	catch(const DSLException& e)
 	{
 		Log(lError) << "Exception: "<<e.what();
@@ -122,6 +160,7 @@ void __fastcall TMainForm::PluginsLBClick(TObject *Sender)
         if(p)
         {
             Log(lInfo) << "Checking out plugin: "<<p->getName();
+            Log(lInfo) <<p->getExtendedInfo();
             ExecuteBtn->Enabled = true;
             if(!PluginInfoFrame)
             {
@@ -140,6 +179,39 @@ void __fastcall TMainForm::PluginsLBClick(TObject *Sender)
     {
     	ExecuteBtn->Enabled = false;
     }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::PythonPluginsLBClick(TObject *Sender)
+{
+    //Retrieve plugin
+    int indx = PythonPluginsLB->ItemIndex;
+    if(indx > -1)
+    {
+        Plugin* p = (Plugin*) PythonPluginsLB->Items->Objects[indx];
+        if(p)
+        {
+            Log(lInfo) << "Checking out plugin: "<<p->getName();
+            Log(lInfo) <<p->getExtendedInfo();
+            ExecuteBtn->Enabled = true;
+            if(!PluginInfoFrame)
+            {
+                MessageDlg("Hoops", mtError, TMsgDlgButtons() << mbOK, 0);
+            }
+
+            if(PluginInfoFrame->populate(p))
+            {
+                PluginInfoFrame->Parent = PythonGB;
+                PluginInfoFrame->Left = PythonPluginsLB->Left + 100;
+                PluginInfoFrame->Align = alLeft;
+            }
+        }
+    }
+    else
+    {
+    	ExecuteBtn->Enabled = false;
+    }
+
 }
 
 void __fastcall TMainForm::ExecuteBtnClick(TObject *Sender)
@@ -191,4 +263,6 @@ void onPluginExit(void* a, void* b)
 	    Log(lInfo) << "The plugins property: " << p->getLabel() << " value is " << p->getValue();
     }
 }
+
+
 

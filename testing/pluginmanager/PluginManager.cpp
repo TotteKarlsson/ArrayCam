@@ -5,8 +5,10 @@
 #include "dslVCLUtils.h"
 #include "dslWin32Utils.h"
 //---------------------------------------------------------------------------
-USEFORM("TMainForm.cpp", MainForm);
+#include <Vcl.Styles.hpp>
+#include <Vcl.Themes.hpp>
 USEFORM("P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp", PluginInfoFrame); /* TFrame: File Type */
+USEFORM("TMainForm.cpp", MainForm);
 //---------------------------------------------------------------------------
 using namespace dsl;
 
@@ -19,6 +21,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		setupLogging();
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
+		TStyleManager::TrySetStyle("Turquoise Gray");
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->Run();
 	}
@@ -42,6 +45,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 
 //---------------------------------------------------------------------------
 #pragma comment(lib, "dslFoundation.lib")
+#pragma comment(lib, "dslPlugins.lib")
 
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "dslVCLCommon.lib")

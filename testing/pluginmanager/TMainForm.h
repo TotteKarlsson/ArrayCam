@@ -11,6 +11,7 @@
 #include "dslTPluginManager.h"
 #include "dslTAboutFrame.h"
 #include "dslTPluginInfoFrame.h"
+#include "dslPythonPluginManager.h"
 //---------------------------------------------------------------------------
 
 using dsl::TPluginInfoFrame;
@@ -37,7 +38,8 @@ class TMainForm : public TForm
 		TButton *ExecuteBtn;
 	TButton *LoadPluginsBtn;
 	TButton *GetPluginsInfoBtn;
-	TPluginManager *PythonPluginManager;
+	TGroupBox *PythonGB;
+	TListBox *PythonPluginsLB;
         void __fastcall LoadPluginsBtnClick(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -45,13 +47,18 @@ class TMainForm : public TForm
 		void __fastcall ShutDownTimerTimer(TObject *Sender);
 		void __fastcall PluginsLBClick(TObject *Sender);
 		void __fastcall ExecuteBtnClick(TObject *Sender);
+	void __fastcall PythonPluginsLBClick(TObject *Sender);
 
     private:
         TPluginInfoFrame*   		PluginInfoFrame;
 		Plugin*						getSelectedPlugin();
+        dsl::PythonPluginManager    mPythonPM;
+        void       					loadPlugins();
+        void     					loadPythonPlugins();
 
     public:
         				__fastcall 	TMainForm(TComponent* Owner);
+        				__fastcall 	~TMainForm();
 };
 
 extern PACKAGE TMainForm *MainForm;

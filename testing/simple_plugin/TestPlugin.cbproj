@@ -47,7 +47,6 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <SanitizedProjectName>TestPlugin</SanitizedProjectName>
         <AllPackageLibs>rtl.lib</AllPackageLibs>
-        <IncludePath>$(AML_ROOT)\Source\Core;$(IncludePath)</IncludePath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Manifest_File>None</Manifest_File>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -66,7 +65,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DynamicRTL>true</DynamicRTL>
-        <Defines>EXPORT_PLUGIN;POCO_STATIC;AML_STATIC;$(Defines)</Defines>
+        <Defines>EXPORT_PLUGIN;POCO_STATIC;$(Defines)</Defines>
         <PackageImports>bindcompvcl;TeeUI;MoleculixPackage;VCLCommon;DuneComponents;vcltouch;bcbsmp;bindcompfmx;DBXSqliteDriver;CustomIPTransport;fmx;dsnap;rtl;dbrtl;DbxClientDriver;vcl;fmxase;bindcomp;TeeDB;dsnapcon;DBXInterBaseDriver;Tee;DataSnapCommon;fmxobj;vclx;xmlrtl;DbxCommonDriver;vclimg;fmxdae;DBXMySQLDriver;dbxcds;bdertl;bindengine;vclactnband;dbexpress;vcldb;bindcompdbx;vcldsnap;$(PackageImports)</PackageImports>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -93,7 +92,7 @@
         <BCC_DisableFramePtrElimOpt>true</BCC_DisableFramePtrElimOpt>
         <BCC_DisableSpellChecking>true</BCC_DisableSpellChecking>
         <CLANG_UnwindTables>true</CLANG_UnwindTables>
-        <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)\debug;$(AML_ROOT)\PythonSource\libs;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
@@ -122,6 +121,9 @@
         <CppCompile Include="TestPlugin.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
+        <None Include="TestPluginExporter.h">
+            <BuildOrder>3</BuildOrder>
+        </None>
         <CppCompile Include="TestPluginWorker.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
@@ -224,7 +226,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\bcc32\debug\bin\TestPlugin.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="p:\build\debug\bin\Plugins\TestPlugin.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>TestPlugin.tds</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -295,7 +297,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\bcc32\debug\bin\TestPlugin.dll" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="p:\build\debug\bin\Plugins\TestPlugin.dll" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>TestPlugin.dll</RemoteName>
                         <Overwrite>true</Overwrite>

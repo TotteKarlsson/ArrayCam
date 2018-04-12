@@ -19,42 +19,49 @@ object MainForm: TMainForm
   TextHeight = 13
   object TopGB: TGroupBox
     Left = 0
-    Top = 97
+    Top = 282
     Width = 1070
-    Height = 185
+    Height = 224
     Align = alTop
     Caption = 'Plugin Info'
     TabOrder = 0
+    ExplicitTop = 97
     object PluginsLB: TListBox
       Left = 2
       Top = 15
       Width = 121
-      Height = 168
+      Height = 207
       Align = alLeft
       ItemHeight = 13
       TabOrder = 0
       OnClick = PluginsLBClick
+      ExplicitLeft = 123
+      ExplicitHeight = 168
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 282
+    Top = 506
     Width = 1070
-    Height = 407
+    Height = 183
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 1
+    ExplicitTop = 282
+    ExplicitHeight = 407
     object Memo1: TMemo
       Left = 1
       Top = 1
       Width = 1068
-      Height = 405
+      Height = 181
       Align = alClient
       Lines.Strings = (
         'Memo1')
       ReadOnly = True
       ScrollBars = ssBoth
       TabOrder = 0
+      ExplicitTop = 168
+      ExplicitHeight = 238
     end
   end
   object ControlBar1: TControlBar
@@ -96,11 +103,12 @@ object MainForm: TMainForm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 56
+    Top = 241
     Width = 1070
     Height = 41
     Align = alTop
     TabOrder = 3
+    ExplicitTop = 56
     object ExecuteBtn: TButton
       Left = 16
       Top = 6
@@ -110,6 +118,28 @@ object MainForm: TMainForm
       Enabled = False
       TabOrder = 0
       OnClick = ExecuteBtnClick
+    end
+  end
+  object PythonGB: TGroupBox
+    Left = 0
+    Top = 56
+    Width = 1070
+    Height = 185
+    Align = alTop
+    Caption = 'Plugin Info'
+    TabOrder = 4
+    ExplicitLeft = 1
+    object PythonPluginsLB: TListBox
+      Left = 2
+      Top = 15
+      Width = 121
+      Height = 168
+      Align = alLeft
+      ItemHeight = 13
+      TabOrder = 0
+      OnClick = PythonPluginsLBClick
+      ExplicitLeft = 10
+      ExplicitTop = 17
     end
   end
   object LogFileReader1: TLogFileReader
@@ -128,10 +158,5 @@ object MainForm: TMainForm
   object PluginManager1: TPluginManager
     Left = 248
     Top = 184
-  end
-  object PythonPluginManager: TPluginManager
-    PluginExtension = 'py'
-    Left = 464
-    Top = 201
   end
 end

@@ -3,6 +3,7 @@
 #include "dslPluginWithEvents.h"
 #include "dslProperty.h"
 #include "TestPluginWorker.h"
+#include "TestPluginExporter.h"
 //---------------------------------------------------------------------------
 
 using dsl::PluginWithEvents;
@@ -31,5 +32,18 @@ class TestPlugin : public PluginWithEvents
         TestPluginWorker      			mWorker;
 };
 
+namespace dsl
+{
+extern "C"
+{
+    EXPORTED dsl::Plugin*  	createPlugin(void* manager);
+    EXPORTED bool      		destroyPlugin(dsl::Plugin* p);
+}
+
+}
+
+#pragma comment(lib, "dslFoundation.lib")
+#pragma comment(lib, "dslPlugins.lib")
+#pragma comment(lib, "poco_foundation-static.lib")
 
 #endif
