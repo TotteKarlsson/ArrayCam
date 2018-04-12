@@ -1,32 +1,30 @@
 #pragma hdrstop
-#include "TestPlugin.h"
+#include "PythonPlugin.h"
 #include "dslLogger.h"
 #include "dslException.h"
 //---------------------------------------------------------------------------
-//#undef _DEBUG
 
 using Poco::DateTimeFormatter;
 using namespace dsl;
 
 //---------------------------------------------------------------------------
-TestPlugin::TestPlugin(PluginManager* manager)
+PythonPlugin::PythonPlugin(PluginManager* manager)
 :
-PluginWithEvents( "TestPlugin",   "Test Plugin With Events", manager),
-mAnInteger(1, "An Integer"),
+PluginWithEvents( "PythonPlugin",   "Test Plugin With Events", manager),
 mWorker(*this)
 {
     mVersion = "1.0.0";
 
     //Setup the plugins properties
-    mProperties.add(&mAnInteger);
-    mHint       = "Testing Plugin";
-    mDescription= "Multiply an integer with 2";
+//    mProperties.add(&mAnInteger);
+    mHint       = "Python Plugin";
+    mDescription= "Set this up by running init function in the Python";
 }
 
-TestPlugin::~TestPlugin()
+PythonPlugin::~PythonPlugin()
 {}
 
-bool TestPlugin::execute(DSLObject* subject, bool inThread)
+bool PythonPlugin::execute(DSLObject* subject, bool inThread)
 {
     Log(lInfo)<<"Testing Plugin";
 
@@ -48,7 +46,7 @@ namespace dsl
     Plugin* createPlugin(void* manager)
     {
         //allocate a new plugin object and return it
-        Plugin* p = new TestPlugin((PluginManager*) manager);
+        Plugin* p = new PythonPlugin((PluginManager*) manager);
         if(p)
         {
             gPluginCount++;

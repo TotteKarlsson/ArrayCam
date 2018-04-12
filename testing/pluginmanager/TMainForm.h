@@ -37,6 +37,7 @@ class TMainForm : public TForm
 		TButton *ExecuteBtn;
 	TButton *LoadPluginsBtn;
 	TButton *GetPluginsInfoBtn;
+	TPluginManager *PythonPluginManager;
         void __fastcall LoadPluginsBtnClick(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);

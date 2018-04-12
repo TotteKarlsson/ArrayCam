@@ -15,11 +15,14 @@
         <Projects Include="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\simple_plugin\TestPlugin.cbproj">
+        <Projects Include="..\python_plugin\PythonPlugin.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\pythonFromC\PythonfromC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="PluginManager.cbproj">
-            <Dependencies>..\simple_plugin\TestPlugin.cbproj</Dependencies>
+            <Dependencies>..\python_plugin\PythonPlugin.cbproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -65,32 +68,41 @@
     <Target Name="dslVCLVisualComponents:Make">
         <MSBuild Projects="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="TestPlugin">
-        <MSBuild Projects="..\simple_plugin\TestPlugin.cbproj"/>
+    <Target Name="PythonPlugin">
+        <MSBuild Projects="..\python_plugin\PythonPlugin.cbproj"/>
     </Target>
-    <Target Name="TestPlugin:Clean">
-        <MSBuild Projects="..\simple_plugin\TestPlugin.cbproj" Targets="Clean"/>
+    <Target Name="PythonPlugin:Clean">
+        <MSBuild Projects="..\python_plugin\PythonPlugin.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="TestPlugin:Make">
-        <MSBuild Projects="..\simple_plugin\TestPlugin.cbproj" Targets="Make"/>
+    <Target Name="PythonPlugin:Make">
+        <MSBuild Projects="..\python_plugin\PythonPlugin.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PluginManager" DependsOnTargets="TestPlugin">
+    <Target Name="PythonfromC">
+        <MSBuild Projects="..\pythonFromC\PythonfromC.cbproj"/>
+    </Target>
+    <Target Name="PythonfromC:Clean">
+        <MSBuild Projects="..\pythonFromC\PythonfromC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PythonfromC:Make">
+        <MSBuild Projects="..\pythonFromC\PythonfromC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PluginManager" DependsOnTargets="PythonPlugin">
         <MSBuild Projects="PluginManager.cbproj"/>
     </Target>
-    <Target Name="PluginManager:Clean" DependsOnTargets="TestPlugin:Clean">
+    <Target Name="PluginManager:Clean" DependsOnTargets="PythonPlugin:Clean">
         <MSBuild Projects="PluginManager.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="PluginManager:Make" DependsOnTargets="TestPlugin:Make">
+    <Target Name="PluginManager:Make" DependsOnTargets="PythonPlugin:Make">
         <MSBuild Projects="PluginManager.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;TestPlugin;PluginManager"/>
+        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;PythonPlugin;PythonfromC;PluginManager"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;TestPlugin:Clean;PluginManager:Clean"/>
+        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;PythonPlugin:Clean;PythonfromC:Clean;PluginManager:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;TestPlugin:Make;PluginManager:Make"/>
+        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;PythonPlugin:Make;PythonfromC:Make;PluginManager:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

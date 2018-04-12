@@ -115,8 +115,8 @@ object MainForm: TMainForm
   object LogFileReader1: TLogFileReader
     ReadFromStart = True
     LogFileMemo = Memo1
-    Left = 472
-    Top = 32
+    Left = 248
+    Top = 104
   end
   object ShutDownTimer: TTimer
     Enabled = False
@@ -126,7 +126,12 @@ object MainForm: TMainForm
     Top = 104
   end
   object PluginManager1: TPluginManager
-    Left = 472
-    Top = 104
+    Left = 248
+    Top = 184
+  end
+  object PythonPluginManager: TPluginManager
+    PluginExtension = 'py'
+    Left = 464
+    Top = 201
   end
 end
