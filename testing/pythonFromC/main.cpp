@@ -16,16 +16,15 @@ int main()
     args.push_back("2");
     args.push_back("45");
 
-    Py_Initialize();
+	Py_SetProgramName(Py_DecodeLocale("TjolaHey", NULL));
 
+    Py_Initialize();
 	PyRun_SimpleString("import sys");
     stringstream cmd;
     cmd << "sys.path.append(\"" << myPath << "\")";
-
 	PyRun_SimpleString(cmd.str().c_str());
-
-	Py_SetProgramName(Py_DecodeLocale("TjolaHey", NULL));
     PyRun_SimpleString("print (sys.path)");
+
     PyObject* pName = PyUnicode_DecodeFSDefault(moduleName.c_str());
 
     /* Error checking of pName left out */
@@ -35,7 +34,7 @@ int main()
     if (!pModule)
     {
         PyErr_Print();
-        fprintf(stderr, "Failed to load \"%s\"\n", moduleName.c_str());
+        cerr << "Failed to load python module: " << pName;
         return 1;
     }
 
@@ -87,6 +86,7 @@ int main()
 
     Py_XDECREF(pFunc);
     Py_DECREF(pModule);
+
     Py_Finalize();
 
     return 0;

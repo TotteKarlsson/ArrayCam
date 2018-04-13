@@ -64,8 +64,8 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>P:\libs\dsl\Plugins\;P:\libs\dsl\VCL\Frames\;P:\libs\dsl\VCL\Components\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>P:\libs\dsl\Plugins\;P:\libs\dsl\VCL\Frames\;P:\libs\dsl\VCL\Components\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>P:\libs\dsl\Common\;P:\libs\dsl\Plugins\;P:\libs\dsl\VCL\Frames\;P:\libs\dsl\VCL\Components\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>P:\libs\dsl\Common\;P:\libs\dsl\Plugins\;P:\libs\dsl\VCL\Frames\;P:\libs\dsl\VCL\Components\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>PluginManager</SanitizedProjectName>
         <Custom_Styles>&quot;Turquoise Gray|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\TurquoiseGray.vsf&quot;</Custom_Styles>
     </PropertyGroup>
@@ -79,6 +79,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_PCHName_Clang>PluginManagerPCH1.h</BCC_PCHName_Clang>
+        <ILINK_LibraryPath>C:\Python37\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <PackageImports>adortl;appanalytics;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDACADSDriver;FireDACCommonODBC;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;Intraweb;RaizeComponentsVcl;RaizeComponentsVclDb;rtl;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;VCLCommon;vcldb;vcldsnap;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
@@ -116,6 +117,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <LinkPackageStatics>dslVCLComponents.lib;dslVCLVisualComponents.lib</LinkPackageStatics>
         <ILINK_LibraryPath>$(DSL_ROOT)\VCL\Frames;$(DSL_ROOT)\VCL\Forms;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>C:\Python37\include;$(IncludePath)</IncludePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -126,6 +128,14 @@
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <ItemGroup>
+        <LibFiles Include="C:\Python37\python37_CG.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>7</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="C:\Python37\python3_CG.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>6</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
         <CppCompile Include="PluginManager.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
@@ -138,6 +148,10 @@
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="P:\libs\dsl\Common\dslPythonInterpreter.cpp">
+            <DependentOn>P:\libs\dsl\Common\dslPythonInterpreter.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\dsl\Plugins\dslPythonPluginManager.cpp">
             <DependentOn>P:\libs\dsl\Plugins\dslPythonPluginManager.h</DependentOn>
@@ -220,19 +234,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\PluginManager.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>PluginManager.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -241,8 +250,25 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                <DeployFile LocalName="C:\Python37\python3_CG.lib" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Python37\python37_CG.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
