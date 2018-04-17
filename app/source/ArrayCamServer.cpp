@@ -4,7 +4,7 @@
 #include "dslLogger.h"
 #include "dslSocketWorker.h"
 #include "dslStringUtils.h"
-#include "arraycam/atArrayCamProtocol.h"
+#include "core/atArrayCamProtocol.h"
 //---------------------------------------------------------------------------
 using namespace dsl;
 
@@ -12,10 +12,7 @@ ArrayCamServer::ArrayCamServer(TMainForm& mf, int portNumber)
 :
 IPCServer(portNumber, "ARRAYCAM_SERVER", createArrayCamIPCReceiver),
 mMainForm(mf)
-{
-
-
-}
+{}
 
 ArrayCamServer::~ArrayCamServer()
 {}

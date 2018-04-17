@@ -4,7 +4,7 @@
 #include "dslSocketWorker.h"
 #include <vector>
 #include "dslTimer.h"
-#include "arraycam/atArrayCamProtocol.h"
+#include "core/atArrayCamProtocol.h"
 #include "dslIPCMessage.h"
 #include "dslConstants.h"
 //---------------------------------------------------------------------------
