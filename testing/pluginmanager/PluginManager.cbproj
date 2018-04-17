@@ -110,7 +110,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
         <LinkPackageImports>rtl.bpi;vcl.bpi;vclactnband.bpi;vclx.bpi;RaizeComponentsVcl.bpi;vclimg.bpi</LinkPackageImports>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -118,6 +117,8 @@
         <LinkPackageStatics>dslVCLComponents.lib;dslVCLVisualComponents.lib</LinkPackageStatics>
         <ILINK_LibraryPath>$(DSL_ROOT)\VCL\Frames;$(DSL_ROOT)\VCL\Forms;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <IncludePath>C:\Python37\include;$(IncludePath)</IncludePath>
+        <PostBuildEvent><![CDATA[$(SH) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
+$(PostBuildEvent)]]></PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -164,8 +165,8 @@
             <DependentOn>P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <FormResources Include="P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -192,10 +193,7 @@
                 <Source>
                     <Source Name="MainSource">PluginManager.cpp</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
@@ -698,4 +696,12 @@
     <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+    <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
+        <PreBuildEvent/>
+        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
+        <PreLinkEvent/>
+        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
+        <PostBuildEvent>$(SH) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)</PostBuildEvent>
+        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
+    </PropertyGroup>
 </Project>
