@@ -2,6 +2,9 @@ import sys
 import numpy
 import cv2
 
+def getPluginMetaData():
+    pass
+
 def multiply(a,b):
     print("Will compute", a, "times", b)
     return a * b

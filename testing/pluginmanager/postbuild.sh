@@ -14,7 +14,6 @@ echo "Outputfilename: "$OUTPUTFILENAME
 echo "BDSCOMMONDIR: "$BDSCOMMONDIR
 
 #Extract version
-VERSION=`cat ../VERSION.txt | tr -d '\r'`
 APPNAME=PluginManager
 echo "Copy stuff"
 
