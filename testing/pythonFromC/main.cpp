@@ -5,12 +5,10 @@
 #include <iostream>
 using namespace std;
 
-
 int main()
 {
     char* myPath = "C:\\\\pDisk\\\\ArrayCam\\\\plugins\\\\python";
-    string moduleName("pure_embedding");
-    string functionName("executes");
+    string moduleName("pure_embedding"), functionName("execute");
 
     vector<string> args;
     args.push_back("2");
@@ -25,9 +23,9 @@ int main()
 	PyRun_SimpleString(cmd.str().c_str());
     PyRun_SimpleString("print (sys.path)");
 
+
     PyObject* pName = PyUnicode_DecodeFSDefault(moduleName.c_str());
 
-    /* Error checking of pName left out */
     PyObject* pModule = PyImport_Import(pName);
     Py_DECREF(pName);
 
@@ -71,7 +69,7 @@ int main()
         Py_DECREF(pArgs);
         if (pValue)
         {
-            printf("Result of call: %ld\n", PyLong_AsLong(pValue));
+            cout << "Result of call: "<<PyLong_AsLong(pValue) << endl;
             Py_DECREF(pValue);
         }
         else
@@ -79,7 +77,7 @@ int main()
             Py_DECREF(pFunc);
             Py_DECREF(pModule);
             PyErr_Print();
-            fprintf(stderr,"Python call failed\n");
+            cerr << "Python call failed" << endl;
             return 1;
         }
     }
@@ -88,6 +86,5 @@ int main()
     Py_DECREF(pModule);
 
     Py_Finalize();
-
     return 0;
 }
