@@ -117,7 +117,7 @@
         <LinkPackageStatics>dslVCLComponents.lib;dslVCLVisualComponents.lib</LinkPackageStatics>
         <ILINK_LibraryPath>$(DSL_ROOT)\VCL\Frames;$(DSL_ROOT)\VCL\Forms;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <IncludePath>C:\Python37\include;$(IncludePath)</IncludePath>
-        <PostBuildEvent><![CDATA[$(SH) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
+        <PostBuildEvent><![CDATA[$(SH_EXE) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
 $(PostBuildEvent)]]></PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -193,7 +193,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Source>
                     <Source Name="MainSource">PluginManager.cpp</Source>
                 </Source>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\bpl\atComponents.bpl">File p:\build\debug\bpl\atComponents.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\dslVCLComponents.bpl">Dune Components</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\atVisualComponents.bpl">File p:\build\debug\BPL\atVisualComponents.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
@@ -701,7 +707,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>$(SH) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)</PostBuildEvent>
+        <PostBuildEvent>$(SH_EXE) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

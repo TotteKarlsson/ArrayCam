@@ -3,7 +3,11 @@ import numpy
 import cv2
 
 def getPluginMetaData():
-    pass
+    data = {}
+    data["Author"] = "Totte Karlsson"
+    data["Name"]   = __name__
+    return data
+
 
 def multiply(a,b):
     print("Will compute", a, "times", b)
