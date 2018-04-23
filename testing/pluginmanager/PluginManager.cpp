@@ -7,8 +7,8 @@
 //---------------------------------------------------------------------------
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
-USEFORM("P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp", PluginInfoFrame); /* TFrame: File Type */
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp", PluginInfoFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 using namespace dsl;
 

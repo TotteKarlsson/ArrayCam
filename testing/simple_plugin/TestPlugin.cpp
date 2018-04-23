@@ -15,12 +15,12 @@ PluginWithEvents( "TestPlugin",   "Test Plugin With Events", manager),
 mAnInteger(1, "An Integer"),
 mWorker(*this)
 {
-    mMetaData.mVersion = "1.0.0";
+    mMetaData.setVersion("1.0.0");
 
     //Setup the plugins properties
     mProperties.add(&mAnInteger);
-    mMetaData.mHint       	= "Testing Plugin";
-    mMetaData.mDescription	= "Multiply an integer with 2";
+    mMetaData.setHint("Testing Plugin");
+    mMetaData.setDescription("Multiply an integer with 2");
 }
 
 TestPlugin::~TestPlugin()
