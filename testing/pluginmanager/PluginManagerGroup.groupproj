@@ -6,9 +6,6 @@
         <Projects Include="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\builds\dslPlugins\dslPlugins.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj">
             <Dependencies/>
         </Projects>
@@ -43,15 +40,6 @@
     </Target>
     <Target Name="dslFoundation:Make">
         <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="dslPlugins">
-        <MSBuild Projects="P:\libs\dsl\builds\dslPlugins\dslPlugins.cbproj"/>
-    </Target>
-    <Target Name="dslPlugins:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslPlugins\dslPlugins.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslPlugins:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslPlugins\dslPlugins.cbproj" Targets="Make"/>
     </Target>
     <Target Name="dslVCLCommon">
         <MSBuild Projects="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj"/>
@@ -108,13 +96,13 @@
         <MSBuild Projects="PluginManager.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslPlugins;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;TestPlugin;PythonfromC;PluginManager"/>
+        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;TestPlugin;PythonfromC;PluginManager"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslPlugins:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;TestPlugin:Clean;PythonfromC:Clean;PluginManager:Clean"/>
+        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;TestPlugin:Clean;PythonfromC:Clean;PluginManager:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslPlugins:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;TestPlugin:Make;PythonfromC:Make;PluginManager:Make"/>
+        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;TestPlugin:Make;PythonfromC:Make;PluginManager:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
