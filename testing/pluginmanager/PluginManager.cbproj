@@ -117,6 +117,7 @@
         <IncludePath>C:\Python37\include;$(IncludePath)</IncludePath>
         <PostBuildEvent><![CDATA[$(SH_EXE) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
 $(PostBuildEvent)]]></PostBuildEvent>
+        <Debugger_SymbolSourcePath>C:\Python37\;$(Debugger_SymbolSourcePath)</Debugger_SymbolSourcePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -193,7 +194,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="p:\build\debug\bpl\atComponents.bpl">File p:\build\debug\bpl\atComponents.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\dslVCLComponents.bpl">Dune Components</Excluded_Packages>
                     <Excluded_Packages Name="p:\build\debug\BPL\atVisualComponents.bpl">File p:\build\debug\BPL\atVisualComponents.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>

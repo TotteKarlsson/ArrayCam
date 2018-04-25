@@ -20,5 +20,6 @@ echo "Copy stuff"
 pythonPlugins="/cygdrive/p/ArrayCam/plugins/python"
 
 #LOCAL bin folder
-cp $pythonPlugins/*.py                          $OUTPUTDIR/plugins
+cp $pythonPlugins/*.py      $OUTPUTDIR/plugins
 
+echo "Done"
