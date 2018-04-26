@@ -62,7 +62,7 @@
 #include "TSoundsFrame.h"
 #include "dslTSTDStringLabeledEdit.h"
 #include "dslTFloatLabeledEdit.h"
-#include "thirdparty/uc480/uc480Class.h"
+#include "camera/uc480Class.h"
 #include "arraybot/apt/atDeviceManager.h"
 #include "atFocusController.h"
 
