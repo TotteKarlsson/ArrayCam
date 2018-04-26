@@ -70,7 +70,7 @@
 #include "dslTFloatLabeledEdit.h"
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
-#include "thirdparty/uc480/uc480Class.h"
+#include "camera/uc480Class.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;

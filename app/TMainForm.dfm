@@ -308,8 +308,6 @@ object MainForm: TMainForm
                   Align = alClient
                   Caption = 'Knife Stage'
                   TabOrder = 0
-                  ExplicitLeft = 197
-                  ExplicitWidth = 598
                   DesignSize = (
                     592
                     360)
@@ -325,7 +323,6 @@ object MainForm: TMainForm
                     TabOrder = 0
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
-                    ExplicitLeft = 305
                   end
                   object mMoveSouthBtn: TArrayBotButton
                     Left = 35
@@ -339,7 +336,6 @@ object MainForm: TMainForm
                     TabOrder = 1
                     OnClick = CreateUC7Message
                     SoundID = 'BUTTON_CLICK_4'
-                    ExplicitLeft = 41
                   end
                   object GroupBox8: TGroupBox
                     Left = 12
@@ -424,9 +420,6 @@ object MainForm: TMainForm
                   BevelOuter = bvNone
                   ParentColor = True
                   TabOrder = 1
-                  ExplicitLeft = 2
-                  ExplicitTop = 21
-                  ExplicitHeight = 366
                   object SyncWhiskerCB: TPropertyCheckBox
                     Left = 0
                     Top = 252
@@ -439,10 +432,6 @@ object MainForm: TMainForm
                     TabOrder = 0
                     WordWrap = True
                     OnClick = SyncWhiskerCBClick
-                    ExplicitLeft = 24
-                    ExplicitTop = 375
-                    ExplicitWidth = 145
-                    ExplicitHeight = 49
                   end
                   object StopOptionsRG: TRadioGroup
                     Left = 0
@@ -457,9 +446,6 @@ object MainForm: TMainForm
                       'After Cutting'
                       'Before Retracting')
                     TabOrder = 1
-                    ExplicitLeft = 2
-                    ExplicitTop = 21
-                    ExplicitWidth = 181
                   end
                 end
               end
@@ -809,6 +795,10 @@ object MainForm: TMainForm
         object TabSheet8: TTabSheet
           Caption = 'UC7'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object UC7GB: TGroupBox
             Left = 0
             Top = 0
@@ -1165,6 +1155,10 @@ object MainForm: TMainForm
         object TabSheet10: TTabSheet
           Caption = 'Lights'
           ImageIndex = 7
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object LightIntensitiesGB: TGroupBox
             Left = 3
             Top = 16
@@ -1218,6 +1212,10 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -1272,6 +1270,10 @@ object MainForm: TMainForm
             object TabSheet3: TTabSheet
               Caption = 'Arduino Client'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 0
@@ -1563,6 +1565,10 @@ object MainForm: TMainForm
             object RibbonSeparatorSheet: TTabSheet
               Caption = 'Ribbon Separator'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 0
@@ -1680,6 +1686,10 @@ object MainForm: TMainForm
             object TabSheet2: TTabSheet
               Caption = 'Barcode Reader'
               ImageIndex = 6
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object BarCodeGB: TGroupBox
                 Left = 0
                 Top = 0
@@ -1741,7 +1751,7 @@ object MainForm: TMainForm
                     Left = 87
                     Top = 0
                     Width = 76
-                    Height = 27
+                    Height = 28
                     Margins.Left = 10
                     Align = alLeft
                     ItemIndex = 0

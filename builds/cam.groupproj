@@ -33,6 +33,15 @@
         <Projects Include="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\atapi\builds\atCamera\atCamera.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\libs\atapi\builds\atNavitar\atNavitar.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\libs\atapi\builds\atBarcodeReader\atBarcodeReader.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj">
             <Dependencies/>
         </Projects>
@@ -42,10 +51,10 @@
         <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="app\ArrayCamPackage.cbproj">
+        <Projects Include="..\app\ArrayCamPackage.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="app\ArrayCam.cbproj">
+        <Projects Include="..\app\ArrayCam.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -146,6 +155,33 @@
     <Target Name="atFoundation:Make">
         <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="atCamera">
+        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj"/>
+    </Target>
+    <Target Name="atCamera:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atCamera:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atNavitar">
+        <MSBuild Projects="P:\libs\atapi\builds\atNavitar\atNavitar.cbproj"/>
+    </Target>
+    <Target Name="atNavitar:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atNavitar\atNavitar.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atNavitar:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atNavitar\atNavitar.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atBarcodeReader">
+        <MSBuild Projects="P:\libs\atapi\builds\atBarcodeReader\atBarcodeReader.cbproj"/>
+    </Target>
+    <Target Name="atBarcodeReader:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atBarcodeReader\atBarcodeReader.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atBarcodeReader:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atBarcodeReader\atBarcodeReader.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="atVCLCommon">
         <MSBuild Projects="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj"/>
     </Target>
@@ -174,31 +210,31 @@
         <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCamPackage">
-        <MSBuild Projects="app\ArrayCamPackage.cbproj"/>
+        <MSBuild Projects="..\app\ArrayCamPackage.cbproj"/>
     </Target>
     <Target Name="ArrayCamPackage:Clean">
-        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Clean"/>
+        <MSBuild Projects="..\app\ArrayCamPackage.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="ArrayCamPackage:Make">
-        <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Make"/>
+        <MSBuild Projects="..\app\ArrayCamPackage.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCam">
-        <MSBuild Projects="app\ArrayCam.cbproj"/>
+        <MSBuild Projects="..\app\ArrayCam.cbproj"/>
     </Target>
     <Target Name="ArrayCam:Clean">
-        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Clean"/>
+        <MSBuild Projects="..\app\ArrayCam.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="ArrayCam:Make">
-        <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
+        <MSBuild Projects="..\app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslCommon;dslIPC;dslMath;dslPlugins;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;bm;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="dslCommon;dslIPC;dslMath;dslPlugins;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;bm;atSSI;atFoundation;atCamera;atNavitar;atBarcodeReader;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslCommon:Clean;dslIPC:Clean;dslMath:Clean;dslPlugins:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;bm:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="dslCommon:Clean;dslIPC:Clean;dslMath:Clean;dslPlugins:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;bm:Clean;atSSI:Clean;atFoundation:Clean;atCamera:Clean;atNavitar:Clean;atBarcodeReader:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslCommon:Make;dslIPC:Make;dslMath:Make;dslPlugins:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;bm:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="dslCommon:Make;dslIPC:Make;dslMath:Make;dslPlugins:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;bm:Make;atSSI:Make;atFoundation:Make;atCamera:Make;atNavitar:Make;atBarcodeReader:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

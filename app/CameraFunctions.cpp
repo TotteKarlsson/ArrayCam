@@ -4,7 +4,7 @@
 #include "TPGDataModule.h"
 #include "dslLogger.h"
 #include "dslVCLUtils.h"
-#include "uc480/uc480_tools.h"
+#include "camera/uc480_tools.h"
 #include "atVCLUtils.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
