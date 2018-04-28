@@ -46,6 +46,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 //---------------------------------------------------------------------------
 #pragma comment(lib, "dslCommon.lib")
 #pragma comment(lib, "dslPlugins.lib")
+#pragma comment(lib, "dslPythonPlugins.lib")
 
 #pragma comment(lib, "poco_foundation-static.lib")
 #pragma comment(lib, "dslVCLCommon.lib")

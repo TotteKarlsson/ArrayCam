@@ -118,6 +118,10 @@
         <PostBuildEvent><![CDATA[$(SH_EXE) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
 $(PostBuildEvent)]]></PostBuildEvent>
         <Debugger_SymbolSourcePath>C:\Python37\;$(Debugger_SymbolSourcePath)</Debugger_SymbolSourcePath>
+        <BCC_AllCodeguardOptions>true</BCC_AllCodeguardOptions>
+        <BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
+        <BCC_MonitorGlobalAndStackData>true</BCC_MonitorGlobalAndStackData>
+        <BCC_MonitorThis>true</BCC_MonitorThis>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -148,14 +152,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\dsl\Common\dslPythonInterpreter.cpp">
-            <DependentOn>P:\libs\dsl\Common\dslPythonInterpreter.h</DependentOn>
-            <BuildOrder>5</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\dsl\Plugins\dslPythonPluginManager.cpp">
-            <DependentOn>P:\libs\dsl\Plugins\dslPythonPluginManager.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp">
             <Form>PluginInfoFrame</Form>
@@ -193,10 +189,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Source Name="MainSource">PluginManager.cpp</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\bpl\atComponents.bpl">File p:\build\debug\bpl\atComponents.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\atVisualComponents.bpl">File p:\build\debug\BPL\atVisualComponents.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\bcc32\debug\BPL\dslVCLComponents.bpl">Dune Components</Excluded_Packages>
+                    <Excluded_Packages Name="P:\build\bcc32\debug\BPL\dslVCLVisualComponents.bpl">Dune Frames</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
@@ -225,7 +219,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\debug\bin\PluginManager.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="p:\build\bcc32\debug\bin\PluginManager.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>PluginManager.tds</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -242,7 +236,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\debug\bin\PluginManager.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="p:\build\bcc32\debug\bin\PluginManager.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>PluginManager.exe</RemoteName>
                         <Overwrite>true</Overwrite>
