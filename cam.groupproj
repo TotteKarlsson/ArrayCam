@@ -33,6 +33,9 @@
         <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="app\ArrayCamPackage.cbproj">
             <Dependencies/>
         </Projects>
@@ -137,6 +140,15 @@
     <Target Name="atVCLVisualComponents:Make">
         <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="atVCLNavitar">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj"/>
+    </Target>
+    <Target Name="atVCLNavitar:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atVCLNavitar:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="ArrayCamPackage">
         <MSBuild Projects="app\ArrayCamPackage.cbproj"/>
     </Target>
@@ -156,13 +168,13 @@
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="bm;atSSI;atFoundation;atCamera;atNavitar;atBarcodeReader;atVCLCommon;atVCLComponents;atVCLDataModules;atVCLVisualComponents;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="bm;atSSI;atFoundation;atCamera;atNavitar;atBarcodeReader;atVCLCommon;atVCLComponents;atVCLDataModules;atVCLVisualComponents;atVCLNavitar;ArrayCamPackage;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="bm:Clean;atSSI:Clean;atFoundation:Clean;atCamera:Clean;atNavitar:Clean;atBarcodeReader:Clean;atVCLCommon:Clean;atVCLComponents:Clean;atVCLDataModules:Clean;atVCLVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="bm:Clean;atSSI:Clean;atFoundation:Clean;atCamera:Clean;atNavitar:Clean;atBarcodeReader:Clean;atVCLCommon:Clean;atVCLComponents:Clean;atVCLDataModules:Clean;atVCLVisualComponents:Clean;atVCLNavitar:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="bm:Make;atSSI:Make;atFoundation:Make;atCamera:Make;atNavitar:Make;atBarcodeReader:Make;atVCLCommon:Make;atVCLComponents:Make;atVCLDataModules:Make;atVCLVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="bm:Make;atSSI:Make;atFoundation:Make;atCamera:Make;atNavitar:Make;atBarcodeReader:Make;atVCLCommon:Make;atVCLComponents:Make;atVCLDataModules:Make;atVCLVisualComponents:Make;atVCLNavitar:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

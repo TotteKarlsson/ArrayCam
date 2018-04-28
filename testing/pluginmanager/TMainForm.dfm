@@ -25,7 +25,6 @@ object MainForm: TMainForm
     Align = alTop
     Caption = 'Plugin Info'
     TabOrder = 0
-    ExplicitTop = 97
     object PluginsLB: TListBox
       Left = 2
       Top = 15
@@ -35,8 +34,6 @@ object MainForm: TMainForm
       ItemHeight = 13
       TabOrder = 0
       OnClick = PluginsLBClick
-      ExplicitLeft = 123
-      ExplicitHeight = 168
     end
   end
   object Panel1: TPanel
@@ -47,8 +44,6 @@ object MainForm: TMainForm
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 1
-    ExplicitTop = 282
-    ExplicitHeight = 407
     object Memo1: TMemo
       Left = 1
       Top = 1
@@ -60,8 +55,6 @@ object MainForm: TMainForm
       ReadOnly = True
       ScrollBars = ssBoth
       TabOrder = 0
-      ExplicitTop = 168
-      ExplicitHeight = 238
     end
   end
   object ControlBar1: TControlBar
@@ -108,7 +101,6 @@ object MainForm: TMainForm
     Height = 41
     Align = alTop
     TabOrder = 3
-    ExplicitTop = 56
     object ExecuteBtn: TButton
       Left = 16
       Top = 6
@@ -128,7 +120,6 @@ object MainForm: TMainForm
     Align = alTop
     Caption = 'Plugin Info'
     TabOrder = 4
-    ExplicitLeft = 1
     object PythonPluginsLB: TListBox
       Left = 2
       Top = 15
@@ -138,8 +129,6 @@ object MainForm: TMainForm
       ItemHeight = 13
       TabOrder = 0
       OnClick = PythonPluginsLBClick
-      ExplicitLeft = 10
-      ExplicitTop = 17
     end
   end
   object LogFileReader1: TLogFileReader

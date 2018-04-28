@@ -153,10 +153,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>P:\libs\dsl\Common\dslPythonInterpreter.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
-        <CppCompile Include="P:\libs\dsl\Plugins\dslPythonPluginManager.cpp">
-            <DependentOn>P:\libs\dsl\Plugins\dslPythonPluginManager.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
-        </CppCompile>
         <CppCompile Include="P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp">
             <Form>PluginInfoFrame</Form>
             <FormType>dfm</FormType>

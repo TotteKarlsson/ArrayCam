@@ -58,7 +58,7 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;ArrayCamPackage.lib;Tee.lib;dslVCLComponents.lib;atVCLComponents.lib;dslVCLVisualComponents.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;ArrayCamPackage.lib;Tee.lib;dslVCLComponents.lib;atVCLComponents.lib;dslVCLVisualComponents.lib;atVCLVisualComponents.lib;atVCLDataModules.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -112,7 +112,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageStatics>ArrayCamPackage.lib;dslVCLComponents.lib;atVCLComponents.lib;dslVCLVisualComponents.lib</LinkPackageStatics>
+        <LinkPackageStatics>ArrayCamPackage.lib;dslVCLComponents.lib;atVCLComponents.lib;dslVCLVisualComponents.lib;atVCLVisualComponents.lib;atVCLDataModules.lib</LinkPackageStatics>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
         <Icon_MainIcon>arraycam.ico</Icon_MainIcon>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
@@ -202,14 +202,6 @@
         </CppCompile>
         <CppCompile Include="UC7Logic.cpp">
             <BuildOrder>12</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\atapi\source\vcl\navitarFrames\TNavitarMotorFrame.cpp">
-            <FormType>dfm</FormType>
-            <BuildOrder>20</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\atapi\source\vcl\navitarFrames\TNavitarPresetFrame.cpp">
-            <FormType>dfm</FormType>
-            <BuildOrder>19</BuildOrder>
         </CppCompile>
         <FormResources Include="forms\TRegisterNewRibbonForm.dfm"/>
         <FormResources Include="TMainForm.dfm"/>

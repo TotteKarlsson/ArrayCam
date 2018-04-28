@@ -12,6 +12,7 @@
 #pragma comment(lib, "atBarcodeReader.lib")
 #pragma comment(lib, "atVCLComponents.bpi")
 #pragma comment(lib, "atVCLVisualComponents.bpi")
+#pragma comment(lib, "atVCLNavitar.bpi")
 
 #pragma comment(lib, "poco_foundation-static.lib")
 

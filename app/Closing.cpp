@@ -84,6 +84,7 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     {
 		BroadcastStatusTimer->Enabled = false;
     }
+
 	if(LoggerForm)
     {
         LoggerForm->Close();

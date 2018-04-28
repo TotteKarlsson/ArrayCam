@@ -11,7 +11,7 @@
 #include "dslTPluginManager.h"
 #include "dslTAboutFrame.h"
 #include "dslTPluginInfoFrame.h"
-#include "dslPythonPluginManager.h"
+#include "PythonPlugins/dslPythonPluginManager.h"
 //---------------------------------------------------------------------------
 
 using dsl::TPluginInfoFrame;

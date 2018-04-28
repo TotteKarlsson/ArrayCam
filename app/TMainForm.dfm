@@ -66,6 +66,10 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -498,6 +502,10 @@ object MainForm: TMainForm
         object TabSheet7: TTabSheet
           Caption = 'Ribbons'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox14: TGroupBox
             Left = 0
             Top = 121
@@ -1199,6 +1207,10 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object MiscPageControl: TPageControl
             Left = 0
             Top = 0
@@ -1378,16 +1390,6 @@ object MainForm: TMainForm
                       Height = 27
                       ExplicitHeight = 27
                     end
-                    inherited FloatLabeledEdit1: TFloatLabeledEdit
-                      Height = 27
-                      EditLabel.Width = 124
-                      EditLabel.Height = 19
-                      EditLabel.ExplicitLeft = 56
-                      EditLabel.ExplicitTop = 162
-                      EditLabel.ExplicitWidth = 124
-                      EditLabel.ExplicitHeight = 19
-                      ExplicitHeight = 27
-                    end
                   end
                 end
               end
@@ -1484,17 +1486,14 @@ object MainForm: TMainForm
                   Height = 225
                   ExplicitWidth = 798
                   ExplicitHeight = 225
-                  inherited OutputFileFolderE: TSTDStringLabeledEdit [0]
-                    Top = 104
+                  inherited BitrateE: TIntegerLabeledEdit
                     Height = 27
-                    EditLabel.Width = 127
+                    EditLabel.Width = 92
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 82
-                    EditLabel.ExplicitWidth = 127
+                    EditLabel.ExplicitTop = 26
+                    EditLabel.ExplicitWidth = 92
                     EditLabel.ExplicitHeight = 19
-                    Enabled = False
-                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                   inherited OutputFileNameE: TSTDStringLabeledEdit [1]
@@ -1511,14 +1510,17 @@ object MainForm: TMainForm
                     ExplicitWidth = 473
                     ExplicitHeight = 27
                   end
-                  inherited BitrateE: TIntegerLabeledEdit [2]
+                  inherited OutputFileFolderE: TSTDStringLabeledEdit [2]
+                    Top = 104
                     Height = 27
-                    EditLabel.Width = 92
+                    EditLabel.Width = 127
                     EditLabel.Height = 19
                     EditLabel.ExplicitLeft = 16
-                    EditLabel.ExplicitTop = 26
-                    EditLabel.ExplicitWidth = 92
+                    EditLabel.ExplicitTop = 82
+                    EditLabel.ExplicitWidth = 127
                     EditLabel.ExplicitHeight = 19
+                    Enabled = False
+                    ExplicitTop = 104
                     ExplicitHeight = 27
                   end
                 end
@@ -1751,7 +1753,7 @@ object MainForm: TMainForm
                     Left = 87
                     Top = 0
                     Width = 76
-                    Height = 28
+                    Height = 27
                     Margins.Left = 10
                     Align = alLeft
                     ItemIndex = 0
