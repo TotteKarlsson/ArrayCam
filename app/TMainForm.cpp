@@ -13,18 +13,18 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "dslTFloatLabel"
+#pragma link "dslTFloatLabeledEdit"
+#pragma link "dslTIntegerLabeledEdit"
+#pragma link "dslTIntLabel"
+#pragma link "dslTPropertyCheckBox"
+#pragma link "dslTSTDStringLabeledEdit"
 #pragma link "TApplicationSoundsFrame"
 #pragma link "TArrayBotBtn"
 #pragma link "TFFMPEGFrame"
-#pragma link "dslTFloatLabeledEdit"
 #pragma link "TImagesFrame"
-#pragma link "dslTIntegerLabeledEdit"
-#pragma link "dslTIntLabel"
 #pragma link "TMoviesFrame"
 #pragma link "TNavitarMotorFrame"
-#pragma link "dslTPropertyCheckBox"
 #pragma link "TSoundsFrame"
-#pragma link "dslTSTDStringLabeledEdit"
 #pragma link "TUC7StagePositionFrame"
 
 #pragma link "THDMIStreamerFrame"

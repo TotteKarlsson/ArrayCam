@@ -179,45 +179,15 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DependentOn>forms\TActionsForm.h</DependentOn>
             <BuildOrder>31</BuildOrder>
         </CppCompile>
-        <CppCompile Include="forms\THandWheelPositionForm.cpp">
-            <Form>HandWheelPositionForm</Form>
-            <DependentOn>forms\THandWheelPositionForm.h</DependentOn>
-            <BuildOrder>13</BuildOrder>
-        </CppCompile>
         <CppCompile Include="forms\TReticlePopupForm.cpp">
             <Form>ReticlePopupForm</Form>
             <DependentOn>forms\TReticlePopupForm.h</DependentOn>
-            <BuildOrder>15</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="forms\TSelectIntegerForm.cpp">
-            <Form>SelectIntegerForm</Form>
-            <DependentOn>forms\TSelectIntegerForm.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
         <CppCompile Include="forms\TSettingsForm.cpp">
             <Form>SettingsForm</Form>
             <DependentOn>forms\TSettingsForm.h</DependentOn>
             <BuildOrder>16</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="frames\TFFMPEGFrame.cpp">
-            <Form>FFMPEGFrame</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>frames\TFFMPEGFrame.h</DependentOn>
-            <BuildOrder>26</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="frames\TFFMPEGOutputFrame.cpp">
-            <Form>FFMPEGOutputFrame</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>frames\TFFMPEGOutputFrame.h</DependentOn>
-            <BuildOrder>27</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="frames\TUC7StagePositionFrame.cpp">
-            <Form>UC7StagePositionFrame</Form>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>frames\TUC7StagePositionFrame.h</DependentOn>
-            <BuildOrder>7</BuildOrder>
         </CppCompile>
         <PackageImport Include="rtl.bpi">
             <BuildOrder>1</BuildOrder>
@@ -251,13 +221,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PackageImport Include="vclx.bpi">
             <BuildOrder>19</BuildOrder>
         </PackageImport>
-        <FormResources Include="frames\TUC7StagePositionFrame.dfm"/>
         <FormResources Include="forms\TSettingsForm.dfm"/>
-        <FormResources Include="frames\TFFMPEGFrame.dfm"/>
-        <FormResources Include="frames\TFFMPEGOutputFrame.dfm"/>
-        <FormResources Include="forms\THandWheelPositionForm.dfm"/>
         <FormResources Include="forms\TReticlePopupForm.dfm"/>
-        <FormResources Include="forms\TSelectIntegerForm.dfm"/>
         <FormResources Include="forms\TActionsForm.dfm"/>
         <FormResources Include="forms\TAboutForm.dfm"/>
         <BuildConfiguration Include="Release">
@@ -327,9 +292,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="P:\build\bcc32\debug\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>ArrayCamPackage.bpl</RemoteName>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -358,12 +322,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="P:\build\bcc32\debug\BPL\ArrayCamPackage.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>ArrayCamPackage.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -374,17 +332,24 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="p:\build\debug\BPL\ArrayCamPackage.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>ArrayCamPackage.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile LocalName="p:\build\debug\BPL\ArrayCamPackage.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>ArrayCamPackage.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>

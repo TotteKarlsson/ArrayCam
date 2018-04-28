@@ -113,18 +113,17 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	RibbonIDLbl->Caption = "";
 
     acu.AppIsStartingUp = false;
+
+    //Set UC7 stop mode
+    StopOptionsRG->ItemIndex = mStopCutterMode;
     enableDisableUC7UI(false);
     enableDisableGroupBox(mImagerSettingsGB, false);
-    BarcodeLbl->Caption = "";
-	mStartupTimer->Enabled = true;
 	this->Caption = vclstr(createWindowTitle("ArrayCam", Application));
 	FitToScreenAExecute(Sender);
 
     BroadcastStatusTimer->Enabled = true;
 
-    //Set UC7 stop mode
-    StopOptionsRG->ItemIndex = mStopCutterMode;
-
     populateStyleMenu(ThemesMenu, ThemesMenuClick);
+	mStartupTimer->Enabled = true;
 }
 

@@ -13,8 +13,8 @@
 #include "TMoviesFrame.h"
 #include "core/ATExceptions.h"
 //---------------------------------------------------------------------------
-USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("TMainForm.cpp", MainForm);
+USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 //---------------------------------------------------------------------------
 ArrayCamUtilities acu;

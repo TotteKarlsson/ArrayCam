@@ -10,8 +10,9 @@
 #pragma comment(lib, "atVCLCommon.lib")
 #pragma comment(lib, "atNavitar.lib")
 #pragma comment(lib, "atBarcodeReader.lib")
-#pragma comment(lib, "atComponents.bpi")
-#pragma comment(lib, "atVisualComponents.bpi")
+#pragma comment(lib, "atVCLComponents.bpi")
+#pragma comment(lib, "atVCLVisualComponents.bpi")
+#pragma comment(lib, "atVCLNavitar.bpi")
 
 #pragma comment(lib, "poco_foundation-static.lib")
 

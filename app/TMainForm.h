@@ -589,7 +589,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		string									getCurrentUserName();
 
 	BEGIN_MESSAGE_MAP
-	MESSAGE_HANDLER(IS_UC480_MESSAGE,			TMessage,						onUSBCameraMessage);
+		MESSAGE_HANDLER(IS_UC480_MESSAGE,	    TMessage,						onUSBCameraMessage);
 		MESSAGE_HANDLER(UWM_UC7_MESSAGE,		ATWindowStructMessage,			AppInBox);
 		MESSAGE_HANDLER(WM_DECODE,				TMessage,						onWMDecode);
 		MESSAGE_HANDLER(WM_CAPABILITIES,		TMessage,						onSSICapabilities)
