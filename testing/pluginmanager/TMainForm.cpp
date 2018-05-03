@@ -211,7 +211,6 @@ void __fastcall TMainForm::PythonPluginsLBClick(TObject *Sender)
     {
     	ExecuteBtn->Enabled = false;
     }
-
 }
 
 void __fastcall TMainForm::ExecuteBtnClick(TObject *Sender)

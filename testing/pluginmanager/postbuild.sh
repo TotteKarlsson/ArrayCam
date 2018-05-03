@@ -17,9 +17,9 @@ echo "BDSCOMMONDIR: "$BDSCOMMONDIR
 APPNAME=PluginManager
 echo "Copy stuff"
 
-pythonPlugins="/cygdrive/p/ArrayCam/plugins/python"
+pythonPlugins="/p/ArrayCam/plugins/python"
 
 #LOCAL bin folder
-cp $pythonPlugins/*.py      $OUTPUTDIR/plugins
+cp $pythonPlugins/showTempHumidityPlugin.py      $OUTPUTDIR/plugins
 
 echo "Done"

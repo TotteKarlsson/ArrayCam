@@ -118,6 +118,8 @@
         <PostBuildEvent><![CDATA[$(SH_EXE) postbuild.sh $(OUTPUTDIR) $(OUTPUTFILENAME) $(BDSCOMMONDIR)
 $(PostBuildEvent)]]></PostBuildEvent>
         <Debugger_SymbolSourcePath>C:\Python37\;$(Debugger_SymbolSourcePath)</Debugger_SymbolSourcePath>
+        <Defines>POCO_STATIC;$(Defines)</Defines>
+        <Debugger_DebugSourcePath>P:\libs\dsl\PythonPlugins\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -148,10 +150,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <FormType>dfm</FormType>
             <DependentOn>TMainForm.h</DependentOn>
             <BuildOrder>2</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="P:\libs\dsl\Common\dslPythonInterpreter.cpp">
-            <DependentOn>P:\libs\dsl\Common\dslPythonInterpreter.h</DependentOn>
-            <BuildOrder>5</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\dsl\VCL\Frames\dslTPluginInfoFrame.cpp">
             <Form>PluginInfoFrame</Form>
@@ -189,8 +187,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Source Name="MainSource">PluginManager.cpp</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\bpl\atComponents.bpl">File p:\build\debug\bpl\atComponents.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\atVisualComponents.bpl">File p:\build\debug\BPL\atVisualComponents.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\bpl\dslVCLVisualComponents.bpl">Dune Visual Components</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\bpl\dslVCLComponents.bpl">Dune Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>

@@ -52,7 +52,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 #pragma comment(lib, "dslVCLComponents.bpi")
 #pragma comment(lib, "dslVCLVisualComponents.bpi")
 
-
 void setupLogging()
 {
 	//Get Application folder
