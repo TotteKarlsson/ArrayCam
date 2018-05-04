@@ -9,23 +9,28 @@ def getPluginMetaData():
 def getPluginProperties():
         props = dsl.Properties("TempAndHumidity")
         nrOfdays = dsl.intProperty(30, "Days")
+        sProp   = dsl.stringProperty("sds", "String property")
         props.add(nrOfdays)
-        print (props.count())
+        props.add(sProp)
         return props
 
-
-def multiply(a,b):
-    print("Compute", a, "times", b)
-    return a * b
 
 def execute(a, b):
     print ("We are executing ..")
     return multiply(a,b)
 
 def main():
-    props = getPluginProperties()
+    a = dsl.intProperty(3, "sdasd")
+    b = a
+    b.getLabel()
+    print(b.getLabel())
 
-    print (props.count())
+
+    pr = getPluginProperties()
+    print(pr.count())
+    a = pr.getProperty(0)
+    a.getINIRecord()
+    a.getLabel()
 
 if __name__ == '__main__':
     main()
