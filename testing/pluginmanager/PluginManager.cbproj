@@ -187,8 +187,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Source Name="MainSource">PluginManager.cpp</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\bpl\dslVCLVisualComponents.bpl">Dune Visual Components</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\bpl\dslVCLComponents.bpl">Dune Components</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\atVCLComponents.bpl">File p:\build\debug\BPL\atVCLComponents.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>

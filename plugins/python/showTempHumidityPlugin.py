@@ -1,4 +1,5 @@
 import dsl
+import time
 
 def getPluginMetaData():
     pInfo = dsl.PluginMetaData("showTempHumidityPlugin", "Basic")
@@ -7,30 +8,39 @@ def getPluginMetaData():
     return pInfo
 
 def getPluginProperties():
+        print("Retrieveing Plugin Properties")
         props = dsl.Properties("TempAndHumidity")
         nrOfdays = dsl.intProperty(30, "Days")
-        sProp   = dsl.stringProperty("sds", "String property")
+        sProp    = dsl.stringProperty("StringValue", "String property")
         props.add(nrOfdays)
         props.add(sProp)
-        return props
 
+        a = props.getProperty(0)
+        val = a.getLabel()
+        print("The label for the property: " + val)
+        return props
 
 def execute(a, b):
     print ("We are executing ..")
     return multiply(a,b)
 
 def main():
-    a = dsl.intProperty(3, "sdasd")
-    b = a
-    b.getLabel()
-    print(b.getLabel())
+    try:
+        pr = getPluginProperties()
+        print(pr.count())
+
+        print ("Got some plugin properties")
+
+        a = pr.getProperty(0)
+        val = a.getLabel()
+        print("The label for the property: " + val)
 
 
-    pr = getPluginProperties()
-    print(pr.count())
-    a = pr.getProperty(0)
-    a.getINIRecord()
-    a.getLabel()
+        val = a.getINIRecord()
+        print("The ini record for the property: " + val)
+
+    except:
+        print ("There was a problem")
 
 if __name__ == '__main__':
     main()

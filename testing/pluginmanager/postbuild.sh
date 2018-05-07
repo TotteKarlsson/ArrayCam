@@ -18,8 +18,14 @@ APPNAME=PluginManager
 echo "Copy stuff"
 
 pythonPlugins="/p/ArrayCam/plugins/python"
+pythonOut="$OUTPUTDIR/plugins"
+
+if [ ! -d "$pythonOut" ]; then
+    echo "Creating folder: "$pythonOut
+    mkdir $pythonOut
+fi
 
 #LOCAL bin folder
-cp $pythonPlugins/showTempHumidityPlugin.py      $OUTPUTDIR/plugins
+cp $pythonPlugins/showTempHumidityPlugin.py      $pythonOut
 
 echo "Done"
