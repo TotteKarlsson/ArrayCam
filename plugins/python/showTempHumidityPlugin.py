@@ -1,46 +1,39 @@
 import dsl
 import time
+import sys
 
 def getPluginMetaData():
+    #Plugin Name and Plugin Category
     pInfo = dsl.PluginMetaData("showTempHumidityPlugin", "Basic")
     pInfo.setAuthor("Totte Karlsson")
     pInfo.setDescription("Show Temperature and Humidity as a function of time")
+    pInfo.setCopyright("Allen Institute for Brain Science, 2018")
+    pInfo.setHint("Show Temperature History")
+    pInfo.setCategory("Misc Plugins")
     return pInfo
 
 def getPluginProperties():
-        print("Retrieveing Plugin Properties")
+        #Create the plugins properties
         props = dsl.Properties("TempAndHumidity")
-        nrOfdays = dsl.intProperty(30, "Days")
-        sProp    = dsl.stringProperty("StringValue", "String property")
-        props.add(nrOfdays)
-        props.add(sProp)
-
-        a = props.getProperty(0)
-        val = a.getLabel()
-        print("The label for the property: " + val)
+        i1    = dsl.intProperty(30, "Days")
+        props.add(i1)
+        i1.thisown=0
         return props
 
-def execute(a, b):
-    print ("We are executing ..")
-    return multiply(a,b)
+def execute(val):
+    print ("Get environmental data for the last consecutive " + str(val) + " days.")
+    p = dsl.PluginManager.getPlugin(0)
+
+    return val + 3
 
 def main():
     try:
-        pr = getPluginProperties()
-        print(pr.count())
+        res = execute(43)
+        print("result is: " + str(res))
 
-        print ("Got some plugin properties")
-
-        a = pr.getProperty(0)
-        val = a.getLabel()
-        print("The label for the property: " + val)
-
-
-        val = a.getINIRecord()
-        print("The ini record for the property: " + val)
-
-    except:
-        print ("There was a problem")
+    except: # catch exceptions
+        e = sys.exc_info()[0]
+        print ("There was a problem: " + str(e))
 
 if __name__ == '__main__':
     main()

@@ -130,14 +130,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <ItemGroup>
-        <LibFiles Include="C:\Python37\libs\python37_CG.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>6</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </LibFiles>
-        <LibFiles Include="C:\Python37\libs\python3_CG.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>7</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </LibFiles>
         <CppCompile Include="PluginManager.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
@@ -229,12 +221,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Python37\libs\python3_CG.lib" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="p:\build\debug\bin\PluginManager.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>PluginManager.exe</RemoteName>
@@ -258,12 +244,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
                     <Platform Name="Win64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="C:\Python37\libs\python37_CG.lib" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

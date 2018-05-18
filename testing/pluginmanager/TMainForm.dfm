@@ -17,44 +17,28 @@ object MainForm: TMainForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object TopGB: TGroupBox
-    Left = 0
-    Top = 282
-    Width = 1070
-    Height = 224
-    Align = alTop
-    Caption = 'Plugin Info'
-    TabOrder = 0
-    object PluginsLB: TListBox
-      Left = 2
-      Top = 15
-      Width = 121
-      Height = 207
-      Align = alLeft
-      ItemHeight = 13
-      TabOrder = 0
-      OnClick = PluginsLBClick
-    end
-  end
   object Panel1: TPanel
     Left = 0
-    Top = 506
+    Top = 530
     Width = 1070
-    Height = 183
+    Height = 159
     Align = alClient
     Caption = 'Panel1'
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitTop = 506
+    ExplicitHeight = 183
     object Memo1: TMemo
       Left = 1
       Top = 1
       Width = 1068
-      Height = 181
+      Height = 157
       Align = alClient
       Lines.Strings = (
         'Memo1')
       ReadOnly = True
       ScrollBars = ssBoth
       TabOrder = 0
+      ExplicitHeight = 181
     end
   end
   object ControlBar1: TControlBar
@@ -64,7 +48,7 @@ object MainForm: TMainForm
     Height = 56
     Align = alTop
     AutoSize = True
-    TabOrder = 2
+    TabOrder = 1
     object Panel2: TPanel
       Left = 26
       Top = 2
@@ -96,11 +80,12 @@ object MainForm: TMainForm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 241
+    Top = 489
     Width = 1070
     Height = 41
     Align = alTop
-    TabOrder = 3
+    TabOrder = 2
+    ExplicitTop = 241
     object ExecuteBtn: TButton
       Left = 16
       Top = 6
@@ -116,19 +101,20 @@ object MainForm: TMainForm
     Left = 0
     Top = 56
     Width = 1070
-    Height = 185
+    Height = 433
     Align = alTop
     Caption = 'Plugin Info'
-    TabOrder = 4
-    object PythonPluginsLB: TListBox
+    TabOrder = 3
+    object PluginsLB: TListBox
       Left = 2
       Top = 15
       Width = 121
-      Height = 168
+      Height = 416
       Align = alLeft
       ItemHeight = 13
       TabOrder = 0
       OnClick = PythonPluginsLBClick
+      ExplicitHeight = 168
     end
   end
   object LogFileReader1: TLogFileReader

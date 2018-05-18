@@ -27,8 +27,6 @@ class TMainForm : public TForm
     __published:	// IDE-managed Components
         TMemo *Memo1;
         TLogFileReader *LogFileReader1;
-		TGroupBox *TopGB;
-		TListBox *PluginsLB;
 		TTimer *ShutDownTimer;
 		TPluginManager *PluginManager1;
 		TPanel *Panel1;
@@ -39,7 +37,7 @@ class TMainForm : public TForm
 	TButton *LoadPluginsBtn;
 	TButton *GetPluginsInfoBtn;
 	TGroupBox *PythonGB;
-	TListBox *PythonPluginsLB;
+	TListBox *PluginsLB;
         void __fastcall LoadPluginsBtnClick(TObject *Sender);
         void __fastcall FormShow(TObject *Sender);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
