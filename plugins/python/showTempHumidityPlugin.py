@@ -2,8 +2,8 @@ import dsl
 import time
 import sys
 
+# Plugin Name and Plugin Category
 def getPluginMetaData():
-    #Plugin Name and Plugin Category
     pInfo = dsl.PluginMetaData("showTempHumidityPlugin", "Basic")
     pInfo.setAuthor("Totte Karlsson")
     pInfo.setDescription("Show Temperature and Humidity as a function of time")
@@ -12,24 +12,45 @@ def getPluginMetaData():
     pInfo.setCategory("Misc Plugins")
     return pInfo
 
+# Setup the plugins properties, used later on when execution occurs
 def getPluginProperties():
-        #Create the plugins properties
         props = dsl.Properties("TempAndHumidity")
         i1    = dsl.intProperty(30, "Days")
         props.add(i1)
         i1.thisown=0
         return props
 
-def execute(val):
-    print ("Get environmental data for the last consecutive " + str(val) + " days.")
-    p = dsl.PluginManager.getPlugin(0)
+## The execute function is called from C/C++ with a PythonPlugin object
+## as argument. The python code assume that the plugins properties and metadata has been setup from
+## within c/c++, using the above functions
+def execute(thePlugin):
+    daysProperty = thePlugin.getProperty("Days")
+    days  = daysProperty.getValueAsString()
+    print ("Get environmental data for the last consecutive " + days + " days.")
+    return int(days) + 3
 
-    return val + 3
-
+##The main function allow debugging of the plugin from within python
 def main():
     try:
-        res = execute(43)
-        print("result is: " + str(res))
+        pm = dsl.PythonPluginManager()
+        pp = pm.createBarePlugin("Test")
+
+        md = getPluginMetaData()
+        pp.assignMetaData(md)
+        props = getPluginProperties()
+
+        for i in range(props.count()):
+            p = props.getProperty(i)
+            print("Adding property: " + p.getLabel())
+            pprops = pp.getProperties()
+            pprops.add(p)
+
+        bp = props.getProperty("Days")
+        bp.assignValueFromString("233")
+
+        res = execute(pp)
+        print (res)
+
 
     except: # catch exceptions
         e = sys.exc_info()[0]
