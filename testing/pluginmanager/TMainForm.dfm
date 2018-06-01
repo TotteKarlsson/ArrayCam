@@ -25,8 +25,6 @@ object MainForm: TMainForm
     Align = alClient
     Caption = 'Panel1'
     TabOrder = 0
-    ExplicitTop = 506
-    ExplicitHeight = 183
     object Memo1: TMemo
       Left = 1
       Top = 1
@@ -38,7 +36,6 @@ object MainForm: TMainForm
       ReadOnly = True
       ScrollBars = ssBoth
       TabOrder = 0
-      ExplicitHeight = 181
     end
   end
   object ControlBar1: TControlBar
@@ -85,7 +82,6 @@ object MainForm: TMainForm
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 241
     object ExecuteBtn: TButton
       Left = 16
       Top = 6
@@ -114,7 +110,6 @@ object MainForm: TMainForm
       ItemHeight = 13
       TabOrder = 0
       OnClick = PythonPluginsLBClick
-      ExplicitHeight = 168
     end
   end
   object LogFileReader1: TLogFileReader

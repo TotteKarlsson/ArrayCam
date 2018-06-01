@@ -16,8 +16,8 @@ def getPluginMetaData():
 def getPluginProperties():
         props = dsl.Properties("TempAndHumidity")
         i1    = dsl.intProperty(30, "Days")
+        i1.thisown = 0
         props.add(i1)
-        i1.thisown=0
         return props
 
 ## The execute function is called from C/C++ with a PythonPlugin object
@@ -26,6 +26,11 @@ def getPluginProperties():
 def execute(thePlugin):
     daysProperty = thePlugin.getProperty("Days")
     days  = daysProperty.getValueAsString()
+    print ("Get environmental data for the last consecutive " + days + " days.")
+    return int(days) + 3
+
+def executeInt(anInt):
+    days  = str(anInt)
     print ("Get environmental data for the last consecutive " + days + " days.")
     return int(days) + 3
 
@@ -51,6 +56,8 @@ def main():
         res = execute(pp)
         print (res)
 
+        #We have to unload the plugins manually, for now
+        pm.unloadAll()
 
     except: # catch exceptions
         e = sys.exc_info()[0]
