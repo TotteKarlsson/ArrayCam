@@ -71,6 +71,7 @@
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
 #include "camera/uc480Class.h"
+#include "dslApplicationProperties.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -88,6 +89,7 @@ using Poco::Timestamp;
 using dsl::IniFileProperties;
 using dsl::IniFile;
 using dsl::Property;
+using dsl::shared_ptr;
 
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
@@ -416,7 +418,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 
 		void									setupProperties();
 		IniFile									mIniFile;
-		IniFileProperties						mGeneralProperties;
+		shared_ptr<IniFileProperties>   		mGeneralProperties;
 		Property<dsl::LogLevel>					mLogLevel;
 		Property<int>							mMainContentPanelWidth;
 
@@ -441,7 +443,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Property<int>							mStopCutterMode;
 
 												//Sound properties
-		IniFileProperties						mSoundProperties;
+		shared_ptr<IniFileProperties>    		mSoundProperties;
 		Property<ApplicationSound>				mBeforeKnifeBackOffSound;
 		Property<ApplicationSound>				mKnifeBeforeCuttingSound;
 		Property<ApplicationSound>				mKnifeCuttingSound;

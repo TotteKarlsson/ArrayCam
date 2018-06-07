@@ -127,8 +127,7 @@ $(PreLinkEvent)]]></PreLinkEvent>
 $(PostBuildEvent)]]></PostBuildEvent>
         <BCC_whid>false</BCC_whid>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
-        <Defines>POCO_STATIC;$(Defines)</Defines>
-        <IncludePath>$(DEBUG_BCC32)\include;navitarFrames;$(AT_ROOT)\source\vcl\navitarFrames;$(IncludePath)</IncludePath>
+        <IncludePath>$(DEBUG_BCC32)\include;$(AT_ROOT)\source\vcl\navitarFrames;$(AT_ROOT)\source\vcl\UC7Frames;$(AT_ROOT)\source\vcl\UC7Forms;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>$(DEBUG_BCC32)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ILINK_Description>ArrayCam VCL Core package</ILINK_Description>
         <ILINK_GenerateLibFile>false</ILINK_GenerateLibFile>
@@ -286,13 +285,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -338,6 +334,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -346,11 +347,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="p:\build\debug\BPL\ArrayCamPackage.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>ArrayCamPackage.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

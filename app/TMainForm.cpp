@@ -83,7 +83,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mHandWheelPositionForm(NULL),
         LoggerForm(NULL),
         ActionsForm(NULL),
-        mAutoStartKnifeCamera(false)
+        mAutoStartKnifeCamera(false),
+        mGeneralProperties(shared_ptr<IniFileProperties>(new IniFileProperties)),
+        mSoundProperties(shared_ptr<IniFileProperties>(new IniFileProperties))
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
@@ -102,8 +104,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     //Properties are retrieved and saved to an ini file
     setupProperties();
-    mGeneralProperties.read();
-    mSoundProperties.read();
+    mGeneralProperties->read();
+    mSoundProperties->read();
 
     TFFMPEGFrame1->setupProperties(mIniFile);
 

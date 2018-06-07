@@ -140,8 +140,8 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 
     mStopCutterMode = StopOptionsRG->ItemIndex;
 
-	mGeneralProperties.write();
-	mSoundProperties.write();
+	mGeneralProperties->write();
+	mSoundProperties->write();
     TFFMPEGFrame1->writeToINI();
 
 	//Write to file
