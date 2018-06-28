@@ -6,8 +6,10 @@
 #include "atExceptions.h"
 #include "dslWin32Utils.h"
 #include "dslVCLUtils.h"
-using namespace dsl;
 
+
+using namespace dsl;
+using namespace at;
 int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
 
 extern ArrayCamUtilities acu;

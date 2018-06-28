@@ -58,14 +58,14 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;Tee.lib;dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;Tee.lib;dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib;atVCLVisualComponents.lib;atVCLDataModules.lib;atVCLAPTVisualComponents.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\frames\abFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\frames\abFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;P:\AllenInstitute\ArrayCam\app\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\aptFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\aptFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>AutoFocusTester</SanitizedProjectName>
         <Custom_Styles>Carbon|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Carbon.vsf;&quot;Charcoal Dark Slate|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\CharcoalDarkSlate.vsf&quot;;Glossy|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glossy.vsf;Glow|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glow.vsf;&quot;Iceberg Classico|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\IcebergClassico.vsf&quot;;Luna|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Luna.vsf;Sky|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Sky.vsf</Custom_Styles>
     </PropertyGroup>
@@ -108,11 +108,11 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <LinkPackageImports>rtl.bpi;vcl.bpi;dbrtl.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DbxDevartPostgreSQLDriver250.bpi;dsnap.bpi;vclimg.bpi;vcldb.bpi;bindcomp.bpi;bindengine.bpi;bindcompvcl.bpi;dbxcds.bpi;Tee.bpi</LinkPackageImports>
-        <IncludePath>forms;frames;source;$(IncludePath)</IncludePath>
+        <IncludePath>forms;source;$(IncludePath)</IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageStatics>dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</LinkPackageStatics>
+        <LinkPackageStatics>dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib;atVCLVisualComponents.lib;atVCLDataModules.lib;atVCLAPTVisualComponents.lib</LinkPackageStatics>
         <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
@@ -221,10 +221,7 @@
                     <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">

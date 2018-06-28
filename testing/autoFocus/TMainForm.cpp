@@ -53,8 +53,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mACServer(*this, -1),
         mReticleVisible(false),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
-        LoggerForm(NULL),
-        mFocusScoreWatcher("d:\\AC\\live")
+        LoggerForm(NULL)//,
+//        mFocusScoreWatcher("d:\\AC\\live")
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
@@ -87,7 +87,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	mReticle2.visible(false);
 
     //Setup the focusController
-	mFocusScoreWatcher.assignCallback(onFocusScore);
+//	mFocusScoreWatcher.assignCallback(onFocusScore);
 }
 
 double getScore(const string& fName)
@@ -103,65 +103,65 @@ double getScore(const string& fName)
 
 void TMainForm::onFocusScore(int* notifier)
 {
-    enum direction {fwd, rev};
-    static double lastScore = 0;
-    static direction directionWas  = fwd;
-    string sharpnessFile("sharpness.txt");
-	DirectoryNotifier* n = (DirectoryNotifier*) notifier;
-    if (n->checkOverflow() || !n)
-    {
-        Log(lInfo) << "Queue overflowed, or notifier is NULL."<<endl;
-    }
-    else
-    {
-        DirectoryChangeNotification notification;
-        n->pop(notification);
-		//        Log(lInfo) << actionToStr(notification.first) << " " << notification.second << endl;
-        if(notification.second == sharpnessFile)
-        {
-
-            double newScore = getScore(joinPath("d:\\AC\\live", sharpnessFile));
-			Log(lInfo) << "Got new sharpness value"<<newScore;
-            APTMotor* m = dynamic_cast<APTMotor*>(this->mDeviceManager.getFirst());
-            double scoreDifference = fabs(newScore) - fabs(lastScore);
-            double moveStep(0.1);
-            if(newScore != -1 && m != NULL && (fabs(scoreDifference) > 0.001))
-            {
-                if(!m->isActive())
-                {
-                    if(newScore > lastScore)
-                    {
-                        if(directionWas == fwd)
-                        {
-                        	m->moveRelative(moveStep);
-                        	Log(lInfo) << "Moving forward";
-	                    }
-                        else
-                        {
-                            m->moveRelative(-1.*moveStep);
-                            directionWas = rev;
-                            Log(lInfo) << "Moving reverse";
-                        }
-                    }
-                    else//Move oppposite direction
-                    {
-                        if(directionWas == fwd)
-                        {
-                            m->moveRelative(-1.*moveStep);
-                            directionWas = rev;
-                        	Log(lInfo) << "Moving reverse";
-	                    }
-                        else
-                        {
-                        	m->moveRelative(moveStep);
-                            Log(lInfo) << "Moving forward";
-                        }
-                    }
-					lastScore = newScore;
-            	}
-            }
-        }
-    }
+//    enum direction {fwd, rev};
+//    static double lastScore = 0;
+//    static direction directionWas  = fwd;
+//    string sharpnessFile("sharpness.txt");
+//	DirectoryNotifier* n = (DirectoryNotifier*) notifier;
+//    if (n->checkOverflow() || !n)
+//    {
+//        Log(lInfo) << "Queue overflowed, or notifier is NULL."<<endl;
+//    }
+//    else
+//    {
+//        DirectoryChangeNotification notification;
+//        n->pop(notification);
+//		//        Log(lInfo) << actionToStr(notification.first) << " " << notification.second << endl;
+//        if(notification.second == sharpnessFile)
+//        {
+//
+//            double newScore = getScore(joinPath("d:\\AC\\live", sharpnessFile));
+//			Log(lInfo) << "Got new sharpness value"<<newScore;
+//            APTMotor* m = dynamic_cast<APTMotor*>(this->mDeviceManager.getFirst());
+//            double scoreDifference = fabs(newScore) - fabs(lastScore);
+//            double moveStep(0.1);
+//            if(newScore != -1 && m != NULL && (fabs(scoreDifference) > 0.001))
+//            {
+//                if(!m->isActive())
+//                {
+//                    if(newScore > lastScore)
+//                    {
+//                        if(directionWas == fwd)
+//                        {
+//                        	m->moveRelative(moveStep);
+//                        	Log(lInfo) << "Moving forward";
+//	                    }
+//                        else
+//                        {
+//                            m->moveRelative(-1.*moveStep);
+//                            directionWas = rev;
+//                            Log(lInfo) << "Moving reverse";
+//                        }
+//                    }
+//                    else//Move oppposite direction
+//                    {
+//                        if(directionWas == fwd)
+//                        {
+//                            m->moveRelative(-1.*moveStep);
+//                            directionWas = rev;
+//                        	Log(lInfo) << "Moving reverse";
+//	                    }
+//                        else
+//                        {
+//                        	m->moveRelative(moveStep);
+//                            Log(lInfo) << "Moving forward";
+//                        }
+//                    }
+//					lastScore = newScore;
+//            	}
+//            }
+//        }
+//    }
 }
 
 __fastcall TMainForm::~TMainForm()

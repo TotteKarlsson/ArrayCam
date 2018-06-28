@@ -1,6 +1,5 @@
 #ifndef TMainFormH
 #define TMainFormH
-#include "dslDirectoryNotifier.h"
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -65,7 +64,7 @@
 #include "camera/uc480Class.h"
 #include "arraybot/apt/atDeviceManager.h"
 #include "atFocusController.h"
-
+#include "atVCLUtils.h"
 //---------------------------------------------------------------------------
 class TSettingsForm;
 class TLocalArgs;
@@ -78,7 +77,9 @@ using Poco::Timestamp;
 using dsl::IniFileProperties;
 using dsl::IniFile;
 using dsl::Property;
-
+using at::ATWindowStructMessage;
+using at::NavitarMotorController;
+using at::DeviceManager;
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
 {
@@ -242,7 +243,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Property<bool>							mReticleVisible;
 
 		FocusController                         mFocusController;
-      	DirectoryNotifier                       mFocusScoreWatcher;
+//      	DirectoryNotifier                       mFocusScoreWatcher;
         void                                    onFocusScore(int* notifier);
 
 												//Camera variables

@@ -8,8 +8,9 @@
 #include "ArrayCamUtilities.h"
 #include "arraybot/apt/atAPTMotor.h"
 #include "arraybot/apt/atDeviceManager.h"
-using namespace dsl;
 
+using namespace dsl;
+using namespace at;
 
 extern ArrayCamUtilities acu;
 
