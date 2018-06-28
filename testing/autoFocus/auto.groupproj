@@ -1,45 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{F137324C-DA28-4767-846D-7C4724AB8DD3}</ProjectGuid>
+        <ProjectGuid>{E3A2538B-E1ED-44EB-AC7C-473C85915902}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="AutoFocusTester.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\temp\dirChanges.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atArrayBotCore\atArrayBotCore.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atCamera\atCamera.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -50,87 +14,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="dslFoundation">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj"/>
-    </Target>
-    <Target Name="dslFoundation:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslFoundation:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="dslVCLComponents">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj"/>
-    </Target>
-    <Target Name="dslVCLComponents:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslVCLComponents:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="dslVCLVisualComponents">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="dslVCLVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslVCLVisualComponents:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atFoundation">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj"/>
-    </Target>
-    <Target Name="atFoundation:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atFoundation:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLNavitar">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj"/>
-    </Target>
-    <Target Name="atVCLNavitar:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLNavitar:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLDataModules">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj"/>
-    </Target>
-    <Target Name="atVCLDataModules:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLDataModules:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLVisualComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLVisualComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="AutoFocusTester">
         <MSBuild Projects="AutoFocusTester.cbproj"/>
     </Target>
@@ -140,41 +23,14 @@
     <Target Name="AutoFocusTester:Make">
         <MSBuild Projects="AutoFocusTester.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="dirChanges">
-        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj"/>
-    </Target>
-    <Target Name="dirChanges:Clean">
-        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dirChanges:Make">
-        <MSBuild Projects="P:\libs\dsl\temp\dirChanges.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atArrayBotCore">
-        <MSBuild Projects="P:\libs\atapi\builds\atArrayBotCore\atArrayBotCore.cbproj"/>
-    </Target>
-    <Target Name="atArrayBotCore:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atArrayBotCore\atArrayBotCore.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atArrayBotCore:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atArrayBotCore\atArrayBotCore.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atCamera">
-        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj"/>
-    </Target>
-    <Target Name="atCamera:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atCamera:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atCamera\atCamera.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslVCLComponents;dslVCLVisualComponents;atFoundation;atVCLComponents;atVCLNavitar;atVCLDataModules;atVCLVisualComponents;atVCLAPTVisualComponents;AutoFocusTester;dirChanges;atArrayBotCore;atCamera"/>
+        <CallTarget Targets="AutoFocusTester"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;atFoundation:Clean;atVCLComponents:Clean;atVCLNavitar:Clean;atVCLDataModules:Clean;atVCLVisualComponents:Clean;atVCLAPTVisualComponents:Clean;AutoFocusTester:Clean;dirChanges:Clean;atArrayBotCore:Clean;atCamera:Clean"/>
+        <CallTarget Targets="AutoFocusTester:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;atFoundation:Make;atVCLComponents:Make;atVCLNavitar:Make;atVCLDataModules:Make;atVCLVisualComponents:Make;atVCLAPTVisualComponents:Make;AutoFocusTester:Make;dirChanges:Make;atArrayBotCore:Make;atCamera:Make"/>
+        <CallTarget Targets="AutoFocusTester:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

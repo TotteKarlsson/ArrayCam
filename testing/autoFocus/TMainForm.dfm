@@ -76,10 +76,6 @@ object MainForm: TMainForm
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -92,10 +88,6 @@ object MainForm: TMainForm
         object TabSheet9: TTabSheet
           Caption = 'Navitar'
           ImageIndex = 7
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
@@ -201,10 +193,6 @@ object MainForm: TMainForm
         object TabSheet1: TTabSheet
           Caption = 'Settings'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object MiscPageControl: TPageControl
             Left = 0
             Top = 0
@@ -218,10 +206,6 @@ object MainForm: TMainForm
             object TabSheet5: TTabSheet
               Caption = 'ArrayCam Server'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox1: TGroupBox
                 Left = 0
                 Top = 0
@@ -276,10 +260,6 @@ object MainForm: TMainForm
             object TabSheet11: TTabSheet
               Caption = 'Media'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox6: TGroupBox
                 Left = 0
                 Top = 0
@@ -517,6 +497,7 @@ object MainForm: TMainForm
       inherited infoMemo: TMemo
         Width = 1833
         Height = 148
+        ExplicitTop = 55
         ExplicitWidth = 1833
         ExplicitHeight = 148
       end

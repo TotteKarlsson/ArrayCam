@@ -3,6 +3,7 @@
 #include "TMainForm.h"
 #include "dslLogger.h"
 #include "dslVCLUtils.h"
+#include "dslFileUtils.h"
 #include "camera/uc480_tools.h"
 #include "atVCLUtils.h"
 #include "TSettingsForm.h"

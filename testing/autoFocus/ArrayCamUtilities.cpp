@@ -1,12 +1,12 @@
 #pragma hdrstop
-#include <Shlobj.h>
 #include "ArrayCamUtilities.h"
 #include "dslUtils.h"
+#include "dslFileUtils.h"
 #include "dslLogger.h"
 #include "atExceptions.h"
 #include "dslWin32Utils.h"
 #include "dslVCLUtils.h"
-
+#include <Shlobj.h>
 
 using namespace dsl;
 using namespace at;

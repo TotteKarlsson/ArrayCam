@@ -4,6 +4,7 @@
 #include "TLoggerForm.h"
 #include "dslLogger.h"
 #include "ArrayCamUtilities.h"
+#include "dslTLogFileReader.h"
 //---------------------------------------------------------------------------
 extern ArrayCamUtilities acu;
 using namespace dsl;
@@ -14,6 +15,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 	if(
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
+        LogMemoFrame->LogFileReader1->isRunning()             ||
         LoggerForm
         )
     {
@@ -42,6 +44,11 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
     if(!mCamera1.IsInit() && mServiceCamera1.isRunning())
     {
 		mServiceCamera1.stop();
+    }
+
+    if(LogMemoFrame->LogFileReader1->isRunning())
+    {
+		LogMemoFrame->LogFileReader1->stop();
     }
 
 	if(LoggerForm)
