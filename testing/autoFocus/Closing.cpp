@@ -15,7 +15,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 	if(
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
-        LogMemoFrame->LogFileReader1->isRunning()             ||
+        TLogMemoFrame1->LogFileReader1->isRunning()             ||
         LoggerForm
         )
     {
@@ -46,20 +46,15 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 		mServiceCamera1.stop();
     }
 
-    if(LogMemoFrame->LogFileReader1->isRunning())
+    if(TLogMemoFrame1->LogFileReader1->isRunning())
     {
-		LogMemoFrame->LogFileReader1->stop();
+		TLogMemoFrame1->LogFileReader1->stop();
     }
 
 	if(LoggerForm)
     {
         LoggerForm->Close();
         LoggerForm = NULL;
-    }
-
-    if(mACServer.isRunning())
-    {
-    	mACServer.shutDown();
     }
 
     Close();

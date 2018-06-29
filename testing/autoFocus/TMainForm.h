@@ -50,7 +50,7 @@
 #include "dslIniFile.h"
 #include "dslIniFileProperties.h"
 #include "navitar/atNavitarMotorController.h"
-#include "source/ArrayCamServer.h"
+
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
 #include "dslTIntegerLabeledEdit.h"
@@ -65,6 +65,7 @@
 #include "arraybot/apt/atDeviceManager.h"
 #include "atFocusController.h"
 #include "atVCLUtils.h"
+#include "dslLogLevel.h"
 //---------------------------------------------------------------------------
 class TSettingsForm;
 class TLocalArgs;
@@ -194,7 +195,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
 	void __fastcall NavitarControllerConnectBtnClick(TObject *Sender);
 	void __fastcall StatusBar1Hint(TObject *Sender);
@@ -263,9 +263,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 
  		void __fastcall							onCameraOpen( System::TObject* Sender);
 		void __fastcall							onCameraClose(System::TObject* Sender);
-
-												//Server functions
-		ArrayCamServer							mACServer;
 
         										//Motor that wipes the ribbons off the knife
 												//!Navitar motor controller stuff

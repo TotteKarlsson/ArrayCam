@@ -123,6 +123,7 @@
         <VerInfo_Debug>true</VerInfo_Debug>
         <UWP_CppLogo44>arraycam.ico</UWP_CppLogo44>
         <UWP_CppLogo150>arraycam.ico</UWP_CppLogo150>
+        <Debugger_DebugSourcePath>P:\libs\atapi\source\camera\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>

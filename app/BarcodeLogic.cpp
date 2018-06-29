@@ -6,8 +6,9 @@
 #include "dslLogger.h"
 #include "TPGDataModule.h"
 #include "ArrayCamUtils.h"
+#include "atUtils.h"
 using namespace dsl;
-
+using namespace at;
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::RegisterRibbonBtnClick(TObject *Sender)
 {

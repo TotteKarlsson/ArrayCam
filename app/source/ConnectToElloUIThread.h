@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------
 
 using dsl::Thread;
+using at::ElloUIClient;
 class PACKAGE ConnectToElloUIThread : public dsl::Thread
 {
 	public:

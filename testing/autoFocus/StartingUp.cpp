@@ -1,4 +1,3 @@
-#include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
 #include "dslLogger.h"
@@ -70,9 +69,6 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 	mCamera1BackPanel->Height 	= 1024;
 	mCamera1BackPanel->Top 		= 0;
 	mCamera1BackPanel->Left 	= 0;
-
-    //Setup the server
-    mACServer.start(ArrayCamServerPortE->getValue());
 
     //Setup motor frame
     mDeviceManager.connectAllDevices();

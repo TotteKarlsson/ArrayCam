@@ -18,7 +18,7 @@ USEFORM("forms\TRegisterNewRibbonForm.cpp", RegisterNewRibbonForm);
 USEFORM("forms\TLoggerForm.cpp", LoggerForm);
 //---------------------------------------------------------------------------
 ArrayCamUtilities acu;
-
+using namespace at;
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try

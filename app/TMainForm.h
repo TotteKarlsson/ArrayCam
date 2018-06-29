@@ -90,7 +90,12 @@ using dsl::IniFileProperties;
 using dsl::IniFile;
 using dsl::Property;
 using dsl::shared_ptr;
-
+using at::UC7;
+using at::EnvironmentaSensorReader;
+using at::LightsArduinoClient;
+using at::UC7Message;
+using at::NavitarMotorController;
+using at::ATWindowStructMessage;
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
 {
@@ -495,7 +500,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void __fastcall							enableDisableUC7UI(bool enableDisable);
 		void									onUC7Count();
 		void									onUC7CountedTo();
-		void __fastcall							AppInBox(ATWindowStructMessage& Msg);
+		void __fastcall							AppInBox(at::ATWindowStructMessage& Msg);
 
 												//Callbacks
 		void									onLightsArduinoMessageReceived(const string& msg);

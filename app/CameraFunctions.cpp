@@ -1,16 +1,19 @@
-#include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
 #include "TPGDataModule.h"
 #include "dslLogger.h"
 #include "dslVCLUtils.h"
+#include "dslFileUtils.h"
 #include "camera/uc480_tools.h"
 #include "atVCLUtils.h"
+#include "atUtils.h"
 #include "TSettingsForm.h"
 #include "TReticlePopupForm.h"
 #include "TFFMPEGOutputFrame.h"
 #include "ArrayCamUtils.h"
+
 using namespace dsl;
+using namespace at;
 
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,

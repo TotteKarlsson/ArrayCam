@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Array Cam 0.5'
-  ClientHeight = 963
-  ClientWidth = 1835
+  ClientHeight = 712
+  ClientWidth = 1597
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,9 +24,9 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 19
   object Splitter2: TSplitter
-    Left = 983
+    Left = 745
     Top = 0
-    Height = 760
+    Height = 509
     Align = alRight
     ExplicitLeft = 1015
     ExplicitTop = 52
@@ -34,8 +34,8 @@ object MainForm: TMainForm
   end
   object Splitter1: TSplitter
     Left = 0
-    Top = 760
-    Width = 1835
+    Top = 509
+    Width = 1597
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -43,46 +43,52 @@ object MainForm: TMainForm
     ExplicitWidth = 487
   end
   object MainContentPanel: TPanel
-    Left = 986
+    Left = 748
     Top = 0
     Width = 818
-    Height = 760
+    Height = 509
     Align = alRight
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
+    ExplicitLeft = 986
+    ExplicitHeight = 760
     object Panel1: TPanel
       Left = 1
       Top = 1
       Width = 816
-      Height = 758
+      Height = 507
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 0
+      ExplicitHeight = 758
       DesignSize = (
         816
-        758)
+        507)
       object MainPC: TPageControl
         Left = 1
         Top = 1
         Width = 814
-        Height = 756
+        Height = 505
         ActivePage = Main
         Align = alClient
         TabHeight = 80
         TabOrder = 0
         TabWidth = 100
         OnChange = PageControlChange
+        ExplicitHeight = 756
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
+          ExplicitHeight = 666
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
             Width = 806
-            Height = 666
+            Height = 415
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 666
           end
         end
         object TabSheet9: TTabSheet
@@ -92,7 +98,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 313
-            Height = 666
+            Height = 415
             Align = alLeft
             Caption = 'Misc.'
             Color = clBtnFace
@@ -109,7 +115,7 @@ object MainForm: TMainForm
             end
             object ControllerInfoGB: TGroupBox
               Left = 2
-              Top = 549
+              Top = 298
               Width = 309
               Height = 115
               Align = alBottom
@@ -185,7 +191,7 @@ object MainForm: TMainForm
             Left = 313
             Top = 0
             Width = 493
-            Height = 666
+            Height = 415
             Align = alClient
             TabOrder = 1
           end
@@ -197,7 +203,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 806
-            Height = 666
+            Height = 415
             ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
@@ -252,7 +258,6 @@ object MainForm: TMainForm
                   Height = 49
                   Caption = 'Broadcast Status'
                   TabOrder = 1
-                  OnClick = SendServerStatusMessageBtnClick
                   SoundID = 'BUTTON_CLICK_4'
                 end
               end
@@ -310,16 +315,18 @@ object MainForm: TMainForm
   object LeftPanel: TPanel
     Left = 0
     Top = 0
-    Width = 983
-    Height = 760
+    Width = 745
+    Height = 509
     Align = alClient
     BevelEdges = []
     TabOrder = 1
+    ExplicitWidth = 983
+    ExplicitHeight = 760
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
-      Width = 981
-      Height = 758
+      Width = 743
+      Height = 507
       Margins.Left = 0
       Margins.Right = 0
       Align = alClient
@@ -327,6 +334,8 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
+      ExplicitWidth = 981
+      ExplicitHeight = 758
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -408,21 +417,24 @@ object MainForm: TMainForm
       object MPEGPanel: TFlowPanel
         Left = 0
         Top = 0
-        Width = 981
+        Width = 743
         Height = 43
         Align = alTop
         AutoSize = True
         TabOrder = 1
+        ExplicitWidth = 981
       end
       object Bpanel: TPanel
         Left = 0
-        Top = 676
-        Width = 981
+        Top = 425
+        Width = 743
         Height = 82
         Align = alBottom
         DoubleBuffered = True
         ParentDoubleBuffered = False
         TabOrder = 2
+        ExplicitTop = 676
+        ExplicitWidth = 981
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
@@ -459,20 +471,22 @@ object MainForm: TMainForm
     end
   end
   object ToggleMainContentBtn: TButton
-    Left = 1804
+    Left = 1566
     Top = 0
     Width = 31
-    Height = 760
+    Height = 509
     Action = ToggleMainContentPanelA
     Align = alRight
     Caption = '<'
     TabOrder = 2
     Visible = False
+    ExplicitLeft = 1804
+    ExplicitHeight = 760
   end
   inline TLogMemoFrame1: TLogMemoFrame
     Left = 0
-    Top = 763
-    Width = 1835
+    Top = 512
+    Width = 1597
     Height = 200
     Align = alBottom
     TabOrder = 3
@@ -480,12 +494,12 @@ object MainForm: TMainForm
     ExplicitWidth = 1835
     ExplicitHeight = 200
     inherited Panel1: TPanel
-      Width = 1835
+      Width = 1597
       Height = 200
       ExplicitWidth = 1835
       ExplicitHeight = 200
       inherited GroupBox1: TGroupBox
-        Width = 1833
+        Width = 1595
         ExplicitWidth = 1833
         inherited ToolBar1: TToolBar
           Top = 21
@@ -495,9 +509,8 @@ object MainForm: TMainForm
         end
       end
       inherited infoMemo: TMemo
-        Width = 1833
+        Width = 1595
         Height = 148
-        ExplicitTop = 55
         ExplicitWidth = 1833
         ExplicitHeight = 148
       end

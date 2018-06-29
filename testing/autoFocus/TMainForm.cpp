@@ -50,7 +50,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mServiceCamera1(mCamera1, 1, this->Handle),
         mMovingReticle(false),
         mMainContentPanelWidth(700),
-        mACServer(*this, -1),
         mReticleVisible(false),
 	    mRenderMode(IS_RENDER_FIT_TO_WINDOW),
         LoggerForm(NULL)//,
@@ -217,12 +216,6 @@ void __fastcall TMainForm::AppInBox(ATWindowStructMessage& msg)
 	{
 		Log(lError) << "An exception was thrown in AppInBox.";
 	}
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::SendServerStatusMessageBtnClick(TObject *Sender)
-{
-	mACServer.broadcastStatus();
 }
 
 //---------------------------------------------------------------------------

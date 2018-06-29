@@ -10,6 +10,7 @@
 #include "THandWheelPositionForm.h"
 #include "TActionsForm.h"
 #include "ArrayCamUtilities.h"
+#include "dslFileUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "dslTFloatLabel"
@@ -187,7 +188,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
     try
     {
-        TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION");
+        TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION", pgDM->SQLConnection1);
         TPGConnectionFrame1->ConnectA->Execute();
 
         mConnectZebraBtnClick(Sender);

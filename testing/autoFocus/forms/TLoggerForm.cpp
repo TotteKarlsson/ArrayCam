@@ -1,4 +1,3 @@
-#include <vcl.h>
 #pragma hdrstop
 #include "TLoggerForm.h"
 #include "dslLogger.h"

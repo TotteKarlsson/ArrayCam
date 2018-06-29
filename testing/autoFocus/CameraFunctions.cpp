@@ -1,4 +1,3 @@
-#include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
 #include "dslLogger.h"
@@ -290,7 +289,6 @@ void __fastcall TMainForm::takeSnapShot()
     else
     {
     	Log(lInfo) << "Saved snapshot to file: "<< fName;
-        mACServer.broadcast(acrSnapShotTaken);
     }
 }
 

@@ -4,6 +4,7 @@
 #include "dslApplicationInfo.h"
 #include "dslVersion.h"
 #include "dslVCLUtils.h"
+#include "dslFileUtils.h"
 #include <sstream>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
