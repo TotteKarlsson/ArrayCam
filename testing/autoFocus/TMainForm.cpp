@@ -2,7 +2,7 @@
 #pragma hdrstop
 #include "TMainForm.h"
 #include "dslLogger.h"
-#include "core/atCore.h"
+#include "atCore.h"
 #include "ArrayCamMessages.h"
 #include "dslVCLUtils.h"
 #include "TSelectIntegerForm.h"
@@ -29,6 +29,7 @@ TMainForm *MainForm;
 extern ArrayCamUtilities acu;
 using namespace dsl;
 using namespace std;
+using namespace at;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)

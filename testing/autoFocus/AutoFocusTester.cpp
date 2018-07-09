@@ -44,6 +44,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 
 //---------------------------------------------------------------------------
 #pragma comment(lib, "dslFoundation.lib")
+#pragma comment(lib, "dslVCLCommon.lib")
 #pragma comment(lib, "dslVCLComponents.lib")
 #pragma comment(lib, "dslVCLVisualComponents.bpi")
 //
