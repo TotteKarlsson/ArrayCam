@@ -29,12 +29,17 @@ def execute(thePlugin):
     print ("Get environmental data for the last consecutive " + days + " days.")
     return int(days) + 3
 
+def executeInt(anInt):
+
+    days  = str(anInt)
+    print ("Get environmental data for the last consecutive " + days + " days.")
+    return int(days) + 3
+
 ##The main function allow debugging of the plugin from within python
 def main():
     try:
-        pm = dsl.PythonPluginManager()
+        pm = dsl.PythonPluginManager("Test")
         pp = pm.createBarePlugin("Test")
-
         md = getPluginMetaData()
         pp.assignMetaData(md)
         props = getPluginProperties()
@@ -45,12 +50,17 @@ def main():
             pprops = pp.getProperties()
             pprops.add(p)
 
-        bp = props.getProperty("Days")
-        bp.assignValueFromString("233")
+        for i in range(1000):
+            print ("Hello")
 
-        res = execute(pp)
-        print (res)
+            bp = props.getProperty("Days")
+            bp.assignValueFromString(str(i))
 
+            res = execute(pp)
+            print (res)
+
+        pm.unloadAll()
+        print ("Done..")
 
     except: # catch exceptions
         e = sys.exc_info()[0]
