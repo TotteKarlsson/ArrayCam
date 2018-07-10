@@ -10,6 +10,7 @@
 #include "THandWheelPositionForm.h"
 #include "TActionsForm.h"
 #include "ArrayCamUtilities.h"
+#include "dslFileUtils.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "dslTFloatLabel"
@@ -83,7 +84,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
         mHandWheelPositionForm(NULL),
         LoggerForm(NULL),
         ActionsForm(NULL),
-        mAutoStartKnifeCamera(false)
+        mAutoStartKnifeCamera(false),
+        mGeneralProperties(shared_ptr<IniFileProperties>(new IniFileProperties)),
+        mSoundProperties(shared_ptr<IniFileProperties>(new IniFileProperties))
 {
     //Init the DLL -> give intra messages their ID's
 	initABCoreLib();
@@ -102,8 +105,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
     //Properties are retrieved and saved to an ini file
     setupProperties();
-    mGeneralProperties.read();
-    mSoundProperties.read();
+    mGeneralProperties->read();
+    mSoundProperties->read();
 
     TFFMPEGFrame1->setupProperties(mIniFile);
 
@@ -185,7 +188,7 @@ void __fastcall TMainForm::mStartupTimerTimer(TObject *Sender)
 
     try
     {
-        TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION");
+        TPGConnectionFrame1->init(&mIniFile, "POSTGRESDB_CONNECTION", pgDM->SQLConnection1);
         TPGConnectionFrame1->ConnectA->Execute();
 
         mConnectZebraBtnClick(Sender);

@@ -124,6 +124,5 @@ void __fastcall	TMainForm::setFocusAndZoom(int f, int z)
     }
 
     mNavitarMotorController.setFocusAndZoom(f, z);
-    mACServer.broadcast(acrFocusAndZoomSet);
 }
 

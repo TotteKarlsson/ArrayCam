@@ -1,13 +1,15 @@
 #pragma hdrstop
-#include <Shlobj.h>
 #include "ArrayCamUtilities.h"
 #include "dslUtils.h"
+#include "dslFileUtils.h"
 #include "dslLogger.h"
 #include "atExceptions.h"
 #include "dslWin32Utils.h"
 #include "dslVCLUtils.h"
-using namespace dsl;
+#include <Shlobj.h>
 
+using namespace dsl;
+using namespace at;
 int __stdcall FindOtherWindow(HWND hwnd, LPARAM lParam);
 
 extern ArrayCamUtilities acu;

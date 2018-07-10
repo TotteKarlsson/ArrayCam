@@ -6,7 +6,7 @@
 
 using dsl::Thread;
 
-
+using at::ArduinoClient;
 class PACKAGE ConnectToArduinoServerThread : public dsl::Thread
 {
 	public:

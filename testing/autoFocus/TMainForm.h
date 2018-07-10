@@ -1,6 +1,5 @@
 #ifndef TMainFormH
 #define TMainFormH
-#include "dslDirectoryNotifier.h"
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -51,7 +50,7 @@
 #include "dslIniFile.h"
 #include "dslIniFileProperties.h"
 #include "navitar/atNavitarMotorController.h"
-#include "source/ArrayCamServer.h"
+
 #include "TApplicationSoundsFrame.h"
 #include "TArrayBotBtn.h"
 #include "dslTIntegerLabeledEdit.h"
@@ -65,7 +64,8 @@
 #include "camera/uc480Class.h"
 #include "arraybot/apt/atDeviceManager.h"
 #include "atFocusController.h"
-
+#include "atVCLUtils.h"
+#include "dslLogLevel.h"
 //---------------------------------------------------------------------------
 class TSettingsForm;
 class TLocalArgs;
@@ -78,7 +78,9 @@ using Poco::Timestamp;
 using dsl::IniFileProperties;
 using dsl::IniFile;
 using dsl::Property;
-
+using at::ATWindowStructMessage;
+using at::NavitarMotorController;
+using at::DeviceManager;
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
 {
@@ -193,7 +195,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall mPBMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall mPBMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall SendServerStatusMessageBtnClick(TObject *Sender);
 	void __fastcall CameraHCSectionClick(THeaderControl *HeaderControl, THeaderSection *Section);
 	void __fastcall NavitarControllerConnectBtnClick(TObject *Sender);
 	void __fastcall StatusBar1Hint(TObject *Sender);
@@ -242,7 +243,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Property<bool>							mReticleVisible;
 
 		FocusController                         mFocusController;
-      	DirectoryNotifier                       mFocusScoreWatcher;
+//      	DirectoryNotifier                       mFocusScoreWatcher;
         void                                    onFocusScore(int* notifier);
 
 												//Camera variables
@@ -262,9 +263,6 @@ class PACKAGE TMainForm  : public TRegistryForm
 
  		void __fastcall							onCameraOpen( System::TObject* Sender);
 		void __fastcall							onCameraClose(System::TObject* Sender);
-
-												//Server functions
-		ArrayCamServer							mACServer;
 
         										//Motor that wipes the ribbons off the knife
 												//!Navitar motor controller stuff

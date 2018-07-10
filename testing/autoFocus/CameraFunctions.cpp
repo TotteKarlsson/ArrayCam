@@ -1,8 +1,8 @@
-#include <vcl.h>
 #pragma hdrstop
 #include "TMainForm.h"
 #include "dslLogger.h"
 #include "dslVCLUtils.h"
+#include "dslFileUtils.h"
 #include "camera/uc480_tools.h"
 #include "atVCLUtils.h"
 #include "TSettingsForm.h"
@@ -289,7 +289,6 @@ void __fastcall TMainForm::takeSnapShot()
     else
     {
     	Log(lInfo) << "Saved snapshot to file: "<< fName;
-        mACServer.broadcast(acrSnapShotTaken);
     }
 }
 

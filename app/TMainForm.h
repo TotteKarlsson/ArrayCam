@@ -71,6 +71,7 @@
 #include "uc7/atUC7ApplicationMessages.h"
 #include "uc7/atUC7Component.h"
 #include "camera/uc480Class.h"
+#include "dslApplicationProperties.h"
 
 //---------------------------------------------------------------------------
 class TSettingsForm;
@@ -88,7 +89,13 @@ using Poco::Timestamp;
 using dsl::IniFileProperties;
 using dsl::IniFile;
 using dsl::Property;
-
+using dsl::shared_ptr;
+using at::UC7;
+using at::EnvironmentaSensorReader;
+using at::LightsArduinoClient;
+using at::UC7Message;
+using at::NavitarMotorController;
+using at::ATWindowStructMessage;
 //---------------------------------------------------------------------------
 class PACKAGE TMainForm  : public TRegistryForm
 {
@@ -416,7 +423,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 
 		void									setupProperties();
 		IniFile									mIniFile;
-		IniFileProperties						mGeneralProperties;
+		shared_ptr<IniFileProperties>   		mGeneralProperties;
 		Property<dsl::LogLevel>					mLogLevel;
 		Property<int>							mMainContentPanelWidth;
 
@@ -441,7 +448,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		Property<int>							mStopCutterMode;
 
 												//Sound properties
-		IniFileProperties						mSoundProperties;
+		shared_ptr<IniFileProperties>    		mSoundProperties;
 		Property<ApplicationSound>				mBeforeKnifeBackOffSound;
 		Property<ApplicationSound>				mKnifeBeforeCuttingSound;
 		Property<ApplicationSound>				mKnifeCuttingSound;
@@ -493,7 +500,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 		void __fastcall							enableDisableUC7UI(bool enableDisable);
 		void									onUC7Count();
 		void									onUC7CountedTo();
-		void __fastcall							AppInBox(ATWindowStructMessage& Msg);
+		void __fastcall							AppInBox(at::ATWindowStructMessage& Msg);
 
 												//Callbacks
 		void									onLightsArduinoMessageReceived(const string& msg);

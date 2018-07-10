@@ -6,7 +6,7 @@
 #include "dslLogger.h"
 #include "THandWheelPositionForm.h"
 using namespace dsl;
-
+using namespace at;
 //---------------------------------------------------------------------------
 bool TMainForm::handleUC7Message(const UC7Message& msg)
 {

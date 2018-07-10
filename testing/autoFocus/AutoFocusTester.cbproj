@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{2837C7A8-992F-4925-A255-E87610EBCD41}</ProjectGuid>
+        <ProjectGuid>{362946E1-A86E-4161-9541-5416A007751E}</ProjectGuid>
         <ProjectVersion>18.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <AppType>Application</AppType>
@@ -58,19 +58,19 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;dbexpress.lib;DbxCommonDriver.lib;DbxDevartPostgreSQLDriver250.lib;dsnap.lib;vclimg.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbxcds.lib;Tee.lib;dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib;dbrtl.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;dsnap.lib;DbxDevartPostgreSQLDriver250.lib;dslVCLComponents.lib;atVCLComponents.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\frames\abFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>P:\libs\dsl\Common\;..\..\app\source\;P:\libs\atapi\source\vcl\frames\abFrames\;P:\libs\dsl\VCL\Frames\;source\;forms\;P:\AllenInstitute\ArrayCam\app\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>source\;..\..\app\source\;forms\;P:\libs\dsl\VCL\Frames\;P:\ArrayCam\testing\autoFocus\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>source\;forms\;..\..\app\;P:\libs\dsl\VCL\Frames\;..\..\app\source\;P:\ArrayCam\testing\autoFocus\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>AutoFocusTester</SanitizedProjectName>
-        <Custom_Styles>Carbon|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Carbon.vsf;&quot;Charcoal Dark Slate|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\CharcoalDarkSlate.vsf&quot;;Glossy|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glossy.vsf;Glow|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glow.vsf;&quot;Iceberg Classico|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\IcebergClassico.vsf&quot;;Luna|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Luna.vsf;Sky|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Sky.vsf</Custom_Styles>
+        <Custom_Styles>Glossy|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Glossy.vsf;Luna|VCLSTYLE|C:\Users\Public\Documents\Embarcadero\Studio\19.0\Styles\Luna.vsf</Custom_Styles>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DbxDevartPostgreSQLDriver250;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDACADSDriver;FireDACCommonODBC;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;Intraweb;RaizeComponentsVcl;RaizeComponentsVclDb;rtl;svn;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
+        <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DbxDevartPostgreSQLDriver250;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDACADSDriver;FireDACCommonODBC;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;Intraweb;RaizeComponentsVcl;RaizeComponentsVclDb;rtl;sbridge250;svn;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
@@ -107,19 +107,17 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;dbrtl.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DbxDevartPostgreSQLDriver250.bpi;dsnap.bpi;vclimg.bpi;vcldb.bpi;bindcomp.bpi;bindengine.bpi;bindcompvcl.bpi;dbxcds.bpi;Tee.bpi</LinkPackageImports>
-        <IncludePath>forms;frames;source;$(IncludePath)</IncludePath>
+        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclimg.bpi;dbrtl.bpi;vcldb.bpi;bindcomp.bpi;bindengine.bpi;bindcompvcl.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbxcds.bpi;dsnap.bpi;DbxDevartPostgreSQLDriver250.bpi</LinkPackageImports>
+        <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
+        <BCC_PCHName>thePCH.pch</BCC_PCHName>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageStatics>dslVCLComponents.lib;atComponents.lib;atVisualComponents.lib</LinkPackageStatics>
-        <BCC_PCHInject>ArrayCamPCH1.h</BCC_PCHInject>
+        <IncludePath>forms;source;$(IncludePath)</IncludePath>
+        <Debugger_DebugSourcePath>P:\libs\atapi\source\camera\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <LinkPackageStatics>dslVCLComponents.lib;atVCLComponents.lib</LinkPackageStatics>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
-        <VerInfo_MajorVer>0</VerInfo_MajorVer>
-        <VerInfo_MinorVer>7</VerInfo_MinorVer>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=0.7.2.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Release>2</VerInfo_Release>
-        <VerInfo_Debug>true</VerInfo_Debug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -130,54 +128,52 @@
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="..\..\app\source\atFocusController.cpp">
-            <DependentOn>..\..\app\source\atFocusController.h</DependentOn>
-            <BuildOrder>15</BuildOrder>
-        </CppCompile>
+        <PCHCompile Include="ArrayCamPCH1.h">
+            <BuildOrder>1</BuildOrder>
+            <PCH>true</PCH>
+        </PCHCompile>
         <CppCompile Include="ArrayCamUtilities.cpp">
-            <DependentOn>ArrayCamUtilities.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
+            <BuildOrder>3</BuildOrder>
         </CppCompile>
         <CppCompile Include="AutoFocusTester.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <CppCompile Include="auto_link.cpp">
-            <BuildOrder>3</BuildOrder>
-        </CppCompile>
         <CppCompile Include="CameraFunctions.cpp">
-            <BuildOrder>8</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="Closing.cpp">
-            <BuildOrder>18</BuildOrder>
+            <BuildOrder>7</BuildOrder>
         </CppCompile>
         <CppCompile Include="forms\TLoggerForm.cpp">
             <Form>LoggerForm</Form>
             <FormType>dfm</FormType>
             <DependentOn>forms\TLoggerForm.h</DependentOn>
-            <BuildOrder>17</BuildOrder>
+            <BuildOrder>13</BuildOrder>
         </CppCompile>
-        <CppCompile Include="forms\TSettingsForm.cpp">
+        <CppCompile Include="forms\TReticlePopupForm.cpp">
+            <Form>ReticlePopupForm</Form>
             <FormType>dfm</FormType>
+            <DependentOn>forms\TReticlePopupForm.h</DependentOn>
             <BuildOrder>11</BuildOrder>
         </CppCompile>
+        <CppCompile Include="forms\TSettingsForm.cpp">
+            <Form>SettingsForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>forms\TSettingsForm.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
         <CppCompile Include="Miscellaneous.cpp">
-            <BuildOrder>7</BuildOrder>
+            <BuildOrder>8</BuildOrder>
         </CppCompile>
         <CppCompile Include="NavitarLogic.cpp">
-            <BuildOrder>6</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="source\ArrayCamIPCServerReceiver.cpp">
             <BuildOrder>12</BuildOrder>
         </CppCompile>
-        <CppCompile Include="source\ArrayCamServer.cpp">
-            <DependentOn>source\ArrayCamServer.h</DependentOn>
-            <BuildOrder>15</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="source\ArrayCamUtils.cpp">
+        <CppCompile Include="source\atFocusController.cpp">
+            <DependentOn>source\atFocusController.h</DependentOn>
             <BuildOrder>13</BuildOrder>
         </CppCompile>
         <CppCompile Include="StartingUp.cpp">
-            <BuildOrder>10</BuildOrder>
+            <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="TMainForm.cpp">
             <Form>MainForm</Form>
@@ -186,14 +182,12 @@
             <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.cpp">
-            <Form>LogMemoFrame</Form>
             <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-            <DependentOn>P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.h</DependentOn>
-            <BuildOrder>14</BuildOrder>
+            <BuildOrder>5</BuildOrder>
         </CppCompile>
-        <FormResources Include="P:\libs\dsl\VCL\Frames\dslTLogMemoFrame.dfm"/>
+        <FormResources Include="forms\TSettingsForm.dfm"/>
         <FormResources Include="TMainForm.dfm"/>
+        <FormResources Include="forms\TReticlePopupForm.dfm"/>
         <FormResources Include="forms\TLoggerForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -218,15 +212,22 @@
                 <ProjectProperties>
                     <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
                     <ProjectProperties Name="ManagePaths">True</ProjectProperties>
-                    <ProjectProperties Name="VerifyPackages">False</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\bpl\atVCLVisualComponents.bpl">AT Frames and Forms</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\atVCLAPTVisualComponents.bpl">atVCLAPTVisualComponents</Excluded_Packages>
+                    <Excluded_Packages Name="p:\build\debug\BPL\atVCLNavitar.bpl">AT Frames and Forms</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName=".\Win32\Debug\AutoFocusTester.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>AutoFocusTester.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -239,6 +240,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\AutoFocusTester.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>AutoFocusTester.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -257,9 +264,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <RemoteName>AutoFocusTester.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -268,37 +274,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png" Configuration="Debug" Class="UWP_CppLogo44">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo44x44.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="p:\build\tokyo\bin\AutoFocusTester.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>AutoFocusTester.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png" Configuration="Debug" Class="UWP_CppLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo150x150.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>

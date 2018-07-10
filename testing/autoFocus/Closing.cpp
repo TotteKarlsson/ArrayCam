@@ -4,6 +4,7 @@
 #include "TLoggerForm.h"
 #include "dslLogger.h"
 #include "ArrayCamUtilities.h"
+#include "dslTLogFileReader.h"
 //---------------------------------------------------------------------------
 extern ArrayCamUtilities acu;
 using namespace dsl;
@@ -14,6 +15,7 @@ void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 	if(
     	mCamera1.IsInit() 						||
         mServiceCamera1.isRunning()				||
+        TLogMemoFrame1->LogFileReader1->isRunning()             ||
         LoggerForm
         )
     {
@@ -44,15 +46,15 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 		mServiceCamera1.stop();
     }
 
+    if(TLogMemoFrame1->LogFileReader1->isRunning())
+    {
+		TLogMemoFrame1->LogFileReader1->stop();
+    }
+
 	if(LoggerForm)
     {
         LoggerForm->Close();
         LoggerForm = NULL;
-    }
-
-    if(mACServer.isRunning())
-    {
-    	mACServer.shutDown();
     }
 
     Close();
@@ -61,7 +63,7 @@ void __fastcall TMainForm::mShutDownTimerTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
-    mFocusScoreWatcher.terminate();
+//    mFocusScoreWatcher.terminate();
 	mMainContentPanelWidth = MainContentPanel->Width;
     mLogLevel = gLogger.getLogLevel();
 	mGeneralProperties.write();

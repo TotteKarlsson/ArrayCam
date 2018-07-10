@@ -3,31 +3,10 @@
         <ProjectGuid>{AA3803DA-9A9D-4AA8-B269-11D034F376AE}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atComponents\atComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="app\ArrayCamPackage.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="P:\libs\atapi\builds\atVCLUC7VisualComponents\atVCLUC7VisualComponents.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="app\ArrayCam.cbproj">
@@ -41,78 +20,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="dslFoundation">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj"/>
-    </Target>
-    <Target Name="dslFoundation:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslFoundation:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslFoundation\dslFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="dslVCLCommon">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj"/>
-    </Target>
-    <Target Name="dslVCLCommon:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslVCLCommon:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLCommon\dslVCLCommon.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="dslVCLComponents">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj"/>
-    </Target>
-    <Target Name="dslVCLComponents:Clean">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="dslVCLComponents:Make">
-        <MSBuild Projects="P:\libs\dsl\builds\dslVCLComponents\dslVCLComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atSSI">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj"/>
-    </Target>
-    <Target Name="atSSI:Clean">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atSSI:Make">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atFoundation">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj"/>
-    </Target>
-    <Target Name="atFoundation:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atFoundation:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLCommon">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj"/>
-    </Target>
-    <Target Name="atVCLCommon:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLCommon:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLCommon\atVCLCommon.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj"/>
-    </Target>
-    <Target Name="atComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atComponents\atComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVisualComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="atVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVisualComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVisualComponents.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="ArrayCamPackage">
         <MSBuild Projects="app\ArrayCamPackage.cbproj"/>
     </Target>
@@ -121,6 +28,15 @@
     </Target>
     <Target Name="ArrayCamPackage:Make">
         <MSBuild Projects="app\ArrayCamPackage.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="atVCLUC7VisualComponents">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLUC7VisualComponents\atVCLUC7VisualComponents.cbproj"/>
+    </Target>
+    <Target Name="atVCLUC7VisualComponents:Clean">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLUC7VisualComponents\atVCLUC7VisualComponents.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="atVCLUC7VisualComponents:Make">
+        <MSBuild Projects="P:\libs\atapi\builds\atVCLUC7VisualComponents\atVCLUC7VisualComponents.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ArrayCam">
         <MSBuild Projects="app\ArrayCam.cbproj"/>
@@ -132,13 +48,13 @@
         <MSBuild Projects="app\ArrayCam.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslVCLCommon;dslVCLComponents;atSSI;atFoundation;atVCLCommon;atComponents;atVisualComponents;ArrayCamPackage;ArrayCam"/>
+        <CallTarget Targets="ArrayCamPackage;atVCLUC7VisualComponents;ArrayCam"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;atSSI:Clean;atFoundation:Clean;atVCLCommon:Clean;atComponents:Clean;atVisualComponents:Clean;ArrayCamPackage:Clean;ArrayCam:Clean"/>
+        <CallTarget Targets="ArrayCamPackage:Clean;atVCLUC7VisualComponents:Clean;ArrayCam:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslVCLCommon:Make;dslVCLComponents:Make;atSSI:Make;atFoundation:Make;atVCLCommon:Make;atComponents:Make;atVisualComponents:Make;ArrayCamPackage:Make;ArrayCam:Make"/>
+        <CallTarget Targets="ArrayCamPackage:Make;atVCLUC7VisualComponents:Make;ArrayCam:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
