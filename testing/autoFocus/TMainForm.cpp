@@ -337,9 +337,7 @@ void __fastcall TMainForm::ThemesMenuClick(TObject *Sender)
 	//Write to registry
 	acu.Style = stdstr(styleName);
 	writeStringToRegistry(acu.AppRegistryRoot, "", "Theme", acu.Style);
-
 }
-
 
 void __fastcall TMainForm::AutoFocusTimerTimer(TObject *Sender)
 {
@@ -359,6 +357,15 @@ void __fastcall TMainForm::startAFClick(TObject *Sender)
 {
     AutoFocusTimer->Enabled = !AutoFocusTimer->Enabled;
 	startAF->Caption = AutoFocusTimer->Enabled ? "Stop AF" : "Start AF";
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::mPBClick(TObject *Sender)
+{
+    //Getting ROI
+    Log(lInfo) << "Setting ROI" ;
+
+
 }
 
 

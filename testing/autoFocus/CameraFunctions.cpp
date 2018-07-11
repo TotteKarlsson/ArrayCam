@@ -46,7 +46,6 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
         }
         else
         {
-
             if(!MainContentPanel->Visible)
             {
 				ToggleMainContentPanelAExecute(NULL);
@@ -72,8 +71,23 @@ void __fastcall TMainForm::CameraHCSectionClick(THeaderControl *HeaderControl,
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::mPBMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-	//If mouse is inside reticle center, allowe moving its center
-	mMovingReticle = true;
+	//If mouse is inside reticle center, allow moving its center
+    //Get x, y coordintaes in paintbox coordinates
+
+    int x = X - mPB->Width/2;
+    int y = Y - mPB->Height/2;
+
+    Log(lInfo) << "X and Y"<<x<<":"<<y;
+
+    pair<int, int> rCenter = mReticle.getReticleCenter();
+    int r = mReticle.getCircleRadius();
+
+    //Check if mouse is inside the reticle circle
+    double distance = sqrt(pow((double) x - rCenter.first,2) + pow((double) y - rCenter.second, 2));
+    if(distance < r)
+    {
+		mMovingReticle = true;
+    }
 }
 
 //---------------------------------------------------------------------------

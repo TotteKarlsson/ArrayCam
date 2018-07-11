@@ -10,23 +10,23 @@ using std::deque;
 class FocusController
 {
     public:
-                            FocusController();
-                            ~FocusController();
+                                        FocusController();
+                                        ~FocusController();
 
-        void                onScore();
-	    double              setNewFocus();
-        string              getSnapShotFileName();
+        void                            onScore();
+	    double                          setNewFocus();
+        string                          getSnapShotFileName();
 
     protected:
-    	Range<int>          mFocusRange;
-        double              mStepFocus;
-        string              mLiveImagePath;
-        string              mLiveImageFileName;
-        string              mSharpnessFileName;
-        deque<double>       mScores;
+    	Range<int>                      mFocusRange;
+        double                          mStepFocus;
+        string                          mLiveImagePath;
+        string                          mLiveImageFileName;
+        string                          mSharpnessFileName;
+        deque<double>                   mScores;
 
 
-                            //!In seconds
-        double              mImageUpdateIntervall;
+                                        //!In seconds
+        double                          mImageUpdateIntervall;
 };
 #endif

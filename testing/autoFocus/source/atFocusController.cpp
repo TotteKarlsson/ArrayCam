@@ -13,8 +13,7 @@ mLiveImagePath("d:\\AC\\live"),
 mLiveImageFileName("live.jpg"),
 mSharpnessFileName(joinPath(mLiveImagePath, "sharpness.txt")),
 mScores()
-{
-}
+{}
 
 FocusController::~FocusController()
 {}

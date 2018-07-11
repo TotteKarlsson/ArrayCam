@@ -51,8 +51,6 @@ object MainForm: TMainForm
     Caption = 'MainContentPanel'
     Constraints.MinWidth = 786
     TabOrder = 0
-    ExplicitLeft = 986
-    ExplicitHeight = 760
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -61,7 +59,6 @@ object MainForm: TMainForm
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 0
-      ExplicitHeight = 758
       DesignSize = (
         816
         507)
@@ -76,11 +73,9 @@ object MainForm: TMainForm
         TabOrder = 0
         TabWidth = 100
         OnChange = PageControlChange
-        ExplicitHeight = 756
         object Main: TTabSheet
           Caption = 'Main'
           ImageIndex = 5
-          ExplicitHeight = 666
           object ScrollBox1: TScrollBox
             Left = 0
             Top = 0
@@ -88,7 +83,6 @@ object MainForm: TMainForm
             Height = 415
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 666
           end
         end
         object TabSheet9: TTabSheet
@@ -320,8 +314,6 @@ object MainForm: TMainForm
     Align = alClient
     BevelEdges = []
     TabOrder = 1
-    ExplicitWidth = 983
-    ExplicitHeight = 760
     object mMainPhotoPanel: TPanel
       Left = 1
       Top = 1
@@ -334,8 +326,6 @@ object MainForm: TMainForm
       BevelOuter = bvNone
       TabOrder = 0
       OnResize = mMainPhotoPanelResize
-      ExplicitWidth = 981
-      ExplicitHeight = 758
       object mCamera1BackPanel: TPanel
         Left = 1
         Top = 0
@@ -359,6 +349,7 @@ object MainForm: TMainForm
           Color = clActiveCaption
           ParentColor = False
           PopupMenu = CameraPopup
+          OnClick = mPBClick
           OnMouseDown = mPBMouseDown
           OnMouseMove = mPBMouseMove
           OnMouseUp = mPBMouseUp
@@ -422,7 +413,6 @@ object MainForm: TMainForm
         Align = alTop
         AutoSize = True
         TabOrder = 1
-        ExplicitWidth = 981
       end
       object Bpanel: TPanel
         Left = 0
@@ -433,8 +423,6 @@ object MainForm: TMainForm
         DoubleBuffered = True
         ParentDoubleBuffered = False
         TabOrder = 2
-        ExplicitTop = 676
-        ExplicitWidth = 981
         object ToolBar2: TToolBar
           Left = 1
           Top = 1
@@ -480,8 +468,6 @@ object MainForm: TMainForm
     Caption = '<'
     TabOrder = 2
     Visible = False
-    ExplicitLeft = 1804
-    ExplicitHeight = 760
   end
   inline TLogMemoFrame1: TLogMemoFrame
     Left = 0
@@ -490,17 +476,17 @@ object MainForm: TMainForm
     Height = 200
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 763
-    ExplicitWidth = 1835
+    ExplicitTop = 512
+    ExplicitWidth = 1597
     ExplicitHeight = 200
     inherited Panel1: TPanel
       Width = 1597
       Height = 200
-      ExplicitWidth = 1835
+      ExplicitWidth = 1597
       ExplicitHeight = 200
       inherited GroupBox1: TGroupBox
         Width = 1595
-        ExplicitWidth = 1833
+        ExplicitWidth = 1595
         inherited ToolBar1: TToolBar
           Top = 21
           Height = 27
@@ -511,7 +497,7 @@ object MainForm: TMainForm
       inherited infoMemo: TMemo
         Width = 1595
         Height = 148
-        ExplicitWidth = 1833
+        ExplicitWidth = 1595
         ExplicitHeight = 148
       end
     end

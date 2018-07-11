@@ -58,7 +58,7 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib;dbrtl.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;dsnap.lib;DbxDevartPostgreSQLDriver250.lib;dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclimg.lib;dbrtl.lib;vcldb.lib;bindcomp.lib;bindengine.lib;bindcompvcl.lib;dbexpress.lib;DbxCommonDriver.lib;dbxcds.lib;dsnap.lib;DbxDevartPostgreSQLDriver250.lib;dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib;atVCLVisualComponents.lib;atVCLDataModules.lib;atVCLAPTVisualComponents.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -116,7 +116,7 @@
         <_TCHARMapping>char</_TCHARMapping>
         <IncludePath>forms;source;$(IncludePath)</IncludePath>
         <Debugger_DebugSourcePath>P:\libs\atapi\source\camera\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <LinkPackageStatics>dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib</LinkPackageStatics>
+        <LinkPackageStatics>dslVCLComponents.lib;atVCLComponents.lib;atVCLNavitar.lib;atVCLVisualComponents.lib;atVCLDataModules.lib;atVCLAPTVisualComponents.lib</LinkPackageStatics>
         <FinalOutputDir>$(DEBUG_BCC32)\bin</FinalOutputDir>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -216,13 +216,11 @@
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\bpl\atVCLVisualComponents.bpl">AT Frames and Forms</Excluded_Packages>
                     <Excluded_Packages Name="p:\build\debug\BPL\atVCLAPTVisualComponents.bpl">atVCLAPTVisualComponents</Excluded_Packages>
-                    <Excluded_Packages Name="p:\build\debug\BPL\atVCLNavitar.bpl">AT Frames and Forms</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -273,7 +271,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>

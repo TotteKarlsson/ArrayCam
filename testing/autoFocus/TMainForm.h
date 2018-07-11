@@ -1,71 +1,64 @@
 #ifndef TMainFormH
 #define TMainFormH
-#include <System.Classes.hpp>
-#include <Vcl.Controls.hpp>
+
+#include "TSoundsFrame.h"
+#include "TNavitarMotorFrame.h"
+#include "TMoviesFrame.h"
+#include "TMotorFrame.h"
+#include "TImagesFrame.h"
+#include "TArrayBotBtn.h"
+#include "TApplicationSoundsFrame.h"
+#include "navitar/atNavitarMotorController.h"
+#include "forms/dslTRegistryForm.h"
+#include "ello/atElloUIClient.h"
+#include "dslTSTDStringLabeledEdit.h"
+#include "dslTPropertyCheckBox.h"
+#include "dslTLogMemoFrame.h"
+#include "dslTLogFileReader.h"
+#include "dslTIntLabel.h"
+#include "dslTIntLabel.h"
+#include "dslTIntegerLabeledEdit.h"
+#include "dslTFloatLabeledEdit.h"
+#include "dslTFloatLabel.h"
+#include "dslLogLevel.h"
+#include "dslIniFileProperties.h"
+#include "dslIniFile.h"
+#include "atEnvironmentalSensorReader.h"
+#include "camera/uc480Class.h"
+#include "camera/atCameraServiceThread.h"
+#include "barcodereader/atDS457.h"
+#include "atVCLUtils.h"
+#include "atReticle.h"
+#include "atFocusController.h"
+#include "arraybot/apt/atDeviceManager.h"
+#include "arduino/atLightsArduinoClient.h"
+
+#include <Vcl.ToolWin.hpp>
 #include <Vcl.StdCtrls.hpp>
+#include <Vcl.StdActns.hpp>
+#include <Vcl.Menus.hpp>
+#include <Vcl.Mask.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+#include <Vcl.Grids.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include <Vcl.ComCtrls.hpp>
-#include <Vcl.Menus.hpp>
-#include <Vcl.Buttons.hpp>
-#include <Vcl.ToolWin.hpp>
-#include <Vcl.DBCtrls.hpp>
 #include <Vcl.DBGrids.hpp>
-#include <Vcl.Grids.hpp>
-#include <Vcl.Imaging.jpeg.hpp>
-#include <Vcl.Imaging.pngimage.hpp>
-#include <System.Actions.hpp>
-#include <Vcl.ActnList.hpp>
-#include <Vcl.StdActns.hpp>
-#include <Data.Bind.Components.hpp>
-#include <Data.Bind.EngExt.hpp>
+#include <Vcl.DBCtrls.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.Buttons.hpp>
 #include <Vcl.Bind.DBEngExt.hpp>
-#include <Vcl.Mask.hpp>
-#include <Data.DB.hpp>
-#include <Data.FMTBcd.hpp>
+#include <Vcl.ActnList.hpp>
+#include <System.Classes.hpp>
+#include <System.Actions.hpp>
 #include <Data.SqlExpr.hpp>
-#include "TApplicationSoundsFrame.h"
-#include "TArrayBotBtn.h"
-#include "dslTFloatLabeledEdit.h"
-#include "TImagesFrame.h"
-#include "dslTIntegerLabeledEdit.h"
-#include "dslTIntLabel.h"
-#include "TNavitarMotorFrame.h"
-#include "dslTPropertyCheckBox.h"
-#include "TSoundsFrame.h"
-#include "dslTSTDStringLabeledEdit.h"
-#include "dslTFloatLabel.h"
-#include "dslTLogFileReader.h"
-#include "dslTLogMemoFrame.h"
-#include "TMotorFrame.h"
+#include <Data.FMTBcd.hpp>
+#include <Data.DB.hpp>
+#include <Data.Bind.EngExt.hpp>
+#include <Data.Bind.Components.hpp>
 #include <memory>
-#include "arduino/atLightsArduinoClient.h"
-#include "ello/atElloUIClient.h"
-#include "atReticle.h"
-#include "atVCLUtils.h"
-#include "barcodereader/atDS457.h"
-#include "camera/atCameraServiceThread.h"
-#include "core/atEnvironmentalSensorReader.h"
-#include "forms/dslTRegistryForm.h"
-#include "dslIniFile.h"
-#include "dslIniFileProperties.h"
-#include "navitar/atNavitarMotorController.h"
 
-#include "TApplicationSoundsFrame.h"
-#include "TArrayBotBtn.h"
-#include "dslTIntegerLabeledEdit.h"
-#include "dslTIntLabel.h"
-#include "TMoviesFrame.h"
-#include "TNavitarMotorFrame.h"
-#include "dslTPropertyCheckBox.h"
-#include "TSoundsFrame.h"
-#include "dslTSTDStringLabeledEdit.h"
-#include "dslTFloatLabeledEdit.h"
-#include "camera/uc480Class.h"
-#include "arraybot/apt/atDeviceManager.h"
-#include "atFocusController.h"
-#include "atVCLUtils.h"
-#include "dslLogLevel.h"
 //---------------------------------------------------------------------------
 class TSettingsForm;
 class TLocalArgs;
@@ -213,6 +206,7 @@ class PACKAGE TMainForm  : public TRegistryForm
 	void __fastcall ThemesMenuClick(TObject *Sender);
 	void __fastcall AutoFocusTimerTimer(TObject *Sender);
 	void __fastcall startAFClick(TObject *Sender);
+	void __fastcall mPBClick(TObject *Sender);
 
 	protected:
 		enum StatusBarPanels{	sbpTemperature = 0,		sbpHumidity,
