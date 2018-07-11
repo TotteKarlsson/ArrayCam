@@ -21,6 +21,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 __fastcall TMainForm::~TMainForm()
 {
+	mPythonPM.getPythonInterpreter()->finalize();
 	mPythonPM.unloadAll();
 }
 //---------------------------------------------------------------------------
