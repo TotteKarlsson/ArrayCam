@@ -18,32 +18,14 @@
         <Projects Include="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj">
+        <Projects Include="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="AutoFocusTester.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj">
-            <Dependencies>P:\libs\dsl\builds\dslPythonPlugins\dslPythonPlugins.cbproj</Dependencies>
+        <Projects Include="P:\libs\dsl\Examples\CXX\Common\plugin_callbacks\plugin_callbacks.cbproj">
+            <Dependencies/>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -98,68 +80,14 @@
     <Target Name="dslVCLVisualComponents:Make">
         <MSBuild Projects="P:\libs\dsl\builds\dslVCLVisualComponents\dslVCLVisualComponents.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="atSSI">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj"/>
+    <Target Name="PluginManager">
+        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj"/>
     </Target>
-    <Target Name="atSSI:Clean">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj" Targets="Clean"/>
+    <Target Name="PluginManager:Clean">
+        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="atSSI:Make">
-        <MSBuild Projects="P:\libs\atapi\thirdparty\ssidll\atSSI.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atFoundation">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj"/>
-    </Target>
-    <Target Name="atFoundation:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atFoundation:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atFoundation\atFoundation.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLComponents\atVCLComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLDataModules">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj"/>
-    </Target>
-    <Target Name="atVCLDataModules:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLDataModules:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLDataModules\atVCLDataModules.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLVisualComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLVisualComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLVisualComponents\atVCLVisualComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLAPTVisualComponents:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLAPTVisualComponents\atVCLAPTVisualComponents.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="atVCLNavitar">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj"/>
-    </Target>
-    <Target Name="atVCLNavitar:Clean">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="atVCLNavitar:Make">
-        <MSBuild Projects="P:\libs\atapi\builds\atVCLNavitar\atVCLNavitar.cbproj" Targets="Make"/>
+    <Target Name="PluginManager:Make">
+        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj" Targets="Make"/>
     </Target>
     <Target Name="AutoFocusTester">
         <MSBuild Projects="AutoFocusTester.cbproj"/>
@@ -170,23 +98,23 @@
     <Target Name="AutoFocusTester:Make">
         <MSBuild Projects="AutoFocusTester.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PluginManager" DependsOnTargets="dslPythonPlugins">
-        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj"/>
+    <Target Name="plugin_callbacks">
+        <MSBuild Projects="P:\libs\dsl\Examples\CXX\Common\plugin_callbacks\plugin_callbacks.cbproj"/>
     </Target>
-    <Target Name="PluginManager:Clean" DependsOnTargets="dslPythonPlugins:Clean">
-        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj" Targets="Clean"/>
+    <Target Name="plugin_callbacks:Clean">
+        <MSBuild Projects="P:\libs\dsl\Examples\CXX\Common\plugin_callbacks\plugin_callbacks.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="PluginManager:Make" DependsOnTargets="dslPythonPlugins:Make">
-        <MSBuild Projects="P:\libs\dsl\Examples\vcl\pluginmanager\PluginManager.cbproj" Targets="Make"/>
+    <Target Name="plugin_callbacks:Make">
+        <MSBuild Projects="P:\libs\dsl\Examples\CXX\Common\plugin_callbacks\plugin_callbacks.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dslFoundation;dslPythonPlugins;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;atSSI;atFoundation;atVCLComponents;atVCLDataModules;atVCLVisualComponents;atVCLAPTVisualComponents;atVCLNavitar;AutoFocusTester;PluginManager"/>
+        <CallTarget Targets="dslFoundation;dslPythonPlugins;dslVCLCommon;dslVCLComponents;dslVCLVisualComponents;PluginManager;AutoFocusTester;plugin_callbacks"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dslFoundation:Clean;dslPythonPlugins:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;atSSI:Clean;atFoundation:Clean;atVCLComponents:Clean;atVCLDataModules:Clean;atVCLVisualComponents:Clean;atVCLAPTVisualComponents:Clean;atVCLNavitar:Clean;AutoFocusTester:Clean;PluginManager:Clean"/>
+        <CallTarget Targets="dslFoundation:Clean;dslPythonPlugins:Clean;dslVCLCommon:Clean;dslVCLComponents:Clean;dslVCLVisualComponents:Clean;PluginManager:Clean;AutoFocusTester:Clean;plugin_callbacks:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dslFoundation:Make;dslPythonPlugins:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;atSSI:Make;atFoundation:Make;atVCLComponents:Make;atVCLDataModules:Make;atVCLVisualComponents:Make;atVCLAPTVisualComponents:Make;atVCLNavitar:Make;AutoFocusTester:Make;PluginManager:Make"/>
+        <CallTarget Targets="dslFoundation:Make;dslPythonPlugins:Make;dslVCLCommon:Make;dslVCLComponents:Make;dslVCLVisualComponents:Make;PluginManager:Make;AutoFocusTester:Make;plugin_callbacks:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
